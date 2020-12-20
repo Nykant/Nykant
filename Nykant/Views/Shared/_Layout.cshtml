@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Nykant</title>
+    <link rel="stylesheet" href="~/css/kant.css" />
+    <link rel="stylesheet" href="~/css/downarrow.css" />
+    <link rel="stylesheet" href="~/css/slideshow.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+</head>
+<body>
+    <div class="container gray highlightTextIn">
+        <div class="container-nav-a">
+            <a id="nav-logo" alt="NYKANT" asp-controller="Home" asp-action="Index"><span style="color:#eaeaea">N</span>YKANT</a>
+            <a alt="HJEM" asp-controller="Home" asp-action="Index">HJEM</a>
+            <a alt="PRODUKTER" asp-controller="Product" asp-action="Index">PRODUKTER</a>
+            <a alt="KONTAKT" asp-controller="Contact" asp-action="Index">KONTAKT</a>
+            <a alt="KURV" asp-controller="Order" asp-action="Index">KURV</a>
+        </div>
+    </div>
+    <div>
+        <main>
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer>
+        <div>
+            &copy; 2020 - Nykant - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/JS/downarrowstop.js"></script>
+    <script src="~/JS/slideshow.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
