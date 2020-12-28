@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\partials\_layout.scss" />
+    <None Include="wwwroot\partials\_mixins.scss" />
+    <None Include="wwwroot\partials\_variables.scss" />
+    <None Include="wwwroot\scss\style.scss" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.10">

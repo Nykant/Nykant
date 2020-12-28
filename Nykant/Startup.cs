@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Antiforgery;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -31,10 +33,18 @@ namespace Nykant
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            services.AddAntiforgery(options =>
+            {
+                // Set Cookie properties using CookieBuilder properties†.
+                options.FormFieldName = "AntiforgeryFieldname";
+                options.HeaderName = "X-CSRF-TOKEN-HEADERNAME";
+                options.SuppressXFrameOptionsHeader = false;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IAntiforgery antiforgery)
         {
             if (env.IsDevelopment())
             {
@@ -58,6 +68,24 @@ namespace Nykant
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
+            });
+
+            app.Use(next => context =>
+            {
+                string path = context.Request.Path.Value;
+
+                if (
+                    string.Equals(path, "/", StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(path, "/index.cshtml", StringComparison.OrdinalIgnoreCase))
+                {
+                    // The request token can be sent as a JavaScript-readable cookie, 
+                    // and Angular uses it by default.
+                    var tokens = antiforgery.GetAndStoreTokens(context);
+                    context.Response.Cookies.Append("XSRF-TOKEN", tokens.RequestToken,
+                        new CookieOptions() { HttpOnly = false });
+                }
+
+                return next(context);
             });
         }
     }

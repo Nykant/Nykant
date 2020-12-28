@@ -14,6 +14,5 @@ namespace Nykant.Models
         public DateTime Created { get; set; }
         [Required]
         public string Session { get; set; }
-        public IEnumerable<Product> Products { get; set; }
     }
 }
