@@ -9,7 +9,7 @@ Primary style
   box-sizing: border-box;
 }
 
-/*html {
+html {
   font-size: 62.5%;
 }
 
@@ -20,7 +20,7 @@ html * {
 
 body {
   font-size: 1.6rem;
-  font-family: "Open Sans", sans-serif;
+/*  font-family: "Open Sans", sans-serif;*/
   color: #331d35;
   background-color: #e7e7e7;
 }
@@ -28,8 +28,8 @@ body {
 a {
   color: #41307c;
   text-decoration: none;
-}*/
-/**/
+}
+
 /* -------------------------------- 
 
 Main Components 
