@@ -22,9 +22,17 @@
         <ul>
             @foreach (var product in Model)
             {
-                <li class="mix @product.TypeOfWood @product.ItemType @product.Color @product.Size"><img src="~/images/Finback-Chairs1-1280x853-c-default.jpg" alt="Image 1"></li>
+            <li class="mix @product.TypeOfWood @product.ItemType @product.Color @product.Size">
+                <div class="product-image" alt="image-name" >
+                    <a>
+                        <h4>Detaljer</h4>
+                    </a>
+                </div>
+                <p style="float:left">this is a chair?</p>
+                <p style="float:left">hello</p>
+                <p style="float:right">pris</p>
+            </li>
             }
-
             <li class="gap"></li>
             <li class="gap"></li>
             <li class="gap"></li>
@@ -69,7 +77,7 @@
                 <div class="cd-filter-content">
                     <div class="cd-select cd-filters">
                         <select class="filter" name="selectThis" id="selectThis">
-                            <option value="">Choose Size</option>
+                            <option value="">All</option>
                             <option value=".5mm">5mm</option>
                             <option value=".10mm">10mm</option>
                             <option value=".20mm">20mm</option>

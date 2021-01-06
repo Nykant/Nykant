@@ -1,0 +1,48 @@
+﻿@media only screen and (min-width: 1170px) {
+    .cd-filter-trigger {
+        color: #9b9b9b;
+    }
+    .no-touch .cd-filter-trigger:hover {
+        color: #000000;
+    }
+    .cd-filter-trigger.filter-is-visible, .cd-filter-trigger.filter-is-visible:hover {
+        color: #dfdfdf;
+    }
+}
+
+.cd-filter .cd-close {
+    color: #000000;
+    background: #000000;
+}
+
+.no-touch .cd-filter .cd-close:hover {
+    background: #000000;
+}
+
+.cd-filter::before {
+    /* top colored bar */
+    background-color: #808080;
+}
+
+.cd-filter .cd-close {
+    color: #dfdfdf;
+    background: #808080;
+}
+
+.no-touch .cd-filter .cd-close:hover {
+    background: #808080
+}
+
+.no-touch .cd-tab-filter a:hover {
+    color: #131313;
+}
+.cd-tab-filter a.selected {
+    background: transparent;
+    color: #131313;
+    /* create border bottom using box-shadow property */
+    box-shadow: inset 0 -2px 0 #131313;
+}
+
+.no-touch .cd-filter-block h4:hover {
+    color: #000000;
+}

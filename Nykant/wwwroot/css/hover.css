@@ -1,20 +1,7 @@
-﻿.container-hover {
-    position: relative;
-    width: 50%;
-}
-
-.image-hover {
-    opacity: 1;
-    display: block;
-    width: 100%;
-    height: auto;
+﻿.middle {
+    z-index: -1;
+    background: #4cff00;
     transition: .5s ease;
-    backface-visibility: hidden;
-}
-
-.middle {
-    transition: .5s ease;
-    opacity: 0;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -22,17 +9,19 @@
     -ms-transform: translate(-50%, -50%)
 }
 
-.container:hover .image {
+.text {
+    background: #4cff00;
+    z-index: -1;
+    color: #4cff00;
+    font-size: 16px;
+    padding: 16px 32px;
+    text-decoration: none;
+}
+
+.card_part-one:hover, .card_part-two:hover, .card_part-three:hover, .card_part-four:hover {
     opacity: 0.3;
 }
 
-.container:hover .middle {
-    opacity: 1;
-}
-
-.text {
-    background-color: #4CAF50;
-    color: white;
-    font-size: 16px;
-    padding: 16px 32px;
-}
+    .card_part-one:hover .middle, .card_part-two:hover .middle, .card_part-three:hover .middle, .card_part-four:hover .middle {
+        opacity: 1;
+    }

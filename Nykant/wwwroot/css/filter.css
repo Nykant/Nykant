@@ -20,13 +20,12 @@ html * {
 
 body {
   font-size: 1.6rem;
-/*  font-family: "Open Sans", sans-serif;*/
-  color: #331d35;
+  color: #000000;
   background-color: #e7e7e7;
 }
 
 a {
-  color: #41307c;
+  color: #000000;
   text-decoration: none;
 }
 
@@ -38,7 +37,7 @@ Main Components
 .cd-header {
   position: relative;
   height: 150px;
-  background-color: #331d35;
+  background-color: #000000;
 }
 .cd-header h1 {
   color: #ffffff;
@@ -219,13 +218,13 @@ xtab-filter
     font-size: 1.3rem;
   }
   .no-touch .cd-tab-filter a:hover {
-    color: #41307c;
+    color: #131313;
   }
   .cd-tab-filter a.selected {
     background: transparent;
-    color: #41307c;
+    color: #131313;
     /* create border bottom using box-shadow property */
-    box-shadow: inset 0 -2px 0 #41307c;
+    box-shadow: inset 0 -2px 0 #131313;
   }
   .cd-tab-filter.is-open ul li {
     display: inline-block;
@@ -459,7 +458,7 @@ xcustom form elements
   cursor: pointer;
 }
 .no-touch .cd-filter-block h4:hover {
-  color: #41307c;
+  color: #000000;
 }
 .cd-filter-block h4::before {
   /* arrow */
@@ -490,7 +489,6 @@ xcustom form elements
 .cd-filter-block .radio-label::before,
 .cd-filter-block .checkbox-label::before {
   /* shared style for input elements */
-  font-family: "Open Sans", sans-serif;
   border-radius: 0;
   background-color: #ffffff;
   border: 2px solid #e6e6e6;
@@ -512,7 +510,7 @@ xcustom form elements
 .cd-filter-block select:focus {
   outline: none;
   background-color: #ffffff;
-  border-color: #41307c;
+  border-color: #131313;
 }
 .cd-filter-block input[type='search'] {
   /* custom style for the search element */
@@ -624,8 +622,8 @@ xcustom form elements
 }
 .cd-filter-block input[type=radio]:checked + label::before,
 .cd-filter-block input[type=checkbox]:checked + label::before {
-  border-color: #41307c;
-  background-color: #41307c;
+    border-color: #131313;
+    background-color: #131313;
 }
 .cd-filter-block input[type=radio]:checked + label::after,
 .cd-filter-block input[type=checkbox]:checked + label::after {
