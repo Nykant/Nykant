@@ -20,17 +20,23 @@
 
     <section class="cd-gallery">
         <ul>
-            @foreach (var product in Model)
+           @foreach (var product in Model)
             {
             <li class="mix @product.TypeOfWood @product.ItemType @product.Color @product.Size">
-                <div class="product-image" alt="image-name" >
-                    <a>
-                        <h4>Detaljer</h4>
-                    </a>
+
+                <div class="product-container">
+                        <img class="product-image" src="../images/Finback-Chairs1-1280x853-c-default.jpg" alt="image-name">
+                        <a href="#">
+                            <div class="details">
+                                <div class="details-text">Se mere</div>
+                            </div>
+                        </a>
                 </div>
-                <p style="float:left">this is a chair?</p>
-                <p style="float:left">hello</p>
-                <p style="float:right">pris</p>
+                <div class="product-info">
+                    <p class="titel" style="text-decoration:solid">Grøntsags skærebræt</p>
+                    <p class="price">1000 kr.</p>
+                </div>
+
             </li>
             }
             <li class="gap"></li>
