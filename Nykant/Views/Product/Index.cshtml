@@ -3,7 +3,7 @@
     ViewData["Title"] = "Produkter";
 }
 
-<main style="top:15px" class="cd-main-content">
+<main class="cd-main-content">
     <div class="cd-tab-filter-wrapper">
         <div class="cd-tab-filter">
             <ul class="cd-filters">
@@ -25,18 +25,17 @@
             <li class="mix @product.TypeOfWood @product.ItemType @product.Color @product.Size">
 
                 <div class="product-container">
-                        <img class="product-image" src="../images/Finback-Chairs1-1280x853-c-default.jpg" alt="image-name">
-                        <a href="#">
+                        <img class="product-image" src="@product.ImageSource" alt="@product.Alt">
+                        <a asp-action="Details" asp-controller="Product" asp-route-id="@product.Id">
                             <div class="details">
                                 <div class="details-text">Se mere</div>
                             </div>
                         </a>
                 </div>
                 <div class="product-info">
-                    <p class="titel" style="text-decoration:solid">Grøntsags skærebræt</p>
-                    <p class="price">1000 kr.</p>
+                    <p class="titel" style="text-decoration:solid">@product.Title</p>
+                    <p class="price">@product.Price</p>
                 </div>
-
             </li>
             }
             <li class="gap"></li>

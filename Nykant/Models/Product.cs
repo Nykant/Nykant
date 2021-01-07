@@ -11,8 +11,11 @@ namespace Nykant.Models
     {
         [Key]
         public int Id { get; set; }
+        public string Name { get; set; }
+        public string Title { get; set; }
         [Required]
         public string Description { get; set; }
+        public int Price { get; set; }
         [Required]
         public DateTime LastModified { get; set; } 
         public string ImageSource { get; set; }
@@ -20,5 +23,6 @@ namespace Nykant.Models
         public string ItemType { get; set; }
         public string Size { get; set; }
         public string Color { get; set; }
+        public string Alt { get; set; }
     }
 }

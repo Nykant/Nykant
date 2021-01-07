@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Nykant.Data;
+using Nykant.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,5 +26,13 @@ namespace Nykant.Controllers
         {
             return View(await _context.Products.ToListAsync());
         }
+
+        [Route("product/{id}")]
+        public IActionResult Details(int id)
+        {
+            Product product = _context.Products.FirstOrDefault(x => x.Id == id);
+            return View(product);
+        }
+
     }
 }
