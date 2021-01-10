@@ -2,56 +2,77 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-
-<div class="img-container">
-    <div id="downarrow" class="arrow-container">
-        <div class="chevron"></div>
-        <div class="chevron"></div>
-        <div class="chevron"></div>
-    </div>
-</div>
-
-<div class="about">
-    <h1 style="margin-top:4%">NYKANT</h1>
-    <p style="margin:0;font-size:23px">vi søger hele tiden efter inspirerende, <br />og innovativ design som vil kunne imponere, <br />og begejstre vores kunder, med ny kant.</p>
-</div>
-
-<div class="slide-container">
-    <div class="left-text">
-        <h1>Kundernes favoritter</h1>
-    </div>
-
-    <div class="card">
-        <a href="#">
-            <div class="card_part card_part-one">
-
+<div class="row">
+    <div class="col-12">
+        <div class="img-frontpage">
+            <div id="downarrow" class="arrow-container">
+                <div class="chevron"></div>
+                <div class="chevron"></div>
+                <div class="chevron"></div>
             </div>
-        </a>
-
-        @*Photo 2*@
-
-        <a href="#">
-            <div class="card_part card_part-two">
-
-            </div>
-        </a>
-
-        @*Photo 3*@
-
-        <a href="#">
-            <div class="card_part card_part-three">
-
-            </div>
-        </a>
-
-        @*Photo 4*@
-
-        <a href="#">
-            <div class="card_part card_part-four">
-
-            </div>
-        </a>
-    </div>
         </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-6">
+        <div class="about" id="slidebox">
+            <div id="slideMeIn">
+                <h1>NYKANT</h1>
+                <p>vi søger hele tiden efter inspirerende, <br />og innovativ design som vil kunne imponere, <br />og begejstre vores kunder, med ny kant.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-1" style="height:400px;"></div>
+    <div class="col-5">
+        <div class="fp-product-info" id="slideme">
+
+        </div>
+    </div>
+    <div class="col-5" >
+        <div class="slide-container" id="slide-container">
+            
+
+                @*Photo 1*@
+
+            <div class="card">
+                <a href="#">
+                    <div class="card_part card_part-one">
+
+                    </div>
+                </a>
+
+                @*Photo 2*@
+
+                <a href="#">
+                    <div class="card_part card_part-two">
+
+                    </div>
+                </a>
+
+                @*Photo 3*@
+
+                <a href="#">
+                    <div class="card_part card_part-three">
+
+                    </div>
+                </a>
+
+                @*Photo 4*@
+
+                <a href="#">
+                    <div class="card_part card_part-four">
+
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
