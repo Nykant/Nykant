@@ -1,56 +1,20 @@
-﻿@import 'https://fonts.googleapis.com/css?family=Raleway';
-html {
-    overflow-y: scroll;
-}
-html, body {
-    margin: 0px;
-}
-
-footer {
-    position:static;
-    font-family: Raleway;
-    margin: 0 auto;
-    padding: 3em 3em;
-    text-align: center;
-    background: #555;
-}
-
-/*    header h1 {
-        color: #AAA;
-        font-size: 40px;
-        font-weight: lighter;
-        margin-bottom: 0px;
-    }*/
-
-    header span {
-        color: #222;
-    }
-
-    footer span {
-        color: #AAA;
-    }
-
+﻿/* Navbar --------------------------------------------------------*/
 div.container {
-    overflow: hidden;
-    font-family: "Trirong", serif;
-    margin: 0 auto;
-    padding: 40px 40px;
-    text-align: center;
+    text-align:center;
     position: fixed;
+    padding:40px 40px;
     width: 100%;
-    float: left;
     box-shadow: 0px 0px 20px #535353;
     z-index: 100;
 }
 
     div.container a {
+        position: relative;
         color: #FFF;
         text-decoration: none;
-        font-family: "Trirong", serif;
-        font-size:20px;
+        font-size: 20px;
         margin: 0px 10px;
         padding: 10px 10px;
-        position: relative;
         z-index: 0;
         cursor: pointer;
     }
@@ -58,6 +22,15 @@ div.container {
 .gray {
     background: #9e9e9e;
 }
+
+#nav-logo {
+    right: 5%;
+}
+
+.container-nav-a {
+    padding-right: 0%;
+}
+
 /* Highlight text out  */
 div.highlightTextOut a {
     color: rgba(255, 255, 255, 0.3);
@@ -90,47 +63,284 @@ div.highlightTextIn a {
         transform: scale(1.2);
     }
 
-.img-container {
-    background: url(../images/Home-Wallpaper-20.jpg) no-repeat center fixed;
-    background-size: cover;
-    min-height: 100vh;
-    min-width: 100vh;
+/*FRONT PAGE -----------------------------------------------------------------*/
+
+.img-frontpage {
+    background-image: url(../images/Home-Wallpaper-20.jpg);
+    height: 88vh;
     display: block;
     box-shadow: 0px 0px 20px #535353;
 }
 
 .about {
-    text-align:center;
-    background: #e0e0e0;
-    width:100%;
-    height:500px;
-    display:grid;
-    color:#484848
+    font-size: 2vW;
+    text-align: center;
+    color: #484848;
+}
+@media only screen and (min-width: 768px) {
+    .about {
+        height: 70vh;
+    }
 }
 
-#nav-logo {
-    right:5%;
+@keyframes slidefadeleft {
+    0% {
+        opacity: 0;
+        left: 0%
+    }
+
+    100% {
+        opacity: 1;
+        left: 50%
+    }
 }
 
-.container-nav-a {
-    padding-right:0%;
+@keyframes slidefadeleft2 {
+    0% {
+        opacity: 0;
+        left: -12%
+    }
+
+    100% {
+        opacity: 1;
+        left: 0%
+    }
 }
 
-body {
-    font-family: "Trirong", serif;
+@keyframes slidefaderight {
+    0% {
+        opacity: 0;
+        right: -12%;
+    }
+
+    100% {
+        opacity: 1;
+        right: 0%;
+    }
 }
 
-.left-text {
-    margin-top:8%;
-    margin-left:15%;
-    float:left;
-    color:#b5b5b5
+.about div {
+    box-shadow: 0px 0px 20px #535353;
+    animation-name: slidefadeleft;
+    animation-duration: 3s;
+    display: none;
 }
 
-.top-padding {
-    height:115px;
+@media only screen and (min-width: 768px) {
+    .about div {
+        position: relative;
+        top: 25%;
+        left: 50%;
+    }
+
+}
+
+.about h1 {
+    padding-top:5%;
+    margin-bottom: 5%;
+}
+
+.about p {
+    padding-bottom: 5%;
+}
+
+/* Slideshow --------------------------------------------------*/
+
+.fp-product-info {
+    box-shadow: 0px 0px 20px #535353;
+    position: relative;
+    border-radius: 10px;
+    height: 45vh;
+    animation-name: slidefadeleft2;
+    animation-duration: 3s;
+    display: none;
+}
+
+.slide-container {
+    position:relative;
+    animation-name:slidefaderight;
+    animation-duration: 3s;
+    display: none;
+}
+
+.center {
+    text-align: center;
+}
+
+.card_part-one:hover, .card_part-two:hover, .card_part-three:hover, .card_part-four:hover {
+    opacity: 0.3;
+}
+
+.card {
+    margin: 0 auto;
+    position: relative;
+    height: 45vh;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px #756c41;
+}
+
+.card_part {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    transform: translateX( 100% );
+    animation: opaqTransition 28s cubic-bezier(0, 0, 0, 0.97) infinite;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+
+    .card_part.card_part-one {
+        z-index: 7;
+        background-image: url('../images/Finback-Chairs1-1280x853-c-default.jpg');
+        animation-delay: 0s;
+    }
+
+    .card_part.card_part-two {
+        z-index: 6;
+        background-image: url('../images/Finback-Chairs1-1280x853-c-default.jpg');
+        animation-delay: 7s;
+    }
+
+    .card_part.card_part-three {
+        z-index: 5;
+        background-image: url('../images/Finback-Chairs1-1280x853-c-default.jpg');
+        animation-delay: 14s;
+    }
+
+    .card_part.card_part-four {
+        z-index: 4;
+        background-image: url('../images/Finback-Chairs1-1280x853-c-default.jpg');
+        animation-delay: 21s;
+    }
+
+
+@keyframes opaqTransition {
+    3% {
+        transform: translateX( 0 );
+    }
+
+    25% {
+        transform: translateX( 0 );
+    }
+
+    28% {
+        transform: translateX( -100% );
+    }
+
+    100% {
+        transform: translateX( -100% );
+    }
 }
 
 
+/* Product Gallery ------------------------------------------------*/ 
 
+.product-container {
+    position: relative;
+    box-shadow: none;
+}
+
+.product-image {
+    height: 300px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .5s ease;
+    backface-visibility: hidden;
+    background-size: cover;
+}
+
+.product-info {
+    position: relative;
+    top: 7px;
+    text-align: left;
+    box-shadow: none;
+    border: none;
+    border-style: none;
+}
+
+.price {
+    color: #000000;
+    font-size: 16px;
+    padding-bottom: 10px;
+}
+
+.title {
+    left: 0;
+    color: #000000;
+    font-size: 16px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px;
+    border-bottom-color: black;
+    border-bottom-width: thin;
+}
+
+.product-container {
+    position: relative;
+}
+
+.cd-gallery li {
+    box-shadow: none;
+    border: none;
+    border-style: none;
+}
+
+.details {
+    box-shadow: 0px 0px 20px #000000;
+    transition: .5s ease;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+    opacity: 0;
+}
+
+.details-text {
+    background-color: #b5b5b5;
+    color: #000000;
+    font-size: 16px;
+    padding: 16px 32px;
+}
+
+    .product-container:hover .details{
+        opacity:1;
+    }
+
+    .product-container:hover .product-image{
+        opacity:0.3;
+    }
+
+.details-text:hover {
+    transition: .5s ease;
+    color: #ffffff;
+    background-color: #444444;
+    box-shadow: 0px 0px 20px #ffffff;
+}
+
+/* Details ------------------------------------------------*/
+
+.product-preview {
+    height: 100%;
+    width: 100%;
+}
+
+.image-preview {
+}
+
+.imagelist-preview {
+}
+
+product-side-details {
+}
+
+/* Product list -------------------------------------------------------*/
 
