@@ -1,10 +1,29 @@
-﻿@model Nykant.Models.Product
+﻿@model Nykant.ViewModels.Product_Image
 
 @{
     ViewData["Title"] = "Details";
 }
-<div class="product-review">
-
+<div class="row">
+    <div class="col-1" style="height:400px;"></div>
+    <div class="col-5">
+        <div class="details-image-container">
+            <div class="details-image">
+                <img id="primary-image" src="../images/Finback-Chairs1-1280x853-c-default.jpg">
+            </div>
+            <div class="details-image-list">
+                @foreach (var image in Model.Images)
+                {
+                    <img id="secondary-image" class="details-image-list-image" src="../images/gyngestol.jpg" onclick="changeImage('../images/gyngestol.jpg')"/>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-5">
+        <div class="details-info">
+            <h1>Product Title</h1>
+            <p></p>
+        </div>
+    </div>
 </div>
 
 

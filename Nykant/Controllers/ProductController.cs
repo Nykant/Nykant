@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Nykant.Data;
 using Nykant.Models;
+using Nykant.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,11 +29,14 @@ namespace Nykant.Controllers
         }
 
         [Route("product/{id}")]
-        public IActionResult Details(int id)
+        public async Task<IActionResult> Details(int id)
         {
-            Product product = _context.Products.FirstOrDefault(x => x.Id == id);
-            return View(product);
+            Product_Image productImage = new Product_Image
+            {
+                Product = _context.Products.FirstOrDefault(x => x.Id == id),
+                Images = _context.Images.Where(x => x.ProductId == id)
+            };
+            return View(productImage);
         }
-
     }
 }

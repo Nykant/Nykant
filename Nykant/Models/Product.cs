@@ -24,5 +24,7 @@ namespace Nykant.Models
         public string Size { get; set; }
         public string Color { get; set; }
         public string Alt { get; set; }
+        public IEnumerable<Image> Images { get; set; }
+
     }
 }

@@ -25,7 +25,7 @@ namespace Nykant.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Products.ToListAsync());
+            return View();
         }
 
         public IActionResult Privacy()

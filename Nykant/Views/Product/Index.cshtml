@@ -20,23 +20,26 @@
 
     <section class="cd-gallery">
         <ul>
-           @foreach (var product in Model)
+            @foreach (var product in Model)
             {
-            <li class="mix @product.TypeOfWood @product.ItemType @product.Color @product.Size">
 
-                <div class="product-container">
-                        <img class="product-image" src="@product.ImageSource" alt="@product.Alt">
-                        <a asp-action="Details" asp-controller="Product" asp-route-id="@product.Id">
-                            <div class="details">
-                                <div class="details-text">Se mere</div>
-                            </div>
-                        </a>
-                </div>
-                <div class="product-info">
-                    <p class="title">@product.Title</p>
-                    <p class="price">@product.Price dkk</p>
-                </div>
-            </li>
+                    <li class="mix @product.TypeOfWood @product.ItemType @product.Color @product.Size">
+
+                        <div class="product-container">
+                            <img class="product-image" src="@product.ImageSource" alt="@product.Alt">
+                            <a asp-action="Details" asp-controller="Product" asp-route-id="@product.Id">
+                                <div class="seemore">
+                                    se mere
+                                </div>
+                            </a>
+                        </div>
+                        <div class="product-info">
+                            <h4>Name Of Product</h4>
+                            <p>NYKANT ORIGINAL</p>
+                            <p class="forsale">@product.Price.ToString() dkk</p> <span>  99,95 dkk</span>
+                        </div>
+                    </li>
+                
             }
             <li class="gap"></li>
             <li class="gap"></li>
