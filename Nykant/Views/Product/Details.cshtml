@@ -5,26 +5,62 @@
 }
 <div class="row">
     <div class="col-1" style="height:400px;"></div>
-    <div class="col-5">
+    <div class="col-7">
         <div class="details-image-container">
-            <div class="details-image">
+            <div class="primary-image-wrap">
                 <img id="primary-image" src="../images/Finback-Chairs1-1280x853-c-default.jpg">
             </div>
             <div class="details-image-list">
                 @foreach (var image in Model.Images)
-                {
-                    <img id="secondary-image" class="details-image-list-image" src="../images/gyngestol.jpg" onclick="changeImage('../images/gyngestol.jpg')"/>
-                }
+                 {
+                <div class="secondary-image-wrap">
+                    <img id="secondary-image" src="../images/gyngestol.jpg" onclick="changeImage('../images/gyngestol.jpg')" />
+                </div>
+                 }
             </div>
         </div>
     </div>
-    <div class="col-5">
-        <div class="details-info">
-            <h1>Product Title</h1>
-            <p></p>
+    <div class="col-4">
+        <div class="details-info-container">
+            <h1>NAME OF VERY SPECIAL PRODUCT!</h1>
+            <p>DESIGNED BY NYKANT</p>
+            <span style="font-size:10px;">REVIEWS</span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <br />
+            <br />
+            <span class="forsale">1000 dkk</span> <span class="red-text">  99,95 dkk</span>
+            <br />
+            <br />
+            <button class="button-red"></button>
+            <button class="button-blue"></button>
+            <button class="button-brown"></button>
+            <br />
+            <br />
+            <div class="quantity-wrap">
+                <span id="numberdown" onclick="countdown()">-</span>
+                <p id="quantitynumber" style="display:inline">1</p>
+                <span id="numberup" onclick="countup()">+</span>
+            </div>
+            <br />
+            <div class="addtobag-button" onclick="">
+                <p>ADD TO BAG</p>
+            </div>
         </div>
     </div>
 </div>
-
+<div class="row">
+    <div class="col-12">
+        <div class="details-description-wrap">
+            <div class="details-description">
+                <h1>DETAILS</h1>
+                <p>description???</p>
+            </div>
+        </div>
+    </div>
+</div>
 
 
