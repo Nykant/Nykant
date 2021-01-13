@@ -10,9 +10,8 @@ namespace Nykant.Models
     public class Order
     {
         [Key]
-        public int Id { get; set; }
+        public string UserId { get; set; }
         public DateTime Created { get; set; }
-        [Required]
-        public string Session { get; set; }
+        public IEnumerable<Product> Products { get; set; }
     }
 }

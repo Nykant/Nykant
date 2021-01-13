@@ -29,7 +29,7 @@ namespace Nykant.Controllers
         }
 
         [Route("product/{id}")]
-        public async Task<IActionResult> Details(int id)
+        public IActionResult Details(int id)
         {
             Product_Image productImage = new Product_Image
             {

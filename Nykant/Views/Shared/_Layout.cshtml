@@ -14,22 +14,22 @@
     <link rel="stylesheet" href="~/css/filter-changes.css" />
     <link rel="stylesheet" href="~/css/downarrow.css" />
     <link rel="stylesheet" href="~/css/kant.css" />
-    <link rel="stylesheet" href="~/css/impatience.css" />
 </head>
 
 <body>
 
-    <div class="container gray highlightTextIn">
-        <div class="container-nav-a">
-            <a id="nav-logo" alt="NYKANT" asp-controller="Home" asp-action="Index"><span style="color:#eaeaea">N</span>YKANT</a>
-            <a alt="HJEM" asp-controller="Home" asp-action="Index">HJEM</a>
-            <a alt="PRODUKTER" asp-controller="Product" asp-action="Index">PRODUKTER</a>
-            <a alt="KONTAKT" asp-controller="Contact" asp-action="Index">KONTAKT</a>
-            <a alt="KURV" asp-controller="Order" asp-action="Index">KURV</a>
+    <div class="row">
+        <div class="col-12 navbar">
+            <div class="navbar-wrap highlightTextIn highlightTextOut">
+                <a alt="NYKANT" asp-controller="Home" asp-action="Index"><span style="color:#eaeaea">N</span>YKANT</a>
+                <a alt="HJEM" asp-controller="Home" asp-action="Index">HJEM</a>
+                <a alt="PRODUKTER" asp-controller="Product" asp-action="Index">PRODUKTER</a>
+                <a alt="KONTAKT" asp-controller="Contact" asp-action="Index">KONTAKT</a>
+                <a alt="KURV" asp-controller="Order" asp-action="Index">KURV</a>
+            </div>
+            @*<partial name="_LoginPartial" />*@
         </div>
     </div>
-
-    <div class="top-padding"></div>
 
     <div>
         <main>
