@@ -13,6 +13,7 @@ namespace Nykant.Models
         [Key]
         public string UserId { get; set; }
         public IEnumerable<Product> Products { get; set; }
+        public IEnumerable<BagItem> BagItems { get; set; }
     }
 
 }

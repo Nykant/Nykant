@@ -25,6 +25,7 @@ namespace Nykant.Models
         public string Color { get; set; }
         public string Alt { get; set; }
         public IEnumerable<Image> Images { get; set; }
+        public IEnumerable<BagItem> BagItems { get; set; }
 
     }
 }

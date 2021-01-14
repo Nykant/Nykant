@@ -3,6 +3,12 @@
 @{
     ViewData["Title"] = "Details";
 }
+<script>
+    completed = function (xhr) {
+        alert(`Hi ${xhr.responseText}!`);
+    };
+</script>
+
 <div class="row">
     <div class="col-6 left" style="margin-left: 8.33%;">
         <div class="details-image-wrap">
@@ -40,15 +46,18 @@
             <button class="button-brown"></button>
             <br />
             <br />
-            <div class="quantity-wrap">
-                <span id="numberdown" onclick="countdown()">-</span>
-                <p id="quantitynumber" style="display:inline">1</p>
-                <span id="numberup" onclick="countup()">+</span>
-            </div>
+            <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-complete="completed" asp-controller="Product" asp-action="AddProduct" asp-route-productId="@ViewBag.productId" asp-route-bagId="@ViewBag.bagId" asp-route-productQuantity="@ViewBag.productQuantity">
+                <div class="quantity-wrap">
+                    <span id="numberdown" onclick="countdown()">-</span>
+                    <p id="quantitynumber" style="display:inline">@ViewBag.productQuantity</p>
+                    <span id="numberup" onclick="countup()">+</span>
+                </div>
+
+                <button type="submit">ADD TO BAG</button>
+            </form>
             <br />
-            <div class="addtobag-button" onclick="">
-                <p>ADD TO BAG</p>
-            </div>
+
+
         </div>
     </div>
 </div>

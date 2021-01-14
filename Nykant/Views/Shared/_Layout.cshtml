@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="da">
 <head>
 
@@ -17,15 +18,31 @@
 </head>
 
 <body>
-
     <div class="row">
+        <div class="col-12 navbar-mobile">
+            <div class="navbar-mobile-wrap highlightTextIn highlightTextOut">
+                <a style="display:inline-block" alt="NYKANT" asp-controller="Home" asp-action="Index"><span style="color:#eaeaea">N</span>YKANT</a>
+                <a style="display:inline-block" asp-controller="Bag" asp-action=""><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+                <partial name="_LoginPartial" />
+                <div class="myLinks" id="myLinks">
+                    <a alt="HJEM" asp-controller="Home" asp-action="Index">HJEM</a>
+                    <a alt="PRODUKTER" asp-controller="Product" asp-action="Index">PRODUKTER</a>
+                    <a alt="KONTAKT" asp-controller="Contact" asp-action="Index">KONTAKT</a>
+                    <a></a>
+                </div>
+                <a href="javascript:void(0);" class="icon inline" onclick="mobileNav()">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
         <div class="col-12 navbar">
             <div class="navbar-wrap highlightTextIn highlightTextOut">
-                <a alt="NYKANT" asp-controller="Home" asp-action="Index"><span style="color:#eaeaea">N</span>YKANT</a>
+                <a alt="NYKANT" asp-controller="Home" asp-action="Index" style="margin-right:50px;"><span style="color:#eaeaea">N</span>YKANT</a>
                 <a alt="HJEM" asp-controller="Home" asp-action="Index">HJEM</a>
                 <a alt="PRODUKTER" asp-controller="Product" asp-action="Index">PRODUKTER</a>
                 <a alt="KONTAKT" asp-controller="Contact" asp-action="Index">KONTAKT</a>
-                <a alt="KURV" asp-controller="Order" asp-action="Index">KURV</a>
+                <a asp-controller="Bag" asp-action=""><i class="fa fa-shopping-bag right" aria-hidden="true"></i></a>
+                <partial name="_LoginPartial" />
             </div>
             @*<partial name="_LoginPartial" />*@
         </div>
@@ -42,7 +59,8 @@
             &copy; 2020 - Nykant - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.unobtrusive-ajax/3.2.5/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/JS/mobileNav.js"></script>
     <script src="~/JS/slidedetails.js"></script>
     <script src="~/JS/counter.js"></script>
     <script src="~/JS/image-changer.js"></script>
