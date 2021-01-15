@@ -76,7 +76,7 @@ footer span {
 }
 
 .navbar, .navbar-mobile{
-    display: table;
+    display: inline-table;
     position: relative;
     height: 100px;
     background-color: #808080;
@@ -95,6 +95,10 @@ footer span {
 .slidefromleft {
     animation-name:slidefadeleft2;
     animation-duration:4s;
+}
+
+.block {
+    display:block;
 }
 
 .inline {

@@ -6,32 +6,39 @@
         display:none;
     }
 
-    .navbar-mobile {
-        display:table;
-    }
-
     .navbar-mobile-wrap {
-        padding-top: 30px;
+        margin-top:30px;
+        position:relative;
         font-size: 24px;
     }
 
         .navbar-mobile-wrap #myLinks {
             display: none;
         }
+            .navbar-mobile-wrap #myLinks a {
+                display: block;
+                float: none;
+            }
 
     .navbar-mobile-wrap a {
         color: #ffffff;
-        text-decoration: none;
-        display: block;
+        display:inline-block;
+        float:left;
+    }
+
+    #myLinks {
+        margin-top:70px;
+        width:100%;
+        background-color:#535353;
+        position:absolute;
+    }
+
+    #myLinks a {
+        display:block;
     }
 
         .navbar-mobile-wrap a.icon {
-            padding: 29px;
-            color: white;
-            background: black;
-            position: absolute;
-            right: 0;
-            top: 0;
+            margin-right:20px;
         }
 
     .active {
@@ -40,9 +47,25 @@
     }
 }
 
+a.icon {
+    transition: all 0.3s;
+    transform: scale(1);
+    font-size: 24px;
+    color: #484848;
+    position: relative;
+    float: right;
+}
+
+a.icon:hover {
+    color: #FFF;
+    transition: all 0.3s;
+    transform: scale(0.8);
+}
+
+
 /* navbar */
 .navbar-wrap {
-    padding-top:30px;
+    margin-top:30px;
     font-size: 24px;
 }
     .navbar-wrap a {
@@ -53,10 +76,6 @@
 @media only screen and (min-width: 600px) {
     .navbar-mobile {
         display: none;
-    }
-
-    .navbar {
-        display:table;
     }
 
     .navbar-wrap {
@@ -93,23 +112,22 @@
     }
 }
 
-
-
-
-/* Highlight text out  */
+#userBurger{
+    display:none;
+}
 
 .highlightTextOut a {
     color: rgba(255, 255, 255, 0.3);
 }
 
-    .highlightTextOut a:before, .highlightTextIn a:before {
-        position: absolute;
-        color: #FFF;
-        content: attr(alt);
-        transition: all 0.3s;
-        transform: scale(0.8);
-        opacity: 0;
-    }
+.highlightTextOut a:before, .highlightTextIn a:before {
+    position: absolute;
+    color: #FFF;
+    content: attr(alt);
+    transition: all 0.3s;
+    transform: scale(0.8);
+    opacity: 0;
+}
 
     .highlightTextOut a:hover:before, .highlightTextIn a:hover:before {
         transform: scale(1);

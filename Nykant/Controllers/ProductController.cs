@@ -46,20 +46,5 @@ namespace Nykant.Controllers
 
             return View(productImage);
         }
-
-        [Route("{controller}/{action}/{productId?}/{bagId?}/{productQuantity?}")]
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult AddProduct(int productId, string bagId, int productQuantity)
-        {
-            for (int i = 0; i < productQuantity; i++)
-            {
-                var bagItem = new BagItem { ProductId = productId, BagId = bagId };
-                _context.BagItems.Add(bagItem);
-            }
-            _context.SaveChanges();
-
-            return Content("Success");
-        }
     }
 }

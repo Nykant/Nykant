@@ -8,7 +8,7 @@
     <title>@ViewData["Title"] - Nykant</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/dfade6c231.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="~/css/stil.css" />
     <link rel="stylesheet" href="~/css/filter.css" />
@@ -21,18 +21,21 @@
     <div class="row">
         <div class="col-12 navbar-mobile">
             <div class="navbar-mobile-wrap highlightTextIn highlightTextOut">
-                <a style="display:inline-block" alt="NYKANT" asp-controller="Home" asp-action="Index"><span style="color:#eaeaea">N</span>YKANT</a>
-                <a style="display:inline-block" asp-controller="Bag" asp-action=""><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+                <a alt="NYKANT" asp-controller="Home" asp-action="Index"><span style="color:#eaeaea">N</span>YKANT</a>
+
+                <a href="javascript:void(0);" class="icon" onclick="mobileNav()">
+                    <i class="fa fa-bars"></i>
+                </a>
+
+                <a class="icon" asp-controller="Bag" asp-action=""><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+
                 <partial name="_LoginPartial" />
-                <div class="myLinks" id="myLinks">
+
+                <div id="myLinks">
                     <a alt="HJEM" asp-controller="Home" asp-action="Index">HJEM</a>
                     <a alt="PRODUKTER" asp-controller="Product" asp-action="Index">PRODUKTER</a>
                     <a alt="KONTAKT" asp-controller="Contact" asp-action="Index">KONTAKT</a>
-                    <a></a>
                 </div>
-                <a href="javascript:void(0);" class="icon inline" onclick="mobileNav()">
-                    <i class="fa fa-bars"></i>
-                </a>
             </div>
         </div>
         <div class="col-12 navbar">
@@ -41,10 +44,9 @@
                 <a alt="HJEM" asp-controller="Home" asp-action="Index">HJEM</a>
                 <a alt="PRODUKTER" asp-controller="Product" asp-action="Index">PRODUKTER</a>
                 <a alt="KONTAKT" asp-controller="Contact" asp-action="Index">KONTAKT</a>
-                <a asp-controller="Bag" asp-action=""><i class="fa fa-shopping-bag right" aria-hidden="true"></i></a>
+                <a asp-controller="Bag" asp-action=""> <i class="shoppingbag fas fa-shopping-bag right" aria-hidden="true"></i></a>
                 <partial name="_LoginPartial" />
             </div>
-            @*<partial name="_LoginPartial" />*@
         </div>
     </div>
 

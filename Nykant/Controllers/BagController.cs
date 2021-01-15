@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Nykant.Areas.Identity.Data;
 using Nykant.Data;
 using Nykant.Models;
 
@@ -14,10 +16,11 @@ namespace Nykant.Controllers
     public class BagController : Controller
     {
         private readonly ApplicationDbContext _context;
-
-        public BagController(ApplicationDbContext context)
+        private readonly SignInManager<AppUser> _signInManager;
+        public BagController(ApplicationDbContext context, SignInManager<AppUser> signInManager)
         {
             _context = context;
+            _signInManager = signInManager;
         }
 
         // GET: Bag
@@ -144,6 +147,44 @@ namespace Nykant.Controllers
             _context.Bags.Remove(bag);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        [Route("{controller}/{action}/{productId?}/{bagId?}/{productQuantity?}")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AddProduct(int productId, string bagId, int productQuantity)
+        {
+            if (!_signInManager.IsSignedIn(User))
+            {
+                return Content("Must be signed in");
+            }
+            else if (BagItemExist(productId, bagId)) 
+            {
+                var bagItem = _context.BagItems.FirstOrDefault(x => x.BagId == bagId && x.ProductId == productId);
+                bagItem.Quantity += productQuantity;
+                _context.BagItems.Update(bagItem);
+                _context.SaveChanges();
+                return Content($"You already had this product in your bag, but now added {productQuantity} to the quantity");
+            }
+            else
+            {
+                var bagItem = new BagItem { ProductId = productId, BagId = bagId, Quantity = productQuantity};
+                _context.BagItems.Add(bagItem);
+                _context.SaveChanges();
+                return Content("Success");
+            }
+        }
+
+        private bool BagItemExist(int productId, string bagId)
+        {
+            foreach (var bagItem in _context.BagItems)
+            {
+                if (bagItem.BagId == bagId && bagItem.ProductId == productId)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         private bool BagExists(string id)
