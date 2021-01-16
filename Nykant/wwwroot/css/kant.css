@@ -1,57 +1,133 @@
 ﻿/* Navbar --------------------------------------------------------*/
-div.container {
-    text-align:center;
-    position: fixed;
-    padding:40px 40px;
-    width: 100%;
-    box-shadow: 0px 0px 20px #535353;
-    z-index: 100;
-}
 
-    div.container a {
-        position: relative;
-        color: #FFF;
-        text-decoration: none;
-        font-size: 20px;
-        margin: 0px 10px;
-        padding: 10px 10px;
-        z-index: 0;
-        cursor: pointer;
+/* navbar-mobile */
+@media only screen and (max-width: 600px) {
+    .navbar {
+        display:none;
     }
 
-.gray {
-    background: #9e9e9e;
+    .navbar-mobile-wrap {
+        margin-top:30px;
+        position:relative;
+        font-size: 24px;
+    }
+
+        .navbar-mobile-wrap #myLinks {
+            display: none;
+        }
+            .navbar-mobile-wrap #myLinks a {
+                display: block;
+                float: none;
+            }
+
+    .navbar-mobile-wrap a {
+        color: #ffffff;
+        display:inline-block;
+        float:left;
+    }
+
+    #myLinks {
+        margin-top:70px;
+        width:100%;
+        background-color:#535353;
+        position:absolute;
+    }
+
+    #myLinks a {
+        display:block;
+    }
+
+        .navbar-mobile-wrap a.icon {
+            margin-right:20px;
+        }
+
+    .active {
+        background-color: #4CAF50;
+        color: white;
+    }
 }
 
+a.icon {
+    transition: all 0.3s;
+    transform: scale(1);
+    font-size: 24px;
+    color: #484848;
+    position: relative;
+    float: right;
+}
+
+a.icon:hover {
+    color: #FFF;
+    transition: all 0.3s;
+    transform: scale(0.8);
+}
+
+
+/* navbar */
 .navbar-wrap {
-    padding-top:30px;
-    padding-left:20%;
+    margin-top:30px;
     font-size: 24px;
 }
-
     .navbar-wrap a {
         color: #ffffff;
-        padding-right:20px;
+        padding-right: 20px;
     }
 
-    .navbar-wrap a:hover {
-
+@media only screen and (min-width: 600px) {
+    .navbar-mobile {
+        display: none;
     }
 
-/* Highlight text out  */
+    .navbar-wrap {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .navbar-wrap {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .navbar-wrap {
+        padding-left: 170px;
+        padding-right: 170px;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .navbar-wrap {
+        padding-left: 275px;
+        padding-right: 275px;
+    }
+}
+
+@media only screen and (min-width: 1500px) {
+    .navbar-wrap {
+        padding-left: 375px;
+        padding-right: 375px;
+    }
+}
+
+#userBurger{
+    display:none;
+}
 
 .highlightTextOut a {
     color: rgba(255, 255, 255, 0.3);
 }
 
-    .highlightTextOut a:before, .highlightTextIn a:before {
-        position: absolute;
-        color: #FFF;
-        content: attr(alt);
-        transition: all 0.3s;
-        transform: scale(0.8);
-        opacity: 0;
-    }
+.highlightTextOut a:before, .highlightTextIn a:before {
+    position: absolute;
+    color: #FFF;
+    content: attr(alt);
+    transition: all 0.3s;
+    transform: scale(0.8);
+    opacity: 0;
+}
 
     .highlightTextOut a:hover:before, .highlightTextIn a:hover:before {
         transform: scale(1);
@@ -74,6 +150,7 @@ div.container {
     height: 88vh;
     display: block;
     box-shadow: 0px 0px 20px #535353;
+    z-index: -1;
 }
 
 .about {

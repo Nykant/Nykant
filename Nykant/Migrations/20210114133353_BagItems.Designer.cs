@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Nykant.Data;
 
 namespace Nykant.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210114133353_BagItems")]
+    partial class BagItems
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,9 +37,6 @@ namespace Nykant.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Quantity")
                         .HasColumnType("int");
 
                     b.HasKey("BagId", "ProductId");
@@ -373,7 +372,7 @@ namespace Nykant.Migrations
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ItemType = "stol",
-                            LastModified = new DateTime(2021, 1, 15, 10, 39, 10, 684, DateTimeKind.Local).AddTicks(1492),
+                            LastModified = new DateTime(2021, 1, 14, 14, 33, 52, 580, DateTimeKind.Local).AddTicks(6873),
                             Price = 1000,
                             Size = "5mm",
                             Title = "Grøntsags Skærebræt",
@@ -386,7 +385,7 @@ namespace Nykant.Migrations
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ItemType = "stol",
-                            LastModified = new DateTime(2021, 1, 15, 10, 39, 10, 686, DateTimeKind.Local).AddTicks(5007),
+                            LastModified = new DateTime(2021, 1, 14, 14, 33, 52, 583, DateTimeKind.Local).AddTicks(1891),
                             Price = 1000,
                             Size = "10mm",
                             Title = "Grøntsags Skærebræt",
@@ -399,7 +398,7 @@ namespace Nykant.Migrations
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 1, 15, 10, 39, 10, 686, DateTimeKind.Local).AddTicks(5070),
+                            LastModified = new DateTime(2021, 1, 14, 14, 33, 52, 583, DateTimeKind.Local).AddTicks(1956),
                             Price = 1000,
                             Size = "20mm",
                             Title = "Grøntsags Skærebræt",
@@ -412,7 +411,7 @@ namespace Nykant.Migrations
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ItemType = "skærebræt",
-                            LastModified = new DateTime(2021, 1, 15, 10, 39, 10, 686, DateTimeKind.Local).AddTicks(5075),
+                            LastModified = new DateTime(2021, 1, 14, 14, 33, 52, 583, DateTimeKind.Local).AddTicks(1961),
                             Price = 1000,
                             Size = "5mm",
                             Title = "Grøntsags Skærebræt",
@@ -425,7 +424,7 @@ namespace Nykant.Migrations
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 1, 15, 10, 39, 10, 686, DateTimeKind.Local).AddTicks(5078),
+                            LastModified = new DateTime(2021, 1, 14, 14, 33, 52, 583, DateTimeKind.Local).AddTicks(1964),
                             Price = 1000,
                             Size = "10mm",
                             Title = "Grøntsags Skærebræt",
@@ -438,7 +437,7 @@ namespace Nykant.Migrations
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ItemType = "skærebræt",
-                            LastModified = new DateTime(2021, 1, 15, 10, 39, 10, 686, DateTimeKind.Local).AddTicks(5080),
+                            LastModified = new DateTime(2021, 1, 14, 14, 33, 52, 583, DateTimeKind.Local).AddTicks(1967),
                             Price = 1000,
                             Size = "20mm",
                             Title = "Grøntsags Skærebræt",
@@ -451,7 +450,7 @@ namespace Nykant.Migrations
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ItemType = "stol",
-                            LastModified = new DateTime(2021, 1, 15, 10, 39, 10, 686, DateTimeKind.Local).AddTicks(5083),
+                            LastModified = new DateTime(2021, 1, 14, 14, 33, 52, 583, DateTimeKind.Local).AddTicks(1971),
                             Price = 1000,
                             Size = "5mm",
                             Title = "Grøntsags Skærebræt",
@@ -464,7 +463,7 @@ namespace Nykant.Migrations
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ItemType = "stol",
-                            LastModified = new DateTime(2021, 1, 15, 10, 39, 10, 686, DateTimeKind.Local).AddTicks(5086),
+                            LastModified = new DateTime(2021, 1, 14, 14, 33, 52, 583, DateTimeKind.Local).AddTicks(1977),
                             Price = 1000,
                             Size = "10mm",
                             Title = "Grøntsags Skærebræt",
@@ -477,7 +476,7 @@ namespace Nykant.Migrations
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 1, 15, 10, 39, 10, 686, DateTimeKind.Local).AddTicks(5088),
+                            LastModified = new DateTime(2021, 1, 14, 14, 33, 52, 583, DateTimeKind.Local).AddTicks(1979),
                             Price = 1000,
                             Size = "20mm",
                             Title = "Grøntsags Skærebræt",
@@ -490,7 +489,7 @@ namespace Nykant.Migrations
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ItemType = "skærebræt",
-                            LastModified = new DateTime(2021, 1, 15, 10, 39, 10, 686, DateTimeKind.Local).AddTicks(5091),
+                            LastModified = new DateTime(2021, 1, 14, 14, 33, 52, 583, DateTimeKind.Local).AddTicks(1983),
                             Price = 1000,
                             Size = "5mm",
                             Title = "Grøntsags Skærebræt",
@@ -503,7 +502,7 @@ namespace Nykant.Migrations
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 1, 15, 10, 39, 10, 686, DateTimeKind.Local).AddTicks(5095),
+                            LastModified = new DateTime(2021, 1, 14, 14, 33, 52, 583, DateTimeKind.Local).AddTicks(1987),
                             Price = 1000,
                             Size = "10mm",
                             Title = "Grøntsags Skærebræt",
@@ -516,7 +515,7 @@ namespace Nykant.Migrations
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ItemType = "skærebræt",
-                            LastModified = new DateTime(2021, 1, 15, 10, 39, 10, 686, DateTimeKind.Local).AddTicks(5097),
+                            LastModified = new DateTime(2021, 1, 14, 14, 33, 52, 583, DateTimeKind.Local).AddTicks(1991),
                             Price = 1000,
                             Size = "20mm",
                             Title = "Grøntsags Skærebræt",
@@ -529,7 +528,7 @@ namespace Nykant.Migrations
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ItemType = "stol",
-                            LastModified = new DateTime(2021, 1, 15, 10, 39, 10, 686, DateTimeKind.Local).AddTicks(5100),
+                            LastModified = new DateTime(2021, 1, 14, 14, 33, 52, 583, DateTimeKind.Local).AddTicks(1994),
                             Price = 1000,
                             Size = "5mm",
                             Title = "Grøntsags Skærebræt",
@@ -542,7 +541,7 @@ namespace Nykant.Migrations
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ItemType = "stol",
-                            LastModified = new DateTime(2021, 1, 15, 10, 39, 10, 686, DateTimeKind.Local).AddTicks(5102),
+                            LastModified = new DateTime(2021, 1, 14, 14, 33, 52, 583, DateTimeKind.Local).AddTicks(1998),
                             Price = 1000,
                             Size = "10mm",
                             Title = "Grøntsags Skærebræt",
@@ -555,7 +554,7 @@ namespace Nykant.Migrations
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 1, 15, 10, 39, 10, 686, DateTimeKind.Local).AddTicks(5105),
+                            LastModified = new DateTime(2021, 1, 14, 14, 33, 52, 583, DateTimeKind.Local).AddTicks(2001),
                             Price = 1000,
                             Size = "20mm",
                             Title = "Grøntsags Skærebræt",
@@ -568,7 +567,7 @@ namespace Nykant.Migrations
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ItemType = "skærebræt",
-                            LastModified = new DateTime(2021, 1, 15, 10, 39, 10, 686, DateTimeKind.Local).AddTicks(5108),
+                            LastModified = new DateTime(2021, 1, 14, 14, 33, 52, 583, DateTimeKind.Local).AddTicks(2004),
                             Price = 1000,
                             Size = "5mm",
                             Title = "Grøntsags Skærebræt",
@@ -581,7 +580,7 @@ namespace Nykant.Migrations
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 1, 15, 10, 39, 10, 686, DateTimeKind.Local).AddTicks(5111),
+                            LastModified = new DateTime(2021, 1, 14, 14, 33, 52, 583, DateTimeKind.Local).AddTicks(2008),
                             Price = 1000,
                             Size = "10mm",
                             Title = "Grøntsags Skærebræt",
@@ -594,7 +593,7 @@ namespace Nykant.Migrations
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ItemType = "skærebræt",
-                            LastModified = new DateTime(2021, 1, 15, 10, 39, 10, 686, DateTimeKind.Local).AddTicks(5113),
+                            LastModified = new DateTime(2021, 1, 14, 14, 33, 52, 583, DateTimeKind.Local).AddTicks(2011),
                             Price = 1000,
                             Size = "20mm",
                             Title = "Grøntsags Skærebræt",
@@ -607,7 +606,7 @@ namespace Nykant.Migrations
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 1, 15, 10, 39, 10, 686, DateTimeKind.Local).AddTicks(5116),
+                            LastModified = new DateTime(2021, 1, 14, 14, 33, 52, 583, DateTimeKind.Local).AddTicks(2014),
                             Price = 1000,
                             Size = "5mm",
                             Title = "Grøntsags Skærebræt",

@@ -16,9 +16,21 @@ namespace Nykant.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<Bag> Bags { get; set; }
         public DbSet<Image> Images { get; set; }
+        public DbSet<BagItem> BagItems { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<BagItem>()
+                .HasKey(bi => new { bi.BagId, bi.ProductId });
+            modelBuilder.Entity<BagItem>()
+                .HasOne(bi => bi.Bag)
+                .WithMany(b => b.BagItems)
+                .HasForeignKey(bi => bi.BagId);
+            modelBuilder.Entity<BagItem>()
+                .HasOne(bi => bi.Product)
+                .WithMany(i => i.BagItems)
+                .HasForeignKey(bi => bi.ProductId);
+
             modelBuilder.Entity<Product>().HasData(
                 new Product { Id = 1, Title = "Grøntsags Skærebræt", Price = 1000, Description = "a test object", LastModified = DateTime.Now, ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg", TypeOfWood = "valnød", ItemType = "stol", Size = "5mm", Color = "naturligt"},
                 new Product { Id = 2, Title = "Grøntsags Skærebræt", Price = 1000, Description = "a test object", LastModified = DateTime.Now, ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg", TypeOfWood = "eg", ItemType = "stol", Size = "10mm", Color = "farvet-overflade" },

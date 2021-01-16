@@ -75,13 +75,14 @@ footer span {
     }
 }
 
-.navbar {
+.navbar, .navbar-mobile{
+    display: inline-table;
     position: relative;
     height: 100px;
     background-color: #808080;
-    z-index: 199;
     /*    box-shadow: 0px 0px 15px #000000;*/
 }
+
 
 /* GRID ---------------------------------------------------------------*/
 
@@ -94,6 +95,14 @@ footer span {
 .slidefromleft {
     animation-name:slidefadeleft2;
     animation-duration:4s;
+}
+
+.block {
+    display:block;
+}
+
+.inline {
+    display:inline-block;
 }
 
 .center {
