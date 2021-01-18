@@ -1,18 +1,35 @@
-﻿@model Nykant.Models.Bag
+﻿@model IEnumerable<Nykant.Models.BagItem>
 
 @{
     ViewData["Title"] = "Details";
+    var bagitems = (ViewBag.BagItems as IEnumerable<BagItem>);
 }
 
-<h1>Details</h1>
 
-<div>
-    <h4>Bag</h4>
-    <hr />
-    <dl class="row">
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.UserId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+<div class="row">
+    <div class="col-8 center">
+        <div class="productbag-wrap">
+            @if (Model != null)
+            {
+                @foreach (var bagItem in Model)
+                {
+                    <div class="baglist-item">
+                        <img src="~/images/gyngestol.jpg" />
+                        <p>@bagItem.ProductId</p>
+                        <p>@bagItem.Product.Price</p>
+                        <div class="quantity-wrap">
+                            <span id="numberdown" onclick="countdown()">-</span>
+                            <p id="quantitynumber" style="display:inline">@bagItem.Quantity</p>
+                            <span id="numberup" onclick="countup()">+</span>
+                        </div>
+                        <form asp-controller="Bag" asp-action="DeleteBagItem">
+                            <input type="hidden" name="bagId" asp-for="@bagItem.BagId" />
+                            <input type="hidden" name="productId" asp-for="@bagItem.ProductId" />
+                            <input type="submit" value="Delete" class="" /> |
+                        </form>
+                    </div>
+                }
+            }
+        </div>
+    </div>
 </div>

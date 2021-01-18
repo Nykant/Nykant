@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Nykant.Areas.Identity.Data;
 using Nykant.Data;
 using Nykant.Models;
@@ -13,14 +14,10 @@ using Nykant.Models;
 namespace Nykant.Controllers
 {
     
-    public class BagController : Controller
+    public class BagController : BaseController
     {
-        private readonly ApplicationDbContext _context;
-        private readonly SignInManager<AppUser> _signInManager;
-        public BagController(ApplicationDbContext context, SignInManager<AppUser> signInManager)
+        public BagController(ApplicationDbContext context, SignInManager<AppUser> signInManager, UserManager<AppUser> userManager, ILogger<BaseController> logger) : base(context, signInManager, userManager, logger)
         {
-            _context = context;
-            _signInManager = signInManager;
         }
 
         // GET: Bag
@@ -37,116 +34,17 @@ namespace Nykant.Controllers
                 return NotFound();
             }
 
-            var bag = await _context.Bags
-                .FirstOrDefaultAsync(m => m.UserId == id);
-            if (bag == null)
+            var bagItems = _context.BagItems
+                .Include(b => b.Bag)
+                .Include(b => b.Product)
+                .Where(x => x.BagId == id);
+
+            if (bagItems == null)
             {
                 return NotFound();
             }
 
-            return View(bag);
-        }
-
-        // GET: Bag/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Bag/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("UserId")] Bag bag)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(bag);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(bag);
-        }
-
-        // GET: Bag/Edit/5
-        public async Task<IActionResult> Edit(string id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var bag = await _context.Bags.FindAsync(id);
-            if (bag == null)
-            {
-                return NotFound();
-            }
-            return View(bag);
-        }
-
-        // POST: Bag/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("UserId")] Bag bag)
-        {
-            if (id != bag.UserId)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(bag);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!BagExists(bag.UserId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(bag);
-        }
-
-        // GET: Bag/Delete/5
-        public async Task<IActionResult> Delete(string id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var bag = await _context.Bags
-                .FirstOrDefaultAsync(m => m.UserId == id);
-            if (bag == null)
-            {
-                return NotFound();
-            }
-
-            return View(bag);
-        }
-
-        // POST: Bag/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
-        {
-            var bag = await _context.Bags.FindAsync(id);
-            _context.Bags.Remove(bag);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return View(bagItems);
         }
 
         [Route("{controller}/{action}/{productId?}/{bagId?}/{productQuantity?}")]
@@ -158,7 +56,7 @@ namespace Nykant.Controllers
             {
                 return Content("Must be signed in");
             }
-            else if (BagItemExist(productId, bagId)) 
+            else if (BagItemExists(bagId, productId)) 
             {
                 var bagItem = _context.BagItems.FirstOrDefault(x => x.BagId == bagId && x.ProductId == productId);
                 bagItem.Quantity += productQuantity;
@@ -175,16 +73,21 @@ namespace Nykant.Controllers
             }
         }
 
-        private bool BagItemExist(int productId, string bagId)
+        [Route("{controller}/{action}/{productId?}/{bagId?}")]
+        // POST: BagItem/Delete/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteBagItem(int productId, string bagId)
         {
-            foreach (var bagItem in _context.BagItems)
-            {
-                if (bagItem.BagId == bagId && bagItem.ProductId == productId)
-                {
-                    return true;
-                }
-            }
-            return false;
+            var bagItem = await _context.BagItems.FindAsync(bagId, productId);
+            _context.BagItems.Remove(bagItem);
+            await _context.SaveChangesAsync();
+            return Redirect($"Details/{bagId}");
+        }
+
+        private bool BagItemExists(string bagId, int productId)
+        {
+            return _context.BagItems.Any(e => e.BagId == bagId && e.ProductId == productId);
         }
 
         private bool BagExists(string id)

@@ -12,66 +12,29 @@
         font-size: 24px;
     }
 
-        .navbar-mobile-wrap #myLinks {
-            display: none;
+        .navbar-mobile-wrap a {
+            color: #ffffff;
+            display: inline-block;
+            float: left;
+            margin-right: 20px;
         }
-            .navbar-mobile-wrap #myLinks a {
+
+    #myLinks {
+        margin-top: 70px;
+        width: 100%;
+        background-color: #535353;
+        position: absolute;
+        display: none;
+    }
+
+            #myLinks a {
+                width:100%;
                 display: block;
                 float: none;
             }
-
-    .navbar-mobile-wrap a {
-        color: #ffffff;
-        display:inline-block;
-        float:left;
-    }
-
-    #myLinks {
-        margin-top:70px;
-        width:100%;
-        background-color:#535353;
-        position:absolute;
-    }
-
-    #myLinks a {
-        display:block;
-    }
-
-        .navbar-mobile-wrap a.icon {
-            margin-right:20px;
-        }
-
-    .active {
-        background-color: #4CAF50;
-        color: white;
-    }
 }
 
-a.icon {
-    transition: all 0.3s;
-    transform: scale(1);
-    font-size: 24px;
-    color: #484848;
-    position: relative;
-    float: right;
-}
-
-a.icon:hover {
-    color: #FFF;
-    transition: all 0.3s;
-    transform: scale(0.8);
-}
-
-
-/* navbar */
-.navbar-wrap {
-    margin-top:30px;
-    font-size: 24px;
-}
-    .navbar-wrap a {
-        color: #ffffff;
-        padding-right: 20px;
-    }
+/* navbar-desktop */
 
 @media only screen and (min-width: 600px) {
     .navbar-mobile {
@@ -112,9 +75,63 @@ a.icon:hover {
     }
 }
 
-#userBurger{
-    display:none;
+/* navbar settings */
+
+.navbar-wrap {
+    position: relative;
+    margin-top: 30px;
+    font-size: 24px;
 }
+
+.navbar-wrap a {
+    margin-right: 20px;
+    display: inline-block;
+    float: left;
+}
+
+a.icon {
+    transition: all 0.3s;
+    transform: scale(1);
+    font-size: 24px;
+    color: #484848;
+    position: relative;
+    float: right;
+}
+
+    a.icon:hover {
+        color: #FFF;
+        transition: all 0.3s;
+        transform: scale(0.8);
+    }
+
+#userBurger {
+    width: 100%;
+    margin-top: 70px;
+    position: absolute;
+    background-color: #484848;
+    display: none;
+}
+
+    #userBurger a {
+        width: 100%;
+        display: block;
+        float:none;
+    }
+
+#userBurger2 {
+    width:100%;
+    margin-top: 70px;
+    position: absolute;
+    background-color: #484848;
+    display: none;
+    left:0%;
+}
+
+    #userBurger2 a {
+        width: 100%;
+        display: block;
+        float: none;
+    }
 
 .highlightTextOut a {
     color: rgba(255, 255, 255, 0.3);

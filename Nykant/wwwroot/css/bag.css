@@ -1,0 +1,13 @@
+﻿.productbag-wrap {
+    min-height:400px;
+    overflow:auto;
+}
+
+.baglist-item {
+    display:flex;
+}
+
+.baglist-item img {
+    height:auto;
+    width:100px;
+}

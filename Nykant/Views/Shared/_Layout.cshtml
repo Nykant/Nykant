@@ -1,8 +1,9 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="da">
 <head>
 
+    @inject SignInManager<AppUser> SignInManager
+    @inject UserManager<AppUser> UserManager
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Nykant</title>
@@ -15,6 +16,7 @@
     <link rel="stylesheet" href="~/css/filter-changes.css" />
     <link rel="stylesheet" href="~/css/downarrow.css" />
     <link rel="stylesheet" href="~/css/kant.css" />
+    <link rel="stylesheet" href="~/css/bag.css" />
 </head>
 
 <body>
@@ -27,9 +29,39 @@
                     <i class="fa fa-bars"></i>
                 </a>
 
-                <a class="icon" asp-controller="Bag" asp-action=""><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+                <a class="icon" asp-controller="Bag" asp-action="Details" asp-route-id="@ViewBag.UserId"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
 
-                <partial name="_LoginPartial" />
+                @* ---------------------------------------------------------------- *@
+                @if (SignInManager.IsSignedIn(User))
+                {
+
+                        <div id="userBurger">
+                            <a alt="logged in as: @UserManager.GetUserName(User)!" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">logged in as: @UserManager.GetUserName(User)!</a>
+                            <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home")">
+                                <button type="submit">Logout</button>
+                            </form>
+                            <a></a>
+                        </div>
+                        <a href="javascript:void(0);" class="icon" onclick="userBurger()">
+                            <i class="fas fa-user"></i>
+                        </a>
+
+
+                }
+                else
+                {
+
+                        <div id="userBurger">
+                            <a alt="REGISTER" asp-area="Identity" asp-page="/Account/Register">REGISTER</a>
+                            <a alt="LOGIN" asp-area="Identity" asp-page="/Account/Login">LOGIN</a>
+                            <a></a>
+                        </div>
+                        <a href="javascript:void(0);" class="icon" onclick="userBurger()">
+                            <i class="fas fa-user"></i>
+                        </a>
+
+                }
+                @* ---------------------------------------------------------------- *@
 
                 <div id="myLinks">
                     <a alt="HJEM" asp-controller="Home" asp-action="Index">HJEM</a>
@@ -44,8 +76,36 @@
                 <a alt="HJEM" asp-controller="Home" asp-action="Index">HJEM</a>
                 <a alt="PRODUKTER" asp-controller="Product" asp-action="Index">PRODUKTER</a>
                 <a alt="KONTAKT" asp-controller="Contact" asp-action="Index">KONTAKT</a>
-                <a asp-controller="Bag" asp-action=""> <i class="shoppingbag fas fa-shopping-bag right" aria-hidden="true"></i></a>
-                <partial name="_LoginPartial" />
+
+                <a class="icon" asp-controller="Bag" asp-action="Details" asp-route-id="@ViewBag.UserId"> <i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+
+                @* ---------------------------------------------------------------- *@
+                @if (SignInManager.IsSignedIn(User))
+                {
+                        <div id="userBurger2">
+                            <a alt="logged in as: @UserManager.GetUserName(User)!" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">logged in as: @UserManager.GetUserName(User)!</a>
+                            <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home")">
+                                <button type="submit">Logout</button>
+                            </form>
+                            <a></a>
+                        </div>
+                        <a href="javascript:void(0);" class="icon" onclick="userBurger2()">
+                            <i class="fas fa-user"></i>
+                        </a>
+
+                }
+                else
+                {
+                        <div id="userBurger2">
+                            <a alt="REGISTER" asp-area="Identity" asp-page="/Account/Register">REGISTER</a>
+                            <a alt="LOGIN" asp-area="Identity" asp-page="/Account/Login">LOGIN</a>
+                            <a></a>
+                        </div>
+                        <a href="javascript:void(0);" class="icon" onclick="userBurger2()">
+                            <i class="fas fa-user"></i>
+                        </a>
+                }
+                @* ---------------------------------------------------------------- *@
             </div>
         </div>
     </div>

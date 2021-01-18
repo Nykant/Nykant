@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Nykant.Areas.Identity.Data;
 using Nykant.Data;
 using Nykant.Models;
 using System;
@@ -12,15 +14,11 @@ using System.Threading.Tasks;
 
 namespace Nykant.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
-        private readonly ILogger<HomeController> _logger;
-        private readonly ApplicationDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
+        public HomeController(ApplicationDbContext context, SignInManager<AppUser> signInManager, UserManager<AppUser> userManager, ILogger<HomeController> logger) : base(context, signInManager, userManager, logger)
         {
-            _context = context;
-            _logger = logger;
         }
 
         public IActionResult Index()

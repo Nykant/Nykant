@@ -13,17 +13,10 @@ using System.Threading.Tasks;
 
 namespace Nykant.Controllers
 {
-    public class ProductController : Controller
+    public class ProductController : BaseController
     {
-        private readonly ILogger<ProductController> _logger;
-        private readonly ApplicationDbContext _context;
-        private readonly UserManager<AppUser> _userManager;
-
-        public ProductController(ILogger<ProductController> logger, ApplicationDbContext context, UserManager<AppUser> userManager)
+        public ProductController(ApplicationDbContext context, SignInManager<AppUser> signInManager, UserManager<AppUser> userManager, ILogger<HomeController> logger) : base(context, signInManager, userManager, logger)
         {
-            _userManager = userManager;
-            _context = context;
-            _logger = logger;
         }
 
         public async Task<IActionResult> Index()
