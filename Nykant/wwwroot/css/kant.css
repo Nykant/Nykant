@@ -73,6 +73,9 @@
         padding-left: 375px;
         padding-right: 375px;
     }
+    .productbag-wrap {
+        margin-left:16.66vW;
+    }
 }
 
 /* navbar settings */
@@ -110,6 +113,7 @@ a.icon {
     position: absolute;
     background-color: #484848;
     display: none;
+    z-index: 99;
 }
 
     #userBurger a {
@@ -125,6 +129,7 @@ a.icon {
     background-color: #484848;
     display: none;
     left:0%;
+    z-index:99;
 }
 
     #userBurger2 a {

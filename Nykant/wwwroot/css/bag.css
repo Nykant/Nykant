@@ -11,3 +11,8 @@
     height:auto;
     width:100px;
 }
+
+.checkout-box {
+    height:200px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}

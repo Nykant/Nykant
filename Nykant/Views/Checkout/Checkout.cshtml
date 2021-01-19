@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Nykant.Models.BagItem>
+
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<div class="row">
+    <div class="col-8 center">
+        <div class="checkout-wrap">
+            <div class="main-content left">
+
+            </div>
+            <div class="side-content right">
+                <div class="sidebar-items">
+                    @foreach(var item in Model)
+                    {
+                        <div class="sidebar-item">
+                            <img src="~/images/gyngestol.jpg" />
+                            <p>quantity: @item.Quantity</p>
+                        </div>
+                    }
+                </div>
+                <div class="checkout-info">
+                    <p>total price: @ViewBag.PriceSum</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

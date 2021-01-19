@@ -1,0 +1,29 @@
+﻿.checkout-wrap {
+    width:auto;
+    height:auto;
+}
+
+.main-content {
+    width: 41.66vW;
+    min-height: 400px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.side-content {
+    width: 23vW;
+    min-height: 200px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-items {
+
+}
+
+.sidebar-item {
+    display:flex;
+}
+
+.sidebar-item img {
+    height:auto;
+    width:100px;
+}

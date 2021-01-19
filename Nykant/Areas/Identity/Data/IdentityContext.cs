@@ -14,6 +14,7 @@ namespace Nykant.Data
         public IdentityContext(DbContextOptions<IdentityContext> options)
             : base(options)
         {
+            Database.Migrate();
         }
 
         protected override void OnModelCreating(ModelBuilder builder)

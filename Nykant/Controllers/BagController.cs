@@ -20,12 +20,6 @@ namespace Nykant.Controllers
         {
         }
 
-        // GET: Bag
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.Bags.ToListAsync());
-        }
-
         // GET: Bag/Details/5
         public async Task<IActionResult> Details(string id)
         {
@@ -39,10 +33,19 @@ namespace Nykant.Controllers
                 .Include(b => b.Product)
                 .Where(x => x.BagId == id);
 
+            int priceSum = 0;
+            foreach (var bagItem in bagItems)
+            {
+                priceSum += bagItem.Product.Price;
+            }
+
             if (bagItems == null)
             {
                 return NotFound();
             }
+
+            ViewBag.PriceSum = priceSum;
+            ViewBag.BagId = id;
 
             return View(bagItems);
         }

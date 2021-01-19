@@ -2,12 +2,11 @@
 
 @{
     ViewData["Title"] = "Details";
-    var bagitems = (ViewBag.BagItems as IEnumerable<BagItem>);
 }
 
 
 <div class="row">
-    <div class="col-8 center">
+    <div class="col-6 left">
         <div class="productbag-wrap">
             @if (Model != null)
             {
@@ -25,11 +24,17 @@
                         <form asp-controller="Bag" asp-action="DeleteBagItem">
                             <input type="hidden" name="bagId" asp-for="@bagItem.BagId" />
                             <input type="hidden" name="productId" asp-for="@bagItem.ProductId" />
-                            <input type="submit" value="Delete" class="" /> |
+                            <input type="submit" value="Delete" class="" /> 
                         </form>
                     </div>
                 }
             }
+        </div>
+    </div>
+    <div class="col-2 left">
+        <div class="checkout-box">
+            <p>overall price</p>
+            <a asp-controller="Checkout" asp-action="Checkout" asp-route-bagId="@ViewBag.BagId" asp-route-priceSum="@ViewBag.PriceSum" >Checkout</a>
         </div>
     </div>
 </div>
