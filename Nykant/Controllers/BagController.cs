@@ -21,7 +21,7 @@ namespace Nykant.Controllers
         }
 
         // GET: Bag/Details/5
-        public async Task<IActionResult> Details(string id)
+        public IActionResult Details(string id)
         {
             if (id == null)
             {
@@ -50,7 +50,7 @@ namespace Nykant.Controllers
             return View(bagItems);
         }
 
-        [Route("{controller}/{action}/{productId?}/{bagId?}/{productQuantity?}")]
+        //[Route("{controller}/{action}/{productId?}/{bagId?}/{productQuantity?}")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult AddProduct(int productId, string bagId, int productQuantity)
@@ -76,7 +76,7 @@ namespace Nykant.Controllers
             }
         }
 
-        [Route("{controller}/{action}/{productId?}/{bagId?}")]
+        //[Route("{controller}/{action}/{productId?}/{bagId?}")]
         // POST: BagItem/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]

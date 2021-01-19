@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Nykant.Migrations.Identity
 {
-    public partial class identity : Migration
+    public partial class Again : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

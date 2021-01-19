@@ -24,7 +24,7 @@ namespace Nykant.Controllers
             return View(await _context.Products.ToListAsync());
         }
 
-        [Route("product/{id}")]
+        //[Route("product/{id}")]
         public IActionResult Details(int id)
         {
             ViewBag.productId = id;

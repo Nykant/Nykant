@@ -10,8 +10,8 @@ using Nykant.Data;
 namespace Nykant.Migrations.Identity
 {
     [DbContext(typeof(IdentityContext))]
-    [Migration("20210113130533_identity")]
-    partial class identity
+    [Migration("20210119153451_Again")]
+    partial class Again
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
