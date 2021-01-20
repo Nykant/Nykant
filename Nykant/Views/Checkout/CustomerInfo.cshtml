@@ -4,20 +4,20 @@
     ViewData["Title"] = "Checkout";
 }
 
-<form asp-controller="Checkout" asp-action="ShippingInfo" method="post">
+<form asp-controller="Checkout" asp-action="CustomerInfo" method="post">
     <div class="row">
         <div class="col-8 center">
             <div class="checkout-wrap">
                 <div class="main-content left">
-                    <input placeholder="Email" asp-for="@Model.Shipping.Email" />
-                    <input placeholder="First Name" asp-for="@Model.Shipping.FirstName" />
-                    <input placeholder="Last Name" asp-for="@Model.Shipping.LastName" />
-                    <input placeholder="Address" asp-for="@Model.Shipping.Address" />
-                    <input placeholder="Additional address info" asp-for="@Model.Shipping.Address2" />
-                    <input placeholder="City" asp-for="@Model.Shipping.City" />
-                    <input placeholder="Country" asp-for="@Model.Shipping.Country" />
-                    <input placeholder="Postal" asp-for="@Model.Shipping.Postal" />
-                    <input placeholder="Phone" asp-for="@Model.Shipping.Phone" />
+                    <input placeholder="Email" asp-for="@Model.CustomerInfo.Email" />
+                    <input placeholder="First Name" asp-for="@Model.CustomerInfo.FirstName" />
+                    <input placeholder="Last Name" asp-for="@Model.CustomerInfo.LastName" />
+                    <input placeholder="Address" asp-for="@Model.CustomerInfo.Address" />
+                    <input placeholder="Additional address info" asp-for="@Model.CustomerInfo.Address2" />
+                    <input placeholder="City" asp-for="@Model.CustomerInfo.City" />
+                    <input placeholder="Country" asp-for="@Model.CustomerInfo.Country" />
+                    <input placeholder="Postal" asp-for="@Model.CustomerInfo.Postal" />
+                    <input placeholder="Phone" asp-for="@Model.CustomerInfo.Phone" />
                 </div>
                 <div class="side-content right">
                     <div class="sidebar-items">

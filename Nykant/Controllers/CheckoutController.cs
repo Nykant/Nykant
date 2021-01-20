@@ -19,7 +19,7 @@ namespace Nykant.Controllers
         {
         }
 
-        public IActionResult ShippingInfo(string bagId, int priceSum)
+        public IActionResult CustomerInfo(string bagId, int priceSum)
         {
             var bagItems = _context.BagItems
                 .Include(b => b.Bag)
@@ -36,22 +36,23 @@ namespace Nykant.Controllers
         }
 
         [HttpPost]
-        public IActionResult ShippingInfo(CheckoutVM checkoutVM)
+        public IActionResult CustomerInfo(CheckoutVM checkoutVM)
         {
-            Shipping shipping = checkoutVM.Shipping;
+            CustomerInfo shipping = checkoutVM.CustomerInfo;
             if (_signInManager.IsSignedIn(User))
             {
                 shipping.UserId = _userManager.GetUserId(User);
             }
-            _context.Shippings.Add(shipping);
+            _context.CustomerInfos.Add(shipping);
             _context.SaveChanges();
-            checkoutVM.Shipping = shipping;
-
-            return RedirectToAction("InfoCheck", checkoutVM);
+            checkoutVM.CustomerInfo = shipping;
+            
+            return RedirectToAction("Payment", checkoutVM);
         }
 
-        public IActionResult InfoCheck(CheckoutVM checkoutVM)
+        public IActionResult Payment(CheckoutVM checkoutVM)
         {
+
             return View(checkoutVM);
         }
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Nykant.Models
 {
-    public class Shipping
+    public class CustomerInfo
     {
         public int Id { get; set; }
         public string UserId { get; set; }

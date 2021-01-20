@@ -17,7 +17,7 @@ namespace Nykant.Data
         public DbSet<Bag> Bags { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<BagItem> BagItems { get; set; }
-        public DbSet<Shipping> Shippings { get; set; }
+        public DbSet<CustomerInfo> CustomerInfos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

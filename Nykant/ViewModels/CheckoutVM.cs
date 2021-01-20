@@ -11,6 +11,7 @@ namespace Nykant.ViewModels
     {
         public int PriceSum { get; set; }
         public IEnumerable<BagItem> BagItems { get; set; }
-        public Shipping Shipping { get; set; }
+        public CustomerInfo CustomerInfo { get; set; }
+        public string ShippingMethod { get; set; }
     }
 }
