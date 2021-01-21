@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nykant", "Nykant\Nykant.csproj", "{993075D7-4C73-47C6-9ED4-9461FB6B9C96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NykantApp", "NykantApp\NykantApp.csproj", "{993075D7-4C73-47C6-9ED4-9461FB6B9C96}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NykantAPI", "NykantAPI\NykantAPI.csproj", "{33F022A9-C2A6-4083-AAB4-1608FBFAB301}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NykantIS", "nykantis\NykantIS.csproj", "{C85354E1-D7CD-4B29-A537-0B7A3D84E3B6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{993075D7-4C73-47C6-9ED4-9461FB6B9C96}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{993075D7-4C73-47C6-9ED4-9461FB6B9C96}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{993075D7-4C73-47C6-9ED4-9461FB6B9C96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33F022A9-C2A6-4083-AAB4-1608FBFAB301}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33F022A9-C2A6-4083-AAB4-1608FBFAB301}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33F022A9-C2A6-4083-AAB4-1608FBFAB301}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33F022A9-C2A6-4083-AAB4-1608FBFAB301}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C85354E1-D7CD-4B29-A537-0B7A3D84E3B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C85354E1-D7CD-4B29-A537-0B7A3D84E3B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C85354E1-D7CD-4B29-A537-0B7A3D84E3B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C85354E1-D7CD-4B29-A537-0B7A3D84E3B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

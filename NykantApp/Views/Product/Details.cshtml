@@ -1,0 +1,78 @@
+﻿@model NykantApp.ViewModels.Product_Image
+
+@{
+    ViewData["Title"] = "Details";
+}
+<script>
+    completed = function (xhr) {
+        alert(`Hi ${xhr.responseText}!`);
+    };
+</script>
+
+<div class="row">
+    <div class="col-6 left" style="margin-left: 8.33%;">
+        <div class="details-image-wrap">
+            <div class="details-image-list">
+                @foreach (var image in Model.Images)
+                {
+                    <div class="secondary-image-wrap">
+                        <img id="secondary-image" src="/images/gyngestol.jpg" onclick="changeImage('/images/gyngestol.jpg')" />
+                    </div>
+                }
+            </div>
+            <div class="primary-image-wrap">
+                <img id="primary-image" src="/images/Finback-Chairs1-1280x853-c-default.jpg">
+            </div>
+
+        </div>
+    </div>
+    <div class="col-4 left" style="margin-right: 8.33%;">
+        <div class="details-info-wrap">
+            <h1>NAME OF VERY SPECIAL PRODUCT!</h1>
+            <p>DESIGNED BY NYKANT</p>
+            <span style="font-size:10px;">REVIEWS</span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <br />
+            <br />
+            <span class="forsale" style="float:none;">1000 dkk</span> <span class="red-text">  99,95 dkk</span>
+            <br />
+            <br />
+            <button class="button-red"></button>
+            <button class="button-blue"></button>
+            <button class="button-brown"></button>
+            <br />
+            <br />
+            <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-complete="completed" asp-controller="Bag" asp-action="AddProduct" asp-route-productId="@ViewBag.productId" asp-route-bagId="@ViewBag.bagId" asp-route-productQuantity="@ViewBag.productQuantity">
+                <div class="quantity-wrap">
+                    <span id="numberdown" onclick="countdown()">-</span>
+                    <p id="quantitynumber" style="display:inline">@ViewBag.productQuantity</p>
+                    <span id="numberup" onclick="countup()">+</span>
+                </div>
+
+                <button type="submit">ADD TO BAG</button>
+            </form>
+            <br />
+
+
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6 center slidefromleft">
+        <div class="details-description-wrap">
+            <div class="details-description">
+                <h1>DETAILS</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
