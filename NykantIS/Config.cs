@@ -2,7 +2,7 @@
 using IdentityServer4.Models;
 using System.Collections.Generic;
 
-namespace NykantIS.Data.Seed
+namespace NykantIS
 {
     public static class Config
     {
@@ -19,7 +19,7 @@ namespace NykantIS.Data.Seed
         {
             return new List<ApiResource>
             {
-                new ApiResource("web_api", "My Web API")
+                new ApiResource("NykantAPI", "Nykant API")
             };
         }
 
@@ -41,7 +41,7 @@ namespace NykantIS.Data.Seed
                     },
 
                     // scopes that client has access to
-                    AllowedScopes = { "web_api" }
+                    AllowedScopes = { "NykantAPI" }
                 },
                 // resource owner password grant client
                 new Client
@@ -53,33 +53,34 @@ namespace NykantIS.Data.Seed
                     {
                         new Secret("secret".Sha256())
                     },
-                    AllowedScopes = { "web_api" }
+                    AllowedScopes = { "NykantAPI" }
                 },
                 // OpenID Connect hybrid flow client (MVC)
                 new Client
                 {
                     ClientId = "mvc",
-                    ClientName = "MVC Client",
-                    AllowedGrantTypes = GrantTypes.Hybrid,
+                    AllowedGrantTypes = GrantTypes.Code,
 
                     ClientSecrets =
                     {
                         new Secret("secret".Sha256())
                     },
 
-                    RedirectUris           = { "http://localhost:5002/signin-oidc" },
-                    PostLogoutRedirectUris = { "http://localhost:5002/signout-callback-oidc" },
+                    // where to redirect to after login
+                    RedirectUris = { "https://localhost:5002/signin-oidc" },
+
+                    // where to redirect to after logout
+                    PostLogoutRedirectUris = { "https://localhost:5002/signout-callback-oidc" },
 
                     AllowedScopes =
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
-                        IdentityServerConstants.StandardScopes.Profile,
-                        "web_api"
+                        IdentityServerConstants.StandardScopes.Profile
                     },
 
-                    AllowOfflineAccess = true
+                    //AllowOfflineAccess = true
                 },
-                // JavaScript Client
+                 //JavaScript Client
                 new Client
                 {
                     ClientId = "js",
@@ -88,15 +89,14 @@ namespace NykantIS.Data.Seed
                     RequirePkce = true,
                     RequireClientSecret = false,
 
-                    RedirectUris =           { "http://localhost:5003/callback.html" },
-                    PostLogoutRedirectUris = { "http://localhost:5003/index.html" },
-                    AllowedCorsOrigins =     { "http://localhost:5003" },
+                    RedirectUris =           { "https://localhost:5003/callback.html" },
+                    PostLogoutRedirectUris = { "https://localhost:5003/index.html" },
+                    AllowedCorsOrigins =     { "https://localhost:5003" },
 
                     AllowedScopes =
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
-                        IdentityServerConstants.StandardScopes.Profile,
-                        "web_api"
+                        IdentityServerConstants.StandardScopes.Profile
                     }
                 }
             };

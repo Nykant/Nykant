@@ -11,7 +11,7 @@ namespace NykantApp.Controllers
 {
     public class OrderController : BaseController
     {
-        public OrderController(SignInManager<AppUser> signInManager, UserManager<AppUser> userManager, ILogger<HomeController> logger) : base(signInManager, userManager, logger)
+        public OrderController(SignInManager<AppUser> signInManager, UserManager<AppUser> userManager, ILogger<BaseController> logger) : base(signInManager, userManager, logger)
         {
         }
 

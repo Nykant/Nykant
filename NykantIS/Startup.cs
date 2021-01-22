@@ -15,7 +15,6 @@ using Microsoft.Extensions.Hosting;
 using IdentityServer4.Configuration;
 using System;
 using System.Linq;
-using NykantIS.Data.Seed;
 using IdentityServer4.EntityFramework.DbContexts;
 using IdentityServer4.EntityFramework.Mappers;
 
@@ -69,7 +68,6 @@ namespace NykantIS
                options.EnableTokenCleanup = true;
            })
            .AddAspNetIdentity<ApplicationUser>();
-
 
             // not recommended for production - you need to store your key material somewhere secure
             builder.AddDeveloperSigningCredential();

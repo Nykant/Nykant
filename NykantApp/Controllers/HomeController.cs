@@ -12,10 +12,10 @@ using System.Threading.Tasks;
 
 namespace NykantApp.Controllers
 {
-    public class HomeController : BaseController
+    public class HomeController : Controller
     {
 
-        public HomeController(SignInManager<AppUser> signInManager, UserManager<AppUser> userManager, ILogger<HomeController> logger) : base(signInManager, userManager, logger)
+        public HomeController(/*SignInManager<AppUser> signInManager, UserManager<AppUser> userManager, ILogger<HomeController> logger) : base(signInManager, userManager, logger*/)
         {
         }
 
@@ -25,6 +25,11 @@ namespace NykantApp.Controllers
         }
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        public IActionResult Test()
         {
             return View();
         }

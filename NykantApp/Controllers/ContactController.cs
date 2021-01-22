@@ -14,7 +14,7 @@ namespace NykantApp.Controllers
 {
     public class ContactController : BaseController
     {
-        public ContactController(SignInManager<AppUser> signInManager, UserManager<AppUser> userManager, ILogger<HomeController> logger) : base(signInManager, userManager, logger)
+        public ContactController(SignInManager<AppUser> signInManager, UserManager<AppUser> userManager, ILogger<BaseController> logger) : base(signInManager, userManager, logger)
         {
         }
         public IActionResult Index()
