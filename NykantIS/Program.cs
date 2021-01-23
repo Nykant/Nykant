@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NykantIS.Data;
 using NykantIS.Data.Seed;
 using Serilog;
 using Serilog.Events;
@@ -19,6 +20,7 @@ namespace NykantIS
     {
         public static int Main(string[] args)
         {
+
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Debug()
                 .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
@@ -39,16 +41,19 @@ namespace NykantIS
             try
             {
                 var host = CreateHostBuilder(args).Build();
-                Log.Information("Starting host...");
 
-                var config = host.Services.GetRequiredService<IConfiguration>();
-                bool seed = config.GetSection("Data").GetValue<bool>("Seed");
+                var seed = false;
                 if (seed)
                 {
+                    Log.Information("Seeding database...");
+                    var config = host.Services.GetRequiredService<IConfiguration>();
                     var connectionString = config.GetConnectionString("Identity");
-                    Users.EnsureSeedData(connectionString);
+                    SeedData.EnsureSeedData(connectionString);
+                    Log.Information("Done seeding database.");
+                    return 0;
                 }
 
+                Log.Information("Starting host...");
                 host.Run();
                 return 0;
             }
