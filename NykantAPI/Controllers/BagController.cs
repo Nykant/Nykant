@@ -1,18 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using NykantAPI.Data;
 using NykantAPI.Models;
+using NykantAPI.Models.DTO;
 
 namespace NykantAPI.Controllers
 {
-    [Authorize]
-    [Route("{controller}/{action}")]
+    [Route("api/{controller}/{action}/{id?}")]
     [ApiController]
     public class BagController : ControllerBase
     {
@@ -23,104 +27,84 @@ namespace NykantAPI.Controllers
             _context = context;
         }
 
-        // GET: api/Bag
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Bag>>> GetBags()
+        public async Task<ActionResult<BagDetails>> Details(string id)
         {
-            return await _context.Bags.ToListAsync();
-        }
-
-        // GET: api/Bag/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Bag>> GetBag(string id)
-        {
-            var bag = await _context.Bags.FindAsync(id);
-
-            if (bag == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            return bag;
-        }
+            var bagItems = _context.BagItems
+                .Include(b => b.Bag)
+                .Include(b => b.Product)
+                .Where(x => x.BagId == id);
+            
+            int priceSum = 0;
 
-        // PUT: api/Bag/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutBag(string id, Bag bag)
-        {
-            if (id != bag.UserId)
+            foreach (var bagItem in bagItems)
             {
-                return BadRequest();
+                priceSum += bagItem.Product.Price;
             }
 
-            _context.Entry(bag).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!BagExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // POST: api/Bag
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPost]
-        public async Task<ActionResult<Bag>> PostBag(Bag bag)
-        {
-            _context.Bags.Add(bag);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (BagExists(bag.UserId))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtAction("GetBag", new { id = bag.UserId }, bag);
-        }
-
-        // DELETE: api/Bag/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<Bag>> DeleteBag(string id)
-        {
-            var bag = await _context.Bags.FindAsync(id);
-            if (bag == null)
+            if (bagItems == null)
             {
                 return NotFound();
             }
 
-            _context.Bags.Remove(bag);
-            await _context.SaveChangesAsync();
+            BagDetails bagDetails = new BagDetails
+            {
+                BagId = id,
+                BagItems = bagItems,
+                PriceSum = priceSum
+            };
 
-            return bag;
+            return Ok(bagDetails);
         }
 
-        private bool BagExists(string id)
-        {
-            return _context.Bags.Any(e => e.UserId == id);
-        }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public IActionResult AddProduct(int productId, string bagId, int productQuantity)
+        //{
+        //    if (!_signInManager.IsSignedIn(User))
+        //    {
+        //        return Content("Must be signed in");
+        //    }
+        //    else if (BagItemExists(bagId, productId))
+        //    {
+        //        var bagItem = _context.BagItems.FirstOrDefault(x => x.BagId == bagId && x.ProductId == productId);
+        //        bagItem.Quantity += productQuantity;
+        //        _context.BagItems.Update(bagItem);
+        //        _context.SaveChanges();
+        //        return Content($"You already had this product in your bag, but now added {productQuantity} to the quantity");
+        //    }
+        //    else
+        //    {
+        //        var bagItem = new BagItem { ProductId = productId, BagId = bagId, Quantity = productQuantity };
+        //        _context.BagItems.Add(bagItem);
+        //        _context.SaveChanges();
+        //        return Content("Success");
+        //    }
+        //}
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> DeleteBagItem(int productId, string bagId)
+        //{
+        //    var bagItem = await _context.BagItems.FindAsync(bagId, productId);
+        //    _context.BagItems.Remove(bagItem);
+        //    await _context.SaveChangesAsync();
+        //    return Redirect($"Details/{bagId}");
+        //}
+
+        //private bool BagItemExists(string bagId, int productId)
+        //{
+        //    return _context.BagItems.Any(e => e.BagId == bagId && e.ProductId == productId);
+        //}
+
+        //private bool BagExists(string id)
+        //{
+        //    return _context.Bags.Any(e => e.UserId == id);
+        //}
+
     }
 }

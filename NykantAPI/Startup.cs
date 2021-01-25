@@ -30,6 +30,10 @@ namespace NykantAPI
         {
             services.AddControllers();
 
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("NykantDb")));
+
             services.AddAuthentication("Bearer")
             .AddJwtBearer("Bearer", options =>
             {
@@ -46,13 +50,9 @@ namespace NykantAPI
                 options.AddPolicy("ApiScope", policy =>
                 {
                     policy.RequireAuthenticatedUser();
-                    policy.RequireClaim("scope", "api1");
+                    policy.RequireClaim("scope", "NykantAPI");
                 });
             });
-
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("NykantDb")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

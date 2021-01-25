@@ -12,10 +12,10 @@ using System.Threading.Tasks;
 
 namespace NykantApp.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
 
-        public HomeController(/*SignInManager<AppUser> signInManager, UserManager<AppUser> userManager, ILogger<HomeController> logger) : base(signInManager, userManager, logger*/)
+        public HomeController(ILogger<HomeController> logger) : base(logger)
         {
         }
 

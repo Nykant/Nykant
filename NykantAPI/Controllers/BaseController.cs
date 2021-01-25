@@ -3,22 +3,24 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using NykantApp.Models;
+using NykantAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace NykantApp.Controllers
+namespace NykantAPI.Controllers
 {
     public abstract partial class BaseController : Controller
     {
         private readonly ILogger<BaseController> _logger;
-
-        public BaseController(ILogger<BaseController> logger)
+        public readonly SignInManager<AppUser> _signInManager;
+        public readonly UserManager<AppUser> _userManager;
+        public BaseController(SignInManager<AppUser> signInManager, UserManager<AppUser> userManager, ILogger<BaseController> logger)
         {
-
+            _userManager = userManager;
+            _signInManager = signInManager;
             _logger = logger;
         }
 

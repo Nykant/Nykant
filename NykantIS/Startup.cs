@@ -63,24 +63,31 @@ namespace NykantIS
                     CookieSlidingExpiration = true
                 };
             })
-            .AddInMemoryIdentityResources(Config.IdentityResources)
-            .AddInMemoryApiScopes(Config.ApiScopes)
-            .AddInMemoryClients(Config.Clients)
+            .AddConfigurationStore(options =>
+            {
+                options.ConfigureDbContext = b => b.UseSqlServer(ISString,
+                    sql => sql.MigrationsAssembly(migrationsAssembly));
+            })
+            .AddOperationalStore(options =>
+            {
+                options.ConfigureDbContext = b => b.UseSqlServer(ISString,
+                    sql => sql.MigrationsAssembly(migrationsAssembly));
+            })
             .AddAspNetIdentity<ApplicationUser>();
 
             // not recommended for production - you need to store your key material somewhere secure
             builder.AddDeveloperSigningCredential();
 
             services.AddAuthentication()
-                .AddGoogle(options =>
+                .AddGoogle("Google", options =>
                 {
                     options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
                     
                     // register your IdentityServer with Google at https://console.developers.google.com
                     // enable the Google+ API
                     // set the redirect URI to https://localhost:5001/signin-google
-                    options.ClientId = "copy client ID from Google here";
-                    options.ClientSecret = "copy client secret from Google here";
+                    options.ClientId = "413646567653-2set9f80eantuvbkj84d7mmb5vp6dfl8.apps.googleusercontent.com";
+                    options.ClientSecret = "dvfRC2hzoa-obrao6uScXHSB";
                 });
 
             services.AddRazorPages();
@@ -89,6 +96,7 @@ namespace NykantIS
 
         public void Configure(IApplicationBuilder app)
         {
+            InitializeDatabase(app);
 
             if (Environment.IsDevelopment())
             {
@@ -99,6 +107,7 @@ namespace NykantIS
             app.UseStaticFiles();
 
             app.UseRouting();
+
             app.UseIdentityServer();
             app.UseAuthorization();
 
@@ -107,6 +116,43 @@ namespace NykantIS
                 endpoints.MapDefaultControllerRoute();
                 endpoints.MapRazorPages();
             });
+        }
+
+        private void InitializeDatabase(IApplicationBuilder app)
+        {
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                serviceScope.ServiceProvider.GetRequiredService<PersistedGrantDbContext>().Database.Migrate();
+
+                var context = serviceScope.ServiceProvider.GetRequiredService<ConfigurationDbContext>();
+                context.Database.Migrate();
+                if (!context.Clients.Any())
+                {
+                    foreach (var client in Config.Clients)
+                    {
+                        context.Clients.Add(client.ToEntity());
+                    }
+                    context.SaveChanges();
+                }
+
+                if (!context.IdentityResources.Any())
+                {
+                    foreach (var resource in Config.IdentityResources)
+                    {
+                        context.IdentityResources.Add(resource.ToEntity());
+                    }
+                    context.SaveChanges();
+                }
+
+                if (!context.ApiScopes.Any())
+                {
+                    foreach (var resource in Config.ApiScopes)
+                    {
+                        context.ApiScopes.Add(resource.ToEntity());
+                    }
+                    context.SaveChanges();
+                }
+            }
         }
     }
 }

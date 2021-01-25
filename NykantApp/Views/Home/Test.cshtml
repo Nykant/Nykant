@@ -1,25 +1,37 @@
 ﻿@using Microsoft.AspNetCore.Authentication
 
-@{
-    Layout = "";
-}
+<p>authenticated?: @User.Identity.IsAuthenticated</p>
+<p>authentication type: @User.Identity.AuthenticationType</p>
 
-<h2>Claims</h2>
 
-<dl>
+
+    name: @User.Identity.Name;
+
+    <h2>Claims</h2>
+
+    @foreach (var claim in User.Identities)
+    {
+        <p>@claim.NameClaimType: @claim.Name : @claim.Label</p>
+
+        foreach(var claim1 in claim.Claims)
+        {
+            <p>@claim1.Type : @claim1.Value</p>
+        }
+    }
+
     @foreach (var claim in User.Claims)
     {
-        <dt>@claim.Type</dt>
-        <dd>@claim.Value</dd>
-    }
-</dl>
+        <p>@claim.Type: @claim.Value</p>
 
-<h2>Properties</h2>
-
-<dl>
-    @foreach (var prop in (await Context.AuthenticateAsync()).Properties.Items)
-    {
-        <dt>@prop.Key</dt>
-        <dd>@prop.Value</dd>
     }
-</dl>
+
+
+    <h2>Properties</h2>
+
+    <dl>
+        @foreach (var prop in (await Context.AuthenticateAsync()).Properties.Items)
+        {
+            <dt>@prop.Key</dt>
+            <dd>@prop.Value</dd>
+        }
+    </dl>

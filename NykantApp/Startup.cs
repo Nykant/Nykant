@@ -42,9 +42,13 @@ namespace NykantApp
                     options.ClientId = "mvc";
                     options.ClientSecret = "secret";
                     options.ResponseType = "code";
-                    options.Scope.Add("profile");
-                    options.GetClaimsFromUserInfoEndpoint = true;
+
                     options.SaveTokens = true;
+                    options.GetClaimsFromUserInfoEndpoint = true;
+
+                    options.Scope.Add("profile");
+                    options.Scope.Add("NykantAPI");
+                    options.Scope.Add("offline_access");
                 });
 
             services.AddControllersWithViews();
@@ -78,7 +82,7 @@ namespace NykantApp
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Test}/{id?}")
+                    pattern: "{controller=Home}/{action=Index}/{id?}")
                 .RequireAuthorization();
             });
         }
