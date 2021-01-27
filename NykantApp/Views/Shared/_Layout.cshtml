@@ -19,6 +19,7 @@
 <body>
     @{
         string username = User.Claims.FirstOrDefault(x => x.Type == "given_name").Value;
+        string userId = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
     }
     <div class="row">
         <div class="col-12 navbar-mobile">
@@ -63,11 +64,11 @@
                 }
                 ----------------------------------------------------------------
 
-                <div id="myLinks">
-                    <a alt="HJEM" asp-controller="Home" asp-action="Index">HJEM</a>
-                    <a alt="PRODUKTER" asp-controller="Product" asp-action="Index">PRODUKTER</a>
-                    <a alt="KONTAKT" asp-controller="Contact" asp-action="Index">KONTAKT</a>
-                </div>
+            <div id="myLinks">
+                <a alt="HJEM" asp-controller="Home" asp-action="Index">HJEM</a>
+                <a alt="PRODUKTER" asp-controller="Product" asp-action="Index">PRODUKTER</a>
+                <a alt="KONTAKT" asp-controller="Contact" asp-action="Index">KONTAKT</a>
+            </div>
             </div>
         </div>
         <div class="col-12 navbar">
@@ -77,7 +78,7 @@
                 <a alt="PRODUKTER" asp-controller="Product" asp-action="Index">PRODUKTER</a>
                 <a alt="KONTAKT" asp-controller="Contact" asp-action="Index">KONTAKT</a>
 
-                <a class="icon" asp-controller="Bag" asp-action="Details" asp-route-id="@username"> <i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+                <a class="icon" asp-controller="Bag" asp-action="Details" asp-route-id="@userId"> <i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
 
                 ----------------------------------------------------------------
                 @if (User.Identity.IsAuthenticated)

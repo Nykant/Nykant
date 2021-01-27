@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using NykantAPI.Data;
 using NykantAPI.Models;
 using System;
 using System.Collections.Generic;
@@ -12,16 +13,15 @@ using System.Threading.Tasks;
 
 namespace NykantAPI.Controllers
 {
-    public abstract partial class BaseController : Controller
+    public abstract partial class BaseController : ControllerBase
     {
-        private readonly ILogger<BaseController> _logger;
-        public readonly SignInManager<AppUser> _signInManager;
-        public readonly UserManager<AppUser> _userManager;
-        public BaseController(SignInManager<AppUser> signInManager, UserManager<AppUser> userManager, ILogger<BaseController> logger)
+        public readonly ApplicationDbContext _context;
+        public readonly ILogger<BaseController> _logger;
+        public BaseController(ILogger<BaseController> logger, ApplicationDbContext context)
         {
-            _userManager = userManager;
-            _signInManager = signInManager;
+
             _logger = logger;
+            _context = context;
         }
 
         //public override ViewResult View()

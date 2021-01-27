@@ -19,31 +19,28 @@ namespace NykantAPI.Controllers
 {
     [Route("api/{controller}/{action}/{id?}")]
     [ApiController]
-    public class BagController : ControllerBase
+    public class BagController : BaseController
     {
-        private readonly ApplicationDbContext _context;
-
-        public BagController(ApplicationDbContext context)
+        public BagController(ILogger<BaseController> logger, ApplicationDbContext context)
+            :base (logger, context)
         {
-            _context = context;
         }
 
-        public async Task<ActionResult<BagDetails>> Details(string id)
+        [HttpGet]
+        public string Details(string id)
         {
-            var bag = await _context.Bags.FirstOrDefaultAsync(x => x.UserId == id);
+            var bag = _context.Bags.FirstOrDefault(x => x.UserId == id);
             if (bag == null)
             {
                 Bag newBag = new Bag
                 {
                     UserId = id,
                 };
-                await _context.Bags.AddAsync(newBag);
-                await _context.SaveChangesAsync();
+                _context.Bags.AddAsync(newBag);
+                _context.SaveChangesAsync();
             }
 
             var bagItems = _context.BagItems
-                .Include(b => b.Bag)
-                .Include(b => b.Product)
                 .Where(x => x.BagId == id);
             
             int priceSum = 0;
@@ -55,7 +52,7 @@ namespace NykantAPI.Controllers
 
             if (bagItems == null)
             {
-                return NotFound();
+                return null;
             }
 
             BagDetails bagDetails = new BagDetails
@@ -67,53 +64,49 @@ namespace NykantAPI.Controllers
 
             string jsonString = JsonSerializer.Serialize(bagDetails);
 
-            return Ok(jsonString);
+            return jsonString;
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public IActionResult AddProduct(int productId, string bagId, int productQuantity)
-        //{
-        //    if (!_signInManager.IsSignedIn(User))
-        //    {
-        //        return Content("Must be signed in");
-        //    }
-        //    else if (BagItemExists(bagId, productId))
-        //    {
-        //        var bagItem = _context.BagItems.FirstOrDefault(x => x.BagId == bagId && x.ProductId == productId);
-        //        bagItem.Quantity += productQuantity;
-        //        _context.BagItems.Update(bagItem);
-        //        _context.SaveChanges();
-        //        return Content($"You already had this product in your bag, but now added {productQuantity} to the quantity");
-        //    }
-        //    else
-        //    {
-        //        var bagItem = new BagItem { ProductId = productId, BagId = bagId, Quantity = productQuantity };
-        //        _context.BagItems.Add(bagItem);
-        //        _context.SaveChanges();
-        //        return Content("Success");
-        //    }
-        //}
+        [HttpPut]
+        [ValidateAntiForgeryToken]
+        public IActionResult AddProduct(int productId, string bagId, int productQuantity)
+        {
+            if (BagItemExists(bagId, productId))
+            {
+                var bagItem = _context.BagItems.FirstOrDefault(x => x.BagId == bagId && x.ProductId == productId);
+                bagItem.Quantity += productQuantity;
+                _context.BagItems.Update(bagItem);
+                _context.SaveChanges();
+                return Content($"You already had this product in your bag, but now added {productQuantity} to the quantity");
+            }
+            else
+            {
+                var bagItem = new BagItem { ProductId = productId, BagId = bagId, Quantity = productQuantity };
+                _context.BagItems.Add(bagItem);
+                _context.SaveChanges();
+                return Content("Success");
+            }
+        }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> DeleteBagItem(int productId, string bagId)
-        //{
-        //    var bagItem = await _context.BagItems.FindAsync(bagId, productId);
-        //    _context.BagItems.Remove(bagItem);
-        //    await _context.SaveChangesAsync();
-        //    return Redirect($"Details/{bagId}");
-        //}
+        [HttpDelete]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteBagItem(int productId, string bagId)
+        {
+            var bagItem = await _context.BagItems.FindAsync(bagId, productId);
+            var result = _context.BagItems.Remove(bagItem);
+            await _context.SaveChangesAsync();
+            return Content("");
+        }
 
-        //private bool BagItemExists(string bagId, int productId)
-        //{
-        //    return _context.BagItems.Any(e => e.BagId == bagId && e.ProductId == productId);
-        //}
+        private bool BagItemExists(string bagId, int productId)
+        {
+            return _context.BagItems.Any(e => e.BagId == bagId && e.ProductId == productId);
+        }
 
-        //private bool BagExists(string id)
-        //{
-        //    return _context.Bags.Any(e => e.UserId == id);
-        //}
+        private bool BagExists(string id)
+        {
+            return _context.Bags.Any(e => e.UserId == id);
+        }
 
     }
 }

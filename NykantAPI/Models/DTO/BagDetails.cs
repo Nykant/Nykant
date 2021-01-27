@@ -7,7 +7,7 @@ namespace NykantAPI.Models.DTO
 {
     public class BagDetails
     {
-        public IQueryable<BagItem> BagItems { get; set; }
+        public IEnumerable<BagItem> BagItems { get; set; }
         public int PriceSum { get; set; }
         public string BagId { get; set; }
     }

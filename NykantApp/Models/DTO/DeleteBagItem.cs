@@ -5,10 +5,9 @@ using System.Threading.Tasks;
 
 namespace NykantApp.Models.DTO
 {
-    public class BagDetails
+    public class DeleteBagItem
     {
-        public IEnumerable<BagItem> BagItems { get; set; }
-        public int PriceSum { get; set; }
         public string BagId { get; set; }
+        public int ProductId { get; set; }
     }
 }
