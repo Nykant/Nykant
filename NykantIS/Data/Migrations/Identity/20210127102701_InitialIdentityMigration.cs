@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace NykantIS.Data.Migrations.IdentityDb
+namespace NykantIS.Data.Migrations.Identity
 {
-    public partial class IdentityMigration : Migration
+    public partial class InitialIdentityMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace NykantIS.Data.Migrations.IdentityServer.ConfigurationDb
 {
     [DbContext(typeof(ConfigurationDbContext))]
-    [Migration("20210125224208_InitialConfigurationMigration")]
-    partial class InitialConfigurationMigration
+    [Migration("20210127102649_InitialConfigurationMigration2")]
+    partial class InitialConfigurationMigration2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

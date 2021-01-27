@@ -19,6 +19,8 @@ using IdentityServer4.EntityFramework.DbContexts;
 using IdentityServer4.EntityFramework.Mappers;
 using System.Reflection;
 using NykantIS.Data.Seed;
+using IdentityServer4.Services;
+using Microsoft.Extensions.Logging;
 
 namespace NykantIS
 {
@@ -89,6 +91,14 @@ namespace NykantIS
                     options.ClientId = "413646567653-2set9f80eantuvbkj84d7mmb5vp6dfl8.apps.googleusercontent.com";
                     options.ClientSecret = "dvfRC2hzoa-obrao6uScXHSB";
                 });
+
+            //services.AddSingleton<ICorsPolicyService>((container) => {
+            //    var logger = container.GetRequiredService<ILogger<DefaultCorsPolicyService>>();
+            //    return new DefaultCorsPolicyService(logger)
+            //    {
+            //        AllowedOrigins = { "https://localhost" }
+            //    };
+            //});
 
             services.AddRazorPages();
             services.AddControllersWithViews();

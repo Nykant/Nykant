@@ -53,6 +53,7 @@ namespace NykantIS.Data.Seed
                         result = userMgr.AddClaimsAsync(alice, new Claim[]{
                             new Claim(JwtClaimTypes.GivenName, "Alice"),
                             new Claim(JwtClaimTypes.FamilyName, "Smith"),
+                            new Claim(JwtClaimTypes.Id, alice.Id)
                         }).Result;
                         if (!result.Succeeded)
                         {

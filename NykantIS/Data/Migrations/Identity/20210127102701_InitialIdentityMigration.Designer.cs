@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NykantIS.Data;
 
-namespace NykantIS.Data.Migrations.IdentityDb
+namespace NykantIS.Data.Migrations.Identity
 {
     [DbContext(typeof(IdentityDbContext))]
-    [Migration("20210125224843_IdentityMigration")]
-    partial class IdentityMigration
+    [Migration("20210127102701_InitialIdentityMigration")]
+    partial class InitialIdentityMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

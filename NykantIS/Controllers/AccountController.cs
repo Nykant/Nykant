@@ -17,6 +17,10 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using NykantIS.Models.ViewModels;
+using NykantIS.Data;
+using System.Security.Claims;
+using Serilog;
 
 namespace IdentityServerHost.Quickstart.UI
 {
@@ -30,6 +34,7 @@ namespace IdentityServerHost.Quickstart.UI
         private readonly IClientStore _clientStore;
         private readonly IAuthenticationSchemeProvider _schemeProvider;
         private readonly IEventService _events;
+        private readonly IdentityDbContext _context;
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
@@ -37,7 +42,8 @@ namespace IdentityServerHost.Quickstart.UI
             IIdentityServerInteractionService interaction,
             IClientStore clientStore,
             IAuthenticationSchemeProvider schemeProvider,
-            IEventService events)
+            IEventService events,
+            IdentityDbContext identityDbContext)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -45,6 +51,68 @@ namespace IdentityServerHost.Quickstart.UI
             _clientStore = clientStore;
             _schemeProvider = schemeProvider;
             _events = events;
+            _context = identityDbContext;
+        }
+
+        [HttpGet]
+        public IActionResult RegisterConfirm(RegisterVM registerVM)
+        {
+                return View(registerVM);
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ConfirmEmail(string email)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+            var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+            var result = await _userManager.ConfirmEmailAsync(user, code);
+            return Redirect("Login");
+        }
+
+        [HttpGet]
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Register(RegisterVM registerVM)
+        {
+            var user = _userManager.FindByNameAsync(registerVM.Email).Result;
+            if (user == null)
+            {
+                user = new ApplicationUser
+                {
+                    UserName = registerVM.Email,
+                    Email = registerVM.Email
+                };
+                registerVM.User = user;
+                var result = _userManager.CreateAsync(user, registerVM.Password).Result;
+                if (!result.Succeeded)
+                {
+                    throw new Exception(result.Errors.First().Description);
+                }
+                else
+
+                result = _userManager.AddClaimsAsync(user, new Claim[]{
+                            new Claim(JwtClaimTypes.GivenName, registerVM.FirstName),
+                            new Claim(JwtClaimTypes.FamilyName, registerVM.LastName),
+                            new Claim(JwtClaimTypes.Id, user.Id)
+                        }).Result;
+                if (!result.Succeeded)
+                {
+                    throw new Exception(result.Errors.First().Description);
+                }
+
+                Log.Debug(registerVM.Email + " created successfully");
+                
+            }
+            else
+            {
+                Log.Debug(registerVM.Email + " already exists");
+            }
+            return RedirectToAction("RegisterConfirm", registerVM);
         }
 
         /// <summary>

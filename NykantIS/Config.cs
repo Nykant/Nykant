@@ -12,7 +12,7 @@ namespace NykantIS
                         new IdentityResources.OpenId(),
                         new IdentityResource(
                             name: "profile",
-                            userClaims: new[]{"given_name", "family_name", "email"},
+                            userClaims: new[]{"given_name", "family_name", "email", "id"},
                             displayName: "Your profile data")
                    };
 
@@ -21,6 +21,7 @@ namespace NykantIS
             {
                 new ApiScope("NykantAPI", "Nykant API")
             };
+
         public static IEnumerable<Client> Clients =>
             new List<Client>
             {

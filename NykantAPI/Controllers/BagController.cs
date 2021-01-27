@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
@@ -29,9 +30,15 @@ namespace NykantAPI.Controllers
 
         public async Task<ActionResult<BagDetails>> Details(string id)
         {
-            if (id == null)
+            var bag = await _context.Bags.FirstOrDefaultAsync(x => x.UserId == id);
+            if (bag == null)
             {
-                return NotFound();
+                Bag newBag = new Bag
+                {
+                    UserId = id,
+                };
+                await _context.Bags.AddAsync(newBag);
+                await _context.SaveChangesAsync();
             }
 
             var bagItems = _context.BagItems
@@ -58,7 +65,9 @@ namespace NykantAPI.Controllers
                 PriceSum = priceSum
             };
 
-            return Ok(bagDetails);
+            string jsonString = JsonSerializer.Serialize(bagDetails);
+
+            return Ok(jsonString);
         }
 
         //[HttpPost]

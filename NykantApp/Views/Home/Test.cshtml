@@ -3,35 +3,22 @@
 <p>authenticated?: @User.Identity.IsAuthenticated</p>
 <p>authentication type: @User.Identity.AuthenticationType</p>
 
+ name: @User.Claims.FirstOrDefault(x => x.Type == "given_name").Value;
+ sub / userid: @User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
 
+<h2>Claims</h2>
 
-    name: @User.Identity.Name;
+@foreach (var claim in User.Claims)
+{
+    <p>@claim.Type: @claim.Value</p>
+}
 
-    <h2>Claims</h2>
+<h2>Properties</h2>
 
-    @foreach (var claim in User.Identities)
+<dl>
+    @foreach (var prop in (await Context.AuthenticateAsync()).Properties.Items)
     {
-        <p>@claim.NameClaimType: @claim.Name : @claim.Label</p>
-
-        foreach(var claim1 in claim.Claims)
-        {
-            <p>@claim1.Type : @claim1.Value</p>
-        }
+        <dt>@prop.Key</dt>
+        <dd>@prop.Value</dd>
     }
-
-    @foreach (var claim in User.Claims)
-    {
-        <p>@claim.Type: @claim.Value</p>
-
-    }
-
-
-    <h2>Properties</h2>
-
-    <dl>
-        @foreach (var prop in (await Context.AuthenticateAsync()).Properties.Items)
-        {
-            <dt>@prop.Key</dt>
-            <dd>@prop.Value</dd>
-        }
-    </dl>
+</dl>

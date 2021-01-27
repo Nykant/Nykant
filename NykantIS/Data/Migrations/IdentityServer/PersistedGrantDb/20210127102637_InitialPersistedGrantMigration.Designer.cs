@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace NykantIS.Data.Migrations.IdentityServer.PersistedGrantDb
 {
     [DbContext(typeof(PersistedGrantDbContext))]
-    [Migration("20210125224158_InitialPersistedMigration")]
-    partial class InitialPersistedMigration
+    [Migration("20210127102637_InitialPersistedGrantMigration")]
+    partial class InitialPersistedGrantMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

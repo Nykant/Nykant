@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace NykantIS.Data.Migrations.IdentityServer.PersistedGrantDb
 {
-    public partial class InitialPersistedMigration : Migration
+    public partial class InitialPersistedGrantMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
