@@ -27,21 +27,21 @@ namespace NykantAPI.Controllers
         }
 
         [HttpGet]
-        public string Details(string id)
+        public async Task<ActionResult<BagDetailsDTO>> Details(string subject)
         {
-            var bag = _context.Bags.FirstOrDefault(x => x.UserId == id);
+            var bag = _context.Bags.FirstOrDefault(x => x.Subject == subject);
             if (bag == null)
             {
-                Bag newBag = new Bag
+                bag = new Bag
                 {
-                    UserId = id,
+                    Subject = subject
                 };
-                _context.Bags.AddAsync(newBag);
-                _context.SaveChangesAsync();
+                await _context.Bags.AddAsync(bag);
+                await _context.SaveChangesAsync();
             }
 
             var bagItems = _context.BagItems
-                .Where(x => x.BagId == id);
+                .Where(x => x.BagId == bag.BagId);
             
             int priceSum = 0;
 
@@ -55,21 +55,21 @@ namespace NykantAPI.Controllers
                 return null;
             }
 
-            BagDetails bagDetails = new BagDetails
+            BagDetailsDTO bagDetails = new BagDetailsDTO
             {
-                BagId = id,
+                BagId = bag.BagId,
                 BagItems = bagItems,
                 PriceSum = priceSum
             };
 
-            string jsonString = JsonSerializer.Serialize(bagDetails);
+            //string jsonString = JsonSerializer.Serialize(bagDetails);
 
-            return jsonString;
+            return Ok(bagDetails);
         }
 
         [HttpPut]
         [ValidateAntiForgeryToken]
-        public IActionResult AddProduct(int productId, string bagId, int productQuantity)
+        public IActionResult AddProduct(int productId, int bagId, int productQuantity)
         {
             if (BagItemExists(bagId, productId))
             {
@@ -98,14 +98,14 @@ namespace NykantAPI.Controllers
             return Content("");
         }
 
-        private bool BagItemExists(string bagId, int productId)
+        private bool BagItemExists(int bagId, int productId)
         {
             return _context.BagItems.Any(e => e.BagId == bagId && e.ProductId == productId);
         }
 
         private bool BagExists(string id)
         {
-            return _context.Bags.Any(e => e.UserId == id);
+            return _context.Bags.Any(e => e.Subject == id);
         }
 
     }

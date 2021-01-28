@@ -4,7 +4,6 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
-using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
@@ -12,11 +11,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using NykantApp.Models;
-using NykantApp.Models.DTO;
+using NykantMVC.Models;
+using NykantMVC.Models.DTO;
 
-namespace NykantApp.Controllers
+namespace NykantMVC.Controllers
 {
 
     public class BagController : BaseController
@@ -39,7 +39,7 @@ namespace NykantApp.Controllers
             string uri = "https://localhost:6001/api/Bag/Details/" + id;
             var result = await client.GetStringAsync(uri);
 
-            BagDetails bagd = JsonSerializer.Deserialize<BagDetails>(result);
+            BagDetails bagd = JsonConvert.DeserializeObject<BagDetails>(result);
 
             if (bagd == null)
             {
@@ -49,7 +49,7 @@ namespace NykantApp.Controllers
             return View(bagd);
         }
 
-        public async Task<IActionResult> AddProduct(int productId, string bagId, int productQuantity)
+        public async Task<IActionResult> AddProduct(int productId, int bagId, int productQuantity)
         {
             var accessToken = await HttpContext.GetTokenAsync("access_token");
 
@@ -61,7 +61,7 @@ namespace NykantApp.Controllers
             };
 
             var todoItemJson = new StringContent(
-                JsonSerializer.Serialize(bagItem),
+                JsonConvert.SerializeObject(bagItem),
                 Encoding.UTF8,
                 "application/json");
 
@@ -77,13 +77,13 @@ namespace NykantApp.Controllers
             return NotFound();
         }
 
-        public async Task<IActionResult> DeleteBagItem(int productId, string bagId)
+        public async Task<IActionResult> DeleteBagItem(int productId, int bagId)
         {
             var accessToken = await HttpContext.GetTokenAsync("access_token");
-
+            var subject = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
             var client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-            string uri = "https://localhost:6001/api/Bag/Details/" + productId + "/" + bagId;
+            string uri = "https://localhost:6001/api/Bag/Details/" + productId;
             var content = await client.DeleteAsync(uri);
 
             if (content.IsSuccessStatusCode)

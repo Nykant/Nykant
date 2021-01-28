@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NykantMVC.Models.DTO
+namespace NykantAPI.Models.DTO
 {
-    public class BagDetails
+    public class BagDetailsDTO
     {
         public IEnumerable<BagItem> BagItems { get; set; }
         public int PriceSum { get; set; }
-        public string BagId { get; set; }
+        public int BagId { get; set; }
     }
 }

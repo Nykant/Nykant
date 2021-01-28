@@ -19,9 +19,12 @@
 <body>
     @{
         string username = User.Claims.FirstOrDefault(x => x.Type == "given_name").Value;
-        string userId = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
+        string subject = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
     }
     <div class="row">
+
+        @*-----------------------------------------------NAVBAR MOBILE-----------------------------------------------*@
+
         <div class="col-12 navbar-mobile">
             <div class="navbar-mobile-wrap highlightTextIn highlightTextOut">
                 <a alt="NYKANT" asp-controller="Home" asp-action="Index"><span style="color:#eaeaea">N</span>YKANT</a>
@@ -32,13 +35,12 @@
 
                 <a class="icon" asp-controller="Bag" asp-action="Details" asp-route-id="@username"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
 
-                ----------------------------------------------------------------
                 @if (User.Identity.IsAuthenticated)
                 {
 
                     <div id="userBurger">
-                        <a alt="logged in as: @username!" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">logged in as: @username!</a>
-                        <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home")">
+                        <a alt="logged in as: @username!" asp-controller="Account" asp-action="Profile" title="Manage">logged in as: @username!</a>
+                        <form asp-Controller="Account" asp-action="Logout">
                             <button type="submit">Logout</button>
                         </form>
                         <a></a>
@@ -46,12 +48,9 @@
                     <a href="javascript:void(0);" class="icon" onclick="userBurger()">
                         <i class="fas fa-user"></i>
                     </a>
-
-
                 }
                 else
                 {
-
                     <div id="userBurger">
                         <a alt="REGISTER" asp-area="Identity" asp-page="/Account/Register">REGISTER</a>
                         <a alt="LOGIN" asp-area="Identity" asp-page="/Account/Login">LOGIN</a>
@@ -60,17 +59,18 @@
                     <a href="javascript:void(0);" class="icon" onclick="userBurger()">
                         <i class="fas fa-user"></i>
                     </a>
-
                 }
-                ----------------------------------------------------------------
 
-            <div id="myLinks">
-                <a alt="HJEM" asp-controller="Home" asp-action="Index">HJEM</a>
-                <a alt="PRODUKTER" asp-controller="Product" asp-action="Index">PRODUKTER</a>
-                <a alt="KONTAKT" asp-controller="Contact" asp-action="Index">KONTAKT</a>
-            </div>
+                <div id="myLinks">
+                    <a alt="HJEM" asp-controller="Home" asp-action="Index">HJEM</a>
+                    <a alt="PRODUKTER" asp-controller="Product" asp-action="Index">PRODUKTER</a>
+                    <a alt="KONTAKT" asp-controller="Contact" asp-action="Index">KONTAKT</a>
+                </div>
             </div>
         </div>
+
+        @*----------------------------------------------NAVBAR DESKTOP------------------------------------------------*@
+
         <div class="col-12 navbar">
             <div class="navbar-wrap highlightTextIn highlightTextOut">
                 <a alt="NYKANT" asp-controller="Home" asp-action="Index" style="margin-right:50px;"><span style="color:#eaeaea">N</span>YKANT</a>
@@ -78,14 +78,13 @@
                 <a alt="PRODUKTER" asp-controller="Product" asp-action="Index">PRODUKTER</a>
                 <a alt="KONTAKT" asp-controller="Contact" asp-action="Index">KONTAKT</a>
 
-                <a class="icon" asp-controller="Bag" asp-action="Details" asp-route-id="@userId"> <i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+                <a class="icon" asp-controller="Bag" asp-action="Details" asp-route-id="@subject"> <i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
 
-                ----------------------------------------------------------------
                 @if (User.Identity.IsAuthenticated)
                 {
                     <div id="userBurger2">
-                        <a alt="logged in as: @username!" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">logged in as: @username!</a>
-                        <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home")">
+                        <a alt="logged in as: @username!" asp-controller="Account" asp-action="Profile" title="Manage">logged in as: @username!</a>
+                        <form asp-controller="Account" asp-action="Logout" asp-route-returnUrl="@Url.Action("Index", "Home")">
                             <button type="submit">Logout</button>
                         </form>
                         <a></a>
@@ -106,7 +105,7 @@
                         <i class="fas fa-user"></i>
                     </a>
                 }
-                ----------------------------------------------------------------
+                @*----------------------------------------------------------------------------------------------*@
             </div>
         </div>
     </div>

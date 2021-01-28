@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NykantApp.Models.DTO
+namespace NykantMVC.Models.DTO
 {
     public class DeleteBagItem
     {

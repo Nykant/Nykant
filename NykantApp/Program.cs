@@ -9,7 +9,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace NykantApp
+namespace NykantMVC
 {
     public class Program
     {

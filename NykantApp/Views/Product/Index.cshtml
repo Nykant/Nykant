@@ -1,4 +1,4 @@
-﻿@model IEnumerable<NykantApp.Models.Product>
+﻿@model IEnumerable<Product>
 @{
     ViewData["Title"] = "Produkter";
 }
@@ -22,12 +22,11 @@
         <ul>
             @foreach (var product in Model)
             {
-
                     <li class="mix @product.TypeOfWood @product.ItemType @product.Color @product.Size">
 
                         <div class="product-container">
                             <img class="product-image" src="@product.ImageSource" alt="@product.Alt">
-                            <a asp-action="Details" asp-controller="Product" asp-route-id="@product.Id">
+                            <a asp-action="Details" asp-controller="Product" asp-route-id="@product.Id" asp-route-subject="@ViewBag.Subject">
                                 <div class="seemore">
                                     se mere
                                 </div>

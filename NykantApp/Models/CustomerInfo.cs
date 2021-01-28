@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NykantApp.Models
+namespace NykantMVC.Models
 {
     public class CustomerInfo
     {

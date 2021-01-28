@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Session;
 
 
-namespace NykantApp.Models
+namespace NykantMVC.Models
 {
     public class Bag
     {
         [Key]
-        public string UserId { get; set; }
+        public int BagId { get; set; }
+        public string Subject { get; set; }
+        public AppUser AppUser { get; set; }
         public IEnumerable<Product> Products { get; set; }
         public IEnumerable<BagItem> BagItems { get; set; }
     }

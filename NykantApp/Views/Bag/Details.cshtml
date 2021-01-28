@@ -1,4 +1,4 @@
-﻿@model NykantApp.Models.DTO.BagDetails
+﻿@model BagDetails
 
 @{
     ViewData["Title"] = "Details";
@@ -7,7 +7,7 @@
 <div class="row">
     <div class="col-6 left">
         <div class="productbag-wrap">
-            @if (Model != null)
+            @if (Model.BagItems != null)
             {
                 @foreach (var bagItem in Model.BagItems)
                 {

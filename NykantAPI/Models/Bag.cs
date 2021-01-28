@@ -11,7 +11,8 @@ namespace NykantAPI.Models
     public class Bag
     {
         [Key]
-        public string UserId { get; set; }
+        public int BagId { get; set; }
+        public string Subject { get; set; }
         public IEnumerable<Product> Products { get; set; }
         public IEnumerable<BagItem> BagItems { get; set; }
     }

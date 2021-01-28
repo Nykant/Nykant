@@ -9,7 +9,7 @@
 //using System.Linq;
 //using System.Threading.Tasks;
 
-//namespace NykantApp.Controllers
+//namespace NykantMVC.Controllers
 //{
 //    public class CheckoutController : BaseController
 //    {
@@ -44,7 +44,7 @@
 //            _context.CustomerInfos.Add(shipping);
 //            _context.SaveChanges();
 //            checkoutVM.CustomerInfo = shipping;
-            
+
 //            return RedirectToAction("Payment", checkoutVM);
 //        }
 

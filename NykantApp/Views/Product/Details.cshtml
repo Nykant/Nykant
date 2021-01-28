@@ -1,4 +1,4 @@
-﻿@model NykantApp.ViewModels.Product_Image
+﻿@model ProductVM
 
 @{
     ViewData["Title"] = "Details";
@@ -46,7 +46,7 @@
             <button class="button-brown"></button>
             <br />
             <br />
-            <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-complete="completed" asp-controller="Bag" asp-action="AddProduct" asp-route-productId="@ViewBag.productId" asp-route-bagId="@ViewBag.bagId" asp-route-productQuantity="@ViewBag.productQuantity">
+            <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-complete="completed" asp-controller="Bag" asp-action="AddProduct" asp-route-productId="@ViewBag.productId" asp-route-sub="@ViewBag.bagId" asp-route-productQuantity="@ViewBag.productQuantity">
                 <div class="quantity-wrap">
                     <span id="numberdown" onclick="countdown()">-</span>
                     <p id="quantitynumber" style="display:inline">@ViewBag.productQuantity</p>

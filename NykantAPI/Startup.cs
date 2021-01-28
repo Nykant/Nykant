@@ -34,25 +34,25 @@ namespace NykantAPI
                 options.UseSqlServer(
                     Configuration.GetConnectionString("NykantDb")));
 
-            //services.AddAuthentication("Bearer")
-            //.AddJwtBearer("Bearer", options =>
-            //{
-            //    options.Authority = "https://localhost:5001";
+            services.AddAuthentication("Bearer")
+            .AddJwtBearer("Bearer", options =>
+            {
+                options.Authority = "https://localhost:5001";
 
-            //    options.TokenValidationParameters = new TokenValidationParameters
-            //    {
-            //        ValidateAudience = false
-            //    };
-            //});
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateAudience = false
+                };
+            });
 
-            //services.AddAuthorization(options =>
-            //{
-            //    options.AddPolicy("ApiScope", policy =>
-            //    {
-            //        policy.RequireAuthenticatedUser();
-            //        policy.RequireClaim("scope", "NykantAPI");
-            //    });
-            //});
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("ApiScope", policy =>
+                {
+                    policy.RequireAuthenticatedUser();
+                    policy.RequireClaim("scope", "NykantAPI");
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -72,8 +72,8 @@ namespace NykantAPI
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
-                    //.RequireAuthorization("ApiScope");
+                endpoints.MapControllers()
+                    .RequireAuthorization("ApiScope");
             });
         }
     }

@@ -1,10 +1,10 @@
-﻿using NykantApp.Models;
+﻿using NykantMVC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NykantApp.ViewModels
+namespace NykantMVC.ViewModels
 {
     public class CheckoutVM
     {

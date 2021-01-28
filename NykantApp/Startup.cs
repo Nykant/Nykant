@@ -14,7 +14,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.IdentityModel.Tokens.Jwt;
 
-namespace NykantApp
+namespace NykantMVC
 {
     public class Startup
     {
