@@ -78,7 +78,7 @@
                 <a alt="PRODUKTER" asp-controller="Product" asp-action="Index">PRODUKTER</a>
                 <a alt="KONTAKT" asp-controller="Contact" asp-action="Index">KONTAKT</a>
 
-                <a class="icon" asp-controller="Bag" asp-action="Details" asp-route-id="@subject"> <i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+                <a class="icon" asp-controller="Bag" asp-action="Details" asp-route-subject="@subject"> <i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
 
                 @if (User.Identity.IsAuthenticated)
                 {

@@ -51,7 +51,7 @@ namespace NykantMVC
                     options.Scope.Add("offline_access");
                 });
 
-            services.AddControllersWithViews();
+            services.AddControllersWithViews(); 
             services.AddRazorPages();
         }
 

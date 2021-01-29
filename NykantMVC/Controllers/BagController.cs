@@ -25,9 +25,9 @@ namespace NykantMVC.Controllers
         {
         }
 
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(string subject)
         {
-            if (id == null)
+            if (subject == null)
             {
                 return NotFound();
             }
@@ -36,7 +36,7 @@ namespace NykantMVC.Controllers
 
             var client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-            string uri = "https://localhost:6001/api/Bag/Details/" + id;
+            string uri = "https://localhost:6001/api/Bag/Details/" + subject;
             var result = await client.GetStringAsync(uri);
 
             BagDetails bagd = JsonConvert.DeserializeObject<BagDetails>(result);
@@ -67,14 +67,14 @@ namespace NykantMVC.Controllers
 
             var client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-            string uri = "https://localhost:6001/api/Bag/AddProduct/" + productId + "/" + bagId + "/" + productQuantity;
-            var content = await client.PutAsync(uri, todoItemJson);
+            string uri = "https://localhost:6001/api/BagItem/AddBagItem/" + productId + "/" + bagId + "/" + productQuantity;
+            var content = await client.PostAsync(uri, todoItemJson);
 
             if (content.IsSuccessStatusCode)
             {
-                return Redirect($"Details/{bagId}");
+                return Content("Success");
             }
-            return NotFound();
+            return Content("Failed");
         }
 
         public async Task<IActionResult> DeleteBagItem(int productId, int bagId)
@@ -83,13 +83,14 @@ namespace NykantMVC.Controllers
             var subject = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
             var client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-            string uri = "https://localhost:6001/api/Bag/Details/" + productId;
+            string uri = "https://localhost:6001/api/BagItem/DeleteBagItem/" + productId + "/" + bagId;
             var content = await client.DeleteAsync(uri);
 
             if (content.IsSuccessStatusCode)
             {
-                return Redirect($"Details/{bagId}");
+                return RedirectToAction("Details", new { subject = subject });
             }
+
             return NotFound();
         }
 

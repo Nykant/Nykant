@@ -43,10 +43,10 @@ namespace NykantMVC.Controllers
             }
 
             var accessToken = await HttpContext.GetTokenAsync("access_token");
-
+            var sub = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
             var client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-            string uri = "https://localhost:6001/api/Product/GetProduct/" + id;
+            string uri = "https://localhost:6001/api/Product/GetProduct/" + id + "/" + sub;
             var response = await client.GetStringAsync(uri);
 
             ProductVM productVM = JsonConvert.DeserializeObject<ProductVM>(response);
