@@ -54,19 +54,12 @@ namespace NykantMVC
                     options.Scope.Add("offline_access");
                 });
 
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddReact();
-
-            // Make sure a JS engine is registered, or you will get an error!
-            services.AddJsEngineSwitcher(options => options.DefaultEngineName = V8JsEngine.EngineName)
-              .AddV8();
-
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env) /*IAntiforgery antiforgery måskeeee måske ik????*/
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env) /*IAntiforgery antiforgery m?skeeee m?ske ik????*/
         {
             if (env.IsDevelopment())
             {
