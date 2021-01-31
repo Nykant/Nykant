@@ -80,7 +80,7 @@
                 <a alt="KONTAKT" asp-controller="Contact" asp-action="Index">KONTAKT</a>
                 <a alt="REACT TUTORIAL" asp-controller="React" asp-action="Tutorial">REACT TUTORIAL</a>
 
-                <a class="icon" asp-controller="Bag" asp-action="Details" asp-route-id="@subject"> <i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+                <a class="icon" asp-controller="Bag" asp-action="Details" asp-route-subject="@subject"> <i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
 
                 @if (User.Identity.IsAuthenticated)
                 {

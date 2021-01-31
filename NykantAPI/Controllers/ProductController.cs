@@ -9,10 +9,10 @@ using Microsoft.Extensions.Logging;
 using NykantAPI.Data;
 using NykantAPI.Models;
 using NykantAPI.Models.DTO;
+using Newtonsoft.Json;
 
 namespace NykantAPI.Controllers
 {
-    [Route("api/{controller}/{action}")]
     [ApiController]
     public class ProductController : BaseController
     {
@@ -21,24 +21,27 @@ namespace NykantAPI.Controllers
         {
         }
 
-        [HttpGet]
+        [HttpGet("api/{controller}/{action}")]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
             var products = await _context.Products.ToListAsync();
             return Ok(products);
         }
 
-        
-        [HttpGet("id")]
-        public async Task<ActionResult<Product>> GetProduct(int id)
+        [HttpGet("api/{controller}/{action}/{id}/{sub}")]
+        public async Task<ActionResult<ProductDTO>> GetProduct(int id, string sub)
         {
+            var product = await _context.Products
+                .Include(x => x.Images)
+                .FirstOrDefaultAsync(x => x.Id == id);
+            var bagId = (await _context.Bags.FirstOrDefaultAsync(x => x.Subject == sub)).BagId;
             ProductDTO productDTO = new ProductDTO
             {
-                Product = await _context.Products.FirstOrDefaultAsync(x => x.Id == id),
-                Images = _context.Images.Where(x => x.ProductId == id),
-                BagId = (await _context.Bags.FirstOrDefaultAsync(x => x.Subject == User.Claims.FirstOrDefault(x => x.Type == "sub").Value)).BagId
+                Product = product,
+                BagId = bagId
             };
-            return Ok(productDTO);
+            var json = JsonConvert.SerializeObject(productDTO, Extensions.JsonOptions.jsonSettings);
+            return Ok(json);
         }
 
         // PUT: api/Product/5

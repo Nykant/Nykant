@@ -20,7 +20,7 @@
                             <p id="quantitynumber" style="display:inline">@bagItem.Quantity</p>
                             <span id="numberup" onclick="countup()">+</span>
                         </div>
-                        <form asp-controller="Bag" asp-action="DeleteBagItem">
+                        <form asp-controller="Bag" asp-action="DeleteBagItem" method="post">
                             <input type="hidden" name="bagId" asp-for="@bagItem.BagId" />
                             <input type="hidden" name="productId" asp-for="@bagItem.ProductId" />
                             <input type="submit" value="Delete" class="" /> 

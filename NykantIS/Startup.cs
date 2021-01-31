@@ -61,7 +61,7 @@ namespace NykantIS
 
                 options.Authentication = new AuthenticationOptions()
                 {
-                    CookieLifetime = TimeSpan.FromSeconds(30), // ID server cookie timeout set to 10 hours
+                    CookieLifetime = TimeSpan.FromHours(10), // ID server cookie timeout set to 10 hours
                     CookieSlidingExpiration = true
                 };
             })
