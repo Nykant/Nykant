@@ -1,12 +1,12 @@
-﻿var textnumber = document.getElementById("quantitynumber");
-function countup() {
-    var number = parseInt(textnumber.textContent);
+﻿
+function countup(quantityid) {
+    var number = parseInt(document.getElementById("{ quantityid }").textContent);
     var result = number + 1;
     document.getElementById("quantitynumber").textContent = result;
 }
 
-function countdown() {
-    var number = parseInt(textnumber.textContent);
+function countdown(quantityid) {
+    var number = parseInt(document.getElementById(quantityid).textContent);
     var result = number - 1;
     document.getElementById("quantitynumber").textContent = result;
 }
