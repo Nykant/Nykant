@@ -1,4 +1,20 @@
-﻿function createRemarkable() {
+﻿
+
+//class HelloWorld extends React.Component {
+//    render() {
+//        return <div>Hello World</div>;
+//    }
+//}
+
+
+
+//const containerElement = document.getElementById('content');
+//ReactDOM.render(<HelloWorld url="/React/GetBag" />, containerElement);
+
+
+
+
+function createRemarkable() {
     var remarkable =
         'undefined' != typeof global && global.Remarkable
             ? global.Remarkable
@@ -14,7 +30,7 @@ class CommentBox extends React.Component {
             <div className="commentBox">
 
                 <h1>Comments</h1>
-                <CommentList />
+                <CommentList data={ this.props.data }/>
                 <CommentForm />
             </div>
         );
@@ -22,17 +38,12 @@ class CommentBox extends React.Component {
 }
 class CommentList extends React.Component {
     render() {
-        return (
-            <div className="commentList">
-                <Comment author="Daniel Lo Nigro">
-                    Hello ReactJS.NET World!
-                </Comment>
-                <Comment author="Pete Hunt">This is one comment</Comment>
-                <Comment author="Jordan Walke">
-                    This is *another* comment
-                </Comment>
-            </div>
-        );
+        const commentNodes = this.props.data.map(comment => (
+            <Comment author={comment.author} key={comment.id}>
+                {comment.text}
+            </Comment>
+        ));
+        return <div className="commentList">{commentNodes}</div>;
     }
 }
 class CommentForm extends React.Component {
@@ -50,16 +61,16 @@ class Comment extends React.Component {
         return { __html: rawMarkup };
     }
     render() {
-
         return (
-
             <div className="comment">
                 <h2 className="commentAuthor">{this.props.author}</h2>
-                {this.props.children}
+                <span dangerouslySetInnerHTML={this.rawMarkup()} />
             </div>
-        
         );
     }
 }
-ReactDOM.render(<CommentBox />, document.getElementById('content'));
-
+const API =  'https://localhost:5002/comments').then(response => response.json()).then(data => this.setState({ data }));
+ReactDOM.render(
+    <CommentBox data={ }/>,
+    document.getElementById('content')
+);

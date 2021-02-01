@@ -39,7 +39,7 @@ namespace NykantMVC.Controllers
             string uri = "https://localhost:6001/api/Bag/Details/" + subject;
             var result = await client.GetStringAsync(uri);
 
-            BagDetails bagd = JsonConvert.DeserializeObject<BagDetails>(result);
+            BagDetailsDTO bagd = JsonConvert.DeserializeObject<BagDetailsDTO>(result);
 
             if (bagd == null)
             {

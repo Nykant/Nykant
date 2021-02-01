@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="~/css/kant.css" />
     <link rel="stylesheet" href="~/css/bag.css" />
     <link rel="stylesheet" href="~/css/checkout.css" />
+
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
 </head>
 <body>
     @{
@@ -123,8 +126,10 @@
             &copy; 2020 - Nykant - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+
+    @* ----------------------------------GLOBAL SCRIPTS-------------------------------------- *@
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> @*<-----TOP*@
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.unobtrusive-ajax/3.2.5/jquery.unobtrusive-ajax.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/dfade6c231.js" crossorigin="anonymous"></script>
     <script src="~/JS/mobileNav.js"></script>
     <script src="~/JS/slidedetails.js"></script>
@@ -133,7 +138,7 @@
     <script src="~/JS/jquery-2.1.1.js"></script>
     <script src="~/JS/jquery.mixitup.min.js"></script>
     <script src="~/JS/modernizr.js"></script>
-    <script src="~/JS/main.js"></script>  Resource jQuery
+    <script src="~/JS/main.js"></script>  @*Resource jQuery*@
     <script src="~/JS/slideintext.js"></script>
     <script src="~/JS/downarrowstop.js"></script>
     <script src="~/JS/slideshow.js"></script>
