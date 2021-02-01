@@ -17,7 +17,6 @@ using JavaScriptEngineSwitcher.V8;
 using JavaScriptEngineSwitcher.Extensions.MsDependencyInjection;
 using React.AspNet;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
-using RouteJs;
 
 namespace NykantMVC
 {

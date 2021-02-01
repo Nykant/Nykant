@@ -35,9 +35,13 @@
                             </div>
                             <div id="bag-item-price">@bagItem.Product.Price</div>
                             <div id="bag-item-quantity">
-                                <span id="numberdown" onclick="countdown(@quantityid)">-</span>
+                                <form method="post" asp-controller="BagItem" asp-action="UpdateBagItem" asp-route-selection="2" asp-route-productId="@bagItem.ProductId" asp-route-bagId="@bagItem.BagId" asp-route-productQuantity="@bagItem.Quantity">
+                                    <input type="submit" value="-" />
+                                </form>
                                 <p id="@quantityid" style="display:inline">@bagItem.Quantity</p>
-                                <span id="numberup" onclick="countup(@quantityid)">+</span>
+                                <form method="post" asp-controller="BagItem" asp-action="UpdateBagItem" asp-route-selection="1" asp-route-productId="@bagItem.ProductId" asp-route-bagId="@bagItem.BagId" asp-route-productQuantity="@bagItem.Quantity">
+                                    <input type="submit" value="+" />
+                                </form>
                             </div>
                             <div id="bag-item-total">total price</div>
                         </div>

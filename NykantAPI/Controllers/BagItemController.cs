@@ -20,6 +20,30 @@ namespace NykantAPI.Controllers
             _context = context;
         }
 
+        [HttpPatch("api/{controller}/{action}/{productId}/{bagId}/{productQuantity}")]
+        public async Task<ActionResult<BagItem>> UpdateBagItem(int productId, int bagId, int productQuantity)
+        {
+            if(BagItemExists(bagId, productId))
+            {
+                var bagItem = _context.BagItems.FirstOrDefault(x => x.BagId == bagId && x.ProductId == productId);
+                if(bagItem != null)
+                {
+                    try
+                    {
+                        bagItem.Quantity = productQuantity;
+                        _context.BagItems.Update(bagItem);
+                        _context.SaveChanges();
+                        return Ok();
+                    }
+                    catch(Exception e)
+                    {
+                        return NotFound(e);
+                    }
+                }
+            }
+            return NotFound();
+        }
+
         [HttpPost("api/{controller}/{action}/{productId}/{bagId}/{productQuantity}")]
         public async Task<ActionResult<BagItem>> AddBagItem(int productId, int bagId, int productQuantity)
         {

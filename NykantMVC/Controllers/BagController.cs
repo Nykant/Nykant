@@ -18,7 +18,6 @@ using NykantMVC.Models.DTO;
 
 namespace NykantMVC.Controllers
 {
-
     public class BagController : BaseController
     {
         public BagController(ILogger<BaseController> logger) : base(logger)
@@ -45,54 +44,7 @@ namespace NykantMVC.Controllers
             {
                 return NotFound();
             }
-
             return View(bagd);
         }
-
-        public async Task<IActionResult> AddProduct(int productId, int bagId, int productQuantity)
-        {
-            var accessToken = await HttpContext.GetTokenAsync("access_token");
-
-            BagItem bagItem = new BagItem
-            {
-                BagId = bagId,
-                ProductId = productId,
-                Quantity = productQuantity
-            };
-
-            var todoItemJson = new StringContent(
-                JsonConvert.SerializeObject(bagItem),
-                Encoding.UTF8,
-                "application/json");
-
-            var client = new HttpClient();
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-            string uri = "https://localhost:6001/api/BagItem/AddBagItem/" + productId + "/" + bagId + "/" + productQuantity;
-            var content = await client.PostAsync(uri, todoItemJson);
-
-            if (content.IsSuccessStatusCode)
-            {
-                return Content("Success");
-            }
-            return Content("Failed");
-        }
-
-        public async Task<IActionResult> DeleteBagItem(int productId, int bagId)
-        {
-            var accessToken = await HttpContext.GetTokenAsync("access_token");
-            var subject = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
-            var client = new HttpClient();
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-            string uri = "https://localhost:6001/api/BagItem/DeleteBagItem/" + productId + "/" + bagId;
-            var content = await client.DeleteAsync(uri);
-
-            if (content.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Details", new { subject = subject });
-            }
-
-            return NotFound();
-        }
-
     }
 }

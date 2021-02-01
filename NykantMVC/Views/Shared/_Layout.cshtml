@@ -37,7 +37,7 @@
                     <i class="fa fa-bars"></i>
                 </a>
 
-                <a class="icon" asp-controller="Bag" asp-action="Details" asp-route-id="@username"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+                <a class="icon" asp-controller="Bag" asp-action="GetBag" asp-route-id="@username"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
 
                 @if (User.Identity.IsAuthenticated)
                 {
