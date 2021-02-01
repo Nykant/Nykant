@@ -35,7 +35,7 @@
 }
 
 .bagtable-headers {
-    font-size:16px;
+    font-size:20px;
     margin-bottom: 10px;
     padding: 10px;
     display: inline-table;
@@ -52,7 +52,7 @@
 }
 
 .bag-item {
-    font-size: 12px;
+    font-size: 14px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     margin-bottom: 10px;
     padding: 10px;
@@ -68,10 +68,27 @@
         width:33.3%;
     }
 
+        .bag-item div#bag-item-quantity{
+        }
+
+        .bag-item div#bag-item-quantity input, .bag-item div#bag-item-quantity label {
+            padding:10px;
+            background-color:#e8e8e8;
+            border:none;
+        }
+
+            .bag-item div#bag-item-quantity input {
+                background-color: #474747;
+                color: white;
+            }
+            .bag-item div#bag-item-quantity label {
+                z-index: -1;
+            }
+
     .bag-item img {
         height: auto;
-        width: 100px;
-        display:block;
+        width: 125px;
+        display: block;
     }
 
 

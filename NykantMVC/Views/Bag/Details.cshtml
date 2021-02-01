@@ -2,8 +2,6 @@
 
 @{
     ViewData["Title"] = "Details";
-    int bagitemnumber = 0;
-    string quantityid = null;
 }
 
 <div class="row fullscreen-row">
@@ -24,26 +22,24 @@
                 {
                     @foreach (var bagItem in Model.BagItems)
                     {
-                        bagitemnumber += 1;
-                        quantityid = "quantityid" + $"{bagitemnumber}";
                         <div class="bag-item">
                             <div id="bag-item-image">
                                 <img src="@bagItem.Product.ImageSource" />
                             </div>
                             <div id="bag-item-name">
-                                @bagItem.Product.Title
+                                <label>@bagItem.Product.Title</label>
                             </div>
-                            <div id="bag-item-price">@bagItem.Product.Price</div>
+                            <div id="bag-item-price"><label>@bagItem.Product.Price</label></div>
                             <div id="bag-item-quantity">
                                 <form method="post" asp-controller="BagItem" asp-action="UpdateBagItem" asp-route-selection="2" asp-route-productId="@bagItem.ProductId" asp-route-bagId="@bagItem.BagId" asp-route-productQuantity="@bagItem.Quantity">
                                     <input type="submit" value="-" />
                                 </form>
-                                <p id="@quantityid" style="display:inline">@bagItem.Quantity</p>
+                                @bagItem.Quantity
                                 <form method="post" asp-controller="BagItem" asp-action="UpdateBagItem" asp-route-selection="1" asp-route-productId="@bagItem.ProductId" asp-route-bagId="@bagItem.BagId" asp-route-productQuantity="@bagItem.Quantity">
                                     <input type="submit" value="+" />
                                 </form>
                             </div>
-                            <div id="bag-item-total">total price</div>
+                            <div id="bag-item-total"><label>total price</label></div>
                         </div>
                     }
                 }
