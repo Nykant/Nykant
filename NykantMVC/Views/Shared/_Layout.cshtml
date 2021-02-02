@@ -16,9 +16,10 @@
     <link rel="stylesheet" href="~/css/kant.css" />
     <link rel="stylesheet" href="~/css/bag.css" />
     <link rel="stylesheet" href="~/css/checkout.css" />
+    <link rel="stylesheet" href="~/css/inputstil.css" />
 
-    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    @*<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>*@
 </head>
 <body>
     @{
@@ -81,7 +82,7 @@
                 <a alt="HJEM" asp-controller="Home" asp-action="Index">HJEM</a>
                 <a alt="PRODUKTER" asp-controller="Product" asp-action="Index">PRODUKTER</a>
                 <a alt="KONTAKT" asp-controller="Contact" asp-action="Index">KONTAKT</a>
-                <a alt="REACT TUTORIAL" asp-controller="React" asp-action="Tutorial">REACT TUTORIAL</a>
+                @*<a alt="REACT TUTORIAL" asp-controller="React" asp-action="Tutorial">REACT TUTORIAL</a>*@
 
                 <a class="icon" asp-controller="Bag" asp-action="Details" asp-route-subject="@subject"> <i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
 

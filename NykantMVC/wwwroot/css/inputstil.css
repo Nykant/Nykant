@@ -1,0 +1,45 @@
+﻿.inputstyle {
+    padding: 20px;
+}
+
+    .inputstyle input {
+        width: 200px;
+        padding: 5px;
+        outline: none;
+        border: none;
+        background: none;
+        transition: box-shadow 0.3s ease;
+    }
+
+    .inputstyle label {
+        position: absolute;
+        color: grey;
+        pointer-events: none;
+        transition: all 0.3s ease;
+        transform: translate(-200px, 0);
+    }
+
+    .inputstyle .underline {
+        margin: auto;
+        height: 2px;
+        width: 200px;
+        background: grey;
+        transform: scaleX(0.2);
+        transform-origin: left;
+        transition: transform 0.3s ease;
+    }
+
+    .inputstyle input:focus ~ .underline/*, .inputstyle input:valid ~ .underline*/ {
+        transform: scaleX(1);
+        background: #000000;
+    }
+
+    .inputstyle input:hover {
+        box-shadow: 0px 0px 5px grey;
+    }
+
+    .inputstyle input:focus ~ label/*, .inputstyle input:valid ~ label*/ {
+        transform: translate(-200px, -25px);
+        font-size: 12px;
+        opacity: 0.5;
+    }

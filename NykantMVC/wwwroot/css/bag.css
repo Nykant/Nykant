@@ -77,6 +77,10 @@
             border:none;
         }
 
+        #bag-item-name {
+            cursor:pointer;
+        }
+
             .bag-item div#bag-item-quantity input {
                 background-color: #474747;
                 color: white;

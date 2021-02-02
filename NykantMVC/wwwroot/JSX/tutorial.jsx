@@ -69,7 +69,7 @@ class Comment extends React.Component {
         );
     }
 }
-const API =  'https://localhost:5002/comments').then(response => response.json()).then(data => this.setState({ data }));
+//const API =  'https://localhost:5002/comments').then(response => response.json()).then(data => this.setState({ data }));
 ReactDOM.render(
     <CommentBox data={ }/>,
     document.getElementById('content')

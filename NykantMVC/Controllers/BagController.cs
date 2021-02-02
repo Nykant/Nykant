@@ -35,7 +35,7 @@ namespace NykantMVC.Controllers
 
             var client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-            string uri = "https://localhost:6001/api/Bag/Details/" + subject;
+            string uri = "https://localhost:6001/api/Bag/GetBag/" + subject;
             var result = await client.GetStringAsync(uri);
 
             BagDetailsDTO bagd = JsonConvert.DeserializeObject<BagDetailsDTO>(result);

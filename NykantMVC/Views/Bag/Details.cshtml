@@ -5,8 +5,8 @@
 }
 
 <div class="row fullscreen-row">
-    <div class="col-8 center topmargin col-wrapper">
-        <div class="col-8 left padding">
+    <div class="col-8 center padding col-wrapper">
+        <div class="col-8 left">
             <div class="bagtitle">
                 <h1>MY BAG</h1>
             </div>
@@ -24,10 +24,14 @@
                     {
                         <div class="bag-item">
                             <div id="bag-item-image">
-                                <img src="@bagItem.Product.ImageSource" />
+                                <a asp-action="Details" asp-controller="Product" asp-route-id="@bagItem.Product.Id">
+                                    <img src="@bagItem.Product.ImageSource" />
+                                </a>
                             </div>
                             <div id="bag-item-name">
-                                <label>@bagItem.Product.Title</label>
+                                <a asp-action="Details" asp-controller="Product" asp-route-id="@bagItem.Product.Id">
+                                    <label>@bagItem.Product.Title</label>
+                                </a>
                             </div>
                             <div id="bag-item-price"><label>@bagItem.Product.Price</label></div>
                             <div id="bag-item-quantity">
@@ -45,10 +49,10 @@
                 }
             </div>
         </div>
-        <div class="col-4 left padding">
+        <div class="col-4 left">
             <div class="checkout-wrap">
                 <p>SUMMARY</p>
-                <a asp-controller="Checkout" asp-action="CustomerInfo" asp-route-bagId="@Model.BagId" asp-route-priceSum="@Model.PriceSum">Checkout</a>
+                <a asp-controller="Checkout" asp-action="CustomerInfo" asp-route-bagItems="@Model.BagItems">Checkout</a>
             </div>
         </div>
     </div>
