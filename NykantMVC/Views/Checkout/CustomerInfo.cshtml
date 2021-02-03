@@ -4,8 +4,8 @@
     ViewData["Title"] = "Checkout";
 }
 
-<div class="row">
-    <div class="col-8 center top-padding">
+<div class="row bottom-side-padding fadein">
+    <div class="col-8 center top-padding right-side-padding">
         <div class="col-8 left">
             <div class="breadcrumbs">
                 <a asp-controller="Bag" asp-action="Details" asp-route-subject="@Model.Subject">Shopping Bag</a> >
@@ -17,6 +17,8 @@
     </div>
 </div>
 
+
+
 <form asp-controller="Checkout" asp-action="CustomerInfo" method="post">
     @for (int i = 0; i < Model.BagItems.Count(); i++)
     {
@@ -26,18 +28,18 @@
         @Html.HiddenFor(x => x.BagItems[i].Product);
         @Html.HiddenFor(x => x.BagItems[i].Bag);
     }
-    @Html.HiddenFor(x => x.PriceSum);
-    @Html.HiddenFor(x => x.Subject);
+    @Html.HiddenFor(x => x.PriceSum)
+    @Html.HiddenFor(x => x.Subject)
 
     <div class="row">
-        <div class="col-8 center top-padding">
-            <div class="col-8 left right-side-padding">
+        <div class="col-8 center">
+            <div class="col-8 left right-side-padding fadein">
                 <div class="main-content">
                     <div class="inputstyle">
-                        <input required asp-for="@Model.CustomerInfo.Email" />
-                        <label asp-for="@Model.CustomerInfo.Email"></label>
+                        <input id="input" onfocus="onfocus()" onkeyup="invalid()" onmouseout="mouseout()" required asp-for="@Model.CustomerInfo.Email" />
+                        <label id="label" asp-for="@Model.CustomerInfo.Email"></label>
                         <span asp-validation-for="@Model.CustomerInfo.Email"></span>
-                        <div class="underline"></div>
+                        <div id="underline" class="underline"></div>
                     </div>
                     <div class="inputstyle">
                         <input required asp-for="@Model.CustomerInfo.FirstName" />
@@ -89,7 +91,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-4 left">
+            <div class="col-4 left fadein">
                 <div class="side-content">
                     <div class="sidebar-items">
                         @foreach (var item in Model.BagItems)
@@ -105,7 +107,7 @@
                     </div>
 
                 </div>
-                <button class="checkout-button" type="submit">CONTINUE</button> @*------------- SUBMIT FORM --------------*@
+                <button class="checkout-button fadein" type="submit">CONTINUE</button> @*------------- SUBMIT FORM --------------*@
             </div>
         </div>
     </div>

@@ -38,8 +38,6 @@ body {
     background-color: #e9e9e9;
 }
 
-
-
 .fullscreen-row {
     min-height: 100vh;
 }
@@ -50,6 +48,10 @@ body {
 
 .right-side-padding {
     padding-right:10px;
+}
+
+.bottom-side-padding {
+    padding-bottom: 10px;
 }
 
 a {
@@ -193,7 +195,21 @@ footer span {
 }
 
 
+.fadein {
+    animation-name: fadein;
+    animation-duration: 0.5s;
+    animation-timing-function: ease;
+}
 
+@keyframes fadein {
+    0% {
+        transform: scale(0)
+    }
+
+    100% {
+        transform: scale(1)
+    }
+}
 
 
 

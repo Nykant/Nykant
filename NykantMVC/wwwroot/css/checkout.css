@@ -1,9 +1,21 @@
 ﻿.breadcrumbs {
+    background: #474747;
+    min-height: 100px;
+    border-radius: 5px;
+    padding: 30px;
+    color:grey;
 
 }
-.breadcrumbs a:any-link {
-    color:blue;
-}
+
+    .breadcrumbs a {
+        color: grey;
+    }
+        .breadcrumbs a:any-link {
+            color: #6dceff;
+        }
+        .breadcrumbs a:any-link:hover {
+            color: #8cffa4;
+        }
 
 .main-content {
     border-radius: 5px;
