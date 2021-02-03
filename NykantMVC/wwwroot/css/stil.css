@@ -44,8 +44,12 @@ body {
     min-height: 100vh;
 }
 
-.padding {
+.top-padding {
     padding-top:5vh;
+}
+
+.right-side-padding {
+    padding-right:10px;
 }
 
 a {

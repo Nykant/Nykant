@@ -32,7 +32,6 @@ namespace NykantMVC
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
 
             services.AddAuthentication(options =>
@@ -56,12 +55,12 @@ namespace NykantMVC
                     options.Scope.Add("offline_access");
                 });
 
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddReact();
+            //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            //services.AddReact();
 
-            // Make sure a JS engine is registered, or you will get an error!
-            services.AddJsEngineSwitcher(options => options.DefaultEngineName = V8JsEngine.EngineName)
-              .AddV8();
+            //// Make sure a JS engine is registered, or you will get an error!
+            //services.AddJsEngineSwitcher(options => options.DefaultEngineName = V8JsEngine.EngineName)
+            //  .AddV8();
 
             services.AddControllersWithViews();
             services.AddRazorPages();

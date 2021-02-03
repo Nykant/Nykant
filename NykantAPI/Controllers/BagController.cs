@@ -28,6 +28,12 @@ namespace NykantAPI.Controllers
         [HttpGet("api/{controller}/{action}/{subject}")]
         public async Task<ActionResult<BagDetailsDTO>> GetBag(string subject)
         {
+            if (!ModelState.IsValid)
+            {
+                return NotFound();
+            }
+
+
             var bag = _context.Bags.FirstOrDefault(x => x.Subject == subject);
             if (bag == null)
             {

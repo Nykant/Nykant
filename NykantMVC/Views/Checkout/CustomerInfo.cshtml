@@ -4,61 +4,85 @@
     ViewData["Title"] = "Checkout";
 }
 
+<div class="row">
+    <div class="col-8 center top-padding">
+        <div class="col-8 left">
+            <div class="breadcrumbs">
+                <a asp-controller="Bag" asp-action="Details" asp-route-subject="@Model.Subject">Shopping Bag</a> >
+                <a>Customer Info</a> >
+                <a>Shipping</a> >
+                <a>Payment</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <form asp-controller="Checkout" asp-action="CustomerInfo" method="post">
+    @for (int i = 0; i < Model.BagItems.Count(); i++)
+    {
+        @Html.HiddenFor(x => x.BagItems[i].ProductId);
+        @Html.HiddenFor(x => x.BagItems[i].BagId);
+        @Html.HiddenFor(x => x.BagItems[i].Quantity);
+        @Html.HiddenFor(x => x.BagItems[i].Product);
+        @Html.HiddenFor(x => x.BagItems[i].Bag);
+    }
+    @Html.HiddenFor(x => x.PriceSum);
+    @Html.HiddenFor(x => x.Subject);
+
     <div class="row">
-        <div class="col-8 center padding">
-            <div class="col-8 left">
+        <div class="col-8 center top-padding">
+            <div class="col-8 left right-side-padding">
                 <div class="main-content">
                     <div class="inputstyle">
-                        <input asp-for="@Model.CustomerInfo.Email" />
+                        <input required asp-for="@Model.CustomerInfo.Email" />
                         <label asp-for="@Model.CustomerInfo.Email"></label>
                         <span asp-validation-for="@Model.CustomerInfo.Email"></span>
                         <div class="underline"></div>
                     </div>
                     <div class="inputstyle">
-                        <input asp-for="@Model.CustomerInfo.FirstName" />
+                        <input required asp-for="@Model.CustomerInfo.FirstName" />
                         <label asp-for="@Model.CustomerInfo.FirstName"></label>
                         <span asp-validation-for="@Model.CustomerInfo.FirstName"></span>
                         <div class="underline"></div>
                     </div>
                     <div class="inputstyle">
-                        <input asp-for="@Model.CustomerInfo.LastName" />
+                        <input required asp-for="@Model.CustomerInfo.LastName" />
                         <label asp-for="@Model.CustomerInfo.LastName"></label>
                         <span asp-validation-for="@Model.CustomerInfo.LastName"></span>
                         <div class="underline"></div>
                     </div>
                     <div class="inputstyle">
-                        <input asp-for="@Model.CustomerInfo.Address" />
+                        <input required asp-for="@Model.CustomerInfo.Address" />
                         <label asp-for="@Model.CustomerInfo.Address"></label>
                         <span asp-validation-for="@Model.CustomerInfo.Address"></span>
                         <div class="underline"></div>
                     </div>
                     <div class="inputstyle">
-                        <input asp-for="@Model.CustomerInfo.Address2" />
+                        <input required asp-for="@Model.CustomerInfo.Address2" />
                         <label asp-for="@Model.CustomerInfo.Address2"></label>
                         <span asp-validation-for="@Model.CustomerInfo.Address2"></span>
                         <div class="underline"></div>
                     </div>
                     <div class="inputstyle">
-                        <input asp-for="@Model.CustomerInfo.City" />
+                        <input required asp-for="@Model.CustomerInfo.City" />
                         <label asp-for="@Model.CustomerInfo.City"></label>
                         <span asp-validation-for="@Model.CustomerInfo.City"></span>
                         <div class="underline"></div>
                     </div>
                     <div class="inputstyle">
-                        <input asp-for="@Model.CustomerInfo.Country" />
+                        <input required asp-for="@Model.CustomerInfo.Country" />
                         <label asp-for="@Model.CustomerInfo.Country"></label>
                         <span asp-validation-for="@Model.CustomerInfo.Country"></span>
                         <div class="underline"></div>
                     </div>
                     <div class="inputstyle">
-                        <input asp-for="@Model.CustomerInfo.Postal" />
+                        <input required asp-for="@Model.CustomerInfo.Postal" />
                         <label asp-for="@Model.CustomerInfo.Postal"></label>
                         <span asp-validation-for="@Model.CustomerInfo.Postal"></span>
                         <div class="underline"></div>
                     </div>
                     <div class="inputstyle">
-                        <input asp-for="@Model.CustomerInfo.Phone" />
+                        <input required asp-for="@Model.CustomerInfo.Phone" />
                         <label asp-for="@Model.CustomerInfo.Phone"></label>
                         <span asp-validation-for="@Model.CustomerInfo.Phone"></span>
                         <div class="underline"></div>
@@ -75,14 +99,14 @@
                                 <p>quantity: @item.Quantity</p>
                             </div>
                         }
+                        <div class="checkout-info">
+                            <p>total price: @Model.PriceSum</p>
+                        </div>
                     </div>
-                    <div class="checkout-info">
-                        <p>total price: @Model.PriceSum</p>
-                    </div>
+
                 </div>
-                <button type="submit">CONTINUE</button>
+                <button class="checkout-button" type="submit">CONTINUE</button> @*------------- SUBMIT FORM --------------*@
             </div>
         </div>
     </div>
-    
 </form>

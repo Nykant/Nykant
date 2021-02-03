@@ -1,12 +1,11 @@
-﻿using NykantMVC.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NykantMVC.ViewModels
+namespace NykantAPI.Models.DTO
 {
-    public class CheckoutVM
+    public class CheckoutDTO
     {
         public string Subject { get; set; }
         public int PriceSum { get; set; }
