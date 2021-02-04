@@ -49,6 +49,12 @@ namespace NykantMVC.Controllers
         }
 
         [HttpPost]
+        public async Task<IActionResult> CustomerInfoCrumb(CheckoutVM checkoutVM)
+        {
+            return View("CustomerInfo", checkoutVM);
+        }
+
+        [HttpPost]
         public async Task<IActionResult> CustomerInfo(CheckoutVM checkoutVM)
         {
             var accessToken = await HttpContext.GetTokenAsync("access_token");

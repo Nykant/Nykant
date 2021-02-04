@@ -4,11 +4,12 @@
     ViewData["Title"] = "Checkout";
 }
 
+
 <div class="row bottom-side-padding fadein">
-    <div class="col-8 center top-padding right-side-padding">
-        <div class="col-8 left">
-            <div class="breadcrumbs">
-                <a asp-controller="Bag" asp-action="Details" asp-route-subject="@Model.Subject">Shopping Bag</a> >
+    <div class="col-8 center top-padding ">
+        <div class="col-8 left right-side-padding">
+            <div class="breadcrumbs dark-card">
+                <a  asp-route-subject="@Model.Subject">Shopping Bag</a> >
                 <a>Customer Info</a> >
                 <a>Shipping</a> >
                 <a>Payment</a>
@@ -25,8 +26,7 @@
         @Html.HiddenFor(x => x.BagItems[i].ProductId);
         @Html.HiddenFor(x => x.BagItems[i].BagId);
         @Html.HiddenFor(x => x.BagItems[i].Quantity);
-        @Html.HiddenFor(x => x.BagItems[i].Product);
-        @Html.HiddenFor(x => x.BagItems[i].Bag);
+        @Html.HiddenFor(x => x.BagItems[i].Product.Title);
     }
     @Html.HiddenFor(x => x.PriceSum)
     @Html.HiddenFor(x => x.Subject)
@@ -34,12 +34,15 @@
     <div class="row">
         <div class="col-8 center">
             <div class="col-8 left right-side-padding fadein">
-                <div class="main-content">
+                <div class="customerinfo dark-card">
+                    <div class="customerinfo-header">
+                        <h1>Your contact information</h1>
+                    </div>
                     <div class="inputstyle">
-                        <input id="input" onfocus="onfocus()" onkeyup="invalid()" onmouseout="mouseout()" required asp-for="@Model.CustomerInfo.Email" />
-                        <label id="label" asp-for="@Model.CustomerInfo.Email"></label>
+                        <input required asp-for="@Model.CustomerInfo.Email" />
+                        <label asp-for="@Model.CustomerInfo.Email"></label>
                         <span asp-validation-for="@Model.CustomerInfo.Email"></span>
-                        <div id="underline" class="underline"></div>
+                        <div class="underline"></div>
                     </div>
                     <div class="inputstyle">
                         <input required asp-for="@Model.CustomerInfo.FirstName" />
@@ -91,23 +94,30 @@
                     </div>
                 </div>
             </div>
-            <div class="col-4 left fadein">
-                <div class="side-content">
+            <div class="col-4 right fadein dark-card">
+                <div class="sidebar">
+                    <div class="sidebar-header">
+                        <h1>Bag</h1>
+                    </div>
                     <div class="sidebar-items">
                         @foreach (var item in Model.BagItems)
                         {
-                            <div class="sidebar-item">
-                                <img src="~/images/gyngestol.jpg" />
-                                <p>quantity: @item.Quantity</p>
-                            </div>
+                        <div class="sidebar-item">
+                            <img src="~/images/gyngestol.jpg" />
+                            <p>@item.Product.Title</p>
+                            <p>@item.Quantity stk.</p>
+                        </div>
                         }
-                        <div class="checkout-info">
-                            <p>total price: @Model.PriceSum</p>
+                        <div class="checkout-price">
+                            <p><span>shipping:</span> price</p>
+                            <p><span>taxes:</span> price</p>
+                            <p><span>total:</span> @Model.PriceSum</p>
                         </div>
                     </div>
-
                 </div>
-                <button class="checkout-button fadein" type="submit">CONTINUE</button> @*------------- SUBMIT FORM --------------*@
+            </div>
+            <div class="col-4 right fadein ">
+                <button class="checkout-button dark-card" type="submit">CONTINUE</button> @*------------- SUBMIT FORM --------------*@
             </div>
         </div>
     </div>

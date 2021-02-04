@@ -1,10 +1,7 @@
 ﻿.breadcrumbs {
-    background: #474747;
+    padding:30px;
     min-height: 100px;
-    border-radius: 5px;
-    padding: 30px;
-    color:grey;
-
+    color: grey;
 }
 
     .breadcrumbs a {
@@ -17,26 +14,57 @@
             color: #8cffa4;
         }
 
-.main-content {
-    border-radius: 5px;
+.customerinfo {
+    padding: 30px;
     width: 100%;
     min-height: 100%;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    padding: 30px;
-    background-color: #474747;
 }
 
-.side-content {
-    border-radius: 5px;
-    color: grey;
+.customerinfo-header {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    width: 50%;
+    color: #c1c1c1;
+    padding: 10px;
+    border-bottom: 1px solid #8cffa4;
+    border-top: 1px solid #8cffa4;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+    .customerinfo-header h1 {
+
+    }
+
+.sidebar {
+    padding: 30px;
+    color: #c1c1c1;
     width: 100%;
-    min-height: 200px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    background-color: #474747;
+    min-height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sidebar-header {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    width: 50%;
+    color: #c1c1c1;
+    padding: 10px;
+    border-bottom: 1px solid #8cffa4;
+    border-top: 1px solid #8cffa4;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .sidebar-items {
-    
+    font-size: 12px;
+    margin-top: 20px;
 }
 
 .sidebar-item {
@@ -53,13 +81,16 @@
         padding-left:10px;
     }
 
-.checkout-info {
-
+.checkout-price {
+    margin-top:20px;
 }
 
-.checkout-info p {
+.checkout-price p {
     color:white;
 }
+    .checkout-price p span {
+        color: #8cffa4;
+    }
 
 .checkout-button {
     border-radius:5px;

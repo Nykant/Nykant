@@ -12,6 +12,7 @@ namespace NykantMVC.ViewModels
         public int PriceSum { get; set; }
         public List<BagItem> BagItems { get; set; }
         public CustomerInfo CustomerInfo { get; set; }
-        public string ShippingMethod { get; set; }
+        public ShippingOption ShippingOption { get; set; }
+        public PaymentMethod PaymentMethod { get; set; }
     }
 }

@@ -26,7 +26,7 @@ namespace NykantAPI.Controllers
         }
 
         [HttpGet("api/{controller}/{action}/{subject}")]
-        public async Task<ActionResult<BagDetailsDTO>> GetBag(string subject)
+        public async Task<ActionResult<BagDetailsDTO>> GetBag(string subject) // THIS IS A SHIT METHOD :D
         {
             if (!ModelState.IsValid)
             {
@@ -34,7 +34,7 @@ namespace NykantAPI.Controllers
             }
 
 
-            var bag = _context.Bags.FirstOrDefault(x => x.Subject == subject);
+            var bag = _context.Bags.FirstOrDefault(x => x.Subject == subject); // FIX THIS SHIT PLEASE :D
             if (bag == null)
             {
                 bag = new Bag

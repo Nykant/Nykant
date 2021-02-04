@@ -24,7 +24,7 @@ namespace NykantAPI.Controllers
         public async Task<ActionResult<CheckoutDTO>> GetCheckoutInfo(string subject)
         {
             var bag = _context.Bags
-                .FirstOrDefault(x => x.Subject == subject);
+                .FirstOrDefault(x => x.Subject == subject); // FIX THIS SHIT ????
 
             var bagItems = _context.BagItems
                 .Include(x => x.Product)

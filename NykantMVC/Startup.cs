@@ -13,7 +13,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.IdentityModel.Tokens.Jwt;
-using JavaScriptEngineSwitcher.V8;
 using JavaScriptEngineSwitcher.Extensions.MsDependencyInjection;
 using React.AspNet;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
@@ -54,13 +53,6 @@ namespace NykantMVC
                     options.Scope.Add("NykantAPI");
                     options.Scope.Add("offline_access");
                 });
-
-            //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            //services.AddReact();
-
-            //// Make sure a JS engine is registered, or you will get an error!
-            //services.AddJsEngineSwitcher(options => options.DefaultEngineName = V8JsEngine.EngineName)
-            //  .AddV8();
 
             services.AddControllersWithViews();
             services.AddRazorPages();
