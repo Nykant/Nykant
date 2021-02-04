@@ -48,12 +48,12 @@ select:-webkit-autofill:focus {
 
     .inputstyle input:focus ~ .underline, .inputstyle input:valid ~ .underline, .inputstyle input:hover ~ .underline {
         transform: scaleX(1);
-        background: white;
+        background: #8cffa4;
     }
 
     .inputstyle input:focus ~ label, .inputstyle input:valid ~ label, .inputstyle input:hover ~ label {
         transform: translate(-200px, -25px);
         font-size: 12px;
         opacity: 0.5;
-        color: white;
+        color: #8cffa4;
     }

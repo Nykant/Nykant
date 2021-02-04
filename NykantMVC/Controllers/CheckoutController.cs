@@ -77,9 +77,12 @@ namespace NykantMVC.Controllers
             return Content("Failed");
         }
 
-        [HttpGet]
+        [HttpPost]
         public async Task<IActionResult> Shipping(CheckoutVM checkoutVM)
         {
+
+
+
             return View(checkoutVM);
         }
 

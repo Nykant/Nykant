@@ -6,6 +6,7 @@
 
     .breadcrumbs a {
         color: grey;
+        transition: color ease 0.4s;
     }
         .breadcrumbs a:any-link {
             color: #6dceff;
@@ -69,7 +70,9 @@
 
 .sidebar-item {
     display: flex;
-    padding:10px;
+    padding: 10px;
+    border-bottom: 1px solid #8cffa4;
+
 }
 
     .sidebar-item img {
@@ -96,13 +99,17 @@
     border-radius:5px;
     margin-top:10px;
     border: none;
+    outline: none;
     background-color: #474747;
     color:white;
     height:50px;
     width:100%;
     cursor:pointer;
+    transition: box-shadow ease 0.4s;
+    transition: color ease 0.4s;
 }
 
     .checkout-button:hover {
-        background-color: black;
+        box-shadow:0px 0px 10px #8cffa4;
+        color:#8cffa4;
     }
