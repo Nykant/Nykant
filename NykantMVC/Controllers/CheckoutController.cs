@@ -83,7 +83,7 @@ namespace NykantMVC.Controllers
 
 
 
-            return View(checkoutVM);
+            return View("Payment", checkoutVM);
         }
 
         [HttpGet]

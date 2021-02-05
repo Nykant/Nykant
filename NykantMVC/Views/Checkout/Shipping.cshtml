@@ -2,7 +2,7 @@
 
 @{
     List<ShippingOption> shippingOptions = new List<ShippingOption>
-    {
+{
         new ShippingOption{ Name = "Postnord", Price = 30 },
         new ShippingOption{ Name = "GLS", Price = 35 }
     };
@@ -45,27 +45,51 @@
 
 
 <div class="row fadein">
-    <form asp-controller="Checkout" asp-action="">
+    <form asp-controller="Checkout" asp-action="Shipping" method="post">
+        @Html.HiddenFor(x => x.CustomerInfo.Email)
+        @Html.HiddenFor(x => x.CustomerInfo.FirstName)
+        @Html.HiddenFor(x => x.CustomerInfo.LastName)
+        @Html.HiddenFor(x => x.CustomerInfo.Address)
+        @Html.HiddenFor(x => x.CustomerInfo.Address2)
+        @Html.HiddenFor(x => x.CustomerInfo.City)
+        @Html.HiddenFor(x => x.CustomerInfo.Country)
+        @Html.HiddenFor(x => x.CustomerInfo.Postal)
+        @Html.HiddenFor(x => x.CustomerInfo.Phone)
+        @Html.HiddenFor(x => x.PriceSum)
+        @Html.HiddenFor(x => x.Subject)
+        @for (int i = 0; i < Model.BagItems.Count(); i++)
+        {
+            @Html.HiddenFor(x => x.BagItems[i].BagId)
+            @Html.HiddenFor(x => x.BagItems[i].ProductId)
+            @Html.HiddenFor(x => x.BagItems[i].Quantity)
+            @Html.HiddenFor(x => x.BagItems[i].Product.Title)
+        }
+        <input id="input-shipping-name" type="hidden" asp-for="@Model.ShippingOption.Name" />
+        <input id="input-shipping-price" type="hidden" asp-for="@Model.ShippingOption.Price" />
         <div class="col-8 center">
             <div class="col-8 left right-side-padding">
                 <div class="shipping dark-card">
-                    <div class="selector">
-                        <div class="selections">
-                            <select>
-                                <option value="0">Choose Shipping</option>
-                                @foreach (var option in shippingOptions)
-                                {
-                                    <option value="@optionValue">@option.Name - @option.Price,- dkk</option>
-                                    optionValue++;
-                                }
-                            </select>
-                        </div>
+                    <div id="shipping-header" class="header">
+                        Choose Shipping
+                    </div>
+                    <div class="shipping-options" id="shipping-options">
+                        <select>
+                            <option value="0">
+                                Choose Shipping
+                            </option>
+                            @foreach (var item in shippingOptions)
+                            {
+                                <option value="@optionValue">
+                                    @item.Name
+                                </option>
+                            }
+                        </select>
                     </div>
                 </div>
             </div>
             <div class="col-4 left fadein dark-card">
                 <div class="sidebar">
-                    <div class="sidebar-header">
+                    <div class="header">
                         <h1>Bag</h1>
                     </div>
                     <div class="sidebar-items">
@@ -86,9 +110,9 @@
                 </div>
             </div>
             <div class="col-4 right fadein ">
-                <button class="checkout-button dark-card" type="submit">CONTINUE</button> @*------------- SUBMIT FORM --------------*@
+                <button class="button dark-card" type="submit">CONTINUE</button> @*------------- SUBMIT FORM --------------*@
             </div>
         </div>
     </form>
-    
+
 </div>
