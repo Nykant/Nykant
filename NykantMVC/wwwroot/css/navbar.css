@@ -1,0 +1,182 @@
+﻿/* Navbar --------------------------------------------------------*/
+
+/* navbar-mobile */
+@media only screen and (max-width: 600px) {
+    .navbar {
+        display: none;
+    }
+
+    .navbar-mobile-wrap {
+        margin-top: 30px;
+        position: relative;
+        font-size: 24px;
+    }
+
+        .navbar-mobile-wrap a {
+            color: #ffffff;
+            display: inline-block;
+            float: left;
+            margin-right: 20px;
+        }
+
+    #myLinks {
+        margin-top: 70px;
+        width: 100%;
+        background-color: #535353;
+        position: absolute;
+        display: none;
+    }
+
+        #myLinks a {
+            width: 100%;
+            display: block;
+            float: none;
+        }
+}
+
+/* navbar-desktop */
+
+@media only screen and (min-width: 600px) {
+    .navbar-mobile {
+        display: none;
+    }
+
+    .navbar-wrap {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    #userBurger2 {
+        right: 0px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .navbar-wrap {
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+
+    #userBurger2 {
+        right: 100px;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .navbar-wrap {
+        padding-left: 220px;
+        padding-right: 220px;
+    }
+
+    #userBurger2 {
+        right: 220px;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .navbar-wrap {
+        padding-left: 325px;
+        padding-right: 325px;
+    }
+
+    #userBurger2 {
+        right: 325px;
+    }
+}
+
+@media only screen and (min-width: 1500px) {
+    .navbar-wrap {
+        padding-left: 425px;
+        padding-right: 425px;
+    }
+
+    #userBurger2 {
+        right: 425px;
+    }
+}
+
+/* navbar settings */
+
+.navbar-wrap {
+    position: relative;
+    margin-top: 30px;
+    font-size: 24px;
+}
+
+    .navbar-wrap a {
+        margin-right: 50px;
+        display: inline-block;
+        float: left;
+    }
+
+
+.highlightTextOut a {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+    .highlightTextOut a:before, .highlightTextIn a:before {
+        position: absolute;
+        color: var(--green);
+        content: attr(alt);
+        transition: all 0.3s;
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    .highlightTextOut a:hover:before, .highlightTextIn a:hover:before {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+/* Highlight text in  */
+.highlightTextIn a {
+    color: var(--dark);
+}
+
+    .highlightTextIn a:before {
+        transform: scale(1.2);
+    }
+
+a.icon {
+    transition: all 0.3s;
+    transform: scale(1);
+    font-size: 24px;
+    position: relative;
+    float: right;
+}
+
+    a.icon:hover {
+        color: var(--green);
+        transition: all 0.3s;
+        transform: scale(0.8);
+    }
+
+#userBurger {
+    width: 100%;
+    margin-top: 70px;
+    position: absolute;
+    background-color: #484848;
+    display: none;
+    z-index: 99;
+}
+
+    #userBurger a {
+        width: 100%;
+        display: block;
+    }
+
+#userBurger2 {
+    position: absolute;
+    background-color: var(--dark);
+    display: none;
+    margin-top: 50px;
+    border: 1px solid var(--green);
+    z-index: 99;
+}
+
+    #userBurger2 a {
+        color: var(--light-grey);
+        padding: 30px;
+        width: 100%;
+        display: block;
+    }

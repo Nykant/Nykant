@@ -4,15 +4,17 @@
     List<ShippingOption> shippingOptions = new List<ShippingOption>
 {
         new ShippingOption{ Name = "Postnord", Price = 30 },
-        new ShippingOption{ Name = "GLS", Price = 35 }
+        new ShippingOption{ Name = "GLS", Price = 35 },
+        new ShippingOption{ Name = "GLS Privat", Price = 55 }
     };
     var optionValue = 1;
 }
 
-<div class="row bottom-side-padding fadein">
+<div class="row fadein bottom-side-padding">
     <div class="col-8 center top-padding ">
         <div class="col-8 left right-side-padding">
             <div class="breadcrumbs dark-card">
+                <a asp-controller="Bag" asp-action="Details" asp-route-subject="@Model.Subject">SHIPPING BAG</a>  >
                 <form asp-controller="Checkout" asp-action="CustomerInfoCrumb" method="post">
                     @Html.HiddenFor(x => x.CustomerInfo.Email)
                     @Html.HiddenFor(x => x.CustomerInfo.FirstName)
@@ -32,47 +34,65 @@
                         @Html.HiddenFor(x => x.BagItems[i].Quantity)
                         @Html.HiddenFor(x => x.BagItems[i].Product.Title)
                     }
-                    <input type="submit" />
+                    <button type="submit">CUSTOMER INFO</button> >
                 </form>
-                <a asp-controller="Bag" asp-action="Details" asp-route-subject="@Model.Subject">Shopping Bag</a> >
-                <a asp-controller="Checkout" asp-action="CustomerInfo" asp-route-checkoutVM2="@Model">Customer Info</a> >
-                <a>Shipping</a> >
-                <a>Payment</a>
+                <a class="current">SHIPPING</a> >
+                <a>PAYMENT</a>
+            </div>
+
+        </div>
+        <div class="col-4 right fadein">
+            <div class="sidebar dark-card">
+                <div class="header">
+                    Bag
+                </div>
+                <div class="sidebar-items">
+                    @foreach (var item in Model.BagItems)
+                    {
+                        <div class="sidebar-item">
+                            <img src="~/images/gyngestol.jpg" />
+                            <p>@item.Product.Title</p>
+                            <p>@item.Quantity stk.</p>
+                        </div>
+                    }
+                    <div class="checkout-price">
+                        <p><span>shipping:</span> price</p>
+                        <p><span>taxes:</span> price</p>
+                        <p><span>total:</span> @Model.PriceSum</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
+    <div class="col-8 center">
+        <form asp-controller="Checkout" asp-action="Shipping" method="post">
+            @Html.HiddenFor(x => x.CustomerInfo.Email)
+            @Html.HiddenFor(x => x.CustomerInfo.FirstName)
+            @Html.HiddenFor(x => x.CustomerInfo.LastName)
+            @Html.HiddenFor(x => x.CustomerInfo.Address)
+            @Html.HiddenFor(x => x.CustomerInfo.Address2)
+            @Html.HiddenFor(x => x.CustomerInfo.City)
+            @Html.HiddenFor(x => x.CustomerInfo.Country)
+            @Html.HiddenFor(x => x.CustomerInfo.Postal)
+            @Html.HiddenFor(x => x.CustomerInfo.Phone)
+            @Html.HiddenFor(x => x.PriceSum)
+            @Html.HiddenFor(x => x.Subject)
+            @for (int i = 0; i < Model.BagItems.Count(); i++)
+            {
+                @Html.HiddenFor(x => x.BagItems[i].BagId)
+                @Html.HiddenFor(x => x.BagItems[i].ProductId)
+                @Html.HiddenFor(x => x.BagItems[i].Quantity)
+                @Html.HiddenFor(x => x.BagItems[i].Product.Title)
+            }
+            <input id="input1" type="hidden" asp-for="@Model.ShippingOption.Name" />
+            <input id="input2" type="hidden" asp-for="@Model.ShippingOption.Price" />
 
-
-<div class="row fadein">
-    <form asp-controller="Checkout" asp-action="Shipping" method="post">
-        @Html.HiddenFor(x => x.CustomerInfo.Email)
-        @Html.HiddenFor(x => x.CustomerInfo.FirstName)
-        @Html.HiddenFor(x => x.CustomerInfo.LastName)
-        @Html.HiddenFor(x => x.CustomerInfo.Address)
-        @Html.HiddenFor(x => x.CustomerInfo.Address2)
-        @Html.HiddenFor(x => x.CustomerInfo.City)
-        @Html.HiddenFor(x => x.CustomerInfo.Country)
-        @Html.HiddenFor(x => x.CustomerInfo.Postal)
-        @Html.HiddenFor(x => x.CustomerInfo.Phone)
-        @Html.HiddenFor(x => x.PriceSum)
-        @Html.HiddenFor(x => x.Subject)
-        @for (int i = 0; i < Model.BagItems.Count(); i++)
-        {
-            @Html.HiddenFor(x => x.BagItems[i].BagId)
-            @Html.HiddenFor(x => x.BagItems[i].ProductId)
-            @Html.HiddenFor(x => x.BagItems[i].Quantity)
-            @Html.HiddenFor(x => x.BagItems[i].Product.Title)
-        }
-        <input id="input-shipping-name" type="hidden" asp-for="@Model.ShippingOption.Name" />
-        <input id="input-shipping-price" type="hidden" asp-for="@Model.ShippingOption.Price" />
-        <div class="col-8 center">
-            <div class="col-8 left right-side-padding">
-                <div class="shipping dark-card">
-                    <div id="shipping-header" class="header">
+            <div class="col-8 left right-side-padding top-side-padding">
+                <div class="custom-list dark-card">
+                    <div id="custom-list-header" class="header">
                         Choose Shipping
                     </div>
-                    <div class="shipping-options" id="shipping-options">
+                    <div class="custom-list-options" id="custom-list-options">
                         <select>
                             <option value="0">
                                 Choose Shipping
@@ -87,32 +107,16 @@
                     </div>
                 </div>
             </div>
-            <div class="col-4 left fadein dark-card">
-                <div class="sidebar">
-                    <div class="header">
-                        <h1>Bag</h1>
-                    </div>
-                    <div class="sidebar-items">
-                        @foreach (var item in Model.BagItems)
-                        {
-                            <div class="sidebar-item">
-                                <img src="~/images/gyngestol.jpg" />
-                                <p>@item.Product.Title</p>
-                                <p>@item.Quantity stk.</p>
-                            </div>
-                        }
-                        <div class="checkout-price">
-                            <p><span>shipping:</span> price</p>
-                            <p><span>taxes:</span> price</p>
-                            <p><span>total:</span> @Model.PriceSum</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-4 right fadein ">
-                <button class="button dark-card" type="submit">CONTINUE</button> @*------------- SUBMIT FORM --------------*@
-            </div>
-        </div>
-    </form>
 
+            <div class="col-4 right fadein ">
+                <button id="custom-list-button" class="button dark-card" type="submit">CHOOSE SHIPPING</button> @*------------- SUBMIT FORM --------------*@
+            </div>
+        </form>
+    </div>
 </div>
+
+
+<script>
+    var button = document.getElementById("custom-list-button").disabled = true;
+</script>
+<script src="~/JS/custom-list.js"></script>

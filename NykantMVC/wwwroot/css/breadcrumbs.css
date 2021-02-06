@@ -1,0 +1,51 @@
+﻿.breadcrumbs {
+    padding: 30px;
+    min-height: 100px;
+    color: grey;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+    .breadcrumbs form {
+        display: inline;
+    }
+
+    .breadcrumbs .current {
+        color: var(--green);
+    }
+
+    .breadcrumbs form button {
+        padding: 10px;
+        background: none;
+        border: none;
+        transition: all ease 0.4s;
+        font-family: "Trirong", serif;
+        font-size: 16px;
+    }
+
+        .breadcrumbs form button:disabled {
+            color: grey;
+        }
+
+        .breadcrumbs form button:enabled {
+            color: var(--blue);
+            cursor: pointer;
+        }
+
+            .breadcrumbs form button:enabled:hover {
+                color: var(--green);
+            }
+
+    .breadcrumbs a {
+        padding: 10px;
+        color: grey;
+        transition: color ease 0.4s;
+    }
+
+        .breadcrumbs a:any-link {
+            color: #6dceff;
+        }
+
+            .breadcrumbs a:any-link:hover {
+                color: #8cffa4;
+            }

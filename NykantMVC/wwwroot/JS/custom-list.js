@@ -1,18 +1,19 @@
 ﻿var x, i, j, l, ll, selElmnt, a, b, c;
-x = document.getElementsByClassName("shipping-options");
+x = document.getElementsByClassName("custom-list");
 l = x.length;
 
-var elem = document.getElementById("shipping-options");
-var header = document.getElementById("shipping-header");
-var inputname = document.getElementById("input-shipping-name");
-var inputprice = document.getElementById("input-shipping-price");
+var elem = document.getElementById("custom-list-options");
+var header = document.getElementById("custom-list-header");
+var input1 = document.getElementById("input1");
+var input2 = document.getElementById("input2");
+var button = document.getElementById("custom-list-button");
 
 for (i = 0; i < l; i++) {
     selElmnt = x[i].getElementsByTagName("select")[0];
     ll = selElmnt.length;
     for (j = 1; j < ll; j++) {
         c = document.createElement("div");
-        c.setAttribute("class", "shipping-option notselected");
+        c.setAttribute("class", "custom-list-option notselected");
         c.innerHTML = selElmnt.options[j].innerHTML;
 
         c.addEventListener("click", function (e) {
@@ -23,15 +24,18 @@ for (i = 0; i < l; i++) {
             for (i = 0; i < sl; i++) {
                 if (s.options[i].innerHTML == this.innerHTML) {
                     s.selectedIndex = i;
-                    //inputprice.innerHTML = this.innerHTML;
                     header.innerHTML = this.innerHTML;
-                    y = this.parentNode.getElementsByClassName("shipping-option selected");
+                    input2.value = this.innerHTML;
+                    input1.value = this.innerHTML;
+                    button.innerHTML = "CONTINUE";
+                    button.disabled = false;
+                    y = this.parentNode.getElementsByClassName("custom-list-option selected");
                     yl = y.length;
                     for (k = 0; k < yl; k++) {
-                        y[k].setAttribute("class", "shipping-option notselected");
+                        y[k].setAttribute("class", "custom-list-option notselected");
                     }
-                    this.setAttribute("class", "shipping-option selected");
-                    inputname.value = this.innerHTML;
+                    this.setAttribute("class", "custom-list-option selected");
+
                     break;
                 }
             }

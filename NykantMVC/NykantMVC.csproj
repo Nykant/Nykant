@@ -37,7 +37,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\css\stil.css" />
+    <None Include="wwwroot\css\style.css" />
   </ItemGroup>
 
 </Project>

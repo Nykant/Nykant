@@ -1,30 +1,4 @@
-﻿.breadcrumbs {
-    padding:30px;
-    min-height: 100px;
-    color: grey;
-}
-
-    .breadcrumbs a {
-        color: grey;
-        transition: color ease 0.4s;
-    }
-        .breadcrumbs a:any-link {
-            color: #6dceff;
-        }
-        .breadcrumbs a:any-link:hover {
-            color: #8cffa4;
-        }
-
-.customerinfo {
-    padding: 30px;
-    width: 100%;
-    min-height: 100%;
-}
-
-    .customerinfo-header h1 {
-
-    }
-
+﻿
 .sidebar {
     padding: 30px;
     color: #c1c1c1;
@@ -32,21 +6,6 @@
     min-height: 100%;
     margin-left: auto;
     margin-right: auto;
-}
-
-.sidebar-header {
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 20px;
-    width: 50%;
-    color: #c1c1c1;
-    padding: 10px;
-    border-bottom: 1px solid #8cffa4;
-    border-top: 1px solid #8cffa4;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
 }
 
 .sidebar-items {
@@ -81,3 +40,22 @@
         color: #8cffa4;
     }
 
+
+
+.credit-card {
+    padding: 30px;
+    color: var(--light-grey);
+    width: 100%;
+    min-height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.customerinfo {
+    padding: 30px;
+    width: 100%;
+    min-height: 100%;
+}
+
+.customerinfo-header h1 {
+}

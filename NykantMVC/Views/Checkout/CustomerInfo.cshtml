@@ -9,8 +9,8 @@
     <div class="col-8 center top-padding ">
         <div class="col-8 left right-side-padding">
             <div class="breadcrumbs dark-card">
-                <a  asp-route-subject="@Model.Subject">Shopping Bag</a> >
-                <a>Customer Info</a> >
+                <a asp-controller="Bag" asp-action="Details" asp-route-subject="@Model.Subject">Shopping Bag</a> >
+                <a class="current">Customer Info</a> >
                 <a>Shipping</a> >
                 <a>Payment</a>
             </div>
@@ -36,7 +36,7 @@
             <div class="col-8 left right-side-padding fadein">
                 <div class="customerinfo dark-card">
                     <div class="header">
-                        <h1>Your contact information</h1>
+                        Your contact information
                     </div>
                     <div class="inputstyle">
                         <input required asp-for="@Model.CustomerInfo.Email" />

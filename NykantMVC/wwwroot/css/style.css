@@ -51,8 +51,12 @@ body {
 /* ----------------------- */
 
 a {
-  color: #000000;
+  color: var(--blue);
   text-decoration: none;
+}
+
+a:hover {
+    color:var(--green)
 }
 
 ol, ul {
@@ -60,11 +64,13 @@ ol, ul {
 }
 
 footer {
+    color:white;
     position: static;
     font-family: Raleway;
     padding: 3em 3em;
     text-align: center;
-    background: #555;
+    background: var(--dark);
+    bottom: 0px;
 }
 
     header span {
@@ -75,17 +81,7 @@ footer span {
     color: #AAA;
 }
 
-@keyframes slidefadeleft2 {
-    0% {
-        opacity: 0;
-        margin-left: 0%;
-    }
 
-    100% {
-        opacity: 1;
-        margin-left: 25%;
-    }
-}
 
 /* GRID ---------------------------------------------------------------*/
 
@@ -158,7 +154,7 @@ footer span {
     position: relative;
     height: 100px;
     background-color: #808080;
-    /*    box-shadow: 0px 0px 15px #000000;*/
+    box-shadow: 0px 0px 15px #000000;
 }
 
 .slidefromleft {
@@ -198,19 +194,6 @@ footer span {
     animation-timing-function: ease;
 }
 
-@keyframes fadein {
-    0% {
-        transform: scale(0)
-    }
-
-    100% {
-        transform: scale(1)
-    }
-}
-
-
-
-
 .fullscreen-row {
     min-height: 100vh;
 }
@@ -225,6 +208,10 @@ footer span {
 
 .bottom-side-padding {
     padding-bottom: 10px;
+}
+
+.top-side-padding {
+    padding-top: 10px;
 }
 
 .header {
@@ -249,7 +236,7 @@ footer span {
     border: none;
     outline: none;
     background-color: #474747;
-    color: #6dceff;
+    color: var(--green);
     height: 50px;
     width: 100%;
     cursor: pointer;
@@ -258,5 +245,53 @@ footer span {
 
     .button:hover {
         box-shadow: 0px 0px 15px #8cffa4;
-        color: #8cffa4;
     }
+
+    .button:disabled {
+        cursor: initial;
+        color: grey;
+        box-shadow: none;
+    }
+
+    .button:enabled {
+        cursor: pointer;
+        color: var(--green);
+    }
+
+.header {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    width: 50%;
+    color: #c1c1c1;
+    padding: 10px;
+    border-bottom: 1px solid #8cffa4;
+    border-top: 1px solid #8cffa4;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+
+@keyframes fadein {
+    0% {
+        transform: scale(0)
+    }
+
+    100% {
+        transform: scale(1)
+    }
+}
+
+/*@keyframes slidefadeleft2 {
+    0% {
+        opacity: 0;
+        margin-left: 0%;
+    }
+
+    100% {
+        opacity: 1;
+        margin-left: 25%;
+    }
+}*/

@@ -4,3 +4,98 @@
     ViewData["Title"] = "Payment";
 }
 
+<div class="row bottom-side-padding fadein">
+    <div class="col-8 center top-padding ">
+        <div class="col-8 left right-side-padding">
+            <div class="breadcrumbs dark-card">
+                <a asp-controller="Bag" asp-action="Details" asp-route-subject="@Model.Subject">SHIPPING BAG</a>  >
+                <form asp-controller="Checkout" asp-action="CustomerInfoCrumb" method="post">
+                    @Html.HiddenFor(x => x.CustomerInfo.Email)
+                    @Html.HiddenFor(x => x.CustomerInfo.FirstName)
+                    @Html.HiddenFor(x => x.CustomerInfo.LastName)
+                    @Html.HiddenFor(x => x.CustomerInfo.Address)
+                    @Html.HiddenFor(x => x.CustomerInfo.Address2)
+                    @Html.HiddenFor(x => x.CustomerInfo.City)
+                    @Html.HiddenFor(x => x.CustomerInfo.Country)
+                    @Html.HiddenFor(x => x.CustomerInfo.Postal)
+                    @Html.HiddenFor(x => x.CustomerInfo.Phone)
+                    @Html.HiddenFor(x => x.PriceSum)
+                    @Html.HiddenFor(x => x.Subject)
+                    @Html.HiddenFor(x => x.ShippingOption.Name)
+                    @Html.HiddenFor(x => x.ShippingOption.Price)
+                    @for (int i = 0; i < Model.BagItems.Count(); i++)
+                    {
+                        @Html.HiddenFor(x => x.BagItems[i].BagId)
+                        @Html.HiddenFor(x => x.BagItems[i].ProductId)
+                        @Html.HiddenFor(x => x.BagItems[i].Quantity)
+                        @Html.HiddenFor(x => x.BagItems[i].Product.Title)
+                    }
+                    <button type="submit">CUSTOMER INFO</button> >
+                </form>
+                <form asp-controller="Checkout" asp-action="ShippingCrumb" method="post">
+                    @Html.HiddenFor(x => x.CustomerInfo.Email)
+                    @Html.HiddenFor(x => x.CustomerInfo.FirstName)
+                    @Html.HiddenFor(x => x.CustomerInfo.LastName)
+                    @Html.HiddenFor(x => x.CustomerInfo.Address)
+                    @Html.HiddenFor(x => x.CustomerInfo.Address2)
+                    @Html.HiddenFor(x => x.CustomerInfo.City)
+                    @Html.HiddenFor(x => x.CustomerInfo.Country)
+                    @Html.HiddenFor(x => x.CustomerInfo.Postal)
+                    @Html.HiddenFor(x => x.CustomerInfo.Phone)
+                    @Html.HiddenFor(x => x.PriceSum)
+                    @Html.HiddenFor(x => x.Subject)
+                    @Html.HiddenFor(x => x.ShippingOption.Name)
+                    @Html.HiddenFor(x => x.ShippingOption.Price)
+                    @for (int i = 0; i < Model.BagItems.Count(); i++)
+                    {
+                        @Html.HiddenFor(x => x.BagItems[i].BagId)
+                        @Html.HiddenFor(x => x.BagItems[i].ProductId)
+                        @Html.HiddenFor(x => x.BagItems[i].Quantity)
+                        @Html.HiddenFor(x => x.BagItems[i].Product.Title)
+                    }
+                    <button type="submit">SHIPPING</button> >
+                </form>
+                <a class="current">PAYMENT</a>
+            </div>
+        </div>
+    </div>
+</div> 
+
+<div class="row fadein">
+    <div class="col-8 center">
+        <div class="col-8 left right-side-padding">
+            <div class="credit-card dark-card">
+                <div class="header">
+                    CREDIT CARD INFORMATION
+                </div>
+                <div class="credit-card-info">
+                    <div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4 left fadein dark-card">
+            <div class="sidebar">
+                <div class="header">
+                    <h1>Bag</h1>
+                </div>
+                <div class="sidebar-items">
+                    @foreach (var item in Model.BagItems)
+                    {
+                        <div class="sidebar-item">
+                            <img src="~/images/gyngestol.jpg" />
+                            <p>@item.Product.Title</p>
+                            <p>@item.Quantity stk.</p>
+                        </div>
+                    }
+                    <div class="checkout-price">
+                        <p><span>shipping:</span> price</p>
+                        <p><span>taxes:</span> price</p>
+                        <p><span>total:</span> @Model.PriceSum</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -53,6 +53,11 @@ namespace NykantMVC.Controllers
         {
             return View("CustomerInfo", checkoutVM);
         }
+        [HttpPost]
+        public async Task<IActionResult> ShippingCrumb(CheckoutVM checkoutVM)
+        {
+            return View("Shipping", checkoutVM);
+        }
 
         [HttpPost]
         public async Task<IActionResult> CustomerInfo(CheckoutVM checkoutVM)
@@ -76,21 +81,13 @@ namespace NykantMVC.Controllers
             }
             return Content("Failed");
         }
-
+        [Route("checkout")]
         [HttpPost]
         public async Task<IActionResult> Shipping(CheckoutVM checkoutVM)
         {
-
-
-
             return View("Payment", checkoutVM);
         }
 
-        [HttpGet]
-        public IActionResult Payment(CheckoutVM checkoutVM)
-        {
 
-            return View(checkoutVM);
-        }
     }
 }

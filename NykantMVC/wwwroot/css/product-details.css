@@ -1,0 +1,136 @@
+﻿/* Details ------------------------------------------------*/
+.red-text {
+    color: red;
+}
+
+.checked {
+    color: orange;
+}
+
+.details-info-wrap {
+    padding-left: 30px;
+}
+
+.details-image-wrap, .details-info-wrap {
+    position: relative;
+    height: 70vh;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    text-align: center;
+    transition: none;
+}
+
+.details-image-list {
+    float: left;
+    position: relative;
+    width: 20%;
+    height: 100%;
+}
+
+.secondary-image-wrap {
+    padding-right: 10%;
+    padding-bottom: 10%;
+}
+
+    .secondary-image-wrap img {
+        display: block;
+        position: relative;
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+        cursor: pointer;
+        transition: none;
+        object-fit: contain;
+    }
+
+        .secondary-image-wrap img:hover {
+            transition: none;
+            box-shadow: 0px 0px 10px red;
+        }
+
+.primary-image-wrap {
+    position: relative;
+    max-width: 80%;
+    float: left;
+}
+
+    .primary-image-wrap img {
+        display: block;
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+        position: relative;
+        object-fit: contain;
+        transition: none;
+    }
+
+
+
+/*---*/
+
+[class*="button-"] {
+    height: 20px;
+    width: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.button-red {
+    background-color: red;
+}
+
+.button-blue {
+    background-color: blue;
+}
+
+.button-brown {
+    background-color: saddlebrown;
+}
+
+.quantity-wrap {
+    margin: auto;
+    width: 75px;
+    height: 30px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+}
+
+    .quantity-wrap span {
+        padding: 5px;
+        cursor: pointer;
+    }
+
+.addtobag-button {
+    margin: auto;
+    background-color: black;
+    width: 150px;
+    height: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+    .addtobag-button:hover {
+        transition: none;
+        box-shadow: 0px 0px 10px red;
+    }
+
+.details-description-wrap {
+    margin-bottom: 50px;
+    position: relative;
+    padding-top: 50px;
+    height: 50vh;
+    text-align: center;
+    box-shadow: 0px 0px 10px black;
+}
+
+.details-description h1 {
+    text-decoration: solid;
+    font-size: 24px;
+}
+
+.details-description p {
+    margin-top: 5vh;
+}
