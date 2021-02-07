@@ -1,0 +1,59 @@
+﻿/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    border: none;
+    -webkit-text-fill-color: white;
+    -webkit-box-shadow: 0 0 0px 1000px #474747 inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.inputstyle {
+    padding: 20px;
+}
+
+    .inputstyle input {
+        width: 200px;
+        padding: 5px;
+        outline: none;
+        border: none;
+        background: none;
+        transition: box-shadow 0.3s ease;
+        color: white;
+    }
+
+    .inputstyle label {
+        position: absolute;
+        color: grey;
+        pointer-events: none;
+        transition: all 0.3s ease;
+        transform: translate(-200px, 0);
+    }
+
+    .inputstyle .underline {
+        margin:auto;
+        height: 2px;
+        width: 200px;
+        background: grey;
+        transform: scaleX(0.2);
+        transform-origin: left;
+        transition: transform 0.3s ease;
+    }
+
+    .inputstyle input:focus ~ .underline, .inputstyle input:valid ~ .underline, .inputstyle input:hover ~ .underline {
+        transform: scaleX(1);
+        background: #8cffa4;
+    }
+
+    .inputstyle input:focus ~ label, .inputstyle input:valid ~ label, .inputstyle input:hover ~ label {
+        transform: translate(-200px, -25px);
+        font-size: 12px;
+        opacity: 0.5;
+        color: #8cffa4;
+    }

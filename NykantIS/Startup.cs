@@ -100,7 +100,6 @@ namespace NykantIS
             //    };
             //});
 
-            services.AddRazorPages();
             services.AddControllersWithViews();
         }
 
@@ -124,7 +123,6 @@ namespace NykantIS
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapDefaultControllerRoute();
-                endpoints.MapRazorPages();
             });
         }
 
