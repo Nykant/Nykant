@@ -240,10 +240,14 @@ footer span {
     min-width: 100%;
     cursor: pointer;
     transition: all ease 0.4s;
-    max-height:100%;
-    max-width:100%;
-
+    text-align: center;
+    
 }
+
+    .button p {
+        padding-top:15px;
+    }
+
 
     .button:hover {
         box-shadow: 0px 0px 15px #8cffa4;

@@ -229,7 +229,6 @@ footer span {
     border-bottom-right-radius: 10px;
 }
 
-
 .button {
     border-radius: 5px;
     margin-top: 10px;
@@ -237,11 +236,31 @@ footer span {
     outline: none;
     background-color: #474747;
     color: var(--green);
-    height: 50px;
-    width: 100%;
+    min-height: 50px;
+    min-width: 100%;
     cursor: pointer;
     transition: all ease 0.4s;
+    text-align: center;
+    
 }
+
+.nav-button {
+    border: none;
+    outline: none;
+    background:none;
+    width: 200px;
+    padding:30px;
+    color:var(--light-grey);
+    cursor:pointer;
+}
+
+.nav-button:hover {
+    color:var(--green)
+}
+    .button p {
+        padding-top:15px;
+    }
+
 
     .button:hover {
         box-shadow: 0px 0px 15px #8cffa4;
@@ -263,15 +282,18 @@ footer span {
     margin-right: auto;
     margin-bottom: 20px;
     width: 50%;
-    color: #c1c1c1;
-    padding: 10px;
+    color: var(--light-grey);
+    padding: 20px;
     border-bottom: 1px solid #8cffa4;
     border-top: 1px solid #8cffa4;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    text-align:center;
 }
+
+
 
 
 @keyframes fadein {

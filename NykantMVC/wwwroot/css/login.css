@@ -1,0 +1,26 @@
+﻿.local-login {
+    padding: 30px;
+    text-align:center;
+}
+
+.external-login {
+    padding: 30px;
+    text-align: center;
+}
+
+.register-link {
+    margin:auto;
+    height:100%;
+    width:100%;
+    position:relative;
+    text-align:initial;
+}
+
+.remember-me {
+    padding-top:10px;
+    margin: auto;
+    display: inline-block;
+    width: 200px;
+    color:grey;
+    font-size:20px;
+}

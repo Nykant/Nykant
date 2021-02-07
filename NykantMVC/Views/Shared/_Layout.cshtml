@@ -26,9 +26,17 @@
 </head>
 <body>
     @{
-        string username = User.Claims.FirstOrDefault(x => x.Type == "given_name").Value;
-        string subject = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
+        string username = null;
+        string subject = null;
+        if (User.Identity.IsAuthenticated)
+        {
+            username = User.Claims.FirstOrDefault(x => x.Type == "given_name").Value;
+            subject = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
+        }
+
+        var url = Context.Request.Path;
     }
+
     <div class="row">
 
         @*-----------------------------------------------NAVBAR MOBILE-----------------------------------------------*@
@@ -79,7 +87,7 @@
 
         <div class="col-12 navbar">
             <div class="navbar-wrap highlightTextIn highlightTextOut">
-                <a alt="NYKANT" asp-controller="Home" asp-action="Index"><span style="color:var(--green)">N</span>YKANT</a>
+                <a alt="NYKANT" asp-controller="Home" asp-action="Index"><span style="color:var(--green)">NY</span>KANT</a>
                 <a alt="PRODUKTER" asp-controller="Product" asp-action="Index">PRODUKTER</a>
                 <a alt="KONTAKT" asp-controller="Contact" asp-action="Index">KONTAKT</a>
                 @*<a alt="REACT TUTORIAL" asp-controller="React" asp-action="Tutorial">REACT TUTORIAL</a>*@
@@ -90,8 +98,8 @@
                 {
                     <div id="userBurger2">
                         <a alt="logged in as: @username!" asp-controller="Account" asp-action="Profile" title="Manage">logged in as: @username!</a>
-                        <form asp-controller="Account" asp-action="Logout" asp-route-returnUrl="@Url.Action("Index", "Home")">
-                            <button type="submit">Logout</button>
+                        <form asp-controller="Account" asp-action="Logout" asp-route-returnUrl="@url">
+                            <button class="nav-button" type="submit">Logout</button>
                         </form>
                     </div>
                     <a href="javascript:void(0);" class="icon" onclick="userBurger2()">
@@ -100,10 +108,14 @@
                 }
                 else
                 {
-                    <div id="userBurger2">
-                        <a alt="REGISTER" asp-area="Identity" asp-page="/Account/Register">REGISTER</a>
-                        <a alt="LOGIN" asp-area="Identity" asp-page="/Account/Login">LOGIN</a>
-                    </div>
+            <div id="userBurger2">
+                <form asp-controller="Account" asp-action="Register" asp-route-returnUrl="@url">
+                    <button class="nav-button" type="submit">Register</button>
+                </form>
+                <form asp-controller="Account" asp-action="Login" asp-route-returnUrl="@url">
+                    <button class="nav-button" type="submit">Login</button>
+                </form>
+            </div>
                     <a href="javascript:void(0);" class="icon" onclick="userBurger2()">
                         <i class="fas fa-user"></i>
                     </a>

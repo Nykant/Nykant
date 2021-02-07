@@ -189,7 +189,7 @@ namespace NykantIS.Controllers
                         }
 
                         // we can trust model.ReturnUrl since GetAuthorizationContextAsync returned non-null
-                        return Redirect(model.ReturnUrl);
+                        return Redirect("https://localhost:5002");
                     }
 
                     // request for a local page
