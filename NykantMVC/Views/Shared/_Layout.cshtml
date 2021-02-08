@@ -97,10 +97,12 @@
                 @if (User.Identity.IsAuthenticated)
                 {
                     <div id="userBurger2">
-                        <a alt="logged in as: @username!" asp-controller="Account" asp-action="Profile" title="Manage">logged in as: @username!</a>
-                        <form asp-controller="Account" asp-action="Logout" asp-route-returnUrl="@url">
-                            <button class="nav-button" type="submit">Logout</button>
-                        </form>
+                        <a asp-controller="Account" asp-action="Profile">
+                            Profile
+                        </a>
+                        <a asp-controller="Account" asp-action="Logout">
+                            Logout
+                        </a>
                     </div>
                     <a href="javascript:void(0);" class="icon" onclick="userBurger2()">
                         <i class="fas fa-user"></i>
@@ -108,14 +110,11 @@
                 }
                 else
                 {
-            <div id="userBurger2">
-                <form asp-controller="Account" asp-action="Register" asp-route-returnUrl="@url">
-                    <button class="nav-button" type="submit">Register</button>
-                </form>
-                <form asp-controller="Account" asp-action="Login" asp-route-returnUrl="@url">
-                    <button class="nav-button" type="submit">Login</button>
-                </form>
-            </div>
+                    <div id="userBurger2">
+                        <a asp-controller="Account" asp-action="Login" asp-route-redirectUrl="@url">
+                            Login or Register
+                        </a>
+                    </div>
                     <a href="javascript:void(0);" class="icon" onclick="userBurger2()">
                         <i class="fas fa-user"></i>
                     </a>
@@ -133,7 +132,7 @@
 
     <footer>
         <div>
-            &copy; 2020 - Nykant - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2020 - Nykant - <a asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
 

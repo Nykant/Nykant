@@ -92,14 +92,6 @@ namespace NykantIS
                     options.ClientSecret = "dvfRC2hzoa-obrao6uScXHSB";
                 });
 
-            //services.AddSingleton<ICorsPolicyService>((container) => {
-            //    var logger = container.GetRequiredService<ILogger<DefaultCorsPolicyService>>();
-            //    return new DefaultCorsPolicyService(logger)
-            //    {
-            //        AllowedOrigins = { "https://localhost" }
-            //    };
-            //});
-
             services.AddControllersWithViews();
         }
 

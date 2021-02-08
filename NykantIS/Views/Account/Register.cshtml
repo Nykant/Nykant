@@ -1,9 +1,10 @@
 ﻿@model RegisterVM
 
 <form asp-controller="Account" asp-action="Register" method="post">
+    <input type="hidden" asp-for="@Model.ReturnUrl" />
     <input placeholder="Email" asp-for="@Model.Email" />
     <input placeholder="FirstName" asp-for="@Model.FirstName" />
     <input placeholder="LastName" asp-for="@Model.LastName" />
     <input placeholder="Password" asp-for="@Model.Password" />
-    <input type="submit" value="Register"/>
+    <input type="submit" value="Register" />
 </form>

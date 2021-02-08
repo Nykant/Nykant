@@ -54,13 +54,13 @@
                 <button class="button dark-card right-side-padding" type="submit" name="button" value="login">Login</button>
             </div>
 
-            <a asp-controller="Account" asp-action="GoBack" class="col-4 left fadein right-side-padding  ">
+            <a href="https://localhost:5002" class="col-4 left fadein right-side-padding  ">
                 <div class="button dark-card">
                     <p>Go Back</p>
                 </div>
             </a>
 
-            <a asp-controller="Account" asp-action="Register" class="col-4 left fadein right-side-padding  ">
+            <a asp-controller="Account" asp-action="Register" asp-route-returnUrl="@Model.ReturnUrl" class="col-4 left fadein right-side-padding  ">
                 <div class="button dark-card">
                     <p>Register</p>
                 </div>

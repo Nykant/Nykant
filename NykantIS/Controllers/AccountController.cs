@@ -59,22 +59,25 @@ namespace NykantIS.Controllers
         public IActionResult RegisterConfirm(RegisterVM registerVM)
         {
                 return View(registerVM);
-
         }
 
         [HttpPost]
-        public async Task<IActionResult> ConfirmEmail(string email)
+        public async Task<IActionResult> ConfirmEmail(RegisterVM registerVM)
         {
-            var user = await _userManager.FindByEmailAsync(email);
+            var user = await _userManager.FindByEmailAsync(registerVM.Email);
             var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
             var result = await _userManager.ConfirmEmailAsync(user, code);
-            return Redirect("Login");
+            return RedirectToAction("Login", registerVM);
         }
 
         [HttpGet]
-        public IActionResult Register()
+        public IActionResult Register(string returnUrl)
         {
-            return View();
+            var registerVM = new RegisterVM
+            {
+                ReturnUrl = returnUrl
+            };
+            return View(registerVM);
         }
 
         [HttpPost]
@@ -189,7 +192,7 @@ namespace NykantIS.Controllers
                         }
 
                         // we can trust model.ReturnUrl since GetAuthorizationContextAsync returned non-null
-                        return Redirect("https://localhost:5002");
+                        return Redirect(model.ReturnUrl);
                     }
 
                     // request for a local page

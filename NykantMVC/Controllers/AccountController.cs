@@ -22,14 +22,9 @@ namespace NykantMVC.Controllers
             return SignOut("Cookies", "oidc");
         }
 
-        public IActionResult Login(string returnUrl)
+        public IActionResult Login(string redirectUrl)
         {
-            return Redirect("https://localhost:5001/account/login");
-        }
-
-        public IActionResult Register(string returnUrl)
-        {
-            return Redirect("https://localhost:5001/account/login");
+            return Redirect(redirectUrl);
         }
 
         public async Task<IActionResult> CallApi()

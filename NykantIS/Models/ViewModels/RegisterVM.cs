@@ -17,6 +17,7 @@ namespace NykantIS.Models.ViewModels
         public string FirstName { get; set; }
         [Required]
         public string LastName { get; set; }
+        public string ReturnUrl { get; set; }
         public ApplicationUser User { get; set; }
     }
 }

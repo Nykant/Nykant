@@ -172,11 +172,47 @@ a.icon {
     margin-top: 50px;
     border: 1px solid var(--green);
     z-index: 99;
+    text-align:center;
+    width:200px;
 }
+
+    #userBurger2 a:first-child {
+        padding-top: 20px;
+    }
 
     #userBurger2 a {
         color: var(--light-grey);
-        padding: 30px;
+        padding-bottom: 20px;
+        font-size: 16px;
         width: 100%;
-        display: block;
+    }
+
+    #userBurger2 a:hover {
+        color:var(--green);
+    }
+
+.nav-a {
+    width: 200px;
+    color: var(--light-grey);
+    cursor: pointer;
+    font-size: 16px;
+}
+
+    .nav-a:hover {
+        color: var(--green);
+    }
+
+.nav-button {
+    border: none;
+    outline: none;
+    background: none;
+    width: 200px;
+    padding: 30px;
+    color: var(--light-grey);
+    cursor: pointer;
+    font-size: 16px;
+}
+
+    .nav-button:hover {
+        color: var(--green)
     }

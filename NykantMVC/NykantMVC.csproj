@@ -40,4 +40,8 @@
     <None Include="wwwroot\css\style.css" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Attributes\" />
+  </ItemGroup>
+
 </Project>
