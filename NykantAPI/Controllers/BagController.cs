@@ -33,7 +33,6 @@ namespace NykantAPI.Controllers
                 return NotFound();
             }
 
-
             var bag = _context.Bags.FirstOrDefault(x => x.Subject == subject); // FIX THIS SHIT PLEASE :D
             if (bag == null)
             {

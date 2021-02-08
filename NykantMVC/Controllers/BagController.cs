@@ -6,6 +6,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -24,11 +25,18 @@ namespace NykantMVC.Controllers
         {
         }
 
-        public async Task<IActionResult> Details(string subject)
+        [AllowAnonymous]
+        public async Task<IActionResult> Details()
         {
-            if (subject == null)
+            string subject = null;
+
+            if (User.Identity.IsAuthenticated)
             {
-                return NotFound();
+                subject = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
+            }
+            else
+            {
+                return View();
             }
 
             var accessToken = await HttpContext.GetTokenAsync("access_token");

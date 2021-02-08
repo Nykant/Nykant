@@ -27,11 +27,11 @@
 <body>
     @{
         string username = null;
-        string subject = null;
+        //string subject = null;
         if (User.Identity.IsAuthenticated)
         {
             username = User.Claims.FirstOrDefault(x => x.Type == "given_name").Value;
-            subject = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
+            //subject = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
         }
 
         var url = Context.Request.Path;
@@ -92,7 +92,7 @@
                 <a alt="KONTAKT" asp-controller="Contact" asp-action="Index">KONTAKT</a>
                 @*<a alt="REACT TUTORIAL" asp-controller="React" asp-action="Tutorial">REACT TUTORIAL</a>*@
 
-                <a class="icon" asp-controller="Bag" asp-action="Details" asp-route-subject="@subject"> <i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+                <a class="icon" asp-controller="Bag" asp-action="Details"> <i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
 
                 @if (User.Identity.IsAuthenticated)
                 {

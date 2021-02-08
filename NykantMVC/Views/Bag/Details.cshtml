@@ -10,7 +10,8 @@
             <div class="bagtitle">
                 <h1>MY BAG</h1>
             </div>
-            <div class="bagtable"> @* ----- TABLE ----- *@
+            <div class="bagtable">
+                @* ----- TABLE ----- *@
                 <div class="bagtable-headers">
                     <div id="header-product">Product</div>
                     <div>Total</div>
@@ -18,7 +19,7 @@
                     <div>Price</div>
                     <div>Name</div>
                 </div>
-                @if (Model.BagItems != null)
+                @if (User.Identity.IsAuthenticated)
                 {
                     @foreach (var bagItem in Model.BagItems)
                     {
@@ -47,6 +48,7 @@
                         </div>
                     }
                 }
+
             </div>
         </div>
         <div class="col-4 left fadein">

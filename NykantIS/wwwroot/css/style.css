@@ -281,7 +281,12 @@ footer span {
     text-align:center;
 }
 
-
+.form {
+    font-size:24px;
+    padding:30px;
+    text-align:center;
+    color:var(--light-grey)
+}
 
 
 @keyframes fadein {

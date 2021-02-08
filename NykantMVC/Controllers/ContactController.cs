@@ -13,7 +13,6 @@ using System.Threading.Tasks;
 
 namespace NykantMVC.Controllers
 {
-    [AllowAnonymous]
     public class ContactController : BaseController
     {
         public ContactController(ILogger<BaseController> logger) : base(logger)

@@ -1,10 +1,51 @@
 ﻿@model RegisterVM
 
-<form asp-controller="Account" asp-action="Register" method="post">
-    <input type="hidden" asp-for="@Model.ReturnUrl" />
-    <input placeholder="Email" asp-for="@Model.Email" />
-    <input placeholder="FirstName" asp-for="@Model.FirstName" />
-    <input placeholder="LastName" asp-for="@Model.LastName" />
-    <input placeholder="Password" asp-for="@Model.Password" />
-    <input type="submit" value="Register" />
-</form>
+    <form asp-controller="Account" asp-action="Register" method="post">
+        <div class="row top-padding">
+            <div class="col-6 center">
+                <div class="form dark-card">
+
+                    <div class="inputstyle">
+                        <input required asp-for="Email" />
+                        <label asp-for="Email"></label>
+                        <span asp-validation-for="Email"></span>
+                        <div class="underline"></div>
+                    </div>
+                    <div class="inputstyle">
+                        <input required asp-for="FirstName" />
+                        <label asp-for="FirstName"></label>
+                        <span asp-validation-for="FirstName"></span>
+                        <div class="underline"></div>
+                    </div>
+                    <div class="inputstyle">
+                        <input required asp-for="LastName" />
+                        <label asp-for="LastName"></label>
+                        <span asp-validation-for="LastName"></span>
+                        <div class="underline"></div>
+                    </div>
+                    <div class="inputstyle">
+                        <input required asp-for="Password" />
+                        <label asp-for="Password"></label>
+                        <span asp-validation-for="Password"></span>
+                        <div class="underline"></div>
+                    </div>
+                    <input type="hidden" asp-for="ReturnUrl" />
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 center">
+                <div class="col-4 right fadein">
+                    <button class="button dark-card right-side-padding" type="submit">Register</button>
+                </div>
+
+                <a asp-action="Login" class="col-4 left fadein right-side-padding">
+                    <div class="button dark-card">
+                        <p>Go Back</p>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </form>
