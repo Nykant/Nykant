@@ -27,13 +27,10 @@
 <body>
     @{
         string username = null;
-        //string subject = null;
         if (User.Identity.IsAuthenticated)
         {
             username = User.Claims.FirstOrDefault(x => x.Type == "given_name").Value;
-            //subject = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
         }
-
         var url = Context.Request.Path;
     }
 
