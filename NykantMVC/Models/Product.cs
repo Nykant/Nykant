@@ -9,14 +9,11 @@ namespace NykantMVC.Models
 {
     public class Product
     {
-        [Key]
         public int Id { get; set; }
         public string Name { get; set; }
         public string Title { get; set; }
-        [Required]
         public string Description { get; set; }
         public int Price { get; set; }
-        [Required]
         public DateTime LastModified { get; set; } 
         public string ImageSource { get; set; }
         public string TypeOfWood { get; set; }
@@ -26,6 +23,5 @@ namespace NykantMVC.Models
         public string Alt { get; set; }
         public IEnumerable<Image> Images { get; set; }
         public IEnumerable<BagItem> BagItems { get; set; }
-
     }
 }

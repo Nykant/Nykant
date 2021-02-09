@@ -58,6 +58,15 @@ namespace NykantMVC
                     options.Scope.Add("offline_access");
                 });
 
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromHours(10);
+                options.Cookie.Name = "SessionCookie";
+                //options.Cookie.IsEssential = true;
+            });
+
             services.AddControllersWithViews();
         }
 
@@ -84,6 +93,8 @@ namespace NykantMVC
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

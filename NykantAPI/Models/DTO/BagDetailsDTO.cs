@@ -9,6 +9,5 @@ namespace NykantAPI.Models.DTO
     {
         public IEnumerable<BagItem> BagItems { get; set; }
         public int PriceSum { get; set; }
-        public int BagId { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Details";
+    int productQuantity = 1;
 }
 <script>
     completed = function (xhr) {
@@ -46,10 +47,25 @@
                 <button class="button-brown"></button>
                 <br />
                 <br />
-                <form method="post" data-ajax="true" data-ajax-method="post" asp-controller="BagItem" asp-action="AddBagItem" asp-route-productId="@ViewBag.productId" asp-route-bagId="@ViewBag.bagId" asp-route-productQuantity="@ViewBag.productQuantity">
+                <form method="post" data-ajax="true" data-ajax-method="post" asp-controller="BagItem" asp-action="AddBagItem" asp-route-productQuantity="@productQuantity">
+                    @Html.HiddenFor(x => x.Product.Id);
+                    @Html.HiddenFor(x => x.Product.Size);
+                    @Html.HiddenFor(x => x.Product.TypeOfWood);
+                    @Html.HiddenFor(x => x.Product.Price);
+                    @Html.HiddenFor(x => x.Product.Title);
+                    @Html.HiddenFor(x => x.Product.Color);
+                    @Html.HiddenFor(x => x.Product.Alt);
+                    @Html.HiddenFor(x => x.Product.Description);
+                    @*@for (int i = 0; i < Model.Product.Images.Count(); i++)
+                    {
+                        @Html.HiddenFor(x => x.Product.Images[i]);
+                    }*@
+
+                    @Html.HiddenFor(x => x.Product.ImageSource);
+
                     <div class="quantity-wrap">
                         <span id="numberdown" onclick="countdown()">-</span>
-                        <p id="quantitynumber" style="display:inline">@ViewBag.productQuantity</p>
+                        <p id="quantitynumber" style="display:inline">@productQuantity</p>
                         <span id="numberup" onclick="countup()">+</span>
                     </div>
                     <button type="submit">ADD TO BAG</button>

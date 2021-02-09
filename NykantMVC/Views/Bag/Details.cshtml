@@ -19,8 +19,7 @@
                     <div>Price</div>
                     <div>Name</div>
                 </div>
-                @if (User.Identity.IsAuthenticated)
-                {
+
                     @foreach (var bagItem in Model.BagItems)
                     {
                         <div class="bag-item">
@@ -36,19 +35,17 @@
                             </div>
                             <div id="bag-item-price"><label>@bagItem.Product.Price</label></div>
                             <div id="bag-item-quantity">
-                                <form method="post" asp-controller="BagItem" asp-action="UpdateBagItem" asp-route-selection="2" asp-route-productId="@bagItem.ProductId" asp-route-bagId="@bagItem.BagId" asp-route-productQuantity="@bagItem.Quantity">
+                                <form method="post" asp-controller="BagItem" asp-action="UpdateBagItem" asp-route-selection="2" asp-route-productId="@bagItem.ProductId" asp-route-sub="@bagItem.Subject" asp-route-productQuantity="@bagItem.Quantity">
                                     <input type="submit" value="-" />
                                 </form>
                                 @bagItem.Quantity
-                                <form method="post" asp-controller="BagItem" asp-action="UpdateBagItem" asp-route-selection="1" asp-route-productId="@bagItem.ProductId" asp-route-bagId="@bagItem.BagId" asp-route-productQuantity="@bagItem.Quantity">
+                                <form method="post" asp-controller="BagItem" asp-action="UpdateBagItem" asp-route-selection="1" asp-route-productId="@bagItem.ProductId" asp-route-sub="@bagItem.Subject" asp-route-productQuantity="@bagItem.Quantity">
                                     <input type="submit" value="+" />
                                 </form>
                             </div>
                             <div id="bag-item-total"><label>total price</label></div>
                         </div>
                     }
-                }
-
             </div>
         </div>
         <div class="col-4 left fadein">

@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using NykantMVC.Extensions;
 using NykantMVC.Models;
 using NykantMVC.Models.DTO;
 
@@ -21,6 +22,7 @@ namespace NykantMVC.Controllers
 {
     public class BagController : BaseController
     {
+
         public BagController(ILogger<BaseController> logger) : base(logger)
         {
         }
@@ -28,22 +30,30 @@ namespace NykantMVC.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Details()
         {
-            string subject = null;
-
-            if (User.Identity.IsAuthenticated)
+            if (!User.Identity.IsAuthenticated)
             {
-                subject = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
-            }
-            else
-            {
-                return View();
+                var bagItems = HttpContext.Session.Get<List<BagItem>>(SessionBagKey);
+
+                if (bagItems == null)
+                {
+                    return View();
+                }
+                else
+                {
+                    BagDetailsDTO bagDetailsDTO = new BagDetailsDTO
+                    {
+                        BagItems = bagItems,
+                    };
+                    return View(bagDetailsDTO);
+                }
             }
 
+            string subject = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
             var accessToken = await HttpContext.GetTokenAsync("access_token");
 
             var client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-            string uri = "https://localhost:6001/api/Bag/GetBag/" + subject;
+            string uri = "https://localhost:6001/api/BagItems/GetBagItems/" + subject;
             var result = await client.GetStringAsync(uri);
 
             BagDetailsDTO bagd = JsonConvert.DeserializeObject<BagDetailsDTO>(result);

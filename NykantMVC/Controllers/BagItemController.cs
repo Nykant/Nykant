@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using NykantMVC.Extensions;
 using NykantMVC.Models;
+using NykantMVC.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,17 +16,23 @@ using System.Threading.Tasks;
 
 namespace NykantMVC.Controllers
 {
+    [AllowAnonymous]
     public class BagItemController : BaseController
     {
+
         public BagItemController(ILogger<BaseController> logger) : base(logger)
         {
         }
 
-        public async Task<IActionResult> UpdateBagItem(int productId, int bagId, int productQuantity, int selection)
+        public async Task<IActionResult> UpdateBagItem(int productId, string sub, int productQuantity, int selection)
         {
+            var accessToken = await HttpContext.GetTokenAsync("access_token");
+            var client = new HttpClient();
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+
             BagItem bagItem = new BagItem
             {
-                BagId = bagId,
+                Subject = sub,
                 ProductId = productId,
                 Quantity = productQuantity
             };
@@ -37,44 +46,67 @@ namespace NykantMVC.Controllers
                 bagItem.Quantity -= 1;
             }
 
-            var accessToken = await HttpContext.GetTokenAsync("access_token");
-
             var bagItemJson = new StringContent(
                 JsonConvert.SerializeObject(bagItem),
                 Encoding.UTF8,
                 "application/json");
 
-            var client = new HttpClient();
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-            string uri = "https://localhost:6001/api/BagItem/UpdateBagItem/" + productId + "/" + bagId + "/" + bagItem.Quantity;
+            string uri = "https://localhost:6001/api/BagItem/UpdateBagItem/" + productId + "/" + sub + "/" + bagItem.Quantity;
             var content = await client.PatchAsync(uri, bagItemJson);
 
             if (content.IsSuccessStatusCode)
             {
-                return RedirectToAction("Details", "Bag", new { subject = User.Claims.FirstOrDefault(x => x.Type == "sub").Value });
+                return RedirectToAction("Details", "Bag");
             }
             return Content("Failed");
         }
 
-        public async Task<IActionResult> AddBagItem(int productId, int bagId, int productQuantity)
+        public async Task<IActionResult> AddBagItem(ProductVM productVM, int productQuantity)
         {
+            bool isAuthenticated = User.Identity.IsAuthenticated;
             var accessToken = await HttpContext.GetTokenAsync("access_token");
+            var client = new HttpClient();
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
 
             BagItem bagItem = new BagItem
             {
-                BagId = bagId,
-                ProductId = productId,
-                Quantity = productQuantity
+                ProductId = productVM.Product.Id,
+                Quantity = productQuantity,
+                Product = productVM.Product
             };
+
+            if (!isAuthenticated)
+            {
+                try
+                {
+                    List<BagItem> bagItems = null;
+                    if (HttpContext.Session.Get<List<BagItem>>(SessionBagKey) == default)
+                    {
+                        bagItems = new List<BagItem>();
+                    }
+                    else
+                    {
+                        bagItems = HttpContext.Session.Get<List<BagItem>>(SessionBagKey);
+                    }
+                    bagItems.Add(bagItem);
+                    HttpContext.Session.Set<List<BagItem>>(SessionBagKey, bagItems);
+                    return NoContent();
+                }
+                catch (Exception e)
+                {
+                    return Content(e.Message);
+                }
+            }
+
+            var sub = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
+            bagItem.Subject = sub;
 
             var todoItemJson = new StringContent(
                 JsonConvert.SerializeObject(bagItem),
                 Encoding.UTF8,
                 "application/json");
 
-            var client = new HttpClient();
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-            string uri = "https://localhost:6001/api/BagItem/AddBagItem/" + productId + "/" + bagId + "/" + productQuantity;
+            string uri = "https://localhost:6001/api/BagItem/PostBagItem/" + productVM.Product.Id + "/" + sub + "/" + productQuantity;
             var content = await client.PostAsync(uri, todoItemJson);
 
             if (content.IsSuccessStatusCode)
@@ -84,21 +116,21 @@ namespace NykantMVC.Controllers
             return Content("Failed");
         }
 
-        public async Task<IActionResult> DeleteBagItem(int productId, int bagId)
-        {
-            var accessToken = await HttpContext.GetTokenAsync("access_token");
-            var subject = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
-            var client = new HttpClient();
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-            string uri = "https://localhost:6001/api/BagItem/DeleteBagItem/" + productId + "/" + bagId;
-            var content = await client.DeleteAsync(uri);
+        //public async Task<IActionResult> DeleteBagItem(int productId)
+        //{
+        //    var accessToken = await HttpContext.GetTokenAsync("access_token");
+        //    var subject = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
+        //    var client = new HttpClient();
+        //    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
 
-            if (content.IsSuccessStatusCode)
-            {
-                return RedirectToAction("GetBag","Bag", new { subject = subject });
-            }
+        //    string uri = "https://localhost:6001/api/BagItem/DeleteBagItem/" + productId + "/" + subject;
+        //    var content = await client.DeleteAsync(uri);
 
-            return NotFound();
-        }
+        //    if (content.IsSuccessStatusCode)
+        //    {
+        //        return RedirectToAction("Details","Bag");
+        //    }
+        //    return NotFound();
+        //}
     }
 }

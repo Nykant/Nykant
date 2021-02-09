@@ -23,15 +23,11 @@ namespace NykantAPI.Controllers
         [HttpGet("api/{controller}/{action}/{subject}")]
         public async Task<ActionResult<CheckoutDTO>> GetCheckoutInfo(string subject)
         {
-            var bag = _context.Bags
-                .FirstOrDefault(x => x.Subject == subject); // FIX THIS SHIT ????
-
             var bagItems = _context.BagItems
                 .Include(x => x.Product)
-                .Where(x => x.BagId == bag.BagId);
+                .Where(x => x.Subject == subject);
 
             int priceSum = 0;
-
             foreach (var bagItem in bagItems)
             {
                 priceSum += bagItem.Product.Price;

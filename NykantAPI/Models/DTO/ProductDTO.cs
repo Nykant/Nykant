@@ -9,5 +9,6 @@ namespace NykantAPI.Models.DTO
     {
         public Product Product { get; set; }
         public int BagId { get; set; }
+        public string SessionBagKey { get; set; }
     }
 }

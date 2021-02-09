@@ -5,63 +5,87 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using NykantAPI.Data;
 using NykantAPI.Models;
+using NykantAPI.Models.DTO;
 
 namespace NykantAPI.Controllers
 {
     [ApiController]
-    public class BagItemController : ControllerBase
+    public class BagItemController : BaseController
     {
-        private readonly ApplicationDbContext _context;
-
-        public BagItemController(ApplicationDbContext context)
+        public BagItemController(ILogger<BaseController> logger, ApplicationDbContext context)
+            : base(logger, context)
         {
-            _context = context;
         }
 
-        [HttpPatch("api/{controller}/{action}/{productId}/{bagId}/{productQuantity}")]
-        public async Task<ActionResult<BagItem>> UpdateBagItem(int productId, int bagId, int productQuantity)
+        [HttpGet("api/{controller}/{action}/{subject}")]
+        public ActionResult<BagDetailsDTO> GetBagItems(string subject)
         {
-            if(BagItemExists(bagId, productId))
+            var subjectTest = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
+            int priceSum = 0;
+            var bagItems = _context.BagItems
+                .Include(x => x.Product)
+                .Where(x => x.Subject == subject);
+
+            foreach (var bagItem in bagItems)
             {
-                var bagItem = _context.BagItems.FirstOrDefault(x => x.BagId == bagId && x.ProductId == productId);
-                if(bagItem != null)
+                priceSum += bagItem.Product.Price;
+            }
+
+            BagDetailsDTO bagDetails = new BagDetailsDTO
+            {
+                BagItems = bagItems,
+                PriceSum = priceSum
+            };
+
+            var json = JsonConvert.SerializeObject(bagDetails, Extensions.JsonOptions.jsonSettings);
+
+            return Ok(json);
+        }
+
+        [HttpPatch("api/{controller}/{action}/{productId}/{subject}/{productQuantity}")]
+        public async Task<ActionResult<BagItem>> UpdateBagItem(int productId, string subject, int productQuantity)
+        {
+            if(BagItemExists(subject, productId))
+            {
+                var bagItem = await _context.BagItems.FirstOrDefaultAsync(x => x.Subject == subject && x.ProductId == productId);
+
+                try
                 {
-                    try
-                    {
-                        bagItem.Quantity = productQuantity;
-                        _context.BagItems.Update(bagItem);
-                        _context.SaveChanges();
-                        return Ok();
-                    }
-                    catch(Exception e)
-                    {
-                        return NotFound(e);
-                    }
+                    bagItem.Quantity = productQuantity;
+                    _context.BagItems.Update(bagItem);
+                    await _context.SaveChangesAsync();
+                    return Ok();
+                }
+                catch (Exception e)
+                {
+                    return NotFound(e);
                 }
             }
             return NotFound();
         }
 
-        [HttpPost("api/{controller}/{action}/{productId}/{bagId}/{productQuantity}")]
-        public async Task<ActionResult<BagItem>> AddBagItem(int productId, int bagId, int productQuantity)
+        [HttpPost("api/{controller}/{action}/{productId}/{sub}/{productQuantity}")]
+        public async Task<ActionResult<BagItem>> PostBagItem(int productId, string sub, int productQuantity)
         {
-            if (BagItemExists(bagId, productId))
+            if (BagItemExists(sub, productId))
             {
-                var bagItem = _context.BagItems.FirstOrDefault(x => x.BagId == bagId && x.ProductId == productId);
+                var bagItem = await _context.BagItems.FirstOrDefaultAsync(x => x.Subject == sub && x.ProductId == productId);
                 bagItem.Quantity += productQuantity;
                 _context.BagItems.Update(bagItem);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
                 return Ok();
             }
             else
             {
                 try
                 {
-                    var bagItem = new BagItem { ProductId = productId, BagId = bagId, Quantity = productQuantity };
-                    _context.BagItems.Add(bagItem);
-                    _context.SaveChanges();
+                    var bagItem = new BagItem { ProductId = productId, Subject = sub, Quantity = productQuantity };
+                    await _context.BagItems.AddAsync(bagItem);
+                    await _context.SaveChangesAsync();
                     return Ok();
                 }
                 catch (Exception e)
@@ -71,125 +95,27 @@ namespace NykantAPI.Controllers
             }
         }
 
-        [HttpDelete("api/{controller}/{action}/{productId}/{bagId}")]
-        public async Task<IActionResult> DeleteBagItem(int productId, int bagId)
-        {
-            var bagItem = await _context.BagItems.FindAsync(bagId, productId);
-            _context.BagItems.Remove(bagItem);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (Exception e)
-            {
-                throw;
-            }
-            return Ok();
-        }
-
-        private bool BagItemExists(int bagId, int productId)
-        {
-            return _context.BagItems.Any(e => e.BagId == bagId && e.ProductId == productId);
-        }
-
-        //// GET: api/BagItem
-        //[HttpGet]
-        //public async Task<ActionResult<IEnumerable<BagItem>>> GetBagItems()
+        //[HttpDelete("api/{controller}/{action}/{productId}/{bagId}")]
+        //public async Task<IActionResult> DeleteBagItem(int productId, string sub)
         //{
-        //    return await _context.BagItems.ToListAsync();
-        //}
-
-        // GET: api/BagItem/5
-        //[HttpGet("{id}")]
-        //public async Task<ActionResult<BagItem>> GetBagItem(string id)
-        //{
-        //    var bagItem = await _context.BagItems.FindAsync(id);
-
-        //    if (bagItem == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return bagItem;
-        //}
-
-        //// PUT: api/BagItem/5
-        //// To protect from overposting attacks, enable the specific properties you want to bind to, for
-        //// more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> PutBagItem(int id, BagItem bagItem)
-        //{
-        //    if (id != bagItem.BagId)
-        //    {
-        //        return BadRequest();
-        //    }
-
-        //    _context.Entry(bagItem).State = EntityState.Modified;
-
-        //    try
-        //    {
-        //        await _context.SaveChangesAsync();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!BagItemExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-
-        //    return NoContent();
-        //}
-
-        //// POST: api/BagItem
-        //// To protect from overposting attacks, enable the specific properties you want to bind to, for
-        //// more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        //[HttpPost]
-        //public async Task<ActionResult<BagItem>> PostBagItem(BagItem bagItem)
-        //{
-        //    _context.BagItems.Add(bagItem);
-        //    try
-        //    {
-        //        await _context.SaveChangesAsync();
-        //    }
-        //    catch (DbUpdateException)
-        //    {
-        //        if (BagItemExists(bagItem.BagId))
-        //        {
-        //            return Conflict();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-
-        //    return CreatedAtAction("GetBagItem", new { id = bagItem.BagId }, bagItem);
-        //}
-
-        //// DELETE: api/BagItem/5
-        //[HttpDelete("{id}")]
-        //public async Task<ActionResult<BagItem>> DeleteBagItem(string id)
-        //{
-        //    var bagItem = await _context.BagItems.FindAsync(id);
-        //    if (bagItem == null)
-        //    {
-        //        return NotFound();
-        //    }
+        //    var bagItem = await _context.BagItems.FindAsync(sub, productId);
 
         //    _context.BagItems.Remove(bagItem);
-        //    await _context.SaveChangesAsync();
-
-        //    return bagItem;
+        //    try
+        //    {
+        //        await _context.SaveChangesAsync();
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        throw;
+        //    }
+        //    return Ok();
         //}
 
-        //private bool BagItemExists(int id)
-        //{
-        //    return _context.BagItems.Any(e => e.BagId == id);
-        //}
+        private bool BagItemExists(string sub, int productId)
+        {
+            return _context.BagItems.Any(e => e.Subject == sub && e.ProductId == productId);
+        }
+
     }
 }

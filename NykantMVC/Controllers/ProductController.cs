@@ -16,6 +16,7 @@ using System.Threading.Tasks;
 
 namespace NykantMVC.Controllers
 {
+    [AllowAnonymous]
     public class ProductController : BaseController
     {
         public ProductController(ILogger<BaseController> logger) : base(logger)
@@ -25,9 +26,9 @@ namespace NykantMVC.Controllers
         public async Task<IActionResult> Index()
         {
             var accessToken = await HttpContext.GetTokenAsync("access_token");
-
             var client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+
             string uri = "https://localhost:6001/api/Product/GetProducts";
             var response = await client.GetStringAsync(uri);
 
@@ -38,28 +39,14 @@ namespace NykantMVC.Controllers
 
         public async Task<IActionResult> Details(int id)
         {
-            if (id == 0)
-            {
-                return NotFound();
-            }
-
             var accessToken = await HttpContext.GetTokenAsync("access_token");
-            var sub = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
             var client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-            string uri = "https://localhost:6001/api/Product/GetProduct/" + id + "/" + sub;
+
+            var uri = "https://localhost:6001/api/Product/GetProduct/" + id;
             var response = await client.GetStringAsync(uri);
 
             ProductVM productVM = JsonConvert.DeserializeObject<ProductVM>(response);
-
-            if (productVM == null)
-            {
-                return NotFound();
-            }
-
-            ViewBag.productId = id;
-            ViewBag.bagId = productVM.BagId;
-            ViewBag.productQuantity = 1;
 
             return View(productVM);
         }

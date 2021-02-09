@@ -14,11 +14,11 @@ namespace NykantMVC.Controllers
 {
     public abstract partial class BaseController : Controller
     {
+        public const string SessionBagKey = "session_bag";
         private readonly ILogger<BaseController> _logger;
 
         public BaseController(ILogger<BaseController> logger)
         {
-
             _logger = logger;
         }
 

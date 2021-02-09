@@ -10,7 +10,8 @@ namespace NykantAPI.Models
     public class Order
     {
         [Key]
-        public string UserId { get; set; }
+        public int Id { get; set; }
+        public string Subject { get; set; }
         public DateTime Created { get; set; }
         public IEnumerable<Product> Products { get; set; }
     }

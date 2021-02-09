@@ -97,12 +97,10 @@ namespace NykantIS.Controllers
                 {
                     throw new Exception(result.Errors.First().Description);
                 }
-                else
 
                 result = _userManager.AddClaimsAsync(user, new Claim[]{
                             new Claim(JwtClaimTypes.GivenName, registerVM.FirstName),
-                            new Claim(JwtClaimTypes.FamilyName, registerVM.LastName),
-                            new Claim(JwtClaimTypes.Id, user.Id)
+                            new Claim(JwtClaimTypes.FamilyName, registerVM.LastName)
                         }).Result;
                 if (!result.Succeeded)
                 {

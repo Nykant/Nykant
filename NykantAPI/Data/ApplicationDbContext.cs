@@ -14,7 +14,6 @@ namespace NykantAPI.Data
         }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Product> Products { get; set; }
-        public DbSet<Bag> Bags { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<BagItem> BagItems { get; set; }
         public DbSet<CustomerInfo> CustomerInfos { get; set; }
@@ -22,11 +21,7 @@ namespace NykantAPI.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<BagItem>()
-                .HasKey(bi => new { bi.BagId, bi.ProductId });
-            modelBuilder.Entity<BagItem>()
-                .HasOne(bi => bi.Bag)
-                .WithMany(b => b.BagItems)
-                .HasForeignKey(bi => bi.BagId);
+                .HasKey(bi => new { bi.Subject, bi.ProductId });
             modelBuilder.Entity<BagItem>()
                 .HasOne(bi => bi.Product)
                 .WithMany(i => i.BagItems)
