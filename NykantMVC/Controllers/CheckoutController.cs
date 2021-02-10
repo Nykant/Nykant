@@ -45,10 +45,14 @@ namespace NykantMVC.Controllers
 
             var service = new PaymentIntentService();
             var paymentIntent = service.Create(options);
-
-            ViewBag.ClientSecret = paymentIntent.ClientSecret;
+            ViewData["ClientSecret"] = paymentIntent.ClientSecret;
 
             return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> PostTestStripe()
+        {
+            return NoContent();
         }
 
         [HttpGet]
