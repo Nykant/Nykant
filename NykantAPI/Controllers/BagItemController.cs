@@ -24,7 +24,6 @@ namespace NykantAPI.Controllers
         [HttpGet("api/{controller}/{action}/{subject}")]
         public ActionResult<BagDetailsDTO> GetBagItems(string subject)
         {
-            var subjectTest = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
             int priceSum = 0;
             var bagItems = _context.BagItems
                 .Include(x => x.Product)

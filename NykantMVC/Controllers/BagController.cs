@@ -36,7 +36,11 @@ namespace NykantMVC.Controllers
 
                 if (bagItems == null)
                 {
-                    return View();
+                    BagDetailsDTO bagDetailsDTO = new BagDetailsDTO
+                    {
+                        BagItems = new List<BagItem>()
+                    };
+                    return View(bagDetailsDTO);
                 }
                 else
                 {
@@ -53,7 +57,7 @@ namespace NykantMVC.Controllers
 
             var client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-            string uri = "https://localhost:6001/api/BagItems/GetBagItems/" + subject;
+            string uri = "https://localhost:6001/api/BagItem/GetBagItems/" + subject;
             var result = await client.GetStringAsync(uri);
 
             BagDetailsDTO bagd = JsonConvert.DeserializeObject<BagDetailsDTO>(result);
