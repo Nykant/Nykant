@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using NykantMVC.Models;
 using NykantMVC.Models.DTO;
 using NykantMVC.ViewModels;
+using Stripe;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,33 @@ namespace NykantMVC.Controllers
     {
         public CheckoutController(ILogger<BaseController> logger) : base(logger)
         {
+
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> TestStripe()
+        {
+            // Set your secret key. Remember to switch to your live secret key in production.
+            // See your keys here: https://dashboard.stripe.com/account/apikeys
+            StripeConfiguration.ApiKey = "sk_test_51Hyy3eKS99T7pxPWiw3m8vnWtHOQgSA2LO778AHP80OLEsntKcJXaej9Xye5zb1yOo85WZX9360L9X7YFyhRX68S00xUn0LWMS";
+
+            var options = new PaymentIntentCreateOptions
+            {
+                Amount = 1099,
+                Currency = "usd",
+                // Verify your integration in this guide by including this parameter
+                Metadata = new Dictionary<string, string>
+                {
+                    { "integration_check", "accept_a_payment" },
+                },
+            };
+
+            var service = new PaymentIntentService();
+            var paymentIntent = service.Create(options);
+
+            ViewBag.ClientSecret = paymentIntent.ClientSecret;
+
+            return View();
         }
 
         [HttpGet]
