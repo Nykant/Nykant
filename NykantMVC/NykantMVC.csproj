@@ -7,9 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Attributes\**" />
     <Compile Remove="wwwroot\ajax\**" />
+    <Content Remove="Attributes\**" />
     <Content Remove="wwwroot\ajax\**" />
+    <EmbeddedResource Remove="Attributes\**" />
     <EmbeddedResource Remove="wwwroot\ajax\**" />
+    <None Remove="Attributes\**" />
     <None Remove="wwwroot\ajax\**" />
   </ItemGroup>
 
@@ -38,10 +42,6 @@
 
   <ItemGroup>
     <None Include="wwwroot\css\style.css" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Attributes\" />
   </ItemGroup>
 
 </Project>

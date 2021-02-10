@@ -26,36 +26,6 @@ namespace NykantMVC.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> TestStripe()
-        {
-            // Set your secret key. Remember to switch to your live secret key in production.
-            // See your keys here: https://dashboard.stripe.com/account/apikeys
-            StripeConfiguration.ApiKey = "sk_test_51Hyy3eKS99T7pxPWiw3m8vnWtHOQgSA2LO778AHP80OLEsntKcJXaej9Xye5zb1yOo85WZX9360L9X7YFyhRX68S00xUn0LWMS";
-
-            var options = new PaymentIntentCreateOptions
-            {
-                Amount = 1099,
-                Currency = "usd",
-                // Verify your integration in this guide by including this parameter
-                Metadata = new Dictionary<string, string>
-                {
-                    { "integration_check", "accept_a_payment" },
-                },
-            };
-
-            var service = new PaymentIntentService();
-            var paymentIntent = service.Create(options);
-            ViewData["ClientSecret"] = paymentIntent.ClientSecret;
-
-            return View();
-        }
-        [HttpPost]
-        public async Task<IActionResult> PostTestStripe()
-        {
-            return NoContent();
-        }
-
-        [HttpGet]
         public async Task<IActionResult> CustomerInfo()
         {
             var subject = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
@@ -113,13 +83,45 @@ namespace NykantMVC.Controllers
             }
             return Content("Failed");
         }
+
         [Route("checkout")]
         [HttpPost]
         public async Task<IActionResult> Shipping(CheckoutVM checkoutVM)
         {
+            // Set your secret key. Remember to switch to your live secret key in production.
+            // See your keys here: https://dashboard.stripe.com/account/apikeys
+            StripeConfiguration.ApiKey = "sk_test_51Hyy3eKS99T7pxPWiw3m8vnWtHOQgSA2LO778AHP80OLEsntKcJXaej9Xye5zb1yOo85WZX9360L9X7YFyhRX68S00xUn0LWMS";
+
+            var options = new PaymentIntentCreateOptions
+            {
+                Amount = 1099,
+                Currency = "usd",
+                // Verify your integration in this guide by including this parameter
+                Metadata = new Dictionary<string, string>
+                {
+                    { "integration_check", "accept_a_payment" },
+                },
+            };
+
+            var service = new PaymentIntentService();
+            var paymentIntent = service.Create(options);
+            ViewBag.ClientSecret = paymentIntent.ClientSecret;
+
             return View("Payment", checkoutVM);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> PaymentProcess()
+        {
+            return View();
+        }
 
+        [HttpGet]
+        [Route("{controller}/{action}/{email}")]
+        public async Task<IActionResult> PaymentSuccess(string email)
+        {
+            ViewBag.Email = email;
+            return View();
+        }
     }
 }
