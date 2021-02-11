@@ -6,6 +6,20 @@
     box-sizing: border-box;
 }
 
+:root {
+    --green: #8cffa4;
+    --blue: #6dceff;
+    --dark: #474747;
+    --light-grey: #c1c1c1;
+    --dark-grey: #2b2b2b;
+    --font-size-small: 8px;
+    --font-size-small-plus: 12px;
+    --font-size-medium: 16px;
+    --font-size-medium-plus: 20px;
+    --font-size-large: 24px;
+    --light-grey-fade: rgba(193, 193, 193, 0.1);
+}
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -39,13 +53,7 @@ body {
 }
 
 
-:root {
-    --green: #8cffa4;
-    --blue: #6dceff;
-    --dark: #474747;
-    --light-grey: #c1c1c1;
-    --dark-grey: #2b2b2b;
-}
+
 
 
 
@@ -81,7 +89,6 @@ footer {
 footer span {
     color: #AAA;
 }
-
 
 
 /* GRID ---------------------------------------------------------------*/
@@ -207,19 +214,8 @@ footer span {
     padding-top: 10px;
 }
 
-.header {
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 20px;
-    width: 50%;
-    color: #c1c1c1;
-    padding: 10px;
-    border-bottom: 1px solid #8cffa4;
-    border-top: 1px solid #8cffa4;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+.left-side-padding {
+    padding-left: 10px;
 }
 
 .button {
@@ -260,10 +256,9 @@ footer span {
 .header {
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 20px;
     width: 50%;
+    padding:10px;
     color: var(--light-grey);
-    padding: 20px;
     border-bottom: 1px solid #8cffa4;
     border-top: 1px solid #8cffa4;
     border-top-left-radius: 10px;
@@ -273,7 +268,9 @@ footer span {
     text-align:center;
 }
 
-
+.green-border {
+    border: 1px solid var(--green);
+}
 
 
 @keyframes fadein {

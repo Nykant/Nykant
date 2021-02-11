@@ -16,10 +16,11 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using NykantMVC.Extensions;
 using NykantMVC.Models;
-using NykantMVC.Models.DTO;
+using NykantMVC.Models.ViewModels;
 
 namespace NykantMVC.Controllers
 {
+    [AllowAnonymous]
     public class BagController : BaseController
     {
 
@@ -27,7 +28,6 @@ namespace NykantMVC.Controllers
         {
         }
 
-        [AllowAnonymous]
         public async Task<IActionResult> Details()
         {
             if (!User.Identity.IsAuthenticated)
@@ -36,19 +36,25 @@ namespace NykantMVC.Controllers
 
                 if (bagItems == null)
                 {
-                    BagDetailsDTO bagDetailsDTO = new BagDetailsDTO
+                    BagVM bagVM = new BagVM
                     {
                         BagItems = new List<BagItem>()
                     };
-                    return View(bagDetailsDTO);
+                    return View(bagVM);
                 }
                 else
                 {
-                    BagDetailsDTO bagDetailsDTO = new BagDetailsDTO
+                    int priceSum = 0;
+                    foreach (var bagItem in bagItems)
+                    {
+                        priceSum += bagItem.Product.Price;
+                    }
+                    BagVM bagVM = new BagVM
                     {
                         BagItems = bagItems,
+                        PriceSum = priceSum
                     };
-                    return View(bagDetailsDTO);
+                    return View(bagVM);
                 }
             }
 
@@ -60,13 +66,13 @@ namespace NykantMVC.Controllers
             string uri = "https://localhost:6001/api/BagItem/GetBagItems/" + subject;
             var result = await client.GetStringAsync(uri);
 
-            BagDetailsDTO bagd = JsonConvert.DeserializeObject<BagDetailsDTO>(result);
+            BagVM bogVM = JsonConvert.DeserializeObject<BagVM>(result);
 
-            if (bagd == null)
+            if (bogVM == null)
             {
                 return NotFound();
             }
-            return View(bagd);
+            return View(bogVM);
         }
     }
 }

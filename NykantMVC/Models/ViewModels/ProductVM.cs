@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NykantMVC.ViewModels
+namespace NykantMVC.Models.ViewModels
 {
-    public class BagItemVM
+    public class ProductVM
     {
-        public BagItem BagItem { get; set; }
+        public Product Product { get; set; }
     }
 }

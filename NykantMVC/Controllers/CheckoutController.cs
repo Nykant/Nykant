@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using NykantMVC.Models;
-using NykantMVC.Models.DTO;
-using NykantMVC.ViewModels;
+using NykantMVC.Models.ViewModels;
 using Stripe;
 using System;
 using System.Collections.Generic;
@@ -18,6 +18,7 @@ using System.Threading.Tasks;
 
 namespace NykantMVC.Controllers
 {
+    [AllowAnonymous]
     public class CheckoutController : BaseController
     {
         public CheckoutController(ILogger<BaseController> logger) : base(logger)
@@ -26,12 +27,12 @@ namespace NykantMVC.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> CustomerInfo()
+        public async Task<IActionResult> CustomerInfo(BagVM bagVM)
         {
             var subject = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
             if (!ModelState.IsValid)
             {
-                return RedirectToAction("Details", "Bag", new { subject });
+                return RedirectToAction("Details", "Bag");
             }
             
             var accessToken = await HttpContext.GetTokenAsync("access_token");

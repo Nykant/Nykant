@@ -1,6 +1,6 @@
 using System;
 
-namespace NykantMVC.Models
+namespace NykantMVC.Models.ViewModels
 {
     public class ErrorViewModel
     {

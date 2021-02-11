@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using NykantMVC.Models;
-using NykantMVC.Models.DTO;
+using NykantMVC.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,7 +60,7 @@ namespace NykantMVC.Controllers
             string uri = "https://localhost:6001/api/Bag/Details/" + subject;
             var result = await client.GetStringAsync(uri);
 
-            BagDetailsDTO bagd = JsonConvert.DeserializeObject<BagDetailsDTO>(result);
+            BagVM bagd = JsonConvert.DeserializeObject<BagVM>(result);
 
             if (bagd == null)
             {

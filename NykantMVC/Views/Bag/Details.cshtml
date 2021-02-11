@@ -1,14 +1,15 @@
-﻿@model BagDetailsDTO
+﻿@model BagVM
 
 @{
     ViewData["Title"] = "Details";
 }
 
-<div class="row fullscreen-row top-padding">
+<div class="row top-padding">
     <div class="col-8 center padding col-wrapper">
         <div class="col-8 left fadein">
-            <div class="bagtitle">
-                <h1>MY BAG</h1>
+            <div class="bagtitle dark-card green-border">
+                    MY BAG
+
             </div>
             <div class="bagtable">
                 @* ----- TABLE ----- *@
@@ -22,7 +23,7 @@
 
                     @foreach (var bagItem in Model.BagItems)
                     {
-                        <div class="bag-item">
+                        <div class="bag-item dark-card">
                             <div id="bag-item-image">
                                 <a asp-action="Details" asp-controller="Product" asp-route-id="@bagItem.Product.Id">
                                     <img src="@bagItem.Product.ImageSource" />
@@ -30,30 +31,60 @@
                             </div>
                             <div id="bag-item-name">
                                 <a asp-action="Details" asp-controller="Product" asp-route-id="@bagItem.Product.Id">
-                                    <label>@bagItem.Product.Title</label>
+                                    @bagItem.Product.Title
                                 </a>
                             </div>
                             <div id="bag-item-price"><label>@bagItem.Product.Price</label></div>
                             <div id="bag-item-quantity">
-                                <form method="post" asp-controller="BagItem" asp-action="UpdateBagItem" asp-route-selection="2" asp-route-productId="@bagItem.ProductId" asp-route-sub="@bagItem.Subject" asp-route-productQuantity="@bagItem.Quantity">
-                                    <input type="submit" value="-" />
-                                </form>
-                                @bagItem.Quantity
-                                <form method="post" asp-controller="BagItem" asp-action="UpdateBagItem" asp-route-selection="1" asp-route-productId="@bagItem.ProductId" asp-route-sub="@bagItem.Subject" asp-route-productQuantity="@bagItem.Quantity">
+                                <form class="counter-thing" method="post" asp-controller="BagItem" asp-action="UpdateBagItem" asp-route-selection="1" asp-route-productId="@bagItem.ProductId" asp-route-sub="@bagItem.Subject" asp-route-productQuantity="@bagItem.Quantity">
                                     <input type="submit" value="+" />
                                 </form>
+                                @bagItem.Quantity
+                                <form class="counter-thing" method="post" asp-controller="BagItem" asp-action="UpdateBagItem" asp-route-selection="2" asp-route-productId="@bagItem.ProductId" asp-route-sub="@bagItem.Subject" asp-route-productQuantity="@bagItem.Quantity">
+                                    
+                                    <input type="submit" value="-" />
+                                </form>
                             </div>
-                            <div id="bag-item-total"><label>total price</label></div>
+                            @{ 
+                                var total = bagItem.Quantity * bagItem.Product.Price;
+                            }
+                            <div id="bag-item-total"><label>@total</label></div>
                         </div>
                     }
             </div>
         </div>
         <div class="col-4 left fadein">
-            <div class="checkout-wrap">
-                <p>SUMMARY</p>
-                <a asp-controller="Checkout" asp-action="CustomerInfo">Checkout</a>
-            </div>
+            <form method="get" asp-controller="Checkout" asp-action="CustomerInfo">
+                <div class="checkout-wrap dark-card">
+                    <div class="header">
+                        <p>Bag</p>
+                    </div>
+
+                    @{
+                        for (int i = 0; i < Model.BagItems.Count(); i++)
+                        {
+                            @Html.HiddenFor(x => x.BagItems[i].Subject)
+                            @Html.HiddenFor(x => x.BagItems[i].Quantity)
+                            @Html.HiddenFor(x => x.BagItems[i].ProductId)
+                            @Html.HiddenFor(x => x.BagItems[i].Product.Id)
+                            @Html.HiddenFor(x => x.BagItems[i].Product.Price)
+                            @Html.HiddenFor(x => x.BagItems[i].Product.Title)
+                            @Html.HiddenFor(x => x.BagItems[i].Product.ImageSource)
+                        }
+                        @Html.HiddenFor(x => x.PriceSum)
+                    }
+
+
+                </div>
+                <div class="left-side-padding">
+                    <button class="button" type="submit">Checkout</button>
+                </div>
+                
+
+
+            </form>
         </div>
+
     </div>
 </div>
 

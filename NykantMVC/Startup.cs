@@ -64,7 +64,6 @@ namespace NykantMVC
             {
                 options.IdleTimeout = TimeSpan.FromHours(10);
                 options.Cookie.Name = "SessionCookie";
-                //options.Cookie.IsEssential = true;
             });
 
             services.AddControllersWithViews();

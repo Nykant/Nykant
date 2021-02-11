@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
 using NykantMVC.Models;
+using NykantMVC.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

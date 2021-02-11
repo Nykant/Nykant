@@ -20,30 +20,30 @@ namespace NykantAPI.Controllers
         {
         }
 
-        [HttpGet("api/{controller}/{action}/{subject}")]
-        public async Task<ActionResult<CheckoutDTO>> GetCheckoutInfo(string subject)
-        {
-            var bagItems = _context.BagItems
-                .Include(x => x.Product)
-                .Where(x => x.Subject == subject);
+        //[HttpGet("api/{controller}/{action}/{subject}")]
+        //public async Task<ActionResult<CheckoutDTO>> GetCheckoutInfo(string subject)
+        //{
+        //    var bagItems = _context.BagItems
+        //        .Include(x => x.Product)
+        //        .Where(x => x.Subject == subject);
 
-            int priceSum = 0;
-            foreach (var bagItem in bagItems)
-            {
-                priceSum += bagItem.Product.Price;
-            }
+        //    int priceSum = 0;
+        //    foreach (var bagItem in bagItems)
+        //    {
+        //        priceSum += bagItem.Product.Price;
+        //    }
 
-            CheckoutDTO checkoutDTO = new CheckoutDTO
-            {
-                 Subject = subject,
-                 BagItems = bagItems.ToList(),
-                 PriceSum = priceSum
-            };
+        //    CheckoutDTO checkoutDTO = new CheckoutDTO
+        //    {
+        //         Subject = subject,
+        //         BagItems = bagItems.ToList(),
+        //         PriceSum = priceSum
+        //    };
 
-            var json = JsonConvert.SerializeObject(checkoutDTO, Extensions.JsonOptions.jsonSettings);
+        //    var json = JsonConvert.SerializeObject(checkoutDTO, Extensions.JsonOptions.jsonSettings);
 
-            return Ok(json);
-        }
+        //    return Ok(json);
+        //}
 
     }
 }

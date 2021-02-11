@@ -19,14 +19,11 @@
     }
 }
 
-
 .bagtitle {
-    min-height: 50px;
+    padding:10px;
     min-width: 100%;
-    background-color: #474747;
-    margin-bottom: 10px;
-    padding-top: 10px;
-    color: white;
+    height:50px;
+    color:var(--light-grey);
 }
 
 .bagtable {
@@ -35,28 +32,30 @@
 }
 
 .bagtable-headers {
-    font-size:20px;
+    font-size: 20px;
     margin-bottom: 10px;
     padding: 10px;
     display: inline-table;
-    width:100%;
+    width: 100%;
+    color: var(--light-grey);
 }
 
-.bagtable-headers div {
-    width:16.65%;
-    float:right;
-}
+    .bagtable-headers div {
+        width: 16.65%;
+        float: right;
+    }
 
 .bagtable-headers div#header-product {
     float:left;
 }
 
 .bag-item {
-    font-size: 14px;
+    font-size: var(--font-size-small-plus);
     border: 1px solid rgba(0, 0, 0, 0.1);
     margin-bottom: 10px;
     padding: 10px;
     display: flex;
+    color:var(--light-grey);
 }
 
     .bag-item div {
@@ -69,6 +68,7 @@
     }
 
         .bag-item div#bag-item-quantity{
+
         }
 
         .bag-item div#bag-item-quantity input, .bag-item div#bag-item-quantity label {
@@ -78,12 +78,14 @@
         }
 
         #bag-item-name {
-            cursor:pointer;
+            padding-top:30px;
         }
 
             .bag-item div#bag-item-quantity input {
-                background-color: #474747;
-                color: white;
+                background-color: var(--dark);
+                color: var(--light-grey);
+                padding:8px;
+                border: 1px solid var(--light-grey-fade);
             }
             .bag-item div#bag-item-quantity label {
                 z-index: -1;
@@ -95,16 +97,22 @@
         display: block;
     }
 
+.bag-item div#bag-item-price {
+    padding-top:40px;
+}
+
+#bag-item-total {
+    padding-top:40px;
+}
 
 .checkout-wrap {
     margin-left:10px;
-    color:white;
+    color:var(--light-grey);
     background-color: #474747;
     padding: 5%;
     min-height: 200px;
 }
     .checkout-wrap a {
         padding: 2%;
-        color: white;
     }
 
