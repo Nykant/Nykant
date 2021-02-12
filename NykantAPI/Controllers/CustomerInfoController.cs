@@ -20,7 +20,7 @@ namespace NykantAPI.Controllers
         {
         }
 
-        [HttpPost("api/{controller}/{action}/{customerInfo}")]
+        [HttpPost("api/{controller}/{action}")]
         public async Task<ActionResult<CustomerInfo>> PostCustomerInfo(CustomerInfo customerInfo)
         {
             try

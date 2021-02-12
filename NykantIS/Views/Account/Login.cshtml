@@ -3,23 +3,21 @@
 <partial name="_ValidationSummary" />
 
 <form asp-route="Login">
-    <div class="row top-padding">
+    <input type="hidden" asp-for="ReturnUrl" />
 
+    <div class="row top-padding">
         @if (Model.EnableLocalLogin)
         {
-
             <div class="col-6 center dark-card">
                 <div class="local-login">
                     <div class="header">
                         NYKANT ACCOUNT LOGIN
                     </div>
 
-                    <input type="hidden" asp-for="ReturnUrl" />
-
                     <div class="inputstyle">
-                        <input required asp-for="Username" />
-                        <label asp-for="Username"></label>
-                        <span asp-validation-for="Username"></span>
+                        <input required asp-for="Email" />
+                        <label asp-for="Email"></label>
+                        <span asp-validation-for="Email"></span>
                         <div class="underline"></div>
                     </div>
 
@@ -39,11 +37,9 @@
                             </label>
                             <p>remember me</p>
                         </div>
-
-                       
                     }
 
-                </div>  
+                </div>
             </div>
         }
     </div>

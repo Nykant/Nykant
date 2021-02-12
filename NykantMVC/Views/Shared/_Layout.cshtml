@@ -27,10 +27,10 @@
 </head>
 <body>
     @{
-        string username = null;
+        string email = null;
         if (User.Identity.IsAuthenticated)
         {
-            username = User.Claims.FirstOrDefault(x => x.Type == "given_name").Value;
+            email = User.Claims.FirstOrDefault(x => x.Type == "email").Value;
         }
         var url = Context.Request.Path;
     }
@@ -47,13 +47,13 @@
                     <i class="fa fa-bars"></i>
                 </a>
 
-                <a class="icon" asp-controller="Bag" asp-action="GetBag" asp-route-id="@username"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+                <a class="icon" asp-controller="Bag" asp-action="GetBag" asp-route-id="@email"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
 
                 @if (User.Identity.IsAuthenticated)
                 {
 
                     <div id="userBurger">
-                        <a alt="logged in as: @username!" asp-controller="Account" asp-action="Profile" title="Manage">logged in as: @username!</a>
+                        <a alt="logged in as: @email!" asp-controller="Account" asp-action="Profile" title="Manage">logged in as: @email!</a>
                         <form asp-Controller="Account" asp-action="Logout">
                             <button type="submit">Logout</button>
                         </form>

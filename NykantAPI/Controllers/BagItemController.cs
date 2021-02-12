@@ -67,13 +67,11 @@ namespace NykantAPI.Controllers
             return NotFound();
         }
 
-        [HttpPost("api/{controller}/{action}/{productId}/{sub}/{productQuantity}")]
-        public async Task<ActionResult<BagItem>> PostBagItem(int productId, string sub, int productQuantity)
+        [HttpPost("api/{controller}/{action}")]
+        public async Task<ActionResult<BagItem>> PostBagItem(BagItem bagItem)
         {
-            if (BagItemExists(sub, productId))
+            if (BagItemExists(bagItem.Subject, bagItem.ProductId))
             {
-                var bagItem = await _context.BagItems.FirstOrDefaultAsync(x => x.Subject == sub && x.ProductId == productId);
-                bagItem.Quantity += productQuantity;
                 _context.BagItems.Update(bagItem);
                 await _context.SaveChangesAsync();
                 return Ok();
@@ -82,7 +80,6 @@ namespace NykantAPI.Controllers
             {
                 try
                 {
-                    var bagItem = new BagItem { ProductId = productId, Subject = sub, Quantity = productQuantity };
                     await _context.BagItems.AddAsync(bagItem);
                     await _context.SaveChangesAsync();
                     return Ok();
@@ -93,23 +90,6 @@ namespace NykantAPI.Controllers
                 }
             }
         }
-
-        //[HttpDelete("api/{controller}/{action}/{productId}/{bagId}")]
-        //public async Task<IActionResult> DeleteBagItem(int productId, string sub)
-        //{
-        //    var bagItem = await _context.BagItems.FindAsync(sub, productId);
-
-        //    _context.BagItems.Remove(bagItem);
-        //    try
-        //    {
-        //        await _context.SaveChangesAsync();
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        throw;
-        //    }
-        //    return Ok();
-        //}
 
         private bool BagItemExists(string sub, int productId)
         {

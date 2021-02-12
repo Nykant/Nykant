@@ -10,10 +10,8 @@ namespace NykantIS
                    new IdentityResource[]
                    {
                         new IdentityResources.OpenId(),
-                        new IdentityResource(
-                            name: "profile",
-                            userClaims: new[]{"given_name", "family_name", "email", "id"},
-                            displayName: "Your profile data")
+                        new IdentityResources.Email(),
+                        new IdentityResources.Profile()
                    };
 
         public static IEnumerable<ApiScope> ApiScopes =>
@@ -52,7 +50,8 @@ namespace NykantIS
                     AllowedScopes = new List<string>
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
-                        "profile",
+                        IdentityServerConstants.StandardScopes.Email,
+                        IdentityServerConstants.StandardScopes.Profile,
                         "NykantAPI"
                     }
                 }

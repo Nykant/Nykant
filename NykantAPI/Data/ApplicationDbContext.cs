@@ -26,9 +26,11 @@ namespace NykantAPI.Data
                 .HasOne(bi => bi.Product)
                 .WithMany(i => i.BagItems)
                 .HasForeignKey(bi => bi.ProductId);
+            //modelBuilder.Entity<BagItem>()
+            //    .Property(x => x.ProductId).ValueGeneratedNever();
 
             modelBuilder.Entity<Product>().HasData(
-                new Product { Id = 1, Title = "Grøntsags Skærebræt", Price = 1000, Description = "a test object", LastModified = DateTime.Now, ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg", TypeOfWood = "valnød", ItemType = "stol", Size = "5mm", Color = "naturligt"},
+                new Product { Id = 1, Title = "Grøntsags Skærebræt", Price = 1000, Description = "a test object", LastModified = DateTime.Now, ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg", TypeOfWood = "valnød", ItemType = "stol", Size = "5mm", Color = "naturligt" },
                 new Product { Id = 2, Title = "Grøntsags Skærebræt", Price = 1000, Description = "a test object", LastModified = DateTime.Now, ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg", TypeOfWood = "eg", ItemType = "stol", Size = "10mm", Color = "farvet-overflade" },
                 new Product { Id = 3, Title = "Grøntsags Skærebræt", Price = 1000, Description = "a test object", LastModified = DateTime.Now, ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg", TypeOfWood = "fyr", ItemType = "bænk", Size = "20mm", Color = "naturligt" },
                 new Product { Id = 4, Title = "Grøntsags Skærebræt", Price = 1000, Description = "a test object", LastModified = DateTime.Now, ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg", TypeOfWood = "eg", ItemType = "skærebræt", Size = "5mm", Color = "farvet-overflade" },
@@ -49,7 +51,7 @@ namespace NykantAPI.Data
                 new Product { Id = 19, Title = "Grøntsags Skærebræt", Price = 1000, Description = "a test object", LastModified = DateTime.Now, ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg", TypeOfWood = "valnød", ItemType = "bænk", Size = "5mm", Color = "naturligt" }
                 );
             modelBuilder.Entity<Image>().HasData(
-                new Image { Id = 1, ProductId = 1, Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"},
+                new Image { Id = 1, ProductId = 1, Source = "../images/Finback-Chairs1-1280x853-c-default.jpg" },
                 new Image { Id = 2, ProductId = 2, Source = "../images/Finback-Chairs1-1280x853-c-default.jpg" },
                 new Image { Id = 3, ProductId = 3, Source = "../images/Finback-Chairs1-1280x853-c-default.jpg" },
                 new Image { Id = 4, ProductId = 4, Source = "../images/Finback-Chairs1-1280x853-c-default.jpg" },

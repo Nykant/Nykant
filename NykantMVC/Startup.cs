@@ -53,7 +53,7 @@ namespace NykantMVC
                     options.SaveTokens = true;
                     options.GetClaimsFromUserInfoEndpoint = true;
 
-                    options.Scope.Add("profile");
+                    options.Scope.Add("email");
                     options.Scope.Add("NykantAPI");
                     options.Scope.Add("offline_access");
                 });

@@ -10,8 +10,8 @@ using NykantIS.Data;
 namespace NykantIS.Data.Migrations.Identity
 {
     [DbContext(typeof(IdentityDbContext))]
-    [Migration("20210127102701_InitialIdentityMigration")]
-    partial class InitialIdentityMigration
+    [Migration("20210212125520_IdentityMigration")]
+    partial class IdentityMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

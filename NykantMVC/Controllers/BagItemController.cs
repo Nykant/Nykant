@@ -71,8 +71,7 @@ namespace NykantMVC.Controllers
             BagItem bagItem = new BagItem
             {
                 ProductId = productVM.Product.Id,
-                Quantity = productQuantity,
-                Product = productVM.Product
+                Quantity = productQuantity
             };
 
             if (!isAuthenticated)
@@ -101,13 +100,13 @@ namespace NykantMVC.Controllers
             var sub = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
             bagItem.Subject = sub;
 
-            var todoItemJson = new StringContent(
+            var bagItemJson = new StringContent(
                 JsonConvert.SerializeObject(bagItem),
                 Encoding.UTF8,
                 "application/json");
 
-            string uri = "https://localhost:6001/api/BagItem/PostBagItem/" + productVM.Product.Id + "/" + sub + "/" + productQuantity;
-            var content = await client.PostAsync(uri, todoItemJson);
+            string uri = "https://localhost:6001/api/BagItem/PostBagItem/";
+            var content = await client.PostAsync(uri, bagItemJson);
 
             if (content.IsSuccessStatusCode)
             {

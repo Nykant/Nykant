@@ -27,7 +27,6 @@ var form = document.getElementById("payment-form");
 var email = document.getElementById("email-input").value;
 
 form.addEventListener("submit", function (ev) {
-    ev.preventDefault();
     stripe.confirmCardPayment(secret, {
         payment_method: {
             card: cardElement,
@@ -37,6 +36,7 @@ form.addEventListener("submit", function (ev) {
         }
     }).then(function (result) {
         if (result.error) {
+            ev.preventDefault();
             // Show error to your customer (e.g., insufficient funds)
             alert("payment failed")
         } else {

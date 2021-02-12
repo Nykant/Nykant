@@ -10,13 +10,12 @@ namespace NykantIS.Models.ViewModels
     {
         [Required]
         [EmailAddress]
+        [DataType(DataType.EmailAddress)]
+        [Display(Name = "Email Address")]
         public string Email { get; set; }
         [Required]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
-        [Required]
-        public string FirstName { get; set; }
-        [Required]
-        public string LastName { get; set; }
         public string ReturnUrl { get; set; }
         public ApplicationUser User { get; set; }
     }
