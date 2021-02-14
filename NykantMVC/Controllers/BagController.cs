@@ -23,11 +23,11 @@ namespace NykantMVC.Controllers
     [AllowAnonymous]
     public class BagController : BaseController
     {
-
         public BagController(ILogger<BaseController> logger) : base(logger)
         {
         }
 
+        [HttpGet]
         public async Task<IActionResult> Details()
         {
             if (!User.Identity.IsAuthenticated)
@@ -59,19 +59,11 @@ namespace NykantMVC.Controllers
             }
 
             string subject = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
-            var accessToken = await HttpContext.GetTokenAsync("access_token");
 
-            var client = new HttpClient();
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-            string uri = "https://localhost:6001/api/BagItem/GetBagItems/" + subject;
-            var result = await client.GetStringAsync(uri);
+            var json = await GetRequest($"BagItem/GetBagItems/{subject}");
 
-            BagVM bogVM = JsonConvert.DeserializeObject<BagVM>(result);
+            BagVM bogVM = JsonConvert.DeserializeObject<BagVM>(json);
 
-            if (bogVM == null)
-            {
-                return NotFound();
-            }
             return View(bogVM);
         }
     }

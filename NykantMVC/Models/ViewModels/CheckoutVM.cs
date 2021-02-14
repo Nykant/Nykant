@@ -13,5 +13,7 @@ namespace NykantMVC.Models.ViewModels
         public List<BagItem> BagItems { get; set; }
         public CustomerInfo CustomerInfo { get; set; }
         public ShippingOption ShippingOption { get; set; }
+        public Order Order { get; set; }
+        public string ClientSecret { get; set; }
     }
 }

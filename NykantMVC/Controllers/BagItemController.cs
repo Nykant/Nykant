@@ -24,49 +24,34 @@ namespace NykantMVC.Controllers
         {
         }
 
-        public async Task<IActionResult> UpdateBagItem(int productId, string sub, int productQuantity, int selection)
+        [HttpPatch]
+        public async Task<IActionResult> UpdateBagItem(BagItem bagItem, int? selection)
         {
-            var accessToken = await HttpContext.GetTokenAsync("access_token");
-            var client = new HttpClient();
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-
-            BagItem bagItem = new BagItem
+            if (selection != 0)
             {
-                Subject = sub,
-                ProductId = productId,
-                Quantity = productQuantity
-            };
-
-            if (selection == 1)
-            {
-                bagItem.Quantity += 1;
-            }
-            else if (selection == 2)
-            {
-                bagItem.Quantity -= 1;
+                if (selection == 1)
+                {
+                    bagItem.Quantity += 1;
+                }
+                else if (selection == 2)
+                {
+                    bagItem.Quantity -= 1;
+                }
             }
 
-            var bagItemJson = new StringContent(
-                JsonConvert.SerializeObject(bagItem),
-                Encoding.UTF8,
-                "application/json");
+            var response = await PatchRequest("BagItem/UpdateBagItem", bagItem);
 
-            string uri = "https://localhost:6001/api/BagItem/UpdateBagItem/" + productId + "/" + sub + "/" + bagItem.Quantity;
-            var content = await client.PatchAsync(uri, bagItemJson);
-
-            if (content.IsSuccessStatusCode)
+            if (response.IsSuccessStatusCode)
             {
                 return RedirectToAction("Details", "Bag");
             }
             return Content("Failed");
         }
 
+        [HttpPost]
         public async Task<IActionResult> AddBagItem(ProductVM productVM, int productQuantity)
         {
             bool isAuthenticated = User.Identity.IsAuthenticated;
-            var accessToken = await HttpContext.GetTokenAsync("access_token");
-            var client = new HttpClient();
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
 
             BagItem bagItem = new BagItem
             {
@@ -97,18 +82,11 @@ namespace NykantMVC.Controllers
                 }
             }
 
-            var sub = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
-            bagItem.Subject = sub;
+            bagItem.Subject = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
 
-            var bagItemJson = new StringContent(
-                JsonConvert.SerializeObject(bagItem),
-                Encoding.UTF8,
-                "application/json");
+            var response = await PostRequest("BagItem/PostBagItem", bagItem);
 
-            string uri = "https://localhost:6001/api/BagItem/PostBagItem/";
-            var content = await client.PostAsync(uri, bagItemJson);
-
-            if (content.IsSuccessStatusCode)
+            if (response.IsSuccessStatusCode)
             {
                 return NoContent();
             }
@@ -127,7 +105,7 @@ namespace NykantMVC.Controllers
 
         //    if (content.IsSuccessStatusCode)
         //    {
-        //        return RedirectToAction("Details","Bag");
+        //        return RedirectToAction("Details", "Bag");
         //    }
         //    return NotFound();
         //}

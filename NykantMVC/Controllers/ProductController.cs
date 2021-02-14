@@ -23,30 +23,22 @@ namespace NykantMVC.Controllers
         {
         }
 
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var accessToken = await HttpContext.GetTokenAsync("access_token");
-            var client = new HttpClient();
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+            var json = await GetRequest("Product/GetProducts");
 
-            string uri = "https://localhost:6001/api/Product/GetProducts";
-            var response = await client.GetStringAsync(uri);
-
-            IEnumerable<Product> products = JsonConvert.DeserializeObject<IEnumerable<Product>>(response);
+            IEnumerable<Product> products = JsonConvert.DeserializeObject<IEnumerable<Product>>(json);
 
             return View(products);
         }
 
+        [HttpGet]
         public async Task<IActionResult> Details(int id)
         {
-            var accessToken = await HttpContext.GetTokenAsync("access_token");
-            var client = new HttpClient();
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+            var json = await GetRequest($"Product/GetProduct/{id}");
 
-            var uri = "https://localhost:6001/api/Product/GetProduct/" + id;
-            var response = await client.GetStringAsync(uri);
-
-            ProductVM productVM = JsonConvert.DeserializeObject<ProductVM>(response);
+            ProductVM productVM = JsonConvert.DeserializeObject<ProductVM>(json);
 
             return View(productVM);
         }

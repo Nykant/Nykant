@@ -4,12 +4,11 @@
     ViewData["Title"] = "Checkout";
 }
 
-
 <div class="row bottom-side-padding fadein">
     <div class="col-8 center top-padding ">
         <div class="col-8 left right-side-padding">
             <div class="breadcrumbs dark-card">
-                <a asp-controller="Bag" asp-action="Details" asp-route-subject="@Model.Subject">Shopping Bag</a> >
+                <a asp-controller="Bag" asp-action="Details">Shopping Bag</a> >
                 <a class="current">Customer Info</a> >
                 <a>Shipping</a> >
                 <a>Payment</a>
@@ -18,9 +17,7 @@
     </div>
 </div>
 
-
-
-<form asp-controller="Checkout" asp-action="CustomerInfo" method="post">
+<form asp-controller="Checkout" asp-action="PostCustomerInfo" method="post">
     @for (int i = 0; i < Model.BagItems.Count(); i++)
     {
         @Html.HiddenFor(x => x.BagItems[i].ProductId);
@@ -89,6 +86,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-4 right fadein dark-card">
                 <div class="sidebar">
                     <div class="sidebar-header">
@@ -111,6 +109,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-4 right fadein ">
                 <button class="button dark-card" type="submit">CONTINUE</button> @*------------- SUBMIT FORM --------------*@
             </div>

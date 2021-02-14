@@ -23,21 +23,5 @@ namespace NykantAPI.Controllers
             _logger = logger;
             _context = context;
         }
-
-        //public override ViewResult View()
-        //{
-        //    ViewBag.UserId = _userManager.GetUserId(User);
-        //    return base.View();
-        //}
-        //public override ViewResult View(object model)
-        //{
-        //    ViewBag.UserId = _userManager.GetUserId(User);
-        //    return base.View(model);
-        //}
-        //public override ViewResult View(string route, object model)
-        //{
-        //    ViewBag.UserId = _userManager.GetUserId(User);
-        //    return base.View(route, model);
-        //}
     }
 }

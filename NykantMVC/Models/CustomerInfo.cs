@@ -8,14 +8,12 @@ namespace NykantMVC.Models
 {
     public class CustomerInfo
     {
-        public int Id { get; set; }
-        public string Subject { get; set; }
-
         [Required]
         [EmailAddress]
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Email Addresse")]
         public string Email { get; set; }
+        public string Subject { get; set; }
         [Required]
         [StringLength(20)]
         [Display(Name = "Fornavn")]

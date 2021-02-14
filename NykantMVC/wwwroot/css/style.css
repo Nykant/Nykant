@@ -48,7 +48,7 @@ body {
     font-size: 16px;
     font-family: "Trirong", serif;
     line-height: normal;
-    color: #000000;
+    color: var(--light-grey);
     background-color: var(--dark-grey);
 }
 
@@ -187,6 +187,9 @@ footer span {
     border-radius: 5px;
 }
 
+.padding {
+    padding: 30px;
+}
 
 .fadein {
     animation-name: fadein;
@@ -257,6 +260,8 @@ footer span {
     margin-left: auto;
     margin-right: auto;
     width: 50%;
+    margin-top:10px;
+    margin-bottom:10px;
     padding:10px;
     color: var(--light-grey);
     border-bottom: 1px solid #8cffa4;

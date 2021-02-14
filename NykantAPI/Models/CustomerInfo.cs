@@ -8,13 +8,13 @@ namespace NykantAPI.Models
 {
     public class CustomerInfo
     {
-        public int Id { get; set; }
-        public string Subject { get; set; }
+        [Key]
         [Required]
         [EmailAddress]
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Email Address")]
         public string Email { get; set; }
+        public string Subject { get; set; }
         [Required]
         [StringLength(20)]
         [Display(Name = "First Name")]
@@ -26,10 +26,6 @@ namespace NykantAPI.Models
         [Required]
         [StringLength(50)]
         public string Address { get; set; }
-        [Required]
-        [StringLength(50)]
-        [Display(Name = "Additional Address Info")]
-        public string Address2 { get; set; }
         [Required]
         [StringLength(20)]
         public string City { get; set; }

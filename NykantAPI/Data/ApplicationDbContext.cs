@@ -16,16 +16,21 @@ namespace NykantAPI.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<BagItem> BagItems { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<CustomerInfo> CustomerInfos { get; set; }
+        public DbSet<ShippingOption> ShippingOptions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<BagItem>()
                 .HasKey(bi => new { bi.Subject, bi.ProductId });
-            modelBuilder.Entity<BagItem>()
-                .HasOne(bi => bi.Product)
-                .WithMany(i => i.BagItems)
-                .HasForeignKey(bi => bi.ProductId);
+            modelBuilder.Entity<OrderItem>()
+                .HasKey(bi => new { bi.OrderId, bi.ProductId});
+
+            //modelBuilder.Entity<BagItem>()
+            //    .HasOne(bi => bi.Product)
+            //    .WithMany(i => i.BagItems)
+            //    .HasForeignKey(bi => bi.ProductId);
             //modelBuilder.Entity<BagItem>()
             //    .Property(x => x.ProductId).ValueGeneratedNever();
 

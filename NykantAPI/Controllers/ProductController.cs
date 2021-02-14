@@ -14,6 +14,7 @@ using Newtonsoft.Json;
 namespace NykantAPI.Controllers
 {
     [ApiController]
+    [Route("[controller]/[action]/")]
     public class ProductController : BaseController
     {
 
@@ -21,14 +22,13 @@ namespace NykantAPI.Controllers
         {
         }
 
-        [HttpGet("api/{controller}/{action}")]
+        [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
-            var products = await _context.Products.ToListAsync();
-            return Ok(products);
+            return Ok(await _context.Products.ToListAsync());
         }
 
-        [HttpGet("api/{controller}/{action}/{id}")]
+        [HttpGet("{id}")]
         public async Task<ActionResult<ProductDTO>> GetProduct(int id) 
         {
 
@@ -42,6 +42,7 @@ namespace NykantAPI.Controllers
             };
 
             var json = JsonConvert.SerializeObject(productDTO, Extensions.JsonOptions.jsonSettings);
+
             return Ok(json);
         }
     }

@@ -8,10 +8,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using NykantAPI.Data;
 using NykantAPI.Models;
+using NykantAPI.Models.DTO;
 
 namespace NykantAPI.Controllers
 {
     [ApiController]
+    [Route("[controller]/[action]")]
     public class OrderController : BaseController
     {
         public OrderController(ILogger<BaseController> logger, ApplicationDbContext context)
@@ -19,12 +21,22 @@ namespace NykantAPI.Controllers
         {
         }
 
-        [HttpPost("api/{controller}/{action}")]
-        public async Task<ActionResult<Order>> PostOrder(Order order)
+        [HttpPatch]
+        public async Task<ActionResult<Order>> UpdateOrder(Order order)
         {
             try
             {
-                _context.Orders.Add(order);
+                var orderDB = await _context.Orders.FirstOrDefaultAsync(x => x.CustomerInfoEmail == order.CustomerInfoEmail && x.Status == Status.Created);
+                if(order.Status != 0)
+                orderDB.Status = order.Status;
+                if(order.Valuta != null)
+                orderDB.Valuta = order.Valuta;
+                if(order.ShippingOptionName != null)
+                orderDB.ShippingOptionName = order.ShippingOptionName;
+                if(order.PIClientSecret != null)
+                orderDB.PIClientSecret = order.PIClientSecret;
+
+                _context.Orders.Update(orderDB);
                 await _context.SaveChangesAsync();
                 return Ok();
             }
@@ -33,6 +45,7 @@ namespace NykantAPI.Controllers
                 return NotFound(e);
             }
         }
+
 
         //[HttpPatch("api/{controller}/{action}")]
         //public async Task<ActionResult<Order>> UpdateBagItem(Order order)

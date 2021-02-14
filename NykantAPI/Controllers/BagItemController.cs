@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,6 +15,7 @@ using NykantAPI.Models.DTO;
 namespace NykantAPI.Controllers
 {
     [ApiController]
+    [Route("[controller]/[action]/")]
     public class BagItemController : BaseController
     {
         public BagItemController(ILogger<BaseController> logger, ApplicationDbContext context)
@@ -21,7 +23,7 @@ namespace NykantAPI.Controllers
         {
         }
 
-        [HttpGet("api/{controller}/{action}/{subject}")]
+        [HttpGet("{subject}")]
         public ActionResult<BagDetailsDTO> GetBagItems(string subject)
         {
             int priceSum = 0;
@@ -45,16 +47,13 @@ namespace NykantAPI.Controllers
             return Ok(json);
         }
 
-        [HttpPatch("api/{controller}/{action}/{productId}/{subject}/{productQuantity}")]
-        public async Task<ActionResult<BagItem>> UpdateBagItem(int productId, string subject, int productQuantity)
+        [HttpPatch]
+        public async Task<ActionResult<BagItem>> UpdateBagItem(BagItem bagItem)
         {
-            if(BagItemExists(subject, productId))
+            if(BagItemExists(bagItem.Subject, bagItem.ProductId))
             {
-                var bagItem = await _context.BagItems.FirstOrDefaultAsync(x => x.Subject == subject && x.ProductId == productId);
-
                 try
                 {
-                    bagItem.Quantity = productQuantity;
                     _context.BagItems.Update(bagItem);
                     await _context.SaveChangesAsync();
                     return Ok();
@@ -67,7 +66,7 @@ namespace NykantAPI.Controllers
             return NotFound();
         }
 
-        [HttpPost("api/{controller}/{action}")]
+        [HttpPost]
         public async Task<ActionResult<BagItem>> PostBagItem(BagItem bagItem)
         {
             if (BagItemExists(bagItem.Subject, bagItem.ProductId))
@@ -82,7 +81,7 @@ namespace NykantAPI.Controllers
                 {
                     await _context.BagItems.AddAsync(bagItem);
                     await _context.SaveChangesAsync();
-                    return Ok();
+                    return CreatedAtAction("GetBagItems", new { subject = bagItem.Subject }, bagItem);
                 }
                 catch (Exception e)
                 {

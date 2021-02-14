@@ -12,12 +12,13 @@ namespace NykantMVC.Controllers
 {
     public class AccountController : Controller
     {
-
+        [HttpGet]
         public IActionResult Logout()
         {
             return SignOut("Cookies", "oidc");
         }
 
+        [HttpGet]
         public IActionResult Login(string redirectUrl)
         {
             return Redirect(redirectUrl);

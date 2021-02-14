@@ -15,7 +15,7 @@
         <div class="col-8 left right-side-padding">
             <div class="breadcrumbs dark-card">
                 <a asp-controller="Bag" asp-action="Details">SHIPPING BAG</a>  >
-                <form asp-controller="Checkout" asp-action="CustomerInfoCrumb" method="post">
+                <form asp-controller="Checkout" asp-action="CustomerInfoCrumb" method="get">
                     @Html.HiddenFor(x => x.CustomerInfo.Email)
                     @Html.HiddenFor(x => x.CustomerInfo.FirstName)
                     @Html.HiddenFor(x => x.CustomerInfo.LastName)
@@ -38,8 +38,8 @@
                 <a class="current">SHIPPING</a> >
                 <a>PAYMENT</a>
             </div>
-
         </div>
+
         <div class="col-4 right fadein">
             <div class="sidebar dark-card">
                 <div class="header">
@@ -64,7 +64,7 @@
         </div>
     </div>
     <div class="col-8 center">
-        <form asp-controller="Checkout" asp-action="PostShipping" method="post">
+        <form asp-controller="Checkout" asp-action="AddShipping" method="post">
             @Html.HiddenFor(x => x.CustomerInfo.Email)
             @Html.HiddenFor(x => x.CustomerInfo.FirstName)
             @Html.HiddenFor(x => x.CustomerInfo.LastName)
@@ -82,8 +82,8 @@
                 @Html.HiddenFor(x => x.BagItems[i].Quantity)
                 @Html.HiddenFor(x => x.BagItems[i].Product.Title)
             }
-            <input id="input1" type="hidden" asp-for="@Model.ShippingOption.Name" />
-            <input id="input2" type="hidden" asp-for="@Model.ShippingOption.Price" />
+            <input id="shipping-name" type="hidden" asp-for="@Model.ShippingOption.Name" />
+            <input id="shipping-price" type="hidden" asp-for="@Model.ShippingOption.Price" />
 
             <div class="col-8 left right-side-padding top-side-padding">
                 <div class="custom-list dark-card">
@@ -113,8 +113,4 @@
     </div>
 </div>
 
-
-<script>
-    var button = document.getElementById("custom-list-button").disabled = true;
-</script>
-<script src="~/JS/custom-list.js"></script>
+<script src="~/JS/custom-list.js"> var button = document.getElementById("custom-list-button").disabled = true; </script>

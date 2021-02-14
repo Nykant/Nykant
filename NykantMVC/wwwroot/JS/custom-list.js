@@ -4,8 +4,8 @@ l = x.length;
 
 var elem = document.getElementById("custom-list-options");
 var header = document.getElementById("custom-list-header");
-var input1 = document.getElementById("input1");
-var input2 = document.getElementById("input2");
+var input1 = document.getElementById("shipping-name");
+var input2 = document.getElementById("shipping-price");
 var button = document.getElementById("custom-list-button");
 
 for (i = 0; i < l; i++) {
