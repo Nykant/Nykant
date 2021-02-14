@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-//using Newtonsoft.Json;
 using NykantMVC.Models;
 using NykantMVC.Models.ViewModels;
 using Stripe;
@@ -18,6 +17,7 @@ using System.Threading.Tasks;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Newtonsoft.Json;
+
 
 namespace NykantMVC.Controllers
 {
@@ -96,72 +96,6 @@ namespace NykantMVC.Controllers
                 return View("Payment", checkoutVM);
             }
             return Content("Failed to create order");
-        }
-
-        [HttpPost]
-        [Route("create-payment-intent")]
-        public ActionResult CreatePaymentIntent([FromBody]PaymentIntentCreateRequest request)
-        {
-            StripeConfiguration.ApiKey = "sk_test_51Hyy3eKS99T7pxPWiw3m8vnWtHOQgSA2LO778AHP80OLEsntKcJXaej9Xye5zb1yOo85WZX9360L9X7YFyhRX68S00xUn0LWMS";
-
-            var options = new PaymentIntentCreateOptions
-            {
-                Amount = CalculateOrderAmount(request.Items),
-                Currency = "dkk",
-                Metadata = new Dictionary<string, string>
-                {
-                    { "integration_check", "accept_a_payment" },
-                },
-            };
-
-            var service = new PaymentIntentService();
-            var paymentIntent = service.Create(options);
-
-            return Json(new { clientSecret = paymentIntent.ClientSecret });
-        }
-        private int CalculateOrderAmount(Item[] items)
-        {
-            // Replace this constant with a calculation of the order's amount
-            // Calculate the order total on the server to prevent
-            // people from directly manipulating the amount on the client
-            return 1400;
-        }
-        public class PaymentIntentCreateRequest
-        {
-            [JsonProperty("items")]
-            public Item[] Items { get; set; }
-        }
-        public class Item
-        {
-            [JsonProperty("id")]
-            public string Id { get; set; }
-        }
-
-        [HttpPost]
-        public IActionResult PaymentProcess()
-        {
-            return NoContent();
-        }
-        
-        [HttpGet]
-        [Route("{controller}/{action}/{email}")]
-        public async Task<IActionResult> PaymentSuccess(string email)
-        {
-            ViewBag.Email = email;
-
-            Models.Order order = new Models.Order
-            {
-                CustomerInfoEmail = email,
-                Status = Status.Accepted
-            };
-
-            var response = await PatchRequest("Order/UpdateOrder", order);
-
-            if (response.IsSuccessStatusCode)
-            {
-                return View();
-            }
-            return Content("Failed to Accept order");
         }
 
 

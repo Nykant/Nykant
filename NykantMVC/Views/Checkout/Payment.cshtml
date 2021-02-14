@@ -87,13 +87,26 @@
         </div>
     </div>
 
-
+    <input type="hidden" id="customer-email" value="@Model.CustomerInfo.Email" />
+    <input type="hidden" id="customer-firstname" value="@Model.CustomerInfo.FirstName" />
+    <input type="hidden" id="customer-lastname" value="@Model.CustomerInfo.LastName" />
+    <input type="hidden" id="customer-address" value="@Model.CustomerInfo.Address" />
+    <input type="hidden" id="customer-city" value="@Model.CustomerInfo.City" />
+    <input type="hidden" id="customer-country" value="@Model.CustomerInfo.Country" />
+    <input type="hidden" id="customer-postal" value="@Model.CustomerInfo.Postal" />
+    <input type="hidden" id="customer-phone" value="@Model.CustomerInfo.Phone" />
+    <input type="hidden" id="pricesum" value="@Model.PriceSum" />
+    <input type="hidden" id="shipping-name" value="@Model.ShippingOption.Name" />
+    <input type="hidden" id="shipping-price" value="@Model.ShippingOption.Price" />
 
     <div class="col-8 center">
         <div class="col-8 left right-side-padding top-side-padding">
             <div class="payment dark-card">
                 <form id="payment-form">
-                    <div id="card-element"><!--Stripe.js injects the Card Element--></div>
+                    <input type="text" id="email" value="@Model.CustomerInfo.Email" placeholder="Email address for receipt" />
+                    <div id="card-element-number"><!--Stripe.js injects the Card Element--></div>
+                    <div id="card-element-expiry"><!--Stripe.js injects the Card Element--></div>
+                    <div id="card-element-cvc"><!--Stripe.js injects the Card Element--></div>
                     <button class="button" id="submit">
                         <div class="spinner hidden" id="spinner"></div>
                         <span id="button-text">Pay</span>
@@ -106,6 +119,7 @@
                 </form>
             </div>
         </div>
+
         <div class="col-8 left right-side-padding top-side-padding">
             <div class="padding dark-card">
                 <h1>TEST CARDS</h1>

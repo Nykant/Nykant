@@ -2,19 +2,44 @@
 // See your keys here: https://dashboard.stripe.com/account/apikeys
 var stripe = Stripe('pk_test_51Hyy3eKS99T7pxPWSbrIYqKDcyKomhVp3hrXymvg8cPkupAmEcbeEoV26ckeJF9GZnfKdvTeQwyKdnwO6uNrIaih001cWPBSI2');
 
-// The items the customer wants to buy
-var purchase = {
-    items: [{ id: "xl-tshirt" }]
+var email = document.getElementById("customer-email").value;
+var firstname = document.getElementById("customer-firstname").value;
+var lastname = document.getElementById("customer-lastname").value;
+var address = document.getElementById("customer-address").value;
+var city = document.getElementById("customer-city").value;
+var country = document.getElementById("customer-country").value;
+var postal = document.getElementById("customer-postal").value;
+var phone = document.getElementById("customer-phone").value;
+var pricesum = parseInt(document.getElementById("pricesum").value);
+var shippingName = document.getElementById("shipping-name").value;
+var shippingPrice = document.getElementById("shipping-price").value;
+
+var Items = {
+    Customer: {
+        Email: email,
+        Name: firstname,
+        Address: address,
+        City: city,
+        Country: country,
+        Postal: postal,
+        Phone: phone
+    },
+    Price: {
+        Amount: pricesum
+    },
+    Shipping: {
+        Name: shippingName
+    }
 };
 
 document.querySelector(".button").disabled = true;
 
-fetch("/create-payment-intent", {
+fetch("/payment/createpaymentintent", {
     method: "POST",
     headers: {
         "Content-Type": "application/json"
     },
-    body: JSON.stringify(purchase)
+    body: JSON.stringify(Items)
 })
     .then(function (response) {
         if (response.status !== 200) {
@@ -44,10 +69,15 @@ fetch("/create-payment-intent", {
             }
         };
 
-        var card = elements.create("card", { style: style });
+        var cardNumber = elements.create("cardNumber", { style: style });
+        var cardExpiry = elements.create("cardExpiry", { style: style });
+        var cardCvc = elements.create("cardCvc", { style: style });
+
         // Stripe injects an iframe into the DOM
-        card.mount("#card-element");
-        card.on("change", function (event) {
+        cardNumber.mount("#card-element-number");
+        cardExpiry.mount("#card-element-expiry");
+        cardCvc.mount("#card-element-cvc");
+        cardNumber.on("change", function (event) {
             // Disable the Pay button if there are no card details in the Element
             document.querySelector(".button").disabled = event.empty;
             document.querySelector("#card-error").textContent = event.error ? event.error.message : "";
@@ -56,7 +86,7 @@ fetch("/create-payment-intent", {
         form.addEventListener("submit", function (event) {
             event.preventDefault();
             // Complete payment when the submit button is clicked
-            payWithCard(stripe, card, data.clientSecret);
+            payWithCard(stripe, cardNumber, data.clientSecret);
         });
     });
 
@@ -68,8 +98,20 @@ var payWithCard = function (stripe, card, clientSecret) {
     loading(true);
     stripe
         .confirmCardPayment(clientSecret, {
+            receipt_email: document.getElementById("email").value,
             payment_method: {
-                card: card
+                card: card,
+                billing_details: {
+                    name: firstname,
+                    address: {
+                        line1: address,
+                        city: city,
+                        country: "DK",
+                        postal_code: postal
+                    },
+                    email: email,
+                    phone: phone,
+                }
             }
         })
         .then(function (result) {

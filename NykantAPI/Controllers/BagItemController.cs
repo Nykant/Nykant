@@ -66,6 +66,24 @@ namespace NykantAPI.Controllers
             return NotFound();
         }
 
+        [HttpDelete("{subject}")]
+        public async Task<ActionResult<BagItem>> DeleteBagItems(string subject)
+        {
+            try
+            {
+                foreach (var item in _context.BagItems)
+                {
+                    _context.BagItems.Remove(item);
+                }
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                return NotFound(e.Message);
+            }
+            return Ok();
+        }
+
         [HttpPost]
         public async Task<ActionResult<BagItem>> PostBagItem(BagItem bagItem)
         {
