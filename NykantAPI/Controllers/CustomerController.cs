@@ -28,9 +28,9 @@ namespace NykantAPI.Controllers
         {
             if (!CustomerExists(customer.Email))
             {
-                _context.Customers.Add(customer);
+                var entity = _context.Customers.Add(customer).Entity;
                 await _context.SaveChangesAsync();
-                return CreatedAtAction("PostCustomerInfo", customer);
+                return Ok(JsonConvert.SerializeObject(entity));
             }
             return Ok();
         }

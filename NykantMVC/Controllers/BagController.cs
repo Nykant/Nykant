@@ -32,7 +32,7 @@ namespace NykantMVC.Controllers
         {
             if (!User.Identity.IsAuthenticated)
             {
-                var bagItems = HttpContext.Session.Get<List<BagItem>>(SessionBagKey);
+                var bagItems = HttpContext.Session.Get<List<BagItem>>(BagSessionKey);
 
                 if (bagItems == null)
                 {

@@ -1,4 +1,4 @@
-﻿@model CheckoutVM
+﻿@model Checkout
 
 @{
     ViewData["Title"] = "Payment";
@@ -8,55 +8,15 @@
 <script src="https://js.stripe.com/v3/"></script>
 <script src="~/JS/Stripe/client.js" defer></script>
 
-<input type="hidden" value="@Model.CustomerInfo.Email" id="email-input" />
-
 <div class="row bottom-side-padding fadein">
     <div class="col-8 center top-padding ">
         <div class="col-8 left right-side-padding">
             <div class="breadcrumbs dark-card">
                 <a asp-controller="Bag" asp-action="Details">SHIPPING BAG</a>  >
                 <form asp-controller="Checkout" asp-action="CustomerInfoCrumb" method="get">
-                    @Html.HiddenFor(x => x.CustomerInfo.Email)
-                    @Html.HiddenFor(x => x.CustomerInfo.FirstName)
-                    @Html.HiddenFor(x => x.CustomerInfo.LastName)
-                    @Html.HiddenFor(x => x.CustomerInfo.Address)
-                    @Html.HiddenFor(x => x.CustomerInfo.City)
-                    @Html.HiddenFor(x => x.CustomerInfo.Country)
-                    @Html.HiddenFor(x => x.CustomerInfo.Postal)
-                    @Html.HiddenFor(x => x.CustomerInfo.Phone)
-                    @Html.HiddenFor(x => x.PriceSum)
-                    @Html.HiddenFor(x => x.Subject)
-                    @Html.HiddenFor(x => x.ShippingOption.Name)
-                    @Html.HiddenFor(x => x.ShippingOption.Price)
-                    @for (int i = 0; i < Model.BagItems.Count(); i++)
-                    {
-                        @Html.HiddenFor(x => x.BagItems[i].Subject)
-                        @Html.HiddenFor(x => x.BagItems[i].ProductId)
-                        @Html.HiddenFor(x => x.BagItems[i].Quantity)
-                        @Html.HiddenFor(x => x.BagItems[i].Product.Title)
-                    }
                     <button type="submit">CUSTOMER INFO</button> >
                 </form>
                 <form asp-controller="Checkout" asp-action="ShippingCrumb" method="get">
-                    @Html.HiddenFor(x => x.CustomerInfo.Email)
-                    @Html.HiddenFor(x => x.CustomerInfo.FirstName)
-                    @Html.HiddenFor(x => x.CustomerInfo.LastName)
-                    @Html.HiddenFor(x => x.CustomerInfo.Address)
-                    @Html.HiddenFor(x => x.CustomerInfo.City)
-                    @Html.HiddenFor(x => x.CustomerInfo.Country)
-                    @Html.HiddenFor(x => x.CustomerInfo.Postal)
-                    @Html.HiddenFor(x => x.CustomerInfo.Phone)
-                    @Html.HiddenFor(x => x.PriceSum)
-                    @Html.HiddenFor(x => x.Subject)
-                    @Html.HiddenFor(x => x.ShippingOption.Name)
-                    @Html.HiddenFor(x => x.ShippingOption.Price)
-                    @for (int i = 0; i < Model.BagItems.Count(); i++)
-                    {
-                        @Html.HiddenFor(x => x.BagItems[i].Subject)
-                        @Html.HiddenFor(x => x.BagItems[i].ProductId)
-                        @Html.HiddenFor(x => x.BagItems[i].Quantity)
-                        @Html.HiddenFor(x => x.BagItems[i].Product.Title)
-                    }
                     <button type="submit">SHIPPING</button> >
                 </form>
                 <a class="current">PAYMENT</a>
@@ -80,30 +40,18 @@
                     <div class="checkout-price">
                         <p><span>shipping:</span> price</p>
                         <p><span>taxes:</span> price</p>
-                        <p><span>total:</span> @Model.PriceSum</p>
+                        <p><span>total:</span> @Model.TotalPrice</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <input type="hidden" id="customer-email" value="@Model.CustomerInfo.Email" />
-    <input type="hidden" id="customer-firstname" value="@Model.CustomerInfo.FirstName" />
-    <input type="hidden" id="customer-lastname" value="@Model.CustomerInfo.LastName" />
-    <input type="hidden" id="customer-address" value="@Model.CustomerInfo.Address" />
-    <input type="hidden" id="customer-city" value="@Model.CustomerInfo.City" />
-    <input type="hidden" id="customer-country" value="@Model.CustomerInfo.Country" />
-    <input type="hidden" id="customer-postal" value="@Model.CustomerInfo.Postal" />
-    <input type="hidden" id="customer-phone" value="@Model.CustomerInfo.Phone" />
-    <input type="hidden" id="pricesum" value="@Model.PriceSum" />
-    <input type="hidden" id="shipping-name" value="@Model.ShippingOption.Name" />
-    <input type="hidden" id="shipping-price" value="@Model.ShippingOption.Price" />
-
     <div class="col-8 center">
         <div class="col-8 left right-side-padding top-side-padding">
             <div class="payment dark-card">
                 <form id="payment-form">
-                    <input type="text" id="email" value="@Model.CustomerInfo.Email" placeholder="Email address for receipt" />
+                    <input type="text" id="email" value="@Model.Customer.Email" placeholder="Email address for receipt" />
                     <div id="card-element-number"><!--Stripe.js injects the Card Element--></div>
                     <div id="card-element-expiry"><!--Stripe.js injects the Card Element--></div>
                     <div id="card-element-cvc"><!--Stripe.js injects the Card Element--></div>

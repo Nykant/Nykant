@@ -2,44 +2,13 @@
 // See your keys here: https://dashboard.stripe.com/account/apikeys
 var stripe = Stripe('pk_test_51Hyy3eKS99T7pxPWSbrIYqKDcyKomhVp3hrXymvg8cPkupAmEcbeEoV26ckeJF9GZnfKdvTeQwyKdnwO6uNrIaih001cWPBSI2');
 
-var email = document.getElementById("customer-email").value;
-var firstname = document.getElementById("customer-firstname").value;
-var lastname = document.getElementById("customer-lastname").value;
-var address = document.getElementById("customer-address").value;
-var city = document.getElementById("customer-city").value;
-var country = document.getElementById("customer-country").value;
-var postal = document.getElementById("customer-postal").value;
-var phone = document.getElementById("customer-phone").value;
-var pricesum = parseInt(document.getElementById("pricesum").value);
-var shippingName = document.getElementById("shipping-name").value;
-var shippingPrice = document.getElementById("shipping-price").value;
-
-var Items = {
-    Customer: {
-        Email: email,
-        Name: firstname,
-        Address: address,
-        City: city,
-        Country: country,
-        Postal: postal,
-        Phone: phone
-    },
-    Price: {
-        Amount: pricesum
-    },
-    Shipping: {
-        Name: shippingName
-    }
-};
-
 document.querySelector(".button").disabled = true;
 
-fetch("/payment/createpaymentintent", {
+fetch("/paymentintent/createpaymentintent", {
     method: "POST",
     headers: {
         "Content-Type": "application/json"
-    },
-    body: JSON.stringify(Items)
+    }
 })
     .then(function (response) {
         if (response.status !== 200) {
@@ -96,33 +65,45 @@ fetch("/payment/createpaymentintent", {
 // prompt the user to enter authentication details without leaving your page.
 var payWithCard = function (stripe, card, clientSecret) {
     loading(true);
-    stripe
-        .confirmCardPayment(clientSecret, {
-            receipt_email: document.getElementById("email").value,
-            payment_method: {
-                card: card,
-                billing_details: {
-                    name: firstname,
-                    address: {
-                        line1: address,
-                        city: city,
-                        country: "DK",
-                        postal_code: postal
-                    },
-                    email: email,
-                    phone: phone,
-                }
-            }
+    fetch("/paymentintent/getcardinformation", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+        .then(function (response) {
+            return response.json();
         })
-        .then(function (result) {
-            if (result.error) {
-                // Show error to your customer
-                showError(result.error.message);
-            } else {
-                // The payment succeeded!
-                orderComplete(result.paymentIntent.id);
-            }
-        });
+            .then(function (data) {
+                stripe
+                    .confirmCardPayment(clientSecret, {
+                        receipt_email: document.getElementById("email").value,
+                        payment_method: {
+                            card: card,
+                            billing_details: {
+                                name: data.CardInformation.Name,
+                                address: {
+                                    line1: address,
+                                    city: city,
+                                    country: "DK",
+                                    postal_code: postal
+                                },
+                                email: email,
+                                phone: phone,
+                            }
+                        }
+                    })
+                    .then(function (result) {
+                        if (result.error) {
+                            // Show error to your customer
+                            showError(result.error.message);
+                        } else {
+                            // The payment succeeded!
+                            orderComplete(result.paymentIntent.id);
+                        }
+                    });
+            })
+    
 };
 /* ------- UI helpers ------- */
 // Shows a success message when the payment is complete

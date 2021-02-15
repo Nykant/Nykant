@@ -11,6 +11,7 @@ namespace NykantMVC.Models
         public Shipping Shipping { get; set; }
         public Order Order { get; set; }
         public List<BagItem> BagItems { get; set; }
+        public int TotalPrice { get; set; }
         public Stage Stage { get; set; }
     }
     public enum Stage

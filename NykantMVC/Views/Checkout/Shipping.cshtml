@@ -1,11 +1,11 @@
-﻿@model CheckoutVM
+﻿@model Checkout
 
 @{
-    List<ShippingOption> shippingOptions = new List<ShippingOption>
+    List<ShippingDelivery> shippingDeliveries = new List<ShippingDelivery>
 {
-        new ShippingOption{ Name = "Postnord", Price = 30 },
-        new ShippingOption{ Name = "GLS", Price = 35 },
-        new ShippingOption{ Name = "GLS Privat", Price = 55 }
+        new ShippingDelivery{ Name = "Postnord", Price = 30 },
+        new ShippingDelivery{ Name = "GLS", Price = 35 },
+        new ShippingDelivery{ Name = "GLS Privat", Price = 55 }
     };
     var optionValue = 1;
 }
@@ -16,23 +16,6 @@
             <div class="breadcrumbs dark-card">
                 <a asp-controller="Bag" asp-action="Details">SHIPPING BAG</a>  >
                 <form asp-controller="Checkout" asp-action="CustomerInfoCrumb" method="get">
-                    @Html.HiddenFor(x => x.CustomerInfo.Email)
-                    @Html.HiddenFor(x => x.CustomerInfo.FirstName)
-                    @Html.HiddenFor(x => x.CustomerInfo.LastName)
-                    @Html.HiddenFor(x => x.CustomerInfo.Address)
-                    @Html.HiddenFor(x => x.CustomerInfo.City)
-                    @Html.HiddenFor(x => x.CustomerInfo.Country)
-                    @Html.HiddenFor(x => x.CustomerInfo.Postal)
-                    @Html.HiddenFor(x => x.CustomerInfo.Phone)
-                    @Html.HiddenFor(x => x.PriceSum)
-                    @Html.HiddenFor(x => x.Subject)
-                    @for (int i = 0; i < Model.BagItems.Count(); i++)
-                    {
-                        @Html.HiddenFor(x => x.BagItems[i].Subject)
-                        @Html.HiddenFor(x => x.BagItems[i].ProductId)
-                        @Html.HiddenFor(x => x.BagItems[i].Quantity)
-                        @Html.HiddenFor(x => x.BagItems[i].Product.Title)
-                    }
                     <button type="submit">CUSTOMER INFO</button> >
                 </form>
                 <a class="current">SHIPPING</a> >
@@ -57,34 +40,15 @@
                     <div class="checkout-price">
                         <p><span>shipping:</span> price</p>
                         <p><span>taxes:</span> price</p>
-                        <p><span>total:</span> @Model.PriceSum</p>
+                        <p><span>total:</span> @Model.TotalPrice</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <div class="col-8 center">
         <form asp-controller="Checkout" asp-action="AddShipping" method="post">
-            @Html.HiddenFor(x => x.CustomerInfo.Email)
-            @Html.HiddenFor(x => x.CustomerInfo.FirstName)
-            @Html.HiddenFor(x => x.CustomerInfo.LastName)
-            @Html.HiddenFor(x => x.CustomerInfo.Address)
-            @Html.HiddenFor(x => x.CustomerInfo.City)
-            @Html.HiddenFor(x => x.CustomerInfo.Country)
-            @Html.HiddenFor(x => x.CustomerInfo.Postal)
-            @Html.HiddenFor(x => x.CustomerInfo.Phone)
-            @Html.HiddenFor(x => x.PriceSum)
-            @Html.HiddenFor(x => x.Subject)
-            @for (int i = 0; i < Model.BagItems.Count(); i++)
-            {
-                @Html.HiddenFor(x => x.BagItems[i].Subject)
-                @Html.HiddenFor(x => x.BagItems[i].ProductId)
-                @Html.HiddenFor(x => x.BagItems[i].Quantity)
-                @Html.HiddenFor(x => x.BagItems[i].Product.Title)
-            }
-            <input id="shipping-name" type="hidden" asp-for="@Model.ShippingOption.Name" />
-            <input id="shipping-price" type="hidden" asp-for="@Model.ShippingOption.Price" />
-
             <div class="col-8 left right-side-padding top-side-padding">
                 <div class="custom-list dark-card">
                     <div id="custom-list-header" class="header">
@@ -95,7 +59,7 @@
                             <option value="0">
                                 Choose Shipping
                             </option>
-                            @foreach (var item in shippingOptions)
+                            @foreach (var item in shippingDeliveries)
                             {
                                 <option value="@optionValue">
                                     @item.Name

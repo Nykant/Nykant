@@ -19,17 +19,5 @@ namespace NykantMVC.Controllers
         {
             return View();
         }
-
-        [HttpPatch]
-        public async Task<IActionResult> PostShipping(Order order)
-        {
-            var response = await PatchRequest("Order/UpdateShipping", order);
-
-            if (response.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Details", "Bag");
-            }
-            return Content("Failed");
-        }
     }
 }

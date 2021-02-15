@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using NykantAPI.Data;
 using NykantAPI.Models;
 using NykantAPI.Models.DTO;
@@ -46,28 +47,20 @@ namespace NykantAPI.Controllers
             }
         }
 
-
-        //[HttpPatch("api/{controller}/{action}")]
-        //public async Task<ActionResult<Order>> UpdateBagItem(Order order)
-        //{
-        //    if (OrderExists(order.Id))
-        //    {
-        //        var bagItem = await _context.BagItems.FirstOrDefaultAsync(x => x.Subject == subject && x.ProductId == productId);
-
-        //        try
-        //        {
-        //            bagItem.Quantity = productQuantity;
-        //            _context.BagItems.Update(bagItem);
-        //            await _context.SaveChangesAsync();
-        //            return Ok();
-        //        }
-        //        catch (Exception e)
-        //        {
-        //            return NotFound(e);
-        //        }
-        //    }
-        //    return NotFound();
-        //}
+        [HttpPost]
+        public async Task<ActionResult<Order>> PostOrder(Order order)
+        {
+            try
+            {
+                var entity = _context.Orders.Add(order).Entity;
+                await _context.SaveChangesAsync();
+                return Ok(JsonConvert.SerializeObject(entity));
+            }
+            catch (Exception e)
+            {
+                return NotFound(e.Message);
+            }
+        }
 
         private bool OrderExists(int orderId)
         {

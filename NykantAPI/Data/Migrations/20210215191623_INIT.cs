@@ -8,7 +8,7 @@ namespace NykantAPI.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "CustomerInfos",
+                name: "Customers",
                 columns: table => new
                 {
                     Email = table.Column<string>(nullable: false),
@@ -23,7 +23,7 @@ namespace NykantAPI.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CustomerInfos", x => x.Email);
+                    table.PrimaryKey("PK_Customers", x => x.Email);
                 });
 
             migrationBuilder.CreateTable(
@@ -50,29 +50,23 @@ namespace NykantAPI.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Orders",
+                name: "Shippings",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    ShippingId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Subject = table.Column<string>(nullable: true),
-                    CreatedAt = table.Column<DateTime>(nullable: false),
-                    CustomerInfoEmail = table.Column<string>(nullable: true),
-                    ShippingOptionName = table.Column<string>(nullable: true),
-                    TotalPrice = table.Column<int>(nullable: false),
-                    Valuta = table.Column<string>(nullable: true),
-                    Status = table.Column<int>(nullable: false),
-                    PIClientSecret = table.Column<string>(nullable: true)
+                    Email = table.Column<string>(nullable: false),
+                    FirstName = table.Column<string>(maxLength: 20, nullable: false),
+                    LastName = table.Column<string>(maxLength: 20, nullable: false),
+                    Address = table.Column<string>(maxLength: 50, nullable: false),
+                    City = table.Column<string>(maxLength: 20, nullable: false),
+                    Country = table.Column<string>(maxLength: 20, nullable: false),
+                    Postal = table.Column<string>(maxLength: 20, nullable: false),
+                    Phone = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Orders", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Orders_CustomerInfos_CustomerInfoEmail",
-                        column: x => x.CustomerInfoEmail,
-                        principalTable: "CustomerInfos",
-                        principalColumn: "Email",
-                        onDelete: ReferentialAction.Restrict);
+                    table.PrimaryKey("PK_Shippings", x => x.ShippingId);
                 });
 
             migrationBuilder.CreateTable(
@@ -115,6 +109,58 @@ namespace NykantAPI.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Orders",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CustomerEmail = table.Column<string>(nullable: true),
+                    ShippingId = table.Column<int>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    TotalPrice = table.Column<int>(nullable: false),
+                    Currency = table.Column<string>(nullable: true),
+                    Status = table.Column<int>(nullable: false),
+                    PaymentIntent_Id = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Orders", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Orders_Customers_CustomerEmail",
+                        column: x => x.CustomerEmail,
+                        principalTable: "Customers",
+                        principalColumn: "Email",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Orders_Shippings_ShippingId",
+                        column: x => x.ShippingId,
+                        principalTable: "Shippings",
+                        principalColumn: "ShippingId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ShippingDeliveries",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ShippingId = table.Column<int>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
+                    Price = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ShippingDeliveries", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ShippingDeliveries_Shippings_ShippingId",
+                        column: x => x.ShippingId,
+                        principalTable: "Shippings",
+                        principalColumn: "ShippingId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "OrderItems",
                 columns: table => new
                 {
@@ -139,51 +185,30 @@ namespace NykantAPI.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "ShippingOptions",
-                columns: table => new
-                {
-                    OrderId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    OrderId1 = table.Column<int>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
-                    Price = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ShippingOptions", x => x.OrderId);
-                    table.ForeignKey(
-                        name: "FK_ShippingOptions_Orders_OrderId1",
-                        column: x => x.OrderId1,
-                        principalTable: "Orders",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
             migrationBuilder.InsertData(
                 table: "Products",
                 columns: new[] { "Id", "Alt", "Color", "Description", "ImageSource", "ItemType", "LastModified", "Name", "Price", "Size", "Title", "TypeOfWood" },
                 values: new object[,]
                 {
-                    { 1, null, "naturligt", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "stol", new DateTime(2021, 2, 13, 21, 56, 7, 969, DateTimeKind.Local).AddTicks(1103), null, 1000, "5mm", "Grøntsags Skærebræt", "valnød" },
-                    { 17, null, "naturligt", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "bænk", new DateTime(2021, 2, 13, 21, 56, 7, 971, DateTimeKind.Local).AddTicks(1434), null, 1000, "10mm", "Grøntsags Skærebræt", "valnød" },
-                    { 16, null, "farvet-overflade", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "skærebræt", new DateTime(2021, 2, 13, 21, 56, 7, 971, DateTimeKind.Local).AddTicks(1432), null, 1000, "5mm", "Grøntsags Skærebræt", "eg" },
-                    { 15, null, "naturligt", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "bænk", new DateTime(2021, 2, 13, 21, 56, 7, 971, DateTimeKind.Local).AddTicks(1429), null, 1000, "20mm", "Grøntsags Skærebræt", "fyr" },
-                    { 14, null, "farvet-overflade", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "stol", new DateTime(2021, 2, 13, 21, 56, 7, 971, DateTimeKind.Local).AddTicks(1426), null, 1000, "10mm", "Grøntsags Skærebræt", "eg" },
-                    { 13, null, "naturligt", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "stol", new DateTime(2021, 2, 13, 21, 56, 7, 971, DateTimeKind.Local).AddTicks(1423), null, 1000, "5mm", "Grøntsags Skærebræt", "valnød" },
-                    { 12, null, "farvet-overflade", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "skærebræt", new DateTime(2021, 2, 13, 21, 56, 7, 971, DateTimeKind.Local).AddTicks(1420), null, 1000, "20mm", "Grøntsags Skærebræt", "fyr" },
-                    { 11, null, "naturligt", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "bænk", new DateTime(2021, 2, 13, 21, 56, 7, 971, DateTimeKind.Local).AddTicks(1417), null, 1000, "10mm", "Grøntsags Skærebræt", "valnød" },
-                    { 18, null, "farvet-overflade", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "skærebræt", new DateTime(2021, 2, 13, 21, 56, 7, 971, DateTimeKind.Local).AddTicks(1437), null, 1000, "20mm", "Grøntsags Skærebræt", "fyr" },
-                    { 10, null, "farvet-overflade", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "skærebræt", new DateTime(2021, 2, 13, 21, 56, 7, 971, DateTimeKind.Local).AddTicks(1414), null, 1000, "5mm", "Grøntsags Skærebræt", "eg" },
-                    { 8, null, "farvet-overflade", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "stol", new DateTime(2021, 2, 13, 21, 56, 7, 971, DateTimeKind.Local).AddTicks(1409), null, 1000, "10mm", "Grøntsags Skærebræt", "eg" },
-                    { 7, null, "naturligt", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "stol", new DateTime(2021, 2, 13, 21, 56, 7, 971, DateTimeKind.Local).AddTicks(1406), null, 1000, "5mm", "Grøntsags Skærebræt", "valnød" },
-                    { 6, null, "farvet-overflade", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "skærebræt", new DateTime(2021, 2, 13, 21, 56, 7, 971, DateTimeKind.Local).AddTicks(1404), null, 1000, "20mm", "Grøntsags Skærebræt", "fyr" },
-                    { 5, null, "naturligt", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "bænk", new DateTime(2021, 2, 13, 21, 56, 7, 971, DateTimeKind.Local).AddTicks(1401), null, 1000, "10mm", "Grøntsags Skærebræt", "valnød" },
-                    { 4, null, "farvet-overflade", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "skærebræt", new DateTime(2021, 2, 13, 21, 56, 7, 971, DateTimeKind.Local).AddTicks(1398), null, 1000, "5mm", "Grøntsags Skærebræt", "eg" },
-                    { 3, null, "naturligt", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "bænk", new DateTime(2021, 2, 13, 21, 56, 7, 971, DateTimeKind.Local).AddTicks(1392), null, 1000, "20mm", "Grøntsags Skærebræt", "fyr" },
-                    { 2, null, "farvet-overflade", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "stol", new DateTime(2021, 2, 13, 21, 56, 7, 971, DateTimeKind.Local).AddTicks(1326), null, 1000, "10mm", "Grøntsags Skærebræt", "eg" },
-                    { 9, null, "naturligt", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "bænk", new DateTime(2021, 2, 13, 21, 56, 7, 971, DateTimeKind.Local).AddTicks(1412), null, 1000, "20mm", "Grøntsags Skærebræt", "fyr" },
-                    { 19, null, "naturligt", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "bænk", new DateTime(2021, 2, 13, 21, 56, 7, 971, DateTimeKind.Local).AddTicks(1440), null, 1000, "5mm", "Grøntsags Skærebræt", "valnød" }
+                    { 1, null, "naturligt", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "stol", new DateTime(2021, 2, 15, 20, 16, 12, 683, DateTimeKind.Local).AddTicks(9527), null, 1000, "5mm", "Grøntsags Skærebræt", "valnød" },
+                    { 17, null, "naturligt", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "bænk", new DateTime(2021, 2, 15, 20, 16, 12, 686, DateTimeKind.Local).AddTicks(680), null, 1000, "10mm", "Grøntsags Skærebræt", "valnød" },
+                    { 16, null, "farvet-overflade", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "skærebræt", new DateTime(2021, 2, 15, 20, 16, 12, 686, DateTimeKind.Local).AddTicks(677), null, 1000, "5mm", "Grøntsags Skærebræt", "eg" },
+                    { 15, null, "naturligt", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "bænk", new DateTime(2021, 2, 15, 20, 16, 12, 686, DateTimeKind.Local).AddTicks(675), null, 1000, "20mm", "Grøntsags Skærebræt", "fyr" },
+                    { 14, null, "farvet-overflade", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "stol", new DateTime(2021, 2, 15, 20, 16, 12, 686, DateTimeKind.Local).AddTicks(672), null, 1000, "10mm", "Grøntsags Skærebræt", "eg" },
+                    { 13, null, "naturligt", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "stol", new DateTime(2021, 2, 15, 20, 16, 12, 686, DateTimeKind.Local).AddTicks(668), null, 1000, "5mm", "Grøntsags Skærebræt", "valnød" },
+                    { 12, null, "farvet-overflade", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "skærebræt", new DateTime(2021, 2, 15, 20, 16, 12, 686, DateTimeKind.Local).AddTicks(665), null, 1000, "20mm", "Grøntsags Skærebræt", "fyr" },
+                    { 11, null, "naturligt", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "bænk", new DateTime(2021, 2, 15, 20, 16, 12, 686, DateTimeKind.Local).AddTicks(662), null, 1000, "10mm", "Grøntsags Skærebræt", "valnød" },
+                    { 18, null, "farvet-overflade", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "skærebræt", new DateTime(2021, 2, 15, 20, 16, 12, 686, DateTimeKind.Local).AddTicks(683), null, 1000, "20mm", "Grøntsags Skærebræt", "fyr" },
+                    { 10, null, "farvet-overflade", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "skærebræt", new DateTime(2021, 2, 15, 20, 16, 12, 686, DateTimeKind.Local).AddTicks(659), null, 1000, "5mm", "Grøntsags Skærebræt", "eg" },
+                    { 8, null, "farvet-overflade", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "stol", new DateTime(2021, 2, 15, 20, 16, 12, 686, DateTimeKind.Local).AddTicks(653), null, 1000, "10mm", "Grøntsags Skærebræt", "eg" },
+                    { 7, null, "naturligt", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "stol", new DateTime(2021, 2, 15, 20, 16, 12, 686, DateTimeKind.Local).AddTicks(650), null, 1000, "5mm", "Grøntsags Skærebræt", "valnød" },
+                    { 6, null, "farvet-overflade", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "skærebræt", new DateTime(2021, 2, 15, 20, 16, 12, 686, DateTimeKind.Local).AddTicks(647), null, 1000, "20mm", "Grøntsags Skærebræt", "fyr" },
+                    { 5, null, "naturligt", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "bænk", new DateTime(2021, 2, 15, 20, 16, 12, 686, DateTimeKind.Local).AddTicks(644), null, 1000, "10mm", "Grøntsags Skærebræt", "valnød" },
+                    { 4, null, "farvet-overflade", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "skærebræt", new DateTime(2021, 2, 15, 20, 16, 12, 686, DateTimeKind.Local).AddTicks(641), null, 1000, "5mm", "Grøntsags Skærebræt", "eg" },
+                    { 3, null, "naturligt", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "bænk", new DateTime(2021, 2, 15, 20, 16, 12, 686, DateTimeKind.Local).AddTicks(636), null, 1000, "20mm", "Grøntsags Skærebræt", "fyr" },
+                    { 2, null, "farvet-overflade", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "stol", new DateTime(2021, 2, 15, 20, 16, 12, 686, DateTimeKind.Local).AddTicks(575), null, 1000, "10mm", "Grøntsags Skærebræt", "eg" },
+                    { 9, null, "naturligt", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "bænk", new DateTime(2021, 2, 15, 20, 16, 12, 686, DateTimeKind.Local).AddTicks(656), null, 1000, "20mm", "Grøntsags Skærebræt", "fyr" },
+                    { 19, null, "naturligt", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "bænk", new DateTime(2021, 2, 15, 20, 16, 12, 686, DateTimeKind.Local).AddTicks(687), null, 1000, "5mm", "Grøntsags Skærebræt", "valnød" }
                 });
 
             migrationBuilder.InsertData(
@@ -247,14 +272,20 @@ namespace NykantAPI.Data.Migrations
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Orders_CustomerInfoEmail",
+                name: "IX_Orders_CustomerEmail",
                 table: "Orders",
-                column: "CustomerInfoEmail");
+                column: "CustomerEmail");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ShippingOptions_OrderId1",
-                table: "ShippingOptions",
-                column: "OrderId1");
+                name: "IX_Orders_ShippingId",
+                table: "Orders",
+                column: "ShippingId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ShippingDeliveries_ShippingId",
+                table: "ShippingDeliveries",
+                column: "ShippingId",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -269,16 +300,19 @@ namespace NykantAPI.Data.Migrations
                 name: "OrderItems");
 
             migrationBuilder.DropTable(
-                name: "ShippingOptions");
-
-            migrationBuilder.DropTable(
-                name: "Products");
+                name: "ShippingDeliveries");
 
             migrationBuilder.DropTable(
                 name: "Orders");
 
             migrationBuilder.DropTable(
-                name: "CustomerInfos");
+                name: "Products");
+
+            migrationBuilder.DropTable(
+                name: "Customers");
+
+            migrationBuilder.DropTable(
+                name: "Shippings");
         }
     }
 }

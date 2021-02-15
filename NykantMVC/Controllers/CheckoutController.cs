@@ -34,7 +34,7 @@ namespace NykantMVC.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                var json = await GetRequest($"BagItems/GetBagItems/{User.Claims.FirstOrDefault(x => x.Type == "sub").Value}");
+                var json = await GetRequest($"BagItem/GetBagItems/{User.Claims.FirstOrDefault(x => x.Type == "sub").Value}");
                 var bagVM = JsonConvert.DeserializeObject<BagVM>(json);
 
                 Checkout checkout = new Checkout
@@ -58,13 +58,24 @@ namespace NykantMVC.Controllers
                     Checkout checkout = new Checkout
                     {
                         BagItems = bagItems,
-                        Stage = Stage.customer
+                        Stage = Stage.customer,
+                        TotalPrice = CalculateAmount(bagItems)
                     };
                     HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
 
                     return View(checkout);
                 }
             }
+        }
+
+        private int CalculateAmount(List<BagItem> items)
+        {
+            int price = 0;
+            foreach (var item in items)
+            {
+                price += item.Product.Price;
+            }
+            return price;
         }
 
         [HttpPost]
@@ -93,25 +104,34 @@ namespace NykantMVC.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Shipping(Models.Shipping shipping)
+        public IActionResult Shipping()
         {
-            var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
-
-            if(checkout.Stage == Stage.shipping)
-            {
-
-            }
-
-
-            return
+            return View(HttpContext.Session.Get<Checkout>(CheckoutSessionKey));
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostShipping()
+        public async Task<IActionResult> PostShipping(Models.Shipping shipping)
         {
+            var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
 
+            if (checkout.Stage == Stage.shipping)
+            {
+                var response = await PostRequest("Shipping/PostShipping", shipping);
+                var content = response.Content;
+                if (response.IsSuccessStatusCode)
+                {
+                    checkout.Shipping = shipping;
+                    HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
+                    return RedirectToAction("Payment");
+                }
+            }
+            return NotFound();
+        }
 
-            return
+        [HttpGet]
+        public IActionResult Payment()
+        {
+            return View(HttpContext.Session.Get<Checkout>(CheckoutSessionKey));
         }
     }
 }

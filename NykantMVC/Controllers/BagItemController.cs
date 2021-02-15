@@ -64,16 +64,16 @@ namespace NykantMVC.Controllers
                 try
                 {
                     List<BagItem> bagItems = null;
-                    if (HttpContext.Session.Get<List<BagItem>>(SessionBagKey) == default)
+                    if (HttpContext.Session.Get<List<BagItem>>(BagSessionKey) == default)
                     {
                         bagItems = new List<BagItem>();
                     }
                     else
                     {
-                        bagItems = HttpContext.Session.Get<List<BagItem>>(SessionBagKey);
+                        bagItems = HttpContext.Session.Get<List<BagItem>>(BagSessionKey);
                     }
                     bagItems.Add(bagItem);
-                    HttpContext.Session.Set<List<BagItem>>(SessionBagKey, bagItems);
+                    HttpContext.Session.Set<List<BagItem>>(BagSessionKey, bagItems);
                     return NoContent();
                 }
                 catch (Exception e)
