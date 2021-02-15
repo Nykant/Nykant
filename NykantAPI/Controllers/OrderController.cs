@@ -26,15 +26,15 @@ namespace NykantAPI.Controllers
         {
             try
             {
-                var orderDB = await _context.Orders.FirstOrDefaultAsync(x => x.CustomerInfoEmail == order.CustomerInfoEmail && x.Status == Status.Created);
+                var orderDB = await _context.Orders.FirstOrDefaultAsync(x => x.CustomerEmail == order.CustomerEmail && x.Status == Status.Created);
                 if(order.Status != 0)
                 orderDB.Status = order.Status;
-                if(order.Valuta != null)
-                orderDB.Valuta = order.Valuta;
-                if(order.ShippingOptionName != null)
-                orderDB.ShippingOptionName = order.ShippingOptionName;
-                if(order.PIClientSecret != null)
-                orderDB.PIClientSecret = order.PIClientSecret;
+                if(order.Currency != null)
+                orderDB.Currency = order.Currency;
+                if(order.Shipping.ShippingDelivery.Name != null)
+                orderDB.Shipping.ShippingDelivery.Name = order.Shipping.ShippingDelivery.Name;
+                if(order.PaymentIntent_Id != null)
+                orderDB.PaymentIntent_Id = order.PaymentIntent_Id;
 
                 _context.Orders.Update(orderDB);
                 await _context.SaveChangesAsync();

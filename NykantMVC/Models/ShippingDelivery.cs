@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 
 namespace NykantMVC.Models
 {
-    public class ShippingOption
+    public class ShippingDelivery
     {
+        public int Id { get; set; }
+        public int ShippingId { get; set; }
         public string Name { get; set; }
         public int Price { get; set; }
     }

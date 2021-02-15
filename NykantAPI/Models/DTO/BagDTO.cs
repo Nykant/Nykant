@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace NykantAPI.Models.DTO
 {
-    public class BagDetailsDTO
+    public class BagDTO
     {
-        public IEnumerable<BagItem> BagItems { get; set; }
+        public List<BagItem> BagItems { get; set; }
         public int PriceSum { get; set; }
     }
 }

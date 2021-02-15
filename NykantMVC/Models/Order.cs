@@ -11,16 +11,16 @@ namespace NykantMVC.Models
     {
         [Key]
         public int Id { get; set; }
-        public string Subject { get; set; }
+        public string CustomerEmail { get; set; }
+        public Customer Customer { get; set; }
+        public int ShippingId { get; set; }
+        public Shipping Shipping { get; set; }
         public DateTime CreatedAt { get; set; }
-        public IEnumerable<OrderItem> OrderItems { get; set; }
-        public string CustomerInfoEmail { get; set; }
-        public CustomerInfo CustomerInfo { get; set; }
-        public string ShippingOptionName { get; set; }
         public int TotalPrice { get; set; }
-        public string Valuta { get; set; }
+        public string Currency { get; set; }
         public Status Status { get; set; }
-        public string PIClientSecret { get; set; }
+        public string PaymentIntent_Id { get; set; }
+        public IEnumerable<OrderItem> OrderItems { get; set; }
     }
 
     public enum Status

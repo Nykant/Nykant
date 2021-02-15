@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using NykantMVC.Models;
+using NykantMVC.Models.ViewModels;
 using Stripe;
 using System;
 using System.Collections.Generic;
@@ -34,7 +35,7 @@ namespace NykantMVC.Controllers
 
             Models.Order order = new Models.Order
             {
-                CustomerInfoEmail = email,
+                CustomerEmail = email,
                 Status = Status.Accepted
             };
 
@@ -78,6 +79,20 @@ namespace NykantMVC.Controllers
                 },
             };
 
+
+
+            PaymentIntentService service;
+            PaymentIntent paymentIntent;
+            try
+            {
+                service = new PaymentIntentService();
+                paymentIntent = service.Create(options);
+            }
+            catch (StripeException e)
+            {
+                return NotFound(e.InnerException.Message);
+            }
+
             var url = $"BagItem/DeleteBagItems/{User.Claims.FirstOrDefault(x => x.Type == "sub").Value}";
             var deleteRequest = await DeleteRequest(url);
 
@@ -86,11 +101,21 @@ namespace NykantMVC.Controllers
                 return NotFound(deleteRequest.StatusCode);
             }
 
-            var service = new PaymentIntentService();
-            var paymentIntent = service.Create(options);
-
             return Json(new { clientSecret = paymentIntent.ClientSecret });
         }
+
+        private Models.Order BuildOrder(CheckoutVM checkoutVM)
+        {
+            Models.Order order = new Models.Order
+            {
+                CreatedAt = DateTime.Now,
+                Status = Status.Created,
+                TotalPrice = checkoutVM.PriceSum,
+                CustomerEmail = checkoutVM.CustomerInfo.Email
+            };
+            return order;
+        }
+
         private int CalculateOrderAmount(BagItem[] items)
         {
             // Replace this constant with a calculation of the order's amount

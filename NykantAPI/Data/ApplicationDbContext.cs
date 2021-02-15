@@ -12,13 +12,15 @@ namespace NykantAPI.Data
         {
             Database.Migrate();
         }
-        public DbSet<Order> Orders { get; set; }
+
         public DbSet<Product> Products { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<BagItem> BagItems { get; set; }
+        public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
-        public DbSet<CustomerInfo> CustomerInfos { get; set; }
-        public DbSet<ShippingOption> ShippingOptions { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Shipping> Shippings { get; set; }
+        public DbSet<ShippingDelivery> ShippingDeliveries { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -26,13 +28,6 @@ namespace NykantAPI.Data
                 .HasKey(bi => new { bi.Subject, bi.ProductId });
             modelBuilder.Entity<OrderItem>()
                 .HasKey(bi => new { bi.OrderId, bi.ProductId});
-
-            //modelBuilder.Entity<BagItem>()
-            //    .HasOne(bi => bi.Product)
-            //    .WithMany(i => i.BagItems)
-            //    .HasForeignKey(bi => bi.ProductId);
-            //modelBuilder.Entity<BagItem>()
-            //    .Property(x => x.ProductId).ValueGeneratedNever();
 
             modelBuilder.Entity<Product>().HasData(
                 new Product { Id = 1, Title = "Grøntsags Skærebræt", Price = 1000, Description = "a test object", LastModified = DateTime.Now, ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg", TypeOfWood = "valnød", ItemType = "stol", Size = "5mm", Color = "naturligt" },

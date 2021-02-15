@@ -10,65 +10,34 @@ using Newtonsoft.Json;
 using NykantAPI.Data;
 using NykantAPI.Models;
 using NykantAPI.Models.DTO;
-using Stripe;
 
 namespace NykantAPI.Controllers
 {
     
     [ApiController]
     [Route("[controller]/[action]/")]
-    public class CustomerInfoController : BaseController
+    public class CustomerController : BaseController
     {
-        public CustomerInfoController(ILogger<BaseController> logger, ApplicationDbContext context)
+        public CustomerController(ILogger<BaseController> logger, ApplicationDbContext context)
             : base(logger, context)
         {
         }
 
-
-
         [HttpPost]
-        public async Task<ActionResult<CustomerInfo>> PostCustomerInfo(CheckoutDTO checkoutDTO)
+        public async Task<ActionResult<Customer>> PostCustomer(Customer customer)
         {
-            try
+            if (!CustomerExists(customer.Email))
             {
-                if (!CustomerInfoExists(checkoutDTO.CustomerInfo.Email))
-                {
-                    await _context.CustomerInfos.AddAsync(checkoutDTO.CustomerInfo);
-                }
-                try
-                {
-                    var result = _context.Orders.Add(checkoutDTO.Order);
-                    await _context.SaveChangesAsync();
-                    var item = result.Entity;
-
-                    foreach (var bagItem in checkoutDTO.BagItems)
-                    {
-                        Models.OrderItem orderItem = new Models.OrderItem
-                        {
-                            ProductId = bagItem.ProductId,
-                            OrderId = item.Id,
-                            Quantity = checkoutDTO.BagItems.Count()
-                        };
-                        await _context.OrderItems.AddAsync(orderItem);
-                    }
-                    await _context.SaveChangesAsync();
-
-                    return Ok();
-                }
-                catch (Exception e)
-                {
-                    return NotFound(e);
-                }
+                _context.Customers.Add(customer);
+                await _context.SaveChangesAsync();
+                return CreatedAtAction("PostCustomerInfo", customer);
             }
-            catch(Exception e)
-            {
-                return NotFound(e);
-            }
+            return Ok();
         }
 
-        private bool CustomerInfoExists(string email)
+        private bool CustomerExists(string email)
         {
-            return _context.CustomerInfos.Any(e => e.Email == email);
+            return _context.Customers.Any(e => e.Email == email);
         }
     }
 }

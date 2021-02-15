@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace NykantAPI.Models
 {
-    public class ShippingOption
+    public class ShippingDelivery
     {
         [Key]
-        public int OrderId { get; set; }
-        public Order Order { get; set; }
+        public int Id { get; set; }
+        public int ShippingId { get; set; }
         public string Name { get; set; }
         public int Price { get; set; }
     }

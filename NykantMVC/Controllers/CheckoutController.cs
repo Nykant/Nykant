@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Newtonsoft.Json;
-
+using NykantMVC.Extensions;
 
 namespace NykantMVC.Controllers
 {
@@ -30,89 +30,88 @@ namespace NykantMVC.Controllers
         }
 
         [HttpGet]
-        public IActionResult CustomerInfo(BagVM bagVM)
-        {
-            if (ModelState.IsValid)
-            {
-                CheckoutVM checkoutVM = new CheckoutVM
-                {
-                    BagItems = bagVM.BagItems,
-                    PriceSum = bagVM.PriceSum
-                };
-                return View(checkoutVM);  
-            }
-
-            return RedirectToAction("Details", "Bag");
-        }
-
-        [HttpGet]
-        public IActionResult CustomerInfoCrumb(CheckoutVM checkoutVM)
-        {
-            return View("CustomerInfo", checkoutVM);
-        }
-
-        [HttpGet]
-        public IActionResult ShippingCrumb(CheckoutVM checkoutVM)
-        {
-            return View("Shipping", checkoutVM);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> PostCustomerInfo(CheckoutVM checkoutVM)
+        public async Task<IActionResult> Customer()
         {
             if (User.Identity.IsAuthenticated)
             {
-                checkoutVM.CustomerInfo.Subject = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
+                var json = await GetRequest($"BagItems/GetBagItems/{User.Claims.FirstOrDefault(x => x.Type == "sub").Value}");
+                var bagVM = JsonConvert.DeserializeObject<BagVM>(json);
 
-                var order = BuildOrder(checkoutVM);
-                checkoutVM.Order = order;
-
-                var response = await PostRequest("CustomerInfo/PostCustomerInfo", checkoutVM);
-
-                if (response.IsSuccessStatusCode)
+                Checkout checkout = new Checkout
                 {
-                    return View("Shipping", checkoutVM);
-                }
-                return Content("Failed");
-            }
+                    BagItems = bagVM.BagItems,
+                    Stage = Stage.customer
+                };
+                HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
 
-            return View("Shipping", checkoutVM);
+                return View(checkout);
+            }
+            else
+            {
+                var bagItems = HttpContext.Session.Get<List<BagItem>>(BagSessionKey);
+                if (bagItems == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    Checkout checkout = new Checkout
+                    {
+                        BagItems = bagItems,
+                        Stage = Stage.customer
+                    };
+                    HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
+
+                    return View(checkout);
+                }
+            }
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddShipping(CheckoutVM checkoutVM)
+        public async Task<IActionResult> PostCustomer(Models.Customer customer)
         {
+            var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
+            checkout.Customer = customer;
+            
 
-            Models.Order order = new Models.Order
+            if (checkout.Stage == Stage.customer)
             {
-                 CustomerInfoEmail = checkoutVM.CustomerInfo.Email,
-                 ShippingOptionName = checkoutVM.ShippingOption.Name,
-            };
+                if(User.Identity.IsAuthenticated)
+                checkout.Customer.Subject = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
 
-            var response = await PatchRequest("Order/UpdateOrder", order);
-            checkoutVM.ClientSecret = await response.Content.ReadAsStringAsync();
-            if (response.IsSuccessStatusCode)
-            {
-                return View("Payment", checkoutVM);
+                var response = await PostRequest("CustomerInfo/PostCustomerInfo", checkout.Customer);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    checkout.Stage = Stage.shipping;
+                    HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
+                    return RedirectToAction("Shipping");
+                }
+                return Content("Failed");
             }
-            return Content("Failed to create order");
+            return NotFound();
         }
 
-
-
-        private Models.Order BuildOrder(CheckoutVM checkoutVM)
+        [HttpGet]
+        public async Task<IActionResult> Shipping(Models.Shipping shipping)
         {
-            Models.Order order = new Models.Order
+            var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
+
+            if(checkout.Stage == Stage.shipping)
             {
-                CreatedAt = DateTime.Now,
-                Status = Status.Created,
-                Subject = checkoutVM.Subject,
-                TotalPrice = checkoutVM.PriceSum,
-                CustomerInfoEmail = checkoutVM.CustomerInfo.Email
-            };
-            return order;
+
+            }
+
+
+            return
         }
 
-        
+        [HttpPost]
+        public async Task<IActionResult> PostShipping()
+        {
+
+
+            return
+        }
     }
 }

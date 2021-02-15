@@ -24,7 +24,7 @@ namespace NykantAPI.Controllers
         }
 
         [HttpGet("{subject}")]
-        public ActionResult<BagDetailsDTO> GetBagItems(string subject)
+        public ActionResult<BagDTO> GetBagItems(string subject)
         {
             int priceSum = 0;
             var bagItems = _context.BagItems
@@ -36,9 +36,9 @@ namespace NykantAPI.Controllers
                 priceSum += bagItem.Product.Price;
             }
 
-            BagDetailsDTO bagDetails = new BagDetailsDTO
+            BagDTO bagDetails = new BagDTO
             {
-                BagItems = bagItems,
+                BagItems = bagItems.ToList(),
                 PriceSum = priceSum
             };
 

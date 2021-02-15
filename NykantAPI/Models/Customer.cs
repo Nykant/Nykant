@@ -1,25 +1,23 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NykantMVC.Models
+namespace NykantAPI.Models
 {
-    public class CustomerInfo
+    public class Customer
     {
+        [Key]
         [Required]
         [EmailAddress]
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Email Addresse")]
         public string Email { get; set; }
-        
         public string Subject { get; set; }
         [Required]
         [StringLength(20)]
         [Display(Name = "Fornavn")]
-        [JsonProperty("FirstName")]
         public string FirstName { get; set; }
         [Required]
         [StringLength(20)]
@@ -47,3 +45,4 @@ namespace NykantMVC.Models
         public string Phone { get; set; }
     }
 }
+
