@@ -29,9 +29,7 @@ namespace NykantAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         { 
-
             services.AddControllers();
-                
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
@@ -52,7 +50,6 @@ namespace NykantAPI
             {
                 options.AddPolicy("ApiScope", policy =>
                 {
-                    policy.RequireAuthenticatedUser();
                     policy.RequireClaim("scope", "NykantAPI");
                 });
             });
@@ -75,8 +72,8 @@ namespace NykantAPI
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers()
-                    .RequireAuthorization("ApiScope");
+                endpoints.MapControllers();
+                    //.RequireAuthorization("ApiScope");
             });
         }
     }

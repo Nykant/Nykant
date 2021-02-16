@@ -2,10 +2,10 @@
 
 @{
     List<ShippingDelivery> shippingDeliveries = new List<ShippingDelivery>
-{
-        new ShippingDelivery{ Name = "Postnord", Price = 30 },
-        new ShippingDelivery{ Name = "GLS", Price = 35 },
-        new ShippingDelivery{ Name = "GLS Privat", Price = 55 }
+    {
+        new ShippingDelivery{ Id = 1, Name = "Postnord", Price = 30 },
+        new ShippingDelivery{ Id = 2, Name = "GLS", Price = 35 },
+        new ShippingDelivery{ Id = 3, Name = "GLS Privat", Price = 55 }
     };
     var optionValue = 1;
 }
@@ -48,7 +48,13 @@
     </div>
 
     <div class="col-8 center">
-        <form asp-controller="Checkout" asp-action="AddShipping" method="post">
+        <form asp-controller="Checkout" asp-action="PostShipping" method="post">
+            <input required type="hidden" id="shipping-delivery-id" asp-for="@Model.Shipping.ShippingDeliveryId" />
+            <div class="col-8 left right-side-padding top-side-padding">
+                <div class="shipping">
+                    <p>shipping details same as customer details for now</p>
+                </div>
+            </div>
             <div class="col-8 left right-side-padding top-side-padding">
                 <div class="custom-list dark-card">
                     <div id="custom-list-header" class="header">
@@ -64,6 +70,7 @@
                                 <option value="@optionValue">
                                     @item.Name
                                 </option>
+                                optionValue += 1;
                             }
                         </select>
                     </div>
@@ -77,4 +84,4 @@
     </div>
 </div>
 
-<script src="~/JS/custom-list.js"> var button = document.getElementById("custom-list-button").disabled = true; </script>
+<script src="~/JS/custom-list.js"></script>

@@ -20,7 +20,7 @@ namespace NykantMVC.Models
         public string Currency { get; set; }
         public Status Status { get; set; }
         public string PaymentIntent_Id { get; set; }
-        public IEnumerable<OrderItem> OrderItems { get; set; }
+        public List<OrderItem> OrderItems { get; set; }
     }
 
     public enum Status

@@ -10,7 +10,6 @@ namespace NykantAPI.Models
     {
         [Key]
         public int Id { get; set; }
-        public int ShippingId { get; set; }
         public string Name { get; set; }
         public int Price { get; set; }
     }

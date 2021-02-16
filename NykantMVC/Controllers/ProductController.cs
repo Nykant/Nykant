@@ -26,7 +26,7 @@ namespace NykantMVC.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var json = await GetRequest("Product/GetProducts");
+            var json = await GetRequest("/Product/GetProducts");
 
             IEnumerable<Product> products = JsonConvert.DeserializeObject<IEnumerable<Product>>(json);
 
@@ -36,7 +36,7 @@ namespace NykantMVC.Controllers
         [HttpGet]
         public async Task<IActionResult> Details(int id)
         {
-            var json = await GetRequest($"Product/GetProduct/{id}");
+            var json = await GetRequest($"/Product/GetProduct/{id}");
 
             ProductVM productVM = JsonConvert.DeserializeObject<ProductVM>(json);
 

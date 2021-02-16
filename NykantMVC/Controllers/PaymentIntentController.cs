@@ -27,8 +27,8 @@ namespace NykantMVC.Controllers
         public ActionResult GetCardInformation()
         {
             var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
-            CardInformation card = new CardInformation
-            {
+
+            return Json(new { 
                 Name = checkout.Shipping.FirstName,
                 Email = checkout.Customer.Email,
                 Address = checkout.Customer.Address,
@@ -36,8 +36,7 @@ namespace NykantMVC.Controllers
                 Country = checkout.Customer.Country,
                 Phone = checkout.Customer.Phone,
                 Postal = checkout.Customer.Postal
-            };
-            return Json(JsonConvert.SerializeObject(card));
+            });
         }
 
         public class CardInformation
@@ -55,65 +54,88 @@ namespace NykantMVC.Controllers
         public async Task<ActionResult> CreatePaymentIntent()
         {
             var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
-            StripeConfiguration.ApiKey = _configuration["StripeTESTKey"];
 
-            var customers = new CustomerService();
-            var customer = customers.Create(new CustomerCreateOptions
+            if(checkout.Stage == Stage.payment)
             {
-                Name = checkout.Customer.FirstName + " " + checkout.Customer.LastName,
-                Email = checkout.Customer.Email,
-                Phone = checkout.Customer.Phone,
-                Address = new AddressOptions
+                StripeConfiguration.ApiKey = _configuration["StripeTESTKey"];
+
+                var totalPrice = CalculateOrderAmount(checkout.BagItems);
+
+                var customers = new CustomerService();
+                var customer = customers.Create(new CustomerCreateOptions
                 {
-                    Line1 = checkout.Customer.Address,
-                    City = checkout.Customer.City,
-                    Country = checkout.Customer.Country,
-                    PostalCode = checkout.Customer.Postal
-                },
-            });
+                    Name = checkout.Customer.FirstName + " " + checkout.Customer.LastName,
+                    Email = checkout.Customer.Email,
+                    Phone = checkout.Customer.Phone,
+                    Address = new AddressOptions
+                    {
+                        Line1 = checkout.Customer.Address,
+                        City = checkout.Customer.City,
+                        Country = checkout.Customer.Country,
+                        PostalCode = checkout.Customer.Postal
+                    },
+                });
 
-            var options = new PaymentIntentCreateOptions
-            {
-                Customer = customer.Id,
-                Amount = CalculateOrderAmount(checkout.BagItems),
-                Currency = "dkk",
-                Metadata = new Dictionary<string, string>
+                var options = new PaymentIntentCreateOptions
+                {
+                    Customer = customer.Id,
+                    Amount = totalPrice,
+                    Currency = "dkk",
+                    Metadata = new Dictionary<string, string>
                 {
                     { "integration_check", "accept_a_payment" },
                 },
-            };
+                };
 
-            PaymentIntentService service;
-            PaymentIntent paymentIntent;
-            try
-            {
-                service = new PaymentIntentService();
-                paymentIntent = service.Create(options);
-            }
-            catch (StripeException e)
-            {
-                return NotFound(e.InnerException.Message);
-            }
+                PaymentIntentService service;
+                PaymentIntent paymentIntent;
+                try
+                {
+                    service = new PaymentIntentService();
+                    paymentIntent = service.Create(options);
+                }
+                catch (StripeException e)
+                {
+                    return NotFound(e.InnerException.Message);
+                }
 
-            var order = BuildOrder(checkout, paymentIntent);
-            var createRequest = await PostRequest("Order/PostOrder", order);
-            if (!createRequest.IsSuccessStatusCode)
-            {
-                return NotFound(createRequest.StatusCode);
-            }
+                var order = BuildOrder(checkout, paymentIntent);
+                var postRequest = await PostRequest("/Order/PostOrder", order);
+                if (!postRequest.IsSuccessStatusCode)
+                {
+                    return NotFound(postRequest.StatusCode);
+                }
 
-            var url = $"BagItem/DeleteBagItems/{User.Claims.FirstOrDefault(x => x.Type == "sub").Value}";
-            var deleteRequest = await DeleteRequest(url);
-            if (!deleteRequest.IsSuccessStatusCode)
-            {
-                return NotFound(deleteRequest.StatusCode);
-            }
+                if (User.Identity.IsAuthenticated)
+                {
+                    var url = $"/BagItem/DeleteBagItems/{User.Claims.FirstOrDefault(x => x.Type == "sub").Value}";
+                    var deleteRequest = await DeleteRequest(url);
+                    if (!deleteRequest.IsSuccessStatusCode)
+                    {
+                        return NotFound(deleteRequest.StatusCode);
+                    }
+                }
 
-            return Json(new { clientSecret = paymentIntent.ClientSecret });
+                HttpContext.Session.Set<List<BagItem>>(BagSessionKey, null);
+                checkout.Stage = Stage.completed;
+                HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
+
+                return Json(new { clientSecret = paymentIntent.ClientSecret });
+            }
+            else
+            {
+                return NotFound();
+            }
         }
 
         private Models.Order BuildOrder(Checkout checkout, PaymentIntent paymentIntent)
         {
+            var orderItems = new List<Models.OrderItem>();
+            foreach(var item in checkout.BagItems)
+            {
+                orderItems.Add(new Models.OrderItem { Quantity = item.Quantity, ProductId = item.ProductId });
+            }
+
             Models.Order order = new Models.Order
             {
                 CreatedAt = DateTime.Now,
@@ -122,7 +144,8 @@ namespace NykantMVC.Controllers
                 PaymentIntent_Id = paymentIntent.Id,
                 ShippingId = checkout.Shipping.ShippingId,
                 Status = Status.Created,
-                TotalPrice = CalculateOrderAmount(checkout.BagItems),
+                TotalPrice = checkout.TotalPrice,
+                OrderItems = orderItems
             };
             return order;
         }

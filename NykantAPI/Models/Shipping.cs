@@ -10,7 +10,7 @@ namespace NykantAPI.Models
     {
         [Key]
         public int ShippingId { get; set; }
-        public ShippingDelivery ShippingDelivery { get; set; }
+        public int ShippingDeliveryId { get; set; }
         [Required]
         [EmailAddress]
         [DataType(DataType.EmailAddress)]

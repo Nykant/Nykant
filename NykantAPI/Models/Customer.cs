@@ -43,6 +43,7 @@ namespace NykantAPI.Models
         [Phone]
         [Display(Name = "Telefon")]
         public string Phone { get; set; }
+        public IEnumerable<Order> Orders { get; set; }
     }
 }
 

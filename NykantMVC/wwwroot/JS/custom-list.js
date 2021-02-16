@@ -4,9 +4,9 @@ l = x.length;
 
 var elem = document.getElementById("custom-list-options");
 var header = document.getElementById("custom-list-header");
-var input1 = document.getElementById("shipping-name");
-var input2 = document.getElementById("shipping-price");
 var button = document.getElementById("custom-list-button");
+var shippingdeliveryid = document.getElementById("shipping-delivery-id");
+button.disabled = true;
 
 for (i = 0; i < l; i++) {
     selElmnt = x[i].getElementsByTagName("select")[0];
@@ -17,16 +17,15 @@ for (i = 0; i < l; i++) {
         c.innerHTML = selElmnt.options[j].innerHTML;
 
         c.addEventListener("click", function (e) {
-            var y, i, k, s, h, sl, yl;
-            s = this.parentNode.parentNode.getElementsByTagName("select")[0];
-            sl = s.length;
+            var y, i, k, select, h, selectlength, yl;
+            select = this.parentNode.parentNode.getElementsByTagName("select")[0];
+            selectlength = select.length;
             h = this.parentNode.previousSibling;
-            for (i = 0; i < sl; i++) {
-                if (s.options[i].innerHTML == this.innerHTML) {
-                    s.selectedIndex = i;
+            for (i = 0; i < selectlength; i++) {
+                if (select.options[i].innerHTML == this.innerHTML) {
+                    select.selectedIndex = i;
+                    shippingdeliveryid.value = i;
                     header.innerHTML = this.innerHTML;
-                    input2.value = this.innerHTML;
-                    input1.value = this.innerHTML;
                     button.innerHTML = "CONTINUE";
                     button.disabled = false;
                     y = this.parentNode.getElementsByClassName("custom-list-option selected");

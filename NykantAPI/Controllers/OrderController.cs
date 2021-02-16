@@ -32,8 +32,8 @@ namespace NykantAPI.Controllers
                 orderDB.Status = order.Status;
                 if(order.Currency != null)
                 orderDB.Currency = order.Currency;
-                if(order.Shipping.ShippingDelivery.Name != null)
-                orderDB.Shipping.ShippingDelivery.Name = order.Shipping.ShippingDelivery.Name;
+                if(order.Shipping.ShippingDeliveryId != 0)
+                orderDB.Shipping.ShippingDeliveryId = order.Shipping.ShippingDeliveryId;
                 if(order.PaymentIntent_Id != null)
                 orderDB.PaymentIntent_Id = order.PaymentIntent_Id;
 
@@ -54,7 +54,8 @@ namespace NykantAPI.Controllers
             {
                 var entity = _context.Orders.Add(order).Entity;
                 await _context.SaveChangesAsync();
-                return Ok(JsonConvert.SerializeObject(entity));
+
+                return Ok(JsonConvert.SerializeObject(entity, Extensions.JsonOptions.jsonSettings));
             }
             catch (Exception e)
             {

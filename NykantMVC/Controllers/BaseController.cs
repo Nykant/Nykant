@@ -38,7 +38,7 @@ namespace NykantMVC.Controllers
                 Encoding.UTF8,
                 "application/json");
 
-            string uri = "https://localhost:6001/" + url;
+            string uri = "https://localhost:6001" + url;
 
             return await client.PostAsync(uri, itemJson);
         }
@@ -54,7 +54,7 @@ namespace NykantMVC.Controllers
                 Encoding.UTF8,
                 "application/json");
 
-            string uri = "https://localhost:6001/" + url;
+            string uri = "https://localhost:6001" + url;
 
             return await client.PatchAsync(uri, itemJson);
         }
@@ -65,7 +65,7 @@ namespace NykantMVC.Controllers
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
 
-            string uri = "https://localhost:6001/" + url;
+            string uri = "https://localhost:6001" + url;
             return await client.GetStringAsync(uri);
         }
 
@@ -75,7 +75,7 @@ namespace NykantMVC.Controllers
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
 
-            string uri = "https://localhost:6001/" + url;
+            string uri = "https://localhost:6001" + url;
             return await client.DeleteAsync(uri);
         }
     }

@@ -10,8 +10,8 @@ using NykantAPI.Data;
 namespace NykantAPI.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210215191623_INIT")]
-    partial class INIT
+    [Migration("20210216131647_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -443,7 +443,7 @@ namespace NykantAPI.Data.Migrations
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ItemType = "stol",
-                            LastModified = new DateTime(2021, 2, 15, 20, 16, 12, 683, DateTimeKind.Local).AddTicks(9527),
+                            LastModified = new DateTime(2021, 2, 16, 14, 16, 33, 65, DateTimeKind.Local).AddTicks(7337),
                             Price = 1000,
                             Size = "5mm",
                             Title = "Grøntsags Skærebræt",
@@ -456,7 +456,7 @@ namespace NykantAPI.Data.Migrations
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ItemType = "stol",
-                            LastModified = new DateTime(2021, 2, 15, 20, 16, 12, 686, DateTimeKind.Local).AddTicks(575),
+                            LastModified = new DateTime(2021, 2, 16, 14, 16, 33, 68, DateTimeKind.Local).AddTicks(6781),
                             Price = 1000,
                             Size = "10mm",
                             Title = "Grøntsags Skærebræt",
@@ -469,7 +469,7 @@ namespace NykantAPI.Data.Migrations
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 2, 15, 20, 16, 12, 686, DateTimeKind.Local).AddTicks(636),
+                            LastModified = new DateTime(2021, 2, 16, 14, 16, 33, 68, DateTimeKind.Local).AddTicks(6841),
                             Price = 1000,
                             Size = "20mm",
                             Title = "Grøntsags Skærebræt",
@@ -482,7 +482,7 @@ namespace NykantAPI.Data.Migrations
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ItemType = "skærebræt",
-                            LastModified = new DateTime(2021, 2, 15, 20, 16, 12, 686, DateTimeKind.Local).AddTicks(641),
+                            LastModified = new DateTime(2021, 2, 16, 14, 16, 33, 68, DateTimeKind.Local).AddTicks(6846),
                             Price = 1000,
                             Size = "5mm",
                             Title = "Grøntsags Skærebræt",
@@ -495,7 +495,7 @@ namespace NykantAPI.Data.Migrations
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 2, 15, 20, 16, 12, 686, DateTimeKind.Local).AddTicks(644),
+                            LastModified = new DateTime(2021, 2, 16, 14, 16, 33, 68, DateTimeKind.Local).AddTicks(6849),
                             Price = 1000,
                             Size = "10mm",
                             Title = "Grøntsags Skærebræt",
@@ -508,7 +508,7 @@ namespace NykantAPI.Data.Migrations
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ItemType = "skærebræt",
-                            LastModified = new DateTime(2021, 2, 15, 20, 16, 12, 686, DateTimeKind.Local).AddTicks(647),
+                            LastModified = new DateTime(2021, 2, 16, 14, 16, 33, 68, DateTimeKind.Local).AddTicks(6852),
                             Price = 1000,
                             Size = "20mm",
                             Title = "Grøntsags Skærebræt",
@@ -521,7 +521,7 @@ namespace NykantAPI.Data.Migrations
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ItemType = "stol",
-                            LastModified = new DateTime(2021, 2, 15, 20, 16, 12, 686, DateTimeKind.Local).AddTicks(650),
+                            LastModified = new DateTime(2021, 2, 16, 14, 16, 33, 68, DateTimeKind.Local).AddTicks(6855),
                             Price = 1000,
                             Size = "5mm",
                             Title = "Grøntsags Skærebræt",
@@ -534,7 +534,7 @@ namespace NykantAPI.Data.Migrations
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ItemType = "stol",
-                            LastModified = new DateTime(2021, 2, 15, 20, 16, 12, 686, DateTimeKind.Local).AddTicks(653),
+                            LastModified = new DateTime(2021, 2, 16, 14, 16, 33, 68, DateTimeKind.Local).AddTicks(6858),
                             Price = 1000,
                             Size = "10mm",
                             Title = "Grøntsags Skærebræt",
@@ -547,7 +547,7 @@ namespace NykantAPI.Data.Migrations
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 2, 15, 20, 16, 12, 686, DateTimeKind.Local).AddTicks(656),
+                            LastModified = new DateTime(2021, 2, 16, 14, 16, 33, 68, DateTimeKind.Local).AddTicks(6861),
                             Price = 1000,
                             Size = "20mm",
                             Title = "Grøntsags Skærebræt",
@@ -560,7 +560,7 @@ namespace NykantAPI.Data.Migrations
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ItemType = "skærebræt",
-                            LastModified = new DateTime(2021, 2, 15, 20, 16, 12, 686, DateTimeKind.Local).AddTicks(659),
+                            LastModified = new DateTime(2021, 2, 16, 14, 16, 33, 68, DateTimeKind.Local).AddTicks(6863),
                             Price = 1000,
                             Size = "5mm",
                             Title = "Grøntsags Skærebræt",
@@ -573,7 +573,7 @@ namespace NykantAPI.Data.Migrations
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 2, 15, 20, 16, 12, 686, DateTimeKind.Local).AddTicks(662),
+                            LastModified = new DateTime(2021, 2, 16, 14, 16, 33, 68, DateTimeKind.Local).AddTicks(6866),
                             Price = 1000,
                             Size = "10mm",
                             Title = "Grøntsags Skærebræt",
@@ -586,7 +586,7 @@ namespace NykantAPI.Data.Migrations
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ItemType = "skærebræt",
-                            LastModified = new DateTime(2021, 2, 15, 20, 16, 12, 686, DateTimeKind.Local).AddTicks(665),
+                            LastModified = new DateTime(2021, 2, 16, 14, 16, 33, 68, DateTimeKind.Local).AddTicks(6869),
                             Price = 1000,
                             Size = "20mm",
                             Title = "Grøntsags Skærebræt",
@@ -599,7 +599,7 @@ namespace NykantAPI.Data.Migrations
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ItemType = "stol",
-                            LastModified = new DateTime(2021, 2, 15, 20, 16, 12, 686, DateTimeKind.Local).AddTicks(668),
+                            LastModified = new DateTime(2021, 2, 16, 14, 16, 33, 68, DateTimeKind.Local).AddTicks(6872),
                             Price = 1000,
                             Size = "5mm",
                             Title = "Grøntsags Skærebræt",
@@ -612,7 +612,7 @@ namespace NykantAPI.Data.Migrations
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ItemType = "stol",
-                            LastModified = new DateTime(2021, 2, 15, 20, 16, 12, 686, DateTimeKind.Local).AddTicks(672),
+                            LastModified = new DateTime(2021, 2, 16, 14, 16, 33, 68, DateTimeKind.Local).AddTicks(6904),
                             Price = 1000,
                             Size = "10mm",
                             Title = "Grøntsags Skærebræt",
@@ -625,7 +625,7 @@ namespace NykantAPI.Data.Migrations
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 2, 15, 20, 16, 12, 686, DateTimeKind.Local).AddTicks(675),
+                            LastModified = new DateTime(2021, 2, 16, 14, 16, 33, 68, DateTimeKind.Local).AddTicks(6907),
                             Price = 1000,
                             Size = "20mm",
                             Title = "Grøntsags Skærebræt",
@@ -638,7 +638,7 @@ namespace NykantAPI.Data.Migrations
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ItemType = "skærebræt",
-                            LastModified = new DateTime(2021, 2, 15, 20, 16, 12, 686, DateTimeKind.Local).AddTicks(677),
+                            LastModified = new DateTime(2021, 2, 16, 14, 16, 33, 68, DateTimeKind.Local).AddTicks(6910),
                             Price = 1000,
                             Size = "5mm",
                             Title = "Grøntsags Skærebræt",
@@ -651,7 +651,7 @@ namespace NykantAPI.Data.Migrations
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 2, 15, 20, 16, 12, 686, DateTimeKind.Local).AddTicks(680),
+                            LastModified = new DateTime(2021, 2, 16, 14, 16, 33, 68, DateTimeKind.Local).AddTicks(6913),
                             Price = 1000,
                             Size = "10mm",
                             Title = "Grøntsags Skærebræt",
@@ -664,7 +664,7 @@ namespace NykantAPI.Data.Migrations
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ItemType = "skærebræt",
-                            LastModified = new DateTime(2021, 2, 15, 20, 16, 12, 686, DateTimeKind.Local).AddTicks(683),
+                            LastModified = new DateTime(2021, 2, 16, 14, 16, 33, 68, DateTimeKind.Local).AddTicks(6916),
                             Price = 1000,
                             Size = "20mm",
                             Title = "Grøntsags Skærebræt",
@@ -677,7 +677,7 @@ namespace NykantAPI.Data.Migrations
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 2, 15, 20, 16, 12, 686, DateTimeKind.Local).AddTicks(687),
+                            LastModified = new DateTime(2021, 2, 16, 14, 16, 33, 68, DateTimeKind.Local).AddTicks(6919),
                             Price = 1000,
                             Size = "5mm",
                             Title = "Grøntsags Skærebræt",
@@ -730,6 +730,9 @@ namespace NykantAPI.Data.Migrations
                         .HasColumnType("nvarchar(20)")
                         .HasMaxLength(20);
 
+                    b.Property<int>("ShippingDeliveryId")
+                        .HasColumnType("int");
+
                     b.HasKey("ShippingId");
 
                     b.ToTable("Shippings");
@@ -748,13 +751,7 @@ namespace NykantAPI.Data.Migrations
                     b.Property<int>("Price")
                         .HasColumnType("int");
 
-                    b.Property<int>("ShippingId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("ShippingId")
-                        .IsUnique();
 
                     b.ToTable("ShippingDeliveries");
                 });
@@ -780,7 +777,7 @@ namespace NykantAPI.Data.Migrations
             modelBuilder.Entity("NykantAPI.Models.Order", b =>
                 {
                     b.HasOne("NykantAPI.Models.Customer", "Customer")
-                        .WithMany()
+                        .WithMany("Orders")
                         .HasForeignKey("CustomerEmail");
 
                     b.HasOne("NykantAPI.Models.Shipping", "Shipping")
@@ -801,15 +798,6 @@ namespace NykantAPI.Data.Migrations
                     b.HasOne("NykantAPI.Models.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("NykantAPI.Models.ShippingDelivery", b =>
-                {
-                    b.HasOne("NykantAPI.Models.Shipping", null)
-                        .WithOne("ShippingDelivery")
-                        .HasForeignKey("NykantAPI.Models.ShippingDelivery", "ShippingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

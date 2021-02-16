@@ -60,7 +60,7 @@ namespace NykantMVC.Controllers
 
             string subject = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
 
-            var json = await GetRequest($"BagItem/GetBagItems/{subject}");
+            var json = await GetRequest($"/BagItem/GetBagItems/{subject}");
 
             BagVM bogVM = JsonConvert.DeserializeObject<BagVM>(json);
 

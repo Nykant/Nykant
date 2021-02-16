@@ -39,7 +39,7 @@ namespace NykantMVC.Controllers
                 }
             }
 
-            var response = await PatchRequest("BagItem/UpdateBagItem", bagItem);
+            var response = await PatchRequest("/BagItem/UpdateBagItem", bagItem);
 
             if (response.IsSuccessStatusCode)
             {
@@ -55,6 +55,7 @@ namespace NykantMVC.Controllers
 
             BagItem bagItem = new BagItem
             {
+                Product = productVM.Product,
                 ProductId = productVM.Product.Id,
                 Quantity = productQuantity
             };
@@ -84,7 +85,7 @@ namespace NykantMVC.Controllers
 
             bagItem.Subject = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
 
-            var response = await PostRequest("BagItem/PostBagItem", bagItem);
+            var response = await PostRequest("/BagItem/PostBagItem", bagItem);
 
             if (response.IsSuccessStatusCode)
             {
