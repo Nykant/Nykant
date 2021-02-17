@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace NykantAPI.Data.Migrations
+namespace NykantAPI.Data.migrations
 {
-    public partial class Init : Migration
+    public partial class NEW : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -184,25 +184,25 @@ namespace NykantAPI.Data.Migrations
                 columns: new[] { "Id", "Alt", "Color", "Description", "ImageSource", "ItemType", "LastModified", "Name", "Price", "Size", "Title", "TypeOfWood" },
                 values: new object[,]
                 {
-                    { 1, null, "naturligt", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "stol", new DateTime(2021, 2, 16, 14, 16, 33, 65, DateTimeKind.Local).AddTicks(7337), null, 1000, "5mm", "Grøntsags Skærebræt", "valnød" },
-                    { 17, null, "naturligt", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "bænk", new DateTime(2021, 2, 16, 14, 16, 33, 68, DateTimeKind.Local).AddTicks(6913), null, 1000, "10mm", "Grøntsags Skærebræt", "valnød" },
-                    { 16, null, "farvet-overflade", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "skærebræt", new DateTime(2021, 2, 16, 14, 16, 33, 68, DateTimeKind.Local).AddTicks(6910), null, 1000, "5mm", "Grøntsags Skærebræt", "eg" },
-                    { 15, null, "naturligt", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "bænk", new DateTime(2021, 2, 16, 14, 16, 33, 68, DateTimeKind.Local).AddTicks(6907), null, 1000, "20mm", "Grøntsags Skærebræt", "fyr" },
-                    { 14, null, "farvet-overflade", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "stol", new DateTime(2021, 2, 16, 14, 16, 33, 68, DateTimeKind.Local).AddTicks(6904), null, 1000, "10mm", "Grøntsags Skærebræt", "eg" },
-                    { 13, null, "naturligt", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "stol", new DateTime(2021, 2, 16, 14, 16, 33, 68, DateTimeKind.Local).AddTicks(6872), null, 1000, "5mm", "Grøntsags Skærebræt", "valnød" },
-                    { 12, null, "farvet-overflade", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "skærebræt", new DateTime(2021, 2, 16, 14, 16, 33, 68, DateTimeKind.Local).AddTicks(6869), null, 1000, "20mm", "Grøntsags Skærebræt", "fyr" },
-                    { 11, null, "naturligt", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "bænk", new DateTime(2021, 2, 16, 14, 16, 33, 68, DateTimeKind.Local).AddTicks(6866), null, 1000, "10mm", "Grøntsags Skærebræt", "valnød" },
-                    { 18, null, "farvet-overflade", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "skærebræt", new DateTime(2021, 2, 16, 14, 16, 33, 68, DateTimeKind.Local).AddTicks(6916), null, 1000, "20mm", "Grøntsags Skærebræt", "fyr" },
-                    { 10, null, "farvet-overflade", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "skærebræt", new DateTime(2021, 2, 16, 14, 16, 33, 68, DateTimeKind.Local).AddTicks(6863), null, 1000, "5mm", "Grøntsags Skærebræt", "eg" },
-                    { 8, null, "farvet-overflade", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "stol", new DateTime(2021, 2, 16, 14, 16, 33, 68, DateTimeKind.Local).AddTicks(6858), null, 1000, "10mm", "Grøntsags Skærebræt", "eg" },
-                    { 7, null, "naturligt", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "stol", new DateTime(2021, 2, 16, 14, 16, 33, 68, DateTimeKind.Local).AddTicks(6855), null, 1000, "5mm", "Grøntsags Skærebræt", "valnød" },
-                    { 6, null, "farvet-overflade", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "skærebræt", new DateTime(2021, 2, 16, 14, 16, 33, 68, DateTimeKind.Local).AddTicks(6852), null, 1000, "20mm", "Grøntsags Skærebræt", "fyr" },
-                    { 5, null, "naturligt", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "bænk", new DateTime(2021, 2, 16, 14, 16, 33, 68, DateTimeKind.Local).AddTicks(6849), null, 1000, "10mm", "Grøntsags Skærebræt", "valnød" },
-                    { 4, null, "farvet-overflade", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "skærebræt", new DateTime(2021, 2, 16, 14, 16, 33, 68, DateTimeKind.Local).AddTicks(6846), null, 1000, "5mm", "Grøntsags Skærebræt", "eg" },
-                    { 3, null, "naturligt", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "bænk", new DateTime(2021, 2, 16, 14, 16, 33, 68, DateTimeKind.Local).AddTicks(6841), null, 1000, "20mm", "Grøntsags Skærebræt", "fyr" },
-                    { 2, null, "farvet-overflade", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "stol", new DateTime(2021, 2, 16, 14, 16, 33, 68, DateTimeKind.Local).AddTicks(6781), null, 1000, "10mm", "Grøntsags Skærebræt", "eg" },
-                    { 9, null, "naturligt", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "bænk", new DateTime(2021, 2, 16, 14, 16, 33, 68, DateTimeKind.Local).AddTicks(6861), null, 1000, "20mm", "Grøntsags Skærebræt", "fyr" },
-                    { 19, null, "naturligt", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "bænk", new DateTime(2021, 2, 16, 14, 16, 33, 68, DateTimeKind.Local).AddTicks(6919), null, 1000, "5mm", "Grøntsags Skærebræt", "valnød" }
+                    { 1, null, "naturligt", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "stol", new DateTime(2021, 2, 17, 12, 45, 55, 199, DateTimeKind.Local).AddTicks(1254), null, 1000, "5mm", "Grøntsags Skærebræt", "valnød" },
+                    { 17, null, "naturligt", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "bænk", new DateTime(2021, 2, 17, 12, 45, 55, 202, DateTimeKind.Local).AddTicks(3846), null, 1000, "10mm", "Grøntsags Skærebræt", "valnød" },
+                    { 16, null, "farvet-overflade", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "skærebræt", new DateTime(2021, 2, 17, 12, 45, 55, 202, DateTimeKind.Local).AddTicks(3843), null, 1000, "5mm", "Grøntsags Skærebræt", "eg" },
+                    { 15, null, "naturligt", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "bænk", new DateTime(2021, 2, 17, 12, 45, 55, 202, DateTimeKind.Local).AddTicks(3841), null, 1000, "20mm", "Grøntsags Skærebræt", "fyr" },
+                    { 14, null, "farvet-overflade", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "stol", new DateTime(2021, 2, 17, 12, 45, 55, 202, DateTimeKind.Local).AddTicks(3838), null, 1000, "10mm", "Grøntsags Skærebræt", "eg" },
+                    { 13, null, "naturligt", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "stol", new DateTime(2021, 2, 17, 12, 45, 55, 202, DateTimeKind.Local).AddTicks(3835), null, 1000, "5mm", "Grøntsags Skærebræt", "valnød" },
+                    { 12, null, "farvet-overflade", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "skærebræt", new DateTime(2021, 2, 17, 12, 45, 55, 202, DateTimeKind.Local).AddTicks(3833), null, 1000, "20mm", "Grøntsags Skærebræt", "fyr" },
+                    { 11, null, "naturligt", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "bænk", new DateTime(2021, 2, 17, 12, 45, 55, 202, DateTimeKind.Local).AddTicks(3830), null, 1000, "10mm", "Grøntsags Skærebræt", "valnød" },
+                    { 18, null, "farvet-overflade", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "skærebræt", new DateTime(2021, 2, 17, 12, 45, 55, 202, DateTimeKind.Local).AddTicks(3848), null, 1000, "20mm", "Grøntsags Skærebræt", "fyr" },
+                    { 10, null, "farvet-overflade", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "skærebræt", new DateTime(2021, 2, 17, 12, 45, 55, 202, DateTimeKind.Local).AddTicks(3827), null, 1000, "5mm", "Grøntsags Skærebræt", "eg" },
+                    { 8, null, "farvet-overflade", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "stol", new DateTime(2021, 2, 17, 12, 45, 55, 202, DateTimeKind.Local).AddTicks(3822), null, 1000, "10mm", "Grøntsags Skærebræt", "eg" },
+                    { 7, null, "naturligt", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "stol", new DateTime(2021, 2, 17, 12, 45, 55, 202, DateTimeKind.Local).AddTicks(3819), null, 1000, "5mm", "Grøntsags Skærebræt", "valnød" },
+                    { 6, null, "farvet-overflade", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "skærebræt", new DateTime(2021, 2, 17, 12, 45, 55, 202, DateTimeKind.Local).AddTicks(3817), null, 1000, "20mm", "Grøntsags Skærebræt", "fyr" },
+                    { 5, null, "naturligt", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "bænk", new DateTime(2021, 2, 17, 12, 45, 55, 202, DateTimeKind.Local).AddTicks(3814), null, 1000, "10mm", "Grøntsags Skærebræt", "valnød" },
+                    { 4, null, "farvet-overflade", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "skærebræt", new DateTime(2021, 2, 17, 12, 45, 55, 202, DateTimeKind.Local).AddTicks(3811), null, 1000, "5mm", "Grøntsags Skærebræt", "eg" },
+                    { 3, null, "naturligt", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "bænk", new DateTime(2021, 2, 17, 12, 45, 55, 202, DateTimeKind.Local).AddTicks(3807), null, 1000, "20mm", "Grøntsags Skærebræt", "fyr" },
+                    { 2, null, "farvet-overflade", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "stol", new DateTime(2021, 2, 17, 12, 45, 55, 202, DateTimeKind.Local).AddTicks(3744), null, 1000, "10mm", "Grøntsags Skærebræt", "eg" },
+                    { 9, null, "naturligt", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "bænk", new DateTime(2021, 2, 17, 12, 45, 55, 202, DateTimeKind.Local).AddTicks(3825), null, 1000, "20mm", "Grøntsags Skærebræt", "fyr" },
+                    { 19, null, "naturligt", "a test object", "../images/Finback-Chairs1-1280x853-c-default.jpg", "bænk", new DateTime(2021, 2, 17, 12, 45, 55, 202, DateTimeKind.Local).AddTicks(3852), null, 1000, "5mm", "Grøntsags Skærebræt", "valnød" }
                 });
 
             migrationBuilder.InsertData(

@@ -30,10 +30,17 @@ namespace NykantMVC.Controllers
         [HttpGet]
         public async Task<IActionResult> Details()
         {
-            if (!User.Identity.IsAuthenticated)
+            if (User.Identity.IsAuthenticated)
+            {
+                string subject = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
+                var json = await GetRequest($"/BagItem/GetBagItems/{subject}");
+                BagVM bagVM = JsonConvert.DeserializeObject<BagVM>(json);
+
+                return View(bagVM);
+            }
+            else
             {
                 var bagItems = HttpContext.Session.Get<List<BagItem>>(BagSessionKey);
-
                 if (bagItems == null)
                 {
                     BagVM bagVM = new BagVM
@@ -57,14 +64,6 @@ namespace NykantMVC.Controllers
                     return View(bagVM);
                 }
             }
-
-            string subject = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
-
-            var json = await GetRequest($"/BagItem/GetBagItems/{subject}");
-
-            BagVM bogVM = JsonConvert.DeserializeObject<BagVM>(json);
-
-            return View(bogVM);
         }
     }
 }

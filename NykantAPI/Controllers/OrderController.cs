@@ -14,7 +14,7 @@ using NykantAPI.Models.DTO;
 namespace NykantAPI.Controllers
 {
     [ApiController]
-    [Route("[controller]/[action]")]
+    [Route("[controller]/[action]/")]
     public class OrderController : BaseController
     {
         public OrderController(ILogger<BaseController> logger, ApplicationDbContext context)
@@ -22,45 +22,34 @@ namespace NykantAPI.Controllers
         {
         }
 
-        [HttpPatch]
-        public async Task<ActionResult<Order>> UpdateOrder(Order order)
-        {
-            try
-            {
-                var orderDB = await _context.Orders.FirstOrDefaultAsync(x => x.CustomerEmail == order.CustomerEmail && x.Status == Status.Created);
-                if(order.Status != 0)
-                orderDB.Status = order.Status;
-                if(order.Currency != null)
-                orderDB.Currency = order.Currency;
-                if(order.Shipping.ShippingDeliveryId != 0)
-                orderDB.Shipping.ShippingDeliveryId = order.Shipping.ShippingDeliveryId;
-                if(order.PaymentIntent_Id != null)
-                orderDB.PaymentIntent_Id = order.PaymentIntent_Id;
-
-                _context.Orders.Update(orderDB);
-                await _context.SaveChangesAsync();
-                return Ok();
-            }
-            catch (Exception e)
-            {
-                return NotFound(e);
-            }
-        }
-
         [HttpPost]
         public async Task<ActionResult<Order>> PostOrder(Order order)
         {
-            try
+            if (ModelState.IsValid)
             {
-                var entity = _context.Orders.Add(order).Entity;
-                await _context.SaveChangesAsync();
+                if (OrderExists(order.Id))
+                {
+                    _context.Orders.Update(order);
+                    await _context.SaveChangesAsync();
+                    return Ok();
+                }
+                else
+                {
+                    _context.Orders.Add(order);
+                    await _context.SaveChangesAsync();
+                    return Ok();
+                }
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
 
-                return Ok(JsonConvert.SerializeObject(entity, Extensions.JsonOptions.jsonSettings));
-            }
-            catch (Exception e)
-            {
-                return NotFound(e.Message);
-            }
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Order>> GetOrder(int id)
+        {
+            return Ok(JsonConvert.SerializeObject(await _context.Orders.FindAsync(id)));
         }
 
         private bool OrderExists(int orderId)

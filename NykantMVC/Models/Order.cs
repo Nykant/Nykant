@@ -26,9 +26,8 @@ namespace NykantMVC.Models
     public enum Status
     {
         Unset = 0,
-        Created = 1,
-        Accepted = 2,
-        Processed = 3,
-        Failed = 4
+        Accepted = 1,
+        Processed = 2,
+        Cancelled = 3
     }
 }

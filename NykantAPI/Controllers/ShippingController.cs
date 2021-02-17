@@ -24,25 +24,34 @@ namespace NykantAPI.Controllers
         {
             if (ModelState.IsValid)
             {
-                try
+                if (ShippingExists(shipping.ShippingId))
+                {
+                    _context.Shippings.Update(shipping);
+                    await _context.SaveChangesAsync();
+                    return Ok();
+                }
+                else
                 {
                     var entity = _context.Shippings.Add(shipping).Entity;
                     await _context.SaveChangesAsync();
-
                     return CreatedAtAction("GetShipping", new { id = entity.ShippingId }, shipping);
                 }
-                catch (Exception e)
-                {
-                    return NotFound(e.Message);
-                }
             }
-            return NotFound();
+            else
+            {
+                return NotFound();
+            }
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Shipping>> GetShipping(int id)
         {
             return Ok(JsonConvert.SerializeObject(await _context.Shippings.FindAsync(id)));
+        }
+
+        private bool ShippingExists(int id)
+        {
+            return _context.Shippings.Any(e => e.ShippingId  == id);
         }
     }
 }

@@ -32,40 +32,50 @@ namespace NykantMVC.Controllers
         [HttpGet]
         public async Task<IActionResult> Customer()
         {
-            if (User.Identity.IsAuthenticated)
+            var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
+            if (checkout == null)
             {
-                var json = await GetRequest($"/BagItem/GetBagItems/{User.Claims.FirstOrDefault(x => x.Type == "sub").Value}");
-                var bagVM = JsonConvert.DeserializeObject<BagVM>(json);
-
-                Checkout checkout = new Checkout
+                if (User.Identity.IsAuthenticated)
                 {
-                    BagItems = bagVM.BagItems,
-                    Stage = Stage.customer,
-                    TotalPrice = CalculateAmount(bagVM.BagItems)
-                };
-                HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
+                    var json = await GetRequest($"/BagItem/GetBagItems/{User.Claims.FirstOrDefault(x => x.Type == "sub").Value}");
+                    var bagVM = JsonConvert.DeserializeObject<BagVM>(json);
 
-                return View(checkout);
-            }
-            else
-            {
-                var bagItems = HttpContext.Session.Get<List<BagItem>>(BagSessionKey);
-                if (bagItems == null)
-                {
-                    return NotFound();
+                    Checkout checkoutNEW = new Checkout
+                    {
+                        BagItems = bagVM.BagItems,
+                        Stage = Stage.customer,
+                        TotalPrice = CalculateAmount(bagVM.BagItems)
+                    };
+                    HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkoutNEW);
+
+                    return View(checkoutNEW);
                 }
                 else
                 {
-                    Checkout checkout = new Checkout
+                    var bagItems = HttpContext.Session.Get<List<BagItem>>(BagSessionKey);
+                    if (bagItems == null)
                     {
-                        BagItems = bagItems,
-                        Stage = Stage.customer,
-                        TotalPrice = CalculateAmount(bagItems)
-                    };
-                    HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
+                        return NotFound();
+                    }
+                    else
+                    {
+                        Checkout checkoutNEW = new Checkout
+                        {
+                            BagItems = bagItems,
+                            Stage = Stage.customer,
+                            TotalPrice = CalculateAmount(bagItems)
+                        };
+                        HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkoutNEW);
 
-                    return View(checkout);
+                        return View(checkoutNEW);
+                    }
                 }
+            }
+            else
+            {
+                checkout.Stage = Stage.customer;
+                HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
+                return View(checkout);
             }
         }
 
@@ -73,6 +83,10 @@ namespace NykantMVC.Controllers
         public async Task<IActionResult> PostCustomer(Models.Customer customer)
         {
             var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
+            if (checkout == null)
+            {
+                return NotFound();
+            }
 
             if (checkout.Stage == Stage.customer)
             {
@@ -85,7 +99,6 @@ namespace NykantMVC.Controllers
 
                 if (response.IsSuccessStatusCode)
                 {
-                    checkout.Stage = Stage.shipping;
                     HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
                     return RedirectToAction("Shipping");
                 }
@@ -98,18 +111,26 @@ namespace NykantMVC.Controllers
         public IActionResult Shipping()
         {
             var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
-
-            if(checkout.Stage == Stage.shipping)
+            if(checkout == null)
             {
+                return NotFound();
+            }
+            else
+            {
+                checkout.Stage = Stage.shipping;
+                HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
                 return View(checkout);
             }
-            return NotFound();
         }
 
         [HttpPost]
         public async Task<IActionResult> PostShipping(Models.Shipping shipping)
         {
             var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
+            if (checkout == null)
+            {
+                return NotFound();
+            }
 
             shipping.Address = checkout.Customer.Address;
             shipping.City = checkout.Customer.City;
@@ -143,24 +164,34 @@ namespace NykantMVC.Controllers
         public IActionResult Payment()
         {
             var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
+            if(checkout == null)
+            {
+                return NotFound();
+            }
 
             if(checkout.Stage == Stage.payment)
             {
                 return View(checkout);
             }
-            return NotFound();
+            else
+            {
+                return NotFound();
+            }
         }
 
         [HttpGet]
         public IActionResult Success()
         {
             var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
-
+            if (checkout == null)
+            {
+                return NotFound();
+            }
             if (checkout.Stage == Stage.completed)
             {
                 HttpContext.Session.Set<Checkout>(CheckoutSessionKey, null);
 
-                return View(checkout);
+                return View();
             }
             return NotFound();
         }

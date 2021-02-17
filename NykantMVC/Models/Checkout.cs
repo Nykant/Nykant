@@ -16,10 +16,12 @@ namespace NykantMVC.Models
     }
     public enum Stage
     {
+        unset = 0,
         customer = 1,
         shipping = 2,
         payment = 3,
-        completed = 4,
-        cancelled = 5
+        completing = 4,
+        completed = 5,
+        cancelled = 6
     }
 }

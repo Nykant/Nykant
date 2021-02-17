@@ -101,7 +101,15 @@ var payWithCard = function (stripe, card, clientSecret) {
 /* ------- UI helpers ------- */
 // Shows a success message when the payment is complete
 var orderComplete = function (paymentIntentId) {
-    window.location.replace("https://localhost:5002/checkout/success");
+    fetch("/order/postorder", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(paymentIntentId)
+    }).then(function () {
+        location.replace("https://localhost:5002/checkout/success");
+    })
 };
 
 // Show the customer the error from Stripe if their card fails to charge

@@ -84,28 +84,65 @@ namespace NykantAPI.Controllers
             return Ok();
         }
 
-        [HttpPost]
-        public async Task<ActionResult<BagItem>> PostBagItem(BagItem bagItem)
+        [HttpDelete]
+        public async Task<ActionResult<BagItem>> DeleteBagItem(BagItem bagItem)
         {
-            if (BagItemExists(bagItem.Subject, bagItem.ProductId))
+            try
             {
-                _context.BagItems.Update(bagItem);
+                _context.BagItems.Remove(bagItem);
                 await _context.SaveChangesAsync();
                 return Ok();
             }
-            else
+            catch (Exception e)
             {
-                try
+                return NotFound(e.Message);
+            }
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<BagItem>> PostBagItem(BagItem bagItem)
+        {
+            if (ModelState.IsValid)
+            {
+                if (BagItemExists(bagItem.Subject, bagItem.ProductId))
                 {
-                    await _context.BagItems.AddAsync(bagItem);
-                    await _context.SaveChangesAsync();
-                    return CreatedAtAction("GetBagItems", new { subject = bagItem.Subject }, bagItem);
+                    try
+                    {
+                        var bagItemDB = _context.BagItems.Find(bagItem.Subject, bagItem.ProductId);
+                        bagItemDB.Quantity += bagItem.Quantity;
+                        _context.BagItems.Update(bagItemDB);
+                        await _context.SaveChangesAsync();
+                        return Ok();
+                    }
+                    catch(Exception e)
+                    {
+                        return Conflict(e.Message);
+                    }
                 }
-                catch (Exception e)
+                else
                 {
-                    return Conflict(e.Message);
+                    try
+                    {
+                        _context.BagItems.Add(bagItem);
+                        await _context.SaveChangesAsync();
+                        return CreatedAtAction("GetBagItem", new { subject = bagItem.Subject, productId = bagItem.ProductId }, bagItem);
+                    }
+                    catch (Exception e)
+                    {
+                        return Conflict(e.Message);
+                    }
                 }
             }
+            else
+            {
+                return NotFound();
+            }
+        }
+
+        [HttpGet("{subject}/{productId}")]
+        public async Task<ActionResult<BagItem>> GetBagItem(string subject, int productId)
+        {
+            return Ok(JsonConvert.SerializeObject(await _context.Customers.FindAsync(subject, productId)));
         }
 
         private bool BagItemExists(string sub, int productId)

@@ -23,16 +23,34 @@ namespace NykantAPI.Controllers
         {
         }
 
+        [HttpGet("{email}")]
+        public async Task<ActionResult<Customer>> GetCustomer(string email)
+        {
+            return Ok(JsonConvert.SerializeObject(await _context.Customers.FindAsync(email)));
+        }
+
         [HttpPost]
         public async Task<ActionResult<Customer>> PostCustomer(Customer customer)
         {
-            if (!CustomerExists(customer.Email))
+            if (ModelState.IsValid)
             {
-                var entity = _context.Customers.Add(customer).Entity;
-                await _context.SaveChangesAsync();
-                return Ok(JsonConvert.SerializeObject(entity));
+                if (CustomerExists(customer.Email))
+                {
+                    _context.Customers.Update(customer);
+                    await _context.SaveChangesAsync();
+                    return Ok();
+                }
+                else
+                {
+                    var entity = _context.Customers.Add(customer).Entity;
+                    await _context.SaveChangesAsync();
+                    return CreatedAtAction("GetCustomer", new { email = entity.Email }, customer);
+                }
             }
-            return Ok();
+            else
+            {
+                return NotFound();
+            }
         }
 
         private bool CustomerExists(string email)

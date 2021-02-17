@@ -49,66 +49,61 @@ namespace NykantMVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddBagItem(ProductVM productVM, int productQuantity)
+        public async Task<IActionResult> PostBagItem(ProductVM productVM, int productQuantity)
         {
             bool isAuthenticated = User.Identity.IsAuthenticated;
 
             BagItem bagItem = new BagItem
             {
-                Product = productVM.Product,
                 ProductId = productVM.Product.Id,
                 Quantity = productQuantity
             };
 
             if (!isAuthenticated)
             {
+                bagItem.Product = productVM.Product;
+                List<BagItem> bagItems = HttpContext.Session.Get<List<BagItem>>(BagSessionKey);
+                if (bagItems == default
+                    || bagItems == null)
+                {
+                    bagItems = new List<BagItem>();
+                }
+
+                bool bagItemExists = false;
+                foreach(var item in bagItems)
+                {
+                    if(item.ProductId == bagItem.ProductId)
+                    {
+                        bagItemExists = true;
+                        item.Quantity += productQuantity;
+                    }
+                }
+                if(!bagItemExists)
+                bagItems.Add(bagItem);
+
+                HttpContext.Session.Set<List<BagItem>>(BagSessionKey, bagItems);
+                return Content("Item added to your bag");
+            }
+            else
+            {
                 try
                 {
-                    List<BagItem> bagItems = null;
-                    if (HttpContext.Session.Get<List<BagItem>>(BagSessionKey) == default)
+                    bagItem.Subject = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
+                    var response = await PostRequest("/BagItem/PostBagItem", bagItem);
+                    if (response.IsSuccessStatusCode)
                     {
-                        bagItems = new List<BagItem>();
+                        return Content("Item added to your bag");
                     }
                     else
                     {
-                        bagItems = HttpContext.Session.Get<List<BagItem>>(BagSessionKey);
+                        return Content("Item not added, something went wrong");
                     }
-                    bagItems.Add(bagItem);
-                    HttpContext.Session.Set<List<BagItem>>(BagSessionKey, bagItems);
-                    return NoContent();
                 }
-                catch (Exception e)
+                catch(Exception e)
                 {
                     return Content(e.Message);
                 }
             }
-
-            bagItem.Subject = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
-
-            var response = await PostRequest("/BagItem/PostBagItem", bagItem);
-
-            if (response.IsSuccessStatusCode)
-            {
-                return NoContent();
-            }
-            return Content("Failed");
         }
-
-        //public async Task<IActionResult> DeleteBagItem(int productId)
-        //{
-        //    var accessToken = await HttpContext.GetTokenAsync("access_token");
-        //    var subject = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
-        //    var client = new HttpClient();
-        //    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-
-        //    string uri = "https://localhost:6001/api/BagItem/DeleteBagItem/" + productId + "/" + subject;
-        //    var content = await client.DeleteAsync(uri);
-
-        //    if (content.IsSuccessStatusCode)
-        //    {
-        //        return RedirectToAction("Details", "Bag");
-        //    }
-        //    return NotFound();
-        //}
     }
 }

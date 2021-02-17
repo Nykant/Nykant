@@ -12,13 +12,9 @@
     <div class="col-8 center top-padding ">
         <div class="col-8 left right-side-padding">
             <div class="breadcrumbs dark-card">
-                <a asp-controller="Bag" asp-action="Details">SHIPPING BAG</a>  >
-                <form asp-controller="Checkout" asp-action="CustomerInfoCrumb" method="get">
-                    <button type="submit">CUSTOMER INFO</button> >
-                </form>
-                <form asp-controller="Checkout" asp-action="ShippingCrumb" method="get">
-                    <button type="submit">SHIPPING</button> >
-                </form>
+                <a asp-controller="Bag" asp-action="Details">SHOPPING BAG</a>  >
+                <a asp-controller="Checkout" asp-action="Customer">CUSTOMER</a>  >
+                <a asp-controller="Checkout" asp-action="Shipping">SHIPPING</a>  >
                 <a class="current">PAYMENT</a>
             </div>
         </div>

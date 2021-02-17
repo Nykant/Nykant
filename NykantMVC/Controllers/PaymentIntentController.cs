@@ -27,16 +27,27 @@ namespace NykantMVC.Controllers
         public ActionResult GetCardInformation()
         {
             var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
-
-            return Json(new { 
-                Name = checkout.Shipping.FirstName,
-                Email = checkout.Customer.Email,
-                Address = checkout.Customer.Address,
-                City = checkout.Customer.City,
-                Country = checkout.Customer.Country,
-                Phone = checkout.Customer.Phone,
-                Postal = checkout.Customer.Postal
-            });
+            if (checkout == null)
+            {
+                return NotFound();
+            }
+            if(checkout.Stage == Stage.completing)
+            {
+                return Json(new
+                {
+                    Name = checkout.Shipping.FirstName,
+                    Email = checkout.Customer.Email,
+                    Address = checkout.Customer.Address,
+                    City = checkout.Customer.City,
+                    Country = checkout.Customer.Country,
+                    Phone = checkout.Customer.Phone,
+                    Postal = checkout.Customer.Postal
+                });
+            }
+            else
+            {
+                return NotFound();
+            }
         }
 
         public class CardInformation
@@ -54,8 +65,11 @@ namespace NykantMVC.Controllers
         public async Task<ActionResult> CreatePaymentIntent()
         {
             var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
-
-            if(checkout.Stage == Stage.payment)
+            if (checkout == null)
+            {
+                return NotFound();
+            }
+            if (checkout.Stage == Stage.payment)
             {
                 StripeConfiguration.ApiKey = _configuration["StripeTESTKey"];
 
@@ -82,72 +96,30 @@ namespace NykantMVC.Controllers
                     Amount = totalPrice,
                     Currency = "dkk",
                     Metadata = new Dictionary<string, string>
-                {
-                    { "integration_check", "accept_a_payment" },
-                },
+                    {
+                        { "integration_check", "accept_a_payment" },
+                    },
                 };
 
-                PaymentIntentService service;
-                PaymentIntent paymentIntent;
                 try
                 {
-                    service = new PaymentIntentService();
-                    paymentIntent = service.Create(options);
+                    PaymentIntentService service = new PaymentIntentService();
+                    PaymentIntent paymentIntent = service.Create(options);
+
+                    checkout.Stage = Stage.completing;
+                    HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
+
+                    return Json(new { clientSecret = paymentIntent.ClientSecret });
                 }
                 catch (StripeException e)
                 {
                     return NotFound(e.InnerException.Message);
                 }
-
-                var order = BuildOrder(checkout, paymentIntent);
-                var postRequest = await PostRequest("/Order/PostOrder", order);
-                if (!postRequest.IsSuccessStatusCode)
-                {
-                    return NotFound(postRequest.StatusCode);
-                }
-
-                if (User.Identity.IsAuthenticated)
-                {
-                    var url = $"/BagItem/DeleteBagItems/{User.Claims.FirstOrDefault(x => x.Type == "sub").Value}";
-                    var deleteRequest = await DeleteRequest(url);
-                    if (!deleteRequest.IsSuccessStatusCode)
-                    {
-                        return NotFound(deleteRequest.StatusCode);
-                    }
-                }
-
-                HttpContext.Session.Set<List<BagItem>>(BagSessionKey, null);
-                checkout.Stage = Stage.completed;
-                HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
-
-                return Json(new { clientSecret = paymentIntent.ClientSecret });
             }
             else
             {
                 return NotFound();
             }
-        }
-
-        private Models.Order BuildOrder(Checkout checkout, PaymentIntent paymentIntent)
-        {
-            var orderItems = new List<Models.OrderItem>();
-            foreach(var item in checkout.BagItems)
-            {
-                orderItems.Add(new Models.OrderItem { Quantity = item.Quantity, ProductId = item.ProductId });
-            }
-
-            Models.Order order = new Models.Order
-            {
-                CreatedAt = DateTime.Now,
-                Currency = "dkk",
-                CustomerEmail = checkout.Shipping.Email,
-                PaymentIntent_Id = paymentIntent.Id,
-                ShippingId = checkout.Shipping.ShippingId,
-                Status = Status.Created,
-                TotalPrice = checkout.TotalPrice,
-                OrderItems = orderItems
-            };
-            return order;
         }
 
         private int CalculateOrderAmount(List<BagItem> items)
