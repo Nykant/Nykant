@@ -18,6 +18,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Newtonsoft.Json;
 using NykantMVC.Extensions;
+using NykantMVC.Support;
 
 namespace NykantMVC.Controllers
 {
@@ -32,7 +33,7 @@ namespace NykantMVC.Controllers
         [HttpGet]
         public async Task<IActionResult> Customer()
         {
-            var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
+            var checkout = CheckoutCookie.GetCheckout<Checkout>(Request);
             if (checkout == null)
             {
                 if (User.Identity.IsAuthenticated)
@@ -47,7 +48,6 @@ namespace NykantMVC.Controllers
                         TotalPrice = CalculateAmount(bagVM.BagItems)
                     };
                     HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkoutNEW);
-
                     return View(checkoutNEW);
                 }
                 else
