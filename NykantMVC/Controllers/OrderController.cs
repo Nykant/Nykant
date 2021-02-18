@@ -28,10 +28,10 @@ namespace NykantMVC.Controllers
             var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
             if (checkout == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(CheckoutController.CustomerInf));
             }
 
-            if (checkout.Stage == Stage.completing)
+            if (checkout.Stage == Stage.payment)
             {
                 var order = BuildOrder(checkout, paymentIntentId);
                 var postRequest = await PostRequest("/Order/PostOrder", order);
@@ -57,11 +57,11 @@ namespace NykantMVC.Controllers
                 checkout.Stage = Stage.completed;
                 HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
 
-                return NoContent();
+                return Ok();
             }
             else
             {
-                return NotFound();
+                return RedirectToAction(nameof(CheckoutController.CustomerInf));
             }
         }
 
@@ -77,13 +77,17 @@ namespace NykantMVC.Controllers
             {
                 CreatedAt = DateTime.Now,
                 Currency = "dkk",
-                CustomerEmail = checkout.Shipping.Email,
+                CustomerInfId = checkout.CustomerInf.Id,
                 PaymentIntent_Id = paymentIntentId,
-                ShippingId = checkout.Shipping.ShippingId,
+                ShippingDeliveryId = checkout.ShippingDeliveryId,
                 Status = Status.Accepted,
                 TotalPrice = checkout.TotalPrice,
                 OrderItems = orderItems
             };
+
+            if (User.Identity.IsAuthenticated)
+                order.Subject = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
+
             return order;
         }
 

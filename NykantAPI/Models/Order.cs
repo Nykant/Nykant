@@ -12,16 +12,25 @@ namespace NykantAPI.Models
     {
         [Key]
         public int Id { get; set; }
-        public string CustomerEmail { get; set; }
-        public Customer Customer { get; set; }
-        public int ShippingId { get; set; }
-        public Shipping Shipping { get; set; }
+        public string Subject { get; set; }
+        [Required]
+        public int CustomerInfId { get; set; }
+        public CustomerInf CustomerInf { get; set; }
+        [Required]
+        public int ShippingDeliveryId { get; set; }
+        public ShippingDelivery ShippingDelivery { get; set; }
+        [Required]
         public DateTime CreatedAt { get; set; }
+        [Required]
         public int TotalPrice { get; set; }
+        [Required]
         public string Currency { get; set; }
+        [Required]
         public Status Status { get; set; }
+        [Required]
         public string PaymentIntent_Id { get; set; }
-        public IEnumerable<OrderItem> OrderItems { get; set; }
+        [Required]
+        public List<OrderItem> OrderItems { get; set; }
     }
 
     public enum Status

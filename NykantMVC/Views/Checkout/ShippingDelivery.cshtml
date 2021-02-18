@@ -1,23 +1,15 @@
 ﻿@model Checkout
 
 @{
-    List<ShippingDelivery> shippingDeliveries = new List<ShippingDelivery>
-    {
-        new ShippingDelivery{ Id = 1, Name = "Postnord", Price = 30 },
-        new ShippingDelivery{ Id = 2, Name = "GLS", Price = 35 },
-        new ShippingDelivery{ Id = 3, Name = "GLS Privat", Price = 55 }
-    };
     var optionValue = 1;
 }
-
-<script src="~/JS/checkout.js"></script>
 
 <div class="row fadein bottom-side-padding">
     <div class="col-8 center top-padding ">
         <div class="col-8 left right-side-padding">
             <div class="breadcrumbs dark-card">
                 <a asp-controller="Bag" asp-action="Details">SHOPPING BAG</a>  >
-                <a asp-controller="Checkout" asp-action="Customer" method="get">CUSTOMER</a>  >
+                <a asp-controller="Checkout" asp-action="CustomerInf" asp-route-edit="true">CUSTOMER INFORMATION</a>  >
                 <a class="current">SHIPPING</a> >
                 <a>PAYMENT</a>
             </div>
@@ -48,8 +40,8 @@
     </div>
 
     <div class="col-8 center">
-        <form asp-controller="Checkout" asp-action="PostShipping" method="post">
-            <input required type="hidden" id="shipping-delivery-id" asp-for="@Model.Shipping.ShippingDeliveryId" />
+        <form asp-controller="Checkout" asp-action="PostShippingDelivery" method="post">
+            <input required type="hidden" id="shipping-delivery-id" asp-for="@Model.ShippingDeliveryId" />
             <div class="col-8 left right-side-padding top-side-padding">
                 <div class="shipping">
                     <p>shipping details same as customer details for now</p>
@@ -65,7 +57,7 @@
                             <option value="0">
                                 Choose Shipping
                             </option>
-                            @foreach (var item in shippingDeliveries)
+                            @foreach (var item in ViewBag.ShippingDeliveries)
                             {
                                 <option value="@optionValue">
                                     @item.Name

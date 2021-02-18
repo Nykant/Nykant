@@ -23,28 +23,28 @@ namespace NykantAPI.Controllers
         {
         }
 
-        [HttpGet("{email}")]
-        public async Task<ActionResult<Customer>> GetCustomer(string email)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<CustomerInf>> GetCustomer(int id)
         {
-            return Ok(JsonConvert.SerializeObject(await _context.Customers.FindAsync(email)));
+            return Ok(JsonConvert.SerializeObject(await _context.CustomerInfs.FindAsync(id)));
         }
 
         [HttpPost]
-        public async Task<ActionResult<Customer>> PostCustomer(Customer customer)
+        public async Task<ActionResult<CustomerInf>> PostCustomer(CustomerInf customer)
         {
             if (ModelState.IsValid)
             {
-                if (CustomerExists(customer.Email))
+                if (CustomerExists(customer.Id))
                 {
-                    _context.Customers.Update(customer);
+                    _context.CustomerInfs.Update(customer);
                     await _context.SaveChangesAsync();
                     return Ok();
                 }
                 else
                 {
-                    var entity = _context.Customers.Add(customer).Entity;
+                    var entity = _context.CustomerInfs.Add(customer).Entity;
                     await _context.SaveChangesAsync();
-                    return CreatedAtAction("GetCustomer", new { email = entity.Email }, customer);
+                    return CreatedAtAction("GetCustomer", new { id = entity.Id }, customer);
                 }
             }
             else
@@ -53,9 +53,9 @@ namespace NykantAPI.Controllers
             }
         }
 
-        private bool CustomerExists(string email)
+        private bool CustomerExists(int id)
         {
-            return _context.Customers.Any(e => e.Email == email);
+            return _context.CustomerInfs.Any(e => e.Id == id);
         }
     }
 }

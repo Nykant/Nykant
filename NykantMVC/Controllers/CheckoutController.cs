@@ -23,6 +23,7 @@ using NykantMVC.Support;
 namespace NykantMVC.Controllers
 {
     [AllowAnonymous]
+    [Route("{controller}/{action}/")]
     public class CheckoutController : BaseController
     {
         public CheckoutController(ILogger<BaseController> logger) : base(logger)
@@ -30,25 +31,31 @@ namespace NykantMVC.Controllers
 
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Customer()
+        [HttpGet("{edit?}")]
+        public async Task<IActionResult> CustomerInf(bool? edit)
         {
-            var checkout = CheckoutCookie.GetCheckout<Checkout>(Request);
+            var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
             if (checkout == null)
             {
                 if (User.Identity.IsAuthenticated)
                 {
                     var json = await GetRequest($"/BagItem/GetBagItems/{User.Claims.FirstOrDefault(x => x.Type == "sub").Value}");
                     var bagVM = JsonConvert.DeserializeObject<BagVM>(json);
-
-                    Checkout checkoutNEW = new Checkout
+                    if (bagVM.BagItems.Count() == 0)
                     {
-                        BagItems = bagVM.BagItems,
-                        Stage = Stage.customer,
-                        TotalPrice = CalculateAmount(bagVM.BagItems)
-                    };
-                    HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkoutNEW);
-                    return View(checkoutNEW);
+                        return NotFound();
+                    }
+                    else
+                    {
+                        Checkout checkoutNEW = new Checkout
+                        {
+                            BagItems = bagVM.BagItems,
+                            Stage = Stage.customerInf,
+                            TotalPrice = CalculateAmount(bagVM.BagItems)
+                        };
+                        HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkoutNEW);
+                        return View(checkoutNEW);
+                    }
                 }
                 else
                 {
@@ -62,7 +69,7 @@ namespace NykantMVC.Controllers
                         Checkout checkoutNEW = new Checkout
                         {
                             BagItems = bagItems,
-                            Stage = Stage.customer,
+                            Stage = Stage.customerInf,
                             TotalPrice = CalculateAmount(bagItems)
                         };
                         HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkoutNEW);
@@ -71,93 +78,117 @@ namespace NykantMVC.Controllers
                     }
                 }
             }
+
+            if(edit == true)
+            {
+                checkout.Stage = Stage.customerInf;
+                HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
+            }
+
+            if(checkout.Stage == Stage.customerInf)
+            {
+                return View(checkout);
+            }
+            else if(checkout.Stage == Stage.shippingDel)
+            {
+                return RedirectToAction(nameof(ShippingDelivery));
+            }
+            else if (checkout.Stage == Stage.payment)
+            {
+                return RedirectToAction(nameof(Payment));
+            }
             else
             {
-                checkout.Stage = Stage.customer;
-                HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
-                return View(checkout);
+                return NotFound();
             }
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostCustomer(Models.Customer customer)
+        public async Task<IActionResult> PostCustomerInf(CustomerInf customerInf)
         {
             var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
             if (checkout == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(CustomerInf));
             }
 
-            if (checkout.Stage == Stage.customer)
+            if (checkout.Stage == Stage.customerInf)
             {
-                checkout.Customer = customer;
-
-                if (User.Identity.IsAuthenticated)
-                    checkout.Customer.Subject = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
-
-                var response = await PostRequest("/Customer/PostCustomer", checkout.Customer);
+                var response = await PostRequest("/Customer/PostCustomer", customerInf);
 
                 if (response.IsSuccessStatusCode)
                 {
+                    if (customerInf.Id == 0)
+                    {
+                        var json = await GetRequest(response.Headers.Location.AbsolutePath);
+                        CustomerInf customerInfNEW = JsonConvert.DeserializeObject<CustomerInf>(json);
+                        checkout.CustomerInf = customerInfNEW;
+                    }
+                    else
+                    {
+                        checkout.CustomerInf = customerInf;
+                    }
+
+                    checkout.Stage = Stage.shippingDel;
                     HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
-                    return RedirectToAction("Shipping");
+                    return RedirectToAction(nameof(ShippingDelivery));
                 }
-                return Content("Failed");
+                return NotFound("Failed");
             }
-            return NotFound();
+            else
+            {
+                return RedirectToAction(nameof(CustomerInf));
+            }
         }
 
-        [HttpGet]
-        public IActionResult Shipping()
+        [HttpGet("{edit?}")]
+        public async Task<IActionResult> ShippingDelivery(bool? edit)
         {
             var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
             if(checkout == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(CustomerInf));
+            }
+
+            if (edit == true)
+            {
+                checkout.Stage = Stage.shippingDel;
+                HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
+            }
+
+            if (checkout.Stage == Stage.shippingDel)
+            {
+                var json = await GetRequest($"/ShippingDelivery/GetShippingDeliveries");
+                ViewBag.ShippingDeliveries = JsonConvert.DeserializeObject<List<ShippingDelivery>>(json);
+                HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
+                return View(checkout);
             }
             else
             {
-                checkout.Stage = Stage.shipping;
-                HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
-                return View(checkout);
+                return RedirectToAction(nameof(CustomerInf));
             }
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostShipping(Models.Shipping shipping)
+        public IActionResult PostShippingDelivery(int shippingDeliveryId)
         {
             var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
             if (checkout == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(CustomerInf));
             }
 
-            shipping.Address = checkout.Customer.Address;
-            shipping.City = checkout.Customer.City;
-            shipping.Country = checkout.Customer.Country;
-            shipping.Email = checkout.Customer.Email;
-            shipping.FirstName = checkout.Customer.FirstName;
-            shipping.LastName = checkout.Customer.LastName;
-            shipping.Phone = checkout.Customer.Phone;
-            shipping.Postal = checkout.Customer.Postal;
-
-            if (checkout.Stage == Stage.shipping)
+            if (checkout.Stage == Stage.shippingDel)
             {
-                checkout.Shipping = shipping;
-
-                var response = await PostRequest("/Shipping/PostShipping", checkout.Shipping);
-                var json = await GetRequest(response.Headers.Location.AbsolutePath);
-                var shippingNEW = JsonConvert.DeserializeObject<Models.Shipping>(json);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    checkout.Shipping = shippingNEW;
-                    checkout.Stage = Stage.payment;
-                    HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
-                    return RedirectToAction("Payment");
-                }
+                checkout.ShippingDeliveryId = shippingDeliveryId;
+                checkout.Stage = Stage.payment;
+                HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
+                return RedirectToAction(nameof(Payment));
             }
-            return NotFound();
+            else
+            {
+                return RedirectToAction(nameof(CustomerInf));
+            }
         }
 
         [HttpGet]
@@ -166,7 +197,7 @@ namespace NykantMVC.Controllers
             var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
             if(checkout == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(CustomerInf));
             }
 
             if(checkout.Stage == Stage.payment)
@@ -175,7 +206,7 @@ namespace NykantMVC.Controllers
             }
             else
             {
-                return NotFound();
+                return RedirectToAction(nameof(CustomerInf));
             }
         }
 
@@ -185,15 +216,20 @@ namespace NykantMVC.Controllers
             var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
             if (checkout == null)
             {
-                return NotFound();
+                return Content("Something went wrong");
             }
+
             if (checkout.Stage == Stage.completed)
             {
                 HttpContext.Session.Set<Checkout>(CheckoutSessionKey, null);
 
                 return View();
             }
-            return NotFound();
+            else
+            {
+                return Content("Something went wrong");
+            }
+            
         }
 
         private int CalculateAmount(List<BagItem> items)

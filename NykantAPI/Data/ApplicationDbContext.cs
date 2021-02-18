@@ -18,8 +18,7 @@ namespace NykantAPI.Data
         public DbSet<BagItem> BagItems { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
-        public DbSet<Customer> Customers { get; set; }
-        public DbSet<Shipping> Shippings { get; set; }
+        public DbSet<CustomerInf> CustomerInfs { get; set; }
         public DbSet<ShippingDelivery> ShippingDeliveries { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -28,6 +27,12 @@ namespace NykantAPI.Data
                 .HasKey(bi => new { bi.Subject, bi.ProductId });
             modelBuilder.Entity<OrderItem>()
                 .HasKey(bi => new { bi.OrderId, bi.ProductId});
+
+            modelBuilder.Entity<ShippingDelivery>().HasData(
+                new ShippingDelivery { Id = 1, Name = "GLS", Price = 35 },
+                new ShippingDelivery { Id = 2, Name = "PostNord", Price = 50 },
+                new ShippingDelivery { Id = 3, Name = "GLS Privat", Price = 65 }
+                );
 
             modelBuilder.Entity<Product>().HasData(
                 new Product { Id = 1, Title = "Grøntsags Skærebræt", Price = 1000, Description = "a test object", LastModified = DateTime.Now, ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg", TypeOfWood = "valnød", ItemType = "stol", Size = "5mm", Color = "naturligt" },

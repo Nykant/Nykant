@@ -142,7 +142,7 @@ namespace NykantAPI.Controllers
         [HttpGet("{subject}/{productId}")]
         public async Task<ActionResult<BagItem>> GetBagItem(string subject, int productId)
         {
-            return Ok(JsonConvert.SerializeObject(await _context.Customers.FindAsync(subject, productId)));
+            return Ok(JsonConvert.SerializeObject(await _context.CustomerInfs.FindAsync(subject, productId)));
         }
 
         private bool BagItemExists(string sub, int productId)

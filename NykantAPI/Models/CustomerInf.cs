@@ -4,12 +4,12 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NykantMVC.Models
+namespace NykantAPI.Models
 {
-    public class Shipping
+    public class CustomerInf
     {
-       public int ShippingId { get; set; }
-       public int ShippingDeliveryId { get; set; }
+        [Key]
+        public int Id { get; set; }
         [Required]
         [EmailAddress]
         [DataType(DataType.EmailAddress)]
@@ -45,3 +45,4 @@ namespace NykantMVC.Models
         public string Phone { get; set; }
     }
 }
+

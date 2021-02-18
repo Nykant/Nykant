@@ -7,15 +7,14 @@
 <link rel="stylesheet" href="~/css/Stripe/stripe.css" />
 <script src="https://js.stripe.com/v3/"></script>
 <script src="~/JS/Stripe/client.js" defer></script>
-<script src="~/JS/checkout.js"></script>
 
 <div class="row bottom-side-padding fadein">
     <div class="col-8 center top-padding ">
         <div class="col-8 left right-side-padding">
             <div class="breadcrumbs dark-card">
                 <a asp-controller="Bag" asp-action="Details">SHOPPING BAG</a>  >
-                <a asp-controller="Checkout" asp-action="Customer">CUSTOMER</a>  >
-                <a asp-controller="Checkout" asp-action="Shipping">SHIPPING</a>  >
+                <a asp-controller="Checkout" asp-action="CustomerInf" asp-route-edit="true">CUSTOMER INFORMATION</a>  >
+                <a asp-controller="Checkout" asp-action="ShippingDelivery" asp-route-edit="true">SHIPPING DELIVERY</a>  >
                 <a class="current">PAYMENT</a>
             </div>
         </div>

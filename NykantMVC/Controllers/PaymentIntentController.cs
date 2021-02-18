@@ -29,24 +29,25 @@ namespace NykantMVC.Controllers
             var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
             if (checkout == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(CheckoutController.CustomerInf));
             }
-            if(checkout.Stage == Stage.completing)
+
+            if(checkout.Stage == Stage.payment)
             {
                 return Json(new
                 {
-                    Name = checkout.Shipping.FirstName,
-                    Email = checkout.Customer.Email,
-                    Address = checkout.Customer.Address,
-                    City = checkout.Customer.City,
-                    Country = checkout.Customer.Country,
-                    Phone = checkout.Customer.Phone,
-                    Postal = checkout.Customer.Postal
+                    Name = checkout.CustomerInf.FirstName,
+                    Email = checkout.CustomerInf.Email,
+                    Address = checkout.CustomerInf.Address,
+                    City = checkout.CustomerInf.City,
+                    Country = checkout.CustomerInf.Country,
+                    Phone = checkout.CustomerInf.Phone,
+                    Postal = checkout.CustomerInf.Postal
                 });
             }
             else
             {
-                return NotFound();
+                return RedirectToAction(nameof(CheckoutController.CustomerInf));
             }
         }
 
@@ -62,31 +63,31 @@ namespace NykantMVC.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreatePaymentIntent()
+        public ActionResult CreatePaymentIntent()
         {
             var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
             if (checkout == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(CheckoutController.CustomerInf));
             }
+
             if (checkout.Stage == Stage.payment)
             {
                 StripeConfiguration.ApiKey = _configuration["StripeTESTKey"];
 
-                var totalPrice = CalculateOrderAmount(checkout.BagItems);
-
+                var totalPrice = checkout.TotalPrice;
                 var customers = new CustomerService();
                 var customer = customers.Create(new CustomerCreateOptions
                 {
-                    Name = checkout.Customer.FirstName + " " + checkout.Customer.LastName,
-                    Email = checkout.Customer.Email,
-                    Phone = checkout.Customer.Phone,
+                    Name = checkout.CustomerInf.FirstName + " " + checkout.CustomerInf.LastName,
+                    Email = checkout.CustomerInf.Email,
+                    Phone = checkout.CustomerInf.Phone,
                     Address = new AddressOptions
                     {
-                        Line1 = checkout.Customer.Address,
-                        City = checkout.Customer.City,
-                        Country = checkout.Customer.Country,
-                        PostalCode = checkout.Customer.Postal
+                        Line1 = checkout.CustomerInf.Address,
+                        City = checkout.CustomerInf.City,
+                        Country = checkout.CustomerInf.Country,
+                        PostalCode = checkout.CustomerInf.Postal
                     },
                 });
 
@@ -106,9 +107,6 @@ namespace NykantMVC.Controllers
                     PaymentIntentService service = new PaymentIntentService();
                     PaymentIntent paymentIntent = service.Create(options);
 
-                    checkout.Stage = Stage.completing;
-                    HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
-
                     return Json(new { clientSecret = paymentIntent.ClientSecret });
                 }
                 catch (StripeException e)
@@ -118,7 +116,7 @@ namespace NykantMVC.Controllers
             }
             else
             {
-                return NotFound();
+                return RedirectToAction(nameof(CheckoutController.CustomerInf));
             }
         }
 
