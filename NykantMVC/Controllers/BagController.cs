@@ -36,6 +36,7 @@ namespace NykantMVC.Controllers
                 var json = await GetRequest($"/BagItem/GetBagItems/{subject}");
                 BagVM bagVM = JsonConvert.DeserializeObject<BagVM>(json);
 
+                ViewBag.PriceSum = CalculateAmount(bagVM.BagItems);
                 return View(bagVM);
             }
             else
@@ -47,6 +48,7 @@ namespace NykantMVC.Controllers
                     {
                         BagItems = new List<BagItem>()
                     };
+                    ViewBag.PriceSum = CalculateAmount(bagVM.BagItems);
                     return View(bagVM);
                 }
                 else
@@ -61,9 +63,21 @@ namespace NykantMVC.Controllers
                         BagItems = bagItems,
                         PriceSum = priceSum
                     };
+                    ViewBag.PriceSum = CalculateAmount(bagVM.BagItems);
                     return View(bagVM);
                 }
             }
+        }
+
+        private int CalculateAmount(List<BagItem> items)
+        {
+            int price = 0;
+            foreach (var item in items)
+            {
+                for(int i = 0; i < item.Quantity; i++)
+                    price += item.Product.Price;
+            }
+            return price;
         }
     }
 }

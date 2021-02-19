@@ -27,11 +27,6 @@
 </head>
 <body>
     @{
-        string email = null;
-        if (User.Identity.IsAuthenticated)
-        {
-            email = User.Claims.FirstOrDefault(x => x.Type == "email").Value;
-        }
         var url = Context.Request.Path;
     }
 
@@ -47,13 +42,13 @@
                     <i class="fa fa-bars"></i>
                 </a>
 
-                <a class="icon" asp-controller="Bag" asp-action="GetBag" asp-route-id="@email"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+                <a class="icon" asp-controller="Bag" asp-action="GetBag" asp-route-id=""><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
 
                 @if (User.Identity.IsAuthenticated)
                 {
 
                     <div id="userBurger">
-                        <a alt="logged in as: @email!" asp-controller="Account" asp-action="Profile" title="Manage">logged in as: @email!</a>
+                        <a alt="logged in as: !" asp-controller="Account" asp-action="Profile" title="Manage">logged in as: !</a>
                         <form asp-Controller="Account" asp-action="Logout">
                             <button type="submit">Logout</button>
                         </form>
@@ -88,7 +83,6 @@
                 <a alt="NYKANT" asp-controller="Home" asp-action="Index"><span style="color:var(--green)">NY</span>KANT</a>
                 <a alt="PRODUKTER" asp-controller="Product" asp-action="Index">PRODUKTER</a>
                 <a alt="KONTAKT" asp-controller="Contact" asp-action="Index">KONTAKT</a>
-                @*<a alt="REACT TUTORIAL" asp-controller="React" asp-action="Tutorial">REACT TUTORIAL</a>*@
 
                 <a class="icon" asp-controller="Bag" asp-action="Details"> <i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
 
@@ -102,7 +96,7 @@
                             Logout
                         </a>
                     </div>
-                    <a href="javascript:void(0);" class="icon" onclick="userBurger2()">
+                    <a href="javascript:void(0);" class="icon" id="userLogo">
                         <i class="fas fa-user"></i>
                     </a>
                 }
@@ -113,7 +107,7 @@
                             Login or Register
                         </a>
                     </div>
-                    <a href="javascript:void(0);" class="icon" onclick="userBurger2()">
+                    <a href="javascript:void(0);" class="icon" id="userLogo">
                         <i class="fas fa-user"></i>
                     </a>
                 }
@@ -135,7 +129,7 @@
     </footer>
 
     @* ----------------------------------GLOBAL SCRIPTS-------------------------------------- *@
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> @*<-----TOP*@
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">IDBCursor</script> @*<-----TOP*@
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.unobtrusive-ajax/3.2.5/jquery.unobtrusive-ajax.min.js"></script>
     <script src="https://kit.fontawesome.com/dfade6c231.js" crossorigin="anonymous"></script>
     <script src="~/JS/mobileNav.js"></script>

@@ -6,22 +6,18 @@
 
 <div class="row bottom-side-padding fadein">
     <div class="col-8 center top-padding ">
-        <div class="col-8 left right-side-padding">
+        <div class="col-12 left">
             <div class="breadcrumbs dark-card">
-                <a asp-controller="Bag" asp-action="Details">SHOPPING BAG</a> >
+                <a asp-controller="Bag" asp-action="Details">SHOPPING BAG</a>  >
                 <a class="current">CUSTOMER</a> >
-                <a>SHIPPING</a> >
+                <a class="current">SHIPPING</a> >
                 <a>PAYMENT</a>
             </div>
         </div>
-    </div>
-</div>
 
-<form asp-controller="Checkout" asp-action="PostCustomerInf" method="post">
-    <input type="hidden" asp-for="@Model.CustomerInf.Id" />
-    <div class="row">
-        <div class="col-8 center">
-            <div class="col-8 left right-side-padding fadein">
+        <div class="col-8 left right-side-padding fadein top-side-padding">
+            <form asp-controller="Checkout" asp-action="PostCustomerInf" method="post">
+                <input type="hidden" asp-for="@Model.CustomerInf.Id" />
                 <div class="customerinfo dark-card">
                     <div class="header">
                         Your contact information
@@ -75,34 +71,34 @@
                         <div class="underline"></div>
                     </div>
                 </div>
-            </div>
+            </form>
+        </div>
 
-            <div class="col-4 right fadein dark-card">
-                <div class="sidebar">
-                    <div class="sidebar-header">
-                        <h1>Bag</h1>
-                    </div>
-                    <div class="sidebar-items">
-                        @foreach (var item in Model.BagItems)
-                        {
-                            <div class="sidebar-item">
-                                <img src="~/images/gyngestol.jpg" />
-                                <p>@item.Product.Title</p>
-                                <p>@item.Quantity stk.</p>
-                            </div>
-                        }
-                        <div class="checkout-price">
-                            <p><span>shipping:</span> price</p>
-                            <p><span>taxes:</span> price</p>
-                            <p><span>total:</span> @Model.TotalPrice</p>
+        <div class="col-4 right fadein dark-card top-side-padding">
+            <div class="sidebar ">
+                <div class="sidebar-header">
+                    <h1>Bag</h1>
+                </div>
+                <div class="sidebar-items">
+                    @foreach (var item in Model.BagItems)
+                    {
+                        <div class="sidebar-item">
+                            <img src="~/images/gyngestol.jpg" />
+                            <p>@item.Product.Title</p>
+                            <p>@item.Quantity stk.</p>
                         </div>
+                    }
+                    <div class="checkout-price">
+                        <p><span>shipping:</span> price</p>
+                        <p><span>taxes:</span> price</p>
+                        <p><span>total:</span> @Model.TotalPrice</p>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="col-4 right fadein ">
-                <button class="button dark-card" type="submit">CONTINUE</button> @*------------- SUBMIT FORM --------------*@
-            </div>
+        <div class="col-4 right fadein ">
+            <button class="button dark-card" type="submit">CONTINUE</button> @*------------- SUBMIT FORM --------------*@
         </div>
     </div>
-</form>
+</div>

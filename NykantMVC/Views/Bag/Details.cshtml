@@ -4,10 +4,10 @@
     ViewData["Title"] = "Details";
 }
 
-<div class="row top-padding">
+<div class="row top-padding bottom-side-padding">
     <div class="col-8 center padding col-wrapper">
         <div class="col-8 left fadein">
-            <div class="bagtitle dark-card green-border">
+            <div class="bagtitle dark-card">
                     MY BAG
 
             </div>
@@ -64,11 +64,13 @@
                     <div class="header">
                         <p>Summary</p>
                     </div>
+                    <div class="checkout-price">
+                        <p><span>total: </span>@ViewBag.PriceSum</p>
+                    </div>
                 </div>
                 <div class="left-side-padding">
                     <button class="button" type="submit">Checkout</button>
                 </div>
-
             </form>
         </div>
     </div>

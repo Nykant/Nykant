@@ -84,12 +84,12 @@ namespace NykantAPI.Controllers
             return Ok();
         }
 
-        [HttpDelete]
-        public async Task<ActionResult<BagItem>> DeleteBagItem(BagItem bagItem)
+        [HttpDelete("{subject}/{productId}")]
+        public async Task<ActionResult<BagItem>> DeleteBagItem(string subject, int productId)
         {
             try
             {
-                _context.BagItems.Remove(bagItem);
+                _context.BagItems.Remove(await _context.BagItems.FindAsync(subject, productId));
                 await _context.SaveChangesAsync();
                 return Ok();
             }
@@ -142,7 +142,7 @@ namespace NykantAPI.Controllers
         [HttpGet("{subject}/{productId}")]
         public async Task<ActionResult<BagItem>> GetBagItem(string subject, int productId)
         {
-            return Ok(JsonConvert.SerializeObject(await _context.CustomerInfs.FindAsync(subject, productId)));
+            return Ok(JsonConvert.SerializeObject(await _context.BagItems.FindAsync(subject, productId)));
         }
 
         private bool BagItemExists(string sub, int productId)

@@ -1,27 +1,36 @@
 ﻿
-    function mobileNav() {
-  var x = document.getElementById("myLinks");
-  if (x.style.display === "block") {
-        x.style.display = "none";
-  } else {
-        x.style.display = "block";
-  }
-}
+//function mobileNav() {
+//  var x = document.getElementById("myLinks");
+//  if (x.style.display === "block") {
+//        x.style.display = "none";
+//  } else {
+//        x.style.display = "block";
+//  }
+//}
 
-function userBurger() {
-    var x = document.getElementById("userBurger");
-    if (x.style.display === "block") {
-        x.style.display = "none";
-    } else {
-        x.style.display = "block";
-    }
-}
+//function userBurger() {
+//    var x = document.getElementById("userBurger");
+//    if (x.style.display === "block") {
+//        x.style.display = "none";
+//    } else {
+//        x.style.display = "block";
+//    }
+//}
 
-function userBurger2() {
-    var x = document.getElementById("userBurger2");
-    if (x.style.display === "block") {
-        x.style.display = "none";
+var userBurger2 = document.getElementById("userBurger2");
+var userLogo = document.getElementById("userLogo");
+
+userLogo.addEventListener('click', function () {
+    if (userBurger2.style.display === "block") {
+        userBurger2.style.display = "none";
     } else {
-        x.style.display = "block";
+        userBurger2.style.display = "block";
     }
-}
+})
+
+$(document).mouseup(function (e) {
+    if ($(e.target).closest(userBurger2).length === 0 && $(e.target).closest(userLogo).length === 0) {
+        userBurger2.style.display = "none";
+    }
+}); 
+

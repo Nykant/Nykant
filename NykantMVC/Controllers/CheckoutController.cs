@@ -35,23 +35,34 @@ namespace NykantMVC.Controllers
         public async Task<IActionResult> CustomerInf(bool? edit)
         {
             var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
+            List<BagItem> bagItemsSession = new List<BagItem>();
+            List<BagItem> bagItemsDb = new List<BagItem>();
+
+            if (User.Identity.IsAuthenticated)
+            {
+                var json = await GetRequest($"/BagItem/GetBagItems/{User.Claims.FirstOrDefault(x => x.Type == "sub").Value}");
+                bagItemsDb = JsonConvert.DeserializeObject<BagVM>(json).BagItems;
+            }
+            else
+            {
+                bagItemsSession = HttpContext.Session.Get<List<BagItem>>(BagSessionKey);
+            }
+
             if (checkout == null)
             {
                 if (User.Identity.IsAuthenticated)
                 {
-                    var json = await GetRequest($"/BagItem/GetBagItems/{User.Claims.FirstOrDefault(x => x.Type == "sub").Value}");
-                    var bagVM = JsonConvert.DeserializeObject<BagVM>(json);
-                    if (bagVM.BagItems.Count() == 0)
+                    if (bagItemsDb.Count() == 0)
                     {
-                        return NotFound();
+                        return Content("No bag items to check out");
                     }
                     else
                     {
                         Checkout checkoutNEW = new Checkout
                         {
-                            BagItems = bagVM.BagItems,
+                            BagItems = bagItemsDb,
                             Stage = Stage.customerInf,
-                            TotalPrice = CalculateAmount(bagVM.BagItems)
+                            TotalPrice = CalculateAmount(bagItemsDb)
                         };
                         HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkoutNEW);
                         return View(checkoutNEW);
@@ -59,18 +70,17 @@ namespace NykantMVC.Controllers
                 }
                 else
                 {
-                    var bagItems = HttpContext.Session.Get<List<BagItem>>(BagSessionKey);
-                    if (bagItems == null)
+                    if (bagItemsSession.Count() == 0)
                     {
-                        return NotFound();
+                        return Content("No bag items to check out");
                     }
                     else
                     {
                         Checkout checkoutNEW = new Checkout
                         {
-                            BagItems = bagItems,
+                            BagItems = bagItemsSession,
                             Stage = Stage.customerInf,
-                            TotalPrice = CalculateAmount(bagItems)
+                            TotalPrice = CalculateAmount(bagItemsSession)
                         };
                         HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkoutNEW);
 
@@ -85,16 +95,31 @@ namespace NykantMVC.Controllers
                 HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
             }
 
-            if(checkout.Stage == Stage.customerInf)
+            if (checkout.Stage == Stage.customerInf)
             {
+                if (bagItemsSession.Count() == 0 && bagItemsDb.Count() == 0)
+                {
+                    HttpContext.Session.Set<Checkout>(CheckoutSessionKey, null);
+                    return Content("No bag items to check out");
+                }
                 return View(checkout);
             }
             else if(checkout.Stage == Stage.shippingDel)
             {
+                if (bagItemsSession.Count() == 0 && bagItemsDb.Count() == 0)
+                {
+                    HttpContext.Session.Set<Checkout>(CheckoutSessionKey, null);
+                    return Content("No bag items to check out");
+                }
                 return RedirectToAction(nameof(ShippingDelivery));
             }
             else if (checkout.Stage == Stage.payment)
             {
+                if (bagItemsSession.Count() == 0 && bagItemsDb.Count() == 0)
+                {
+                    HttpContext.Session.Set<Checkout>(CheckoutSessionKey, null);
+                    return Content("No bag items to check out");
+                }
                 return RedirectToAction(nameof(Payment));
             }
             else

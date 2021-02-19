@@ -17,6 +17,7 @@ using System.Threading.Tasks;
 namespace NykantMVC.Controllers
 {
     [AllowAnonymous]
+
     public class BagItemController : BaseController
     {
 
@@ -24,28 +25,69 @@ namespace NykantMVC.Controllers
         {
         }
 
-        [HttpPatch]
-        public async Task<IActionResult> UpdateBagItem(BagItem bagItem, int? selection)
+        public async Task<IActionResult> UpdateBagItem(BagItem bagItem, int selection)
         {
-            if (selection != 0)
+            if (User.Identity.IsAuthenticated)
             {
-                if (selection == 1)
+                if (selection != 0)
                 {
-                    bagItem.Quantity += 1;
+                    if (selection == 1)
+                    {
+                        bagItem.Quantity += 1;
+                    }
+                    else if (selection == 2)
+                    {
+                        bagItem.Quantity -= 1;
+                    }
                 }
-                else if (selection == 2)
+
+                if(bagItem.Quantity != 0)
                 {
-                    bagItem.Quantity -= 1;
+                    var response = await PatchRequest("/BagItem/UpdateBagItem", bagItem);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction("Details", "Bag");
+                    }
+                    return Content("Failed");
                 }
+                else
+                {
+                    var response = await DeleteRequest($"/BagItem/DeleteBagItem/{bagItem.Subject}/{bagItem.ProductId}");
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction("Details", "Bag");
+                    }
+                    return Content("Failed");
+                }
+
             }
-
-            var response = await PatchRequest("/BagItem/UpdateBagItem", bagItem);
-
-            if (response.IsSuccessStatusCode)
+            else
             {
+                var bagItems = HttpContext.Session.Get<List<BagItem>>(BagSessionKey);
+
+                for(int i = 0; i < bagItems.Count(); i++)
+                {
+                    if(bagItems[i].ProductId == bagItem.ProductId)
+                    {
+                        switch (selection)
+                        {
+                            case 1:
+                                bagItems[i].Quantity += 1;
+                                break;
+                            case 2:
+                                bagItems[i].Quantity -= 1;
+                                if (bagItems[i].Quantity == 0)
+                                    bagItems.RemoveAt(i);
+                                break;
+                        }
+                    }
+                }
+                
+                HttpContext.Session.Set<List<BagItem>>(BagSessionKey, bagItems);
                 return RedirectToAction("Details", "Bag");
             }
-            return Content("Failed");
         }
 
         [HttpPost]

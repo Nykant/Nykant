@@ -51,17 +51,6 @@ namespace NykantMVC.Controllers
             }
         }
 
-        public class CardInformation
-        {
-            public string Name { get; set; }
-            public string Email { get; set; }
-            public string Phone { get; set; }
-            public string Address { get; set; }
-            public string City { get; set; }
-            public string Country { get; set; }
-            public string Postal { get; set; }
-        }
-
         [HttpPost]
         public ActionResult CreatePaymentIntent()
         {
@@ -118,16 +107,6 @@ namespace NykantMVC.Controllers
             {
                 return RedirectToAction(nameof(CheckoutController.CustomerInf));
             }
-        }
-
-        private int CalculateOrderAmount(List<BagItem> items)
-        {
-            int price = 0;
-            foreach(var item in items)
-            {
-                price += item.Product.Price;
-            }
-            return price;
         }
     }
 }

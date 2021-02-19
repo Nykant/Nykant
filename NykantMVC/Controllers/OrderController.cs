@@ -17,11 +17,6 @@ namespace NykantMVC.Controllers
         {
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
         [HttpPost]
         public async Task<IActionResult> PostOrder([FromBody]string paymentIntentId)
         {

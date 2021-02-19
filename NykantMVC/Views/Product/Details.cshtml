@@ -47,7 +47,7 @@
                 <button class="button-brown"></button>
                 <br />
                 <br />
-                <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-complete="completed" asp-controller="BagItem" asp-action="PostBagItem" asp-route-productQuantity="@productQuantity">
+                <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-complete="completed" asp-controller="BagItem" asp-action="PostBagItem">
                     @Html.HiddenFor(x => x.Product.Id);
                     @Html.HiddenFor(x => x.Product.Size);
                     @Html.HiddenFor(x => x.Product.TypeOfWood);
@@ -57,6 +57,7 @@
                     @Html.HiddenFor(x => x.Product.Alt);
                     @Html.HiddenFor(x => x.Product.Description);
                     @Html.HiddenFor(x => x.Product.ImageSource);
+                    <input type="hidden" value="1" id="quantityInput" name="productQuantity"/>
 
                     <div class="quantity-wrap">
                         <span id="numberdown" onclick="countdown()">-</span>

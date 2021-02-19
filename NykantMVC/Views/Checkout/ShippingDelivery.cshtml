@@ -6,7 +6,7 @@
 
 <div class="row fadein bottom-side-padding">
     <div class="col-8 center top-padding ">
-        <div class="col-8 left right-side-padding">
+        <div class="col-12 left">
             <div class="breadcrumbs dark-card">
                 <a asp-controller="Bag" asp-action="Details">SHOPPING BAG</a>  >
                 <a asp-controller="Checkout" asp-action="CustomerInf" asp-route-edit="true">CUSTOMER INFORMATION</a>  >
@@ -15,7 +15,7 @@
             </div>
         </div>
 
-        <div class="col-4 right fadein">
+        <div class="col-4 right fadein top-side-padding">
             <div class="sidebar dark-card">
                 <div class="header">
                     Bag
@@ -42,11 +42,6 @@
     <div class="col-8 center">
         <form asp-controller="Checkout" asp-action="PostShippingDelivery" method="post">
             <input required type="hidden" id="shipping-delivery-id" asp-for="@Model.ShippingDeliveryId" />
-            <div class="col-8 left right-side-padding top-side-padding">
-                <div class="shipping">
-                    <p>shipping details same as customer details for now</p>
-                </div>
-            </div>
             <div class="col-8 left right-side-padding top-side-padding">
                 <div class="custom-list dark-card">
                     <div id="custom-list-header" class="header">
