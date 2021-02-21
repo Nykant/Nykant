@@ -36,20 +36,21 @@ namespace NykantAPI
                     Configuration.GetConnectionString("NykantDb")));
 
             services.AddAuthentication("Bearer")
-            .AddJwtBearer("Bearer", options =>
-            {
-                options.Authority = "https://localhost:5001";
-
-                options.TokenValidationParameters = new TokenValidationParameters
+                .AddJwtBearer("Bearer", options =>
                 {
-                    ValidateAudience = false
-                };
-            });
+                    options.Authority = "https://localhost:5001";
+
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateAudience = false
+                    };
+                });
 
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("ApiScope", policy =>
                 {
+                    policy.RequireAuthenticatedUser();
                     policy.RequireClaim("scope", "NykantAPI");
                 });
             });
@@ -72,8 +73,8 @@ namespace NykantAPI
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
-                    //.RequireAuthorization("ApiScope");
+                endpoints.MapControllers()
+                    .RequireAuthorization("ApiScope");
             });
         }
     }

@@ -56,3 +56,8 @@
     width: 100%;
     min-height: 100%;
 }
+
+.customerinfo-line {
+    padding:50px;
+    min-width:420px;
+}

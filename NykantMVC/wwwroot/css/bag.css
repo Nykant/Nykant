@@ -86,6 +86,12 @@
                 padding:8px;
                 border: 1px solid var(--light-grey-fade);
             }
+                .bag-item div#bag-item-quantity input:hover {
+                    color: var(--green);
+                    padding: 8px;
+                    border: 1px solid var(--green);
+                }
+
             .bag-item div#bag-item-quantity label {
                 z-index: -1;
             }
@@ -115,3 +121,13 @@
         padding: 2%;
     }
 
+/*.counter-thing{
+    border:
+    color:var(--light-grey);
+    cursor:pointer;
+    background-color:var(--dark);
+}*/
+
+/*.counter-thing:hover {
+    color: var(--green);
+}*/

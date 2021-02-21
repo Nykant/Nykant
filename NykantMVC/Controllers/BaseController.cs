@@ -29,9 +29,43 @@ namespace NykantMVC.Controllers
 
         public async Task<HttpResponseMessage> PostRequest(string url, object item)
         {
-            string accessToken = await HttpContext.GetTokenAsync("access_token");
+
             HttpClient client = new HttpClient();
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+
+            if (User.Identity.IsAuthenticated)
+            {
+                string accessToken = await HttpContext.GetTokenAsync("access_token");
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+            }
+            else
+            {
+                // discover endpoints from metadata
+                var ISclient = new HttpClient();
+                var disco = await ISclient.GetDiscoveryDocumentAsync("https://localhost:5001");
+                if (disco.IsError)
+                {
+                    Console.WriteLine(disco.Error);
+                    return null;
+                }
+
+                // request token
+                var tokenResponse = await ISclient.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
+                {
+                    Address = disco.TokenEndpoint,
+
+                    ClientId = "client",
+                    ClientSecret = "secret",
+                    Scope = "NykantAPI"
+                });
+
+                if (tokenResponse.IsError)
+                {
+                    Console.WriteLine(tokenResponse.Error);
+                    return null;
+                }
+
+                client.SetBearerToken(tokenResponse.AccessToken);
+            }
 
             var itemJson = new StringContent(
                 JsonConvert.SerializeObject(item),
@@ -39,15 +73,48 @@ namespace NykantMVC.Controllers
                 "application/json");
 
             string uri = "https://localhost:6001" + url;
-
             return await client.PostAsync(uri, itemJson);
         }
 
         public async Task<HttpResponseMessage> PatchRequest(string url, object item)
         {
-            string accessToken = await HttpContext.GetTokenAsync("access_token");
+            
             HttpClient client = new HttpClient();
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+
+            if (User.Identity.IsAuthenticated)
+            {
+                string accessToken = await HttpContext.GetTokenAsync("access_token");
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+            }
+            else
+            {
+                // discover endpoints from metadata
+                var ISclient = new HttpClient();
+                var disco = await ISclient.GetDiscoveryDocumentAsync("https://localhost:5001");
+                if (disco.IsError)
+                {
+                    Console.WriteLine(disco.Error);
+                    return null;
+                }
+
+                // request token
+                var tokenResponse = await ISclient.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
+                {
+                    Address = disco.TokenEndpoint,
+
+                    ClientId = "client",
+                    ClientSecret = "secret",
+                    Scope = "NykantAPI"
+                });
+
+                if (tokenResponse.IsError)
+                {
+                    Console.WriteLine(tokenResponse.Error);
+                    return null;
+                }
+
+                client.SetBearerToken(tokenResponse.AccessToken);
+            }
 
             var itemJson = new StringContent(
                 JsonConvert.SerializeObject(item),
@@ -61,9 +128,42 @@ namespace NykantMVC.Controllers
 
         public async Task<string> GetRequest(string url)
         {
-            string accessToken = await HttpContext.GetTokenAsync("access_token");
             HttpClient client = new HttpClient();
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+
+            if (User.Identity.IsAuthenticated)
+            {
+                string accessToken = await HttpContext.GetTokenAsync("access_token");
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+            }
+            else
+            {
+                // discover endpoints from metadata
+                var ISclient = new HttpClient();
+                var disco = await ISclient.GetDiscoveryDocumentAsync("https://localhost:5001");
+                if (disco.IsError)
+                {
+                    Console.WriteLine(disco.Error);
+                    return null;
+                }
+
+                // request token
+                var tokenResponse = await ISclient.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
+                {
+                    Address = disco.TokenEndpoint,
+
+                    ClientId = "client",
+                    ClientSecret = "secret",
+                    Scope = "NykantAPI"
+                });
+
+                if (tokenResponse.IsError)
+                {
+                    Console.WriteLine(tokenResponse.Error);
+                    return null;
+                }
+
+                client.SetBearerToken(tokenResponse.AccessToken);
+            }
 
             string uri = "https://localhost:6001" + url;
             return await client.GetStringAsync(uri);
@@ -71,9 +171,42 @@ namespace NykantMVC.Controllers
 
         public async Task<HttpResponseMessage> DeleteRequest(string url)
         {
-            string accessToken = await HttpContext.GetTokenAsync("access_token");
             HttpClient client = new HttpClient();
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+
+            if (User.Identity.IsAuthenticated)
+            {
+                string accessToken = await HttpContext.GetTokenAsync("access_token");
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+            }
+            else
+            {
+                // discover endpoints from metadata
+                var ISclient = new HttpClient();
+                var disco = await ISclient.GetDiscoveryDocumentAsync("https://localhost:5001");
+                if (disco.IsError)
+                {
+                    Console.WriteLine(disco.Error);
+                    return null;
+                }
+
+                // request token
+                var tokenResponse = await ISclient.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
+                {
+                    Address = disco.TokenEndpoint,
+
+                    ClientId = "client",
+                    ClientSecret = "secret",
+                    Scope = "NykantAPI"
+                });
+
+                if (tokenResponse.IsError)
+                {
+                    Console.WriteLine(tokenResponse.Error);
+                    return null;
+                }
+
+                client.SetBearerToken(tokenResponse.AccessToken);
+            }
 
             string uri = "https://localhost:6001" + url;
             return await client.DeleteAsync(uri);

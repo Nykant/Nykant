@@ -11,6 +11,25 @@
     padding: 40px;
 }*/
 
+
+.payment-elements{
+    padding: 30px;
+}
+
+.card-element, .card-element:-webkit-autofill {
+    background-color: var(--dark);
+    color: white;
+}
+
+
+.payment-error{
+    padding:30px;
+
+}
+    .payment-error p {
+        color: var(--light-grey)
+    }
+
 input {
     border-radius: 6px;
     margin-bottom: 6px;
@@ -21,10 +40,12 @@ input {
     width: 100%;
     background: white;
 }
+    input:-webkit-autofill {
+        background-color: var(--dark);
+    }
 
-.element {
-
-}
+    .element {
+    }
 
 .result-message {
     line-height: 22px;

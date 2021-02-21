@@ -16,7 +16,6 @@ using System.Threading.Tasks;
 
 namespace NykantMVC.Controllers
 {
-    [AllowAnonymous]
     public class ProductController : BaseController
     {
         public ProductController(ILogger<BaseController> logger) : base(logger)

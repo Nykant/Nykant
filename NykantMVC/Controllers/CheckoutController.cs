@@ -70,6 +70,10 @@ namespace NykantMVC.Controllers
                 }
                 else
                 {
+                    if(bagItemsSession == null)
+                    {
+                        return Content("No bag items to check out");
+                    }
                     if (bagItemsSession.Count() == 0)
                     {
                         return Content("No bag items to check out");

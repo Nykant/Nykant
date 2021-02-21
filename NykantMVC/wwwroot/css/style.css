@@ -221,28 +221,35 @@ footer span {
     padding-left: 10px;
 }
 
+.margin-top-20{
+    margin-top:10px;
+}
+
 .button {
     border-radius: 5px;
-    margin-top: 10px;
     border: none;
     outline: none;
     background-color: #474747;
-    color: var(--green);
+    color: var(--light-grey);
     min-height: 50px;
     min-width: 100%;
     cursor: pointer;
-    transition: all ease 0.4s;
+/*    transition: all ease 0.4s;*/
     text-align: center;
-    
 }
 
     .button p {
-        padding-top:15px;
+       padding-top:10px;
     }
 
+    .button:enabled {
+        cursor: pointer;
+        color: var(--light-grey);
+    }
 
     .button:hover {
-        box-shadow: 0px 0px 15px #8cffa4;
+        box-shadow: 0px 0px 5px var(--green);
+        color: var(--green);
     }
 
     .button:disabled {
@@ -251,20 +258,18 @@ footer span {
         box-shadow: none;
     }
 
-    .button:enabled {
-        cursor: pointer;
-        color: var(--green);
-    }
+
+
 
 .header {
     margin-left: auto;
     margin-right: auto;
     width: 50%;
     margin-top:10px;
-    margin-bottom:10px;
+    margin-bottom:30px;
     padding:10px;
     color: var(--light-grey);
-    border-bottom: 1px solid #8cffa4;
+/*    border-bottom: 1px solid #8cffa4;*/
     border-top: 1px solid #8cffa4;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;

@@ -8,8 +8,7 @@
     <div class="col-8 center padding col-wrapper">
         <div class="col-8 left fadein">
             <div class="bagtitle dark-card">
-                    MY BAG
-
+                MY BAG
             </div>
             <div class="bagtable">
                 @* ----- TABLE ----- *@
@@ -20,58 +19,59 @@
                     <div>Price</div>
                     <div>Name</div>
                 </div>
-
-                    @foreach (var bagItem in Model.BagItems)
-                    {
-                        <div class="bag-item dark-card">
-                            <div id="bag-item-image">
-                                <a asp-action="Details" asp-controller="Product" asp-route-id="@bagItem.Product.Id">
-                                    <img src="@bagItem.Product.ImageSource" />
-                                </a>
-                            </div>
-                            <div id="bag-item-name">
-                                <a asp-action="Details" asp-controller="Product" asp-route-id="@bagItem.Product.Id">
-                                    @bagItem.Product.Title
-                                </a>
-                            </div>
-                            <div id="bag-item-price"><label>@bagItem.Product.Price</label></div>
-                            <div id="bag-item-quantity">
-                                <form class="counter-thing" method="post" asp-controller="BagItem" asp-action="UpdateBagItem" asp-route-selection="1">
-                                    <input type="hidden" asp-for="@bagItem.ProductId" />
-                                    <input type="hidden" asp-for="@bagItem.Subject" />
-                                    <input type="hidden" asp-for="@bagItem.Quantity" />
-                                    <input type="submit" value="+" />
-                                </form>
-                                @bagItem.Quantity
-                                <form class="counter-thing" method="post" asp-controller="BagItem" asp-action="UpdateBagItem" asp-route-selection="2">
-                                    <input type="hidden" asp-for="@bagItem.ProductId" />
-                                    <input type="hidden" asp-for="@bagItem.Subject" />
-                                    <input type="hidden" asp-for="@bagItem.Quantity" />
-                                    <input type="submit" value="-" />
-                                </form>
-                            </div>
-                            @{ 
-                                var total = bagItem.Quantity * bagItem.Product.Price;
-                            }
-                            <div id="bag-item-total"><label>@total</label></div>
+                @foreach (var bagItem in Model.BagItems)
+                {
+                    <div class="bag-item dark-card">
+                        <div id="bag-item-image">
+                            <a asp-action="Details" asp-controller="Product" asp-route-id="@bagItem.Product.Id">
+                                <img src="@bagItem.Product.ImageSource" />
+                            </a>
                         </div>
-                    }
+                        <div id="bag-item-name">
+                            <a asp-action="Details" asp-controller="Product" asp-route-id="@bagItem.Product.Id">
+                                @bagItem.Product.Title
+                            </a>
+                        </div>
+                        <div id="bag-item-price"><label>@bagItem.Product.Price</label></div>
+                        <div id="bag-item-quantity">
+                            <form method="post" asp-controller="BagItem" asp-action="UpdateBagItem" asp-route-selection="1">
+                                <input type="hidden" asp-for="@bagItem.ProductId" />
+                                <input type="hidden" asp-for="@bagItem.Subject" />
+                                <input type="hidden" asp-for="@bagItem.Quantity" />
+                                <input class="counter-thing" type="submit" value="+" />
+                            </form>
+                            @bagItem.Quantity
+                            <form method="post" asp-controller="BagItem" asp-action="UpdateBagItem" asp-route-selection="2">
+                                <input type="hidden" asp-for="@bagItem.ProductId" />
+                                <input type="hidden" asp-for="@bagItem.Subject" />
+                                <input type="hidden" asp-for="@bagItem.Quantity" />
+                                <input class="counter-thing" type="submit" value="-" />
+                            </form>
+                        </div>
+                        @{
+                            var total = bagItem.Quantity * bagItem.Product.Price;
+                        }
+                        <div id="bag-item-total"><label>@total</label></div>
+                    </div>
+                }
             </div>
         </div>
+
         <div class="col-4 left fadein">
-            <form method="get" asp-controller="Checkout" asp-action="CustomerInf">
-                <div class="checkout-wrap dark-card">
-                    <div class="header">
-                        <p>Summary</p>
-                    </div>
-                    <div class="checkout-price">
-                        <p><span>total: </span>@ViewBag.PriceSum</p>
-                    </div>
+            <div class="checkout-wrap dark-card">
+                <div class="header">
+                    <p>Summary</p>
                 </div>
-                <div class="left-side-padding">
-                    <button class="button" type="submit">Checkout</button>
+                <div class="checkout-price">
+                    <p><span>total: </span>@ViewBag.PriceSum</p>
                 </div>
-            </form>
+            </div>
         </div>
+
+        <a asp-controller="Checkout" asp-action="CustomerInf" class="col-4 right fadein left-side-padding top-side-padding">
+            <div class="button dark-card">
+                <p>Checkout</p>
+            </div>
+        </a>
     </div>
 </div>

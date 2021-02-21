@@ -21,19 +21,25 @@ fetch("/paymentintent/createpaymentintent", {
 
     var style = {
         base: {
-            color: "#32325d",
+            textAlign: "center",
+            color: "white",
             fontFamily: 'Arial, sans-serif',
             fontSmoothing: "antialiased",
-            fontSize: "16px",
+            fontSize: "25px",
             "::placeholder": {
-                color: "#32325d"
+                color: "#c1c1c1"
+            },
+            ":-webkit-autofill": {
+                color: "#e39f48",
+                backgroundColor: "#474747"
             }
         },
         invalid: {
             fontFamily: 'Arial, sans-serif',
             color: "#fa755a",
             iconColor: "#fa755a"
-        }
+        },
+    
     };
 
     var cardNumber = elements.create("cardNumber", { style: style });
@@ -115,11 +121,13 @@ var orderComplete = function (paymentIntentId) {
 // Show the customer the error from Stripe if their card fails to charge
 var showError = function (errorMsgText) {
     loading(false);
+    document.getElementById("payment-error").style.display = "block";
     var errorMsg = document.querySelector("#card-error");
     errorMsg.textContent = errorMsgText;
     setTimeout(function () {
         errorMsg.textContent = "";
-    }, 4000);
+        document.getElementById("payment-error").style.display = "none";
+    }, 10000);
 };
 
 // Show a spinner on payment submission

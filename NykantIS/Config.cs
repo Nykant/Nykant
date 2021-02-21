@@ -30,7 +30,7 @@ namespace NykantIS
 
                     ClientSecrets = { new Secret("secret".Sha256()) },
 
-                    AllowedScopes = { "" }
+                    AllowedScopes = { "NykantAPI" }
                 },
                 new Client
                 {
