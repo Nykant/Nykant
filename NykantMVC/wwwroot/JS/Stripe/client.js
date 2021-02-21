@@ -21,6 +21,7 @@ fetch("/paymentintent/createpaymentintent", {
 
     var style = {
         base: {
+            backgroundColor: "#474747",
             textAlign: "center",
             color: "white",
             fontFamily: 'Arial, sans-serif',
@@ -30,16 +31,27 @@ fetch("/paymentintent/createpaymentintent", {
                 color: "#c1c1c1"
             },
             ":-webkit-autofill": {
-                color: "#e39f48",
+                color: "white",
                 backgroundColor: "#474747"
             }
         },
         invalid: {
             fontFamily: 'Arial, sans-serif',
             color: "#fa755a",
+            backgroundColor: "#474747",
             iconColor: "#fa755a"
         },
-    
+        complete: {
+            backgroundColor: "#474747",
+            color: "#8cffa4"
+        },
+        webkitAutoFill: {
+            backgroundColor: "#474747",
+            ":-webkit-autofill": {
+                color: "white",
+                backgroundColor: "#474747"
+            }
+        }
     };
 
     var cardNumber = elements.create("cardNumber", { style: style });
@@ -50,11 +62,48 @@ fetch("/paymentintent/createpaymentintent", {
     cardNumber.mount("#card-element-number");
     cardExpiry.mount("#card-element-expiry");
     cardCvc.mount("#card-element-cvc");
-    cardNumber.on("change", function (event) {
+    cardCvc.addEventListener("change", function (event) {
         // Disable the Pay button if there are no card details in the Element
-        document.querySelector(".button").disabled = event.empty;
-        document.querySelector("#card-error").textContent = event.error ? event.error.message : "";
+        if (event.complete) {
+            document.querySelector(".button").disabled = event.empty;
+            document.getElementById("payment-elements-thing").setAttribute("class", "payment-complete")
+            document.querySelector("#card-error").textContent = event.error ? event.error.message : "";
+        }
+        if (event.invalid) {
+            document.querySelector(".button").disabled = true;
+            document.getElementById("payment-elements-thing").setAttribute("class", "payment-invalid")
+        }
+        if (event.empty) {
+            document.querySelector(".button").disabled = true;
+            document.getElementById("payment-elements-thing").setAttribute("class", "payment-elements-thing")
+            document.querySelector("#card-error").textContent = event.error ? event.error.message : "";
+        }
     });
+    cardNumber.addEventListener("change", function (event) {
+        // Disable the Pay button if there are no card details in the Element
+        if (event.empty) {
+            document.querySelector(".button").disabled = true;
+            document.getElementById("payment-elements-thing").setAttribute("class", "payment-elements-thing")
+            document.querySelector("#card-error").textContent = event.error ? event.error.message : "";
+        }
+        if (event.invalid) {
+            document.querySelector(".button").disabled = true;
+            document.getElementById("payment-elements-thing").setAttribute("class", "payment-invalid")
+        }
+    });
+    cardExpiry.addEventListener("change", function (event) {
+        // Disable the Pay button if there are no card details in the Element
+        if (event.empty) {
+            document.querySelector(".button").disabled = true;
+            document.getElementById("payment-elements-thing").setAttribute("class", "payment-elements-thing")
+            document.querySelector("#card-error").textContent = event.error ? event.error.message : "";
+        }
+        if (event.invalid) {
+            document.querySelector(".button").disabled = true;
+            document.getElementById("payment-elements-thing").setAttribute("class", "payment-invalid")
+        }
+    });
+
     var form = document.getElementById("payment-form");
     form.addEventListener("submit", function (event) {
         event.preventDefault();

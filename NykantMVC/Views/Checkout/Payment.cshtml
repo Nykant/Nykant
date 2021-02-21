@@ -8,7 +8,7 @@
 <script src="https://js.stripe.com/v3/"></script>
 <script src="~/JS/Stripe/client.js" defer></script>
 
-<div class="row  fadein">
+<div class="row bottom-side-padding fadein">
     <div class="col-8 center top-padding">
         <div class="col-12 left">
             <div class="breadcrumbs dark-card">
@@ -48,9 +48,26 @@
                     <div class="header">
                         YOUR CARD INFORMATION
                     </div>
-                    <div class="card-element" id="card-element-number"><!--Stripe.js injects the Card Element--></div>
-                    <div class="top-side-padding card-element" id="card-element-expiry"><!--Stripe.js injects the Card Element--></div>
-                    <div class="top-side-padding card-element" id="card-element-cvc"><!--Stripe.js injects the Card Element--></div>
+                    <div class="cardinfo-line">
+                        <div class="inputstyle left">
+                            <input required asp-for="@Model.CardInfo.Email" />
+                            <label asp-for="@Model.CardInfo.Email"></label>
+                            <span asp-validation-for="@Model.CardInfo.Email"></span>
+                            <div class="underline"></div>
+                        </div>
+                        <div class="inputstyle left">
+                            <input required asp-for="@Model.CardInfo.FullName" />
+                            <label asp-for="@Model.CardInfo.FullName"></label>
+                            <span asp-validation-for="@Model.CardInfo.FullName"></span>
+                            <div class="underline"></div>
+                        </div>
+                    </div>
+                    <div class="payment-elements-thing" id="payment-elements-thing">
+                        <div class="card-element" id="card-element-number"><!--Stripe.js injects the Card Element--></div>
+                        <div class="margin-top-20 card-element" id="card-element-expiry"><!--Stripe.js injects the Card Element--></div>
+                        <div class="margin-top-20 card-element" id="card-element-cvc"><!--Stripe.js injects the Card Element--></div>
+                    </div>
+
                 </div>
             </div>
 
@@ -73,7 +90,7 @@
         </form>
 
         <div class="col-8 left right-side-padding top-side-padding">
-            <div class="dark-card">
+            <div class="padding dark-card">
                 <h1>TEST CARDS</h1>
                 <div class="header">
                     <p>without 2D authentication:</p>

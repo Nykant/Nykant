@@ -25,30 +25,26 @@
                     <li class="mix @product.TypeOfWood @product.ItemType @product.Color @product.Size">
 
                         <div class="product-container">
-                            <img class="product-image" src="@product.ImageSource" alt="@product.Alt">
                             <a asp-action="Details" asp-controller="Product" asp-route-id="@product.Id">
+                                <img class="product-image" src="@product.ImageSource" alt="@product.Alt">
+                            
                                 <div class="seemore">
-                                    se mere
+                                    <img class="product-image" src="@product.ImageSource2" alt="@product.Alt">
                                 </div>
                             </a>
                         </div>
                         <div class="product-info">
-                            <h4>Name Of Product</h4>
-                            <p>NYKANT ORIGINAL</p>
-                            <p class="forsale">@product.Price.ToString() dkk</p> <span>  99,95 dkk</span>
+                            Name Of Product
                         </div>
                     </li>
                 
             }
-            <li class="gap"></li>
-            <li class="gap"></li>
-            <li class="gap"></li>
         </ul>
         <div class="cd-fail-message">No results found</div>
     </section> <!-- cd-gallery -->
 
     <div class="cd-filter">
-        <form>
+        <form class="filter-form">
             <div class="cd-filter-block">
                 <h4>Søg</h4>
 

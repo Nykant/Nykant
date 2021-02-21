@@ -11,14 +11,39 @@
     padding: 40px;
 }*/
 
+.cardinfo-line {
+    padding-left: 50px;
+    padding-right: 50px;
+    min-width: 420px;
+    padding-bottom:70px;
+}
 
-.payment-elements{
+.payment-elements {
     padding: 30px;
 }
 
-.card-element, .card-element:-webkit-autofill {
+.payment-elements-thing {
+    margin-top:20px;
+    border: 1px solid var(--light-grey);
+    padding: 20px;
+    margin-left: 60px;
+    margin-right: 60px;
     background-color: var(--dark);
-    color: white;
+    background: var(--dark);
+}
+
+.payment-invalid {
+    border: 1px solid var(--red);
+    padding: 20px;
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+.payment-complete {
+    border: 1px solid var(--green);
+    padding: 20px;
+    margin-left: 60px;
+    margin-right: 60px;
 }
 
 
@@ -30,43 +55,23 @@
         color: var(--light-grey)
     }
 
-input {
-    border-radius: 6px;
-    margin-bottom: 6px;
-    padding: 12px;
-    border: 1px solid rgba(50, 50, 93, 0.1);
-    height: 44px;
-    font-size: 16px;
-    width: 100%;
-    background: white;
-}
-    input:-webkit-autofill {
-        background-color: var(--dark);
-    }
-
-    .element {
-    }
 
 .result-message {
     line-height: 22px;
-    font-size: 16px;
+    font-size: 20px;
+    color: white;
 }
 
     .result-message a {
-        color: rgb(89, 111, 214);
+        color: var(--blue);
         font-weight: 600;
         text-decoration: none;
     }
 
-.hidden {
-    display: none;
-}
-
 #card-error {
-    color: rgb(105, 115, 134);
-    text-align: left;
-    font-size: 13px;
-    line-height: 17px;
+    color: var(--red);
+    text-align: center;
+    font-size: 20px;
     margin-top: 12px;
 }
 
@@ -79,34 +84,6 @@ input {
     background: white;
 }
 
-#payment-request-button {
-    margin-bottom: 32px;
-}
-/* Buttons and links */
-/*button {
-    background: #5469d4;
-    color: #ffffff;
-    font-family: Arial, sans-serif;
-    border-radius: 0 0 4px 4px;
-    border: 0;
-    padding: 12px 16px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    display: block;
-    transition: all 0.2s ease;
-    box-shadow: 0px 4px 5.5px 0px rgba(0, 0, 0, 0.07);
-    width: 100%;
-}
-
-    button:hover {
-        filter: contrast(115%);
-    }
-
-    button:disabled {
-        opacity: 0.5;
-        cursor: default;
-    }*/
 /* spinner/processing state, errors */
 .spinner,
 .spinner:before,

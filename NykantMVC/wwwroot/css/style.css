@@ -10,6 +10,7 @@
     --green: #8cffa4;
     --blue: #6dceff;
     --dark: #474747;
+    --red: #ff5f5f;
     --light-grey: #c1c1c1;
     --dark-grey: #2b2b2b;
     --font-size-small: 8px;
@@ -51,11 +52,6 @@ body {
     color: var(--light-grey);
     background-color: var(--dark-grey);
 }
-
-
-
-
-
 
 /* ----------------------- */
 
@@ -244,7 +240,8 @@ footer span {
 
     .button:enabled {
         cursor: pointer;
-        color: var(--light-grey);
+        color: var(--blue);
+        box-shadow: 0px 0px 5px var(--blue);
     }
 
     .button:hover {
@@ -258,7 +255,9 @@ footer span {
         box-shadow: none;
     }
 
-
+.hidden {
+    display: none;
+}
 
 
 .header {

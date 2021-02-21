@@ -17,6 +17,7 @@ namespace NykantAPI.Models
         public int Price { get; set; }
         public DateTime LastModified { get; set; } 
         public string ImageSource { get; set; }
+        public string ImageSource2 { get; set; }
         public string TypeOfWood { get; set; }
         public string ItemType { get; set; }
         public string Size { get; set; }

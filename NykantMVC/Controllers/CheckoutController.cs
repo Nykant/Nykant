@@ -231,6 +231,11 @@ namespace NykantMVC.Controllers
 
             if(checkout.Stage == Stage.payment)
             {
+                checkout.CardInfo = new CardInfo
+                {
+                    Email = checkout.CustomerInf.Email
+                };
+
                 return View(checkout);
             }
             else

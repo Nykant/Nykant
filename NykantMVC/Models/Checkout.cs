@@ -8,6 +8,7 @@ namespace NykantMVC.Models
     public class Checkout
     {
         public CustomerInf CustomerInf { get; set; }
+        public CardInfo CardInfo { get; set; }
         public int ShippingDeliveryId { get; set; }
         public List<BagItem> BagItems { get; set; }
         public int TotalPrice { get; set; }
