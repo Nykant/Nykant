@@ -8,16 +8,12 @@
 }
 
 .details-info-wrap {
-    padding-left: 30px;
-}
-
-.details-image-wrap, .details-info-wrap {
+    padding:20px;
     position: relative;
-    height: 70vh;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    text-align: center;
-    transition: none;
+    display: block;
+    border-top: 1px solid var(--green);
+    border-bottom: 1px solid var(--green);
+    border-radius: 15px;
 }
 
 .details-image-list {
@@ -30,6 +26,7 @@
 .secondary-image-wrap {
     padding-right: 10%;
     padding-bottom: 10%;
+    overflow:hidden;
 }
 
     .secondary-image-wrap img {
@@ -42,17 +39,18 @@
         cursor: pointer;
         transition: none;
         object-fit: contain;
+        background-color:white;
     }
 
         .secondary-image-wrap img:hover {
-            transition: none;
-            box-shadow: 0px 0px 10px red;
+            opacity:0.6;
         }
 
 .primary-image-wrap {
     position: relative;
     max-width: 80%;
     float: left;
+    height:auto;
 }
 
     .primary-image-wrap img {
@@ -66,6 +64,10 @@
         transition: none;
     }
 
+
+.product-preferences button {
+    outline:none;
+}
 
 
 /*---*/
@@ -91,46 +93,81 @@
 
 .quantity-wrap {
     margin: auto;
-    width: 75px;
+    width: 100px;
     height: 30px;
     border-style: solid;
     border-width: 1px;
-    border-color: black;
+    border-color: var(--light-grey);
+    -webkit-user-select: none; /* Chrome all / Safari all */
+    -moz-user-select: none; /* Firefox all */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none; /* Likely future */
+}
+.quantity-wrap:hover {
+    border-color:var(--green);
 }
 
     .quantity-wrap span {
-        padding: 5px;
         cursor: pointer;
     }
-
-.addtobag-button {
-    margin: auto;
-    background-color: black;
-    width: 150px;
-    height: 30px;
-    color: white;
-    cursor: pointer;
-}
-
-    .addtobag-button:hover {
-        transition: none;
-        box-shadow: 0px 0px 10px red;
+    .quantity-wrap span:hover{
+        color:var(--green);
     }
 
-.details-description-wrap {
-    margin-bottom: 50px;
-    position: relative;
-    padding-top: 50px;
-    height: 50vh;
+.quantitynumber {
+    max-width: 40px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: var(--light-grey);
     text-align: center;
-    box-shadow: 0px 0px 10px black;
+    display: inline
 }
 
-.details-description h1 {
-    text-decoration: solid;
-    font-size: 24px;
+.collapsible {
+    
 }
 
-.details-description p {
-    margin-top: 5vh;
+/* Style the button that is used to open and close the collapsible content */
+.collapsible-button {
+    background-color: var(--dark);
+    color: var(--light-grey);
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 16px;
+}
+
+    /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+    .active, .collapsible-button:hover {
+        color:var(--green);
+    }
+
+/* Style the collapsible content. Note: hidden by default */
+.collapsible-content {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+.collapsible-button:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: var(--green);
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+
+.reviews {
+
 }

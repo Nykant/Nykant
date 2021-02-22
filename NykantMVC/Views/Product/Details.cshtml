@@ -10,79 +10,106 @@
     };
 </script>
 
-<div class="row">
-    <div class="col-8 center dark-card">
-        <div class="col-8 left">
+<div class="row top-padding">
+    <div class="col-10 center">
+        <div class="col-8 left right-side-padding">
             <div class="details-image-wrap">
                 <div class="details-image-list">
                     @foreach (var image in Model.Product.Images)
                     {
-                        <div class="secondary-image-wrap">
-                            <img id="secondary-image" src="/images/gyngestol.jpg" onclick="changeImage('/images/gyngestol.jpg')" />
-                        </div>
+                    <div class="secondary-image-wrap fadein">
+                        <div class="overlay"></div>
+                        <img id="secondary-image" src="/images/gyngestol.jpg" onclick="changeImage('/images/gyngestol.jpg')" />
+                    </div>
                     }
                 </div>
-                <div class="primary-image-wrap">
+                <div class="primary-image-wrap fadein">
                     <img id="primary-image" src="/images/Finback-Chairs1-1280x853-c-default.jpg">
                 </div>
             </div>
         </div>
-        <div class="col-4 left">
-            <div class="details-info-wrap">
-                <h1>NAME OF VERY SPECIAL PRODUCT!</h1>
-                <p>DESIGNED BY NYKANT</p>
-                <span style="font-size:10px;">REVIEWS</span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-                <br />
-                <br />
-                <span class="forsale" style="float:none;">1000 dkk</span> <span class="red-text">  99,95 dkk</span>
-                <br />
-                <br />
-                <button class="button-red"></button>
-                <button class="button-blue"></button>
-                <button class="button-brown"></button>
-                <br />
-                <br />
-                <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-complete="completed" asp-controller="BagItem" asp-action="PostBagItem">
-                    @Html.HiddenFor(x => x.Product.Id);
-                    @Html.HiddenFor(x => x.Product.Size);
-                    @Html.HiddenFor(x => x.Product.TypeOfWood);
-                    @Html.HiddenFor(x => x.Product.Price);
-                    @Html.HiddenFor(x => x.Product.Title);
-                    @Html.HiddenFor(x => x.Product.Color);
-                    @Html.HiddenFor(x => x.Product.Alt);
-                    @Html.HiddenFor(x => x.Product.Description);
-                    @Html.HiddenFor(x => x.Product.ImageSource);
-                    <input type="hidden" value="1" id="quantityInput" name="productQuantity"/>
+
+        <div class="col-4 right">
+            <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-complete="completed" asp-controller="BagItem" asp-action="PostBagItem">
+                <div class="details-info-wrap fadein">
+
+                    <div>
+                        @Model.Product.Title
+                    </div>
+
+                    <div class="review-stars">
+                        <span style="font-size:10px;">REVIEWS:</span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    </div>
+
+
+                    <h1>@Model.Product.Price dkk,-</h1>
+
+
+                    <div class="product-preferences">
+                        <button type="button" class="button-red"></button>
+                        <button type="button" class="button-blue"></button>
+                        <button type="button" class="button-brown"></button>
+                    </div>
+
+
+
+                    @Html.HiddenFor(x => x.Product.Id)
+                    @Html.HiddenFor(x => x.Product.Size)
+                    @Html.HiddenFor(x => x.Product.TypeOfWood)
+                    @Html.HiddenFor(x => x.Product.Price)
+                    @Html.HiddenFor(x => x.Product.Title)
+                    @Html.HiddenFor(x => x.Product.Color)
+                    @Html.HiddenFor(x => x.Product.Alt)
+                    @Html.HiddenFor(x => x.Product.Description)
+                    @Html.HiddenFor(x => x.Product.ImageSource)
 
                     <div class="quantity-wrap">
-                        <span id="numberdown" onclick="countdown()">-</span>
-                        <p id="quantitynumber" style="display:inline">@productQuantity</p>
-                        <span id="numberup" onclick="countup()">+</span>
+                        <span style="margin-right:0px;" id="numberdown" onclick="countdown()">-</span>
+                        <input class="quantitynumber" id="quantitynumber" name="productQuantity" value="@productQuantity" />
+                        <span style="margin-left:0px;" id="numberup" onclick="countup()">+</span>
                     </div>
-                    <button type="submit">ADD TO BAG</button>
-                </form>
-                <br />
+                </div>
+                <div class="top-side-padding bottom-side-padding fadein">
+                    <button class="button" style="border-radius:0px;" type="submit">ADD TO BAG</button>
+                </div>
+                
+            </form>
+        </div>
+
+        <div class="col-4 right">
+            <div class="collapsible fadein">
+                <button type="button" class="collapsible-button">Beskrivelse</button>
+                <div class="collapsible-content">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+            </div>
+            <div class="collapsible top-side-padding fadein">
+                <button type="button" class="collapsible-button">Specifikationer</button>
+                <div class="collapsible-content">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+            </div>
+            <div class="collapsible top-side-padding fadein">
+                <button type="button" class="collapsible-button">Description</button>
+                <div class="collapsible-content">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-6 center slidefromleft">
-        <div class="details-description-wrap">
-            <div class="details-description">
-                <h1>DETAILS</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-            </div>
-        </div>
+
+
+
+
     </div>
 </div>
 
+<div class="row top-side-padding bottom-side-padding" >
+    <div class="reviews">
 
+    </div>
+</div>

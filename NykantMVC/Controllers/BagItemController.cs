@@ -41,7 +41,7 @@ namespace NykantMVC.Controllers
                     }
                 }
 
-                if(bagItem.Quantity != 0)
+                if(bagItem.Quantity <= 0)
                 {
                     var response = await PatchRequest("/BagItem/UpdateBagItem", bagItem);
 
@@ -75,10 +75,12 @@ namespace NykantMVC.Controllers
                         {
                             case 1:
                                 bagItems[i].Quantity += 1;
+                                if (bagItems[i].Quantity <= 0)
+                                    bagItems.RemoveAt(i);
                                 break;
                             case 2:
                                 bagItems[i].Quantity -= 1;
-                                if (bagItems[i].Quantity == 0)
+                                if (bagItems[i].Quantity <= 0)
                                     bagItems.RemoveAt(i);
                                 break;
                         }
@@ -94,6 +96,11 @@ namespace NykantMVC.Controllers
         public async Task<IActionResult> PostBagItem(ProductVM productVM, int productQuantity)
         {
             bool isAuthenticated = User.Identity.IsAuthenticated;
+
+            if(productQuantity <= 0)
+            {
+                return Content("Item not added, something went wrong");
+            };
 
             BagItem bagItem = new BagItem
             {

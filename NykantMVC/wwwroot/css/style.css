@@ -86,7 +86,6 @@ footer span {
     color: #AAA;
 }
 
-
 /* GRID ---------------------------------------------------------------*/
 
 .row::after {
@@ -152,11 +151,6 @@ footer span {
 }
 
 /* stuff */
-
-.slidefromleft {
-    animation-name: slidefadeleft2;
-    animation-duration: 4s;
-}
 
 .block {
     display: block;
@@ -241,7 +235,6 @@ footer span {
     .button:enabled {
         cursor: pointer;
         color: var(--blue);
-        box-shadow: 0px 0px 5px var(--blue);
     }
 
     .button:hover {
@@ -258,7 +251,6 @@ footer span {
 .hidden {
     display: none;
 }
-
 
 .header {
     margin-left: auto;
@@ -281,6 +273,17 @@ footer span {
     border: 1px solid var(--green);
 }
 
+/* ANIMATIONS */
+
+.slidefromleft {
+    animation-name: slidefadeleft;
+    animation-duration: 2s;
+}
+
+.slidefromdown{
+    animation-name: slidefadeup;
+    animation-duration: 2s;
+}
 
 @keyframes fadein {
     0% {
@@ -292,14 +295,38 @@ footer span {
     }
 }
 
-/*@keyframes slidefadeleft2 {
+@keyframes slidefadeup {
     0% {
         opacity: 0;
-        margin-left: 0%;
+        margin-top: 25%;
     }
 
     100% {
         opacity: 1;
-        margin-left: 25%;
+        margin-top: 0%;
     }
-}*/
+}
+
+@keyframes slidefadeleft {
+    0% {
+        opacity: 0;
+        margin-left: 0%
+    }
+
+    100% {
+        opacity: 1;
+        margin-left: 17%;
+    }
+}
+
+@keyframes slidefaderight {
+    0% {
+        opacity: 0;
+        right: -12%;
+    }
+
+    100% {
+        opacity: 1;
+        right: 0%;
+    }
+}
