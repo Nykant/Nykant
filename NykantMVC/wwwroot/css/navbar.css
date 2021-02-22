@@ -4,7 +4,7 @@
     display: table;
     position: relative;
     height: 100px;
-    background-color: var(--dark);
+    background-color: white;
     box-shadow: 0px 0px 15px #000000;
 }
 
@@ -118,12 +118,12 @@
     }
 
 .highlightTextOut a {
-    color: rgba(255, 255, 255, 0.3);
+    color: white;
 }
 
     .highlightTextOut a:before, .highlightTextIn a:before {
         position: absolute;
-        color: var(--green);
+        color: black;
         content: attr(alt);
         transition: all 0.3s;
         transform: scale(0.8);
@@ -137,7 +137,7 @@
 
 /* Highlight text in  */
 .highlightTextIn a {
-    color: grey;
+    color: black;
 }
 
     .highlightTextIn a:before {
@@ -153,7 +153,7 @@ a.icon {
 }
 
     a.icon:hover {
-        color: var(--green);
+        color: black;
         transition: all 0.3s;
         transform: scale(0.8);
     }
@@ -196,17 +196,6 @@ a.icon {
 
     #userBurger2 a:hover {
         color:var(--green);
-    }
-
-.nav-a {
-    width: 200px;
-    color: var(--light-grey);
-    cursor: pointer;
-    font-size: 16px;
-}
-
-    .nav-a:hover {
-        color: var(--green);
     }
 
 .nav-button {
