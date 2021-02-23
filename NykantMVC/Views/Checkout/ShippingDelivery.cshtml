@@ -7,7 +7,7 @@
 <div class="row fadein bottom-side-padding">
     <div class="col-8 center top-padding ">
         <div class="col-12 left">
-            <div class="breadcrumbs dark-card">
+            <div class="breadcrumbs">
                 <a asp-controller="Bag" asp-action="Details">SHOPPING BAG</a>  >
                 <a asp-controller="Checkout" asp-action="CustomerInf" asp-route-edit="true">CUSTOMER INFORMATION</a>  >
                 <a class="current">SHIPPING</a> >
@@ -16,10 +16,7 @@
         </div>
 
         <div class="col-4 right fadein top-side-padding">
-            <div class="sidebar dark-card">
-                <div class="header">
-                    Bag
-                </div>
+            <div class="sidebar">
                 <div class="sidebar-items">
                     @foreach (var item in Model.BagItems)
                     {
@@ -43,7 +40,7 @@
         <form asp-controller="Checkout" asp-action="PostShippingDelivery" method="post">
             <input required type="hidden" id="shipping-delivery-id" asp-for="@Model.ShippingDeliveryId" />
             <div class="col-8 left right-side-padding top-side-padding">
-                <div class="custom-list dark-card">
+                <div class="custom-list">
                     <div id="custom-list-header" class="header">
                         Choose Shipping
                     </div>

@@ -21,36 +21,32 @@ fetch("/paymentintent/createpaymentintent", {
 
     var style = {
         base: {
-            backgroundColor: "#474747",
+            backgroundColor: "transparent",
             textAlign: "center",
-            color: "white",
-            fontFamily: 'Arial, sans-serif',
+            color: "black",
+            fontFamily: 'Lato, sans-serif',
             fontSmoothing: "antialiased",
             fontSize: "25px",
             "::placeholder": {
-                color: "#c1c1c1"
+                color: "grey"
             },
             ":-webkit-autofill": {
-                color: "white",
-                backgroundColor: "#474747"
+                color: "black",
+                backgroundColor: "transparent"
             }
         },
         invalid: {
-            fontFamily: 'Arial, sans-serif',
-            color: "#fa755a",
-            backgroundColor: "#474747",
+            fontFamily: 'Lato, sans-serif',
+            color: "orange",
+            backgroundColor: "transparent",
             iconColor: "#fa755a"
         },
         complete: {
-            backgroundColor: "#474747",
+            backgroundColor: "transparent",
             color: "#8cffa4"
         },
         webkitAutoFill: {
-            backgroundColor: "#474747",
-            ":-webkit-autofill": {
-                color: "white",
-                backgroundColor: "#474747"
-            }
+            backgroundColor: "transparent"
         }
     };
 

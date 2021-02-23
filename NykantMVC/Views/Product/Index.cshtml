@@ -18,16 +18,17 @@
         </div> <!-- cd-tab-filter -->
     </div> <!-- cd-tab-filter-wrapper -->
 
-    <section class="cd-gallery">
-        <ul>
-            @foreach (var product in Model)
-            {
+    <div class="col-10 center">
+        <section class="cd-gallery">
+            <ul>
+                @foreach (var product in Model)
+                {
                     <li class="mix @product.TypeOfWood @product.ItemType @product.Color @product.Size">
 
                         <div class="product-container">
                             <a asp-action="Details" asp-controller="Product" asp-route-id="@product.Id">
                                 <img class="product-image" src="@product.ImageSource" alt="@product.Alt">
-                            
+
                                 <div class="seemore">
                                     <img class="product-image" src="@product.ImageSource2" alt="@product.Alt">
                                 </div>
@@ -37,11 +38,14 @@
                             Name Of Product
                         </div>
                     </li>
-                
-            }
-        </ul>
-        <div class="cd-fail-message">No results found</div>
-    </section> <!-- cd-gallery -->
+
+                }
+
+            </ul>
+            <div class="cd-fail-message">No results found</div>
+        </section> <!-- cd-gallery -->
+    </div>
+    
 
     <div class="cd-filter">
         <form class="filter-form">

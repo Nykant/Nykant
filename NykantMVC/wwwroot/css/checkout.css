@@ -1,11 +1,13 @@
 ﻿
 .sidebar {
     padding: 30px;
-    color: #c1c1c1;
+    color: black;
     width: 100%;
     min-height: 100%;
     margin-left: auto;
     margin-right: auto;
+    background-color:transparent;
+    border:2px solid black;
 }
 
 .sidebar-items {
@@ -16,8 +18,7 @@
 .sidebar-item {
     display: flex;
     padding: 10px;
-    border-bottom: 1px solid #8cffa4;
-
+    border-bottom: 2px solid black;
 }
 
     .sidebar-item img {
@@ -28,19 +29,6 @@
     .sidebar-item p {
         padding-left:10px;
     }
-
-.checkout-price {
-    margin-top:20px;
-}
-
-.checkout-price p {
-    color:white;
-}
-    .checkout-price p span {
-        color: #8cffa4;
-    }
-
-
 
 .credit-card {
     padding: 30px;
@@ -55,6 +43,7 @@
     padding: 30px;
     width: 100%;
     min-height: 100%;
+    border:2px solid black;
 }
 
 .customerinfo-line {

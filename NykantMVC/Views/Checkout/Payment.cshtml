@@ -11,7 +11,7 @@
 <div class="row bottom-side-padding fadein">
     <div class="col-8 center top-padding">
         <div class="col-12 left">
-            <div class="breadcrumbs dark-card">
+            <div class="breadcrumbs">
                 <a asp-controller="Bag" asp-action="Details">SHOPPING BAG</a>  >
                 <a asp-controller="Checkout" asp-action="CustomerInf" asp-route-edit="true">CUSTOMER INFORMATION</a>  >
                 <a asp-controller="Checkout" asp-action="ShippingDelivery" asp-route-edit="true">SHIPPING DELIVERY</a>  >
@@ -20,7 +20,7 @@
         </div>
 
         <div class="col-4 right fadein top-side-padding">
-            <div class="sidebar dark-card">
+            <div class="sidebar">
                 <div class="header">
                     Bag
                 </div>
@@ -44,7 +44,7 @@
 
         <form id="payment-form">
             <div class="col-8 left right-side-padding top-side-padding">
-                <div class="payment-elements dark-card">
+                <div class="payment-elements">
                     <div class="header">
                         YOUR CARD INFORMATION
                     </div>
@@ -81,7 +81,7 @@
                 </div>
             </div>
 
-            <div class="col-8 left right-side-padding top-side-padding">
+            <div class="col-4 right top-side-padding">
                 <button class="button" id="submit">
                     <div class="spinner hidden" id="spinner"></div>
                     <span id="button-text">Pay</span>

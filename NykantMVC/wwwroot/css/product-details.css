@@ -8,11 +8,10 @@
 }
 
 .details-info-wrap {
-    padding:20px;
     position: relative;
     display: block;
-    border-top: 1px solid var(--green);
-    border-bottom: 1px solid var(--green);
+/*    border-top: 1px solid black;
+    border-bottom: 1px solid black;*/
     border-radius: 15px;
 }
 
@@ -64,9 +63,12 @@
         transition: none;
     }
 
-
+.product-preferences {
+    padding-top:40px;
+    padding-bottom:10px;
+}
 .product-preferences button {
-    outline:none;
+    outline: none;
 }
 
 
@@ -92,34 +94,36 @@
 }
 
 .quantity-wrap {
+    font-weight:bold;
+    color:black;
     margin: auto;
     width: 100px;
-    height: 30px;
+    height: 25px;
     border-style: solid;
-    border-width: 1px;
-    border-color: var(--light-grey);
+    border-width: 2px;
+    border-color: black;
     -webkit-user-select: none; /* Chrome all / Safari all */
     -moz-user-select: none; /* Firefox all */
     -ms-user-select: none; /* IE 10+ */
     user-select: none; /* Likely future */
 }
-.quantity-wrap:hover {
-    border-color:var(--green);
-}
+/*.quantity-wrap:hover {
+    border-color:var(--blue);
+}*/
 
     .quantity-wrap span {
         cursor: pointer;
     }
-    .quantity-wrap span:hover{
-        color:var(--green);
-    }
+/*    .quantity-wrap span:hover{
+        color:var(--blue);
+    }*/
 
 .quantitynumber {
     max-width: 40px;
     background-color: transparent;
     border: none;
     outline: none;
-    color: var(--light-grey);
+    color: black;
     text-align: center;
     display: inline
 }
@@ -130,12 +134,12 @@
 
 /* Style the button that is used to open and close the collapsible content */
 .collapsible-button {
-    background-color: var(--dark);
-    color: var(--light-grey);
+    background-color: transparent;
+    color: black;
     cursor: pointer;
     padding: 18px;
     width: 100%;
-    border: none;
+    border: 2px solid black;
     text-align: left;
     outline: none;
     font-size: 16px;
@@ -143,7 +147,8 @@
 
     /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
     .active, .collapsible-button:hover {
-        color:var(--green);
+        color: var(--blue);
+        background-color: black;
     }
 
 /* Style the collapsible content. Note: hidden by default */
@@ -158,7 +163,6 @@
 .collapsible-button:after {
     content: '\02795'; /* Unicode character for "plus" sign (+) */
     font-size: 13px;
-    color: var(--green);
     float: right;
     margin-left: 5px;
 }

@@ -20,27 +20,27 @@
 
 .payment-elements {
     padding: 30px;
+    background-color:transparent;
+    border:2px solid black;
 }
 
 .payment-elements-thing {
     margin-top:20px;
-    border: 1px solid var(--light-grey);
+    border: 2px solid black;
     padding: 20px;
     margin-left: 60px;
     margin-right: 60px;
-    background-color: var(--dark);
-    background: var(--dark);
 }
 
 .payment-invalid {
-    border: 1px solid var(--red);
+    border: 2px solid black;
     padding: 20px;
     margin-left: 60px;
     margin-right: 60px;
 }
 
 .payment-complete {
-    border: 1px solid var(--green);
+    border: 2px solid black;
     padding: 20px;
     margin-left: 60px;
     margin-right: 60px;
@@ -52,7 +52,7 @@
 
 }
     .payment-error p {
-        color: var(--light-grey)
+        color: var(--red);
     }
 
 
@@ -63,7 +63,6 @@
 }
 
     .result-message a {
-        color: var(--blue);
         font-weight: 600;
         text-decoration: none;
     }
@@ -73,15 +72,6 @@
     text-align: center;
     font-size: 20px;
     margin-top: 12px;
-}
-
-#card-element {
-    border-radius: 4px 4px 0 0;
-    padding: 12px;
-    border: 1px solid rgba(50, 50, 93, 0.1);
-    height: 44px;
-    width: 100%;
-    background: white;
 }
 
 /* spinner/processing state, errors */

@@ -1,11 +1,13 @@
 ﻿.local-login {
     padding: 30px;
     text-align:center;
+    border:2px solid black;
 }
 
 .external-login {
     padding: 30px;
     text-align: center;
+    border: 2px solid black;
 }
 
 .register-link {

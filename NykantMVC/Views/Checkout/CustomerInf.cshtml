@@ -7,7 +7,7 @@
 <div class="row bottom-side-padding fadein">
     <div class="col-8 center top-padding ">
         <div class="col-12 left">
-            <div class="breadcrumbs dark-card">
+            <div class="breadcrumbs">
                 <a asp-controller="Bag" asp-action="Details">SHOPPING BAG</a>  >
                 <a class="current">CUSTOMER</a> >
                 <a>SHIPPING</a> >
@@ -18,7 +18,7 @@
             <div class="col-8 left right-side-padding fadein top-side-padding">
 
                 <input type="hidden" asp-for="@Model.CustomerInf.Id" />
-                <div class="customerinfo dark-card">
+                <div class="customerinfo">
                     <div class="header">
                         Your contact information
                     </div>
@@ -86,10 +86,7 @@
             </div>
 
             <div class="col-4 right fadein top-side-padding">
-                <div class="sidebar dark-card">
-                    <div class="header">
-                        Bag
-                    </div>
+                <div class="sidebar">
                     <div class="sidebar-items">
                         @foreach (var item in Model.BagItems)
                         {
@@ -109,7 +106,7 @@
             </div>
 
             <div class="col-4 right fadein top-side-padding">
-                <button class="button dark-card" type="submit">CONTINUE</button> @*------------- SUBMIT FORM --------------*@
+                <button class="button" type="submit">CONTINUE</button> @*------------- SUBMIT FORM --------------*@
             </div>
         </form>
     </div>

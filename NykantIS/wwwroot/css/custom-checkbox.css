@@ -27,11 +27,11 @@
     position: absolute;
     height: 100%;
     width: 100%;
-    background-color: grey;
+    background-color:black;
 }
 
 .checkbox:hover input ~ .checkmark {
-    background-color: var(--light-grey)
+    background-color: grey;
 }
 
 .checkbox input:checked ~ .checkmark {
@@ -52,7 +52,7 @@
     margin-top:5px;
     width: 5px;
     height: 10px;
-    border: solid var(--green);
+    border: solid var(--blue);
     border-width: 0 3px 3px 0;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);

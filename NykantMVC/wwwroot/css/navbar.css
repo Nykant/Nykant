@@ -4,7 +4,7 @@
     display: table;
     position: relative;
     height: 100px;
-    background-color: white;
+    background-color: black;
     box-shadow: 0px 0px 15px #000000;
 }
 
@@ -123,7 +123,7 @@
 
     .highlightTextOut a:before, .highlightTextIn a:before {
         position: absolute;
-        color: black;
+        color: var(--blue);
         content: attr(alt);
         transition: all 0.3s;
         transform: scale(0.8);
@@ -137,7 +137,7 @@
 
 /* Highlight text in  */
 .highlightTextIn a {
-    color: black;
+    color: white;
 }
 
     .highlightTextIn a:before {
@@ -153,7 +153,7 @@ a.icon {
 }
 
     a.icon:hover {
-        color: black;
+        color: var(--blue);
         transition: all 0.3s;
         transform: scale(0.8);
     }
@@ -174,10 +174,10 @@ a.icon {
 
 #userBurger2 {
     position: absolute;
-    background-color: var(--dark);
+    background-color: black;
     display: none;
     margin-top: 50px;
-    border: 1px solid var(--green);
+    border: 1px solid var(--blue);
     z-index: 99;
     text-align:center;
     width:200px;
@@ -188,27 +188,12 @@ a.icon {
     }
 
     #userBurger2 a {
-        color: var(--light-grey);
+        color: white;
         padding-bottom: 20px;
         font-size: 16px;
         width: 100%;
     }
 
     #userBurger2 a:hover {
-        color:var(--green);
-    }
-
-.nav-button {
-    border: none;
-    outline: none;
-    background: none;
-    width: 200px;
-    padding: 30px;
-    color: var(--light-grey);
-    cursor: pointer;
-    font-size: 16px;
-}
-
-    .nav-button:hover {
-        color: var(--green)
+        color:var(--blue);
     }

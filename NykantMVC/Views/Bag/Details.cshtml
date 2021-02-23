@@ -7,7 +7,7 @@
 <div class="row top-padding bottom-side-padding">
     <div class="col-8 center col-wrapper">
         <div class="col-8 left fadein">
-            <div class="bagtitle dark-card">
+            <div class="bagtitle">
                 MY BAG
             </div>
             <div class="bagtable">
@@ -21,7 +21,7 @@
                 </div>
                 @foreach (var bagItem in Model.BagItems)
                 {
-                    <div class="bag-item dark-card">
+                    <div class="bag-item">
                         <div id="bag-item-image">
                             <a asp-action="Details" asp-controller="Product" asp-route-id="@bagItem.Product.Id">
                                 <img src="@bagItem.Product.ImageSource" />
@@ -58,12 +58,9 @@
         </div>
 
         <div class="col-4 left fadein">
-            <div class="checkout-wrap dark-card">
-                <div class="header">
-                    <p>Summary</p>
-                </div>
+            <div class="checkout-wrap">
                 <div class="checkout-price">
-                    <p><span>total: </span>@ViewBag.PriceSum</p>
+                    total: @ViewBag.PriceSum
                 </div>
             </div>
         </div>

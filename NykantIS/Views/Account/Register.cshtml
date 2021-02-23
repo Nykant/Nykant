@@ -3,7 +3,7 @@
 <form asp-controller="Account" asp-action="Register" method="post">
     <div class="row top-padding">
         <div class="col-6 center">
-            <div class="form dark-card">
+            <div class="register-form">
 
                 <div class="inputstyle">
                     <input required asp-for="Email" />
@@ -25,11 +25,11 @@
     <div class="row">
         <div class="col-6 center">
 
-            <div class="col-4 right fadein">
-                <button class="button dark-card right-side-padding" type="submit">Register</button>
+            <div class="col-4 right fadein top-side-padding">
+                <button class="button right-side-padding" type="submit">Register</button>
             </div>
-            <a asp-action="Login" class="col-4 left fadein right-side-padding">
-                <div class="button dark-card">
+            <a asp-action="Login" class="col-4 left fadein right-side-padding top-side-padding">
+                <div class="button">
                     <p>Go Back</p>
                 </div>
             </a>

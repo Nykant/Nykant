@@ -47,7 +47,7 @@ html {
 
 body {
     font-size: 16px;
-    font-family: "Trirong", serif;
+    font-family: 'Lato', sans-serif;
     line-height: normal;
     color: black;
     background-color: white;
@@ -56,12 +56,12 @@ body {
 /* ----------------------- */
 
 a {
-  color: var(--blue);
+  color: black;
   text-decoration: none;
 }
 
 a:hover {
-    color:var(--green)
+    color:var(--blue)
 }
 
 ol, ul {
@@ -74,7 +74,7 @@ footer {
     font-family: Raleway;
     padding: 3em 3em;
     text-align: center;
-    background: var(--dark);
+    background-color: black;
     bottom: 0px;
 }
 
@@ -216,11 +216,11 @@ footer span {
 }
 
 .button {
-    border-radius: 5px;
-    border: none;
+    border-radius: 0px;
+    border: 2px solid rgba(0,0,0,1);
     outline: none;
-    background-color: #474747;
-    color: var(--light-grey);
+    background-color: black;
+    color: white;
     min-height: 50px;
     min-width: 100%;
     cursor: pointer;
@@ -229,23 +229,23 @@ footer span {
 }
 
     .button p {
-       padding-top:10px;
+       padding-top:12px;
     }
 
     .button:enabled {
         cursor: pointer;
-        color: var(--blue);
     }
 
     .button:hover {
-        box-shadow: 0px 0px 5px var(--green);
-        color: var(--green);
+        color: black;
+        background-color:white;
     }
 
     .button:disabled {
         cursor: initial;
         color: grey;
         box-shadow: none;
+        background-color: black;
     }
 
 .hidden {
@@ -256,17 +256,14 @@ footer span {
     margin-left: auto;
     margin-right: auto;
     width: 50%;
-    margin-top:10px;
-    margin-bottom:30px;
-    padding:10px;
-    color: var(--light-grey);
-/*    border-bottom: 1px solid #8cffa4;*/
-    border-top: 1px solid #8cffa4;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    text-align:center;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    padding: 10px;
+    color: black;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    text-align: center;
+    font-weight:bold;
 }
 
 .green-border {
