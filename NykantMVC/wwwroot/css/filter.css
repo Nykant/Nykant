@@ -267,65 +267,65 @@ xfilter
 
 -------------------------------- */
 .cd-filter {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 280px;
-  height: 100%;
-  background: black;
-  box-shadow: 4px 4px 20px transparent;
-  z-index: 2;
-  /* Force Hardware Acceleration in WebKit */
-  -webkit-transform: translateZ(0);
-  -moz-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  -o-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -webkit-transform: translateX(-100%);
-  -moz-transform: translateX(-100%);
-  -ms-transform: translateX(-100%);
-  -o-transform: translateX(-100%);
-  transform: translateX(-100%);
-  -webkit-transition: -webkit-transform 0.3s, box-shadow 0.3s;
-  -moz-transition: -moz-transform 0.3s, box-shadow 0.3s;
-  transition: transform 0.3s, box-shadow 0.3s;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100%;
+    background-color: #effbff;
+    box-shadow: 4px 4px 20px transparent;
+    z-index: 2;
+    /* Force Hardware Acceleration in WebKit */
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    transform: translateX(-100%);
+    -webkit-transition: -webkit-transform 0.3s, box-shadow 0.3s;
+    -moz-transition: -moz-transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
-.cd-filter::before {
-  /* top colored bar */
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 50px;
-  width: 100%;
-  background-color:black;
-}
+    .cd-filter::before {
+        /* top colored bar */
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 50px;
+        width: 100%;
+        background-color: transparent;
+    }
 .cd-filter form {
   padding: 70px 20px;
 }
-.cd-filter .cd-close {
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 50px;
-  line-height: 50px;
-  width: 60px;
-  color: white;
-  font-size: 1rem;
-  text-align: center;
-  background: black;
-  opacity: 0;
-  -webkit-transition: opacity 0.3s;
-  -moz-transition: opacity 0.3s;
-  transition: opacity 0.3s;
-  z-index: 3;
-}
+    .cd-filter .cd-close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 50px;
+        line-height: 50px;
+        width: 60px;
+        color: black;
+        font-size: 1rem;
+        text-align: center;
+        background: #effbff;
+        opacity: 0;
+        -webkit-transition: opacity 0.3s;
+        -moz-transition: opacity 0.3s;
+        transition: opacity 0.3s;
+        z-index: 3;
+    }
 
 .no-touch .cd-filter .cd-close:hover {
     color: var(--blue);
-    background:black;
+    background-color: transparent;
 }
 .cd-filter.filter-is-visible {
   -webkit-transform: translateX(0);
@@ -381,10 +381,10 @@ xfilter
     transition: color 0.3s;
   }
     .no-touch .cd-filter-trigger:hover {
-        color: var(--blue);
+        color: var(--light-grey);
     }
     .cd-filter-trigger.filter-is-visible, .cd-filter-trigger.filter-is-visible:hover {
-        color: var(--blue);
+        color: black;
     }
 }
 
@@ -401,7 +401,7 @@ xcustom form elements
   position: relative;
   margin-bottom: .2em;
   padding: 10px 0 10px 20px;
-  color: #9a9a9a;
+  color: black;
   text-transform: uppercase;
   font-weight: 700;
   font-size: 1rem;
@@ -528,7 +528,7 @@ xcustom form elements
 }
 .cd-filter-block .checkbox-label,
 .cd-filter-block .radio-label {
-  color: white;
+  color: black;
   padding-left: 24px;
   font-size: 1rem;
   -webkit-user-select: none;

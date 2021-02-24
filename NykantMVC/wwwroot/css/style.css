@@ -69,12 +69,12 @@ ol, ul {
 }
 
 footer {
-    color:white;
+    color: black;
     position: static;
     font-family: Raleway;
     padding: 3em 3em;
     text-align: center;
-    background-color: black;
+    background-color: #effbff;
     bottom: 0px;
 }
 

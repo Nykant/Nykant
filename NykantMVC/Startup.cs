@@ -13,9 +13,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.IdentityModel.Tokens.Jwt;
-using JavaScriptEngineSwitcher.Extensions.MsDependencyInjection;
-using React.AspNet;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
+using System.IO;
 
 namespace NykantMVC
 {
@@ -53,6 +52,7 @@ namespace NykantMVC
                     options.Scope.Add("offline_access");
                 });
 
+
             services.AddDistributedMemoryCache();
 
             // --------------------------- TO CONFIGURE COOKIE OPTIONS -------------------------------------------
@@ -73,6 +73,10 @@ namespace NykantMVC
                 options.Cookie.IsEssential = true;
             });
 
+            services.AddFluentEmail("notedwow@hotmail.com")
+                .AddRazorRenderer()
+                .AddSmtpSender("localhost", 25);
+
             services.AddControllersWithViews();
         }
 
@@ -88,6 +92,7 @@ namespace NykantMVC
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
+
 
             app.UseHttpsRedirection();
 

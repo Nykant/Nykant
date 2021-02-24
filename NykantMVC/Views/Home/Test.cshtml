@@ -1,25 +1,10 @@
-﻿@using Microsoft.AspNetCore.Authentication
-
-<p>authenticated?: @User.Identity.IsAuthenticated</p>
-<p>authentication type: @User.Identity.AuthenticationType</p>
-
- name: @User.Identity.Name;
- email: @User.Claims.FirstOrDefault(x => x.Type == "email").Value;
- sub / userid: @User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
-
-<h2>Claims</h2>
-
-@foreach (var claim in User.Claims)
-{
-    <p>@claim.Type: @claim.Value</p>
-}
-
-<h2>Properties</h2>
-
-<dl>
-    @foreach (var prop in (await Context.AuthenticateAsync()).Properties.Items)
-    {
-        <dt>@prop.Key</dt>
-        <dd>@prop.Value</dd>
-    }
-</dl>
+﻿<div class="row top-padding bottom-side-padding">
+    <a asp-controller="Email" asp-action="SendSingleEmail" class="col-4 center">
+        <div class="button">
+            <p>Register</p>
+        </div>
+    </a>
+    <div class="col-4 center top-side-padding">
+        <button type="button" class="button" asp-controller="Email" asp-action="SendMultipleEmail">Multiple email test</button>
+    </div>
+</div>
