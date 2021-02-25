@@ -15,6 +15,8 @@ using System.Threading.Tasks;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using System.IO;
+using NykantMVC.Models;
+using NykantMVC.Extensions;
 
 namespace NykantMVC
 {
@@ -73,9 +75,14 @@ namespace NykantMVC
                 options.Cookie.IsEssential = true;
             });
 
-            services.AddFluentEmail("notedwow@hotmail.com")
+            services.AddFluentEmail("nykant.development@gmail.com")
                 .AddRazorRenderer()
-                .AddSmtpSender("localhost", 25);
+                .AddSmtpSender("smtp.gmail.com", 587, "nykant.development@gmail.com", "specialpassword123");
+
+            services.Configure<EmailSettings>(Configuration.GetSection("MailSettings"));
+            services.AddTransient<IMailService, EmailService>();
+
+            services.AddScoped<IRazorViewToStringRenderer, RazorViewToStringRenderer>();
 
             services.AddControllersWithViews();
         }
