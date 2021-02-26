@@ -48,7 +48,8 @@ namespace NykantMVC.Extensions
 
             try
             {
-                builder.HtmlBody = mailRequest.Body;
+                builder.HtmlBody = string.Format(@"<img src=""cid:{0}"" />", image.ContentId) ;
+                //builder.HtmlBody = string.Format(mailRequest.Body, image.ContentId);
             }
             catch(Exception e)
             {
