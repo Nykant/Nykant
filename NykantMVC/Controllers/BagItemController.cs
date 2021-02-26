@@ -99,7 +99,7 @@ namespace NykantMVC.Controllers
 
             if(productQuantity <= 0)
             {
-                return Content("Item not added, something went wrong");
+                return new JsonResult("Item not added, something went wrong");
             };
 
             BagItem bagItem = new BagItem
@@ -131,7 +131,7 @@ namespace NykantMVC.Controllers
                 bagItems.Add(bagItem);
 
                 HttpContext.Session.Set<List<BagItem>>(BagSessionKey, bagItems);
-                return Content("Item added to your bag");
+                return new JsonResult("Item added to your bag");
             }
             else
             {
@@ -141,16 +141,16 @@ namespace NykantMVC.Controllers
                     var response = await PostRequest("/BagItem/PostBagItem", bagItem);
                     if (response.IsSuccessStatusCode)
                     {
-                        return Content("Item added to your bag");
+                        return new JsonResult("Item added to your bag");
                     }
                     else
                     {
-                        return Content("Item not added, something went wrong");
+                        return new JsonResult("Item not added, something went wrong");
                     }
                 }
                 catch(Exception e)
                 {
-                    return Content(e.Message);
+                    return new JsonResult(e.Message);
                 }
             }
         }

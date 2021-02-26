@@ -1,6 +1,7 @@
 ﻿@model RegisterVM
 
-<form asp-controller="Account" asp-action="Register" method="post">
+
+<form method="post" asp-controller="Account" asp-action="Register">
     <div class="row top-padding">
         <div class="col-6 center">
             <div class="register-form">
@@ -28,12 +29,14 @@
             <div class="col-4 right fadein top-side-padding">
                 <button class="button right-side-padding" type="submit">Register</button>
             </div>
-            <a asp-action="Login" class="col-4 left fadein right-side-padding top-side-padding">
+            <a asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl" class="col-4 left fadein right-side-padding top-side-padding">
                 <div class="button">
-                    <p>Go Back</p>
+                    <p>Login</p>
                 </div>
             </a>
 
         </div>
     </div>
 </form>
+
+

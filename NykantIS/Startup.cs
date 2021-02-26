@@ -21,6 +21,8 @@ using System.Reflection;
 using NykantIS.Data.Seed;
 using IdentityServer4.Services;
 using Microsoft.Extensions.Logging;
+using MailKit;
+using NykantIS.Services;
 
 namespace NykantIS
 {
@@ -91,6 +93,11 @@ namespace NykantIS
                     options.ClientId = "413646567653-2set9f80eantuvbkj84d7mmb5vp6dfl8.apps.googleusercontent.com";
                     options.ClientSecret = "dvfRC2hzoa-obrao6uScXHSB";
                 });
+
+            services.Configure<EmailSettings>(Configuration.GetSection("MailSettings"));
+            services.AddTransient<Services.IMailService, EmailService>();
+
+            services.AddScoped<IRazorViewToStringRenderer, RazorViewToStringRenderer>();
 
             services.AddControllersWithViews();
         }

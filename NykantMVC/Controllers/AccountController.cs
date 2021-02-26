@@ -25,5 +25,11 @@ namespace NykantMVC.Controllers
         {
             return Redirect(redirectUrl);
         }
+        [Route("sign-me-in")]
+        [HttpGet]
+        public IActionResult SignMeIn()
+        {
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

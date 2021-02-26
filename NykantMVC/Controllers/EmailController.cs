@@ -28,55 +28,23 @@ namespace NykantMVC.Controllers
             _razorViewToStringRenderer = razorViewToStringRenderer;
         }
 
-        public async Task<IActionResult> SendEmail()
-        {
-            var confirmAccountModel = new ConfirmAccountEmailViewModel($"https://localhost/5002/" + Guid.NewGuid());
-
-            string body = await _razorViewToStringRenderer.RenderViewToStringAsync("/Views/Shared/ConfirmEmail.cshtml", confirmAccountModel);
-            try
-            {
-                var request = new EmailRequest
-                {
-                    ToEmail = "notedwow@hotmail.com",
-                    Body = body,
-                    Subject = "test"
-                };
-
-                await mailService.SendEmailAsync(request);
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
-
-        }
-
-        //private void SendEmail(List<string> toAddresses, string fromAddress, string subject, string body)
+        //public async Task<IActionResult> SendEmail()
         //{
-        //    var message = new MimeMessage();
-        //    message.From.Add(new MailboxAddress("SenderFirstName SenderLastName", fromAddress));
-        //    foreach (var to in toAddresses)
-        //    {
-        //        message.To.Add(new MailboxAddress("RecipientFirstName RecipientLastName", to));
-        //    }
-        //    message.Subject = subject;
+        //    var confirmAccountModel = new ConfirmAccountEmailViewModel($"https://localhost/5002/" + Guid.NewGuid());
 
-        //    message.Body = new TextPart(TextFormat.Html)
-        //    {
-        //        Text = body
-        //    };
+        //    string body = await _razorViewToStringRenderer.RenderViewToStringAsync("/Views/Shared/ConfirmEmail.cshtml", confirmAccountModel);
 
-        //    using var client = new SmtpClient
-        //    {
-        //        // For demo-purposes, accept all SSL certificates
-        //        ServerCertificateValidationCallback = (_, _, _, _) => true
-        //    };
+        //        var request = new EmailRequest
+        //        {
+        //            ToEmail = "notedwow@hotmail.com",
+        //            Body = body,
+        //            Subject = "test"
+        //        };
 
-        //    client.Connect("127.0.0.1", 25, false);
+        //        await mailService.SendEmailAsync(request);
 
-        //    client.Send(message);
-        //    client.Disconnect(true);
+
+
         //}
 
         public async Task<IActionResult> SendSingleEmail([FromServices] IFluentEmail singleEmail)

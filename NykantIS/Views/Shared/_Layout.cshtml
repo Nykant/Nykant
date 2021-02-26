@@ -12,14 +12,21 @@
     <link rel="stylesheet" href="~/css/custom-input.css" />
     <link rel="stylesheet" href="~/css/custom-checkbox.css" />
     <link rel="stylesheet" href="~/css/register.css" />
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/additional-methods.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
 </head>
 <body>
-   
+
     <div>
         <main>
             @RenderBody()
         </main>
     </div>
+
 
     @RenderSection("scripts", required: false)
 </body>

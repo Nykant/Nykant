@@ -75,10 +75,6 @@ namespace NykantMVC
                 options.Cookie.IsEssential = true;
             });
 
-            services.AddFluentEmail("nykant.development@gmail.com")
-                .AddRazorRenderer()
-                .AddSmtpSender("smtp.gmail.com", 587, "nykant.development@gmail.com", "specialpassword123");
-
             services.Configure<EmailSettings>(Configuration.GetSection("MailSettings"));
             services.AddTransient<IMailService, EmailService>();
 
