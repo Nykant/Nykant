@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using NykantMVC.Extensions;
 using NykantMVC.Models;
 using Stripe;
@@ -13,8 +14,12 @@ namespace NykantMVC.Controllers
 {
     public class OrderController : BaseController
     {
-        public OrderController(ILogger<BaseController> logger) : base(logger)
+        private readonly IMailService mailService;
+        private readonly IRazorViewToStringRenderer _razorViewToStringRenderer;
+        public OrderController(IMailService mailService, IRazorViewToStringRenderer razorViewToStringRenderer, ILogger<BaseController> logger) : base(logger)
         {
+            this.mailService = mailService;
+            _razorViewToStringRenderer = razorViewToStringRenderer;
         }
 
         [HttpPost]
@@ -29,11 +34,46 @@ namespace NykantMVC.Controllers
             if (checkout.Stage == Stage.payment)
             {
                 var order = BuildOrder(checkout, paymentIntentId);
-                var postRequest = await PostRequest("/Order/PostOrder", order);
+                var response = await PostRequest("/Order/PostOrder", order);
+
+                var json = await GetRequest(response.Headers.Location.AbsolutePath);
+                Models.Order newOrder = JsonConvert.DeserializeObject<Models.Order>(json);
+                order = newOrder;
+                if (!response.IsSuccessStatusCode)
+                {
+                    return NotFound();
+                }
+
+                var orderItems = new List<Models.OrderItem>();
+                foreach (var item in checkout.BagItems)
+                {
+                    orderItems.Add(new Models.OrderItem { Quantity = item.Quantity, ProductId = item.ProductId, OrderId = order.Id });
+                }
+                var postRequest = await PostRequest("/Orderitem/PostOrderItems", orderItems);
                 if (!postRequest.IsSuccessStatusCode)
                 {
                     return NotFound();
                 }
+                order.OrderItems = orderItems;
+                foreach(var item in order.OrderItems)
+                {
+                    foreach(var bagItem in checkout.BagItems)
+                    {
+                        if(bagItem.ProductId == item.ProductId)
+                        {
+                            item.Product = bagItem.Product;
+                        }
+                    }
+                }
+
+                string body = await _razorViewToStringRenderer.RenderViewToStringAsync("/Views/Shared/OrderEmail.cshtml", order);
+                var request = new EmailRequest
+                {
+                    ToEmail = checkout.CustomerInf.Email,
+                    Body = body,
+                    Subject = "YOUR ORDER"
+                };
+                await mailService.SendEmailAsync(request);
 
                 if (User.Identity.IsAuthenticated)
                 {
@@ -62,11 +102,6 @@ namespace NykantMVC.Controllers
 
         private Models.Order BuildOrder(Checkout checkout, string paymentIntentId)
         {
-            var orderItems = new List<Models.OrderItem>();
-            foreach (var item in checkout.BagItems)
-            {
-                orderItems.Add(new Models.OrderItem { Quantity = item.Quantity, ProductId = item.ProductId });
-            }
 
             Models.Order order = new Models.Order
             {
@@ -76,8 +111,7 @@ namespace NykantMVC.Controllers
                 PaymentIntent_Id = paymentIntentId,
                 ShippingDeliveryId = checkout.ShippingDeliveryId,
                 Status = Status.Accepted,
-                TotalPrice = checkout.TotalPrice,
-                OrderItems = orderItems
+                TotalPrice = checkout.TotalPrice
             };
 
             if (User.Identity.IsAuthenticated)

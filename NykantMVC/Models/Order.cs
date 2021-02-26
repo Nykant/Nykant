@@ -28,7 +28,6 @@ namespace NykantMVC.Models
         public Status Status { get; set; }
         [Required]
         public string PaymentIntent_Id { get; set; }
-        [Required]
         public List<OrderItem> OrderItems { get; set; }
     }
 

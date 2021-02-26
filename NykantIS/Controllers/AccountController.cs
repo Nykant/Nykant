@@ -83,7 +83,7 @@ namespace NykantIS.Controllers
         {
             if (userid == null || code == null)
             {
-                return RedirectToPage("/Index");
+                return NotFound();
             }
 
             var user = await _userManager.FindByIdAsync(userid);

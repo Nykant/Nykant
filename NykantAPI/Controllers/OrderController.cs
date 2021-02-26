@@ -35,9 +35,16 @@ namespace NykantAPI.Controllers
                 }
                 else
                 {
-                    _context.Orders.Add(order);
+                    var entity = _context.Orders.Add(order).Entity;
                     await _context.SaveChangesAsync();
-                    return Ok();
+                    try
+                    {
+                        return CreatedAtAction("GetOrder", new { id = entity.Id }, entity);
+                    }
+                    catch(Exception e)
+                    {
+                        return NotFound(e.Message);
+                    }
                 }
             }
             else

@@ -1,4 +1,6 @@
-﻿<div class="row top-padding">
+﻿
+
+<div class="row top-padding">
     <div class="col-6 center">
         <div class="register-form">
 
@@ -10,11 +12,11 @@
 <div class="row">
     <div class="col-6 center">
 
-        <a asp-action="Login" class="col-4 left fadein right-side-padding top-side-padding">
-            <div class="button">
-                <p>Login</p>
-            </div>
-        </a>
+        <div class="col-4 left fadein right-side-padding top-side-padding">
+            <button id="closeButton" class="button"></button>
+        </div>
 
     </div>
 </div>
+
+<script src="~/js/timeoutCloseWindow.js"></script>

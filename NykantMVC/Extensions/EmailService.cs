@@ -2,6 +2,7 @@
 using MailKit.Security;
 using Microsoft.Extensions.Options;
 using MimeKit;
+using MimeKit.Utils;
 using NykantMVC.Models;
 using System;
 using System.Collections.Generic;
@@ -42,9 +43,21 @@ namespace NykantMVC.Extensions
                     }
                 }
             }
-            builder.HtmlBody = mailRequest.Body;
+            var image = builder.LinkedResources.Add(@"C:\Users\Christian\Documents\GitHub\Nykant\NykantMVC\wwwroot\images\gyngestol.jpg");
+            image.ContentId = MimeUtils.GenerateMessageId();
+
+            try
+            {
+                builder.HtmlBody = mailRequest.Body;
+            }
+            catch(Exception e)
+            {
+
+            }
+
             email.Body = builder.ToMessageBody();
             using var smtp = new SmtpClient();
+            
             smtp.Connect(_mailSettings.Host, _mailSettings.Port, SecureSocketOptions.StartTls);
             smtp.Authenticate(_mailSettings.Mail, _mailSettings.Password);
             await smtp.SendAsync(email);
