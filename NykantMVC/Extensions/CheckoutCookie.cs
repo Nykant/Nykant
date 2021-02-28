@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NykantMVC.Support
+namespace NykantMVC.Extensions
 {
     public class CheckoutCookie
     {

@@ -1,0 +1,43 @@
+﻿
+@model Order
+
+@{
+    Layout = "_EmailLayout";
+    ViewData["EmailTitle"] = "Ordre";
+}
+
+<br />
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr style="padding-bottom:20px;">
+        <th width="100" align="center">
+            <p>Produkt</p>
+        </th>
+        <th width="100" align="center">
+            <p>Titel</p>
+        </th>
+        <th width="100" align="center">
+            <p>Pris</p>
+        </th>
+    </tr>
+    @foreach (var item in Model.OrderItems)
+    {
+        <tr style="height:100px; background-color:#e9fbff; padding-bottom:10px">
+            <td align="center" valign="middle" width="100">
+                <img src="cid:@item.ContentId" width="75" height="75" style="display:block;" border="0" />
+            </td>
+            <td align="center" width="100">
+                <p>@item.Product.Title</p>
+            </td>
+            <td align="center" width="100">
+                <p>@item.Product.Price</p>
+            </td>
+        </tr>
+        <tr style="height:10px"></tr>
+    }
+</table>
+
+<br />
+
+<br />
+

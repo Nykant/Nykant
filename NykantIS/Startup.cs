@@ -100,6 +100,7 @@ namespace NykantIS
             services.AddScoped<IRazorViewToStringRenderer, RazorViewToStringRenderer>();
 
             services.AddControllersWithViews();
+            services.AddRazorPages();
         }
 
         public void Configure(IApplicationBuilder app)
@@ -122,6 +123,7 @@ namespace NykantIS
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapDefaultControllerRoute();
+                endpoints.MapRazorPages();
             });
         }
 

@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using NykantMVC.Extensions;
 using NykantMVC.Models;
+using NykantMVC.Services;
 using Stripe;
 using System;
 using System.Collections.Generic;
@@ -66,14 +67,7 @@ namespace NykantMVC.Controllers
                     }
                 }
 
-                string body = await _razorViewToStringRenderer.RenderViewToStringAsync("/Views/Shared/OrderEmail.cshtml", order);
-                var request = new EmailRequest
-                {
-                    ToEmail = checkout.CustomerInf.Email,
-                    Body = body,
-                    Subject = "YOUR ORDER"
-                };
-                await mailService.SendEmailAsync(request);
+                await mailService.SendOrderEmailAsync(checkout, order);
 
                 if (User.Identity.IsAuthenticated)
                 {

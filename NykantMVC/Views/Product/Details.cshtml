@@ -56,8 +56,6 @@
                         <button type="button" class="button-brown"></button>
                     </div>
 
-
-
                     @Html.HiddenFor(x => x.Product.Id)
                     @Html.HiddenFor(x => x.Product.Size)
                     @Html.HiddenFor(x => x.Product.TypeOfWood)
@@ -67,6 +65,7 @@
                     @Html.HiddenFor(x => x.Product.Alt)
                     @Html.HiddenFor(x => x.Product.Description)
                     @Html.HiddenFor(x => x.Product.ImageSource)
+                    @Html.HiddenFor(x => x.Product.Path)
 
                     <div class="quantity-wrap">
                         <span style="margin-right:0px;" id="numberdown" onclick="countdown()">-</span>

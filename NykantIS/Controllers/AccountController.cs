@@ -38,20 +38,14 @@ namespace NykantIS.Controllers
         private readonly IClientStore _clientStore;
         private readonly IAuthenticationSchemeProvider _schemeProvider;
         private readonly IEventService _events;
-        private readonly IdentityDbContext _context;
-        private readonly IMailService mailService;
-        private readonly IRazorViewToStringRenderer _razorViewToStringRenderer;
 
         public AccountController(
-            IRazorViewToStringRenderer razorViewToStringRenderer,
-            IMailService mailService,
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IIdentityServerInteractionService interaction,
             IClientStore clientStore,
             IAuthenticationSchemeProvider schemeProvider,
-            IEventService events,
-            IdentityDbContext identityDbContext)
+            IEventService events)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -59,133 +53,6 @@ namespace NykantIS.Controllers
             _clientStore = clientStore;
             _schemeProvider = schemeProvider;
             _events = events;
-            _context = identityDbContext;
-            this.mailService = mailService;
-            _razorViewToStringRenderer = razorViewToStringRenderer;
-        }
-
-
-
-        [HttpGet]
-        public IActionResult Register(string returnUrl)
-        {
-            RegisterVM registerVM = new RegisterVM
-            {
-                ReturnUrl = returnUrl
-            };
-
-            return View(registerVM);
-        }
-
-        [Route("/{controller}/{action}/{userid}/{code}/{returnUrl}")]
-        [HttpGet]
-        public async Task<IActionResult> ConfirmEmail(string userid, string code, string returnUrl)
-        {
-            if (userid == null || code == null)
-            {
-                return NotFound();
-            }
-
-            var user = await _userManager.FindByIdAsync(userid);
-            if (user == null)
-            {
-                return NotFound($"Unable to load user with ID '{userid}'.");
-            }
-
-            code = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(code));
-            var result = await _userManager.ConfirmEmailAsync(user, code);
-            ViewBag.StatusMessage = result.Succeeded ? "Thank you for confirming your email." : "Error confirming your email.";
-            ViewBag.ReturnUrl = returnUrl;
-            return View();
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Register(RegisterVM registerVM)
-        {
-            var user = _userManager.FindByNameAsync(registerVM.Email).Result;
-            if (user == null)
-            {
-                user = new ApplicationUser
-                {
-                    UserName = registerVM.Email,
-                    Email = registerVM.Email
-                };
-                registerVM.User = user;
-                var result = _userManager.CreateAsync(user, registerVM.Password).Result;
-                var claimsResult = _userManager.AddClaimsAsync(user, new Claim[]{
-                            new Claim(JwtClaimTypes.Email, registerVM.Email)
-                        }).Result;
-                if (!claimsResult.Succeeded)
-                {
-                    throw new Exception(result.Errors.First().Description);
-                }
-
-                if (result.Succeeded)
-                {
-                    Log.Debug(registerVM.Email + " created successfully");
-                    //_logger.LogInformation("User created a new account with password.");
-
-                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-                    var callbackUrl = Url.ActionLink(
-                        "ConfirmEmail",
-                        "Account",
-                        values: new { userId = user.Id, code = code, returnUrl = registerVM.ReturnUrl },
-                        protocol: Request.Scheme);
-
-                    try
-                    {
-                        var confirmAccountModel = new ConfirmAccountEmailViewModel(HtmlEncoder.Default.Encode(callbackUrl));
-
-                        string body = await _razorViewToStringRenderer.RenderViewToStringAsync("/Views/Shared/ConfirmEmail.cshtml", confirmAccountModel);
-
-                        var request = new EmailRequest
-                        {
-                            ToEmail = registerVM.Email,
-                            Body = body,
-                            Subject = "account confirmation email"
-                        };
-
-                        await mailService.SendEmailAsync(request);
-                    }
-                    catch (Exception e)
-                    {
-
-                    }
-
-                    if (_userManager.Options.SignIn.RequireConfirmedAccount)
-                    {
-                      
-                        return RedirectToAction("RegisterEmail", new { userid = user.Id, email = user.Email, returnUrl = registerVM.ReturnUrl });
-                    }
-                    else
-                    {
-                        return NotFound("whoopsie");
-                    }
-                }
-
-
-
-
-                
-            }
-            else
-            {
-                Log.Debug(registerVM.Email + " already exists");
-            }
-            return NotFound();
-        }
-
-        [Route("/{controller}/{action}/{userid}/{email}/{returnUrl}")]
-        [HttpGet]
-        public async Task<IActionResult> RegisterEmail(string userid, string email, string returnUrl)
-        {
-
-            ViewBag.ReturnUrl = returnUrl;
-            ViewBag.Status = $"A confirmation email has been sent to your account: {email}, before you can log in you have to press the confirmation link in that email";
-                return View();
-            
-
         }
 
         /// <summary>

@@ -14,6 +14,7 @@ using MimeKit;
 using MimeKit.Text;
 using MailKit.Net.Smtp;
 using NykantMVC.Models.ViewModels;
+using NykantMVC.Services;
 
 namespace NykantMVC.Controllers
 {
@@ -28,23 +29,23 @@ namespace NykantMVC.Controllers
             _razorViewToStringRenderer = razorViewToStringRenderer;
         }
 
-        public async Task<IActionResult> SendEmail()
-        {
-            var confirmAccountModel = new ConfirmAccountEmailViewModel($"https://localhost/5002/" + Guid.NewGuid());
+        //public async Task<IActionResult> SendEmail()
+        //{
+        //    var confirmAccountModel = new ConfirmAccountEmailViewModel($"https://localhost/5002/" + Guid.NewGuid());
 
-            string body = await _razorViewToStringRenderer.RenderViewToStringAsync("/Views/Shared/ConfirmEmail.cshtml", confirmAccountModel);
+        //    string body = await _razorViewToStringRenderer.RenderViewToStringAsync("/Views/Shared/ConfirmEmail.cshtml", confirmAccountModel);
 
-            var request = new EmailRequest
-            {
-                ToEmail = "notedwow@hotmail.com",
-                Body = body,
-                Subject = "test"
-            };
+        //    var request = new EmailRequest
+        //    {
+        //        ToEmail = "notedwow@hotmail.com",
+        //        Body = body,
+        //        Subject = "test"
+        //    };
 
-            await mailService.SendEmailAsync(request);
+        //    await mailService.SendEmailAsync(request);
 
-            return NoContent();
-        }
+        //    return NoContent();
+        //}
 
         //public async Task<IActionResult> SendSingleEmail([FromServices] IFluentEmail singleEmail)
         //{

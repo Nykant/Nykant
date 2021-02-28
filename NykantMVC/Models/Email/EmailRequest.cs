@@ -13,5 +13,6 @@ namespace NykantMVC.Models
         public string Body { get; set; }
         public string imageSrc { get; set; }
         public List<IFormFile> Attachments { get; set; }
+        public Order Order { get; set; }
     }
 }

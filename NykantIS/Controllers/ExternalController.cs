@@ -173,6 +173,37 @@ namespace NykantIS.Controllers
             // find external user
             var user = await _userManager.FindByLoginAsync(provider, providerUserId);
 
+            // try to find user by name and/or email
+            if (user == null)
+            {
+                var name = claims.FirstOrDefault(x => x.Type == JwtClaimTypes.Name)?.Value ?? claims.FirstOrDefault(x => x.Type == ClaimTypes.Name)?.Value;
+                if (name != null)
+                {
+                    user = await _userManager.FindByNameAsync(name);
+                }
+                if (user == null)
+                {
+                    var prefname = claims.FirstOrDefault(x => x.Type == JwtClaimTypes.PreferredUserName)?.Value;
+                    if (prefname != null)
+                    {
+                        user = await _userManager.FindByNameAsync(prefname);
+                    }
+                }
+                if (user == null)
+                {
+                    var email = claims.FirstOrDefault(x => x.Type == JwtClaimTypes.Email)?.Value ?? claims.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
+                    if (email != null)
+                    {
+                        user = await _userManager.FindByEmailAsync(email);
+                    }
+                }
+                if (user != null)
+                {
+                    var identityResult = await _userManager.AddLoginAsync(user, new UserLoginInfo(provider, providerUserId, provider));
+                    if (!identityResult.Succeeded) throw new Exception(identityResult.Errors.First().Description);
+                }
+            }
+
             return (user, provider, providerUserId, claims);
         }
 

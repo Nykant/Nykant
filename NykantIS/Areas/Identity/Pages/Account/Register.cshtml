@@ -4,33 +4,53 @@
     ViewData["Title"] = "Register";
 }
 
-<h1>@ViewData["Title"]</h1>
 
-<div class="row">
-    <div class="col-md-4">
-        <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h4>Create a new account.</h4>
-            <hr />
-            <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Input.Email"></label>
-                <input asp-for="Input.Email" class="form-control" />
-                <span asp-validation-for="Input.Email" class="text-danger"></span>
+<form method="post" asp-route-returnUrl="@Model.ReturnUrl">
+    <div class="row top-padding">
+        <div class="col-6 center">
+            <div class="register-form">
+
+                <div class="inputstyle">
+                    <input required asp-for="Input.Email" />
+                    <label asp-for="Input.Email"></label>
+                    <span asp-validation-for="Input.Email"></span>
+                    <div class="underline"></div>
+                </div>
+                <div class="inputstyle">
+                    <input required asp-for="Input.Password" />
+                    <label asp-for="Input.Password"></label>
+                    <span asp-validation-for="Input.Password"></span>
+                    <div class="underline"></div>
+                </div>
+                <div class="inputstyle">
+                    <input required asp-for="Input.ConfirmPassword" />
+                    <label asp-for="Input.ConfirmPassword"></label>
+                    <span asp-validation-for="Input.ConfirmPassword"></span>
+                    <div class="underline"></div>
+                </div>
+                <input type="hidden" asp-for="ReturnUrl" />
+
             </div>
-            <div class="form-group">
-                <label asp-for="Input.Password"></label>
-                <input asp-for="Input.Password" class="form-control" />
-                <span asp-validation-for="Input.Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Input.ConfirmPassword"></label>
-                <input asp-for="Input.ConfirmPassword" class="form-control" />
-                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-            </div>
-            <button type="submit" class="btn btn-primary">Register</button>
-        </form>
+        </div>
     </div>
-    <div class="col-md-6 col-md-offset-2">
+    <div class="row">
+        <div class="col-6 center">
+
+            <div class="col-4 right fadein top-side-padding">
+                <button class="button right-side-padding" type="submit">Register</button>
+            </div>
+            <a asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl" class="col-4 left fadein right-side-padding top-side-padding">
+                <div class="button">
+                    <p>Login</p>
+                </div>
+            </a>
+
+        </div>
+    </div>
+</form>
+
+<div class="row top-padding">
+    <div class="col-6 center">
         <section>
             <h4>Use another service to register.</h4>
             <hr />
