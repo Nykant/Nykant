@@ -16,14 +16,17 @@ namespace NykantMVC.Services
     {
         private readonly EmailSettings _mailSettings;
         private readonly IRazorViewToStringRenderer _razorViewToStringRenderer;
-        public EmailService(IOptions<EmailSettings> mailSettings, IRazorViewToStringRenderer razorViewToStringRenderer)
+        private readonly IProtectionService _protectionService;
+        public EmailService(IOptions<EmailSettings> mailSettings, IRazorViewToStringRenderer razorViewToStringRenderer, IProtectionService protectionService)
         {
             _razorViewToStringRenderer = razorViewToStringRenderer;
             _mailSettings = mailSettings.Value;
+            _protectionService = protectionService;
         }
 
         public async Task SendOrderEmailAsync(Checkout checkout, Order order)
         {
+            checkout.CustomerInf = _protectionService.UnProtectCustomerInf(checkout.CustomerInf);
             var email = new MimeMessage();
             email.Sender = MailboxAddress.Parse(_mailSettings.Mail);
             email.To.Add(MailboxAddress.Parse(checkout.CustomerInf.Email));
@@ -45,6 +48,7 @@ namespace NykantMVC.Services
             smtp.Authenticate(_mailSettings.Mail, _mailSettings.Password);
             await smtp.SendAsync(email);
             smtp.Disconnect(true);
+            checkout.CustomerInf = _protectionService.ProtectCustomerInf(checkout.CustomerInf);
         }
     }
 

@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace NykantMVC.Models
 {
-    public class CardInfo
+    public class Category
     {
-        [Display(Name = "Kort indehaverens navn")]
-        public string Card_OwnerName { get; set; }
+        [Key]
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public List<ProductCategory> ProductCategory { get; set; }
     }
 }

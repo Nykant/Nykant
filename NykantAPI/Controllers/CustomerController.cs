@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using Newtonsoft.Json;
 using NykantAPI.Data;
 using NykantAPI.Models;
 using NykantAPI.Models.DTO;
+using NykantAPI.Services;
 
 namespace NykantAPI.Controllers
 {
@@ -18,33 +20,38 @@ namespace NykantAPI.Controllers
     [Route("[controller]/[action]/")]
     public class CustomerController : BaseController
     {
-        public CustomerController(ILogger<BaseController> logger, ApplicationDbContext context)
+        private readonly IProtectionService _protectionService;
+        public CustomerController(ILogger<BaseController> logger, ApplicationDbContext context, IProtectionService protectionService)
             : base(logger, context)
         {
+            _protectionService = protectionService;
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<CustomerInf>> GetCustomer(int id)
         {
-            return Ok(JsonConvert.SerializeObject(await _context.CustomerInfs.FindAsync(id)));
+            var customerInf = _protectionService.ProtectCustomerInf(await _context.CustomerInfs.FindAsync(id));
+            return Ok(JsonConvert.SerializeObject(customerInf));
         }
 
         [HttpPost]
-        public async Task<ActionResult<CustomerInf>> PostCustomer(CustomerInf customer)
+        public async Task<ActionResult<CustomerInf>> PostCustomer(CustomerInf customerInf)
         {
+            customerInf = _protectionService.UnProtectCustomerInf(customerInf);
+
             if (ModelState.IsValid)
             {
-                if (CustomerExists(customer.Id))
+                if (CustomerExists(customerInf.Id))
                 {
-                    _context.CustomerInfs.Update(customer);
+                    _context.CustomerInfs.Update(customerInf);
                     await _context.SaveChangesAsync();
                     return Ok();
                 }
                 else
                 {
-                    var entity = _context.CustomerInfs.Add(customer).Entity;
+                    var entity = _context.CustomerInfs.Add(customerInf).Entity;
                     await _context.SaveChangesAsync();
-                    return CreatedAtAction("GetCustomer", new { id = entity.Id }, customer);
+                    return CreatedAtAction("GetCustomer", new { id = entity.Id }, customerInf);
                 }
             }
             else

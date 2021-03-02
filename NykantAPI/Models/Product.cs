@@ -25,5 +25,6 @@ namespace NykantAPI.Models
         public string Color { get; set; }
         public string Alt { get; set; }
         public IEnumerable<Image> Images { get; set; }
+        public List<ProductCategory> ProductCategory { get; set; }
     }
 }

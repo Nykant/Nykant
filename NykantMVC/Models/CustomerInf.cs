@@ -13,35 +13,38 @@ namespace NykantMVC.Models
         [Required]
         [EmailAddress]
         [DataType(DataType.EmailAddress)]
-        [Display(Name = "Email Addresse")]
+        [Display(Name = "Kontakt Email Addresse")]
         public string Email { get; set; }
         [Required]
         [StringLength(20)]
-        [Display(Name = "Fornavn")]
+        [Display(Name = "Modtagers Fornavn")]
         public string FirstName { get; set; }
         [Required]
         [StringLength(20)]
-        [Display(Name = "Efternavn")]
+        [Display(Name = "Modtagers Efternavn")]
         public string LastName { get; set; }
         [Required]
         [StringLength(50)]
-        [Display(Name = "Addresse")]
-        public string Address { get; set; }
+        [Display(Name = "Modtagers Addresse linje 1")]
+        public string Address1 { get; set; }
+        [StringLength(50)]
+        [Display(Name = "Modtagers Addresse linje 2")]
+        public string Address2 { get; set; }
         [Required]
         [StringLength(20)]
-        [Display(Name = "By")]
+        [Display(Name = "Modtagers By")]
         public string City { get; set; }
         [Required]
         [StringLength(20)]
-        [Display(Name = "Land")]
+        [Display(Name = "Modtagers Land")]
         public string Country { get; set; }
         [Required]
         [StringLength(20)]
-        [Display(Name = "Post nummer")]
+        [Display(Name = "Modtagers Post nummer")]
         public string Postal { get; set; }
         [Required]
         [Phone]
-        [Display(Name = "Telefon")]
+        [Display(Name = "Kontakt Telefon")]
         public string Phone { get; set; }
     }
 }

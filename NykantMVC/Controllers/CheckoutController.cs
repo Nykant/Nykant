@@ -19,6 +19,7 @@ using System.Text.Json.Serialization;
 using Newtonsoft.Json;
 using NykantMVC.Extensions;
 using NykantMVC.Services;
+using Microsoft.AspNetCore.DataProtection;
 
 namespace NykantMVC.Controllers
 {
@@ -26,9 +27,10 @@ namespace NykantMVC.Controllers
     [Route("{controller}/{action}/")]
     public class CheckoutController : BaseController
     {
-        public CheckoutController(ILogger<BaseController> logger) : base(logger)
+        private readonly IProtectionService _protectionService;
+        public CheckoutController(ILogger<BaseController> logger, IProtectionService protectionService) : base(logger)
         {
-
+            _protectionService = protectionService;
         }
 
         [HttpGet("{edit?}")]
@@ -140,9 +142,10 @@ namespace NykantMVC.Controllers
             {
                 return RedirectToAction(nameof(CustomerInf));
             }
-
+             
             if (checkout.Stage == Stage.customerInf)
             {
+                customerInf = _protectionService.ProtectCustomerInf(customerInf);
                 var response = await PostRequest("/Customer/PostCustomer", customerInf);
 
                 if (response.IsSuccessStatusCode)
@@ -150,8 +153,7 @@ namespace NykantMVC.Controllers
                     if (customerInf.Id == 0)
                     {
                         var json = await GetRequest(response.Headers.Location.AbsolutePath);
-                        CustomerInf customerInfNEW = JsonConvert.DeserializeObject<CustomerInf>(json);
-                        checkout.CustomerInf = customerInfNEW;
+                        checkout.CustomerInf = JsonConvert.DeserializeObject<CustomerInf>(json);
                     }
                     else
                     {
@@ -231,11 +233,6 @@ namespace NykantMVC.Controllers
 
             if(checkout.Stage == Stage.payment)
             {
-                checkout.CardInfo = new CardInfo
-                {
-                    Email = checkout.CustomerInf.Email
-                };
-
                 return View(checkout);
             }
             else

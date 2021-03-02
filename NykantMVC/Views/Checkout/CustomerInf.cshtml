@@ -14,7 +14,7 @@
                 <a>PAYMENT</a>
             </div>
         </div>
-        <form asp-controller="Checkout" asp-action="PostCustomerInf" method="post">
+        <form id="customer-form" asp-controller="Checkout" asp-action="PostCustomerInf" method="post">
             <div class="col-8 left right-side-padding fadein top-side-padding">
 
                 <input type="hidden" asp-for="@Model.CustomerInf.Id" />
@@ -22,6 +22,7 @@
                     <div class="header">
                         Your contact information
                     </div>
+
                     <div class="customerinfo-line">
                         <div class="inputstyle left">
                             <input required asp-for="@Model.CustomerInf.Email" />
@@ -30,24 +31,39 @@
                             <div class="underline"></div>
                         </div>
                         <div class="inputstyle left">
-                            <input required asp-for="@Model.CustomerInf.FirstName" />
-                            <label asp-for="@Model.CustomerInf.FirstName"></label>
-                            <span asp-validation-for="@Model.CustomerInf.FirstName"></span>
+                            <input required asp-for="@Model.CustomerInf.Phone" />
+                            <label asp-for="@Model.CustomerInf.Phone"></label>
+                            <span asp-validation-for="@Model.CustomerInf.Phone"></span>
                             <div class="underline"></div>
                         </div>
                     </div>
 
                     <div class="customerinfo-line">
                         <div class="inputstyle left">
+                            <input required asp-for="@Model.CustomerInf.FirstName" />
+                            <label asp-for="@Model.CustomerInf.FirstName"></label>
+                            <span asp-validation-for="@Model.CustomerInf.FirstName"></span>
+                            <div class="underline"></div>
+                        </div>
+                        <div class="inputstyle left">
                             <input required asp-for="@Model.CustomerInf.LastName" />
                             <label asp-for="@Model.CustomerInf.LastName"></label>
                             <span asp-validation-for="@Model.CustomerInf.LastName"></span>
                             <div class="underline"></div>
                         </div>
+                    </div>
+
+                    <div class="customerinfo-line">
                         <div class="inputstyle left">
-                            <input required asp-for="@Model.CustomerInf.Address" />
-                            <label asp-for="@Model.CustomerInf.Address"></label>
-                            <span asp-validation-for="@Model.CustomerInf.Address"></span>
+                            <input required asp-for="@Model.CustomerInf.Address1" />
+                            <label asp-for="@Model.CustomerInf.Address1"></label>
+                            <span asp-validation-for="@Model.CustomerInf.Address1"></span>
+                            <div class="underline"></div>
+                        </div>
+                        <div class="inputstyle left">
+                            <input asp-for="@Model.CustomerInf.Address2" />
+                            <label asp-for="@Model.CustomerInf.Address2"></label>
+                            <span asp-validation-for="@Model.CustomerInf.Address2"></span>
                             <div class="underline"></div>
                         </div>
                     </div>
@@ -60,10 +76,14 @@
                             <div class="underline"></div>
                         </div>
                         <div class="inputstyle left">
-                            <input required asp-for="@Model.CustomerInf.Country" />
-                            <label asp-for="@Model.CustomerInf.Country"></label>
-                            <span asp-validation-for="@Model.CustomerInf.Country"></span>
-                            <div class="underline"></div>
+                            <input id="country-input" class="hidden" asp-for="@Model.CustomerInf.Country" />
+                            <select required id="country-picker">
+                                <option>Vælg Land</option>
+                                <option>DK</option>
+                            </select>
+                        </div>
+                        <div class="country-error hidden" id="country-error">
+                            vælg et land før du kan fortsætte.
                         </div>
                     </div>
 
@@ -72,12 +92,6 @@
                             <input required asp-for="@Model.CustomerInf.Postal" />
                             <label asp-for="@Model.CustomerInf.Postal"></label>
                             <span asp-validation-for="@Model.CustomerInf.Postal"></span>
-                            <div class="underline"></div>
-                        </div>
-                        <div class="inputstyle left">
-                            <input required asp-for="@Model.CustomerInf.Phone" />
-                            <label asp-for="@Model.CustomerInf.Phone"></label>
-                            <span asp-validation-for="@Model.CustomerInf.Phone"></span>
                             <div class="underline"></div>
                         </div>
                     </div>
@@ -111,3 +125,5 @@
         </form>
     </div>
 </div>
+
+<script src="~/JS/country-picker.js"></script>

@@ -113,40 +113,26 @@ fetch("/paymentintent/createpaymentintent", {
 // prompt the user to enter authentication details without leaving your page.
 var payWithCard = function (stripe, card, clientSecret) {
     loading(true);
-    fetch("/paymentintent/getcardinformation", {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json"
+
+    stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+            card: card,
+            billing_details: {
+                name: document.getElementById('cardholder-name').value,
+            }
+        },
+        shipping: {
+
         }
-    }).then(function (response) {
-        return response.json();
-    }).then(function (data) {
-        stripe.confirmCardPayment(clientSecret, {
-            receipt_email: data.email,
-            payment_method: {
-                card: card,
-                billing_details: {
-                    name: data.name,
-                    address: {
-                        line1: data.address,
-                        city: data.city,
-                        country: "DK",
-                        postal_code: data.postal
-                    },
-                    email: data.email,
-                    phone: data.phone,
-                }
-            }
-        }).then(function (result) {
-            if (result.error) {
-                // Show error to your customer
-                showError(result.error.message);
-            } else {
-                // The payment succeeded!
-                orderComplete(result.paymentIntent.id);
-            }
-        });   
-    }) 
+    }).then(function (result) {
+        if (result.error) {
+            // Show error to your customer
+            showError(result.error.message);
+        } else {
+            // The payment succeeded!
+            orderComplete(result.paymentIntent.id);
+        }
+    });   
 };
 
 /* ------- UI helpers ------- */

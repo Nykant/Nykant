@@ -16,11 +16,9 @@ namespace NykantMVC.Controllers
     public class OrderController : BaseController
     {
         private readonly IMailService mailService;
-        private readonly IRazorViewToStringRenderer _razorViewToStringRenderer;
-        public OrderController(IMailService mailService, IRazorViewToStringRenderer razorViewToStringRenderer, ILogger<BaseController> logger) : base(logger)
+        public OrderController(IMailService mailService, ILogger<BaseController> logger) : base(logger)
         {
             this.mailService = mailService;
-            _razorViewToStringRenderer = razorViewToStringRenderer;
         }
 
         [HttpPost]

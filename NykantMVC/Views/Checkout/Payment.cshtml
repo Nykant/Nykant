@@ -4,9 +4,9 @@
     ViewData["Title"] = "Payment";
 }
 
-<link rel="stylesheet" href="~/css/Stripe/stripe.css" />
+<link rel="stylesheet" href="~/stripe/stripe.css" />
 <script src="https://js.stripe.com/v3/"></script>
-<script src="~/JS/Stripe/client.js" defer></script>
+<script src="~/stripe/client.js" defer></script>
 
 <div class="row bottom-side-padding fadein">
     <div class="col-8 col-wrapper center top-padding">
@@ -50,15 +50,9 @@
                     </div>
                     <div class="cardinfo-line">
                         <div class="inputstyle left">
-                            <input required asp-for="@Model.CardInfo.Email" />
-                            <label asp-for="@Model.CardInfo.Email"></label>
-                            <span asp-validation-for="@Model.CardInfo.Email"></span>
-                            <div class="underline"></div>
-                        </div>
-                        <div class="inputstyle left">
-                            <input required asp-for="@Model.CardInfo.FullName" />
-                            <label asp-for="@Model.CardInfo.FullName"></label>
-                            <span asp-validation-for="@Model.CardInfo.FullName"></span>
+                            <input required id="cardholder-name" asp-for="@Model.CardInfo.Card_OwnerName" />
+                            <label asp-for="@Model.CardInfo.Card_OwnerName"></label>
+                            <span asp-validation-for="@Model.CardInfo.Card_OwnerName"></span>
                             <div class="underline"></div>
                         </div>
                     </div>

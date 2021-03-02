@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using NykantMVC.Extensions;
 using NykantMVC.Models;
 using NykantMVC.Models.ViewModels;
+using NykantMVC.Services;
 using Stripe;
 using System;
 using System.Collections.Generic;
@@ -17,38 +18,12 @@ namespace NykantMVC.Controllers
     [AllowAnonymous]
     public class PaymentIntentController : BaseController
     {
-        private IConfigurationRoot _configuration; 
-        public PaymentIntentController(ILogger<BaseController> logger, IConfiguration configuration) : base(logger)
+        private IConfigurationRoot _configuration;
+        private readonly IProtectionService _protectionService;
+        public PaymentIntentController(ILogger<BaseController> logger, IConfiguration configuration, IProtectionService protectionService) : base(logger)
         {
             _configuration = (IConfigurationRoot)configuration;
-        }
-
-        [HttpGet]
-        public ActionResult GetCardInformation()
-        {
-            var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
-            if (checkout == null)
-            {
-                return RedirectToAction(nameof(CheckoutController.CustomerInf));
-            }
-
-            if(checkout.Stage == Stage.payment)
-            {
-                return Json(new
-                {
-                    Name = checkout.CustomerInf.FirstName,
-                    Email = checkout.CustomerInf.Email,
-                    Address = checkout.CustomerInf.Address,
-                    City = checkout.CustomerInf.City,
-                    Country = checkout.CustomerInf.Country,
-                    Phone = checkout.CustomerInf.Phone,
-                    Postal = checkout.CustomerInf.Postal
-                });
-            }
-            else
-            {
-                return RedirectToAction(nameof(CheckoutController.CustomerInf));
-            }
+            _protectionService = protectionService;
         }
 
         [HttpPost]
@@ -64,26 +39,26 @@ namespace NykantMVC.Controllers
             {
                 StripeConfiguration.ApiKey = _configuration["StripeTESTKey"];
 
-                var totalPrice = checkout.TotalPrice;
-                var customers = new CustomerService();
-                var customer = customers.Create(new CustomerCreateOptions
+                checkout.CustomerInf = _protectionService.UnProtectCustomerInf(checkout.CustomerInf);
+
+                var chargeShippingOptions = new ChargeShippingOptions
                 {
-                    Name = checkout.CustomerInf.FirstName + " " + checkout.CustomerInf.LastName,
-                    Email = checkout.CustomerInf.Email,
-                    Phone = checkout.CustomerInf.Phone,
                     Address = new AddressOptions
                     {
-                        Line1 = checkout.CustomerInf.Address,
                         City = checkout.CustomerInf.City,
                         Country = checkout.CustomerInf.Country,
+                        Line1 = checkout.CustomerInf.Address1,
+                        Line2 = checkout.CustomerInf.Address2,
                         PostalCode = checkout.CustomerInf.Postal
                     },
-                });
+                    Name = checkout.CustomerInf.FirstName + " " + checkout.CustomerInf.LastName,
+                    Phone = checkout.CustomerInf.Phone,
+                };
 
-                var options = new PaymentIntentCreateOptions
+                var PIoptions = new PaymentIntentCreateOptions
                 {
-                    Customer = customer.Id,
-                    Amount = totalPrice,
+                    Shipping = chargeShippingOptions,
+                    Amount = checkout.TotalPrice,
                     Currency = "dkk",
                     Metadata = new Dictionary<string, string>
                     {
@@ -93,8 +68,8 @@ namespace NykantMVC.Controllers
 
                 try
                 {
-                    PaymentIntentService service = new PaymentIntentService();
-                    PaymentIntent paymentIntent = service.Create(options);
+                    PaymentIntentService PIservice = new PaymentIntentService();
+                    PaymentIntent paymentIntent = PIservice.Create(PIoptions);
 
                     return Json(new { clientSecret = paymentIntent.ClientSecret });
                 }

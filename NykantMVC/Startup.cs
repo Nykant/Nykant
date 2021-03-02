@@ -18,6 +18,7 @@ using System.IO;
 using NykantMVC.Models;
 using NykantMVC.Extensions;
 using NykantMVC.Services;
+using Microsoft.AspNetCore.DataProtection;
 
 namespace NykantMVC
 {
@@ -32,6 +33,10 @@ namespace NykantMVC
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDataProtection()
+                .PersistKeysToFileSystem(new DirectoryInfo(@"C:\Temp\Keys"))
+                .SetApplicationName("Nykant");
+
             JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
 
             services.AddAuthentication(options =>
@@ -80,6 +85,8 @@ namespace NykantMVC
             services.AddTransient<IMailService, EmailService>();
 
             services.AddScoped<IRazorViewToStringRenderer, RazorViewToStringRenderer>();
+
+            services.AddScoped<IProtectionService, ProtectionService>();
 
             services.AddControllersWithViews();
         }

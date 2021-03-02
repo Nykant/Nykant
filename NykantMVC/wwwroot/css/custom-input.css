@@ -18,6 +18,15 @@ select:-webkit-autofill:focus {
     padding: 20px;
 }
 
+    .inputstyle select {
+        width: 200px;
+        padding: 5px;
+        outline: none;
+        border: 1px solid grey;
+        background: none;
+        color: grey;
+    }
+
     .inputstyle input {
         width: 200px;
         padding: 5px;

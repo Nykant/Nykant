@@ -20,13 +20,17 @@ namespace NykantAPI.Data
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<CustomerInf> CustomerInfs { get; set; }
         public DbSet<ShippingDelivery> ShippingDeliveries { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<ProductCategory> ProductCategories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<BagItem>()
                 .HasKey(bi => new { bi.Subject, bi.ProductId });
             modelBuilder.Entity<OrderItem>()
-                .HasKey(bi => new { bi.OrderId, bi.ProductId});
+                .HasKey(bi => new { bi.OrderId, bi.ProductId });
+            modelBuilder.Entity<ProductCategory>()
+                .HasKey(bi => new { bi.CategoryId, bi.ProductId });
 
             modelBuilder.Entity<ShippingDelivery>().HasData(
                 new ShippingDelivery { Id = 1, Name = "GLS", Price = 35 },
