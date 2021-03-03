@@ -47,6 +47,6 @@
 }
 
 .mix:hover {
-    color: var(--blue);
+    font-weight:bold;
 }
 
