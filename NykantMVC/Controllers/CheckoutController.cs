@@ -60,14 +60,16 @@ namespace NykantMVC.Controllers
                     }
                     else
                     {
-                        Checkout checkoutNEW = new Checkout
+                        checkout = new Checkout
                         {
                             BagItems = bagItemsDb,
                             Stage = Stage.customerInf,
-                            TotalPrice = CalculateAmount(bagItemsDb)
+                            TotalPrice = CalculateAmount(bagItemsDb).ToString()
                         };
-                        HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkoutNEW);
-                        return View(checkoutNEW);
+                        HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
+                        ViewBag.BagItems = checkout.BagItems;
+                        ViewBag.TotalPrice = checkout.TotalPrice;
+                        return View();
                     }
                 }
                 else
@@ -82,15 +84,16 @@ namespace NykantMVC.Controllers
                     }
                     else
                     {
-                        Checkout checkoutNEW = new Checkout
+                        checkout = new Checkout
                         {
                             BagItems = bagItemsSession,
                             Stage = Stage.customerInf,
-                            TotalPrice = CalculateAmount(bagItemsSession)
+                            TotalPrice = CalculateAmount(bagItemsSession).ToString()
                         };
-                        HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkoutNEW);
-
-                        return View(checkoutNEW);
+                        HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
+                        ViewBag.BagItems = checkout.BagItems;
+                        ViewBag.TotalPrice = checkout.TotalPrice;
+                        return View();
                     }
                 }
             }
@@ -108,7 +111,16 @@ namespace NykantMVC.Controllers
                     HttpContext.Session.Set<Checkout>(CheckoutSessionKey, null);
                     return Content("No bag items to check out");
                 }
-                return View(checkout);
+                ViewBag.BagItems = checkout.BagItems;
+                ViewBag.TotalPrice = checkout.TotalPrice;
+                if(edit == true)
+                {
+                    var jsonCustomer = await GetRequest($"/Customer/GetCustomer/{checkout.CustomerInfId}");
+                    var customerInf = JsonConvert.DeserializeObject<CustomerInf>(jsonCustomer);
+                    customerInf = _protectionService.UnProtectCustomerInf(customerInf);
+                    return View(customerInf);
+                }
+                return View();
             }
             else if(checkout.Stage == Stage.shippingDel)
             {
@@ -153,11 +165,11 @@ namespace NykantMVC.Controllers
                     if (customerInf.Id == 0)
                     {
                         var json = await GetRequest(response.Headers.Location.AbsolutePath);
-                        checkout.CustomerInf = JsonConvert.DeserializeObject<CustomerInf>(json);
+                        checkout.CustomerInfId = JsonConvert.DeserializeObject<CustomerInf>(json).Id;
                     }
                     else
                     {
-                        checkout.CustomerInf = customerInf;
+                        checkout.CustomerInfId = customerInf.Id;
                     }
 
                     checkout.Stage = Stage.shippingDel;
@@ -260,7 +272,6 @@ namespace NykantMVC.Controllers
             {
                 return Content("Something went wrong");
             }
-            
         }
 
         private int CalculateAmount(List<BagItem> items)

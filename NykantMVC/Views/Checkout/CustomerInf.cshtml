@@ -1,4 +1,4 @@
-﻿@model Checkout
+﻿@model CustomerInf
 
 @{
     ViewData["Title"] = "Checkout";
@@ -17,7 +17,7 @@
         <form id="customer-form" asp-controller="Checkout" asp-action="PostCustomerInf" method="post">
             <div class="col-8 left right-side-padding fadein top-side-padding">
 
-                <input type="hidden" asp-for="@Model.CustomerInf.Id" />
+                <input type="hidden" asp-for="@Model.Id" />
                 <div class="customerinfo">
                     <div class="header">
                         Your contact information
@@ -25,73 +25,76 @@
 
                     <div class="customerinfo-line">
                         <div class="inputstyle left">
-                            <input required asp-for="@Model.CustomerInf.Email" />
-                            <label asp-for="@Model.CustomerInf.Email"></label>
-                            <span asp-validation-for="@Model.CustomerInf.Email"></span>
+                            <input required asp-for="@Model.Email" />
+                            <label asp-for="@Model.Email"></label>
+                            <span asp-validation-for="@Model.Email"></span>
                             <div class="underline"></div>
                         </div>
                         <div class="inputstyle left">
-                            <input required asp-for="@Model.CustomerInf.Phone" />
-                            <label asp-for="@Model.CustomerInf.Phone"></label>
-                            <span asp-validation-for="@Model.CustomerInf.Phone"></span>
-                            <div class="underline"></div>
-                        </div>
-                    </div>
-
-                    <div class="customerinfo-line">
-                        <div class="inputstyle left">
-                            <input required asp-for="@Model.CustomerInf.FirstName" />
-                            <label asp-for="@Model.CustomerInf.FirstName"></label>
-                            <span asp-validation-for="@Model.CustomerInf.FirstName"></span>
-                            <div class="underline"></div>
-                        </div>
-                        <div class="inputstyle left">
-                            <input required asp-for="@Model.CustomerInf.LastName" />
-                            <label asp-for="@Model.CustomerInf.LastName"></label>
-                            <span asp-validation-for="@Model.CustomerInf.LastName"></span>
+                            <input required asp-for="@Model.Phone" />
+                            <label asp-for="@Model.Phone"></label>
+                            <span asp-validation-for="@Model.Phone"></span>
                             <div class="underline"></div>
                         </div>
                     </div>
 
                     <div class="customerinfo-line">
                         <div class="inputstyle left">
-                            <input required asp-for="@Model.CustomerInf.Address1" />
-                            <label asp-for="@Model.CustomerInf.Address1"></label>
-                            <span asp-validation-for="@Model.CustomerInf.Address1"></span>
+                            <input required asp-for="@Model.FirstName" />
+                            <label asp-for="@Model.FirstName"></label>
+                            <span asp-validation-for="@Model.FirstName"></span>
                             <div class="underline"></div>
                         </div>
                         <div class="inputstyle left">
-                            <input asp-for="@Model.CustomerInf.Address2" />
-                            <label asp-for="@Model.CustomerInf.Address2"></label>
-                            <span asp-validation-for="@Model.CustomerInf.Address2"></span>
+                            <input required asp-for="@Model.LastName" />
+                            <label asp-for="@Model.LastName"></label>
+                            <span asp-validation-for="@Model.LastName"></span>
                             <div class="underline"></div>
                         </div>
                     </div>
 
                     <div class="customerinfo-line">
                         <div class="inputstyle left">
-                            <input required asp-for="@Model.CustomerInf.City" />
-                            <label asp-for="@Model.CustomerInf.City"></label>
-                            <span asp-validation-for="@Model.CustomerInf.City"></span>
+                            <input required asp-for="@Model.Address1" />
+                            <label asp-for="@Model.Address1"></label>
+                            <span asp-validation-for="@Model.Address1"></span>
                             <div class="underline"></div>
                         </div>
                         <div class="inputstyle left">
-                            <input id="country-input" class="hidden" asp-for="@Model.CustomerInf.Country" />
+                            <input asp-for="@Model.Address2" />
+                            <label asp-for="@Model.Address2"></label>
+                            <span asp-validation-for="@Model.Address2"></span>
+                            <div class="underline"></div>
+                        </div>
+                    </div>
+
+                    <div class="customerinfo-line">
+                        <div class="inputstyle left">
+                            <input required asp-for="@Model.City" />
+                            <label asp-for="@Model.City"></label>
+                            <span asp-validation-for="@Model.City"></span>
+                            <div class="underline"></div>
+                        </div>
+                        <div class="inputstyle left">
+                            <input id="country-input" class="hidden" asp-for="@Model.Country" />
                             <select required id="country-picker">
                                 <option>Vælg Land</option>
                                 <option>DK</option>
                             </select>
-                        </div>
-                        <div class="country-error hidden" id="country-error">
-                            vælg et land før du kan fortsætte.
+                            @*<div class="country-header">
+                                Land
+                            </div>*@
+                            <div class="country-error hidden" id="country-error">
+                                vælg et land før du kan fortsætte.
+                            </div>
                         </div>
                     </div>
 
                     <div class="customerinfo-line">
                         <div class="inputstyle left">
-                            <input required asp-for="@Model.CustomerInf.Postal" />
-                            <label asp-for="@Model.CustomerInf.Postal"></label>
-                            <span asp-validation-for="@Model.CustomerInf.Postal"></span>
+                            <input required asp-for="@Model.Postal" />
+                            <label asp-for="@Model.Postal"></label>
+                            <span asp-validation-for="@Model.Postal"></span>
                             <div class="underline"></div>
                         </div>
                     </div>
@@ -102,7 +105,7 @@
             <div class="col-4 right fadein top-side-padding">
                 <div class="sidebar">
                     <div class="sidebar-items">
-                        @foreach (var item in Model.BagItems)
+                        @foreach (var item in ViewBag.BagItems)
                         {
                             <div class="sidebar-item">
                                 <img src="~/images/gyngestol.jpg" />
@@ -113,7 +116,7 @@
                         <div class="checkout-price">
                             <p><span>shipping:</span> price</p>
                             <p><span>taxes:</span> price</p>
-                            <p><span>total:</span> @Model.TotalPrice</p>
+                            <p><span>total:</span> @ViewBag.TotalPrice</p>
                         </div>
                     </div>
                 </div>

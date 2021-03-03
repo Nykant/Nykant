@@ -60,19 +60,17 @@ namespace NykantMVC
                     options.Scope.Add("offline_access");
                 });
 
-
             services.AddDistributedMemoryCache();
 
-            // --------------------------- TO CONFIGURE COOKIE OPTIONS -------------------------------------------
-            //services.Configure<CookiePolicyOptions>(options =>
-            //{
-            //    options.MinimumSameSitePolicy = SameSiteMode.Lax;
-            //    options.OnAppendCookie = cookieContext =>
-            //        CheckSameSite(cookieContext.Context, cookieContext.CookieOptions);
-            //    options.OnDeleteCookie = cookieContext =>
-            //        CheckSameSite(cookieContext.Context, cookieContext.CookieOptions);
-            //});
-
+            //---------------------------TO CONFIGURE COOKIE OPTIONS------------------------------------------ -
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                // This lambda determines whether user consent for non-essential 
+                // cookies is needed for a given request.
+                options.CheckConsentNeeded = context => true;
+                // requires using Microsoft.AspNetCore.Http;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
 
             services.AddSession(options =>
             {
@@ -104,16 +102,13 @@ namespace NykantMVC
                 app.UseHsts();
             }
 
-
             app.UseHttpsRedirection();
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
+            app.UseCookiePolicy();
 
             app.UseRouting();
-
-            //----- TO USE COOKIES ------
-            //app.UseCookiePolicy();
 
             app.UseAuthentication();
             app.UseAuthorization();
@@ -127,8 +122,6 @@ namespace NykantMVC
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
-
-
 
         // -------------------------- FOR COOKIES ---------------------------
 

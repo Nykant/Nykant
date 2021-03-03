@@ -30,7 +30,8 @@ namespace NykantAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<CustomerInf>> GetCustomer(int id)
         {
-            var customerInf = _protectionService.ProtectCustomerInf(await _context.CustomerInfs.FindAsync(id));
+            var customerInf = await _context.CustomerInfs.FindAsync(id);
+            customerInf = _protectionService.ProtectCustomerInf(customerInf);
             return Ok(JsonConvert.SerializeObject(customerInf));
         }
 

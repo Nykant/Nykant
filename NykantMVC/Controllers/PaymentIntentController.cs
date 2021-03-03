@@ -27,7 +27,7 @@ namespace NykantMVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreatePaymentIntent()
+        public async Task<ActionResult> CreatePaymentIntent()
         {
             var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
             if (checkout == null)
@@ -38,27 +38,29 @@ namespace NykantMVC.Controllers
             if (checkout.Stage == Stage.payment)
             {
                 StripeConfiguration.ApiKey = _configuration["StripeTESTKey"];
-
-                checkout.CustomerInf = _protectionService.UnProtectCustomerInf(checkout.CustomerInf);
+                var json = await GetRequest($"/Customer/GetCustomer/{checkout.CustomerInfId}");
+                var customerInf = JsonConvert.DeserializeObject<CustomerInf>(json);
+                customerInf = _protectionService.UnProtectCustomerInf(customerInf);
 
                 var chargeShippingOptions = new ChargeShippingOptions
                 {
                     Address = new AddressOptions
                     {
-                        City = checkout.CustomerInf.City,
-                        Country = checkout.CustomerInf.Country,
-                        Line1 = checkout.CustomerInf.Address1,
-                        Line2 = checkout.CustomerInf.Address2,
-                        PostalCode = checkout.CustomerInf.Postal
+                        City = customerInf.City,
+                        Country = customerInf.Country,
+                        Line1 = customerInf.Address1,
+                        Line2 = customerInf.Address2,
+                        PostalCode = customerInf.Postal
                     },
-                    Name = checkout.CustomerInf.FirstName + " " + checkout.CustomerInf.LastName,
-                    Phone = checkout.CustomerInf.Phone,
+                    Name = customerInf.FirstName + " " + customerInf.LastName,
+                    Phone = customerInf.Phone,
                 };
 
+                int.TryParse(checkout.TotalPrice, out int result);
                 var PIoptions = new PaymentIntentCreateOptions
                 {
                     Shipping = chargeShippingOptions,
-                    Amount = checkout.TotalPrice,
+                    Amount = result,
                     Currency = "dkk",
                     Metadata = new Dictionary<string, string>
                     {

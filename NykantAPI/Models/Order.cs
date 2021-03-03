@@ -22,7 +22,7 @@ namespace NykantAPI.Models
         [Required]
         public DateTime CreatedAt { get; set; }
         [Required]
-        public int TotalPrice { get; set; }
+        public string TotalPrice { get; set; }
         [Required]
         public string Currency { get; set; }
         [Required]

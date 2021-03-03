@@ -51,6 +51,15 @@
     min-width:420px;
 }
 
+.country-header{
+    position:absolute;
+    transform: translateY(-30deg);
+}
+
 .country-error {
     
+}
+
+.info {
+    border: 2px solid black;
 }

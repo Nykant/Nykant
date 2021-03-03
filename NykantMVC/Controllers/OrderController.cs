@@ -16,9 +16,11 @@ namespace NykantMVC.Controllers
     public class OrderController : BaseController
     {
         private readonly IMailService mailService;
-        public OrderController(IMailService mailService, ILogger<BaseController> logger) : base(logger)
+        private readonly IProtectionService _protectionService;
+        public OrderController(IMailService mailService, ILogger<BaseController> logger, IProtectionService protectionService) : base(logger)
         {
             this.mailService = mailService;
+            _protectionService = protectionService;
         }
 
         [HttpPost]
@@ -65,7 +67,11 @@ namespace NykantMVC.Controllers
                     }
                 }
 
-                await mailService.SendOrderEmailAsync(checkout, order);
+                var jsonCustomer = await GetRequest($"/Customer/GetCustomer/{checkout.CustomerInfId}");
+                var customerInf = JsonConvert.DeserializeObject<CustomerInf>(jsonCustomer);
+                customerInf = _protectionService.UnProtectCustomerInf(customerInf);
+
+                await mailService.SendOrderEmailAsync(customerInf, order);
 
                 if (User.Identity.IsAuthenticated)
                 {
@@ -99,7 +105,7 @@ namespace NykantMVC.Controllers
             {
                 CreatedAt = DateTime.Now,
                 Currency = "dkk",
-                CustomerInfId = checkout.CustomerInf.Id,
+                CustomerInfId = checkout.CustomerInfId,
                 PaymentIntent_Id = paymentIntentId,
                 ShippingDeliveryId = checkout.ShippingDeliveryId,
                 Status = Status.Accepted,

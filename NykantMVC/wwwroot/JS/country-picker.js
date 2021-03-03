@@ -9,7 +9,7 @@ country_picker.addEventListener("change", function () {
 });
 
 customer_form.addEventListener("submit", function (event) {
-    if (country_input.value === "") {
+    if (country_input.value === "" || country_input.value === "Vælg Land") {
         event.preventDefault();
         country_error.style.display = "block";
         setTimeout(function () {

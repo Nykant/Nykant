@@ -24,12 +24,11 @@ namespace NykantMVC.Services
             _protectionService = protectionService;
         }
 
-        public async Task SendOrderEmailAsync(Checkout checkout, Order order)
+        public async Task SendOrderEmailAsync(CustomerInf customerInf, Order order)
         {
-            checkout.CustomerInf = _protectionService.UnProtectCustomerInf(checkout.CustomerInf);
             var email = new MimeMessage();
             email.Sender = MailboxAddress.Parse(_mailSettings.Mail);
-            email.To.Add(MailboxAddress.Parse(checkout.CustomerInf.Email));
+            email.To.Add(MailboxAddress.Parse(customerInf.Email));
             email.Subject = "Nykant Order";
 
             var bodyBuilder = new BodyBuilder();
@@ -48,12 +47,11 @@ namespace NykantMVC.Services
             smtp.Authenticate(_mailSettings.Mail, _mailSettings.Password);
             await smtp.SendAsync(email);
             smtp.Disconnect(true);
-            checkout.CustomerInf = _protectionService.ProtectCustomerInf(checkout.CustomerInf);
         }
     }
 
     public interface IMailService
     {
-        Task SendOrderEmailAsync(Checkout checkout, Order order);
+        Task SendOrderEmailAsync(CustomerInf customerInf, Order order);
     }
 }

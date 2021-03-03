@@ -7,11 +7,11 @@ namespace NykantMVC.Models
 {
     public class Checkout
     {
-        public CustomerInf CustomerInf { get; set; }
+        public int CustomerInfId { get; set; }
         public CardInfo CardInfo { get; set; }
         public int ShippingDeliveryId { get; set; }
         public List<BagItem> BagItems { get; set; }
-        public int TotalPrice { get; set; }
+        public string TotalPrice { get; set; }
         public Stage Stage { get; set; }
     }
     public enum Stage
