@@ -64,6 +64,18 @@ a:hover {
     color:var(--blue)
 }
 
+.simple-link{
+    color:black;
+    text-decoration:underline;
+    cursor:pointer;
+}
+
+.simple-link:hover {
+    text-decoration:none;
+    font-weight:bold;
+    color:black;
+}
+
 ol, ul {
     list-style: none;
 }

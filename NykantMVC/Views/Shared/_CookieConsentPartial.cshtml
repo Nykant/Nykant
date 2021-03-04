@@ -8,29 +8,20 @@
 
 @if (true)
 {
+    <partial name="_PrivacySettingsPartial" />
+    <div id="cookieConsent" class="cookie-consent" role="alert">
+        <p>
+            By clicking “Allow All”, you agree to the storing of cookies on your device to enhance site
+            navigation, analyze site usage, and assist in our marketing efforts.
+        </p>
+        <a asp-controller="Privacy" asp-action="Index">Learn More</a>
+        <button type="button" class="consent-button" id="settings-button">
+            Instillinger
+        </button>
+        <button type="button" class="consent-button" data-dismiss="alert" aria-label="Close" data-cookie-string="@cookieString">
+            Accepter alle cookies
+        </button>
+    </div>
 
-<div id="cookieConsent" class="cookie-consent" role="alert">
-    <p>
-        By clicking “Allow All”, you agree to the storing of cookies on your device to enhance site
-        navigation, analyze site usage, and assist in our marketing efforts.
-    </p>
-    <a asp-controller="Privacy" asp-action="Index">Learn More</a>
-    <button type="button" class="consent-button" data-dismiss="alert" aria-label="Close" data-cookie-string="@cookieString">
-        Instillinger
-    </button>
-    <button type="button" class="consent-button" data-dismiss="alert" aria-label="Close" data-cookie-string="@cookieString">
-        Accepter alle cookies
-    </button>
-</div>
-
-
-
-    <script>
-        (function () {
-            var button = document.querySelector("#cookieConsent button[data-cookie-string]");
-            button.addEventListener("click", function (event) {
-                document.cookie = button.dataset.cookieString;
-            }, false);
-        })();
-    </script>
+    <script src="~/JS/privacy.js"></script>
 }

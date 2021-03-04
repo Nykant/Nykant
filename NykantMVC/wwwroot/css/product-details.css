@@ -153,18 +153,21 @@
 
 /* Style the collapsible content. Note: hidden by default */
 .collapsible-content {
-    padding: 0 18px;
     background-color: white;
     max-height: 0;
-    overflow: hidden;
+    overflow:hidden;
     transition: max-height 0.2s ease-out;
+}
+
+.collapsible-content p {
+    padding:20px;
 }
 
 .collapsible-button:after {
     content: '\02795'; /* Unicode character for "plus" sign (+) */
     font-size: 13px;
-    float: right;
-    margin-left: 5px;
+    margin-right: 5px;
+    float:left;
 }
 
 .active:after {
