@@ -175,3 +175,15 @@
 .selected {
 
 }
+
+.privacy-button {
+    display: inline;
+    margin-left: 30px;
+    background: black;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    height: 25px;
+    color: white;
+    cursor: pointer;
+}

@@ -65,10 +65,7 @@ namespace NykantMVC
             //---------------------------TO CONFIGURE COOKIE OPTIONS------------------------------------------ -
             services.Configure<CookiePolicyOptions>(options =>
             {
-                // This lambda determines whether user consent for non-essential 
-                // cookies is needed for a given request.
                 options.CheckConsentNeeded = context => true;
-                // requires using Microsoft.AspNetCore.Http;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
@@ -77,6 +74,8 @@ namespace NykantMVC
                 options.IdleTimeout = TimeSpan.FromHours(10);
                 options.Cookie.Name = "SessionCookie";
                 options.Cookie.IsEssential = true;
+                options.Cookie.HttpOnly = true;
+                options.Cookie.SameSite = SameSiteMode.Lax;
             });
 
             services.Configure<EmailSettings>(Configuration.GetSection("MailSettings"));

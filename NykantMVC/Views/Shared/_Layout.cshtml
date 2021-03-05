@@ -37,6 +37,7 @@
         var url = Context.Request.Path;
     }
 
+    <partial name="_PrivacySettingsPartial" />
     <partial name="_CookieConsentPartial" />
     <div class="row">
 
@@ -133,7 +134,7 @@
 
     <footer>
         <div>
-            &copy; 2020 - Nykant - <a asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2020 - Nykant - <a class="simple-link" asp-controller="Privacy" asp-action="Index">Privacy</a>
         </div>
     </footer>
 

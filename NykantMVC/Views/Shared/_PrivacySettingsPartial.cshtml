@@ -2,9 +2,13 @@
 
 @{
     var consentFeature = Context.Features.Get<ITrackingConsentFeature>();
-    var showBanner = !consentFeature?.CanTrack ?? false;
-    var cookieString = consentFeature?.CreateConsentCookie();
+    var hasConsent = consentFeature.HasConsent;
 }
+<script>
+    completed = function (response) {
+        alert(`Hi ${response}!`);
+    };
+</script>
 
 <div class="privacy-settings" id="privacy-settings">
     <div class="mini-row">
@@ -18,31 +22,50 @@
     <p>Hvis du vil vide nærmere hvad vi gemmer, og hvornår: </p> <a class="simple-link" asp-controller="Privacy" asp-action="Index">Tryk her</a>
 
     <div class="settings">
-        <h2>Privatlivs Preferencer</h2>
+        <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="completed" asp-controller="Privacy" asp-action="UpdateConsent">
+            <h2>Privatlivs Preferencer</h2>
+            <div class="collapsible">
 
-        <div class="collapsible">
-            <label class="switch">
-                <input class="settings-input" type="checkbox">
-                <span class="slider round"></span>
-            </label>
-            <button type="button" class="collapsible-button">Essentielle Cookies</button>
-            <div class="collapsible-content">
-                <p>
-                    Essentielle cookies indeholder funktioner, som systemet ikke kan virke uden.
-                    Hvis du vælger at slå dem fra betyder det at du ikke vil kunne benytte vigtige funktioner i vores butik.
-                    dette indebære: at lægge varer i kurven og at tjekke ud ved kassen.
-                </p>
+                <button type="button" class="collapsible-button">Essentielle Cookies</button>
+                <div class="collapsible-content">
+                    <p>
+                        Essentielle cookies indeholder data som vores hjemmeside ikke kan fungere uden.
+                        Dem kan du ikke fravælge på vores hjemmeside, men hvis du ønsker at fravælge dem alligevel kan du læse mere om hvordan man gør det <a class="simple-link" href="https://support.google.com/chrome/answer/95647?co=GENIE.Platform%3DDesktop&hl=en">her</a>
+                    </p>
+                    <p>
+                        vores essentielle cooies gemmer data for at:
+                        at lægge varer i kurven,
+                        at tjekke ud ved kassen og
+                        en cookie som består af dit samtykke på hvilke cookies vi må gemme i din browser.
+                    </p>
+                </div>
             </div>
-        </div>
-        <div class="collapsible top-side-padding">
-            <label class="switch">
-                <input class="settings-input" type="checkbox">
-                <span class="slider round"></span>
-            </label>
-            <button type="button" class="collapsible-button">Andre Cookies</button>
-            <div class="collapsible-content">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <div class="collapsible top-side-padding">
+
+                <label class="switch">
+                    @{
+                        if (hasConsent)
+                        {
+                            <input id="settings-input" name="consent" class="settings-input" type="checkbox" checked>
+                        }
+                        else
+                        {
+                            <input id="settings-input" name="consent" class="settings-input" type="checkbox">
+                        }
+                    }
+                    <span class="slider round"></span>
+                </label>
+
+                <button type="button" class="collapsible-button">Funktionalitets Cookies</button>
+                <div class="collapsible-content">
+                    <p>
+                        Har ingen, men tester mine fremtidige cookies.
+                    </p>
+                    <p>
+                    </p>
+                </div>
             </div>
-        </div>
+            <button type="submit" class="privacy-button">Gem ændringer</button>
+        </form>
     </div>
 </div> 
