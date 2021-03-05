@@ -159,6 +159,10 @@
     transition: max-height 0.2s ease-out;
 }
 
+.collapsible-content:last-child {
+    margin-bottom:10px;
+}
+
 .collapsible-content p {
     padding:20px;
 }

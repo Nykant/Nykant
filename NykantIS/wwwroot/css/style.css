@@ -50,7 +50,7 @@ body {
     font-family: 'Lato', sans-serif;
     line-height: normal;
     color: black;
-    background-color: white;
+    background-color: #f1faff;
 }
 
 /* ----------------------- */
@@ -64,17 +64,29 @@ a:hover {
     color:var(--blue)
 }
 
+.simple-link{
+    color:black;
+    text-decoration:underline;
+    cursor:pointer;
+}
+
+.simple-link:hover {
+    text-decoration:none;
+    font-weight:bold;
+    color:black;
+}
+
 ol, ul {
     list-style: none;
 }
 
 footer {
-    color:white;
+    color: black;
     position: static;
     font-family: Raleway;
     padding: 3em 3em;
     text-align: center;
-    background-color: black;
+    background-color: #effbff;
     bottom: 0px;
 }
 
@@ -239,6 +251,7 @@ footer span {
     .button:hover {
         color: black;
         background-color:white;
+        font-weight:bolder;
     }
 
     .button:disabled {
@@ -326,4 +339,8 @@ footer span {
         opacity: 1;
         right: 0%;
     }
+}
+
+.background-grey {
+    background-color: #ededed;
 }

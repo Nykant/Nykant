@@ -1,0 +1,23 @@
+﻿@model ProfileVM
+
+<div class="row top-padding">
+    <div class="col-8 center padding">
+        <div class="col-4 left right-side-padding">
+            <div class="profile-nav">
+                <a>nav link</a>
+                <a>nav link</a>
+                <a>nav link</a>
+                <a>nav link</a>
+            </div>
+        </div>
+        <div class="col-8 left">
+            <div class="profile-inputs">
+                <h1>Personlige Oplysninger</h1>
+                <div class="custom-input">
+                    <input asp-for="@Model.Email" />
+                    <span asp-validation-for="@Model.Email"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

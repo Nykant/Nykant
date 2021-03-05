@@ -1,0 +1,12 @@
+﻿.custom-input {
+    margin:auto;
+    width:200px;
+    padding:5px;
+    border:1px solid black;
+}
+
+.custom-input input {
+    width:100%;
+    border:none;
+    outline:none;
+}

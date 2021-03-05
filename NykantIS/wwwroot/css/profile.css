@@ -1,0 +1,22 @@
+﻿.profile-inputs {
+    padding:20px;
+    height:auto;
+    background-color:white;
+    text-align:center;
+}
+
+.profile-nav {
+    background-color: white;
+    height:auto;
+    text-align:center;
+}
+
+.profile-nav a {
+    padding:10px;
+    display:block;
+}
+
+.profile-inputs h1 {
+    font-size:20px;
+    padding-bottom:30px;
+}

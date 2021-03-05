@@ -36,7 +36,6 @@
     @{
         var url = Context.Request.Path;
     }
-
     <partial name="_PrivacySettingsPartial" />
     <partial name="_CookieConsentPartial" />
     <div class="row">
@@ -98,7 +97,7 @@
                 @if (User.Identity.IsAuthenticated)
                 {
                     <div id="userBurger2">
-                        <a asp-controller="Account" asp-action="Profile">
+                        <a href="https://localhost:5001/profile/profile">
                             Profile
                         </a>
                         <a asp-controller="Account" asp-action="Logout">

@@ -251,6 +251,7 @@ footer span {
     .button:hover {
         color: black;
         background-color:white;
+        font-weight:bolder;
     }
 
     .button:disabled {
