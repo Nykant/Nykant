@@ -62,7 +62,7 @@ a {
 }
 
 a:hover {
-    color:var(--blue)
+    font-weight:bold;
 }
 
 .simple-link{

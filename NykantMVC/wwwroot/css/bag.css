@@ -52,13 +52,13 @@
 }
 
 .bag-item {
-    font-size: var(--font-size-small-plus);
-    /*    border-bottom: 1px solid rgba(0, 0, 0, 0.1);*/
+    font-size: var(--font-size-medium);
+    border: 4px solid var(--light-blue);
     margin-bottom: 10px;
     padding: 10px;
     display: flex;
     color: black;
-    background-color: var(--light-blue);
+    /*background-color: var(--light-blue);*/
 }
 
     .bag-item div {
@@ -84,7 +84,7 @@
         }
 
 .bag-item div#bag-item-quantity input {
-    background-color: #effbff;
+    background-color: transparent;
     color: black;
     padding: 8px;
 }

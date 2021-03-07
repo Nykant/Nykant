@@ -119,6 +119,12 @@
         float: left;
     }
 
+
+/* Highlight text in  */
+.highlightTextIn a {
+    color: black;
+}
+
 .highlightTextOut a {
     color: black;
 }
@@ -137,14 +143,8 @@
         opacity: 1;
     }
 
-/* Highlight text in  */
-.highlightTextIn a {
-    color: black;
-}
 
-    .highlightTextIn a:before {
-        transform: scale(1.2);
-    }
+
 
 a.icon {
     transition: all 0.3s;
@@ -176,28 +176,26 @@ a.icon {
 
 #userBurger2 {
     position: absolute;
-    background-color: black;
+    background-color: var(--light-blue);
     display: none;
-    margin-top: 50px;
+    top:70px;
     border: 1px solid var(--blue);
     z-index: 99;
     text-align:center;
     width:200px;
+    padding:10px;
 }
 
-    #userBurger2 a:first-child {
-        padding-top: 20px;
-    }
-
     #userBurger2 a {
-        color: white;
-        padding-bottom: 20px;
+        padding:10px;
+        color: black;
         font-size: 16px;
         width: 100%;
     }
 
     #userBurger2 a:hover {
-        color:var(--blue);
+        font-weight:bold;
+        /*color:var(--blue);*/
     }
 
 .navbar-wrap .icon span {

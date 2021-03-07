@@ -45,25 +45,32 @@ select:-webkit-autofill:focus {
         transform: translate(-200px, 0);
     }
 
-    .inputstyle span {
+    .inputstyle span span {
         position: absolute;
-        transform: translate(-2px, -35px);
+        transform: translate(-200px, +30px);
         width: 200px;
         height: auto;
         font-size: 14px;
         z-index: 10;
         text-align: left;
-        animation-name:hide;
-        animation-delay: 5s;
+        animation:hide 0.3s ease-in 5s forwards;
         background-color: var(--light-blue);
+        padding:5px;
     }
 
     @keyframes hide {
         from {
-            display:block;
+            transform: translate(-200px, +30px);
+            width: 200px;
+            height: auto;
+            padding: 5px;
         }
-        to{
-            display:none;
+        to {
+            transform: translate(-200px, -30px);
+            width: 0px;
+            height: 0px;
+            overflow: hidden;
+            padding: 0px;
         }
     }
 

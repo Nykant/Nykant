@@ -41,6 +41,7 @@
 
 .customerinfo {
     padding: 30px;
+    padding-bottom:60px;
     width: 100%;
     min-height: 100%;
     border:2px solid black;
@@ -57,7 +58,34 @@
 }
 
 .country-error {
-    
+    display:none;
+    position: absolute;
+    transform: translate(0px, 1px);
+    width: 200px;
+    height: auto;
+    font-size: 14px;
+    z-index: 10;
+    text-align: left;
+    animation: hideerror 0.3s ease-in 5s forwards;
+    background-color: var(--light-blue);
+    padding: 5px;
+}
+
+@keyframes hideerror {
+    from {
+        transform: translate(0px, 1px);
+        width: 200px;
+        height: auto;
+        padding: 5px;
+    }
+
+    to {
+        transform: translate(0px, -60px);
+        width: 0px;
+        height: 0px;
+        overflow: hidden;
+        padding: 0px;
+    }
 }
 
 .info {

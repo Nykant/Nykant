@@ -43,7 +43,7 @@ namespace NykantMVC.Controllers
             if (User.Identity.IsAuthenticated)
             {
                 var json = await GetRequest($"/BagItem/GetBagItems/{User.Claims.FirstOrDefault(x => x.Type == "sub").Value}");
-                bagItemsDb = JsonConvert.DeserializeObject<BagVM>(json).BagItems;
+                bagItemsDb = JsonConvert.DeserializeObject<List<BagItem>>(json);
             }
             else
             {

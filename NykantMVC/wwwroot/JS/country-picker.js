@@ -14,6 +14,6 @@ customer_form.addEventListener("submit", function (event) {
         country_error.style.display = "block";
         setTimeout(function () {
             country_error.style.display = "none";
-        }, 5000);
+        }, 6000);
     }
 });
