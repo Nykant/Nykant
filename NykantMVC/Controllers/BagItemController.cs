@@ -27,6 +27,7 @@ namespace NykantMVC.Controllers
 
         public async Task<IActionResult> UpdateBagItem(BagItem bagItem, int selection)
         {
+            int bagItemQuantity = HttpContext.Session.Get<int>(BagItemAmountKey);
             if (User.Identity.IsAuthenticated)
             {
                 if (selection != 0)
@@ -43,17 +44,19 @@ namespace NykantMVC.Controllers
 
                 if(bagItem.Quantity <= 0)
                 {
-                    var response = await PatchRequest("/BagItem/UpdateBagItem", bagItem);
+                    var response = await DeleteRequest($"/BagItem/DeleteBagItem/{bagItem.Subject}/{bagItem.ProductId}");
 
                     if (response.IsSuccessStatusCode)
                     {
+                        bagItemQuantity -= 1;
+                        HttpContext.Session.Set<int>(BagItemAmountKey, bagItemQuantity);
                         return RedirectToAction("Details", "Bag");
                     }
                     return Content("Failed");
                 }
                 else
                 {
-                    var response = await DeleteRequest($"/BagItem/DeleteBagItem/{bagItem.Subject}/{bagItem.ProductId}");
+                    var response = await PatchRequest("/BagItem/UpdateBagItem", bagItem);
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -76,12 +79,22 @@ namespace NykantMVC.Controllers
                             case 1:
                                 bagItems[i].Quantity += 1;
                                 if (bagItems[i].Quantity <= 0)
+                                {
                                     bagItems.RemoveAt(i);
+                                    bagItemQuantity -= 1;
+                                    HttpContext.Session.Set<int>(BagItemAmountKey, bagItemQuantity);
+                                }
                                 break;
+
                             case 2:
                                 bagItems[i].Quantity -= 1;
                                 if (bagItems[i].Quantity <= 0)
+                                {
                                     bagItems.RemoveAt(i);
+                                    bagItemQuantity -= 1;
+                                    HttpContext.Session.Set<int>(BagItemAmountKey, bagItemQuantity);
+                                }
+
                                 break;
                         }
                     }
@@ -96,10 +109,11 @@ namespace NykantMVC.Controllers
         public async Task<IActionResult> PostBagItem(ProductVM productVM, int productQuantity)
         {
             bool isAuthenticated = User.Identity.IsAuthenticated;
+            int bagItemQuantity = HttpContext.Session.Get<int>(BagItemAmountKey);
 
-            if(productQuantity <= 0)
+            if (productQuantity <= 0)
             {
-                return new JsonResult("Item not added, something went wrong");
+                return RedirectToAction("Details", "Product", new { id = productVM.Product.Id });
             };
 
             BagItem bagItem = new BagItem
@@ -127,32 +141,74 @@ namespace NykantMVC.Controllers
                         item.Quantity += productQuantity;
                     }
                 }
-                if(!bagItemExists)
-                bagItems.Add(bagItem);
+                if (!bagItemExists)
+                {
+                    bagItems.Add(bagItem);
+                    bagItemQuantity += 1;
+                    HttpContext.Session.Set<int>(BagItemAmountKey, bagItemQuantity);
+                }
 
                 HttpContext.Session.Set<List<BagItem>>(BagSessionKey, bagItems);
-                return new JsonResult("Item added to your bag");
+                return RedirectToAction("Details", "Product", new { id = bagItem.ProductId, itemAdded = true });
             }
             else
             {
-                try
+                bagItem.Subject = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
+                var json = await GetRequest($"/BagItem/GetBagItems/{bagItem.Subject}");
+                List<BagItem> bagItems = JsonConvert.DeserializeObject<List<BagItem>>(json);
+
+                if (BagItemExists(bagItems, bagItem))
                 {
-                    bagItem.Subject = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
-                    var response = await PostRequest("/BagItem/PostBagItem", bagItem);
+                    var bagItemDb = GetBagItem(bagItems, bagItem);
+                    bagItemDb.Quantity += productQuantity;
+                    var response = await PatchRequest("/BagItem/UpdateBagItem", bagItemDb);
                     if (response.IsSuccessStatusCode)
                     {
-                        return new JsonResult("Item added to your bag");
+                        return RedirectToAction("Details", "Product", new { id = bagItem.ProductId, itemAdded = true });
                     }
                     else
                     {
-                        return new JsonResult("Item not added, something went wrong");
+                        return RedirectToAction("Details", "Product", new { id = productVM.Product.Id });
                     }
                 }
-                catch(Exception e)
+                else
                 {
-                    return new JsonResult(e.Message);
+                    var response = await PostRequest("/BagItem/PostBagItem", bagItem);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        bagItemQuantity += 1;
+                        HttpContext.Session.Set<int>(BagItemAmountKey, bagItemQuantity);
+                        return RedirectToAction("Details", "Product", new { id = bagItem.ProductId, itemAdded = true });
+                    }
+                    else
+                    {
+                        return RedirectToAction("Details", "Product", new { id = productVM.Product.Id });
+                    }
                 }
             }
+        }
+
+        private bool BagItemExists(List<BagItem> list, BagItem bagItem)
+        {
+            foreach(var item in list)
+            {
+                if(item.ProductId == bagItem.ProductId && item.Subject == bagItem.Subject)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        private BagItem GetBagItem(List<BagItem> list, BagItem bagItem)
+        {
+            foreach (var item in list)
+            {
+                if (item.ProductId == bagItem.ProductId && item.Subject == bagItem.Subject)
+                {
+                    return item;
+                }
+            }
+            return null;
         }
     }
 }

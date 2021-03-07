@@ -272,7 +272,7 @@ xfilter
     left: 0;
     width: 280px;
     height: 100%;
-    background-color: #effbff;
+    background-color: var(--light-blue);
     box-shadow: 4px 4px 20px transparent;
     z-index: 2;
     /* Force Hardware Acceleration in WebKit */
@@ -315,7 +315,7 @@ xfilter
         color: black;
         font-size: 1rem;
         text-align: center;
-        background: #effbff;
+        background: var(--light-blue);
         opacity: 0;
         -webkit-transition: opacity 0.3s;
         -moz-transition: opacity 0.3s;

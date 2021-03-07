@@ -24,7 +24,7 @@
     min-width: 100%;
     height: 50px;
     color: black;
-    background-color: #effbff;
+    background-color: var(--light-blue);
     font-weight: bold;
 }
 
@@ -58,7 +58,7 @@
     padding: 10px;
     display: flex;
     color: black;
-    background-color: #effbff;
+    background-color: var(--light-blue);
 }
 
     .bag-item div {

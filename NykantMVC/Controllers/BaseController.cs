@@ -20,6 +20,7 @@ namespace NykantMVC.Controllers
     {
         public const string BagSessionKey = "verysecretbagsessionkey";
         public const string CheckoutSessionKey = "verysecretseriouscheckoutsessionkey";
+        public const string BagItemAmountKey = "verysecretseriouscheckoutsessionkeyspecial";
         private readonly ILogger<BaseController> _logger;
 
         public BaseController(ILogger<BaseController> logger)

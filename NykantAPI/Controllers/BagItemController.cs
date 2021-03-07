@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using NykantAPI.Data;
+using NykantAPI.Extensions;
 using NykantAPI.Models;
 using NykantAPI.Models.DTO;
 
@@ -24,25 +25,13 @@ namespace NykantAPI.Controllers
         }
 
         [HttpGet("{subject}")]
-        public ActionResult<BagDTO> GetBagItems(string subject)
+        public async Task<ActionResult<List<BagItem>>> GetBagItems(string subject)
         {
-            int priceSum = 0;
             var bagItems = _context.BagItems
                 .Include(x => x.Product)
                 .Where(x => x.Subject == subject);
 
-            foreach (var bagItem in bagItems)
-            {
-                priceSum += bagItem.Product.Price;
-            }
-
-            BagDTO bagDetails = new BagDTO
-            {
-                BagItems = bagItems.ToList(),
-                PriceSum = priceSum
-            };
-
-            var json = JsonConvert.SerializeObject(bagDetails, Extensions.JsonOptions.jsonSettings);
+            var json = JsonConvert.SerializeObject(bagItems, Extensions.JsonOptions.jsonSettings);
 
             return Ok(json);
         }
@@ -50,7 +39,7 @@ namespace NykantAPI.Controllers
         [HttpPatch]
         public async Task<ActionResult<BagItem>> UpdateBagItem(BagItem bagItem)
         {
-            if(BagItemExists(bagItem.Subject, bagItem.ProductId))
+            if (BagItemExists(bagItem.Subject, bagItem.ProductId))
             {
                 try
                 {
@@ -60,7 +49,7 @@ namespace NykantAPI.Controllers
                 }
                 catch (Exception e)
                 {
-                    return NotFound(e);
+                    return Conflict(e.Message);
                 }
             }
             return NotFound();
@@ -102,24 +91,11 @@ namespace NykantAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<BagItem>> PostBagItem(BagItem bagItem)
         {
+
             if (ModelState.IsValid)
             {
-                if (BagItemExists(bagItem.Subject, bagItem.ProductId))
-                {
-                    try
-                    {
-                        var bagItemDB = _context.BagItems.Find(bagItem.Subject, bagItem.ProductId);
-                        bagItemDB.Quantity += bagItem.Quantity;
-                        _context.BagItems.Update(bagItemDB);
-                        await _context.SaveChangesAsync();
-                        return Ok();
-                    }
-                    catch(Exception e)
-                    {
-                        return Conflict(e.Message);
-                    }
-                }
-                else
+
+                if(!BagItemExists(bagItem.Subject, bagItem.ProductId))
                 {
                     try
                     {
@@ -132,6 +108,10 @@ namespace NykantAPI.Controllers
                         return Conflict(e.Message);
                     }
                 }
+                else
+                {
+                    return NotFound();
+                }
             }
             else
             {
@@ -143,6 +123,12 @@ namespace NykantAPI.Controllers
         public async Task<ActionResult<BagItem>> GetBagItem(string subject, int productId)
         {
             return Ok(JsonConvert.SerializeObject(await _context.BagItems.FindAsync(subject, productId)));
+        }
+
+        [HttpGet("{subject}")]
+        public async Task<ActionResult<int>> GetBagItemsQuantity(string subject)
+        {
+            return Ok(JsonConvert.SerializeObject(await _context.BagItems.CountAsync()));
         }
 
         private bool BagItemExists(string sub, int productId)

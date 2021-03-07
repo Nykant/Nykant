@@ -45,6 +45,28 @@ select:-webkit-autofill:focus {
         transform: translate(-200px, 0);
     }
 
+    .inputstyle span {
+        position: absolute;
+        transform: translate(-2px, -35px);
+        width: 200px;
+        height: auto;
+        font-size: 14px;
+        z-index: 10;
+        text-align: left;
+        animation-name:hide;
+        animation-delay: 5s;
+        background-color: var(--light-blue);
+    }
+
+    @keyframes hide {
+        from {
+            display:block;
+        }
+        to{
+            display:none;
+        }
+    }
+
     .inputstyle .underline {
         margin:auto;
         height: 2px;

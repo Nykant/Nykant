@@ -182,3 +182,27 @@
 .reviews {
 
 }
+
+.item-added {
+    background-color:#daefff;
+    position:absolute;
+    height:auto;
+    width:200px;
+    display:none;
+    left:70%;
+    top:9%;
+    padding:20px;
+    z-index:50;
+    animation-name:rolldown;
+    animation-duration:1s;
+}
+
+@keyframes rolldown {
+    0%{
+        top:-10%;
+    }
+    100%{
+        top:9%;
+    }
+}
+

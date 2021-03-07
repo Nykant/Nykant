@@ -34,22 +34,22 @@ namespace NykantMVC.Controllers
             {
                 string subject = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
                 var json = await GetRequest($"/BagItem/GetBagItems/{subject}");
-                BagVM bagVM = JsonConvert.DeserializeObject<BagVM>(json);
+                List<BagItem> bagItems = JsonConvert.DeserializeObject<List<BagItem>>(json);
 
-                ViewBag.PriceSum = CalculateAmount(bagVM.BagItems);
-                return View(bagVM);
+                ViewBag.PriceSum = CalculateAmount(bagItems);
+
+                return View(bagItems);
             }
             else
             {
                 var bagItems = HttpContext.Session.Get<List<BagItem>>(BagSessionKey);
                 if (bagItems == null)
                 {
-                    BagVM bagVM = new BagVM
-                    {
-                        BagItems = new List<BagItem>()
-                    };
-                    ViewBag.PriceSum = CalculateAmount(bagVM.BagItems);
-                    return View(bagVM);
+
+                    bagItems = new List<BagItem>();
+
+                    ViewBag.PriceSum = CalculateAmount(bagItems);
+                    return View(bagItems);
                 }
                 else
                 {
@@ -58,13 +58,9 @@ namespace NykantMVC.Controllers
                     {
                         priceSum += bagItem.Product.Price;
                     }
-                    BagVM bagVM = new BagVM
-                    {
-                        BagItems = bagItems,
-                        PriceSum = priceSum
-                    };
-                    ViewBag.PriceSum = CalculateAmount(bagVM.BagItems);
-                    return View(bagVM);
+
+                    ViewBag.PriceSum = CalculateAmount(bagItems);
+                    return View(bagItems);
                 }
             }
         }

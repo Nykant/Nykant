@@ -3,9 +3,10 @@
 .navbar, .navbar-mobile {
     display: table;
     position: relative;
-    height: 100px;
-    background-color: black;
-    box-shadow: 0px 0px 15px #000000;
+    height: auto;
+    background-color: white;
+    border-bottom:1px solid var(--black-fade);
+/*    box-shadow: 0px 0px 15px #000000;*/
 }
 
 /* navbar-mobile */
@@ -107,18 +108,19 @@
 
 .navbar-wrap {
     position: relative;
-    margin-top: 30px;
-    font-size: 24px;
+    font-size: 30px;
 }
 
     .navbar-wrap a {
+        padding-top:30px;
+        padding-bottom:30px;
         margin-right: 50px;
         display: inline-block;
         float: left;
     }
 
 .highlightTextOut a {
-    color: white;
+    color: black;
 }
 
     .highlightTextOut a:before, .highlightTextIn a:before {
@@ -137,7 +139,7 @@
 
 /* Highlight text in  */
 .highlightTextIn a {
-    color: white;
+    color: black;
 }
 
     .highlightTextIn a:before {
@@ -147,7 +149,7 @@
 a.icon {
     transition: all 0.3s;
     transform: scale(1);
-    font-size: 24px;
+    font-size: 30px;
     position: relative;
     float: right;
 }
@@ -197,3 +199,8 @@ a.icon {
     #userBurger2 a:hover {
         color:var(--blue);
     }
+
+.navbar-wrap .icon span {
+    position:absolute;
+    transform:translate(+25px, -15px)
+}

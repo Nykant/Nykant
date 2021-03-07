@@ -36,12 +36,7 @@ namespace NykantAPI.Controllers
                 .Include(x => x.Images)
                 .FirstOrDefaultAsync(x => x.Id == id);
 
-            ProductDTO productDTO = new ProductDTO
-            {
-                Product = product
-            };
-
-            var json = JsonConvert.SerializeObject(productDTO, Extensions.JsonOptions.jsonSettings);
+            var json = JsonConvert.SerializeObject(product, Extensions.JsonOptions.jsonSettings);
 
             return Ok(json);
         }

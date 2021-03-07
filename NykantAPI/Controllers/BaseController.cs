@@ -15,6 +15,9 @@ namespace NykantAPI.Controllers
 {
     public abstract partial class BaseController : ControllerBase
     {
+        public const string BagSessionKey = "verysecretbagsessionkey";
+        public const string CheckoutSessionKey = "verysecretseriouscheckoutsessionkey";
+        public const string BagItemAmountKey = "verysecretseriouscheckoutsessionkeyspecial";
         public readonly ApplicationDbContext _context;
         public readonly ILogger<BaseController> _logger;
         public BaseController(ILogger<BaseController> logger, ApplicationDbContext context)

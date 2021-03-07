@@ -4,11 +4,15 @@
     ViewData["Title"] = "Details";
     int productQuantity = 1;
 }
-<script>
-    completed = function (response) {
-        alert(`Hi ${response}!`);
-    };
-</script>
+
+@if (Model.ItemAdded)
+{
+    <script src="~/JS/item-added.js" defer></script>
+    <div class="item-added" id="item-added">
+        <p>Du har tilføjet et produkt til din kurv</p>
+    </div>
+    Model.ItemAdded = false;
+}
 
 <div class="row top-padding">
     <div class="col-10 center">
@@ -17,10 +21,10 @@
                 <div class="details-image-list">
                     @foreach (var image in Model.Product.Images)
                     {
-                    <div class="secondary-image-wrap fadein">
-                        <div class="overlay"></div>
-                        <img id="secondary-image" src="/images/gyngestol.jpg" onclick="changeImage('/images/gyngestol.jpg')" />
-                    </div>
+                        <div class="secondary-image-wrap fadein">
+                            <div class="overlay"></div>
+                            <img id="secondary-image" src="/images/gyngestol.jpg" onclick="changeImage('/images/gyngestol.jpg')" />
+                        </div>
                     }
                 </div>
                 <div class="primary-image-wrap fadein">
@@ -30,7 +34,7 @@
         </div>
 
         <div class="col-4 right">
-            <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="completed" asp-controller="BagItem" asp-action="PostBagItem">
+            <form method="post" asp-controller="BagItem" asp-action="PostBagItem">
                 <div class="details-info-wrap fadein">
 
                     <div>
@@ -76,7 +80,7 @@
                 <div class="top-side-padding bottom-side-padding fadein">
                     <button class="button" style="border-radius:0px;" type="submit">ADD TO BAG</button>
                 </div>
-                
+
             </form>
         </div>
 
@@ -107,7 +111,7 @@
     </div>
 </div>
 
-<div class="row top-side-padding bottom-side-padding" >
+<div class="row top-side-padding bottom-side-padding">
     <div class="reviews">
 
     </div>

@@ -33,7 +33,9 @@
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.unobtrusive-ajax/3.2.5/jquery.unobtrusive-ajax.min.js"></script>
 </head>
 <body>
+    @using NykantMVC.Extensions;
     @{
+        var bagItemAmount = Context.Session.Get<int>("verysecretseriouscheckoutsessionkeyspecial");
         var url = Context.Request.Path;
     }
     <partial name="_PrivacySettingsPartial" />
@@ -92,7 +94,7 @@
                 <a alt="PRODUKTER" asp-controller="Product" asp-action="Index">PRODUKTER</a>
                 <a alt="KONTAKT" asp-controller="Contact" asp-action="Index">KONTAKT</a>
 
-                <a class="icon" asp-controller="Bag" asp-action="Details"> <i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+                <a class="icon" asp-controller="Bag" asp-action="Details"><span>@bagItemAmount</span> <i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
 
                 @if (User.Identity.IsAuthenticated)
                 {

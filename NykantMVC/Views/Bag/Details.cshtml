@@ -1,4 +1,4 @@
-﻿@model BagVM
+﻿@model List<BagItem>
 
 @{
     ViewData["Title"] = "Details";
@@ -19,7 +19,7 @@
                     <div>Price</div>
                     <div>Name</div>
                 </div>
-                @foreach (var bagItem in Model.BagItems)
+                @foreach (var bagItem in Model)
                 {
                     <div class="bag-item">
                         <div id="bag-item-image">

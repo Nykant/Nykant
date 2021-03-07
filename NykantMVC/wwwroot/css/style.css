@@ -13,12 +13,13 @@
     --red: #ff5f5f;
     --light-grey: #c1c1c1;
     --dark-grey: #2b2b2b;
+    --light-blue: #daefff;
     --font-size-small: 8px;
     --font-size-small-plus: 12px;
     --font-size-medium: 16px;
     --font-size-medium-plus: 20px;
     --font-size-large: 24px;
-    --light-grey-fade: rgba(193, 193, 193, 0.1);
+    --black-fade: rgba(0, 0, 0, 0.2);
 }
 
 html, body, div, span, applet, object, iframe,
@@ -86,7 +87,7 @@ footer {
     font-family: Raleway;
     padding: 3em 3em;
     text-align: center;
-    background-color: #effbff;
+    background-color: var(--light-blue);
     bottom: 0px;
 }
 
