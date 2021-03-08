@@ -37,13 +37,16 @@ namespace NykantMVC.Controllers
         public async Task<IActionResult> Details(int id, bool itemAdded)
         {
             var json = await GetRequest($"/Product/GetProduct/{id}");
+            var reviewsJson = await GetRequest($"/Review/GetProductReviews/{id}");
 
             Product product = JsonConvert.DeserializeObject<Product>(json);
+            List<Review> reviews = JsonConvert.DeserializeObject<List<Review>>(reviewsJson);
 
             ProductVM productVM = new ProductVM
             {
                 ItemAdded = itemAdded,
-                Product = product
+                Product = product,
+                Reviews = reviews
             };
 
             return View(productVM);

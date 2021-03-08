@@ -178,11 +178,6 @@
     content: "\2796"; /* Unicode character for "minus" sign (-) */
 }
 
-
-.reviews {
-
-}
-
 .item-added {
     background-color:#daefff;
     position:absolute;
@@ -206,3 +201,68 @@
     }
 }
 
+.line {
+    margin:auto;
+    width: 90%;
+    border-bottom:1px solid var(--black-fade);
+}
+
+.reviews {
+
+}
+
+.reviews h1 {
+    padding-bottom:20px;
+}
+
+.review {
+    margin-bottom:10px;
+    padding:10px;
+    background-color: white;
+    text-align: left;
+}
+
+    .review h1 {
+        display:inline-block;
+        padding-left: 5%;
+        padding-bottom: 15px;
+    }
+
+    .review h2 {
+        padding-left: 5%;
+        padding-top: 10px;
+    }
+
+    .review p {
+        padding-left: 5%;
+        padding-top: 10px;
+    }
+    
+    .review .review-stars{
+        float:right;
+        padding-right:5%;
+    }
+
+.review-form {
+    
+}
+
+.review-stars {
+    display: inline-block;
+}
+
+.checked {
+    color: orange;
+    cursor: pointer;
+}
+    .checked:hover {
+        color: black;
+    }
+
+.unchecked {
+    color: black;
+    cursor: pointer;
+}
+    .unchecked:hover {
+        color: orange;
+    }

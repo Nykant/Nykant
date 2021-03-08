@@ -345,3 +345,11 @@ footer span {
 .background-grey {
     background-color: #ededed;
 }
+
+.background-lightblue {
+    background-color: var(--light-blue);
+}
+
+.border-bottom {
+    border-bottom: 1px solid var(--black-fade);
+}
