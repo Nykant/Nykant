@@ -8,6 +8,7 @@ namespace NykantIS.Models
     public class LoginInputModel
     {
         [Required]
+        [EmailAddress]
         [Display(Name = "Email Addresse")]
         public string Email { get; set; }
         [Required]

@@ -1,12 +1,31 @@
 ﻿.custom-input {
     margin:auto;
-    width:200px;
-    padding:5px;
-    border:1px solid black;
+    width:300px;
+    padding:20px;
 }
 
-.custom-input input {
-    width:100%;
-    border:none;
-    outline:none;
-}
+    .custom-input input {
+        padding: 15px;
+        width: 100%;
+        border: 1px solid var(--black-fade);
+        border-radius:5px;
+        outline: none;
+    }
+
+        .custom-input input:focus {
+            border: 2px solid var(--blue);
+        }
+
+        .custom-input input:focus ~ label {
+            color:var(--blue);
+        }
+
+    .custom-input label {
+        position: absolute;
+        font-size: 12px;
+        z-index: 50;
+        transform: translate(-225px, -5px);
+        background-color: white;
+        padding-left: 5px;
+        padding-right: 5px;
+    }

@@ -13,6 +13,7 @@ namespace NykantMVC.Models
         public int ProductId { get; set; }
         [Required]
         public string Subject { get; set; }
+        [Required]
         public string Title { get; set; }
         [Required]
         public string Body { get; set; }

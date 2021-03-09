@@ -18,6 +18,15 @@ select:-webkit-autofill:focus {
     padding: 20px;
 }
 
+    .inputstyle select {
+        width: 200px;
+        padding: 5px;
+        outline: none;
+        border: 1px solid grey;
+        background: none;
+        color: grey;
+    }
+
     .inputstyle input {
         width: 200px;
         padding: 5px;
@@ -34,6 +43,35 @@ select:-webkit-autofill:focus {
         pointer-events: none;
         transition: all 0.3s ease;
         transform: translate(-200px, 0);
+    }
+
+    .inputstyle span span {
+        position: absolute;
+        transform: translate(-200px, +30px);
+        width: 200px;
+        height: auto;
+        font-size: 14px;
+        z-index: 10;
+        text-align: left;
+        animation:hide 0.3s ease-in 5s forwards;
+        background-color: var(--light-blue);
+        padding:5px;
+    }
+
+    @keyframes hide {
+        from {
+            transform: translate(-200px, +30px);
+            width: 200px;
+            height: auto;
+            padding: 5px;
+        }
+        to {
+            transform: translate(-200px, -30px);
+            width: 0px;
+            height: 0px;
+            overflow: hidden;
+            padding: 0px;
+        }
     }
 
     .inputstyle .underline {

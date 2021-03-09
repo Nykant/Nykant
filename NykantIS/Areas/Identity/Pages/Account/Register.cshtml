@@ -17,6 +17,12 @@
                     <div class="underline"></div>
                 </div>
                 <div class="inputstyle">
+                    <input required asp-for="Input.Username" />
+                    <label asp-for="Input.Username"></label>
+                    <span asp-validation-for="Input.Username"></span>
+                    <div class="underline"></div>
+                </div>
+                <div class="inputstyle">
                     <input required asp-for="Input.Password" />
                     <label asp-for="Input.Password"></label>
                     <span asp-validation-for="Input.Password"></span>

@@ -5,7 +5,7 @@
 <form asp-route="Login">
     <input type="hidden" asp-for="ReturnUrl" />
 
-    <div class="row top-padding">
+    <div class="row top-padding background-lightblue">
         @if (Model.EnableLocalLogin)
         {
             <div class="col-6 center">
@@ -43,7 +43,7 @@
             </div>
         }
     </div>
-    <div class="row top-side-padding">
+    <div class="row top-side-padding background-lightblue">
         <div class="col-6 center">
 
             <div class="col-4 right fadein">
@@ -68,26 +68,29 @@
 
 @if (Model.VisibleExternalProviders.Any())
 {
-<div class="col-6 center top-side-padding">
-    <div class="external-login">
-        <div class="header">
-            EXTERNAL ACCOUNT LOGIN
+<div class="row top-side-padding background-lightblue">
+    <div class="col-6 center">
+        <div class="external-login">
+            <div class="header">
+                EXTERNAL ACCOUNT LOGIN
+            </div>
+            <ul>
+                @foreach (var provider in Model.VisibleExternalProviders)
+                {
+                    <li>
+                        <a asp-controller="External"
+                           asp-action="Challenge"
+                           asp-route-scheme="@provider.AuthenticationScheme"
+                           asp-route-returnUrl="@Model.ReturnUrl">
+                            @provider.DisplayName
+                        </a>
+                    </li>
+                }
+            </ul>
         </div>
-        <ul>
-            @foreach (var provider in Model.VisibleExternalProviders)
-            {
-                <li>
-                    <a asp-controller="External"
-                       asp-action="Challenge"
-                       asp-route-scheme="@provider.AuthenticationScheme"
-                       asp-route-returnUrl="@Model.ReturnUrl">
-                        @provider.DisplayName
-                    </a>
-                </li>
-            }
-        </ul>
     </div>
 </div>
+
 }
 
 @if (!Model.EnableLocalLogin && !Model.VisibleExternalProviders.Any())

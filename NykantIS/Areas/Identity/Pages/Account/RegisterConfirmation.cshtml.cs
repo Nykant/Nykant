@@ -19,6 +19,7 @@ namespace NykantIS.Areas.Identity.Pages.Account
         {
             _userManager = userManager;
         }
+        public bool Logout { get; set; }
 
         public string Email { get; set; }
 
@@ -30,7 +31,7 @@ namespace NykantIS.Areas.Identity.Pages.Account
 
         public string EmailConfirmationUrl { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(string email, string returnUrl = null)
+        public async Task<IActionResult> OnGetAsync(string email, bool logout)
         {
             if (email == null)
             {
@@ -46,6 +47,8 @@ namespace NykantIS.Areas.Identity.Pages.Account
             Email = email;
             Status = $"A confirmation email has been sent to your account: {email}, " +
                                  $"before you can log in you have to press the confirmation link in that email";
+
+            Logout = logout;
             return Page();
         }
     }

@@ -174,7 +174,8 @@
 <div class="row top-side-padding bottom-side-padding">
     <div class="col-6 center">
         <form class="review-form" method="post" data-ajax="true" data-ajax-method="post" data-ajax-complete="complete" asp-controller="Review" asp-action="PostReview">
-            <div class="review-stars">
+            <h1>Skriv et review</h1>
+            <div class="review-stars right right-side-padding">
                 <i id="star1" class="fas fa-star unchecked"></i>
                 <i id="star2" class="fas fa-star unchecked"></i>
                 <i id="star3" class="fas fa-star unchecked"></i>
@@ -187,14 +188,16 @@
             }
             <input hidden asp-for="@Model.Review.ProductId" value="@Model.Product.Id" />
             <input hidden asp-for="@Model.Review.Stars" id="stars-input" />
-            <input asp-for="@Model.Review.Title" />
-            <input asp-for="@Model.Review.Body" />
+            <input class="title" asp-for="@Model.Review.Title" placeholder="Titel" />
+            <span class="title-val" asp-validation-for="@Model.Review.Title"></span>
+            <textarea class="body" asp-for="@Model.Review.Body" placeholder="Besked"></textarea>
+            <span class="body-val" asp-validation-for="@Model.Review.Body"></span>
             @if (User.Identity.IsAuthenticated)
             {
-                <button class="button" type="submit">Send</button>
+                <button id="review-button" class="button" type="submit">Send</button>
             }
             else
-                        {
+            {
                 <button class="button" type="submit" disabled>Log ind for at skrive review</button>
             }
 
@@ -202,97 +205,107 @@
     </div>
 </div>
 
-<script>
-    var star1 = document.getElementById("star1");
-                        var star2 = document.getElementById("star2");
-                        var star3 = document.getElementById("star3");
-                        var star4 = document.getElementById("star4");
-                        var star5 = document.getElementById("star5");
-                        var input = document.getElementById("stars-input");
-                        star1.addEventListener("click", function () {
-                            star1.classList.remove("unchecked");
-                            star1.classList.add("checked");
+@if (User.Identity.IsAuthenticated)
+{
+    <script>
+        var button = document.getElementById("review-button");
+        button.disabled = true;
+        var star1 = document.getElementById("star1");
+        var star2 = document.getElementById("star2");
+        var star3 = document.getElementById("star3");
+        var star4 = document.getElementById("star4");
+        var star5 = document.getElementById("star5");
+        var input = document.getElementById("stars-input");
+        star1.addEventListener("click", function () {
+            star1.classList.remove("unchecked");
+            star1.classList.add("checked");
 
-                            star2.classList.remove("checked");
-                            star2.classList.add("unchecked");
+            star2.classList.remove("checked");
+            star2.classList.add("unchecked");
 
-                            star3.classList.remove("checked");
-                            star3.classList.add("unchecked");
+            star3.classList.remove("checked");
+            star3.classList.add("unchecked");
 
-                            star4.classList.remove("checked");
-                            star4.classList.add("unchecked");
+            star4.classList.remove("checked");
+            star4.classList.add("unchecked");
 
-                            star5.classList.remove("checked");
-                            star5.classList.add("unchecked");
+            star5.classList.remove("checked");
+            star5.classList.add("unchecked");
 
-                            input.value = 1;
-                        })
-    star2.addEventListener("click", function () {
-                            star1.classList.remove("unchecked");
-                            star1.classList.add("checked");
+            input.value = 1;
+            button.disabled = false;
+        })
+        star2.addEventListener("click", function () {
+            star1.classList.remove("unchecked");
+            star1.classList.add("checked");
 
-                            star2.classList.remove("unchecked");
-                            star2.classList.add("checked");
+            star2.classList.remove("unchecked");
+            star2.classList.add("checked");
 
-                            star3.classList.remove("checked");
-                            star3.classList.add("unchecked");
+            star3.classList.remove("checked");
+            star3.classList.add("unchecked");
 
-                            star4.classList.remove("checked");
-                            star4.classList.add("unchecked");
+            star4.classList.remove("checked");
+            star4.classList.add("unchecked");
 
-                            star5.classList.remove("checked");
-                            star5.classList.add("unchecked");
-                            input.value = 2;
-                        })
-    star3.addEventListener("click", function () {
-                            star1.classList.remove("unchecked");
-                            star1.classList.add("checked");
+            star5.classList.remove("checked");
+            star5.classList.add("unchecked");
+            input.value = 2;
+            button.disabled = false;
+        })
+        star3.addEventListener("click", function () {
+            star1.classList.remove("unchecked");
+            star1.classList.add("checked");
 
-                            star2.classList.remove("unchecked");
-                            star2.classList.add("checked");
+            star2.classList.remove("unchecked");
+            star2.classList.add("checked");
 
-                            star3.classList.remove("unchecked");
-                            star3.classList.add("checked");
+            star3.classList.remove("unchecked");
+            star3.classList.add("checked");
 
-                            star4.classList.remove("checked");
-                            star4.classList.add("unchecked");
+            star4.classList.remove("checked");
+            star4.classList.add("unchecked");
 
-                            star5.classList.remove("checked");
-                            star5.classList.add("unchecked");
-                            input.value = 3;
-                        })
-    star4.addEventListener("click", function () {
-                            star1.classList.remove("unchecked");
-                            star1.classList.add("checked");
+            star5.classList.remove("checked");
+            star5.classList.add("unchecked");
+            input.value = 3;
+            button.disabled = false;
+        })
+        star4.addEventListener("click", function () {
+            star1.classList.remove("unchecked");
+            star1.classList.add("checked");
 
-                            star2.classList.remove("unchecked");
-                            star2.classList.add("checked");
+            star2.classList.remove("unchecked");
+            star2.classList.add("checked");
 
-                            star3.classList.remove("unchecked");
-                            star3.classList.add("checked");
+            star3.classList.remove("unchecked");
+            star3.classList.add("checked");
 
-                            star4.classList.remove("unchecked");
-                            star4.classList.add("checked");
+            star4.classList.remove("unchecked");
+            star4.classList.add("checked");
 
-                            star5.classList.remove("checked");
-                            star5.classList.add("unchecked");
-                            input.value = 4;
-                        })
-    star5.addEventListener("click", function () {
-                            star1.classList.remove("unchecked");
-                            star1.classList.add("checked");
+            star5.classList.remove("checked");
+            star5.classList.add("unchecked");
+            input.value = 4;
+            button.disabled = false;
+        })
+        star5.addEventListener("click", function () {
+            star1.classList.remove("unchecked");
+            star1.classList.add("checked");
 
-                            star2.classList.remove("unchecked");
-                            star2.classList.add("checked");
+            star2.classList.remove("unchecked");
+            star2.classList.add("checked");
 
-                            star3.classList.remove("unchecked");
-                            star3.classList.add("checked");
+            star3.classList.remove("unchecked");
+            star3.classList.add("checked");
 
-                            star4.classList.remove("unchecked");
-                            star4.classList.add("checked");
+            star4.classList.remove("unchecked");
+            star4.classList.add("checked");
 
-                            star5.classList.remove("unchecked");
-                            star5.classList.add("checked");
-                            input.value = 5;
-                        })
-</script>
+            star5.classList.remove("unchecked");
+            star5.classList.add("checked");
+            input.value = 5;
+            button.disabled = false;
+        })
+    </script>
+}

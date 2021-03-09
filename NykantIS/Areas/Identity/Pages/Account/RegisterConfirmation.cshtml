@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{email}/{logout}"
 @model RegisterConfirmationModel
 @{
     ViewData["Title"] = "Register confirmation";
@@ -24,3 +24,12 @@
 
     </div>
 </div>
+
+@if (Model.Logout)
+{
+    <script>
+        setTimeout(function () {
+            location.replace("https://localhost:5002/account/logout")
+        }, 5000)
+    </script>
+}

@@ -6,6 +6,7 @@
 }
 
 .profile-nav {
+    padding:20px;
     background-color: white;
     height:auto;
     text-align:center;
@@ -14,6 +15,7 @@
 .profile-nav a {
     padding:10px;
     display:block;
+    cursor:pointer;
 }
 
 .profile-inputs h1 {

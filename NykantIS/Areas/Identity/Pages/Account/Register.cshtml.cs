@@ -57,6 +57,9 @@ namespace NykantIS.Areas.Identity.Pages.Account
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
+            [Required]
+            [Display(Name = "Brugernavn")]
+            public string Username { get; set; }
 
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
@@ -82,10 +85,15 @@ namespace NykantIS.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = _userManager.FindByNameAsync(Input.Email).Result;
+                var user = _userManager.FindByNameAsync(Input.Username).Result;
                 if(user == null)
                 {
-                    user = new ApplicationUser { UserName = Input.Email, Email = Input.Email };
+                    user = _userManager.FindByEmailAsync(Input.Email).Result;
+                }
+                if(user == null)
+                {
+                    
+                    user = new ApplicationUser { UserName = Input.Username, Email = Input.Email };
                     var result = await _userManager.CreateAsync(user, Input.Password);
 
                     if (result.Succeeded)
@@ -93,7 +101,8 @@ namespace NykantIS.Areas.Identity.Pages.Account
                         _logger.LogInformation("User created a new account with password.");
 
                         var claimsResult = _userManager.AddClaimsAsync(user, new Claim[]{
-                            new Claim(JwtClaimTypes.Email, Input.Email)
+                            new Claim(JwtClaimTypes.Email, Input.Email),
+                            new Claim(JwtClaimTypes.PreferredUserName, Input.Username)
                         }).Result;
                         if (!claimsResult.Succeeded)
                         {
@@ -129,7 +138,7 @@ namespace NykantIS.Areas.Identity.Pages.Account
 
                         if (_userManager.Options.SignIn.RequireConfirmedAccount)
                         {
-                            return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
+                            return RedirectToPage("RegisterConfirmation", new { email = Input.Email });
                         }
                         else
                         {

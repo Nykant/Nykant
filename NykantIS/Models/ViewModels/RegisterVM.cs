@@ -14,6 +14,9 @@ namespace NykantIS.Models.ViewModels
         [Display(Name = "Email Address")]
         public string Email { get; set; }
         [Required]
+        [Display(Name = "Brugernavn")]
+        public string Username { get; set; }
+        [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
         public string ReturnUrl { get; set; }
