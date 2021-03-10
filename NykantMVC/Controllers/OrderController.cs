@@ -23,6 +23,22 @@ namespace NykantMVC.Controllers
             _protectionService = protectionService;
         }
 
+        [HttpGet]
+        public async Task<IActionResult> History()
+        {
+            var json = await GetRequest($"/Order/GetOrders/{User.Claims.FirstOrDefault(x => x.Type == "sub").Value}");
+            List<Models.Order> list = JsonConvert.DeserializeObject<List<Models.Order>>(json);
+            return View(list);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Details(int id)
+        {
+            var json = await GetRequest($"/Order/GetOrder/{id}");
+            var order = JsonConvert.DeserializeObject<Models.Order>(json);
+            return View(order);
+        }
+
         [HttpPost]
         public async Task<IActionResult> PostOrder([FromBody]string paymentIntentId)
         {

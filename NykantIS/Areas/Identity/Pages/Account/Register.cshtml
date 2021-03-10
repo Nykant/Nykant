@@ -3,9 +3,13 @@
 @{
     ViewData["Title"] = "Register";
 }
+<script>
+    complete = function (xhr) {
+        alert(`Hi ${xhr.responseText}!`);
+    };
+</script>
 
-
-<form method="post" asp-route-returnUrl="@Model.ReturnUrl">
+<form method="post" data-ajax="true" data-ajax-method="post" data-ajax-complete="complete" asp-route-returnUrl="@Model.ReturnUrl">
     <div class="row top-padding">
         <div class="col-6 center">
             <div class="register-form">
@@ -45,7 +49,7 @@
             <div class="col-4 right fadein top-side-padding">
                 <button class="button right-side-padding" type="submit">Register</button>
             </div>
-            <a asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl" class="col-4 left fadein right-side-padding top-side-padding">
+            <a asp-controller="Account" asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl" class="col-4 left fadein right-side-padding top-side-padding">
                 <div class="button">
                     <p>Login</p>
                 </div>

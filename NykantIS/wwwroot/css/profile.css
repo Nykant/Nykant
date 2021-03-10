@@ -12,13 +12,55 @@
     text-align:center;
 }
 
-.profile-nav a {
-    padding:10px;
-    display:block;
-    cursor:pointer;
-}
+    .profile-nav a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        display: block;
+        cursor: pointer;
+    }
+
+    .profile-nav .current:after {
+        content: ' \2770';
+    }
+
+
 
 .profile-inputs h1 {
     font-size:20px;
     padding-bottom:30px;
+}
+
+.modal {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 19;
+    display: none;
+}
+
+.email-updated {
+    padding:40px;
+    position:fixed;
+    left:25%;
+    top:25%;
+    height:auto;
+    width:50%;
+    background-color:var(--light-blue);
+    border:1px solid var(--light-blue);
+    z-index:20;
+    
+}
+
+.email-updated p {
+
+}
+
+.email-updated h1 {
+    text-align:center;
+    padding-bottom:20px;
+}
+
+.nykant-logo {
+    font-size:25px;
 }

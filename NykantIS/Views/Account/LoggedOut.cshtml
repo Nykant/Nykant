@@ -18,14 +18,19 @@
 </div>
 <div class="row">
     <div class="col-6 center">
-            @if (Model.PostLogoutRedirectUri != null)
-            {
-                <a href="https://localhost:5002" class="col-4 left fadein right-side-padding  ">
-                    <div class="button dark-card">
-                        <p>Return to app</p>
-                    </div>
-                </a>
-            }
+        @if (Model.PostLogoutRedirectUri != null)
+        {
+            <a href="@Model.PostLogoutRedirectUri" class="col-4 left fadein right-side-padding  ">
+                <div class="button dark-card">
+                    <p>Return to app</p>
+                </div>
+            </a>
+            <a href="https://localhost:5001/account/login" class="col-4 left fadein right-side-padding  ">
+                <div class="button dark-card">
+                    <p>Log in</p>
+                </div>
+            </a>
+        }
     </div>
 </div>
 

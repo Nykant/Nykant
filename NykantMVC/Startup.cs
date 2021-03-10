@@ -44,7 +44,10 @@ namespace NykantMVC
                 options.DefaultScheme = "Cookies";
                 options.DefaultChallengeScheme = "oidc";
             })
-                .AddCookie("Cookies")
+                .AddCookie("Cookies", options =>
+                {
+
+                })
                 .AddOpenIdConnect("oidc", options =>
                 {
                     options.Authority = "https://localhost:5001";

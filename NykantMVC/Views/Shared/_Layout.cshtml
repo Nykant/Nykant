@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="~/css/custom-input.css" />
     <link rel="stylesheet" href="~/css/custom-select.css" />
     <link rel="stylesheet" href="~/css/custom-list.css" />
+    <link rel="stylesheet" href="~/css/custom-list2.css" />
     <link rel="stylesheet" href="~/css/breadcrumbs.css" />
     <link rel="stylesheet" href="~/css/navbar.css" />
     <link rel="stylesheet" href="~/css/product-details.css" />
@@ -98,14 +99,17 @@
 
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <div id="userBurger2">
-                        <a href="https://localhost:5001/profile/personalinfo">
-                            Profile
-                        </a>
-                        <a asp-controller="Account" asp-action="Logout">
-                            Logout
-                        </a>
-                    </div>
+            <div id="userBurger2">
+                <a href="https://localhost:5001/profile/personalinfo">
+                    Profil
+                </a>
+                <a asp-controller="Order" asp-action="History">
+                    Ordre Historik
+                </a>
+                <a asp-controller="Account" asp-action="Logout">
+                    Logout
+                </a>
+            </div>
                     <a href="javascript:void(0);" class="icon" id="userLogo">
                         <i class="fas fa-user"></i>
                     </a>

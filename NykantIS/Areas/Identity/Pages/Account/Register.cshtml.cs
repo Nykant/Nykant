@@ -138,7 +138,8 @@ namespace NykantIS.Areas.Identity.Pages.Account
 
                         if (_userManager.Options.SignIn.RequireConfirmedAccount)
                         {
-                            return RedirectToPage("RegisterConfirmation", new { email = Input.Email });
+                            return new JsonResult($"Thank you for registering an account on Nykant. A confirmation email has been sent to your email account: {Input.Email}, " +
+                                 $"before you can log in you have to press the confirmation link in that email");
                         }
                         else
                         {

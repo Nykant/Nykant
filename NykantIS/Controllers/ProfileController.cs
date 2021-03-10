@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using IdentityServer4;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
@@ -92,9 +94,11 @@ namespace NykantIS.Controllers
                     }
                     await _userManager.UpdateAsync(user);
                     await _signInManager.SignOutAsync();
-                    
-                    string url = "https://localhost:5001/" + $"Identity/Account/RegisterConfirmation/{profileVM.Email}/{true}";
-                    return Redirect(url);
+                    await HttpContext.SignOutAsync();
+
+                    return new JsonResult("Fordi du har opdateret din email, skal din account igen aktiveres. " +
+                        "Vi har sendt en email til din nye email, med et aktiverings-link. " +
+                        "før du kan logge ind skal du klikke på aktiverings-linket.");
                 }
             }
             await _userManager.UpdateAsync(user);

@@ -22,6 +22,14 @@ namespace NykantAPI.Controllers
         {
         }
 
+        [HttpGet("{subject}")]
+        public async Task<ActionResult<List<Order>>> GetOrders(string subject)
+        {
+            var orders = _context.Orders.Where(x => x.Subject == subject);
+
+            return Ok(JsonConvert.SerializeObject(orders));
+        }
+
         [HttpPost]
         public async Task<ActionResult<Order>> PostOrder(Order order)
         {

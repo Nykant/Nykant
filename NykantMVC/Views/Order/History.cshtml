@@ -1,0 +1,24 @@
+﻿@model List<Order>
+
+<div class="row top-padding background-lightblue">
+    <div class="col-8 center">
+            <h1 class="list-h1">Ordre Historik</h1>
+            <table id="list">
+                <tr>
+                    <th>Id</th>
+                    <th>Dato</th>
+                    <th>Pris</th>
+                    <th>Status</th>
+                </tr>
+                @foreach (var order in Model)
+                {
+                    <tr>
+                        <td><a class="cell-link" asp-controller="Order" asp-action="Details" asp-route-Id="@order.Id"></a>@order.Id</td>
+                        <td>@order.CreatedAt</td>
+                        <td>@order.TotalPrice</td>
+                        <td>@order.Status</td>
+                    </tr>
+                }
+            </table>
+    </div>
+</div>
