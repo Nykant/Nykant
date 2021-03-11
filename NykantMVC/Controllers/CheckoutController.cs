@@ -69,7 +69,7 @@ namespace NykantMVC.Controllers
                         HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
                         ViewBag.BagItems = checkout.BagItems;
                         ViewBag.TotalPrice = checkout.TotalPrice;
-                        return View();
+                        return View(new CustomerInf());
                     }
                 }
                 else
@@ -93,7 +93,7 @@ namespace NykantMVC.Controllers
                         HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
                         ViewBag.BagItems = checkout.BagItems;
                         ViewBag.TotalPrice = checkout.TotalPrice;
-                        return View();
+                        return View(new CustomerInf());
                     }
                 }
             }
@@ -245,6 +245,7 @@ namespace NykantMVC.Controllers
 
             if(checkout.Stage == Stage.payment)
             {
+                checkout.CardInfo = new CardInfo();
                 return View(checkout);
             }
             else

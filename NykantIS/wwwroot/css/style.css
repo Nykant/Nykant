@@ -8,12 +8,12 @@
 
 :root {
     --green: #8cffa4;
-    --blue: #6dceff;
+    --blue: #7ed8ff;
     --dark: #474747;
     --red: #ff5f5f;
     --light-grey: #c1c1c1;
     --dark-grey: #2b2b2b;
-    --light-blue: #daefff;
+    --light-blue: #e8f8ff;
     --font-size-small: 8px;
     --font-size-small-plus: 12px;
     --font-size-medium: 16px;
@@ -175,6 +175,7 @@ footer span {
 
 .center {
     margin: auto;
+    text-align:center;
 }
 
 .left {
@@ -216,6 +217,10 @@ footer span {
     padding-bottom: 10px;
 }
 
+.bottom-padding {
+    padding-bottom:40px;
+}
+
 .top-side-padding {
     padding-top: 10px;
 }
@@ -229,6 +234,8 @@ footer span {
 }
 
 .button {
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
     border-radius: 0px;
     border: 2px solid rgba(0,0,0,1);
     outline: none;
@@ -237,12 +244,12 @@ footer span {
     min-height: 50px;
     min-width: 100%;
     cursor: pointer;
-/*    transition: all ease 0.4s;*/
+    /*    transition: all ease 0.4s;*/
     text-align: center;
 }
 
     .button p {
-       padding-top:12px;
+       padding-top:13px;
     }
 
     .button:enabled {
@@ -251,7 +258,7 @@ footer span {
 
     .button:hover {
         color: black;
-        background-color:transparent;
+        background-color:white;
         font-weight:bolder;
     }
 

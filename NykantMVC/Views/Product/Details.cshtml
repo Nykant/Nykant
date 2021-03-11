@@ -8,19 +8,28 @@
 @if (Model.ItemAdded)
 {
     <script src="~/JS/item-added.js" defer></script>
-    <div class="item-added" id="item-added">
+    <div class="notification" id="item-added">
         <p>Du har tilføjet et produkt til din kurv</p>
     </div>
     Model.ItemAdded = false;
 }
 
-<script>
-    complete = function (xhr) {
-        alert(`Hi ${xhr.responseText}!`);
-    };
-</script>
+@if (Model.ReviewSent)
+{
+    <script src="~/JS/review-sent.js" defer></script>
+    <div class="notification" id="review-sent">
+        <p>
+            Tak for dit review, det sætter vi stor pris på :).
+        </p>
+    </div>
+}
 
-<div class="row top-padding border-bottom bottom-side-padding">
+@if (User.Identity.IsAuthenticated)
+{
+    <script src="~/JS/review.js" defer></script>
+}
+
+<div class="row top-padding border-bottom bottom-padding">
     <div class="col-10 center">
         <div class="col-8 left right-side-padding">
             <div class="details-image-wrap">
@@ -114,13 +123,17 @@
 </div>
 
 <div class="row top-side-padding border-bottom background-lightblue">
-    <div class="col-6 center">
+    <div class="col-4 center">
         <div class="reviews padding">
             <h1>Reviews</h1>
+            @if (Model.Reviews.Count() == 0)
+            {
+                <p>Der er ingen reviews for dette produkt endnu</p>
+            }
             @foreach (var item in Model.Reviews)
             {
                 <div class="review">
-                    <h1>NAVN</h1>
+                    <h1>Brugernavn</h1>
                     <div class="review-stars">
                         @switch (item.Stars)
                         {
@@ -159,7 +172,6 @@
                                 <i class="fas fa-star checked"></i>
                                 <i class="fas fa-star checked"></i>
                                 break;
-
                         }
                     </div>
                     <div class="line"></div>
@@ -172,8 +184,8 @@
 </div>
 
 <div class="row top-side-padding bottom-side-padding">
-    <div class="col-6 center">
-        <form class="review-form" method="post" data-ajax="true" data-ajax-method="post" data-ajax-complete="complete" asp-controller="Review" asp-action="PostReview">
+    <div class="col-4 center">
+        <form class="review-form" method="post" asp-controller="Review" asp-action="PostReview">
             <h1>Skriv et review</h1>
             <div class="review-stars right right-side-padding">
                 <i id="star1" class="fas fa-star unchecked"></i>
@@ -188,13 +200,13 @@
             }
             <input hidden asp-for="@Model.Review.ProductId" value="@Model.Product.Id" />
             <input hidden asp-for="@Model.Review.Stars" id="stars-input" />
-            <input class="title" asp-for="@Model.Review.Title" placeholder="Titel" />
+            <input id="review-title" class="title" asp-for="@Model.Review.Title" placeholder="Titel" />
             <span class="title-val" asp-validation-for="@Model.Review.Title"></span>
-            <textarea class="body" asp-for="@Model.Review.Body" placeholder="Besked"></textarea>
+            <textarea id="review-body" class="body" asp-for="@Model.Review.Body" placeholder="Besked"></textarea>
             <span class="body-val" asp-validation-for="@Model.Review.Body"></span>
             @if (User.Identity.IsAuthenticated)
             {
-                <button id="review-button" class="button" type="submit">Send</button>
+                <button id="review-button" class="button" type="submit">Vælg stjerner</button>
             }
             else
             {
@@ -205,107 +217,6 @@
     </div>
 </div>
 
-@if (User.Identity.IsAuthenticated)
-{
-    <script>
-        var button = document.getElementById("review-button");
-        button.disabled = true;
-        var star1 = document.getElementById("star1");
-        var star2 = document.getElementById("star2");
-        var star3 = document.getElementById("star3");
-        var star4 = document.getElementById("star4");
-        var star5 = document.getElementById("star5");
-        var input = document.getElementById("stars-input");
-        star1.addEventListener("click", function () {
-            star1.classList.remove("unchecked");
-            star1.classList.add("checked");
 
-            star2.classList.remove("checked");
-            star2.classList.add("unchecked");
 
-            star3.classList.remove("checked");
-            star3.classList.add("unchecked");
 
-            star4.classList.remove("checked");
-            star4.classList.add("unchecked");
-
-            star5.classList.remove("checked");
-            star5.classList.add("unchecked");
-
-            input.value = 1;
-            button.disabled = false;
-        })
-        star2.addEventListener("click", function () {
-            star1.classList.remove("unchecked");
-            star1.classList.add("checked");
-
-            star2.classList.remove("unchecked");
-            star2.classList.add("checked");
-
-            star3.classList.remove("checked");
-            star3.classList.add("unchecked");
-
-            star4.classList.remove("checked");
-            star4.classList.add("unchecked");
-
-            star5.classList.remove("checked");
-            star5.classList.add("unchecked");
-            input.value = 2;
-            button.disabled = false;
-        })
-        star3.addEventListener("click", function () {
-            star1.classList.remove("unchecked");
-            star1.classList.add("checked");
-
-            star2.classList.remove("unchecked");
-            star2.classList.add("checked");
-
-            star3.classList.remove("unchecked");
-            star3.classList.add("checked");
-
-            star4.classList.remove("checked");
-            star4.classList.add("unchecked");
-
-            star5.classList.remove("checked");
-            star5.classList.add("unchecked");
-            input.value = 3;
-            button.disabled = false;
-        })
-        star4.addEventListener("click", function () {
-            star1.classList.remove("unchecked");
-            star1.classList.add("checked");
-
-            star2.classList.remove("unchecked");
-            star2.classList.add("checked");
-
-            star3.classList.remove("unchecked");
-            star3.classList.add("checked");
-
-            star4.classList.remove("unchecked");
-            star4.classList.add("checked");
-
-            star5.classList.remove("checked");
-            star5.classList.add("unchecked");
-            input.value = 4;
-            button.disabled = false;
-        })
-        star5.addEventListener("click", function () {
-            star1.classList.remove("unchecked");
-            star1.classList.add("checked");
-
-            star2.classList.remove("unchecked");
-            star2.classList.add("checked");
-
-            star3.classList.remove("unchecked");
-            star3.classList.add("checked");
-
-            star4.classList.remove("unchecked");
-            star4.classList.add("checked");
-
-            star5.classList.remove("unchecked");
-            star5.classList.add("checked");
-            input.value = 5;
-            button.disabled = false;
-        })
-    </script>
-}

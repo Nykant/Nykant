@@ -27,14 +27,14 @@ namespace NykantMVC.Controllers
         {
             var json = await GetRequest("/Product/GetProducts");
 
-            IEnumerable<Product> products = JsonConvert.DeserializeObject<IEnumerable<Product>>(json);
+            var products = JsonConvert.DeserializeObject<IEnumerable<Product>>(json);
 
             return View(products);
         }
 
-        [Route("/{controller}/{action}/{id}/{itemAdded?}")]
+        [Route("/{controller}/{action}/{id}/{itemAdded?}/{reviewSent?}")]
         [HttpGet]
-        public async Task<IActionResult> Details(int id, bool itemAdded)
+        public async Task<IActionResult> Details(int id, bool itemAdded, bool reviewSent)
         {
             var json = await GetRequest($"/Product/GetProduct/{id}");
             var reviewsJson = await GetRequest($"/Review/GetProductReviews/{id}");
@@ -45,8 +45,10 @@ namespace NykantMVC.Controllers
             ProductVM productVM = new ProductVM
             {
                 ItemAdded = itemAdded,
+                ReviewSent = reviewSent,
                 Product = product,
-                Reviews = reviews
+                Reviews = reviews,
+                Review = new Review()
             };
 
             return View(productVM);

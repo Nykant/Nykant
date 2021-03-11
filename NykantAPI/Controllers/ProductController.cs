@@ -23,9 +23,9 @@ namespace NykantAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
+        public async Task<ActionResult> GetProducts()
         {
-            return Ok(await _context.Products.ToListAsync());
+            return Ok(JsonConvert.SerializeObject(_context.Products));
         }
 
         [HttpGet("{id}")]

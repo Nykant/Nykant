@@ -18,14 +18,14 @@ namespace NykantMVC.Controllers
         }
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public async Task<ContentResult> PostReview(Review review)
+        public async Task<IActionResult> PostReview(Review review)
         {
             if (ModelState.IsValid)
             {
                 var response = await PostRequest("/Review/Create", review);
                 if (response.IsSuccessStatusCode)
                 {
-                    return Content("Thank you, your review has been submitted.");
+                    return RedirectToAction("Details", "Product", new { id = review.ProductId, reviewSent = true });
                 }
                 else
                 {

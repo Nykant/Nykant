@@ -21,11 +21,13 @@
 
 .bagtitle {
     padding: 15px;
+    margin-bottom:15px;
     min-width: 100%;
     height: 50px;
     color: black;
-    background-color: var(--light-blue);
+    background-color: var(--blue);
     font-weight: bold;
+    text-align:center;
 }
 
 .bagtable {
@@ -40,6 +42,7 @@
     width: 100%;
     color: black;
     font-weight: bold;
+    margin-bottom:15px;
 }
 
     .bagtable-headers div {
@@ -53,7 +56,7 @@
 
 .bag-item {
     font-size: var(--font-size-medium);
-    border: 4px solid var(--light-blue);
+    background-color:var(--light-blue);
     margin-bottom: 10px;
     padding: 10px;
     display: flex;
@@ -116,7 +119,7 @@
     margin-left:10px;
     color:black;
     background-color: transparent;
-    border:2px solid black;
+    border:4px solid var(--blue);
     padding: 5%;
     min-height: 200px;
 }

@@ -8,5 +8,5 @@ setTimeout(function () {
     setTimeout(function () {
         item_added.style.display = "none";
     }, 1000)
-}, 5000)
+}, 10000)
 
