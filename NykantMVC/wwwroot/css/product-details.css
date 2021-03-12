@@ -180,13 +180,13 @@
 
 .notification {
     background-color: var(--light-blue);
-    border: 1px solid var(--blue);
+    border: 2px solid black;
     position: fixed;
     height: auto;
     width: 200px;
     display: none;
     left: 70%;
-    top: 97px;
+    top: 90px;
     padding: 20px;
     z-index: 50;
     animation-name: rolldown;
@@ -208,7 +208,7 @@
         top:-115px;
     }
     100%{
-        top:97px;
+        top:90px;
     }
 }
 
