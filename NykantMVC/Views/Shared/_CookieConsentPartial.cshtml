@@ -8,20 +8,23 @@
 
 @if (showBanner)
 {
-    <partial name="_PrivacySettingsPartial" />
+    <partial name="_CookieSettingsPartial" />
     <script src="~/JS/privacy.js" defer></script>
-    <div id="cookie-consent" class="cookie-consent" role="alert">
-        <p>
-            By clicking “Allow All”, you agree to the storing of cookies on your device to enhance site
-            navigation, analyze site usage, and assist in our marketing efforts.
-        </p>
-        <a asp-controller="Privacy" asp-action="Index">Learn More</a>
-        <button type="button" class="settings-button" id="open-privacy2">
-            Instillinger
-        </button>
-        <button type="button" class="consent-button" data-dismiss="alert" aria-label="Close" data-cookie-string="@cookieString">
-            Accepter alle cookies
-        </button>
+    <div class="modal" id="cookie-modal">
+        <div id="cookie-consent" class="cookie-consent" role="alert">
+            <p>
+                By clicking “Allow All”, you agree to the storing of cookies on your device to enhance site
+                navigation, analyze site usage, and assist in our marketing efforts.
+            </p>
+            <a asp-controller="Privacy" asp-action="Index">Learn More</a>
+            <button type="button" class="settings-button" id="open-privacy2">
+                Instillinger
+            </button>
+            <button type="button" class="consent-button" data-dismiss="alert" aria-label="Close" data-cookie-string="@cookieString">
+                Accepter alle cookies
+            </button>
+        </div>
     </div>
+
 }
 

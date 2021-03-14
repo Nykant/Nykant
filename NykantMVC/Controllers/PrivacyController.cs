@@ -19,21 +19,6 @@ namespace NykantMVC.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ContentResult UpdateConsent(int consent)
-        {
-            if(consent == 0)
-            {
-                var consentFeature = HttpContext.Features.Get<ITrackingConsentFeature>();
-                consentFeature.WithdrawConsent();
-                return Content("cookie has been removed from your browser");
-            }
-            else
-            {
-                var consentFeature = HttpContext.Features.Get<ITrackingConsentFeature>();
-                consentFeature.GrantConsent();
-                return Content("cookie has been added to your broswer");
-            }
-        }
+       
     }
 }

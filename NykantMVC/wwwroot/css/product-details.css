@@ -193,6 +193,36 @@
     animation-duration: 1s;
 }
 
+.notification2 {
+    background-color: var(--light-blue);
+    border: 2px solid black;
+    position: fixed;
+    height: auto;
+    width: 200px;
+    display: none;
+    left: 25%;
+    top: 90px;
+    padding: 20px;
+    z-index: 50;
+    animation-name: rolldown;
+    animation-duration: 1s;
+}
+
+.notification3 {
+    background-color: var(--light-blue);
+    border: 2px solid black;
+    position: fixed;
+    height: auto;
+    width: 200px;
+    display: none;
+    left: 50%;
+    top: 90px;
+    padding: 20px;
+    z-index: 50;
+    animation-name: rolldown;
+    animation-duration: 1s;
+}
+
 @keyframes rollup {
     0% {
         bottom: -50px;

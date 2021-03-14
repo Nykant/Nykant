@@ -6,6 +6,8 @@ var country_error = document.getElementById("country-error");
 country_picker.addEventListener("change", function () {
     var x = country_picker.selectedIndex;
     country_input.value = document.getElementsByTagName("option")[x].value;
+    country_picker.style.color = "black";
+    country_picker.style.border = "2px solid black";
 });
 
 customer_form.addEventListener("submit", function (event) {
