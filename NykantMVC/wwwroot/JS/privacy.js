@@ -104,7 +104,6 @@ var notification_text2 = document.getElementById("cookie-notification-text2");
 done2 = function (response) {
     notification_text2.innerHTML = response;
     notification2.style.display = "block";
-    
     setTimeout(function () {
         notification2.style.transition = "all 1s";
         notification2.style.top = "-130px";

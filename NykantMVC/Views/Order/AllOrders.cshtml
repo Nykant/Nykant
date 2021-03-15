@@ -1,39 +1,15 @@
 ﻿@model List<Order>
 
-<script src="~/JS/notification.js" defer></script>
-
-<div class="row top-padding background-lightblue">
-    <div class="col-8 center">
-        <h1 class="list-h1">Alle Ordre</h1>
-        <table id="list">
-            <tr>
-                <th>Id</th>
-                <th>Dato</th>
-                <th>Pris</th>
-                <th>Status</th>
-                <th></th>
-            </tr>
-            @foreach (var order in Model)
-            {
-                <tr>
-                    <td>@order.Id</td>
-                    <td>@order.CreatedAt</td>
-                    <td>@order.TotalPrice</td>
-                    <td>@order.Status</td>
-                    <td>
-                        @if (order.Status == Status.Pending)
-                        {
-                        <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="complete" asp-controller="PaymentIntent" asp-action="CapturePaymentIntent" asp-route-orderId="@order.Id">
-                            <button type="submit">Capture</button>
-                        </form>
-                        }
-                    </td>
-                </tr>
-            }
-        </table>
-    </div>
-</div>
+<script src="~/JS/capture.js" defer></script>
 
 <div class="notification3" id="capture-notification">
     <p id="capture-notification-text"></p>
 </div>
+
+
+<div class="row top-padding bottom-padding background-lightblue">
+    <div class="col-8 center" id="all-orders">
+        <partial name="_OrderListPartial" />
+    </div>
+</div>
+

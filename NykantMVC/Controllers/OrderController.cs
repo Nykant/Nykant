@@ -109,6 +109,7 @@ namespace NykantMVC.Controllers
                 else
                 {
                     HttpContext.Session.Set<List<BagItem>>(BagSessionKey, null);
+                    HttpContext.Session.Set<int>(BagItemAmountKey, 0);
                 }
 
                 checkout.Stage = Stage.completed;

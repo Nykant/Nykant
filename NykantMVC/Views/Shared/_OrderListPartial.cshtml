@@ -1,0 +1,27 @@
+﻿<h1 class="list-h1">Alle Ordre</h1>
+<table id="list">
+    <tr>
+        <th>Id</th>
+        <th>Dato</th>
+        <th>Pris</th>
+        <th>Status</th>
+        <th></th>
+    </tr>
+    @foreach (var order in ViewData.Model)
+    {
+        <tr>
+            <td>@order.Id</td>
+            <td>@order.CreatedAt</td>
+            <td>@order.TotalPrice</td>
+            <td>@order.Status</td>
+            <td>
+                @if (order.Status == Status.Pending)
+                {
+                    <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#all-orders" asp-controller="PaymentIntent" asp-action="CapturePaymentIntent" asp-route-orderId="@order.Id">
+                        <button type="submit">Capture</button>
+                    </form>
+                }
+            </td>
+        </tr>
+    }
+</table>

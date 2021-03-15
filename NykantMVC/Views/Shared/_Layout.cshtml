@@ -32,129 +32,130 @@
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.unobtrusive-ajax/3.2.5/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
 </head>
 <body>
 
-        @using NykantMVC.Extensions;
-        @{
-            var bagItemAmount = Context.Session.Get<int>("verysecretseriouscheckoutsessionkeyspecial");
-            var url = Context.Request.Path;
-        }
-        
-        <partial name="_CookieConsentPartial" />
-        <div class="row">
+    @using NykantMVC.Extensions;
+    @{
+        var bagItemAmount = Context.Session.Get<int>("verysecretseriouscheckoutsessionkeyspecial");
+        var url = Context.Request.Path;
+    }
 
-            @*-----------------------------------------------NAVBAR MOBILE-----------------------------------------------*@
+    <partial name="_CookieConsentPartial" />
+    <div class="row">
 
-            <div class="col-12 navbar-mobile">
-                <div class="navbar-mobile-wrap highlightTextIn highlightTextOut">
-                    <a alt="NYKANT" asp-controller="Home" asp-action="Index"><span style="color:#eaeaea">N</span>YKANT</a>
+        @*-----------------------------------------------NAVBAR MOBILE-----------------------------------------------*@
 
-                    <a href="javascript:void(0);" class="icon" onclick="mobileNav()">
-                        <i class="fa fa-bars"></i>
-                    </a>
+        <div class="col-12 navbar-mobile">
+            <div class="navbar-mobile-wrap highlightTextIn highlightTextOut">
+                <a alt="NYKANT" asp-controller="Home" asp-action="Index"><span style="color:#eaeaea">N</span>YKANT</a>
 
-                    <a class="icon" asp-controller="Bag" asp-action="GetBag" asp-route-id=""><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+                <a href="javascript:void(0);" class="icon" onclick="mobileNav()">
+                    <i class="fa fa-bars"></i>
+                </a>
 
-                    @if (User.Identity.IsAuthenticated)
-                    {
+                <a class="icon" asp-controller="Bag" asp-action="GetBag" asp-route-id=""><i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
 
-                        <div id="userBurger">
-                            <a alt="logged in as: !" asp-controller="Account" asp-action="Profile" title="Manage">logged in as: !</a>
-                            <form asp-Controller="Account" asp-action="Logout">
-                                <button type="submit">Logout</button>
-                            </form>
-                        </div>
-                        <a href="javascript:void(0);" class="icon" onclick="userBurger()">
-                            <i class="fas fa-user"></i>
-                        </a>
-                    }
-                    else
-                    {
-                        <div id="userBurger">
-                            <a alt="REGISTER" asp-area="Identity" asp-page="/Account/Register">REGISTER</a>
-                            <a alt="LOGIN" asp-area="Identity" asp-page="/Account/Login">LOGIN</a>
-                        </div>
-                        <a href="javascript:void(0);" class="icon" onclick="userBurger()">
-                            <i class="fas fa-user"></i>
-                        </a>
-                    }
+                @if (User.Identity.IsAuthenticated)
+                {
 
-                    <div id="myLinks">
-                        <a alt="HJEM" asp-controller="Home" asp-action="Index">HJEM</a>
-                        <a alt="PRODUKTER" asp-controller="Product" asp-action="Index">PRODUKTER</a>
-                        <a alt="KONTAKT" asp-controller="Contact" asp-action="Index">KONTAKT</a>
+                    <div id="userBurger">
+                        <a alt="logged in as: !" asp-controller="Account" asp-action="Profile" title="Manage">logged in as: !</a>
+                        <form asp-Controller="Account" asp-action="Logout">
+                            <button type="submit">Logout</button>
+                        </form>
                     </div>
-                </div>
-            </div>
+                    <a href="javascript:void(0);" class="icon" onclick="userBurger()">
+                        <i class="fas fa-user"></i>
+                    </a>
+                }
+                else
+                {
+                    <div id="userBurger">
+                        <a alt="REGISTER" asp-area="Identity" asp-page="/Account/Register">REGISTER</a>
+                        <a alt="LOGIN" asp-area="Identity" asp-page="/Account/Login">LOGIN</a>
+                    </div>
+                    <a href="javascript:void(0);" class="icon" onclick="userBurger()">
+                        <i class="fas fa-user"></i>
+                    </a>
+                }
 
-            @*----------------------------------------------NAVBAR DESKTOP------------------------------------------------*@
-
-            <div class="col-12 navbar">
-                <div class="navbar-wrap highlightTextIn">
-                    <a alt="NYKANT" asp-controller="Home" asp-action="Index"><span style="color:var(--blue)">NY</span>KANT</a>
+                <div id="myLinks">
+                    <a alt="HJEM" asp-controller="Home" asp-action="Index">HJEM</a>
                     <a alt="PRODUKTER" asp-controller="Product" asp-action="Index">PRODUKTER</a>
                     <a alt="KONTAKT" asp-controller="Contact" asp-action="Index">KONTAKT</a>
-
-                    <a class="icon" asp-controller="Bag" asp-action="Details"><span>@bagItemAmount</span> <i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
-
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <div id="userBurger2">
-                            <a href="https://localhost:5001/profile/personalinfo">
-                                Profil
-                            </a>
-                            <a asp-controller="Order" asp-action="History">
-                                Ordre Historik
-                            </a>
-                            <a asp-controller="Account" asp-action="Logout">
-                                Logout
-                            </a>
-                        </div>
-                        <a href="javascript:void(0);" class="icon" id="userLogo">
-                            <i class="fas fa-user"></i>
-                        </a>
-                    }
-                    else
-                    {
-                        <div id="userBurger2">
-                            <a asp-controller="Account" asp-action="Login" asp-route-redirectUrl="@url">
-                                Login or Register
-                            </a>
-                        </div>
-                        <a href="javascript:void(0);" class="icon" id="userLogo">
-                            <i class="fas fa-user"></i>
-                        </a>
-                    }
-
                 </div>
             </div>
-            @*----------------------------------------------------------------------------------------------*@
-        </div>
-        <div>
-
-            <main>
-                @RenderBody()
-            </main>
         </div>
 
-        <footer>
-            <div class="top-footer">
+        @*----------------------------------------------NAVBAR DESKTOP------------------------------------------------*@
 
-                <div class="socialmedia">
-                    <a href="#" class="icon"><i class="fab fa-facebook"></i></a>
-                </div>
+        <div class="col-12 navbar">
+            <div class="navbar-wrap highlightTextIn">
+                <a alt="NYKANT" asp-controller="Home" asp-action="Index"><span style="color:var(--blue)">NY</span>KANT</a>
+                <a alt="PRODUKTER" asp-controller="Product" asp-action="Index">PRODUKTER</a>
+                <a alt="KONTAKT" asp-controller="Contact" asp-action="Index">KONTAKT</a>
+
+                <a class="icon" asp-controller="Bag" asp-action="Details"><span>@bagItemAmount</span> <i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div id="userBurger2">
+                        <a href="https://localhost:5001/profile/personalinfo">
+                            Profil
+                        </a>
+                        <a asp-controller="Order" asp-action="History">
+                            Ordre Historik
+                        </a>
+                        <a asp-controller="Account" asp-action="Logout">
+                            Logout
+                        </a>
+                    </div>
+                    <a href="javascript:void(0);" class="icon" id="userLogo">
+                        <i class="fas fa-user"></i>
+                    </a>
+                }
+                else
+                {
+                    <div id="userBurger2">
+                        <a asp-controller="Account" asp-action="Login" asp-route-redirectUrl="@url">
+                            Login or Register
+                        </a>
+                    </div>
+                    <a href="javascript:void(0);" class="icon" id="userLogo">
+                        <i class="fas fa-user"></i>
+                    </a>
+                }
+
             </div>
-            <div class="bottom-footer">
-                <div class="copyright left">
-                    &copy; 2021 - Nykant ApS
-                </div>
-                <div class="policy-links right">
-                    <a asp-controller="Home" asp-action="PrivacyPolicy">Databeskyttelsespolitik</a>
-                    <a asp-controller="Home" asp-action="CookiePolicy">Cookie politik</a>
-                </div>
+        </div>
+        @*----------------------------------------------------------------------------------------------*@
+    </div>
+    <div>
+
+        <main>
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer>
+        <div class="top-footer">
+
+            <div class="socialmedia">
+                <a href="#" class="icon"><i class="fab fa-facebook"></i></a>
             </div>
-        </footer>
+        </div>
+        <div class="bottom-footer">
+            <div class="copyright left">
+                &copy; 2021 - Nykant ApS
+            </div>
+            <div class="policy-links right">
+                <a asp-controller="Home" asp-action="PrivacyPolicy">Databeskyttelsespolitik</a>
+                <a asp-controller="Home" asp-action="CookiePolicy">Cookie politik</a>
+            </div>
+        </div>
+    </footer>
 
 
 
