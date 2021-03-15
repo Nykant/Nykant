@@ -87,14 +87,27 @@ namespace NykantMVC.Controllers
             }
         }
 
-        public async Task<IActionResult> CapturePaymentIntent(string paymentIntentId)
+        public async Task<IActionResult> CapturePaymentIntent(int orderId)
         {
             StripeConfiguration.ApiKey = _configuration["StripeTESTKey"];
 
-            var service = new PaymentIntentService();
-            var paymentIntent = await service.CaptureAsync(paymentIntentId);
+            var json = await GetRequest($"/Order/GetOrder/{orderId}");
+            var order = JsonConvert.DeserializeObject<Models.Order>(json);
 
-            return Content(paymentIntent.Status);
+            var service = new PaymentIntentService();
+            var paymentIntent = await service.CaptureAsync(order.PaymentIntent_Id);
+
+            if(paymentIntent.StripeResponse.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                order.Status = Status.Succeeded;
+                await PatchRequest("/Order/UpdateOrder", order);
+
+                return Content(paymentIntent.StripeResponse.StatusCode.ToString());
+            }
+            else
+            {
+                return Content(paymentIntent.StripeResponse.StatusCode.ToString());
+            }
         }
     }
 }

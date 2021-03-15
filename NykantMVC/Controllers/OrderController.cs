@@ -24,6 +24,14 @@ namespace NykantMVC.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> AllOrders()
+        {
+            var json = await GetRequest("/Order/GetOrders");
+            List<Models.Order> list = JsonConvert.DeserializeObject<List<Models.Order>>(json);
+            return View(list);
+        }
+
+        [HttpGet]
         public async Task<IActionResult> History()
         {
             var json = await GetRequest($"/Order/GetOrders/{User.Claims.FirstOrDefault(x => x.Type == "sub").Value}");
@@ -124,7 +132,7 @@ namespace NykantMVC.Controllers
                 CustomerInfId = checkout.CustomerInfId,
                 PaymentIntent_Id = paymentIntentId,
                 ShippingDeliveryId = checkout.ShippingDeliveryId,
-                Status = Status.Accepted,
+                Status = Status.Pending,
                 TotalPrice = checkout.TotalPrice
             };
 

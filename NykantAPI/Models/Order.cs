@@ -35,9 +35,9 @@ namespace NykantAPI.Models
     public enum Status
     {
         Unset = 0,
-        Created = 1,
-        Accepted = 2,
-        Processed = 3,
-        Failed = 4
+        Pending = 1,
+        Succeeded = 2,
+        Received = 3,
+        Cancelled = 4
     }
 }

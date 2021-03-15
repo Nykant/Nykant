@@ -21,6 +21,13 @@ namespace NykantAPI.Controllers
             : base(logger, context)
         {
         }
+        [HttpGet]
+        public async Task<ActionResult<List<Order>>> GetOrders()
+        {
+            var orders = await _context.Orders.ToListAsync();
+
+            return Ok(JsonConvert.SerializeObject(orders));
+        }
 
         [HttpGet("{subject}")]
         public async Task<ActionResult<List<Order>>> GetOrders(string subject)
@@ -29,6 +36,28 @@ namespace NykantAPI.Controllers
 
             return Ok(JsonConvert.SerializeObject(orders));
         }
+
+        [HttpPatch]
+        public async Task<ActionResult<Order>> UpdateOrder(Order order)
+        {
+            if (ModelState.IsValid)
+            {
+                if (OrderExists(order.Id))
+                {
+                    _context.Orders.Update(order);
+                    await _context.SaveChangesAsync();
+                    return Ok();
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            else
+            {
+                return NotFound();
+            }
+        } 
 
         [HttpPost]
         public async Task<ActionResult<Order>> PostOrder(Order order)
