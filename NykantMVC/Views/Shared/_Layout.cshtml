@@ -40,7 +40,7 @@
             var bagItemAmount = Context.Session.Get<int>("verysecretseriouscheckoutsessionkeyspecial");
             var url = Context.Request.Path;
         }
-        <partial name="_PrivacySettingsPartial" />
+        
         <partial name="_CookieConsentPartial" />
         <div class="row">
 
@@ -147,11 +147,11 @@
             </div>
             <div class="bottom-footer">
                 <div class="copyright left">
-                    &copy; 2021 - Nykant
+                    &copy; 2021 - Nykant ApS
                 </div>
-                <div class="privacy left">
-                    <a asp-controller="Privacy" asp-action="Index">Privatliv</a>
-                    <a asp-controller="Privacy" asp-action="Index">Brugervilkår</a>
+                <div class="policy-links right">
+                    <a asp-controller="Home" asp-action="PrivacyPolicy">Databeskyttelsespolitik</a>
+                    <a asp-controller="Home" asp-action="CookiePolicy">Cookie politik</a>
                 </div>
             </div>
         </footer>

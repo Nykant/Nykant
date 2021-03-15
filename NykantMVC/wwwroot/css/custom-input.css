@@ -95,3 +95,16 @@ select:-webkit-autofill:focus {
         opacity: 0.5;
         color: black;
     }
+
+    .inputstyle .country-label {
+        user-select:none;
+        position:absolute;
+        transform:translateY(-30px);
+        color:grey;
+    }
+
+    #country-picker {
+        color:grey;
+    }
+
+

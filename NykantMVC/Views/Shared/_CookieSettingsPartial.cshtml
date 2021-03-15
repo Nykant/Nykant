@@ -4,11 +4,6 @@
     var consentFeature = Context.Features.Get<ITrackingConsentFeature>();
     var hasConsent = consentFeature.HasConsent;
 }
-<script>
-    completed = function (response) {
-        alert(`Hi ${response}!`);
-    };
-</script>
 
 <div class="privacy-settings" id="privacy-settings">
     <div class="mini-row">
@@ -18,12 +13,12 @@
         </button>
     </div>
 
-    <p>Vi tager din sikkerhed meget seriøst, derfor kan du selv styre hvad for noget data vi må gemme i din browser.</p>
-    <p>Hvis du vil vide nærmere hvad vi gemmer, og hvornår: </p> <a class="simple-link" asp-controller="Privacy" asp-action="Index">Tryk her</a>
+    <h3>Her kan du fravælge specifikke kategorier af cookies</h3>
+    <p>Hvis du vil vide nærmere hvad vi gemmer, og hvornår: </p> <a class="simple-link" asp-controller="Home" asp-action="PrivacyPolicy">Tryk her</a>
 
     <div class="settings">
-        <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="completed" asp-controller="Privacy" asp-action="UpdateConsent">
-            <h2>Privatlivs Preferencer</h2>
+        <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="completed" asp-controller="Home" asp-action="UpdateConsent">
+            <h2>Cookie Preferencer</h2>
             <div class="collapsible">
 
                 <button type="button" class="collapsible-button">Essentielle Cookies</button>
@@ -33,7 +28,7 @@
                     </h3>
                     <p>
                         Dem kan du ikke fravælge på vores hjemmeside, men hvis du ønsker at fravælge dem alligevel,
-                        kan du læse mere om hvordan man gør det <a class="simple-link" href="https://support.google.com/chrome/answer/95647?co=GENIE.Platform%3DDesktop&hl=en">her</a>
+                        kan du læse mere om hvordan man gør det i vores <a class="simple-link" asp-controller="home" asp-action="cookiepolicy">Cookie politik</a>
                     </p>
                     
                     <h3>

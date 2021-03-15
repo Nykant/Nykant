@@ -1,0 +1,124 @@
+﻿@using Microsoft.AspNetCore.Http.Features
+@{
+    var consentFeature = Context.Features.Get<ITrackingConsentFeature>();
+    var cookieString = consentFeature?.CreateConsentCookie();
+}
+<script src="~/JS/privacy.js" defer></script>
+<partial name="_CookieSettingsPartial" />
+<div class="row background-lightblue">
+    <div class="col-3 cookie-header center">
+        <h1>Nykants Cookie Politik</h1>
+
+    </div>
+    <div class="col-5 center cookie-buttons">
+        <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="done2" asp-controller="Home" asp-action="AllowNoneConsent">
+            <div class="col-4 left cookie-button">
+                <button type="submit" class="button" id="allow-none-button">
+                    Fravælg alle cookies
+                </button>
+            </div>
+        </form>
+
+        <div class="col-4 left cookie-button">
+            <button type="button" class="button" id="open-privacy1">
+                Instillinger
+            </button>
+        </div>
+        <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="done" asp-controller="Home" asp-action="AllowAllConsent">
+            <div class="col-4 left cookie-button">
+                <button class="button" id="allow-all-button" type="submit">
+                    Tillad alle cookies
+                </button>
+            </div>
+        </form>
+
+    </div>
+    <div class="notification3" id="cookie-notification">
+        <p id="cookie-notification-text"></p>
+    </div>
+    <div class="notification2" id="cookie-notification2">
+        <p id="cookie-notification-text2"></p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6 center privacy-information">
+        <div>
+            <h3>Med EUs nye regler for informationsindhentning og beskyttelse af persondata, undrer mange sig måske over hvad "cookies" i virkeligeheden er. Her finder du lidt information om disse informationskapsler og hvordan Nykant bruger dem.</h3>
+        </div>
+        <div>
+            <h1>Hjemmesidens ejer og kontaktoplysninger</h1>
+            <p>
+                <span style="font-weight:bold;">Denne hjemmeside er drevet og ejet af:</span><br />
+                Christian Salgård Svinding<br />
+                Annasholmsgade 14, 4<br />
+                5000 Odense C, Danmark.<br />
+                Telefonnr. til kundeservice: 27131499. E-mail: nykant.development@gmail.com
+            </p>
+        </div>
+        <div>
+            <h1>Hvad er en cookie?</h1>
+            <p>
+                En cookie er en lille tekst-fil, som vi gemmer på din computer for at kunne holde styr på, hvad der sker under dit besøg og for at kunne genkende computeren. En cookie indeholder kun tekst, er ikke et program og indeholder ikke virus.
+            </p>
+        </div>
+        <div>
+            <h1>Hjemmesidens brug af cookies</h1>
+            <p>Cookies er nødvendige for at få hjemmesiden til at fungere. Cookies hjælper os desuden med at få overblik over dit besøg på hjemmesiden, så vi løbende kan optimere og målrette hjemmesiden til dine behov og interesser. Cookies husker f.eks., hvad du har lagt i en eventuel indkøbskurv, om du tidligere har besøgt siden, om du er logget ind, hvilket sprog og valuta, du gerne vil have vist på hjemmesiden og dine cookie preferencer. Helt overordnet anvendes cookies således som del af vores hjemmesides essentielle funktioner for at give dig en god oplevelse. Her er oversigten over hjemmesidens brug af cookies:</p>
+        </div>
+        <div>
+            <h1>Sådan afviser eller sletter du dine cookies</h1>
+            <h2>Afvisning af nogle cookies:</h2>
+            <p class="pushed-text">
+                Du kan afvise alle de cookies som ikke er essentielle for vores hjemmesides funktionalitet ved at klikke (her) eller på knappen(Instillinger) under titlen på nuværende side.
+            </p>
+            <h2>Afvisning af alle cookies:</h2>
+            <p class="pushed-text">
+                Du kan altid afvise cookies på din computer ved at ændre indstillingerne i din Internet-browser. Hvor du finder indstillingerne afhænger af, hvilken browser du anvender. Du skal dog være opmærksom på, at hvis du gør det, er der mange funktioner og services, du ikke kan bruge, fordi disse funktioner og services forudsætter, at hjemmesiden kan huske de valg, du foretager.
+            </p>
+            <p>Du kan fravælge cookies fra Google Analytics <a href="http://tools.google.com/dlpage/gaoptout">her</a>.</p>
+            <h2>Sletning af cookies:</h2>
+            <p>
+                Cookies som du tidligere har accepteret, kan efterfølgende slettes nemt:
+            </p>
+            <p class="pushed-text">
+                Du kan gøre det ved at trykke (her) og vælg “Fravælg alle”.
+            </p>
+            <p class="pushed-text">
+                Eller hvis du benytter en PC /computer med en nyere Internet-browser, kan du slette dine cookies ved at bruge genvejstasterne:
+            </p>
+            <p class="pushed-text">
+                CTRL + SHIFT + Delete
+            </p>
+            <p>
+                Virker genvejstasterne ikke, og/eller benytter du en MAC, skal du starte med at finde ud af, hvilken browser du bruger og herefter klikke på det relevante link:
+            </p>
+            <p>
+                Husk: Bruger du flere Internet-browsere, skal du slette cookies i dem alle.
+            </p>
+            <div class="cookie-help-links">
+                <a href="http://windows.microsoft.com/da-dk/internet-explorer/delete-manage-cookies#ie=ie-11">Internet Explorer</a>
+                <a href="https://support.mozilla.org/da/kb/slet-cookies-fjerne-oplysninger-som-websteder-har-">Mozilla Firefox</a>
+                <a href="https://support.google.com/chrome/answer/95647?hl=da">Google Chrome</a>
+                <a href="https://www.opera.com/help/tutorials/security/cookies">Opera</a>
+                <a href="https://support.apple.com/da-dk/HT1677">Safari</a>
+                <a href="http://www.macromedia.com/support/documentation/en/flashplayer/help/settings_manager07.html">Flash cookies (alle browsere)</a>
+                <a href="https://support.apple.com/da-dk/HT1677">iPhone, iPad og andet fra Apple</a>
+                <a href="http://timeread.hubpages.com/hub/How-to-delete-internet-cookies-on-your-Droid-or-any-Android-device">Telefoner med Android styresystem</a>
+                <a href="http://www.windowsphone.com/da-dk/how-to/wp7/web/changing-privacy-and-other-browser-settings">Telefoner med Windows 7</a>
+            </div>
+
+        </div>
+        <div>
+            <h1>Har du spørgsmål?</h1>
+            <p>Har du kommentarer eller spørgsmål i forbindelse med vores information og/eller behandling af personlige oplysninger, er du velkommen til at kontakte os. </p>
+        </div>
+        <div>
+            @*------------------------- LISTE AF COOKIES ---------------------*@
+            <h1>LISTE AF COOKIES</h1>
+        </div>
+        <div>
+            <h3>Dit samtykke gælder for følgende domæner: nykant.dk</h3>
+        </div>
+    </div>
+
+</div>
