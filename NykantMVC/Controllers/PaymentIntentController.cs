@@ -27,7 +27,7 @@ namespace NykantMVC.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreatePaymentIntent()
+        public async Task<IActionResult> CreatePaymentIntent()
         {
             var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
             if (checkout == null)
@@ -66,6 +66,7 @@ namespace NykantMVC.Controllers
                     {
                         { "integration_check", "accept_a_payment" },
                     },
+                    CaptureMethod = "manual",
                 };
 
                 try
@@ -84,6 +85,16 @@ namespace NykantMVC.Controllers
             {
                 return RedirectToAction(nameof(CheckoutController.CustomerInf));
             }
+        }
+
+        public async Task<IActionResult> CapturePaymentIntent(string paymentIntentId)
+        {
+            StripeConfiguration.ApiKey = _configuration["StripeTESTKey"];
+
+            var service = new PaymentIntentService();
+            var paymentIntent = await service.CaptureAsync(paymentIntentId);
+
+            return Content(paymentIntent.Status);
         }
     }
 }
