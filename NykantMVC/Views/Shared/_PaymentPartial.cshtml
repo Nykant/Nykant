@@ -1,45 +1,10 @@
-﻿@model Checkout
-
-@{
-    ViewData["Title"] = "Payment";
-}
+﻿@model CheckoutVM
 
 <link rel="stylesheet" href="~/stripe/stripe.css" />
 <script src="~/stripe/client.js" defer></script>
 
 <div class="row bottom-side-padding fadein">
     <div class="col-8 col-wrapper center top-padding">
-        <div class="col-12 left">
-            <div class="breadcrumbs">
-                <a asp-controller="Bag" asp-action="Details">SHOPPING BAG</a>  >
-                <a asp-controller="Checkout" asp-action="CustomerInf" asp-route-edit="true">CUSTOMER INFORMATION</a>  >
-                <a asp-controller="Checkout" asp-action="ShippingDelivery" asp-route-edit="true">SHIPPING DELIVERY</a>  >
-                <a class="current">PAYMENT</a>
-            </div>
-        </div>
-
-        <div class="col-4 right fadein top-side-padding">
-            <div class="sidebar">
-                <div class="header">
-                    Bag
-                </div>
-                <div class="sidebar-items">
-                    @foreach (var item in Model.BagItems)
-                    {
-                        <div class="sidebar-item">
-                            <img src="~/images/gyngestol.jpg" />
-                            <p>@item.Product.Title</p>
-                            <p>@item.Quantity stk.</p>
-                        </div>
-                    }
-                    <div class="checkout-price">
-                        <p><span>shipping:</span> price</p>
-                        <p><span>taxes:</span> price</p>
-                        <p><span>total:</span> @Model.TotalPrice</p>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <form id="payment-form">
             <div class="col-8 left right-side-padding top-side-padding">
@@ -60,7 +25,6 @@
                         <div class="margin-top-20 card-element" id="card-element-expiry"><!--Stripe.js injects the Card Element--></div>
                         <div class="margin-top-20 card-element" id="card-element-cvc"><!--Stripe.js injects the Card Element--></div>
                     </div>
-
                 </div>
             </div>
 
@@ -75,7 +39,7 @@
             </div>
 
             <div class="col-4 right top-side-padding">
-                <button class="button" id="submit">
+                <button class="button" id="submit-payment">
                     <div class="spinner hidden" id="spinner"></div>
                     <span id="button-text">Pay</span>
                 </button>

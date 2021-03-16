@@ -1,5 +1,3 @@
-using System;
-
 namespace NykantMVC.Models.ViewModels
 {
     public class ErrorViewModel

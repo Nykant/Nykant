@@ -1,24 +1,15 @@
-using Microsoft.AspNetCore.Antiforgery;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.IdentityModel.Tokens.Jwt;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
-using System.IO;
 using NykantMVC.Models;
-using NykantMVC.Extensions;
 using NykantMVC.Services;
-using Microsoft.AspNetCore.DataProtection;
+using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.IO;
 
 namespace NykantMVC
 {

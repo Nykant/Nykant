@@ -1,22 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using NykantMVC.Extensions;
 using NykantMVC.Models;
-using NykantMVC.Models.ViewModels;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace NykantMVC.Controllers
 {
@@ -70,7 +60,7 @@ namespace NykantMVC.Controllers
             int price = 0;
             foreach (var item in items)
             {
-                for(int i = 0; i < item.Quantity; i++)
+                for (int i = 0; i < item.Quantity; i++)
                     price += item.Product.Price;
             }
             return price;

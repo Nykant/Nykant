@@ -1,14 +1,9 @@
 ﻿using IdentityModel.Client;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using NykantMVC.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -79,7 +74,7 @@ namespace NykantMVC.Controllers
 
         public async Task<HttpResponseMessage> PatchRequest(string url, object item)
         {
-            
+
             HttpClient client = new HttpClient();
 
             if (User.Identity.IsAuthenticated)

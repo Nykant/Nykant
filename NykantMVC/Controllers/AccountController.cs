@@ -1,17 +1,12 @@
-﻿using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using NykantMVC.Extensions;
 using NykantMVC.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using NykantMVC.Extensions;
-using Newtonsoft.Json;
 
 namespace NykantMVC.Controllers
 {
@@ -26,7 +21,7 @@ namespace NykantMVC.Controllers
         public IActionResult Logout()
         {
             int bagItemsCount = 0;
-            if(HttpContext.Session.Get<List<BagItem>>(BagSessionKey) != null)
+            if (HttpContext.Session.Get<List<BagItem>>(BagSessionKey) != null)
             {
                 bagItemsCount = HttpContext.Session.Get<List<BagItem>>(BagSessionKey).Count();
             }

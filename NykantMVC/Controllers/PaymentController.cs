@@ -5,12 +5,9 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using NykantMVC.Extensions;
 using NykantMVC.Models;
-using NykantMVC.Models.ViewModels;
 using NykantMVC.Services;
 using Stripe;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace NykantMVC.Controllers
@@ -26,28 +23,18 @@ namespace NykantMVC.Controllers
             _protectionService = protectionService;
         }
 
-        public class ConfirmPaymentRequest
-        {
-            [JsonProperty("payment_method_id")]
-            public string PaymentMethodId { get; set; }
-
-            [JsonProperty("payment_intent_id")]
-            public string PaymentIntentId { get; set; }
-        }
-
-
         [HttpPost]
-        public async Task<IActionResult> CreatePaymentIntent([FromBody] ConfirmPaymentRequest request)
+        public async Task<IActionResult> Payment([FromBody] string payment_method_id)
         {
             var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
             if (checkout == null)
             {
-                return RedirectToAction(nameof(CheckoutController.CustomerInf));
+                return RedirectToAction(nameof(CheckoutController.Checkout));
             }
 
             if (checkout.Stage == Stage.payment)
             {
-                //StripeConfiguration.ApiKey = _configuration["StripeTESTKey"];
+                StripeConfiguration.ApiKey = _configuration["StripeTESTKey"];
                 //var json = await GetRequest($"/Customer/GetCustomer/{checkout.CustomerInfId}");
                 //var customerInf = JsonConvert.DeserializeObject<CustomerInf>(json);
                 //customerInf = _protectionService.UnProtectCustomerInf(customerInf);
@@ -71,12 +58,12 @@ namespace NykantMVC.Controllers
                     //    Phone = customerInf.Phone,
                     //};
 
-                    if (request.PaymentMethodId != null)
+                    if (payment_method_id != null)
                     {
                         int.TryParse(checkout.TotalPrice, out int amount);
                         var PIoptions = new PaymentIntentCreateOptions
                         {
-                            PaymentMethod = request.PaymentMethodId,
+                            PaymentMethod = payment_method_id,
                             //Shipping = chargeShippingOptions,
                             Amount = amount,
                             Currency = "dkk",
@@ -86,15 +73,6 @@ namespace NykantMVC.Controllers
                         };
 
                         paymentIntent = paymentIntentService.Create(PIoptions);
-                    }
-
-                    if (request.PaymentIntentId != null)
-                    {
-                        var confirmOptions = new PaymentIntentConfirmOptions { };
-                        paymentIntent = paymentIntentService.Confirm(
-                            request.PaymentIntentId,
-                            confirmOptions
-                        );
                     }
                 }
                 catch (StripeException e)
@@ -107,8 +85,35 @@ namespace NykantMVC.Controllers
             }
             else
             {
-                return RedirectToAction(nameof(CheckoutController.CustomerInf));
+                return RedirectToAction(nameof(CheckoutController.Checkout));
             }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ConfirmPayment([FromBody] string payment_intent_id)
+        {
+            StripeConfiguration.ApiKey = _configuration["StripeTESTKey"];
+
+            PaymentIntentService paymentIntentService = new PaymentIntentService();
+            PaymentIntent paymentIntent = null;
+
+            try
+            {
+                if (payment_intent_id != null)
+                {
+                    var confirmOptions = new PaymentIntentConfirmOptions { };
+                    paymentIntent = paymentIntentService.Confirm(
+                        payment_intent_id,
+                        confirmOptions
+                    );
+                }
+            }
+            catch(StripeException e)
+            {
+                return Json(new { error = e.StripeError.Message });
+            }
+
+            return generatePaymentResponse(paymentIntent);
         }
 
         private IActionResult generatePaymentResponse(PaymentIntent intent)
@@ -125,11 +130,11 @@ namespace NykantMVC.Controllers
                     payment_intent_client_secret = intent.ClientSecret
                 });
             }
-            else if (intent.Status == "succeeded")
+            else if (intent.Status == "requires_capture")
             {
                 // The payment didn’t need any additional actions and completed!
                 // Handle post-payment fulfillment
-                return Json(new { success = true });
+                return Json(new { success = true, intentId = intent.Id });
             }
             else
             {
@@ -148,7 +153,7 @@ namespace NykantMVC.Controllers
             var service = new PaymentIntentService();
             var paymentIntent = await service.CaptureAsync(order.PaymentIntent_Id);
 
-            if(paymentIntent.StripeResponse.StatusCode == System.Net.HttpStatusCode.OK)
+            if (paymentIntent.StripeResponse.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 order.Status = Status.Succeeded;
                 await PatchRequest("/Order/UpdateOrder", order);

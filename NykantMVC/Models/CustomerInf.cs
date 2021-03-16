@@ -1,9 +1,5 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace NykantMVC.Models
 {
@@ -27,9 +23,6 @@ namespace NykantMVC.Models
         [StringLength(50)]
         [Display(Name = "Modtagers Addresse linje 1")]
         public string Address1 { get; set; }
-        [StringLength(50)]
-        [Display(Name = "Modtagers Addresse linje 2")]
-        public string Address2 { get; set; }
         [Required]
         [StringLength(20)]
         [Display(Name = "Modtagers By")]
