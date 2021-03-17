@@ -4,35 +4,40 @@
     var optionValue = 1;
 }
 
-<div class="row fadein bottom-side-padding top-padding ">
+<div class="row bottom-side-padding">
     <div class="col-8 center col-wrapper">
         <div class="col-8 left">
+            <div class="checkout-header" id="shipping-header">
+                <h1>Leveringsmetode</h1>
+                <div class="check-sign" id="shipping-check-sign">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                </div>
+            </div>
             <form id="shipping-form" method="post" data-ajax="true" data-ajax-method="post" data-ajax-complete="shipping_completed" asp-controller="Checkout" asp-action="PostShipping">
                 <input required type="hidden" id="shipping-delivery-id" name="shippingDeliveryId" asp-for="@Model.Checkout.ShippingDeliveryId" />
-
-                <div class="custom-list">
-                    <div id="custom-list-header" class="header">
-                        Choose Shipping
-                    </div>
-                    <div class="custom-list-options" id="custom-list-options">
-                        <select>
-                            <option value="0">
-                                Choose Shipping
-                            </option>
-                            @foreach (var item in Model.ShippingDeliveries)
-                            {
-                                <option value="@optionValue">
-                                    @item.Name
+                <div class="checkout-wrap" id="shipping-wrap">
+                    <div class="custom-list">
+                        <div class="custom-list-options" id="custom-list-options">
+                            <select>
+                                <option value="0">
+                                    Choose Shipping
                                 </option>
-                                optionValue += 1;
-                            }
-                        </select>
+                                @foreach (var item in Model.ShippingDeliveries)
+                                {
+                                    <option value="@optionValue">
+                                        @item.Name
+                                    </option>
+                                    optionValue += 1;
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-12 right">
+                        <button id="custom-list-button" class="button" type="submit">VÆLG LEVERINGS UDBYDER</button> @*------------- SUBMIT FORM --------------*@
                     </div>
                 </div>
-
-                <div class="col-4 right fadein top-side-padding">
-                    <button id="custom-list-button" class="button dark-card" type="submit">CHOOSE SHIPPING</button> @*------------- SUBMIT FORM --------------*@
-                </div>
+                
             </form>
         </div>
     </div>

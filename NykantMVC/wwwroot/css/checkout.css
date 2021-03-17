@@ -1,7 +1,7 @@
 ﻿
 .sidebar {
     position:fixed;
-    top:25%;
+    top:20%;
     right:50px;
     padding: 30px;
     color: black;
@@ -9,8 +9,9 @@
     min-height: 400px;
     margin-left: auto;
     margin-right: auto;
-    background-color:transparent;
-    border:2px solid black;
+    background-color:white;
+    border:3px solid var(--blue);
+    z-index:30;
 }
 
 .sidebar-items {
@@ -21,7 +22,7 @@
 .sidebar-item {
     display: flex;
     padding: 10px;
-    border-bottom: 2px solid black;
+    background-color:var(--light-blue);
 }
 
     .sidebar-item img {
@@ -30,6 +31,7 @@
     }
 
     .sidebar-item p {
+        padding-top:15px;
         padding-left:10px;
     }
 
@@ -43,11 +45,21 @@
 }
 
 .customerinfo {
-    padding: 30px;
-    padding-bottom:60px;
     height: auto;
-    border:2px solid black;
+    background-color: white;
+    overflow: hidden;
+    padding-bottom: 30px;
 }
+
+.checkout-wrap {
+    transform: translateY(-130%);
+}
+
+#customer-form {
+    overflow: hidden;
+}
+
+
 
 .customerinfo-line {
     padding:50px;
@@ -92,4 +104,44 @@
 
 .info {
     border: 2px solid black;
+}
+
+
+.checkout-header {
+    background-color:var(--light-blue);
+    height:auto;
+    width:100%;
+    cursor:pointer;
+}
+
+.checkout-header h1 {
+    padding-top:30px;
+    padding-bottom:30px;
+}
+
+.check-sign {
+    position:absolute;
+    font-size:40px;
+    color:green;
+    transform:translate(+500px, -60px);
+    display: none;
+}
+
+
+
+
+
+
+#shipping-form {
+    overflow:hidden;
+}
+
+@keyframes checkout-header {
+    from {
+        transform: translateY(-130%);
+    }
+}
+
+#payment-form {
+    overflow: hidden;
 }

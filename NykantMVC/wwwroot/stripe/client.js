@@ -7,7 +7,7 @@ var elements = stripe.elements();
 var style = {
     base: {
         backgroundColor: "transparent",
-        textAlign: "center",
+        textAlign: "left",
         color: "black",
         fontFamily: 'Lato, sans-serif',
         fontSmoothing: "antialiased",
@@ -47,13 +47,18 @@ cardCvc.mount("#card-element-cvc");
 var form = document.getElementById("payment-form");
 form.addEventListener("submit", function (event) {
     event.preventDefault();
-    stripe.createPaymentMethod({
-        type: 'card',
-        card: cardNumber,
-        billing_details: {
-            name: document.getElementById('cardholder-name').value,
-        }
-    }).then(stripePaymentMethodHandler)
+    if (document.getElementById("shipping-form-complete").value == 0 || document.getElementById("customer-form-complete").value == 0) {
+        showError("Du skal udfylde både kunde oplysninger og leveringsmetode formularerne før du kan færdiggøre ordren");
+    }
+    else {
+        stripe.createPaymentMethod({
+            type: 'card',
+            card: cardNumber,
+            billing_details: {
+                name: document.getElementById('cardholder-name').value,
+            }
+        }).then(stripePaymentMethodHandler)
+    }
 });
 
 
