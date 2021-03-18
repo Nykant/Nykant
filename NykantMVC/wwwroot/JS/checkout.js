@@ -86,13 +86,19 @@ customer_completed = function () {
     postal_summary.innerHTML = postal_input.value;
     address_summary.innerHTML = address_input.value;
 
-    customer_wrap.style.transform = "translateY(-130%)";
+    customer_wrap.style.transform = "translateY(-100%)";
     customer_form.style.height = "0px";
 
     if (shipping_form_complete.value == 0) {
         shipping_form.style.height = "auto";
         shipping_wrap.style.transform = "translateY(0%)";
     };
+
+
+
+    $('html,body').animate({
+        scrollTop: $("#shipping-form").offset().top
+    }, 'slow');
 };
 
 shipping_completed = function () {
@@ -109,9 +115,15 @@ shipping_completed = function () {
     shipping_method_summary.innerHTML = shipping_delivery_name.value;
 
     shipping_form.style.height = "0px";
-    shipping_wrap.style.transform = "translateY(-130%)";
+    shipping_wrap.style.transform = "translateY(-100%)";
     payment_form.style.height = "auto";
     payment_wrap.style.transform = "translateY(0%)";
+
+
+        $('html,body').animate({
+            scrollTop: $("#payment-form").offset().top
+        }, 'slow');
+
 };
 
 shipping_edit_button.addEventListener("click", function () {
@@ -131,7 +143,9 @@ shipping_edit_button.addEventListener("click", function () {
 
 customer_edit_button.addEventListener("click", function () {
     document.getElementById("edit-customer").value = true;
-    customer_form.style.transform = "translateY(0%)";
+    customer_form.style.transition = "all 0s";
+    $("#customer-form").css("transform", "translateY(0%)");
+
     $("#customer-wrap").css("transition", "all 1s");
     customer_form.style.transition = "all 1s";
 
