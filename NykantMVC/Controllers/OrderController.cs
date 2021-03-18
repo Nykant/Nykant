@@ -130,7 +130,7 @@ namespace NykantMVC.Controllers
                 Currency = "dkk",
                 CustomerInfId = checkout.CustomerInfId,
                 PaymentIntent_Id = paymentIntentId,
-                ShippingDeliveryId = checkout.ShippingDeliveryId,
+                ShippingDeliveryId = checkout.ShippingDelivery.Id,
                 Status = Status.Pending,
                 TotalPrice = checkout.TotalPrice
             };

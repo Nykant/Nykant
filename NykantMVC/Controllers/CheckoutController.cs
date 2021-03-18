@@ -56,7 +56,8 @@ namespace NykantMVC.Controllers
                         {
                             BagItems = bagItemsDb,
                             Stage = Stage.customerInf,
-                            TotalPrice = CalculateAmount(bagItemsDb).ToString()
+                            TotalPrice = CalculateAmount(bagItemsDb).ToString(),
+                            ShippingDelivery = new ShippingDelivery()
                         };
                         HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
 
@@ -65,7 +66,7 @@ namespace NykantMVC.Controllers
                             CustomerInf = new CustomerInf(),
                             ShippingDeliveries = shippingDeliveries,
                             Checkout = checkout,
-                            CardInfo = new CardInfo()
+                            CardInfo = new CardInfo(),
                         };
 
                         return View(checkoutVM);
@@ -88,6 +89,7 @@ namespace NykantMVC.Controllers
                             BagItems = bagItemsSession,
                             Stage = Stage.customerInf,
                             TotalPrice = CalculateAmount(bagItemsSession).ToString(),
+                            ShippingDelivery = new ShippingDelivery()
                         };
                         HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
 
@@ -134,13 +136,13 @@ namespace NykantMVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostCustomerInf(CustomerInf customerInf)
+        public async Task<IActionResult> PostCustomerInf(CustomerInf customerInf, bool editCustomer)
         {
             if (ModelState.IsValid)
             {
                 var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
 
-                if (checkout.Stage == Stage.customerInf)
+                if (checkout.Stage == Stage.customerInf || editCustomer)
                 {
                     customerInf = _protectionService.ProtectCustomerInf(customerInf);
                     var response = await PostRequest("/Customer/PostCustomer", customerInf);
@@ -157,7 +159,11 @@ namespace NykantMVC.Controllers
                             checkout.CustomerInfId = customerInf.Id;
                         }
 
-                        checkout.Stage = Stage.shipping;
+                        if (!editCustomer)
+                        {
+                            checkout.Stage = Stage.shipping;
+                        }
+
                         HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
                         return NoContent();
                     }
@@ -172,14 +178,19 @@ namespace NykantMVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostShipping(int shippingDeliveryId)
+        public async Task<IActionResult> PostShipping(ShippingDelivery shippingDelivery, bool editShipping)
         {
             var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
 
-            if (checkout.Stage == Stage.shipping)
+            if (checkout.Stage == Stage.shipping || editShipping)
             {
-                checkout.ShippingDeliveryId = shippingDeliveryId;
-                checkout.Stage = Stage.payment;
+                checkout.ShippingDelivery = shippingDelivery;
+
+                if (!editShipping)
+                {
+                    checkout.Stage = Stage.payment;
+                }
+
                 HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
                 return NoContent();
             }

@@ -12,9 +12,16 @@
                 <div class="check-sign" id="shipping-check-sign">
                     <i class="fa fa-check" aria-hidden="true"></i>
                 </div>
+                <div id="shipping-summary">
+                    <p>leveringsmetode: <span id="shipping-method-summary">@Model.Checkout.ShippingDelivery.Name</span></p>
+                </div>
+                <button class="button edit-button" id="shipping-edit-button">RET</button>
             </div>
             <form id="shipping-form" method="post" data-ajax="true" data-ajax-method="post" data-ajax-complete="shipping_completed" asp-controller="Checkout" asp-action="PostShipping">
-                <input required type="hidden" id="shipping-delivery-id" name="shippingDeliveryId" asp-for="@Model.Checkout.ShippingDeliveryId" />
+                <input type="hidden" id="edit-shipping" name="editShipping" />
+                <input required type="hidden" id="shipping-delivery-id" name="shippingDelivery.Id" asp-for="@Model.Checkout.ShippingDelivery.Id" />
+                <input required type="hidden" id="shipping-delivery-name" name="shippingDelivery.Name" asp-for="@Model.Checkout.ShippingDelivery.Name" />
+                <input required type="hidden" id="shipping-delivery-name" name="shippingDelivery.Price" asp-for="@Model.Checkout.ShippingDelivery.Price" />
                 <div class="checkout-wrap" id="shipping-wrap">
                     <div class="custom-list">
                         <div class="custom-list-options" id="custom-list-options">
@@ -37,11 +44,9 @@
                         <button id="custom-list-button" class="button" type="submit">VÆLG LEVERINGS UDBYDER</button> @*------------- SUBMIT FORM --------------*@
                     </div>
                 </div>
-                
+
             </form>
         </div>
     </div>
 </div>
 
-<script src="~/JS/shipping.js"></script>
-<script src="~/JS/custom-list.js"></script>

@@ -46,6 +46,7 @@ cardCvc.mount("#card-element-cvc");
 
 var form = document.getElementById("payment-form");
 form.addEventListener("submit", function (event) {
+    loading(true);
     event.preventDefault();
     if (document.getElementById("shipping-form-complete").value == 0 || document.getElementById("customer-form-complete").value == 0) {
         showError("Du skal udfylde både kunde oplysninger og leveringsmetode formularerne før du kan færdiggøre ordren");

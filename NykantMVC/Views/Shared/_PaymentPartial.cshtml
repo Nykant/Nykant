@@ -1,8 +1,6 @@
 ﻿@model CheckoutVM
 
-<link rel="stylesheet" href="~/stripe/stripe.css" />
-<script src="~/stripe/client.js" defer></script>
-<script src="~/JS/payment.js" defer></script>
+
 
 <div class="row bottom-side-padding">
     <div class="col-8 col-wrapper center">
@@ -10,7 +8,7 @@
         
         <div class="col-8 left">
             <div class="checkout-header" id="payment-header">
-                <h1>Kort Oplysninger</h1>
+                <h1>Betalingsmetode</h1>
             </div>
             <form id="payment-form">
                 <div class="checkout-wrap" id="payment-wrap">
@@ -49,7 +47,7 @@
             </form>
         </div>
 
-        <div class="col-8 left right-side-padding top-side-padding">
+        @*<div class="col-8 left right-side-padding top-side-padding">
             <div class="padding">
                 <h1>TEST CARDS</h1>
                 <div class="header">
@@ -68,7 +66,7 @@
                     <p>expiration date and cvc can be anything</p>
                 </div>
             </div>
-        </div>
+        </div>*@
     </div>
 </div>
 

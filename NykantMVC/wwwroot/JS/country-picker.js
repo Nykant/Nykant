@@ -1,5 +1,5 @@
 ﻿var country_picker = document.getElementById("country-picker");
-var country_input = document.getElementById("country-input");
+var country_input = document.getElementById("customer-country-input");
 var customer_wrap = document.getElementById("customer-form");
 var country_error = document.getElementById("country-error");
 
