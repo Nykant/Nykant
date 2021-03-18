@@ -74,6 +74,7 @@ customer_completed = function () {
     shipping_wrap.style.transition = "all 1s";
     shipping_form.style.transition = "all 1s";
     customer_wrap.style.transition = "all 1s";
+    customer_form.style.transition = "all 1s";
 
     customer_edit_button.style.display = "block";
     firstname_summary.innerHTML = firstname_input.value;
@@ -85,8 +86,8 @@ customer_completed = function () {
     postal_summary.innerHTML = postal_input.value;
     address_summary.innerHTML = address_input.value;
 
-    customer_form.style.height = "0px";
     customer_wrap.style.transform = "translateY(-130%)";
+    customer_form.style.height = "0px";
 
     if (shipping_form_complete.value == 0) {
         shipping_form.style.height = "auto";
@@ -118,13 +119,14 @@ shipping_edit_button.addEventListener("click", function () {
 
     shipping_wrap.style.transition = "all 1s";
     shipping_form.style.transition = "all 1s";
-    shipping_form.style.height = "auto";
-    shipping_wrap.style.transform = "translateY(0%)";
 
     shipping_form_complete.value = 0;
     shipping_check_sign.style.display = "none";
     shipping_summary.style.display = "none";
     shipping_edit_button.style.display = "none";
+
+    shipping_form.style.height = "auto";
+    shipping_wrap.style.transform = "translateY(0%)";
 });
 
 customer_edit_button.addEventListener("click", function () {
@@ -132,11 +134,12 @@ customer_edit_button.addEventListener("click", function () {
 
     $("#customer-wrap").css("transition", "all 1s");
     customer_form.style.transition = "all 1s";
-    customer_form.style.height = "auto";
-    $("#customer-wrap").css("transform", "translateY(0%)");
 
     customer_form_complete.value = 0;
     customer_check_sign.style.display = "none";
     customerinf_summary.style.display = "none";
     customer_edit_button.style.display = "none";
+
+    customer_form.style.height = "auto";
+    $("#customer-wrap").css("transform", "translateY(0%)");
 });
