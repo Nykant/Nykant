@@ -131,7 +131,7 @@ shipping_edit_button.addEventListener("click", function () {
 
 customer_edit_button.addEventListener("click", function () {
     document.getElementById("edit-customer").value = true;
-
+    customer_form.style.transform = "translateY(0%)";
     $("#customer-wrap").css("transition", "all 1s");
     customer_form.style.transition = "all 1s";
 

@@ -2,8 +2,8 @@
 
 <div class="row bottom-side-padding top-padding">
     <div class="col-8 center col-wrapper">
-        <div class="col-8 left">
-            <div class="checkout-header" id="customerInf-header">
+        <div class="col-8 left hide-overflow">
+            <div class="checkout-header" id="customerInf-header" style="z-index:200;">
                 <h1>Modtager oplysninger</h1>
                 <div class="check-sign" id="customer-check-sign">
                     <i class="fa fa-check" aria-hidden="true"></i>
@@ -23,7 +23,7 @@
 
             </div>
 
-            <form id="customer-form" method="post" data-ajax="true" data-ajax-method="post" data-ajax-complete="customer_completed" asp-controller="Checkout" asp-action="PostCustomerInf">
+            <form style="z-index:50;" id="customer-form" method="post" data-ajax="true" data-ajax-method="post" data-ajax-complete="customer_completed" asp-controller="Checkout" asp-action="PostCustomerInf">
                 <input type="hidden" id="edit-customer" name="editCustomer" value="false" />
                 <input type="hidden" asp-for="@Model.CustomerInf.Id" />
                 <div class="checkout-wrap" id="customer-wrap" >
