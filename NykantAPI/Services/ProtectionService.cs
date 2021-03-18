@@ -22,10 +22,6 @@ namespace NykantAPI.Services
             customerInf.Email = _customerProtector.Protect(customerInf.Email);
             customerInf.FirstName = _customerProtector.Protect(customerInf.FirstName);
             customerInf.Address1 = _customerProtector.Protect(customerInf.Address1);
-            if (customerInf.Address2 != null)
-            {
-                customerInf.Address2 = _customerProtector.Protect(customerInf.Address2);
-            }
             customerInf.City = _customerProtector.Protect(customerInf.City);
             customerInf.Country = _customerProtector.Protect(customerInf.Country);
             customerInf.LastName = _customerProtector.Protect(customerInf.LastName);
@@ -47,10 +43,6 @@ namespace NykantAPI.Services
             customerInf.Email = _customerProtector.Unprotect(customerInf.Email);
             customerInf.FirstName = _customerProtector.Unprotect(customerInf.FirstName);
             customerInf.Address1 = _customerProtector.Unprotect(customerInf.Address1);
-            if (customerInf.Address2 != null)
-            {
-                customerInf.Address2 = _customerProtector.Unprotect(customerInf.Address2);
-            }
             customerInf.City = _customerProtector.Unprotect(customerInf.City);
             customerInf.Country = _customerProtector.Unprotect(customerInf.Country);
             customerInf.LastName = _customerProtector.Unprotect(customerInf.LastName);

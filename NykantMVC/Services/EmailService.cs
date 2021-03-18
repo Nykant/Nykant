@@ -4,9 +4,6 @@ using Microsoft.Extensions.Options;
 using MimeKit;
 using MimeKit.Utils;
 using NykantMVC.Models;
-using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -32,7 +29,7 @@ namespace NykantMVC.Services
             email.Subject = "Nykant Order";
 
             var bodyBuilder = new BodyBuilder();
-            for(int i = 0; i < order.OrderItems.Count(); i++)
+            for (int i = 0; i < order.OrderItems.Count(); i++)
             {
                 var image = bodyBuilder.LinkedResources.Add(order.OrderItems[i].Product.Path);
                 image.ContentId = MimeUtils.GenerateMessageId();

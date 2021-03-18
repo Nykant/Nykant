@@ -1,0 +1,72 @@
+﻿@model CheckoutVM
+
+
+
+<div class="row bottom-side-padding">
+    <div class="col-8 col-wrapper center">
+
+        
+        <div class="col-8 left">
+            <div class="checkout-header" id="payment-header">
+                <h1>Betalingsmetode</h1>
+            </div>
+            <form id="payment-form">
+                <div class="checkout-wrap" id="payment-wrap">
+                    <div class="payment-elements">
+                        <div class="cardinfo-line">
+                            <div class="inputstyle left">
+                                <input required id="cardholder-name" asp-for="@Model.CardInfo.Card_OwnerName" />
+                                <label asp-for="@Model.CardInfo.Card_OwnerName"></label>
+                                <span asp-validation-for="@Model.CardInfo.Card_OwnerName"></span>
+                                <div class="underline"></div>
+                            </div>
+                        </div>
+                        <div class="payment-elements-thing" id="payment-elements-thing">
+                            <div class="card-element" id="card-element-number"><!--Stripe.js injects the Card Element--></div>
+                            <div class="margin-top-20 card-element" id="card-element-expiry"><!--Stripe.js injects the Card Element--></div>
+                            <div class="margin-top-20 card-element" id="card-element-cvc"><!--Stripe.js injects the Card Element--></div>
+                        </div>
+                    </div>
+                    <div class="col-12 left hidden" id="payment-error">
+                        <div class="payment-error">
+                            <p id="card-error" role="alert"></p>
+                            <p class="result-message hidden">
+                                Payment succeeded, see the result in your
+                                <a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay again.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-12 right">
+                        <button class="button" id="submit-payment">
+                            <div class="spinner hidden" id="spinner"></div>
+                            <span id="button-text">Betal</span>
+                        </button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+
+        @*<div class="col-8 left right-side-padding top-side-padding">
+            <div class="padding">
+                <h1>TEST CARDS</h1>
+                <div class="header">
+                    <p>without 2D authentication:</p>
+                    <p>4242 4242 4242 4242</p>
+                    <p>expiration date and cvc can be anything</p>
+                </div>
+                <div class="header">
+                    <p>with 2D authentication:</p>
+                    <p>4000 0025 0000 3155</p>
+                    <p>expiration date and cvc can be anything</p>
+                </div>
+                <div class="header">
+                    <p>always fail payment:</p>
+                    <p>4000 0000 0000 9995</p>
+                    <p>expiration date and cvc can be anything</p>
+                </div>
+            </div>
+        </div>*@
+    </div>
+</div>
+

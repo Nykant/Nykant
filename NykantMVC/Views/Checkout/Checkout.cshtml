@@ -1,0 +1,37 @@
+﻿@model CheckoutVM
+
+@{
+    ViewData["Title"] = "Checkout";
+    int stage = 0;
+    if (Model.Checkout.Stage == Stage.customerInf)
+    {
+        stage = (int)Stage.customerInf;
+    }
+    else if(Model.Checkout.Stage == Stage.shipping)
+    {
+        stage = (int)Stage.shipping;
+    }
+    else if(Model.Checkout.Stage == Stage.payment)
+    {
+        stage = (int)Stage.payment;
+    }
+}
+<input type="hidden" id="stage" value="@stage" />
+<link rel="stylesheet" href="~/stripe/stripe.css" />
+
+<script src="~/JS/checkout.js" defer></script>
+<script src="~/JS/country-picker.js" defer></script>
+<script src="~/JS/custom-list.js" defer></script>
+<script src="~/stripe/client.js" defer></script>
+
+<div class="background-lightgrey">
+    <partial name="_CheckoutBagPartial" />
+
+    <input type="hidden" id="customer-form-complete" value="0" />
+    <partial name="_CustomerInfPartial" />
+
+    <input type="hidden" id="shipping-form-complete" value="0" />
+    <partial name="_ShippingDeliveryPartial" />
+
+    <partial name="_PaymentPartial" />
+</div>

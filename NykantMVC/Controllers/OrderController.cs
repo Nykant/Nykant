@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using NykantMVC.Extensions;
 using NykantMVC.Models;
 using NykantMVC.Services;
-using Stripe;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,7 +51,7 @@ namespace NykantMVC.Controllers
             var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
             if (checkout == null)
             {
-                return RedirectToAction(nameof(CheckoutController.CustomerInf));
+                return RedirectToAction(nameof(CheckoutController.Checkout));
             }
 
             if (checkout.Stage == Stage.payment)
@@ -80,11 +78,11 @@ namespace NykantMVC.Controllers
                     return NotFound();
                 }
                 order.OrderItems = orderItems;
-                foreach(var item in order.OrderItems)
+                foreach (var item in order.OrderItems)
                 {
-                    foreach(var bagItem in checkout.BagItems)
+                    foreach (var bagItem in checkout.BagItems)
                     {
-                        if(bagItem.ProductId == item.ProductId)
+                        if (bagItem.ProductId == item.ProductId)
                         {
                             item.Product = bagItem.Product;
                         }
@@ -119,7 +117,7 @@ namespace NykantMVC.Controllers
             }
             else
             {
-                return RedirectToAction(nameof(CheckoutController.CustomerInf));
+                return RedirectToAction(nameof(CheckoutController.Checkout));
             }
         }
 
@@ -132,7 +130,7 @@ namespace NykantMVC.Controllers
                 Currency = "dkk",
                 CustomerInfId = checkout.CustomerInfId,
                 PaymentIntent_Id = paymentIntentId,
-                ShippingDeliveryId = checkout.ShippingDeliveryId,
+                ShippingDeliveryId = checkout.ShippingDelivery.Id,
                 Status = Status.Pending,
                 TotalPrice = checkout.TotalPrice
             };

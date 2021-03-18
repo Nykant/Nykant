@@ -1,19 +1,5 @@
-﻿using FluentEmail.Core;
-using FluentEmail.Razor;
-using FluentEmail.Smtp;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Logging;
-using NykantMVC.Extensions;
-using NykantMVC.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using MimeKit;
-using MimeKit.Text;
-using MailKit.Net.Smtp;
-using NykantMVC.Models.ViewModels;
 using NykantMVC.Services;
 
 namespace NykantMVC.Controllers

@@ -3,9 +3,10 @@ x = document.getElementsByClassName("custom-list");
 l = x.length;
 
 var elem = document.getElementById("custom-list-options");
-var header = document.getElementById("custom-list-header");
 var button = document.getElementById("custom-list-button");
-var shippingdeliveryid = document.getElementById("shipping-delivery-id");
+var shippingdelivery_id = document.getElementById("shipping-delivery-id");
+var shippingdelivery_name = document.getElementById("shipping-delivery-name");
+var shippingdelivery_price = document.getElementById("shipping-delivery-price");
 button.disabled = true;
 
 for (i = 0; i < l; i++) {
@@ -21,12 +22,12 @@ for (i = 0; i < l; i++) {
             select = this.parentNode.parentNode.getElementsByTagName("select")[0];
             selectlength = select.length;
             h = this.parentNode.previousSibling;
-            for (i = 0; i < selectlength; i++) {
+            for (i = 1; i < selectlength; i++) {
                 if (select.options[i].innerHTML == this.innerHTML) {
                     select.selectedIndex = i;
-                    shippingdeliveryid.value = i;
-                    header.innerHTML = this.innerHTML;
-                    button.innerHTML = "CONTINUE";
+                    shippingdelivery_id.value = i;
+                    shippingdelivery_name.value = select.options[i].innerHTML;
+                    button.innerHTML = "VIDERE";
                     button.disabled = false;
                     y = this.parentNode.getElementsByClassName("custom-list-option selected");
                     yl = y.length;

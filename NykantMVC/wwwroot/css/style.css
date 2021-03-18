@@ -11,7 +11,7 @@
     --blue: #7ed8ff;
     --dark: #303030;
     --red: #ff5f5f;
-    --light-grey: #c1c1c1;
+    --light-grey: #ededed;
     --dark-grey: #2b2b2b;
     --light-blue: #e8f8ff;
     --small: 8px;
@@ -399,6 +399,9 @@ footer span {
 .background-lightblue {
     background-color: var(--light-blue);
 }
+.background-lightgrey {
+    background-color: var(--light-grey);
+}
 
 .border-bottom {
     border-bottom: 1px solid var(--black-fade);
@@ -413,4 +416,13 @@ footer span {
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 100;
     display: none;
+}
+
+.hide-overflow {
+    overflow:hidden;
+}
+
+.no-space {
+    height:0px;
+    width:0px;
 }

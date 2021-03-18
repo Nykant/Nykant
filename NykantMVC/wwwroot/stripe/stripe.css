@@ -12,24 +12,20 @@
 }*/
 
 .cardinfo-line {
-    padding-left: 50px;
-    padding-right: 50px;
-    min-width: 420px;
-    padding-bottom:70px;
+    padding-bottom: 50px;
 }
 
 .payment-elements {
+    height: auto;
+    background-color: white;
+    overflow: hidden;
     padding: 30px;
-    background-color:transparent;
-    border:2px solid black;
 }
 
 .payment-elements-thing {
     margin-top:20px;
-    border: 2px solid black;
-    padding: 20px;
-    margin-left: 60px;
-    margin-right: 60px;
+    text-align:left;
+    padding:20px;
 }
 
 .payment-invalid {
@@ -49,7 +45,8 @@
 
 .payment-error{
     padding:30px;
-
+    padding-top:0px;
+    background-color:white;
 }
     .payment-error p {
         color: var(--red);
@@ -71,7 +68,6 @@
     color: var(--red);
     text-align: center;
     font-size: 20px;
-    margin-top: 12px;
 }
 
 /* spinner/processing state, errors */

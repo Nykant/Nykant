@@ -1,17 +1,12 @@
-﻿using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using NykantMVC.Extensions;
 using NykantMVC.Models;
 using NykantMVC.Models.ViewModels;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace NykantMVC.Controllers
@@ -42,7 +37,7 @@ namespace NykantMVC.Controllers
                     }
                 }
 
-                if(bagItem.Quantity <= 0)
+                if (bagItem.Quantity <= 0)
                 {
                     var response = await DeleteRequest($"/BagItem/DeleteBagItem/{bagItem.Subject}/{bagItem.ProductId}");
 
@@ -70,9 +65,9 @@ namespace NykantMVC.Controllers
             {
                 var bagItems = HttpContext.Session.Get<List<BagItem>>(BagSessionKey);
 
-                for(int i = 0; i < bagItems.Count(); i++)
+                for (int i = 0; i < bagItems.Count(); i++)
                 {
-                    if(bagItems[i].ProductId == bagItem.ProductId)
+                    if (bagItems[i].ProductId == bagItem.ProductId)
                     {
                         switch (selection)
                         {
@@ -99,7 +94,7 @@ namespace NykantMVC.Controllers
                         }
                     }
                 }
-                
+
                 HttpContext.Session.Set<List<BagItem>>(BagSessionKey, bagItems);
                 return RedirectToAction("Details", "Bag");
             }
@@ -133,9 +128,9 @@ namespace NykantMVC.Controllers
                 }
 
                 bool bagItemExists = false;
-                foreach(var item in bagItems)
+                foreach (var item in bagItems)
                 {
-                    if(item.ProductId == bagItem.ProductId)
+                    if (item.ProductId == bagItem.ProductId)
                     {
                         bagItemExists = true;
                         item.Quantity += productQuantity;
@@ -190,9 +185,9 @@ namespace NykantMVC.Controllers
 
         private bool BagItemExists(List<BagItem> list, BagItem bagItem)
         {
-            foreach(var item in list)
+            foreach (var item in list)
             {
-                if(item.ProductId == bagItem.ProductId && item.Subject == bagItem.Subject)
+                if (item.ProductId == bagItem.ProductId && item.Subject == bagItem.Subject)
                 {
                     return true;
                 }
