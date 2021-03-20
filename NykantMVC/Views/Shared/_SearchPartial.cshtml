@@ -1,0 +1,26 @@
+﻿@{
+    if (ViewBag.ProductList == null)
+    {
+        ViewBag.ProductList = new List<Product>();
+    }
+}
+<div id="search-box">
+    <form id="search-form" asp-controller="home" asp-action="search" method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#search-container">
+        <input type="search" id="search-input" name="searchString" placeholder="hvad leder du efter?.." />
+    </form>
+</div>
+<div id="search-result">
+    <h1>Resultater</h1>
+    @foreach (Product item in ViewBag.ProductList)
+    {
+        <a asp-controller="product" asp-action="details" asp-route-id="@item.Id">
+            <div class="search-item">
+                <img src="@item.ImageSource" />
+                <p>@item.Title</p>
+                <p>@item.Price</p>
+                <p>dkk,-</p>
+            </div>
+        </a>
+
+    }
+</div>

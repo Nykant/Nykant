@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using NykantMVC.Models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace NykantMVC.Controllers
@@ -63,6 +66,26 @@ namespace NykantMVC.Controllers
             var consentFeature = HttpContext.Features.Get<ITrackingConsentFeature>();
             consentFeature.WithdrawConsent();
             return Content("Du har fravalgt brugen af alle cookies, og cookies du før havde tilladt, er blevet slettet.");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Search(string searchString)
+        {
+            var json = await GetRequest("/Product/GetProducts");
+            var searchList = new List<Product>();
+            foreach(var product in JsonConvert.DeserializeObject<List<Product>>(json))
+            {
+                if (product.Title.ToLower().Contains(searchString.ToLower()))
+                {
+                    searchList.Add(product);
+                }
+            }
+            ViewBag.ProductList = searchList;
+            return new PartialViewResult
+            {
+                ViewName = "_SearchPartial",
+                ViewData = this.ViewData
+            };
         }
     }
 }

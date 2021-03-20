@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="~/css/front-page.css" />
     <link rel="stylesheet" href="~/css/privacy.css" />
     <link rel="stylesheet" href="~/css/custom-switch.css" />
+    <link rel="stylesheet" href="~/css/search.css" />
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/jquery-validation/dist/additional-methods.min.js"></script>
@@ -33,6 +34,7 @@
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.unobtrusive-ajax/3.2.5/jquery.unobtrusive-ajax.min.js"></script>
     <script src="https://js.stripe.com/v3/"></script>
+    
 </head>
 <body>
 
@@ -41,7 +43,10 @@
         var bagItemAmount = Context.Session.Get<int>("verysecretseriouscheckoutsessionkeyspecial");
         var url = Context.Request.Path;
     }
-
+    <div id="search-container">
+        <partial name="_SearchPartial" />
+    </div>
+    
     <partial name="_CookieConsentPartial" />
     <div class="row">
 
@@ -93,10 +98,9 @@
 
         <div class="col-12 navbar">
             <div class="navbar-wrap highlightTextIn">
+                <button id="search-button"><i class="fas fa-search"></i></button>
                 <a alt="NYKANT" asp-controller="Home" asp-action="Index"><span style="color:var(--blue)">NY</span>KANT</a>
-                <a alt="PRODUKTER" asp-controller="Product" asp-action="Index">PRODUKTER</a>
-                <a alt="KONTAKT" asp-controller="Contact" asp-action="Index">KONTAKT</a>
-
+                <a id="product-link" alt="PRODUKTER" asp-controller="Product" asp-action="Index">PRODUKTER</a>
                 <a class="icon" asp-controller="Bag" asp-action="Details"><span>@bagItemAmount</span> <i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
 
                 @if (User.Identity.IsAuthenticated)
@@ -133,7 +137,6 @@
         @*----------------------------------------------------------------------------------------------*@
     </div>
     <div>
-
         <main>
             @RenderBody()
         </main>
@@ -141,18 +144,27 @@
 
     <footer>
         <div class="top-footer">
-
+            <div class="nykant-info">
+                <h1>Nykant</h1>
+                <a asp-controller="Home" asp-action="About">Om Nykant</a>
+            </div>
+            <div class="customer-service">
+                <h1>Kundeservice</h1>
+                <a asp-controller="Home" asp-action="Contact">Kontakt os</a>
+            </div>
             <div class="socialmedia">
                 <a href="#" class="icon"><i class="fab fa-facebook"></i></a>
             </div>
         </div>
         <div class="bottom-footer">
             <div class="copyright left">
-                &copy; 2021 - Nykant ApS
+                &copy; Nykant ApS 2021
             </div>
             <div class="policy-links right">
-                <a asp-controller="Home" asp-action="PrivacyPolicy">Databeskyttelsespolitik</a>
-                <a asp-controller="Home" asp-action="CookiePolicy">Cookie politik</a>
+                <a asp-controller="Home" asp-action="PrivacyPolicy">Håndtering af persondata</a>
+                <a asp-controller="Home" asp-action="CookiePolicy">Cookie politik og instillinger</a>
+                <a asp-controller="Home" asp-action="TermsAndConditions">Vilkår og betingelser</a>
+                <a asp-controller="Home" asp-action="DataSecurityReporting">Data sikkerhedsrapportering</a>
             </div>
         </div>
     </footer>
@@ -174,6 +186,7 @@
     <script src="~/JS/slideshow.js"></script>
     <script src="~/JS/custom-input.js"></script>
     <script src="~/JS/collapsible.js"></script>
+    <script src="~/JS/search.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>
