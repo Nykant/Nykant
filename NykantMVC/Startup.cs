@@ -112,7 +112,7 @@ namespace NykantMVC
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Nykant}/{action=Index}/{id?}");
             });
         }
 

@@ -10,8 +10,8 @@ using NykantAPI.Data;
 namespace NykantAPI.data.migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210318214558_newrsr")]
-    partial class newrsr
+    [Migration("20210321141839_newerssdfs")]
+    partial class newerssdfs
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -52,6 +52,33 @@ namespace NykantAPI.data.migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Stole"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Borde"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Skærebrætter"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Ophæng"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Tilbehør"
+                        });
                 });
 
             modelBuilder.Entity("NykantAPI.Models.CustomerInf", b =>
@@ -63,9 +90,6 @@ namespace NykantAPI.data.migrations
 
                     b.Property<string>("Address1")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Address2")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("City")
@@ -422,6 +446,9 @@ namespace NykantAPI.data.migrations
                     b.Property<string>("Alt")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Color")
                         .HasColumnType("nvarchar(max)");
 
@@ -460,18 +487,21 @@ namespace NykantAPI.data.migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoryId");
+
                     b.ToTable("Products");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
+                            CategoryId = 1,
                             Color = "naturligt",
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "stol",
-                            LastModified = new DateTime(2021, 3, 18, 22, 45, 58, 325, DateTimeKind.Local).AddTicks(6532),
+                            LastModified = new DateTime(2021, 3, 21, 15, 18, 29, 288, DateTimeKind.Local).AddTicks(8801),
                             Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
                             Price = 1000,
                             Size = "5mm",
@@ -481,12 +511,13 @@ namespace NykantAPI.data.migrations
                         new
                         {
                             Id = 2,
+                            CategoryId = 2,
                             Color = "farvet-overflade",
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "stol",
-                            LastModified = new DateTime(2021, 3, 18, 22, 45, 58, 327, DateTimeKind.Local).AddTicks(9839),
+                            LastModified = new DateTime(2021, 3, 21, 15, 18, 29, 291, DateTimeKind.Local).AddTicks(106),
                             Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
                             Price = 1000,
                             Size = "10mm",
@@ -496,12 +527,13 @@ namespace NykantAPI.data.migrations
                         new
                         {
                             Id = 3,
+                            CategoryId = 3,
                             Color = "naturligt",
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 3, 18, 22, 45, 58, 327, DateTimeKind.Local).AddTicks(9933),
+                            LastModified = new DateTime(2021, 3, 21, 15, 18, 29, 291, DateTimeKind.Local).AddTicks(179),
                             Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
                             Price = 1000,
                             Size = "20mm",
@@ -511,12 +543,13 @@ namespace NykantAPI.data.migrations
                         new
                         {
                             Id = 4,
+                            CategoryId = 4,
                             Color = "farvet-overflade",
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "skærebræt",
-                            LastModified = new DateTime(2021, 3, 18, 22, 45, 58, 327, DateTimeKind.Local).AddTicks(9977),
+                            LastModified = new DateTime(2021, 3, 21, 15, 18, 29, 291, DateTimeKind.Local).AddTicks(185),
                             Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
                             Price = 1000,
                             Size = "5mm",
@@ -526,12 +559,13 @@ namespace NykantAPI.data.migrations
                         new
                         {
                             Id = 5,
+                            CategoryId = 5,
                             Color = "naturligt",
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 3, 18, 22, 45, 58, 327, DateTimeKind.Local).AddTicks(9981),
+                            LastModified = new DateTime(2021, 3, 21, 15, 18, 29, 291, DateTimeKind.Local).AddTicks(188),
                             Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
                             Price = 1000,
                             Size = "10mm",
@@ -541,12 +575,13 @@ namespace NykantAPI.data.migrations
                         new
                         {
                             Id = 6,
+                            CategoryId = 1,
                             Color = "farvet-overflade",
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "skærebræt",
-                            LastModified = new DateTime(2021, 3, 18, 22, 45, 58, 327, DateTimeKind.Local).AddTicks(9984),
+                            LastModified = new DateTime(2021, 3, 21, 15, 18, 29, 291, DateTimeKind.Local).AddTicks(191),
                             Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
                             Price = 1000,
                             Size = "20mm",
@@ -556,12 +591,13 @@ namespace NykantAPI.data.migrations
                         new
                         {
                             Id = 7,
+                            CategoryId = 3,
                             Color = "naturligt",
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "stol",
-                            LastModified = new DateTime(2021, 3, 18, 22, 45, 58, 327, DateTimeKind.Local).AddTicks(9987),
+                            LastModified = new DateTime(2021, 3, 21, 15, 18, 29, 291, DateTimeKind.Local).AddTicks(194),
                             Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
                             Price = 1000,
                             Size = "5mm",
@@ -571,12 +607,13 @@ namespace NykantAPI.data.migrations
                         new
                         {
                             Id = 8,
+                            CategoryId = 2,
                             Color = "farvet-overflade",
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "stol",
-                            LastModified = new DateTime(2021, 3, 18, 22, 45, 58, 327, DateTimeKind.Local).AddTicks(9990),
+                            LastModified = new DateTime(2021, 3, 21, 15, 18, 29, 291, DateTimeKind.Local).AddTicks(197),
                             Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
                             Price = 1000,
                             Size = "10mm",
@@ -586,12 +623,13 @@ namespace NykantAPI.data.migrations
                         new
                         {
                             Id = 9,
+                            CategoryId = 1,
                             Color = "naturligt",
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 3, 18, 22, 45, 58, 327, DateTimeKind.Local).AddTicks(9993),
+                            LastModified = new DateTime(2021, 3, 21, 15, 18, 29, 291, DateTimeKind.Local).AddTicks(200),
                             Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
                             Price = 1000,
                             Size = "20mm",
@@ -601,12 +639,13 @@ namespace NykantAPI.data.migrations
                         new
                         {
                             Id = 10,
+                            CategoryId = 5,
                             Color = "farvet-overflade",
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "skærebræt",
-                            LastModified = new DateTime(2021, 3, 18, 22, 45, 58, 327, DateTimeKind.Local).AddTicks(9995),
+                            LastModified = new DateTime(2021, 3, 21, 15, 18, 29, 291, DateTimeKind.Local).AddTicks(203),
                             Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
                             Price = 1000,
                             Size = "5mm",
@@ -616,12 +655,13 @@ namespace NykantAPI.data.migrations
                         new
                         {
                             Id = 11,
+                            CategoryId = 1,
                             Color = "naturligt",
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 3, 18, 22, 45, 58, 328, DateTimeKind.Local),
+                            LastModified = new DateTime(2021, 3, 21, 15, 18, 29, 291, DateTimeKind.Local).AddTicks(206),
                             Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
                             Price = 1000,
                             Size = "10mm",
@@ -631,12 +671,13 @@ namespace NykantAPI.data.migrations
                         new
                         {
                             Id = 12,
+                            CategoryId = 2,
                             Color = "farvet-overflade",
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "skærebræt",
-                            LastModified = new DateTime(2021, 3, 18, 22, 45, 58, 328, DateTimeKind.Local).AddTicks(3),
+                            LastModified = new DateTime(2021, 3, 21, 15, 18, 29, 291, DateTimeKind.Local).AddTicks(209),
                             Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
                             Price = 1000,
                             Size = "20mm",
@@ -646,12 +687,13 @@ namespace NykantAPI.data.migrations
                         new
                         {
                             Id = 13,
+                            CategoryId = 4,
                             Color = "naturligt",
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "stol",
-                            LastModified = new DateTime(2021, 3, 18, 22, 45, 58, 328, DateTimeKind.Local).AddTicks(8),
+                            LastModified = new DateTime(2021, 3, 21, 15, 18, 29, 291, DateTimeKind.Local).AddTicks(212),
                             Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
                             Price = 1000,
                             Size = "5mm",
@@ -661,12 +703,13 @@ namespace NykantAPI.data.migrations
                         new
                         {
                             Id = 14,
+                            CategoryId = 1,
                             Color = "farvet-overflade",
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "stol",
-                            LastModified = new DateTime(2021, 3, 18, 22, 45, 58, 328, DateTimeKind.Local).AddTicks(11),
+                            LastModified = new DateTime(2021, 3, 21, 15, 18, 29, 291, DateTimeKind.Local).AddTicks(215),
                             Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
                             Price = 1000,
                             Size = "10mm",
@@ -676,12 +719,13 @@ namespace NykantAPI.data.migrations
                         new
                         {
                             Id = 15,
+                            CategoryId = 3,
                             Color = "naturligt",
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 3, 18, 22, 45, 58, 328, DateTimeKind.Local).AddTicks(13),
+                            LastModified = new DateTime(2021, 3, 21, 15, 18, 29, 291, DateTimeKind.Local).AddTicks(217),
                             Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
                             Price = 1000,
                             Size = "20mm",
@@ -691,12 +735,13 @@ namespace NykantAPI.data.migrations
                         new
                         {
                             Id = 16,
+                            CategoryId = 2,
                             Color = "farvet-overflade",
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "skærebræt",
-                            LastModified = new DateTime(2021, 3, 18, 22, 45, 58, 328, DateTimeKind.Local).AddTicks(16),
+                            LastModified = new DateTime(2021, 3, 21, 15, 18, 29, 291, DateTimeKind.Local).AddTicks(220),
                             Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
                             Price = 1000,
                             Size = "5mm",
@@ -706,12 +751,13 @@ namespace NykantAPI.data.migrations
                         new
                         {
                             Id = 17,
+                            CategoryId = 4,
                             Color = "naturligt",
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 3, 18, 22, 45, 58, 328, DateTimeKind.Local).AddTicks(19),
+                            LastModified = new DateTime(2021, 3, 21, 15, 18, 29, 291, DateTimeKind.Local).AddTicks(223),
                             Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
                             Price = 1000,
                             Size = "10mm",
@@ -721,12 +767,13 @@ namespace NykantAPI.data.migrations
                         new
                         {
                             Id = 18,
+                            CategoryId = 3,
                             Color = "farvet-overflade",
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "skærebræt",
-                            LastModified = new DateTime(2021, 3, 18, 22, 45, 58, 328, DateTimeKind.Local).AddTicks(22),
+                            LastModified = new DateTime(2021, 3, 21, 15, 18, 29, 291, DateTimeKind.Local).AddTicks(226),
                             Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
                             Price = 1000,
                             Size = "20mm",
@@ -736,33 +783,19 @@ namespace NykantAPI.data.migrations
                         new
                         {
                             Id = 19,
+                            CategoryId = 2,
                             Color = "naturligt",
                             Description = "a test object",
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 3, 18, 22, 45, 58, 328, DateTimeKind.Local).AddTicks(24),
+                            LastModified = new DateTime(2021, 3, 21, 15, 18, 29, 291, DateTimeKind.Local).AddTicks(229),
                             Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
                             Price = 1000,
                             Size = "5mm",
                             Title = "Grøntsags Skærebræt",
                             TypeOfWood = "valnød"
                         });
-                });
-
-            modelBuilder.Entity("NykantAPI.Models.ProductCategory", b =>
-                {
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CategoryId", "ProductId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ProductCategories");
                 });
 
             modelBuilder.Entity("NykantAPI.Models.Review", b =>
@@ -882,17 +915,11 @@ namespace NykantAPI.data.migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("NykantAPI.Models.ProductCategory", b =>
+            modelBuilder.Entity("NykantAPI.Models.Product", b =>
                 {
                     b.HasOne("NykantAPI.Models.Category", "Category")
-                        .WithMany("ProductCategory")
+                        .WithMany("Products")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("NykantAPI.Models.Product", "Product")
-                        .WithMany("ProductCategory")
-                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

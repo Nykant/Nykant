@@ -11,10 +11,10 @@ using System.Threading.Tasks;
 namespace NykantMVC.Controllers
 {
     [AllowAnonymous]
-    public class HomeController : BaseController
+    public class NykantController : BaseController
     {
 
-        public HomeController(ILogger<HomeController> logger) : base(logger)
+        public NykantController(ILogger<NykantController> logger) : base(logger)
         {
         }
 
@@ -71,16 +71,24 @@ namespace NykantMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> Search(string searchString)
         {
-            var json = await GetRequest("/Product/GetProducts");
-            var searchList = new List<Product>();
-            foreach(var product in JsonConvert.DeserializeObject<List<Product>>(json))
+            if(searchString != null)
             {
-                if (product.Title.ToLower().Contains(searchString.ToLower()))
+                var json = await GetRequest("/Product/GetProducts");
+                var searchList = new List<Product>();
+                foreach (var product in JsonConvert.DeserializeObject<List<Product>>(json))
                 {
-                    searchList.Add(product);
+                    if (product.Title.ToLower().Contains(searchString.ToLower()))
+                    {
+                        searchList.Add(product);
+                    }
                 }
+                ViewBag.SearchProductList = searchList;
             }
-            ViewBag.ProductList = searchList;
+            else
+            {
+                ViewBag.SearchProductList = new List<Product>();
+            }
+            
             return new PartialViewResult
             {
                 ViewName = "_SearchPartial",

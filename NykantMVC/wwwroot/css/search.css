@@ -54,6 +54,10 @@
     margin-top:10px;
 }
 
+#search-result .search-item:hover {
+    background-color: var(--blue);
+}
+
     #search-result .search-item img {
         height: auto;
         width: 100px;
@@ -61,4 +65,11 @@
 #search-result .search-item p {
     padding-top:25px;
     padding-left:60px;
+}
+
+#searchspinner {
+    position:absolute;
+    top:50%;
+    right:25%;
+    transform:scale(2);
 }

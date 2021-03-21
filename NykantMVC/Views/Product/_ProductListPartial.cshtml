@@ -1,0 +1,37 @@
+﻿@model List<Product>
+
+<div class="col-12 left ">
+    <div id="current-filter">
+        <h1>
+            @if (ViewBag.CurrentFilter != null)
+            {
+                <i class="fas fa-search"></i>
+                @ViewBag.CurrentFilter;
+            }
+        </h1>
+    </div>
+</div>
+@foreach (var item in Model)
+{
+    <div class="col-4 left top-padding">
+        
+        <div class="product-item">
+            <a asp-controller="product" asp-action="details" asp-route-id="@item.Id">
+                <div class="product-images">
+                    <div class="primary-img">
+                        <img src="@item.ImageSource" />
+                    </div>
+                    <div class="secondary-img">
+                        <img src="@item.ImageSource2" />
+                    </div>
+                </div>
+                <div class="product-text">
+                    <h1>@item.Title, @item.TypeOfWood</h1>
+                    <p>@item.Price dkk,-</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+
+}

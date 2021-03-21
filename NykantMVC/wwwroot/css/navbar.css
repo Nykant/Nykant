@@ -203,14 +203,10 @@ a.icon {
     transform:translate(+25px, -15px)
 }
 
-#product-link {
-    padding-left:200px;
-}
 
 .navbar button {
-    position:absolute;
-    left:100px;
-    top:30px;
+    margin-top:30px;
+    margin-left:200px;
     font-size:30px;
     color:white;
     background-color:transparent;

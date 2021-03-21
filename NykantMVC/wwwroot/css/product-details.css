@@ -12,7 +12,8 @@
     display: block;
 /*    border-top: 1px solid black;
     border-bottom: 1px solid black;*/
-    border-radius: 15px;
+    background-color:var(--light-blue);
+    padding:20px;
 }
 
 .details-image-list {

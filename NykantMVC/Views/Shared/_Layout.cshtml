@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 
     <link rel="stylesheet" href="~/css/style.css" />
-    <link rel="stylesheet" href="~/css/filter.css" />
+    @*<link rel="stylesheet" href="~/css/filter.css" />*@
     <link rel="stylesheet" href="~/css/down-arrow.css" />
     <link rel="stylesheet" href="~/css/bag.css" />
     <link rel="stylesheet" href="~/css/checkout.css" />
@@ -54,7 +54,7 @@
 
         <div class="col-12 navbar-mobile">
             <div class="navbar-mobile-wrap highlightTextIn highlightTextOut">
-                <a alt="NYKANT" asp-controller="Home" asp-action="Index"><span style="color:#eaeaea">N</span>YKANT</a>
+                <a alt="NYKANT" asp-controller="Nykant" asp-action="Index"><span style="color:#eaeaea">N</span>YKANT</a>
 
                 <a href="javascript:void(0);" class="icon" onclick="mobileNav()">
                     <i class="fa fa-bars"></i>
@@ -87,7 +87,7 @@
                 }
 
                 <div id="myLinks">
-                    <a alt="HJEM" asp-controller="Home" asp-action="Index">HJEM</a>
+                    <a alt="HJEM" asp-controller="Nykant" asp-action="Index">HJEM</a>
                     <a alt="PRODUKTER" asp-controller="Product" asp-action="Index">PRODUKTER</a>
                     <a alt="KONTAKT" asp-controller="Contact" asp-action="Index">KONTAKT</a>
                 </div>
@@ -99,7 +99,7 @@
         <div class="col-12 navbar">
             <div class="navbar-wrap highlightTextIn">
                 <button id="search-button"><i class="fas fa-search"></i></button>
-                <a alt="NYKANT" asp-controller="Home" asp-action="Index"><span style="color:var(--blue)">NY</span>KANT</a>
+                <a alt="NYKANT" asp-controller="Nykant" asp-action="Index"><span style="color:var(--blue)">NY</span>KANT</a>
                 <a id="product-link" alt="PRODUKTER" asp-controller="Product" asp-action="Index">PRODUKTER</a>
                 <a class="icon" asp-controller="Bag" asp-action="Details"><span>@bagItemAmount</span> <i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
 
@@ -146,11 +146,11 @@
         <div class="top-footer">
             <div class="nykant-info">
                 <h1>Nykant</h1>
-                <a asp-controller="Home" asp-action="About">Om Nykant</a>
+                <a asp-controller="Nykant" asp-action="About">Om Nykant</a>
             </div>
             <div class="customer-service">
                 <h1>Kundeservice</h1>
-                <a asp-controller="Home" asp-action="Contact">Kontakt os</a>
+                <a asp-controller="Nykant" asp-action="Contact">Kontakt os</a>
             </div>
             <div class="socialmedia">
                 <a href="#" class="icon"><i class="fab fa-facebook"></i></a>
@@ -161,10 +161,10 @@
                 &copy; Nykant ApS 2021
             </div>
             <div class="policy-links right">
-                <a asp-controller="Home" asp-action="PrivacyPolicy">Håndtering af persondata</a>
-                <a asp-controller="Home" asp-action="CookiePolicy">Cookie politik og instillinger</a>
-                <a asp-controller="Home" asp-action="TermsAndConditions">Vilkår og betingelser</a>
-                <a asp-controller="Home" asp-action="DataSecurityReporting">Data sikkerhedsrapportering</a>
+                <a asp-controller="Nykant" asp-action="PrivacyPolicy">Håndtering af persondata</a>
+                <a asp-controller="Nykant" asp-action="CookiePolicy">Cookie politik og instillinger</a>
+                <a asp-controller="Nykant" asp-action="TermsAndConditions">Vilkår og betingelser</a>
+                <a asp-controller="Nykant" asp-action="DataSecurityReporting">Data sikkerhedsrapportering</a>
             </div>
         </div>
     </footer>
@@ -178,15 +178,15 @@
     <script src="~/JS/slide-details.js"></script>
     <script src="~/JS/counter.js"></script>
     <script src="~/JS/image-changer.js"></script>
-    <script src="~/JS/jquery.mixitup.min.js"></script>
-    <script src="~/JS/modernizr.js"></script>
-    <script src="~/JS/main.js"></script>  @*Resource jQuery*@
+    @*<script src="~/JS/jquery.mixitup.min.js"></script>*@
+    @*<script src="~/JS/modernizr.js"></script>*@
+    <!--<script src="~/JS/main.js"></script>-->  @*Resource jQuery*@
     <script src="~/JS/slide-text.js"></script>
     <script src="~/JS/downarrow-stop.js"></script>
     <script src="~/JS/slideshow.js"></script>
     <script src="~/JS/custom-input.js"></script>
     <script src="~/JS/collapsible.js"></script>
-    <script src="~/JS/search.js"></script>
+    <script src="~/JS/search-button.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>
