@@ -169,6 +169,10 @@ ol, ul {
                 color: var(--blue);
             }
 
+.fixed {
+    position:fixed;
+}
+
 @media only screen and (max-width: 600px) {
     .top-footer {
         padding-left: 20px;
@@ -275,14 +279,8 @@ ol, ul {
         padding: 30px;
     }
 
-    .fadein {
-        animation-name: fadein;
-        animation-duration: 0.5s;
-        animation-timing-function: ease;
-    }
-
     .fullscreen-row {
-        min-height: 72vh;
+        min-height: 71.7vh;
     }
 
     .top-padding {
@@ -587,5 +585,11 @@ ol, ul {
 @media only screen and (min-width: 1500px) {
     .col-wrapper {
         min-width: 1500px;
+    }
+}
+
+@media only screen and (min-width: 1780px) {
+    .col-wrapper {
+        min-width: 1780px;
     }
 }

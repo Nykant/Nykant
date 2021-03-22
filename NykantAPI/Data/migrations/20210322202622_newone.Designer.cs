@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NykantAPI.Data;
 
 namespace NykantAPI.data.migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210322202622_newone")]
+    partial class newone
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -368,259 +370,7 @@ namespace NykantAPI.data.migrations
                         new
                         {
                             Id = 38,
-                            ProductId = 1,
-                            Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
-                        },
-                        new
-                        {
-                            Id = 39,
-                            ProductId = 2,
-                            Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
-                        },
-                        new
-                        {
-                            Id = 40,
-                            ProductId = 3,
-                            Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
-                        },
-                        new
-                        {
-                            Id = 41,
-                            ProductId = 4,
-                            Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
-                        },
-                        new
-                        {
-                            Id = 42,
-                            ProductId = 5,
-                            Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
-                        },
-                        new
-                        {
-                            Id = 43,
-                            ProductId = 6,
-                            Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
-                        },
-                        new
-                        {
-                            Id = 44,
-                            ProductId = 7,
-                            Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
-                        },
-                        new
-                        {
-                            Id = 45,
-                            ProductId = 8,
-                            Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
-                        },
-                        new
-                        {
-                            Id = 46,
-                            ProductId = 9,
-                            Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
-                        },
-                        new
-                        {
-                            Id = 47,
-                            ProductId = 10,
-                            Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
-                        },
-                        new
-                        {
-                            Id = 48,
-                            ProductId = 11,
-                            Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
-                        },
-                        new
-                        {
-                            Id = 49,
-                            ProductId = 12,
-                            Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
-                        },
-                        new
-                        {
-                            Id = 50,
-                            ProductId = 13,
-                            Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
-                        },
-                        new
-                        {
-                            Id = 51,
-                            ProductId = 14,
-                            Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
-                        },
-                        new
-                        {
-                            Id = 52,
-                            ProductId = 15,
-                            Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
-                        },
-                        new
-                        {
-                            Id = 53,
-                            ProductId = 16,
-                            Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
-                        },
-                        new
-                        {
-                            Id = 54,
-                            ProductId = 17,
-                            Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
-                        },
-                        new
-                        {
-                            Id = 55,
-                            ProductId = 18,
-                            Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
-                        },
-                        new
-                        {
-                            Id = 56,
                             ProductId = 19,
-                            Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
-                        },
-                        new
-                        {
-                            Id = 57,
-                            ProductId = 1,
-                            Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
-                        },
-                        new
-                        {
-                            Id = 58,
-                            ProductId = 2,
-                            Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
-                        },
-                        new
-                        {
-                            Id = 59,
-                            ProductId = 3,
-                            Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
-                        },
-                        new
-                        {
-                            Id = 60,
-                            ProductId = 4,
-                            Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
-                        },
-                        new
-                        {
-                            Id = 61,
-                            ProductId = 5,
-                            Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
-                        },
-                        new
-                        {
-                            Id = 62,
-                            ProductId = 6,
-                            Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
-                        },
-                        new
-                        {
-                            Id = 63,
-                            ProductId = 7,
-                            Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
-                        },
-                        new
-                        {
-                            Id = 64,
-                            ProductId = 8,
-                            Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
-                        },
-                        new
-                        {
-                            Id = 65,
-                            ProductId = 9,
-                            Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
-                        },
-                        new
-                        {
-                            Id = 66,
-                            ProductId = 10,
-                            Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
-                        },
-                        new
-                        {
-                            Id = 67,
-                            ProductId = 11,
-                            Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
-                        },
-                        new
-                        {
-                            Id = 68,
-                            ProductId = 12,
-                            Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
-                        },
-                        new
-                        {
-                            Id = 69,
-                            ProductId = 13,
-                            Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
-                        },
-                        new
-                        {
-                            Id = 70,
-                            ProductId = 14,
-                            Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
-                        },
-                        new
-                        {
-                            Id = 71,
-                            ProductId = 15,
-                            Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
-                        },
-                        new
-                        {
-                            Id = 72,
-                            ProductId = 16,
-                            Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
-                        },
-                        new
-                        {
-                            Id = 73,
-                            ProductId = 17,
-                            Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
-                        },
-                        new
-                        {
-                            Id = 74,
-                            ProductId = 18,
-                            Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
-                        },
-                        new
-                        {
-                            Id = 75,
-                            ProductId = 1,
-                            Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
-                        },
-                        new
-                        {
-                            Id = 76,
-                            ProductId = 2,
-                            Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
-                        },
-                        new
-                        {
-                            Id = 77,
-                            ProductId = 3,
-                            Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
-                        },
-                        new
-                        {
-                            Id = 78,
-                            ProductId = 4,
-                            Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
-                        },
-                        new
-                        {
-                            Id = 79,
-                            ProductId = 5,
-                            Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
-                        },
-                        new
-                        {
-                            Id = 80,
-                            ProductId = 6,
                             Source = "../images/Finback-Chairs1-1280x853-c-default.jpg"
                         });
                 });
@@ -751,7 +501,7 @@ namespace NykantAPI.data.migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "stol",
-                            LastModified = new DateTime(2021, 3, 22, 21, 39, 38, 910, DateTimeKind.Local).AddTicks(4470),
+                            LastModified = new DateTime(2021, 3, 22, 21, 26, 22, 61, DateTimeKind.Local).AddTicks(2892),
                             Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
                             Price = 1000,
                             Size = "5mm",
@@ -767,7 +517,7 @@ namespace NykantAPI.data.migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "stol",
-                            LastModified = new DateTime(2021, 3, 22, 21, 39, 38, 912, DateTimeKind.Local).AddTicks(5918),
+                            LastModified = new DateTime(2021, 3, 22, 21, 26, 22, 64, DateTimeKind.Local).AddTicks(2195),
                             Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
                             Price = 1000,
                             Size = "10mm",
@@ -783,7 +533,7 @@ namespace NykantAPI.data.migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 3, 22, 21, 39, 38, 912, DateTimeKind.Local).AddTicks(5987),
+                            LastModified = new DateTime(2021, 3, 22, 21, 26, 22, 64, DateTimeKind.Local).AddTicks(2377),
                             Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
                             Price = 1000,
                             Size = "20mm",
@@ -799,7 +549,7 @@ namespace NykantAPI.data.migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "skærebræt",
-                            LastModified = new DateTime(2021, 3, 22, 21, 39, 38, 912, DateTimeKind.Local).AddTicks(5993),
+                            LastModified = new DateTime(2021, 3, 22, 21, 26, 22, 64, DateTimeKind.Local).AddTicks(2384),
                             Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
                             Price = 1000,
                             Size = "5mm",
@@ -815,7 +565,7 @@ namespace NykantAPI.data.migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 3, 22, 21, 39, 38, 912, DateTimeKind.Local).AddTicks(5996),
+                            LastModified = new DateTime(2021, 3, 22, 21, 26, 22, 64, DateTimeKind.Local).AddTicks(2434),
                             Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
                             Price = 1000,
                             Size = "10mm",
@@ -831,7 +581,7 @@ namespace NykantAPI.data.migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "skærebræt",
-                            LastModified = new DateTime(2021, 3, 22, 21, 39, 38, 912, DateTimeKind.Local).AddTicks(5999),
+                            LastModified = new DateTime(2021, 3, 22, 21, 26, 22, 64, DateTimeKind.Local).AddTicks(2438),
                             Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
                             Price = 1000,
                             Size = "20mm",
@@ -847,7 +597,7 @@ namespace NykantAPI.data.migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "stol",
-                            LastModified = new DateTime(2021, 3, 22, 21, 39, 38, 912, DateTimeKind.Local).AddTicks(6002),
+                            LastModified = new DateTime(2021, 3, 22, 21, 26, 22, 64, DateTimeKind.Local).AddTicks(2442),
                             Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
                             Price = 1000,
                             Size = "5mm",
@@ -863,7 +613,7 @@ namespace NykantAPI.data.migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "stol",
-                            LastModified = new DateTime(2021, 3, 22, 21, 39, 38, 912, DateTimeKind.Local).AddTicks(6005),
+                            LastModified = new DateTime(2021, 3, 22, 21, 26, 22, 64, DateTimeKind.Local).AddTicks(2445),
                             Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
                             Price = 1000,
                             Size = "10mm",
@@ -879,7 +629,7 @@ namespace NykantAPI.data.migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 3, 22, 21, 39, 38, 912, DateTimeKind.Local).AddTicks(6008),
+                            LastModified = new DateTime(2021, 3, 22, 21, 26, 22, 64, DateTimeKind.Local).AddTicks(2448),
                             Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
                             Price = 1000,
                             Size = "20mm",
@@ -895,7 +645,7 @@ namespace NykantAPI.data.migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "skærebræt",
-                            LastModified = new DateTime(2021, 3, 22, 21, 39, 38, 912, DateTimeKind.Local).AddTicks(6010),
+                            LastModified = new DateTime(2021, 3, 22, 21, 26, 22, 64, DateTimeKind.Local).AddTicks(2451),
                             Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
                             Price = 1000,
                             Size = "5mm",
@@ -911,7 +661,7 @@ namespace NykantAPI.data.migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 3, 22, 21, 39, 38, 912, DateTimeKind.Local).AddTicks(6013),
+                            LastModified = new DateTime(2021, 3, 22, 21, 26, 22, 64, DateTimeKind.Local).AddTicks(2453),
                             Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
                             Price = 1000,
                             Size = "10mm",
@@ -927,7 +677,7 @@ namespace NykantAPI.data.migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "skærebræt",
-                            LastModified = new DateTime(2021, 3, 22, 21, 39, 38, 912, DateTimeKind.Local).AddTicks(6016),
+                            LastModified = new DateTime(2021, 3, 22, 21, 26, 22, 64, DateTimeKind.Local).AddTicks(2456),
                             Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
                             Price = 1000,
                             Size = "20mm",
@@ -943,7 +693,7 @@ namespace NykantAPI.data.migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "stol",
-                            LastModified = new DateTime(2021, 3, 22, 21, 39, 38, 912, DateTimeKind.Local).AddTicks(6019),
+                            LastModified = new DateTime(2021, 3, 22, 21, 26, 22, 64, DateTimeKind.Local).AddTicks(2459),
                             Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
                             Price = 1000,
                             Size = "5mm",
@@ -959,7 +709,7 @@ namespace NykantAPI.data.migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "stol",
-                            LastModified = new DateTime(2021, 3, 22, 21, 39, 38, 912, DateTimeKind.Local).AddTicks(6022),
+                            LastModified = new DateTime(2021, 3, 22, 21, 26, 22, 64, DateTimeKind.Local).AddTicks(2462),
                             Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
                             Price = 1000,
                             Size = "10mm",
@@ -975,7 +725,7 @@ namespace NykantAPI.data.migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 3, 22, 21, 39, 38, 912, DateTimeKind.Local).AddTicks(6025),
+                            LastModified = new DateTime(2021, 3, 22, 21, 26, 22, 64, DateTimeKind.Local).AddTicks(2465),
                             Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
                             Price = 1000,
                             Size = "20mm",
@@ -991,7 +741,7 @@ namespace NykantAPI.data.migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "skærebræt",
-                            LastModified = new DateTime(2021, 3, 22, 21, 39, 38, 912, DateTimeKind.Local).AddTicks(6028),
+                            LastModified = new DateTime(2021, 3, 22, 21, 26, 22, 64, DateTimeKind.Local).AddTicks(2468),
                             Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
                             Price = 1000,
                             Size = "5mm",
@@ -1007,7 +757,7 @@ namespace NykantAPI.data.migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 3, 22, 21, 39, 38, 912, DateTimeKind.Local).AddTicks(6031),
+                            LastModified = new DateTime(2021, 3, 22, 21, 26, 22, 64, DateTimeKind.Local).AddTicks(2471),
                             Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
                             Price = 1000,
                             Size = "10mm",
@@ -1023,7 +773,7 @@ namespace NykantAPI.data.migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "skærebræt",
-                            LastModified = new DateTime(2021, 3, 22, 21, 39, 38, 912, DateTimeKind.Local).AddTicks(6033),
+                            LastModified = new DateTime(2021, 3, 22, 21, 26, 22, 64, DateTimeKind.Local).AddTicks(2473),
                             Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
                             Price = 1000,
                             Size = "20mm",
@@ -1039,7 +789,7 @@ namespace NykantAPI.data.migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 3, 22, 21, 39, 38, 912, DateTimeKind.Local).AddTicks(6036),
+                            LastModified = new DateTime(2021, 3, 22, 21, 26, 22, 64, DateTimeKind.Local).AddTicks(2476),
                             Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
                             Price = 1000,
                             Size = "5mm",

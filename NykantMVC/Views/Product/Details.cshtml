@@ -2,7 +2,6 @@
 
 @{
     ViewData["Title"] = "Details";
-    int productQuantity = 1;
 }
 
 @if (Model.ItemAdded)
@@ -30,51 +29,38 @@
 }
 
 <div class="row top-padding border-bottom bottom-padding">
-    <div class="col-10 center">
-        <div class="col-8 left right-side-padding">
-            <div class="details-image-wrap">
-                <div class="details-image-list">
-                    @foreach (var image in Model.Product.Images)
+    <div class="col-10 center" id="details-wrapper">
+        <div class="col-8 left" id="details-left">
+            @foreach (var image in Model.Product.Images)
+            {
+                <div class="col-6 left">
+                    <div class="image-wrap">
+                        <img src="../@image.Source" />
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="col-4 right" id="details-right">
+            <div class="details-info-wrap fadein">
+
+                <h1>@Model.Product.Title</h1>
+                <p>@Model.Product.Price.-</p>
+
+
+                <div id="color-select">
+                    <h3>Farver</h3>
+                    @for (int i = 0; i < 3; i++)
                     {
-                        <div class="secondary-image-wrap fadein">
-                            <div class="overlay"></div>
-                            <img id="secondary-image" src="/images/gyngestol.jpg" onclick="changeImage('/images/gyngestol.jpg')" />
+                        <div class="color">
+                            <a asp-controller="Product" asp-action="details" asp-route-id="@Model.Product.Id">
+                                <img src="../@Model.Product.ImageSource" />
+                            </a>
                         </div>
                     }
                 </div>
-                <div class="primary-image-wrap fadein">
-                    <img id="primary-image" src="/images/Finback-Chairs1-1280x853-c-default.jpg">
-                </div>
-            </div>
-        </div>
 
-        <div class="col-4 right">
-            <form method="post" asp-controller="BagItem" asp-action="PostBagItem">
-                <div class="details-info-wrap fadein">
-
-                    <div>
-                        @Model.Product.Title
-                    </div>
-
-                    <div class="review-stars">
-                        <span style="font-size:10px;">REVIEWS:</span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                    </div>
-
-
-                    <h1>@Model.Product.Price dkk,-</h1>
-
-
-                    <div class="product-preferences">
-                        <button type="button" class="button-red"></button>
-                        <button type="button" class="button-blue"></button>
-                        <button type="button" class="button-brown"></button>
-                    </div>
-
+                <form method="post" asp-controller="BagItem" asp-action="PostBagItem">
                     @Html.HiddenFor(x => x.Product.Id)
                     @Html.HiddenFor(x => x.Product.Size)
                     @Html.HiddenFor(x => x.Product.TypeOfWood)
@@ -85,34 +71,26 @@
                     @Html.HiddenFor(x => x.Product.Description)
                     @Html.HiddenFor(x => x.Product.ImageSource)
                     @Html.HiddenFor(x => x.Product.Path)
-
-                    <div class="quantity-wrap">
-                        <span style="margin-right:0px;" id="numberdown" onclick="countdown()">-</span>
-                        <input class="quantitynumber" id="quantitynumber" name="productQuantity" value="@productQuantity" />
-                        <span style="margin-left:0px;" id="numberup" onclick="countup()">+</span>
+                    <div class="top-side-padding bottom-side-padding fadein " id="addproduct-button">
+                        <button class="button" style="border-radius:0px;" type="submit">ADD TO BAG</button>
                     </div>
-                </div>
-                <div class="top-side-padding bottom-side-padding fadein">
-                    <button class="button" style="border-radius:0px;" type="submit">ADD TO BAG</button>
-                </div>
-
-            </form>
+                </form>
+            </div>
         </div>
-
-        <div class="col-4 right">
-            <div class="collapsible fadein">
+        <div id="collapsible-wrapper" class="col-8 left">
+            <div class="collapsible">
                 <button type="button" class="collapsible-button">Beskrivelse</button>
                 <div class="collapsible-content">
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 </div>
             </div>
-            <div class="collapsible top-side-padding fadein">
+            <div class="collapsible">
                 <button type="button" class="collapsible-button">Specifikationer</button>
                 <div class="collapsible-content">
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 </div>
             </div>
-            <div class="collapsible top-side-padding fadein">
+            <div class="collapsible">
                 <button type="button" class="collapsible-button">Description</button>
                 <div class="collapsible-content">
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
@@ -122,7 +100,8 @@
     </div>
 </div>
 
-<div class="row top-side-padding border-bottom background-lightblue">
+
+@*<div class="row top-side-padding border-bottom background-lightblue">
     <div class="col-4 center">
         <div class="reviews padding">
             <h1>Reviews</h1>
@@ -215,7 +194,7 @@
 
         </form>
     </div>
-</div>
+</div>*@
 
 
 
