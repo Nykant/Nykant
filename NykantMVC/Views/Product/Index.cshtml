@@ -2,12 +2,15 @@
 @{
     ViewData["Title"] = "Produkter";
 }
+
+<script src="~/JS/products.js" defer></script>
+
 <div class="row">
-    <div class="col-6 center">
+    <div class="col-6 center col-wrapper">
         <div class="filter">
             @foreach (var category in ViewBag.Categories)
             {
-                <form asp-controller="Product" asp-action="Filter" method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#product-list">
+                <form class="filter-form" asp-controller="Product" asp-action="Filter" method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#product-list" data-ajax-complete="filtercomplete">
                     <div class="category">
                         <input type="submit" name="categoryName" value="@category.Name" />
                     </div>
@@ -18,7 +21,6 @@
 </div>
 <div class="row fullscreen-row">
     <div class="col-10 center col-wrapper top-side-padding">
-        
         <div id="product-list">
             <partial name="_ProductListPartial">
         </div>

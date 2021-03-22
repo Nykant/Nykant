@@ -2,6 +2,7 @@
 
 <div class="col-12 left ">
     <div id="current-filter">
+        <div class="spinner hidden" id="filterspinner"></div>
         <h1>
             @if (ViewBag.CurrentFilter != null)
             {
@@ -13,7 +14,7 @@
 </div>
 @foreach (var item in Model)
 {
-    <div class="col-4 left top-padding">
+    <div class="col-4 left top-padding product-col">
         
         <div class="product-item">
             <a asp-controller="product" asp-action="details" asp-route-id="@item.Id">

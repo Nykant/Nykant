@@ -1,13 +1,13 @@
 ﻿
 $('#search-form').on('submit', function () {
-    loading(true);
+    loadingsearch(true);
 });
 
 searchcompleted = function () {
-    loading(false);
+    loadingsearch(false);
 };
 
-var loading = function (isLoading) {
+var loadingsearch = function (isLoading) {
     if (isLoading) {
         document.querySelector("#searchspinner").classList.remove("hidden");
     }

@@ -1,0 +1,38 @@
+﻿<div class="col-12 navbar">
+    <div class="navbar-wrap highlightTextIn">
+        <button id="search-button"><i class="fas fa-search"></i></button>
+        <a alt="NYKANT" asp-controller="Nykant" asp-action="Index"><span style="color:var(--blue)">NY</span>KANT</a>
+        <a id="product-link" alt="PRODUKTER" asp-controller="Product" asp-action="Index">PRODUKTER</a>
+        <a class="icon" asp-controller="Bag" asp-action="Details"><span>@ViewBag.BagItemAmount</span> <i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div id="userBurger2">
+                <a href="https://localhost:5001/profile/personalinfo">
+                    Profil
+                </a>
+                <a asp-controller="Order" asp-action="History">
+                    Ordre Historik
+                </a>
+                <a asp-controller="Account" asp-action="Logout">
+                    Logout
+                </a>
+            </div>
+            <a href="javascript:void(0);" class="icon" id="userLogo">
+                <i class="fas fa-user"></i>
+            </a>
+        }
+        else
+        {
+            <div id="userBurger2">
+                <a asp-controller="Account" asp-action="Login" asp-route-redirectUrl="@ViewBag.Url">
+                    Login or Register
+                </a>
+            </div>
+            <a href="javascript:void(0);" class="icon" id="userLogo">
+                <i class="fas fa-user"></i>
+            </a>
+        }
+
+    </div>
+</div>

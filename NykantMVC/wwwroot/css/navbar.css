@@ -9,100 +9,7 @@
 /*    box-shadow: 0px 0px 15px #000000;*/
 }
 
-/* navbar-mobile */
-@media only screen and (max-width: 600px) {
-    .navbar {
-        display: none;
-    }
 
-    .navbar-mobile-wrap {
-        margin-top: 30px;
-        position: relative;
-        font-size: 24px;
-    }
-
-        .navbar-mobile-wrap a {
-            color: #ffffff;
-            display: inline-block;
-            float: left;
-            margin-right: 20px;
-        }
-
-    #myLinks {
-        margin-top: 70px;
-        width: 100%;
-        background-color: #535353;
-        position: absolute;
-        display: none;
-    }
-
-        #myLinks a {
-            width: 100%;
-            display: block;
-            float: none;
-        }
-}
-
-/* navbar-desktop */
-
-@media only screen and (min-width: 600px) {
-    .navbar-mobile {
-        display: none;
-    }
-
-    .navbar-wrap {
-        padding-left: 0px;
-        padding-right: 0px;
-    }
-
-    #userBurger2 {
-        right: 0px;
-    }
-}
-
-@media only screen and (min-width: 768px) {
-    .navbar-wrap {
-        padding-left: 100px;
-        padding-right: 100px;
-    }
-
-    #userBurger2 {
-        right: 100px;
-    }
-}
-
-@media only screen and (min-width: 992px) {
-    .navbar-wrap {
-        padding-left: 220px;
-        padding-right: 220px;
-    }
-
-    #userBurger2 {
-        right: 220px;
-    }
-}
-
-@media only screen and (min-width: 1200px) {
-    .navbar-wrap {
-        padding-left: 325px;
-        padding-right: 325px;
-    }
-
-    #userBurger2 {
-        right: 325px;
-    }
-}
-
-@media only screen and (min-width: 1500px) {
-    .navbar-wrap {
-        padding-left: 425px;
-        padding-right: 425px;
-    }
-
-    #userBurger2 {
-        right: 425px;
-    }
-}
 
 /* navbar settings */
 
@@ -204,11 +111,108 @@ a.icon {
 }
 
 
-.navbar button {
-    margin-top:30px;
-    margin-left:200px;
-    font-size:30px;
-    color:white;
-    background-color:transparent;
-    outline:none;
+#search-button {
+    margin-top: 30px;
+    font-size: 30px;
+    color: white;
+    background-color: transparent;
+    outline: none;
+    border:none;
+    transition: all 0.3s;
+    transform: scale(1);
+    font-size: 30px;
+    position: relative;
+    float: right;
+}
+
+    #search-button:hover {
+        color: var(--blue);
+        transition: all 0.3s;
+        transform: scale(0.8);
+    }
+
+
+/* navbar-mobile */
+@media only screen and (max-width: 600px) {
+    .navbar {
+        display: none;
+    }
+
+    .navbar-mobile-wrap {
+        margin-top: 30px;
+        position: relative;
+        font-size: 24px;
+    }
+
+        .navbar-mobile-wrap a {
+            color: #ffffff;
+            display: inline-block;
+            float: left;
+            margin-right: 20px;
+        }
+
+    #myLinks {
+        margin-top: 70px;
+        width: 100%;
+        background-color: #535353;
+        position: absolute;
+        display: none;
+    }
+
+        #myLinks a {
+            width: 100%;
+            display: block;
+            float: none;
+        }
+}
+
+/* navbar-desktop */
+
+@media only screen and (min-width: 600px) {
+    .navbar-mobile {
+        display: none;
+    }
+
+    .navbar-wrap {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+        .navbar-wrap a {
+            margin-right: 35px;
+        }
+
+}
+
+@media only screen and (min-width: 768px) {
+    .navbar-wrap {
+        padding-left: 60px;
+        padding-right: 60px;
+    }
+
+        .navbar-wrap a {
+            margin-right: 50px;
+        }
+
+}
+
+@media only screen and (min-width: 992px) {
+    .navbar-wrap {
+        padding-left: 180px;
+        padding-right: 180px;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .navbar-wrap {
+        padding-left: 280px;
+        padding-right: 280px;
+    }
+}
+
+@media only screen and (min-width: 1500px) {
+    .navbar-wrap {
+        padding-left: 400px;
+        padding-right: 400px;
+    }
 }
