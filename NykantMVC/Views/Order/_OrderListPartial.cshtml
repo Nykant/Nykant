@@ -17,7 +17,7 @@
             <td>
                 @if (order.Status == Status.Pending)
                 {
-                    <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#all-orders" asp-controller="PaymentIntent" asp-action="CapturePaymentIntent" asp-route-orderId="@order.Id">
+                    <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#all-orders" asp-controller="Payment" asp-action="CapturePaymentIntent" asp-route-orderId="@order.Id">
                         <button type="submit">Capture</button>
                     </form>
                 }

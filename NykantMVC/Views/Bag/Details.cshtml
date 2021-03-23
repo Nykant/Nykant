@@ -4,71 +4,30 @@
     ViewData["Title"] = "Details";
 }
 
-<div class="row top-padding bottom-side-padding">
-    <div class="col-8 center col-wrapper">
+<script src="~/JS/bag.js" defer></script>
+
+<div class="row top-padding bottom-side-padding top-padding fullscreen-row">
+    <div class="col-10 center" id="bag-wrapper">
         <div class="col-8 left fadein">
             <div class="bagtitle">
                 MY BAG
             </div>
-            <div class="bagtable">
-                @* ----- TABLE ----- *@
-                <div class="bagtable-headers">
-                    <div id="header-product">Product</div>
-                    <div>Total</div>
-                    <div>Quantity</div>
-                    <div>Price</div>
-                    <div>Name</div>
-                </div>
-                @foreach (var bagItem in Model)
-                {
-                    <div class="bag-item">
-                        <div id="bag-item-image">
-                            <a asp-action="Details" asp-controller="Product" asp-route-id="@bagItem.Product.Id">
-                                <img src="@bagItem.Product.ImageSource" />
-                            </a>
-                        </div>
-                        <div id="bag-item-name">
-                            <a asp-action="Details" asp-controller="Product" asp-route-id="@bagItem.Product.Id">
-                                @bagItem.Product.Title
-                            </a>
-                        </div>
-                        <div id="bag-item-price"><label>@bagItem.Product.Price</label></div>
-                        <div id="bag-item-quantity">
-                            <form method="post" asp-controller="BagItem" asp-action="UpdateBagItem" asp-route-selection="1">
-                                <input type="hidden" asp-for="@bagItem.ProductId" />
-                                <input type="hidden" asp-for="@bagItem.Subject" />
-                                <input type="hidden" asp-for="@bagItem.Quantity" />
-                                <input class="counter-thing" type="submit" value="+" />
-                            </form>
-                            @bagItem.Quantity
-                            <form method="post" asp-controller="BagItem" asp-action="UpdateBagItem" asp-route-selection="2">
-                                <input type="hidden" asp-for="@bagItem.ProductId" />
-                                <input type="hidden" asp-for="@bagItem.Subject" />
-                                <input type="hidden" asp-for="@bagItem.Quantity" />
-                                <input class="counter-thing" type="submit" value="-" />
-                            </form>
-                        </div>
-                        @{
-                            var total = bagItem.Quantity * bagItem.Product.Price;
-                        }
-                        <div id="bag-item-total"><label>@total</label></div>
-                    </div>
-                }
+            <div class="bagtable" id="bagtable">
+                <partial name="_BagTablePartial" />
             </div>
         </div>
-
-        <div class="col-4 left fadein">
-            <div class="checkout-wrap">
-                <div class="checkout-price">
-                    total: @ViewBag.PriceSum
-                </div>
+        <div class="col-3 right left-side-padding fixed" id="checkout-box">
+            <div class="order-info">
+                <h1>Ordre</h1>
+                <p style="float:left;">Levering</p>
+                <p style="float:right;">Total ekskl. levering</p>
             </div>
-        </div>
-        
-        <div class="col-4 right fadein left-side-padding top-side-padding">
+            <div class="checkout-price">
+                <p id="total-price-text">total: @ViewBag.PriceSum</p>
+            </div>
             <a asp-controller="Checkout" asp-action="Checkout">
                 <div class="button">
-                    <p>Checkout</p>
+                    <p>Gå til kassen</p>
                 </div>
             </a>
         </div>

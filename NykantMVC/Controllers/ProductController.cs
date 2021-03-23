@@ -24,22 +24,15 @@ namespace NykantMVC.Controllers
             return View(products);
         }
 
-        [Route("/{controller}/{action}/{id}/{itemAdded?}")]
+        [Route("/{controller}/{action}/{id}")]
         [HttpGet]
-        public async Task<IActionResult> Details(int id, bool itemAdded)
+        public async Task<IActionResult> Details(int id)
         {
             var json = await GetRequest($"/Product/GetProduct/{id}");
 
             Product product = JsonConvert.DeserializeObject<Product>(json);
 
-            ProductVM productVM = new ProductVM
-            {
-                ItemAdded = itemAdded,
-                Product = product,
-                Review = new Review()
-            };
-
-            return View(productVM);
+            return View(product);
         }
 
         [HttpPost]

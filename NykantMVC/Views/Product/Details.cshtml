@@ -1,37 +1,37 @@
-﻿@model ProductVM
+﻿@model Product
 
 @{
     ViewData["Title"] = "Details";
 }
 
-@if (Model.ItemAdded)
-{
-    <script src="~/JS/item-added.js" defer></script>
-    <div class="notification" id="item-added">
-        <p>Du har tilføjet et produkt til din kurv</p>
-    </div>
-    Model.ItemAdded = false;
-}
+<script src="~/JS/product-details.js" defer></script>
 
-@if (Model.ReviewSent)
-{
-    <script src="~/JS/review-sent.js" defer></script>
-    <div class="notification" id="review-sent">
-        <p>
-            Tak for dit review, det sætter vi stor pris på :).
-        </p>
-    </div>
-}
+<div class="modal" id="item-added-modal">
+    <div id="bagitem-added">
+        <div id="bagitem-added-close">
+            <i class="fas fa-times"></i>
+        </div>
+        <p>Du har tilføjet et produkt til din kurv:</p>
 
-@if (User.Identity.IsAuthenticated)
-{
-    <script src="~/JS/review.js" defer></script>
-}
+        <div class="bagitem-added-product">
+            <div class="bag-item-img">
+                <img src="../@Model.ImageSource" />
+            </div>
+            <p>@Model.Title</p>
+            <p>@Model.Price.-</p>
+        </div>
+        <a asp-controller="Bag" asp-action="Details">
+            <div class="button">
+                <p>Gå til kurven</p>
+            </div>
+        </a>
+    </div>
+</div>
 
 <div class="row top-padding border-bottom bottom-padding">
     <div class="col-10 center" id="details-wrapper">
         <div class="col-8 left" id="details-left">
-            @foreach (var image in Model.Product.Images)
+            @foreach (var image in Model.Images)
             {
                 <div class="col-6 left">
                     <div class="image-wrap">
@@ -44,33 +44,39 @@
         <div class="col-4 right" id="details-right">
             <div class="details-info-wrap fadein">
 
-                <h1>@Model.Product.Title</h1>
-                <p>@Model.Product.Price.-</p>
-
+                <h1>@Model.Title</h1>
+                <p>@Model.Price.-</p>
 
                 <div id="color-select">
                     <h3>Farver</h3>
                     @for (int i = 0; i < 3; i++)
                     {
                         <div class="color">
-                            <a asp-controller="Product" asp-action="details" asp-route-id="@Model.Product.Id">
-                                <img src="../@Model.Product.ImageSource" />
+                            <a asp-controller="Product" asp-action="details" asp-route-id="@Model.Id">
+                                <img src="../@Model.ImageSource" />
                             </a>
                         </div>
                     }
                 </div>
 
-                <form method="post" asp-controller="BagItem" asp-action="PostBagItem">
-                    @Html.HiddenFor(x => x.Product.Id)
-                    @Html.HiddenFor(x => x.Product.Size)
-                    @Html.HiddenFor(x => x.Product.TypeOfWood)
-                    @Html.HiddenFor(x => x.Product.Price)
-                    @Html.HiddenFor(x => x.Product.Title)
-                    @Html.HiddenFor(x => x.Product.Color)
-                    @Html.HiddenFor(x => x.Product.Alt)
-                    @Html.HiddenFor(x => x.Product.Description)
-                    @Html.HiddenFor(x => x.Product.ImageSource)
-                    @Html.HiddenFor(x => x.Product.Path)
+                <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="item_added" asp-controller="BagItem" asp-action="PostBagItem">
+                    @Html.HiddenFor(x => x.Id)
+                    @Html.HiddenFor(x => x.Images)
+                    @Html.HiddenFor(x => x.ImageSource)
+                    @Html.HiddenFor(x => x.ImageSource2)
+                    @Html.HiddenFor(x => x.ItemType)
+                    @Html.HiddenFor(x => x.LastModified)
+                    @Html.HiddenFor(x => x.Name)
+                    @Html.HiddenFor(x => x.Path)
+                    @Html.HiddenFor(x => x.Price)
+                    @Html.HiddenFor(x => x.Size)
+                    @Html.HiddenFor(x => x.Title)
+                    @Html.HiddenFor(x => x.TypeOfWood)
+                    @Html.HiddenFor(x => x.Alt)
+                    @Html.HiddenFor(x => x.Color)
+                    @Html.HiddenFor(x => x.Description)
+                    @Html.HiddenFor(x => x.CategoryId)
+
                     <div class="top-side-padding bottom-side-padding fadein " id="addproduct-button">
                         <button class="button" style="border-radius:0px;" type="submit">ADD TO BAG</button>
                     </div>

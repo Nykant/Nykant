@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using NykantMVC.Extensions;
 using NykantMVC.Models;
 using NykantMVC.Models.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -20,165 +21,69 @@ namespace NykantMVC.Controllers
         {
         }
 
-        public async Task<IActionResult> UpdateBagItem(BagItem bagItem, int selection)
-        {
-            int bagItemQuantity = HttpContext.Session.Get<int>(BagItemAmountKey);
-            if (User.Identity.IsAuthenticated)
-            {
-                if (selection != 0)
-                {
-                    if (selection == 1)
-                    {
-                        bagItem.Quantity += 1;
-                    }
-                    else if (selection == 2)
-                    {
-                        bagItem.Quantity -= 1;
-                    }
-                }
-
-                if (bagItem.Quantity <= 0)
-                {
-                    var response = await DeleteRequest($"/BagItem/DeleteBagItem/{bagItem.Subject}/{bagItem.ProductId}");
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        bagItemQuantity -= 1;
-                        HttpContext.Session.Set<int>(BagItemAmountKey, bagItemQuantity);
-                        return RedirectToAction("Details", "Bag");
-                    }
-                    return Content("Failed");
-                }
-                else
-                {
-                    var response = await PatchRequest("/BagItem/UpdateBagItem", bagItem);
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        return RedirectToAction("Details", "Bag");
-                    }
-                    return Content("Failed");
-                }
-
-            }
-            else
-            {
-                var bagItems = HttpContext.Session.Get<List<BagItem>>(BagSessionKey);
-
-                for (int i = 0; i < bagItems.Count(); i++)
-                {
-                    if (bagItems[i].ProductId == bagItem.ProductId)
-                    {
-                        switch (selection)
-                        {
-                            case 1:
-                                bagItems[i].Quantity += 1;
-                                if (bagItems[i].Quantity <= 0)
-                                {
-                                    bagItems.RemoveAt(i);
-                                    bagItemQuantity -= 1;
-                                    HttpContext.Session.Set<int>(BagItemAmountKey, bagItemQuantity);
-                                }
-                                break;
-
-                            case 2:
-                                bagItems[i].Quantity -= 1;
-                                if (bagItems[i].Quantity <= 0)
-                                {
-                                    bagItems.RemoveAt(i);
-                                    bagItemQuantity -= 1;
-                                    HttpContext.Session.Set<int>(BagItemAmountKey, bagItemQuantity);
-                                }
-
-                                break;
-                        }
-                    }
-                }
-
-                HttpContext.Session.Set<List<BagItem>>(BagSessionKey, bagItems);
-                return RedirectToAction("Details", "Bag");
-            }
-        }
+        
 
         [HttpPost]
-        public async Task<IActionResult> PostBagItem(ProductVM productVM, int productQuantity)
+        public async Task<IActionResult> PostBagItem(Product product)
         {
             bool isAuthenticated = User.Identity.IsAuthenticated;
             int bagItemQuantity = HttpContext.Session.Get<int>(BagItemAmountKey);
 
-            if (productQuantity <= 0)
-            {
-                return RedirectToAction("Details", "Product", new { id = productVM.Product.Id });
-            };
-
             BagItem bagItem = new BagItem
             {
-                ProductId = productVM.Product.Id,
-                Quantity = productQuantity
+                ProductId = product.Id,
+                Quantity = 1
             };
 
             if (!isAuthenticated)
             {
-                bagItem.Product = productVM.Product;
-                List<BagItem> bagItems = HttpContext.Session.Get<List<BagItem>>(BagSessionKey);
-                if (bagItems == default
-                    || bagItems == null)
+                try
                 {
-                    bagItems = new List<BagItem>();
-                }
-
-                bool bagItemExists = false;
-                foreach (var item in bagItems)
-                {
-                    if (item.ProductId == bagItem.ProductId)
+                    bagItem.Product = product;
+                    List<BagItem> bagItems = HttpContext.Session.Get<List<BagItem>>(BagSessionKey);
+                    if (bagItems == default || bagItems == null)
                     {
-                        bagItemExists = true;
-                        item.Quantity += productQuantity;
+                        bagItems = new List<BagItem>();
                     }
-                }
-                if (!bagItemExists)
-                {
-                    bagItems.Add(bagItem);
-                    bagItemQuantity += 1;
-                    HttpContext.Session.Set<int>(BagItemAmountKey, bagItemQuantity);
-                }
 
-                HttpContext.Session.Set<List<BagItem>>(BagSessionKey, bagItems);
-                return RedirectToAction("Details", "Product", new { id = bagItem.ProductId, itemAdded = true });
+                    bool bagItemExists = false;
+                    foreach (var item in bagItems)
+                    {
+                        if (item.ProductId == bagItem.ProductId)
+                        {
+                            bagItemExists = true;
+                            item.Quantity += 1;
+                        }
+                    }
+                    if (!bagItemExists)
+                    {
+                        bagItems.Add(bagItem);
+                        bagItemQuantity += 1;
+                        HttpContext.Session.Set<int>(BagItemAmountKey, bagItemQuantity);
+                    }
+
+                    HttpContext.Session.Set<List<BagItem>>(BagSessionKey, bagItems);
+                    return NoContent();
+                }
+                catch (Exception e)
+                {
+                    return Content(e.Message);
+                }
             }
             else
             {
                 bagItem.Subject = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
-                var json = await GetRequest($"/BagItem/GetBagItems/{bagItem.Subject}");
-                List<BagItem> bagItems = JsonConvert.DeserializeObject<List<BagItem>>(json);
 
-                if (BagItemExists(bagItems, bagItem))
+                var response = await PostRequest("/BagItem/PostBagItem", bagItem);
+                if (response.IsSuccessStatusCode)
                 {
-                    var bagItemDb = GetBagItem(bagItems, bagItem);
-                    bagItemDb.Quantity += productQuantity;
-                    var response = await PatchRequest("/BagItem/UpdateBagItem", bagItemDb);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        return RedirectToAction("Details", "Product", new { id = bagItem.ProductId, itemAdded = true });
-                    }
-                    else
-                    {
-                        return RedirectToAction("Details", "Product", new { id = productVM.Product.Id });
-                    }
+                    bagItemQuantity += 1;
+                    HttpContext.Session.Set<int>(BagItemAmountKey, bagItemQuantity);
+                    return NoContent();
                 }
                 else
                 {
-                    var response = await PostRequest("/BagItem/PostBagItem", bagItem);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        bagItemQuantity += 1;
-                        HttpContext.Session.Set<int>(BagItemAmountKey, bagItemQuantity);
-                        return RedirectToAction("Details", "Product", new { id = bagItem.ProductId, itemAdded = true });
-                    }
-                    else
-                    {
-                        return RedirectToAction("Details", "Product", new { id = productVM.Product.Id });
-                    }
+                    return Content("Fejl, prøv igen.");
                 }
             }
         }

@@ -1,0 +1,52 @@
+﻿@model List<BagItem>
+
+
+
+<div class="bagtable-headers">
+    @*<div id="header-product">Product</div>*@
+    <div>I alt</div>
+    <div>Mængde</div>
+    <div>Pris</div>
+    <div>Produkt</div>
+</div>
+@foreach (var bagItem in Model)
+{
+    <div class="bag-item">
+        <div id="bag-item-image">
+            <a asp-action="Details" asp-controller="Product" asp-route-id="@bagItem.Product.Id">
+                <img src="@bagItem.Product.ImageSource" />
+            </a>
+        </div>
+        <div id="bag-item-name">
+            <a asp-action="Details" asp-controller="Product" asp-route-id="@bagItem.Product.Id">
+                @bagItem.Product.Title
+            </a>
+        </div>
+        <div id="bag-item-price"><label>@bagItem.Product.Price</label></div>
+        <div id="bag-item-quantity">
+            <p id="bagitem-quantity-text">@bagItem.Quantity</p>
+        </div>
+        <div id="add-bagitem">
+            <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#bagtable" data-ajax-success="bag_item_updated" asp-controller="Bag" asp-action="UpdateBagItem">
+                @Html.HiddenFor(x => bagItem.Quantity)
+                @Html.HiddenFor(x => bagItem.ProductId)
+                @Html.HiddenFor(x => bagItem.Subject)
+                <input type="hidden" value="1" name="selection" />
+                <button class="button" type="submit"><i class="fas fa-plus"></i></button>
+            </form>
+        </div>
+        <div id="remove-bagitem">
+            <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#bagtable" data-ajax-success="bag_item_updated" asp-controller="Bag" asp-action="UpdateBagItem">
+                @Html.HiddenFor(x => bagItem.Quantity)
+                @Html.HiddenFor(x => bagItem.ProductId)
+                @Html.HiddenFor(x => bagItem.Subject)
+                <input type="hidden" value="2" name="selection" />
+                <button class="button" type="submit"><i class="fas fa-minus"></i></button>
+            </form>
+        </div>
+        @{
+            var total = bagItem.Quantity * bagItem.Product.Price;
+        }
+        <div id="bag-item-total"><label>@total</label></div>
+    </div>
+}

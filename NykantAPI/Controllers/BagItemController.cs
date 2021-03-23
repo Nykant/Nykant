@@ -43,7 +43,28 @@ namespace NykantAPI.Controllers
             {
                 try
                 {
-                    _context.BagItems.Update(bagItem);
+                    var entity = _context.BagItems.Update(bagItem).Entity;
+                    await _context.SaveChangesAsync();
+                    return Ok();
+                }
+                catch (Exception e)
+                {
+                    return Conflict(e.Message);
+                }
+            }
+            return NotFound();
+        }
+
+        [HttpPatch]
+        public async Task<ActionResult<BagItem>> AddBagItem(BagItem bagItem)
+        {
+            if (BagItemExists(bagItem.Subject, bagItem.ProductId))
+            {
+                try
+                {
+                    var bagitemDb = await _context.BagItems.FindAsync(bagItem.ProductId);
+                    bagitemDb.Quantity += 1;
+                    _context.BagItems.Update(bagitemDb);
                     await _context.SaveChangesAsync();
                     return Ok();
                 }
@@ -110,7 +131,7 @@ namespace NykantAPI.Controllers
                 }
                 else
                 {
-                    return NotFound();
+                    return await AddBagItem(bagItem);
                 }
             }
             else
