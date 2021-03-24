@@ -1,9 +1,9 @@
 ﻿
 .sidebar {
     position:fixed;
-    top:20%;
+    top:110px;
     right:50px;
-    padding: 30px;
+    padding: 15px;
     color: black;
     width: 300px;
     height:auto;
@@ -22,6 +22,7 @@
 .sidebar-item {
     display: flex;
     padding: 10px;
+    margin-bottom:10px;
     background-color:var(--light-blue);
 }
 
@@ -35,6 +36,12 @@
         padding-left:10px;
     }
 
+
+.checkout-wrap {
+    background-color: white;
+    width: 100%;
+    transform: translateY(-100%);
+}
 .credit-card {
     padding: 30px;
     color: var(--light-grey);
@@ -46,18 +53,18 @@
 
 .customerinfo {
     height: auto;
-    background-color: white;
+    width: 100%;
     padding-bottom: 10px;
 }
 
-.checkout-wrap {
-    transform: translateY(-100%);
+#customer-form {
+    background-color: white;
+    width: 100%;
+    overflow: hidden;
+    height: 0px;
 }
 
-#customer-form {
-    overflow: hidden;
-    height:0px;
-}
+
 
 .customerinfo-line {
     padding:50px;
@@ -114,22 +121,23 @@
 .checkout-header h1 {
     padding-top:30px;
     padding-bottom:30px;
+    text-align:center;
 }
 
 .check-sign {
-    position:absolute;
+    position:relative;
     font-size:40px;
     color:green;
-    transform:translate(+590px, -60px);
+    transform:translate(-25px, -60px);
     display: none;
+    float:right;
 }
-
-
-
 
 
 
 #shipping-form {
+/*    background-color: white;*/
+    width: 100%;
     overflow: hidden;
     height: 0px;
 }
@@ -141,13 +149,15 @@
 }
 
 #payment-form {
+    background-color: white;
+    width: 100%;
     overflow: hidden;
     height: 0px;
 }
 
 
 #customerinf-summary {
-    display:inline;
+    display:inline-block;
     padding:15px;
     padding-left:50px;
     text-align:left;
@@ -163,7 +173,7 @@
     }
 
 #shipping-summary {
-    display: inline;
+    display: inline-block;
     padding: 15px;
     padding-left: 50px;
     text-align: left;
@@ -179,9 +189,247 @@
 }
 
 .edit-button {
-    min-height:30px;
-    min-width:80px;
-    position:absolute;
-    transform:translate(560px, -50px);
-    display:none;
+    height: 30px;
+    width: 80px;
+    position: relative;
+    transform: translateY(-30px);
+    display: none;
+    float:right;
+}
+
+#shipping-edit-button {
+    transform:translate(+25px, -30px);
+}
+
+
+@media only screen and (max-width: 600px) {
+    #customerinf-wrapper {
+        width: 100%;
+    }
+
+    #shipping-wrapper {
+        width: 100%;
+    }
+
+    #payment-wrapper {
+        width: 100%;
+    }
+    .sidebar {
+        position: relative;
+        right: unset;
+        width: 100%;
+        padding: 10px;
+        border: none;
+        margin-bottom: 30px;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    #customerinf-wrapper {
+        width: 600px;
+        margin:auto;
+    }
+    #shipping-wrapper {
+        width: 600px;
+        margin: auto;
+    }
+    #payment-wrapper {
+        width: 600px;
+        margin: auto;
+    }
+    
+    .sidebar {
+        position: relative;
+        right: unset;
+        width: 600px;
+        border: none;
+        margin:auto;
+        margin-bottom: 10px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    #customerinf-wrapper {
+        width: 500px;
+        margin: initial;
+        float:left;
+        margin-left:1%;
+    }
+
+    #shipping-wrapper {
+        width: 500px;
+        margin: initial;
+        float: left;
+        margin-left: 1%;
+    }
+
+    #payment-wrapper {
+        width: 500px;
+        margin: initial;
+        float: left;
+        margin-left: 1%;
+    }
+
+    .sidebar {
+        position: fixed;
+        right: 1%;
+        width: 220px;
+        border: none;
+        margin: 0px;
+    }
+}
+
+@media only screen and (min-width: 873px) {
+    #customerinf-wrapper {
+        width: 580px;
+        margin: initial;
+        float: left;
+        margin-left: 1%;
+    }
+
+    #shipping-wrapper {
+        width: 580px;
+        margin: initial;
+        float: left;
+        margin-left: 1%;
+    }
+
+    #payment-wrapper {
+        width: 580px;
+        margin: initial;
+        float: left;
+        margin-left: 1%;
+    }
+
+    .sidebar {
+        position: fixed;
+        right: 1%;
+        width: 250px;
+        border: none;
+        margin: 0px;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    #customerinf-wrapper {
+        width: 650px;
+        margin: initial;
+        float: left;
+        margin-left: 5%;
+    }
+
+    #shipping-wrapper {
+        width: 650px;
+        margin: initial;
+        float: left;
+        margin-left: 5%;
+    }
+
+    #payment-wrapper {
+        width: 650px;
+        margin: initial;
+        float: left;
+        margin-left: 5%;
+    }
+
+    .sidebar {
+        position: fixed;
+        right: 1%;
+        width: 250px;
+        border: none;
+        margin: 0px;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    #customerinf-wrapper {
+        width: 800px;
+        margin: initial;
+        float: left;
+        margin-left: 5%;
+    }
+
+    #shipping-wrapper {
+        width: 800px;
+        margin: initial;
+        float: left;
+        margin-left: 5%;
+    }
+
+    #payment-wrapper {
+        width: 800px;
+        margin: initial;
+        float: left;
+        margin-left: 5%;
+    }
+
+    .sidebar {
+        position: fixed;
+        right: 1%;
+        width: 300px;
+        border: none;
+        margin: 0px;
+    }
+}
+
+@media only screen and (min-width: 1500px) {
+    #customerinf-wrapper {
+        width: 800px;
+        margin: initial;
+        float: left;
+        margin-left: 5%;
+    }
+
+    #shipping-wrapper {
+        width: 800px;
+        margin: initial;
+        float: left;
+        margin-left: 5%;
+    }
+
+    #payment-wrapper {
+        width: 800px;
+        margin: initial;
+        float: left;
+        margin-left: 5%;
+    }
+
+    .sidebar {
+        position: fixed;
+        right: 20%;
+        width: 300px;
+        border: none;
+        margin: 0px;
+    }
+}
+
+@media only screen and (min-width: 1780px) {
+    #customerinf-wrapper {
+        width: 800px;
+        margin: initial;
+        float: left;
+        margin-left: 5%;
+    }
+
+    #shipping-wrapper {
+        width: 800px;
+        margin: initial;
+        float: left;
+        margin-left: 5%;
+    }
+
+    #payment-wrapper {
+        width: 800px;
+        margin: initial;
+        float: left;
+        margin-left: 5%;
+    }
+
+    .sidebar {
+        position: fixed;
+        right: 30%;
+        width: 300px;
+        border: none;
+        margin: 0px;
+    }
 }

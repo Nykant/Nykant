@@ -1,10 +1,11 @@
 ﻿@model CheckoutVM
 
-<div class="row bottom-side-padding top-padding">
-    <div class="col-8 center col-wrapper">
-        <div class="col-8 left hide-overflow">
+<div class="row bottom-side-padding">
+        <div class="hide-overflow" id="customerinf-wrapper">
             <div class="checkout-header" id="customerInf-header" style="z-index:200;">
-                <h1>Modtager oplysninger</h1>
+                <h1>
+                    Modtager oplysninger
+                </h1>
                 <div class="check-sign" id="customer-check-sign">
                     <i class="fa fa-check" aria-hidden="true"></i>
                 </div>
@@ -17,10 +18,9 @@
                     <p>by: <span id="customer-city-summary">@Model.CustomerInf.City</span></p>
                     <p>land: <span id="customer-country-summary">@Model.CustomerInf.Country</span></p>
                     <p>postnummer: <span id="customer-postal-summary">@Model.CustomerInf.Postal</span></p>
+
+                    <button class="button edit-button" id="customer-edit-button">RET</button>
                 </div>
-
-                <button class="button edit-button" id="customer-edit-button">RET</button>
-
             </div>
 
             <form style="z-index:50;" id="customer-form" method="post" data-ajax="true" data-ajax-method="post" data-ajax-complete="customer_completed" asp-controller="Checkout" asp-action="PostCustomerInf">
@@ -28,8 +28,6 @@
                 <input type="hidden" asp-for="@Model.CustomerInf.Id" />
                 <div class="checkout-wrap" id="customer-wrap" >
                     <div class="customerinfo">
-
-                        <div class="customerinfo-line">
                             <div class="inputstyle left">
                                 <input id="customer-email-input" required asp-for="@Model.CustomerInf.Email" />
                                 <label asp-for="@Model.CustomerInf.Email"></label>
@@ -42,9 +40,8 @@
                                 <span asp-validation-for="@Model.CustomerInf.Phone"></span>
                                 <div class="underline"></div>
                             </div>
-                        </div>
 
-                        <div class="customerinfo-line">
+
                             <div class="inputstyle left">
                                 <input id="customer-firstname-input" required asp-for="@Model.CustomerInf.FirstName" />
                                 <label asp-for="@Model.CustomerInf.FirstName"></label>
@@ -57,9 +54,9 @@
                                 <span asp-validation-for="@Model.CustomerInf.LastName"></span>
                                 <div class="underline"></div>
                             </div>
-                        </div>
 
-                        <div class="customerinfo-line">
+
+
                             <div class="inputstyle left">
                                 <input id="customer-address-input" required asp-for="@Model.CustomerInf.Address1" />
                                 <label asp-for="@Model.CustomerInf.Address1"></label>
@@ -72,9 +69,9 @@
                                 <span asp-validation-for="@Model.CustomerInf.City"></span>
                                 <div class="underline"></div>
                             </div>
-                        </div>
 
-                        <div class="customerinfo-line">
+
+
                             <div class="inputstyle left">
                                 <input id="customer-country-input" class="hidden" asp-for="@Model.CustomerInf.Country" />
                                 <div class="country-label">Modtagers Land</div>
@@ -92,9 +89,12 @@
                                 <span asp-validation-for="@Model.CustomerInf.Postal"></span>
                                 <div class="underline"></div>
                             </div>
-                        </div>
-                        <div style="padding-top:50px;">
+
+                        <div style="float:left; padding:10px; padding-top:30px;">
                             <p>Ved at klikke fortsæt accepterer du vores <a class="simple-link" asp-controller="home" asp-action="privacypolicy">databeskyttelsespolitik</a></p>
+                        </div>
+                        <div style="padding:10px;">
+
                         </div>
                     </div>
                     
@@ -103,12 +103,8 @@
                     </div>
 
                 </div>
-
             </form>
-            </div>
-
-
-    </div>
+        </div>
 </div>
 
 

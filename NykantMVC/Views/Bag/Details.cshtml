@@ -6,9 +6,9 @@
 
 <script src="~/JS/bag.js" defer></script>
 
-<div class="row top-padding bottom-side-padding top-padding fullscreen-row">
+<div class="row top-padding bottom-side-padding fullscreen-row">
     <div class="col-10 center" id="bag-wrapper">
-        <div class="col-8 left fadein">
+        <div class="col-8 left fadein" id="bagtable-container">
             <div class="bagtitle">
                 MY BAG
             </div>
@@ -16,11 +16,11 @@
                 <partial name="_BagTablePartial" />
             </div>
         </div>
-        <div class="col-3 right left-side-padding fixed" id="checkout-box">
+        <div class="col-3 left" id="checkout-box">
             <div class="order-info">
                 <h1>Ordre</h1>
                 <p style="float:left;">Levering</p>
-                <p style="float:right;">Total ekskl. levering</p>
+                <p id="price-info" style="float:right;">Total ekskl. levering</p>
             </div>
             <div class="checkout-price">
                 <p id="total-price-text">total: @ViewBag.PriceSum</p>

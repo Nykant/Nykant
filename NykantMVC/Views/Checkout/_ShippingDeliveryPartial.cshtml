@@ -5,8 +5,8 @@
 }
 
 <div class="row bottom-side-padding">
-    <div class="col-8 center col-wrapper">
-        <div class="col-8 left">
+    <div id="shipping-wrapper">
+
             <div class="checkout-header" id="shipping-header">
                 <h1>Leveringsmetode</h1>
                 <div class="check-sign" id="shipping-check-sign">
@@ -14,8 +14,10 @@
                 </div>
                 <div id="shipping-summary">
                     <p>leveringsmetode: <span id="shipping-method-summary">@Model.Checkout.ShippingDelivery.Name</span></p>
+
+                    <button class="button edit-button" id="shipping-edit-button">RET</button>
                 </div>
-                <button class="button edit-button" id="shipping-edit-button">RET</button>
+                
             </div>
             <form id="shipping-form" method="post" data-ajax="true" data-ajax-method="post" data-ajax-complete="shipping_completed" asp-controller="Checkout" asp-action="PostShipping">
                 <input type="hidden" id="edit-shipping" name="editShipping" />
@@ -46,7 +48,7 @@
                 </div>
 
             </form>
-        </div>
+
     </div>
 </div>
 
