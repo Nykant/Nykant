@@ -3,8 +3,10 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
-git rm --cached *.json
-
+git rm --cached /NykantMVC/appsettings.json
+git rm --cached appsettings.json
+/NykantMVC/appsettings.json
+appsettings.json
 
 # User-specific files
 *.rsuser
