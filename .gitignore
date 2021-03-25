@@ -3,10 +3,6 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
-git rm --cached /NykantMVC/appsettings.json
-git rm --cached appsettings.json
-/NykantMVC/appsettings.json
-appsettings.json
 
 # User-specific files
 *.rsuser
@@ -343,3 +339,9 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+
+
+git rm --cached /NykantMVC/appsettings.json
+git rm --cached appsettings.json
+/NykantMVC/appsettings.json
+appsettings.json
