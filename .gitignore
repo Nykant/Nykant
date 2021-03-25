@@ -339,9 +339,3 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
-
-
-git rm --cached /NykantMVC/appsettings.json
-git rm --cached appsettings.json
-/NykantMVC/appsettings.json
-appsettings.json
