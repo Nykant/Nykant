@@ -53,16 +53,18 @@ namespace NykantIS.Controllers
         public async Task<IActionResult> PostPersonalInfo(ProfileVM profileVM)
         {
             var user = await _userManager.GetUserAsync(User);
+            bool updated_username = false;
             if (user.UserName != profileVM.Username)
             {
                 user.UserName = profileVM.Username;
+                updated_username = true;
             }
             if (user.Email != profileVM.Email) 
             {
                 var result = await _userManager.SetEmailAsync(user, profileVM.Email);
                 if (!result.Succeeded)
                 {
-                    return null;
+                    return BadRequest();
                 }
                 else
                 {
@@ -90,19 +92,22 @@ namespace NykantIS.Controllers
                     }
                     catch (Exception e)
                     {
-
+                        return BadRequest(e.Message);
                     }
                     await _userManager.UpdateAsync(user);
                     await _signInManager.SignOutAsync();
                     await HttpContext.SignOutAsync();
 
-                    return new JsonResult("Fordi du har opdateret din email, skal din account igen aktiveres. " +
-                        "Vi har sendt en email til din nye email, med et aktiverings-link. " +
-                        "før du kan logge ind skal du klikke på aktiverings-linket.");
+                    return NoContent();
                 }
             }
-            await _userManager.UpdateAsync(user);
-            return RedirectToAction(nameof(PersonalInfo));
+            if (updated_username)
+            {
+                await _userManager.UpdateAsync(user);
+                return NoContent();
+            }
+            
+            return BadRequest();
         }
     }
 }

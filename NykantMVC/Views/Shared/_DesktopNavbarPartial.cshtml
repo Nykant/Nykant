@@ -1,5 +1,8 @@
-﻿<div class="col-12 navbar">
-    <div class="navbar-wrap highlightTextIn">
+﻿<div class="navbar">
+    <div class="desktop-navbar-wrap highlightTextIn">
+        <a href="javascript:void(0);" class="icon" id="nav-burger">
+            <i class="fa fa-bars"></i>
+        </a>
         <button id="search-button"><i class="fas fa-search"></i></button>
         <a alt="NYKANT" asp-controller="Nykant" asp-action="Index"><span style="color:var(--blue)">NY</span>KANT</a>
         <a id="product-link" alt="PRODUKTER" asp-controller="Product" asp-action="Index">PRODUKTER</a>
@@ -34,5 +37,8 @@
             </a>
         }
 
+        <div id="nav-links">
+            <a alt="PRODUKTER" asp-controller="Product" asp-action="Index">PRODUKTER</a>
+        </div>
     </div>
 </div>

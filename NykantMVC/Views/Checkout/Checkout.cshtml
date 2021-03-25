@@ -24,14 +24,17 @@
 <script src="~/JS/custom-list.js" defer></script>
 <script src="~/stripe/client.js" defer></script>
 
-<div class="background-lightgrey top-side-padding" id="checkout-container">
-    <partial name="_CheckoutBagPartial" />
+<div style="width:100%; height:100%;" class="background-lightgrey top-side-padding">
+    <div class="responsive-container">
+        <partial name="_CheckoutBagPartial" />
 
-    <input type="hidden" id="customer-form-complete" value="0" />
-    <partial name="_CustomerInfPartial" />
+        <input type="hidden" id="customer-form-complete" value="0" />
+        <partial name="_CustomerInfPartial" />
 
-    <input type="hidden" id="shipping-form-complete" value="0" />
-    <partial name="_ShippingDeliveryPartial" />
+        <input type="hidden" id="shipping-form-complete" value="0" />
+        <partial name="_ShippingDeliveryPartial" />
 
-    <partial name="_PaymentPartial" />
+        <partial name="_PaymentPartial" />
+    </div>
 </div>
+

@@ -2,8 +2,8 @@
     padding:30px;
 }
 
-.register-form{
-    text-align:center;
-    border:2px solid black;
-    padding:30px;
+.register-form {
+    padding: 30px;
+    text-align: center;
+    background-color: white;
 }

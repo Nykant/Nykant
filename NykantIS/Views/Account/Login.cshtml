@@ -1,103 +1,110 @@
 @model LoginViewModel
 
 <partial name="_ValidationSummary" />
+<div style="width:100%; height:100%;" class="background-lightgrey top-side-padding">
+    <div class="responsive-container">
+        <div class="responsive-form">
+            <form asp-route="Login">
+                <input type="hidden" asp-for="ReturnUrl" />
 
-<form asp-route="Login">
-    <input type="hidden" asp-for="ReturnUrl" />
-
-    <div class="row top-padding background-lightblue">
-        @if (Model.EnableLocalLogin)
-        {
-            <div class="col-6 center">
-                <div class="local-login">
-                    <div class="header">
-                        NYKANT ACCOUNT LOGIN
-                    </div>
-
-                    <div class="inputstyle">
-                        <input required asp-for="Email" />
-                        <label asp-for="Email"></label>
-                        <span asp-validation-for="Email"></span>
-                        <div class="underline"></div>
-                    </div>
-
-                    <div class="inputstyle">
-                        <input required asp-for="Password" />
-                        <label asp-for="Password"></label>
-                        <span asp-validation-for="Password"></span>
-                        <div class="underline"></div>
-                    </div>
-
-                    @if (Model.AllowRememberLogin)
+                <div class="row top-padding">
+                    @if (Model.EnableLocalLogin)
                     {
-                        <div class="remember-me">
-                            <label class="checkbox" asp-for="RememberLogin">
-                                <input type="checkbox" asp-for="RememberLogin">
-                                <span class="checkmark"></span>
-                            </label>
-                            <p>remember me</p>
+
+                        <div class="local-login">
+                            <div class="header">
+                                NYKANT ACCOUNT LOGIN
+                            </div>
+
+                            <div class="inputstyle">
+                                <input required asp-for="Email" />
+                                <label asp-for="Email"></label>
+                                <span asp-validation-for="Email"></span>
+                                <div class="underline"></div>
+                            </div>
+
+                            <div class="inputstyle">
+                                <input required asp-for="Password" />
+                                <label asp-for="Password"></label>
+                                <span asp-validation-for="Password"></span>
+                                <div class="underline"></div>
+                            </div>
+
+                            @if (Model.AllowRememberLogin)
+                            {
+                                <div class="remember-me">
+                                    <label class="checkbox" asp-for="RememberLogin">
+                                        <input type="checkbox" asp-for="RememberLogin">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <p>remember me</p>
+                                </div>
+                            }
+
                         </div>
+
                     }
 
                 </div>
+                <div class="row">
+
+                    <div class="col-4 right fadein button-container">
+                        <button class="button " type="submit" name="button" value="login">Login</button>
+                    </div>
+
+                    <a href="https://localhost:5002" class="col-4 left fadein button-container ">
+                        <div class="button dark-card">
+                            <p>Go Back</p>
+                        </div>
+                    </a>
+
+                    <a asp-area="Identity" asp-page="/Account/Register" asp-route-returnUrl="@Model.ReturnUrl" class="col-4 left fadein button-container ">
+                        <div class="button dark-card">
+                            <p>Register</p>
+                        </div>
+                    </a>
+
+                </div>
+            </form>
+            
+        </div>
+        @if (Model.VisibleExternalProviders.Any())
+        {
+
+            <div class="row top-side-padding">
+                <div class="responsive-form">
+                    <div class="external-login">
+                        <div class="header">
+                            EXTERNAL ACCOUNT LOGIN
+                        </div>
+                        <ul>
+                            @foreach (var provider in Model.VisibleExternalProviders)
+                            {
+                                <li>
+                                    <a asp-controller="External"
+                                       asp-action="Challenge"
+                                       asp-route-scheme="@provider.AuthenticationScheme"
+                                       asp-route-returnUrl="@Model.ReturnUrl">
+                                        @provider.DisplayName
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+
+        }
+
+        @if (!Model.EnableLocalLogin && !Model.VisibleExternalProviders.Any())
+        {
+            <div class="alert alert-warning">
+                <strong>Invalid login request</strong>
+                There are no login schemes configured for this request.
             </div>
         }
     </div>
-    <div class="row top-side-padding background-lightblue">
-        <div class="col-6 center">
 
-            <div class="col-4 right fadein">
-                <button class="button dark-card right-side-padding" type="submit" name="button" value="login">Login</button>
-            </div>
-
-            <a href="https://localhost:5002" class="col-4 left fadein right-side-padding  ">
-                <div class="button dark-card">
-                    <p>Go Back</p>
-                </div>
-            </a>
-
-            <a asp-area="Identity" asp-page="/Account/Register" asp-route-returnUrl="@Model.ReturnUrl" class="col-4 left fadein right-side-padding  ">
-                <div class="button dark-card">
-                    <p>Register</p>
-                </div>
-            </a>
-
-        </div>
-    </div>
-</form>
-
-@if (Model.VisibleExternalProviders.Any())
-{
-<div class="row top-side-padding background-lightblue">
-    <div class="col-6 center">
-        <div class="external-login">
-            <div class="header">
-                EXTERNAL ACCOUNT LOGIN
-            </div>
-            <ul>
-                @foreach (var provider in Model.VisibleExternalProviders)
-                {
-                    <li>
-                        <a asp-controller="External"
-                           asp-action="Challenge"
-                           asp-route-scheme="@provider.AuthenticationScheme"
-                           asp-route-returnUrl="@Model.ReturnUrl">
-                            @provider.DisplayName
-                        </a>
-                    </li>
-                }
-            </ul>
-        </div>
-    </div>
 </div>
-
-}
-
-@if (!Model.EnableLocalLogin && !Model.VisibleExternalProviders.Any())
-{
-    <div class="alert alert-warning">
-        <strong>Invalid login request</strong>
-        There are no login schemes configured for this request.
-    </div>
-}
-

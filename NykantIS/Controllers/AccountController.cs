@@ -112,6 +112,9 @@ namespace NykantIS.Controllers
             if (ModelState.IsValid)
             {
                 var user = await _userManager.FindByEmailAsync(model.Email);
+                if(_signInManager.IsSignedIn(User)) {
+                    return Redirect("https://localhost:5002/sign-me-in");
+                }
                 if(user != null)
                 {
                     var result = await _signInManager.PasswordSignInAsync(user, model.Password, model.RememberLogin, lockoutOnFailure: true);
@@ -128,7 +131,6 @@ namespace NykantIS.Controllers
                                 return this.LoadingPage("Redirect", model.ReturnUrl);
                             }
 
-                            // we can trust model.ReturnUrl since GetAuthorizationContextAsync returned non-null
                             return Redirect(model.ReturnUrl);
                         }
 

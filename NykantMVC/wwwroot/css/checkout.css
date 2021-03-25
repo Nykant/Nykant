@@ -1,17 +1,11 @@
 ﻿
 .sidebar {
     position:fixed;
-    top:110px;
-    right:50px;
     padding: 15px;
     color: black;
-    width: 300px;
     height:auto;
-    margin-left: auto;
-    margin-right: auto;
     background-color:white;
     border:3px solid var(--blue);
-    z-index:30;
 }
 
 .sidebar-items {
@@ -202,22 +196,18 @@
 }
 
 
+
+
 @media only screen and (max-width: 600px) {
-    #checkout-container {
+    .responsive-container {
         width:100%;
     }
+
+    .responsive-form {
+        width: 100%;
+        float: none;
+    }
     
-    #customerinf-wrapper {
-        width: 100%;
-    }
-
-    #shipping-wrapper {
-        width: 100%;
-    }
-
-    #payment-wrapper {
-        width: 100%;
-    }
     .sidebar {
         position: relative;
         right: unset;
@@ -229,23 +219,16 @@
 }
 
 @media only screen and (min-width: 600px) {
-    #checkout-container {
+    .responsive-container {
         width: 600px;
         margin: auto;
     }
-    #customerinf-wrapper {
-        width: 600px;
-        margin:auto;
+
+    .responsive-form {
+        width: 100%;
+        float: none;
     }
-    #shipping-wrapper {
-        width: 600px;
-        margin: auto;
-    }
-    #payment-wrapper {
-        width: 600px;
-        margin: auto;
-    }
-    
+
     .sidebar {
         position: relative;
         right: unset;
@@ -257,93 +240,53 @@
 }
 
 @media only screen and (min-width: 768px) {
-    #checkout-container {
-    }
-    #customerinf-wrapper {
-        width: 500px;
-        margin: initial;
-        float:left;
-        margin-left:1%;
+    .responsive-container {
+        width: 768px;
+        margin: auto;
     }
 
-    #shipping-wrapper {
-        width: 500px;
-        margin: initial;
+    .responsive-form {
+        width: 70%;
         float: left;
-        margin-left: 1%;
-    }
-
-    #payment-wrapper {
-        width: 500px;
-        margin: initial;
-        float: left;
-        margin-left: 1%;
     }
 
     .sidebar {
         position: fixed;
-        right: 1%;
-        width: 220px;
+        right:10px;
         border: none;
         margin: 0px;
+        width: 25%;
     }
 }
 
 @media only screen and (min-width: 873px) {
-    #checkout-container {
-    }
-    #customerinf-wrapper {
-        width: 580px;
-        margin: initial;
-        float: left;
-        margin-left: 1%;
+    .responsive-container {
+        width: 873px;
+        margin: auto;
     }
 
-    #shipping-wrapper {
-        width: 580px;
-        margin: initial;
+    .responsive-form {
+        width: 70%;
         float: left;
-        margin-left: 1%;
-    }
-
-    #payment-wrapper {
-        width: 580px;
-        margin: initial;
-        float: left;
-        margin-left: 1%;
     }
 
     .sidebar {
         position: fixed;
         right: 1%;
-        width: 250px;
         border: none;
         margin: 0px;
     }
 }
 
 @media only screen and (min-width: 992px) {
-    #checkout-container {
-    }
-    #customerinf-wrapper {
-        width: 650px;
-        margin: initial;
-        float: left;
-        margin-left: 5%;
+    .responsive-container {
+        width: 992px;
+        margin: auto;
     }
 
-    #shipping-wrapper {
-        width: 650px;
-        margin: initial;
+    .responsive-form {
+        width: 70%;
         float: left;
-        margin-left: 5%;
-    }
-
-    #payment-wrapper {
-        width: 650px;
-        margin: initial;
-        float: left;
-        margin-left: 5%;
     }
 
     .sidebar {
@@ -356,28 +299,14 @@
 }
 
 @media only screen and (min-width: 1200px) {
-        #checkout-container {
-
-    }
-    #customerinf-wrapper {
-        width: 800px;
-        margin: initial;
-        float: left;
-        margin-left: 5%;
+    .responsive-container {
+        width: 1200px;
+        margin: auto;
     }
 
-    #shipping-wrapper {
-        width: 800px;
-        margin: initial;
+    .responsive-form {
+        width: 70%;
         float: left;
-        margin-left: 5%;
-    }
-
-    #payment-wrapper {
-        width: 800px;
-        margin: initial;
-        float: left;
-        margin-left: 5%;
     }
 
     .sidebar {
@@ -390,32 +319,18 @@
 }
 
 @media only screen and (min-width: 1500px) {
-    #checkout-container {
+    .responsive-container {
+        width: 1200px;
+        margin: auto;
     }
-    #customerinf-wrapper {
-        width: 800px;
-        margin: initial;
+    .responsive-form {
+        width: 70%;
         float: left;
-        margin-left: 5%;
-    }
-
-    #shipping-wrapper {
-        width: 800px;
-        margin: initial;
-        float: left;
-        margin-left: 5%;
-    }
-
-    #payment-wrapper {
-        width: 800px;
-        margin: initial;
-        float: left;
-        margin-left: 5%;
     }
 
     .sidebar {
         position: fixed;
-        right: 20%;
+        right: 10%;
         width: 300px;
         border: none;
         margin: 0px;
@@ -423,32 +338,19 @@
 }
 
 @media only screen and (min-width: 1780px) {
-    #checkout-container {
-    }
-    #customerinf-wrapper {
-        width: 800px;
-        margin: initial;
-        float: left;
-        margin-left: 5%;
+    .responsive-container {
+        width: 1200px;
+        margin: auto;
     }
 
-    #shipping-wrapper {
-        width: 800px;
-        margin: initial;
+    .responsive-form {
+        width: 70%;
         float: left;
-        margin-left: 5%;
-    }
-
-    #payment-wrapper {
-        width: 800px;
-        margin: initial;
-        float: left;
-        margin-left: 5%;
     }
 
     .sidebar {
         position: fixed;
-        right: 30%;
+        right: 15%;
         width: 300px;
         border: none;
         margin: 0px;

@@ -42,7 +42,7 @@ namespace NykantMVC.Controllers
         public IActionResult SignMeIn()
         {
             HttpContext.Session.Set<List<BagItem>>(BagSessionKey, null);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Nykant");
         }
     }
 }

@@ -1,21 +1,12 @@
 ﻿
-//function mobileNav() {
-//  var x = document.getElementById("myLinks");
-//  if (x.style.display === "block") {
-//        x.style.display = "none";
-//  } else {
-//        x.style.display = "block";
-//  }
-//}
-
-//function userBurger() {
-//    var x = document.getElementById("userBurger");
-//    if (x.style.display === "block") {
-//        x.style.display = "none";
-//    } else {
-//        x.style.display = "block";
-//    }
-//}
+$('#nav-burger').on('click', function () {
+    var x = document.getElementById("nav-links");
+    if (x.style.display === "block") {
+        x.style.display = "none";
+    } else {
+        x.style.display = "block";
+    }
+}) 
 
 var userBurger2 = document.getElementById("userBurger2");
 var userLogo = document.getElementById("userLogo");
