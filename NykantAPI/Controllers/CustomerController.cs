@@ -61,6 +61,21 @@ namespace NykantAPI.Controllers
             }
         }
 
+        [HttpDelete("{subject}/{productId}")]
+        public async Task<ActionResult<CustomerInf>> DeleteCustomerInf(int customerInfId)
+        {
+            try
+            {
+                _context.CustomerInfs.Remove(await _context.CustomerInfs.FindAsync(customerInfId));
+                await _context.SaveChangesAsync();
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return NotFound(e.Message);
+            }
+        }
+
         private bool CustomerExists(int id)
         {
             return _context.CustomerInfs.Any(e => e.Id == id);

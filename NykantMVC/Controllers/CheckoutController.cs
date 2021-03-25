@@ -6,6 +6,7 @@ using NykantMVC.Extensions;
 using NykantMVC.Models;
 using NykantMVC.Models.ViewModels;
 using NykantMVC.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -218,6 +219,33 @@ namespace NykantMVC.Controllers
             else
             {
                 return Content("Something went wrong");
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CancelCheckout()
+        {
+            var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
+
+            if(checkout.CustomerInfId != 0)
+            {
+                var response = await DeleteRequest($"/Customer/DeleteCustomerInf/{checkout.CustomerInfId}");
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return Content("error :(");
+                }
+            }
+            
+            try
+            {
+                HttpContext.Session.Set<Checkout>(CheckoutSessionKey, null);
+
+                return RedirectToAction("Details", "Bag");
+            }
+            catch(Exception e)
+            {
+                return Content(e.Message);
             }
         }
 

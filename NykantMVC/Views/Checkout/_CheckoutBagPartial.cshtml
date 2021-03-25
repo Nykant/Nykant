@@ -15,5 +15,9 @@
             <p><span>taxes:</span> price</p>
             <p><span>total:</span> @Model.Checkout.TotalPrice</p>
         </div>
+
+        <form method="post" asp-controller="Checkout" asp-action="CancelCheckout">
+            <button type="submit" class="button">Slut ordre</button>
+        </form>
     </div>
 </div>
