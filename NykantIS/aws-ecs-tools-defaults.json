@@ -1,0 +1,27 @@
+
+{
+    "region" : "eu-north-1",
+    "profile" : "Nykant",
+    "configuration" : "Release",
+    "image-tag"     : "nykant-docker-repository:nykant-tag",
+    "docker-build-working-dir" : "",
+    "cluster"                  : "Nykant-Cluster",
+    "launch-type"              : "EC2",
+    "task-definition-name"     : "NykantIS",
+    "task-definition-network-mode" : "bridge",
+    "task-definition-task-role"    : "arn:aws:iam::841058810333:role/ecs_execution_NykantIS",
+    "container-name"               : "NykantIS",
+    "container-memory-hard-limit"  : 600,
+    "container-memory-soft-limit"  : 500,
+    "container-port-mapping"       : "0:80",
+    "container-environment-variables" : "\"ASPNETCORE_ENVIRONMENT\"=\"Production\"",
+    "skip-image-push"                 : false,
+    "cluster-service"                 : "NykantIS",
+    "desired-count"                   : 1,
+    "deployment-minimum-healthy-percent" : 50,
+    "deployment-maximum-percent"         : 200,
+    "elb-target-group"                   : "arn:aws:elasticloadbalancing:eu-north-1:841058810333:targetgroup/NykantIS/115069db451ec300",
+    "elb-container-port"                 : 80,
+    "placement-strategy"                 : "spread=attribute:ecs.availability-zone,spread=instanceId",
+    "vstoolkit-deployment-mode"          : "DeployService"
+}
