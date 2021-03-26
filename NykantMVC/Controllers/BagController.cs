@@ -61,16 +61,17 @@ namespace NykantMVC.Controllers
             int bagItemQuantity = HttpContext.Session.Get<int>(BagItemAmountKey);
             if (User.Identity.IsAuthenticated)
             {
-                if (selection != 0)
+                if (selection == 1)
                 {
-                    if (selection == 1)
-                    {
-                        bagItem.Quantity += 1;
-                    }
-                    else if (selection == 2)
-                    {
-                        bagItem.Quantity -= 1;
-                    }
+                    bagItem.Quantity += 1;
+                }
+                else if (selection == 2)
+                {
+                    bagItem.Quantity -= 1;
+                }
+                else
+                {
+                    return NoContent();
                 }
 
                 if (bagItem.Quantity <= 0)

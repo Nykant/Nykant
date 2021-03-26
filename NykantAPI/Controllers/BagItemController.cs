@@ -62,7 +62,7 @@ namespace NykantAPI.Controllers
             {
                 try
                 {
-                    var bagitemDb = await _context.BagItems.FindAsync(bagItem.ProductId);
+                    var bagitemDb = await _context.BagItems.FindAsync(bagItem.Subject, bagItem.ProductId);
                     bagitemDb.Quantity += 1;
                     _context.BagItems.Update(bagitemDb);
                     await _context.SaveChangesAsync();

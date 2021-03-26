@@ -97,7 +97,7 @@ customer_completed = function () {
 
 
     $('html,body').animate({
-        scrollTop: $("#shipping-form").offset().top
+        scrollTop: $("#shipping-header").offset().top
     }, 'slow');
 };
 
@@ -121,7 +121,7 @@ shipping_completed = function () {
 
 
         $('html,body').animate({
-            scrollTop: $("#payment-form").offset().top
+            scrollTop: $("#payment-header").offset().top
         }, 'slow');
 
 };
