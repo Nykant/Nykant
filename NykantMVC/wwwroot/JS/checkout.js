@@ -172,3 +172,17 @@ $('#privacy-policy-consent').on('click', function () {
         document.getElementById('customerInf-submit').disabled = false;
     }
 });
+
+
+$('#terms-and-conditions-consent').on('click', function () {
+    if (document.getElementById('terms-and-conditions-consent').value == "true") {
+        document.getElementById('terms-and-conditions-consent').value = "false";
+        document.getElementById('terms-and-conditions-input').value = null;
+        document.getElementById('submit-payment').disabled = true;
+    }
+    else {
+        document.getElementById('terms-and-conditions-consent').value = "true";
+        document.getElementById('terms-and-conditions-input').value = "true";
+        document.getElementById('submit-payment').disabled = false;
+    }
+});
