@@ -46,21 +46,21 @@
                     }
 
                 </div>
-                <div class="row">
+                <div class="row ">
 
-                    <div class="col-4 right fadein button-container">
-                        <button class="button " type="submit" name="button" value="login">Login</button>
+                    <div class="col-4 right top-side-padding">
+                        <button class="button " type="submit" name="button" value="login">Log Ind</button>
                     </div>
 
-                    <a href="https://localhost:5002" class="col-4 left fadein button-container ">
-                        <div class="button dark-card">
-                            <p>Go Back</p>
+                    <a asp-controller="Account" asp-action="ReturnMe" asp-route-returnUrl="@Model.ReturnUrl" class="col-4 left button-container top-side-padding">
+                        <div class="button">
+                            <p>Tilbage</p>
                         </div>
                     </a>
 
-                    <a asp-area="Identity" asp-page="/Account/Register" asp-route-returnUrl="@Model.ReturnUrl" class="col-4 left fadein button-container ">
-                        <div class="button dark-card">
-                            <p>Register</p>
+                    <a asp-area="Identity" asp-page="/Account/Register" asp-route-returnUrl="@Model.ReturnUrl" class="col-4 left button-container top-side-padding">
+                        <div class="button">
+                            <p>Registrer</p>
                         </div>
                     </a>
 

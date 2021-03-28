@@ -54,7 +54,7 @@ select:-webkit-autofill:focus {
         z-index: 10;
         text-align: left;
         animation:hide 0.3s ease-in 5s forwards;
-        background-color: var(--light-blue);
+        background-color: var(--yellow);
         padding:5px;
     }
 

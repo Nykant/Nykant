@@ -79,7 +79,13 @@ namespace NykantMVC
 
             services.AddScoped<IProtectionService, ProtectionService>();
 
-            services.AddControllersWithViews();
+            services.AddControllersWithViews()
+                                    .AddMvcOptions(options =>
+                                    {
+                                        options.MaxModelValidationErrors = 50;
+                                        options.ModelBindingMessageProvider.SetValueMustNotBeNullAccessor(
+                                            _ => "Du mangler at udfylde her.");
+                                    });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

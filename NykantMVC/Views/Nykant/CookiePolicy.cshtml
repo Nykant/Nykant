@@ -1,35 +1,26 @@
-﻿@using Microsoft.AspNetCore.Http.Features
-@{
-    var consentFeature = Context.Features.Get<ITrackingConsentFeature>();
-    var cookieString = consentFeature?.CreateConsentCookie();
-}
-<script src="~/JS/privacy.js" defer></script>
-<partial name="_CookieSettingsPartial" />
+﻿<script src="~/JS/consent.js" defer></script>
+
 <div class="row background-lightblue">
     <div class="col-3 cookie-header center">
         <h1>Nykants Cookie Politik</h1>
 
     </div>
     <div class="col-5 center cookie-buttons">
-        <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="done2" asp-controller="Nykant" asp-action="AllowNoneConsent">
-            <div class="col-4 left cookie-button">
-                <button type="submit" class="button" id="allow-none-button">
-                    Fravælg alle cookies
-                </button>
-            </div>
-        </form>
 
+        <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#cookie-settings-partial" data-ajax-success="consent_updated" asp-controller="Nykant" asp-action="OnlyEssentialConsent" style="padding:5px;" class="col-4 left">
+            <button type="submit" class="button">
+                Kun essentielle cookies
+            </button>
+        </form>
         <div class="col-4 left cookie-button">
             <button type="button" class="button" id="open-privacy1">
                 Instillinger
             </button>
         </div>
-        <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="done" asp-controller="Nykant" asp-action="AllowAllConsent">
-            <div class="col-4 left cookie-button">
-                <button class="button" id="allow-all-button" type="submit">
-                    Tillad alle cookies
-                </button>
-            </div>
+        <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#cookie-settings-partial" data-ajax-success="consent_updated" asp-controller="Nykant" asp-action="AllowAllConsent" style="padding:5px;" class="col-4 left">
+            <button type="submit" class="green-button">
+                Accepter alle cookies
+            </button>
         </form>
 
     </div>
@@ -112,9 +103,9 @@
             <h1>Har du spørgsmål?</h1>
             <p>Har du kommentarer eller spørgsmål i forbindelse med vores information og/eller behandling af personlige oplysninger, er du velkommen til at kontakte os. </p>
         </div>
-        <div>
+        <div style="padding:50px;">
             @*------------------------- LISTE AF COOKIES ---------------------*@
-            <h1>LISTE AF COOKIES</h1>
+            <h1>::LISTE AF COOKIES ER PÅ VEJ::</h1>
         </div>
         <div>
             <h3>Dit samtykke gælder for følgende domæner: nykant.dk</h3>

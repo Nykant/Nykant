@@ -39,5 +39,7 @@ namespace NykantMVC.Models
         [Phone]
         [Display(Name = "Telefon")]
         public string Phone { get; set; }
+        [Required]
+        public string AcceptPrivacyPolicy { get; set; }
     }
 }

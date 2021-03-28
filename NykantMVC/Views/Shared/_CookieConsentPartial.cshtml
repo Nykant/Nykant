@@ -1,30 +1,52 @@
-﻿@using Microsoft.AspNetCore.Http.Features
-
+﻿@using NykantMVC.Extensions;
 @{
-    var consentFeature = Context.Features.Get<ITrackingConsentFeature>();
-    var showBanner = !consentFeature?.CanTrack ?? false;
-    var cookieString = consentFeature?.CreateConsentCookie();
+    ViewBag.ShowBanner = true;
+    var consent = Context.Session.Get<Consent>("verysecretseriousconsentsessionkeyspecial");
+    if (consent != null)
+    {
+        ViewBag.ShowBanner = consent.ShowBanner;
+    }
 }
 
-@if (showBanner)
+@if (ViewBag.ShowBanner)
 {
-    <partial name="_CookieSettingsPartial" />
-    <script src="~/JS/privacy.js" defer></script>
-    <div class="modal" id="cookie-modal">
-        <div id="cookie-consent" class="cookie-consent" role="alert">
-            <p>
-                By clicking “Allow All”, you agree to the storing of cookies on your device to enhance site
-                navigation, analyze site usage, and assist in our marketing efforts.
-            </p>
-            <a asp-controller="Privacy" asp-action="Index">Learn More</a>
-            <button type="button" class="settings-button" id="open-privacy2">
-                Instillinger
-            </button>
-            <button type="button" class="consent-button" data-dismiss="alert" aria-label="Close" data-cookie-string="@cookieString">
-                Accepter alle cookies
-            </button>
+    <script src="~/JS/consent.js" defer></script>
+
+    <div id="cookie-consent" class="cookie-consent" role="alert">
+        <div class="header" style="margin-bottom:10px;">
+            Cookie Samtykke
+        </div>
+        <div class="col-6 left">
+
+            <div style="padding-bottom:10px;">
+                <p>
+                    Ved at klikke <span style="font-weight:bold;">accepter alle cookies</span> giver du dit samtykke på at vi må bruge alle vores cookies i din browser.
+                </p>
+            </div>
+            <div>
+                <a class="simple-link" asp-controller="Nykant" asp-action="cookiepolicy">her kan du læse mere om vores cookies</a>
+            </div>
+        </div>
+
+        <div class="col-6 right">
+            <div class="col-4 left" style="padding:5px;">
+                <button type="button" class="button" id="open-privacy2">
+                    Instillinger
+                </button>
+            </div>
+
+            <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#cookie-settings-partial" data-ajax-success="consent_updated" asp-controller="Nykant" asp-action="OnlyEssentialConsent" style="padding:5px;" class="col-4 left">
+                <button type="submit" class="button">
+                    Kun essentielle cookies
+                </button>
+            </form>
+
+            <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#cookie-settings-partial" data-ajax-success="consent_updated" asp-controller="Nykant" asp-action="AllowAllConsent" style="padding:5px;" class="col-4 left">
+                <button type="submit" class="green-button">
+                    Accepter alle cookies
+                </button>
+            </form>
         </div>
     </div>
-
 }
 

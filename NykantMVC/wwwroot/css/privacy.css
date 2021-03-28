@@ -1,17 +1,14 @@
 ﻿
 .cookie-consent {
     display:block;
-    padding-top:30px;
-    padding-left:30px;
-    padding-right:30px;
-    padding-bottom:30px;
+    padding:10px;
     position: fixed;
-    width: 50vw;
+    width: 100%;
+    border:1px solid var(--black-fade);
     height: auto;
-    background-color: var(--blue);
+    background-color: white;
     margin:auto;
-    top:25%;
-    left:25vw;
+    bottom:0px;
     z-index: 101;
 /*    animation-name:rollup;
     animation-duration:1s;*/
@@ -30,18 +27,6 @@
         display: inline;
     }
 
-    .cookie-consent button {
-        display: inline;
-        margin-left:30px;
-        background:black;
-        border-radius:10px;
-        border:none;
-        outline:none;
-        height:25px;
-        color:white;
-        cursor:pointer;
-    }
-
     .cookie-consent button:hover {
         background-color:white;
         border:1px solid black;
@@ -49,8 +34,7 @@
     }
 
     .cookie-consent a {
-        display:inline;
-        padding-left:30px;
+        display:block;
         text-decoration:underline;
     }
         .cookie-consent a:hover {
@@ -162,37 +146,23 @@
     height: 100%;
     position: fixed;
     left: 0px;
-    background-color: #effbff;
+    background-color: var(--light-blue2);
     z-index:102;
     overflow-y:auto;
-    animation-name: rollout;
-    animation-duration:1s;
-    overflow-x:hidden;
+    animation: rollout .3s;
     display:none;
 }
 
 @keyframes rollout {
-    0% {
-        transform:translateX(-400px);
+    from {
+        left:-400px;
     }
-    100% {
-        transform: translateX(0px);
+    to {
+        left: 0px;
     }
 }
 
-.hide-privacy-settings {
-    padding: 30px;
-    width: 400px;
-    height: 100%;
-    position: fixed;
-    left: 0px;
-    background-color: #effbff;
-    z-index: 102;
-    overflow-y: auto;
-    overflow-x: hidden;
-    transition: all 1s;
-    transform: translateX(-400px);
-}
+
 
 .mini-row {
     padding-bottom:30px;
@@ -276,4 +246,28 @@
     height: 25px;
     color: white;
     cursor: pointer;
+}
+
+#cookie-consent-updated {
+    display:none;
+    position:fixed;
+    right:0px;
+    bottom:200px;
+    height:auto;
+    width:200px;
+    background-color:var(--yellow);
+    animation:consent-updated .3s;
+}
+
+#cookie-consent-updated p {
+    padding:10px;
+}
+
+@keyframes consent-updated {
+    from {
+        right:-200px;
+    }
+    to {
+        right:0px;
+    }
 }

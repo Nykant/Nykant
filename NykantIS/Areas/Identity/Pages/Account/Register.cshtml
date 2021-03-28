@@ -3,15 +3,28 @@
 @{
     ViewData["Title"] = "Register";
 }
-<script>
-    complete = function (xhr) {
-        alert(`Hi ${xhr.responseText}!`);
-    };
-</script>
+
+<script src="~/js/register.js" defer></script>
+
+<div class="modal" id="register-modal">
+    <div id="register-complete">
+        <div id="register-complete-close">
+            <i class="fas fa-times"></i>
+        </div>
+        <p>En aktiverings-email er blevet sendt til den indtastede email addresse.</p>
+        <p>For at logge ind skal du trykke på linket deri.</p>
+        <a asp-controller="Account" asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl">
+            <div class="button">
+                <p>Log ind</p>
+            </div>
+        </a>
+    </div>
+</div>
+
 <div style="width:100%; height:100%;" class="background-lightgrey top-side-padding">
     <div class="responsive-container">
         <div class="responsive-form">
-            <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-complete="complete" asp-route-returnUrl="@Model.ReturnUrl">
+            <form id="register-form" method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="register_complete">
                 <div class="row ">
 
                     <div class="register-form">
@@ -40,24 +53,35 @@
                             <span asp-validation-for="Input.ConfirmPassword"></span>
                             <div class="underline"></div>
                         </div>
-                        <input type="hidden" asp-for="ReturnUrl" />
+                        <div class="gdpr-accept">
+                            <label class="checkbox">
+                                <input id="privacy-policy-consent" value="false" type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <input required type="hidden" id="privacy-policy-input" asp-for="@Model.Input.AcceptPrivacyPolicy" />
+                            <span class="checkbox-validation" id="register-validation">Du skal skrive under før du må registrere.</span>
+                            <p>for at registrere skal du skrive under på at du har læst og accepterer vores <a class="simple-link" href="https://localhost:5002/nykant/privacypolicy">håndtering af persondata</a> ved at klikke på den sorte box.</p>
+                        </div>
 
+                        <input type="hidden" name="returnUrl" asp-for="ReturnUrl" />
                     </div>
 
                 </div>
                 <div class="row">
-
-
-                    <div class="col-4 right button-container fadein top-side-padding">
-                        <button class="button right-side-padding" type="submit">Register</button>
+                    <div class="col-4 right top-side-padding">
+                        <button id="register-button" class="button" type="submit" disabled>Registrer</button>
                     </div>
-                    <a asp-controller="Account" asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl" class="col-4 left fadein right-side-padding top-side-padding button-container">
+
+                    <a asp-controller="Account" asp-action="ReturnMe" asp-route-returnUrl="@Model.ReturnUrl" class="col-4 left button-container top-side-padding">
                         <div class="button">
-                            <p>Login</p>
+                            <p>Tilbage</p>
                         </div>
                     </a>
-
-
+                    <a asp-controller="Account" asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl" class="col-4 left button-container top-side-padding">
+                        <div class="button">
+                            <p>Log Ind</p>
+                        </div>
+                    </a>
                 </div>
             </form>
         </div>
@@ -65,7 +89,7 @@
                 <div class="responsive-form">
                     <div class="external-login">
                         <section>
-                            <div class="header">Use another service to register.</div>
+                            <div class="header">Brug en tredjepart til registrering</div>
                             <hr />
                             @{
                                 if ((Model.ExternalLogins?.Count ?? 0) == 0)

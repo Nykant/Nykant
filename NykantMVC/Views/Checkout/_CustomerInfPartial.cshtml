@@ -23,83 +23,93 @@
                 </div>
             </div>
 
-            <form style="z-index:50;" id="customer-form" method="post" data-ajax="true" data-ajax-method="post" data-ajax-complete="customer_completed" asp-controller="Checkout" asp-action="PostCustomerInf">
+            <form style="z-index:50;" id="customer-form" method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="customer_completed" asp-controller="Checkout" asp-action="PostCustomerInf">
                 <input type="hidden" id="edit-customer" name="editCustomer" value="false" />
                 <input type="hidden" asp-for="@Model.CustomerInf.Id" />
                 <div class="checkout-wrap" id="customer-wrap" >
                     <div class="customerinfo">
-                            <div class="inputstyle left">
-                                <input id="customer-email-input" required asp-for="@Model.CustomerInf.Email" />
-                                <label asp-for="@Model.CustomerInf.Email"></label>
-                                <span asp-validation-for="@Model.CustomerInf.Email"></span>
-                                <div class="underline"></div>
-                            </div>
-                            <div class="inputstyle left">
-                                <input id="customer-phone-input" required asp-for="@Model.CustomerInf.Phone" />
-                                <label asp-for="@Model.CustomerInf.Phone"></label>
-                                <span asp-validation-for="@Model.CustomerInf.Phone"></span>
-                                <div class="underline"></div>
-                            </div>
-
-
-                            <div class="inputstyle left">
-                                <input id="customer-firstname-input" required asp-for="@Model.CustomerInf.FirstName" />
-                                <label asp-for="@Model.CustomerInf.FirstName"></label>
-                                <span asp-validation-for="@Model.CustomerInf.FirstName"></span>
-                                <div class="underline"></div>
-                            </div>
-                            <div class="inputstyle left">
-                                <input id="customer-lastname-input" required asp-for="@Model.CustomerInf.LastName" />
-                                <label asp-for="@Model.CustomerInf.LastName"></label>
-                                <span asp-validation-for="@Model.CustomerInf.LastName"></span>
-                                <div class="underline"></div>
-                            </div>
-
-
-
-                            <div class="inputstyle left">
-                                <input id="customer-address-input" required asp-for="@Model.CustomerInf.Address1" />
-                                <label asp-for="@Model.CustomerInf.Address1"></label>
-                                <span asp-validation-for="@Model.CustomerInf.Address1"></span>
-                                <div class="underline"></div>
-                            </div>
-                            <div class="inputstyle left">
-                                <input id="customer-city-input" required asp-for="@Model.CustomerInf.City" />
-                                <label asp-for="@Model.CustomerInf.City"></label>
-                                <span asp-validation-for="@Model.CustomerInf.City"></span>
-                                <div class="underline"></div>
-                            </div>
-
-
-
-                            <div class="inputstyle left">
-                                <input id="customer-country-input" class="hidden" asp-for="@Model.CustomerInf.Country" />
-                                <div class="country-label">Modtagers Land</div>
-                                <select required id="country-picker">
-                                    <option>Vælg Land</option>
-                                    <option>DK</option>
-                                </select>
-                                <div class="country-error hidden" id="country-error">
-                                    vælg et land før du kan fortsætte.
-                                </div>
-                            </div>
-                            <div class="inputstyle left">
-                                <input id="customer-postal-input" required asp-for="@Model.CustomerInf.Postal" />
-                                <label asp-for="@Model.CustomerInf.Postal"></label>
-                                <span asp-validation-for="@Model.CustomerInf.Postal"></span>
-                                <div class="underline"></div>
-                            </div>
-
-                        <div style="float:left; padding:10px; padding-top:30px;">
-                            <p>Ved at klikke fortsæt accepterer du vores <a class="simple-link" asp-controller="home" asp-action="privacypolicy">databeskyttelsespolitik</a></p>
+                        <div class="inputstyle left">
+                            <input id="customer-email-input" required asp-for="@Model.CustomerInf.Email" />
+                            <label asp-for="@Model.CustomerInf.Email"></label>
+                            <span asp-validation-for="@Model.CustomerInf.Email"></span>
+                            <div class="underline"></div>
                         </div>
+                        <div class="inputstyle left">
+                            <input id="customer-phone-input" required asp-for="@Model.CustomerInf.Phone" />
+                            <label asp-for="@Model.CustomerInf.Phone"></label>
+                            <span asp-validation-for="@Model.CustomerInf.Phone"></span>
+                            <div class="underline"></div>
+                        </div>
+
+
+                        <div class="inputstyle left">
+                            <input id="customer-firstname-input" required asp-for="@Model.CustomerInf.FirstName" />
+                            <label asp-for="@Model.CustomerInf.FirstName"></label>
+                            <span asp-validation-for="@Model.CustomerInf.FirstName"></span>
+                            <div class="underline"></div>
+                        </div>
+                        <div class="inputstyle left">
+                            <input id="customer-lastname-input" required asp-for="@Model.CustomerInf.LastName" />
+                            <label asp-for="@Model.CustomerInf.LastName"></label>
+                            <span asp-validation-for="@Model.CustomerInf.LastName"></span>
+                            <div class="underline"></div>
+                        </div>
+
+
+
+                        <div class="inputstyle left">
+                            <input id="customer-address-input" required asp-for="@Model.CustomerInf.Address1" />
+                            <label asp-for="@Model.CustomerInf.Address1"></label>
+                            <span asp-validation-for="@Model.CustomerInf.Address1"></span>
+                            <div class="underline"></div>
+                        </div>
+                        <div class="inputstyle left">
+                            <input id="customer-city-input" required asp-for="@Model.CustomerInf.City" />
+                            <label asp-for="@Model.CustomerInf.City"></label>
+                            <span asp-validation-for="@Model.CustomerInf.City"></span>
+                            <div class="underline"></div>
+                        </div>
+
+
+
+                        <div class="inputstyle left">
+                            <input id="customer-country-input" class="hidden" asp-for="@Model.CustomerInf.Country" />
+                            <div class="country-label">Modtagers Land</div>
+                            <select required id="country-picker">
+                                <option>Vælg Land</option>
+                                <option>DK</option>
+                            </select>
+                            <div class="country-error hidden" id="country-error">
+                                vælg et land før du kan fortsætte.
+                            </div>
+                        </div>
+                        <div class="inputstyle left">
+                            <input id="customer-postal-input" required asp-for="@Model.CustomerInf.Postal" />
+                            <label asp-for="@Model.CustomerInf.Postal"></label>
+                            <span asp-validation-for="@Model.CustomerInf.Postal"></span>
+                            <div class="underline"></div>
+                        </div>
+
+                        <div class="col-12 left top-padding bottom-side-padding">
+                            <div class="gdpr-accept">
+                                <label class="checkbox">
+                                    <input id="privacy-policy-consent" value="false" type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <input required type="hidden" id="privacy-policy-input" asp-for="@Model.CustomerInf.AcceptPrivacyPolicy" />
+                                <span class="checkbox-validation" id="privacy-policy-validation-customerInf">Du skal skrive under før du må registrere.</span>
+                                <p>for at registrere skal du skrive under på at du har læst og accepterer vores <a class="simple-link" href="https://localhost:5002/nykant/privacypolicy">håndtering af persondata</a> ved at klikke på den sorte box.</p>
+                            </div>
+                        </div>
+
+
                         <div style="padding:10px;">
 
                         </div>
                     </div>
                     
                     <div class="col-12 left" id="customer-button">
-                        <button class="button" type="submit">Fortsæt</button> @*------------- SUBMIT FORM --------------*@
+                        <button id="customerInf-submit" class="button" type="submit" disabled>Fortsæt</button> @*------------- SUBMIT FORM --------------*@
                     </div>
 
                 </div>

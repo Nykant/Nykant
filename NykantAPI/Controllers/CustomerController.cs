@@ -61,7 +61,7 @@ namespace NykantAPI.Controllers
             }
         }
 
-        [HttpDelete("{subject}/{productId}")]
+        [HttpDelete("{customerInfId}")]
         public async Task<ActionResult<CustomerInf>> DeleteCustomerInf(int customerInfId)
         {
             try

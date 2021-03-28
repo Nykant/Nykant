@@ -14,12 +14,14 @@
     --light-grey: #ededed;
     --dark-grey: #2b2b2b;
     --light-blue: #e8f8ff;
+    --light-blue2: #effbff;
+    --yellow: #ffd255;
     --small: 8px;
     --small-plus: 12px;
     --medium: 16px;
     --medium-plus: 20px;
     --large: 24px;
-    --extra-large:34px;
+    --extra-large: 34px;
     --black-fade: rgba(0, 0, 0, 0.1);
 }
 
@@ -62,9 +64,17 @@ a {
   text-decoration: none;
 }
 
+
 a:hover {
     font-weight:bold;
 }
+
+
+
+/*a .button:hover {
+    font-weight:600;
+}*/
+
 
 .simple-link{
     color:black;
@@ -331,7 +341,7 @@ ol, ul {
     }
 
         .button p {
-            padding-top: 13px;
+            padding-top: 15px;
         }
 
         .button:enabled {
@@ -602,7 +612,13 @@ ol, ul {
     }
 }
 
+.button-container {
 
+}
+
+.button-container:hover {
+    font-weight:initial;
+}
 
 .sidebar {
     margin-top:10px;
@@ -634,10 +650,6 @@ ol, ul {
         float: none;
     }
 
-    .button-container {
-        padding: 0px;
-        padding-top: 10px;
-    }
 
     .sidebar {
         width: 100%;
@@ -665,10 +677,6 @@ ol, ul {
         float: none;
     }
 
-    .button-container {
-        padding: 0px;
-        padding-top: 10px;
-    }
 
     .sidebar {
         width: 100%;
@@ -696,10 +704,7 @@ ol, ul {
         width: 70%;
         float:right;
     }
-    .button-container {
-        padding: 0px;
-        padding-top: 10px;
-    }
+
 
     .sidebar {
         border: none;
@@ -726,10 +731,7 @@ ol, ul {
         width: 70%;
         float: right;
     }
-    .button-container {
-        padding: 0px;
-        padding-top: 10px;
-    }
+
 
     .sidebar {
         float: left;
@@ -753,10 +755,7 @@ ol, ul {
         width: 70%;
         float: right;
     }
-    .button-container {
-        padding: 0px;
-        padding-top: 10px;
-    }
+
     .sidebar {
         float: left;
         border: none;
@@ -779,10 +778,7 @@ ol, ul {
         width: 70%;
         float: right;
     }
-    .button-container {
-        padding: 0px;
-        padding-top: 10px;
-    }
+
     .sidebar {
         float: left;
         border: none;
@@ -805,10 +801,7 @@ ol, ul {
         width: 70%;
         float: right;
     }
-    .button-container {
-        padding: 0px;
-        padding-top: 10px;
-    }
+
     .sidebar {
         float: left;
         border: none;
@@ -831,10 +824,7 @@ ol, ul {
         width: 70%;
         float: right;
     }
-    .button-container {
-        padding: 0px;
-        padding-top: 10px;
-    }
+
     .sidebar {
         float: left;
         border: none;

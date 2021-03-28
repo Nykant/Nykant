@@ -7,3 +7,56 @@
     text-align: center;
     background-color: white;
 }
+
+#register-complete {
+    top: 97px;
+    display: none;
+    right: 0px;
+    position: fixed;
+    height: auto;
+    padding: 20px;
+    background-color: white;
+    width: 400px;
+    animation: register-complete 0.3s;
+}
+
+@keyframes register-complete {
+    from {
+        right: -400px;
+    }
+
+    to {
+        right: 0px;
+    }
+}
+
+#register-complete p {
+    padding-bottom: 30px;
+    display: inline-block;
+}
+
+#register-complete-close {
+    position: absolute;
+    transform: scale(1.5);
+    cursor: pointer;
+    right: 30px;
+    transition: all 0.1s;
+}
+
+#register-complete .button {
+    margin-top: 50px;
+}
+
+#register-complete-close:hover {
+    transform: scale(2);
+}
+
+.gdpr-accept {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin: auto;
+    display: inline-block;
+    width: 400px;
+    color: black;
+    font-size: 20px;
+}

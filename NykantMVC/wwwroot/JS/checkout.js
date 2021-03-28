@@ -157,3 +157,18 @@ customer_edit_button.addEventListener("click", function () {
     customer_form.style.height = "auto";
     $("#customer-wrap").css("transform", "translateY(0%)");
 });
+
+
+
+$('#privacy-policy-consent').on('click', function () {
+    if (document.getElementById('privacy-policy-consent').value == "true") {
+        document.getElementById('privacy-policy-consent').value = "false";
+        document.getElementById('privacy-policy-input').value = null;
+        document.getElementById('customerInf-submit').disabled = true;
+    }
+    else {
+        document.getElementById('privacy-policy-consent').value = "true";
+        document.getElementById('privacy-policy-input').value = "true";
+        document.getElementById('customerInf-submit').disabled = false;
+    }
+});

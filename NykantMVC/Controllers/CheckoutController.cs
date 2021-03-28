@@ -49,7 +49,7 @@ namespace NykantMVC.Controllers
                 {
                     if (bagItemsDb.Count() == 0)
                     {
-                        return Content("No bag items to check out");
+                        return RedirectToAction("Details", "Bag");
                     }
                     else
                     {
@@ -77,11 +77,11 @@ namespace NykantMVC.Controllers
                 {
                     if (bagItemsSession == null)
                     {
-                        return Content("No bag items to check out");
+                        return RedirectToAction("Details", "Bag");
                     }
                     if (bagItemsSession.Count() == 0)
                     {
-                        return Content("No bag items to check out");
+                        return RedirectToAction("Details", "Bag");
                     }
                     else
                     {
@@ -111,7 +111,7 @@ namespace NykantMVC.Controllers
                 if (bagItemsSession.Count() == 0 && bagItemsDb.Count() == 0)
                 {
                     HttpContext.Session.Set<Checkout>(CheckoutSessionKey, null);
-                    return Content("No bag items to check out");
+                    return RedirectToAction("Details", "Bag");
                 }
                 CustomerInf customerInf = null;
                 if(checkout.CustomerInfId != 0)

@@ -1,16 +1,47 @@
 ﻿
 .checkbox {
     position: relative;
-    padding: 10px;
+    margin-right:10px;
     cursor: pointer;
     font-size: 22px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    height:25px;
-    width:25px;
+    height:50px;
+    width:50px;
     float:left;
+}
+
+    .checkbox-validation {
+        position: absolute;
+        transform: translate(0px, +30px);
+        width: 200px;
+        height: auto;
+        font-size: 14px;
+        z-index: 10;
+        text-align: left;
+        animation: hide2 0.3s ease-in 5s forwards;
+        background-color: var(--yellow);
+        padding: 5px;
+        display:none;
+    }
+
+@keyframes hide2 {
+    from {
+        transform: translate(0px, +30px);
+        width: 200px;
+        height: auto;
+        padding: 5px;
+    }
+
+    to {
+        transform: translate(0px, -30px);
+        width: 0px;
+        height: 0px;
+        overflow: hidden;
+        padding: 0px;
+    }
 }
 
     .checkbox input {
@@ -49,12 +80,13 @@
 
 .checkbox .checkmark:after {
     margin:auto;
-    margin-top:5px;
-    width: 5px;
-    height: 10px;
+    margin-top:12px;
+    width: 10px;
+    height: 20px;
     border: solid var(--blue);
     border-width: 0 3px 3px 0;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
+

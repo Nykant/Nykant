@@ -1,9 +1,19 @@
-﻿@using Microsoft.AspNetCore.Http.Features
-
+﻿@using NykantMVC.Extensions;
 @{
-    var consentFeature = Context.Features.Get<ITrackingConsentFeature>();
-    var hasConsent = consentFeature.HasConsent;
+    ViewBag.ShowBanner = true;
+    ViewBag.OnlyEssential = true;
+    ViewBag.Functional = false;
+    var consent = Context.Session.Get<Consent>("verysecretseriousconsentsessionkeyspecial");
+    if (consent != null)
+    {
+        ViewBag.ShowBanner = consent.ShowBanner;
+        ViewBag.OnlyEssential = consent.OnlyEssential;
+        ViewBag.Functional = consent.Functional;
+    }
 }
+
+<script src="~/JS/consent-settings.js" defer></script>
+<script src="~/JS/collapsible.js" defer></script>
 
 <div class="privacy-settings" id="privacy-settings">
     <div class="mini-row">
@@ -13,24 +23,24 @@
         </button>
     </div>
 
-    <h3>Her kan du fravælge specifikke kategorier af cookies</h3>
-    <p>Hvis du vil vide nærmere hvad vi gemmer, og hvornår: </p> <a class="simple-link" asp-controller="Home" asp-action="PrivacyPolicy">Tryk her</a>
+    <h3>Her kan du vælge specifikke cookies til og fra</h3>
+    <p>Hvis du vil vide nærmere hvad vi gemmer, og hvornår: </p> <a class="simple-link" asp-controller="Nykant" asp-action="PrivacyPolicy">Tryk her</a>
 
     <div class="settings">
-        <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="completed" asp-controller="Home" asp-action="UpdateConsent">
+        <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#cookie-settings-partial" data-ajax-success="consent_settings_updated" asp-controller="Nykant" asp-action="UpdateConsent">
             <h2>Cookie Preferencer</h2>
             <div class="collapsible">
 
-                <button type="button" class="collapsible-button">Essentielle Cookies</button>
+                <button type="button" class="collapsible-button">Essentielle Cookies <span style="float:right; color:green">altid aktive</span></button>
                 <div class="collapsible-content">
                     <h3>
                         Essentielle cookies er essentielle for, at hjemmesiden kan fungere korrekt.
                     </h3>
                     <p>
                         Dem kan du ikke fravælge på vores hjemmeside, men hvis du ønsker at fravælge dem alligevel,
-                        kan du læse mere om hvordan man gør det i vores <a class="simple-link" asp-controller="home" asp-action="cookiepolicy">Cookie politik</a>
+                        kan du læse mere om hvordan man gør det i vores <a class="simple-link" asp-controller="Nykant" asp-action="cookiepolicy">Cookie politik</a>
                     </p>
-                    
+
                     <h3>
                         Vores essentielle cookies:
                     </h3>
@@ -41,7 +51,7 @@
                         giver en god checkout oplevelse,
                     </p>
                     <p>
-                        gemmer dit samtykke på hvilke cookies vi må bruge.
+                        gemmer dit samtykke på cookie preferencer.
                     </p>
                 </div>
             </div>
@@ -49,13 +59,13 @@
 
                 <label class="switch">
                     @{
-                        if (hasConsent)
+                        if (ViewBag.Functional)
                         {
-                            <input id="settings-input" name="consent" class="settings-input" type="checkbox" checked>
+                            <input id="settings-input" name="functionalCookies" value="1" class="settings-input" type="checkbox" checked>
                         }
                         else
                         {
-                            <input id="settings-input" name="consent" class="settings-input" type="checkbox">
+                            <input id="settings-input" name="functionalCookies" value="0" class="settings-input" type="checkbox">
                         }
                     }
                     <span class="slider round"></span>
@@ -64,13 +74,13 @@
                 <button type="button" class="collapsible-button">Funktionalitets Cookies</button>
                 <div class="collapsible-content">
                     <p>
-                        Har ingen, men tester mine fremtidige cookies.
+                        Har ingen.
                     </p>
                     <p>
                     </p>
                 </div>
             </div>
-            <button type="submit" class="button margin-top-20">Gem ændringer</button>
+            <button type="submit" class="button margin-top-10">Gem ændringer</button>
         </form>
     </div>
 </div> 

@@ -53,7 +53,7 @@ namespace NykantIS.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
+            [Required(ErrorMessage = "Du mangler at udfylde din email")]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
@@ -71,6 +71,9 @@ namespace NykantIS.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            [Required]
+            public string AcceptPrivacyPolicy { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -92,7 +95,6 @@ namespace NykantIS.Areas.Identity.Pages.Account
                 }
                 if(user == null)
                 {
-                    
                     user = new ApplicationUser { UserName = Input.Username, Email = Input.Email };
                     var result = await _userManager.CreateAsync(user, Input.Password);
 
@@ -136,16 +138,9 @@ namespace NykantIS.Areas.Identity.Pages.Account
 
                         }
 
-                        if (_userManager.Options.SignIn.RequireConfirmedAccount)
-                        {
-                            return new JsonResult($"Thank you for registering an account on Nykant. A confirmation email has been sent to your email account: {Input.Email}, " +
-                                 $"before you can log in you have to press the confirmation link in that email");
-                        }
-                        else
-                        {
-                            await _signInManager.SignInAsync(user, isPersistent: false);
-                            return LocalRedirect(returnUrl);
-                        }
+
+                        return new NoContentResult();
+
                     }
                     foreach (var error in result.Errors)
                     {
@@ -155,7 +150,7 @@ namespace NykantIS.Areas.Identity.Pages.Account
             }
 
             // If we got this far, something failed, redisplay form
-            return Page();
+            return new BadRequestResult();
         }
     }
 }

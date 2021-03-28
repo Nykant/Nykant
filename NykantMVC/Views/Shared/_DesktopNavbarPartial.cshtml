@@ -1,4 +1,10 @@
-﻿<div class="navbar">
+﻿@using NykantMVC.Extensions;
+@{
+    ViewBag.BagItemAmount = Context.Session.Get<int>("verysecretseriousbagitemsessionkeyspecial");
+    ViewBag.Url = Context.Request.Path;
+}
+
+<div class="navbar">
     <div class="desktop-navbar-wrap highlightTextIn">
         <a href="javascript:void(0);" class="icon" id="nav-burger">
             <i class="fa fa-bars"></i>
@@ -29,7 +35,7 @@
         {
             <div id="userBurger2">
                 <a asp-controller="Account" asp-action="Login" asp-route-redirectUrl="@ViewBag.Url">
-                    Login or Register
+                    Log ind eller Registrer
                 </a>
             </div>
             <a href="javascript:void(0);" class="icon" id="userLogo">

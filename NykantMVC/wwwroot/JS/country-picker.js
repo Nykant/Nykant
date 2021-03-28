@@ -17,5 +17,5 @@ customer_wrap.addEventListener("submit", function (event) {
         setTimeout(function () {
             country_error.style.display = "none";
         }, 6000);
-    }
+    };
 });

@@ -1,4 +1,25 @@
 ﻿
+.gdpr-accept {
+    position:relative;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin:auto;
+    display: block;
+    color: black;
+    font-size: 20px;
+    width:50%;
+}
+
+.gdpr-accept label {
+    display:block;
+    float:left;
+
+}
+    .gdpr-accept p {
+        display:block;
+        float:left;
+    }
+
 .sidebar {
     position:fixed;
     padding: 15px;
@@ -80,7 +101,7 @@
     z-index: 10;
     text-align: left;
     animation: hideerror 0.3s ease-in 5s forwards;
-    background-color: var(--light-blue);
+    background-color: var(--yellow);
     padding: 5px;
 }
 

@@ -23,6 +23,7 @@ using IdentityServer4.Services;
 using Microsoft.Extensions.Logging;
 using MailKit;
 using NykantIS.Services;
+using Microsoft.AspNetCore.Mvc.DataAnnotations;
 
 namespace NykantIS
 {
@@ -99,8 +100,21 @@ namespace NykantIS
 
             services.AddScoped<IRazorViewToStringRenderer, RazorViewToStringRenderer>();
 
-            services.AddControllersWithViews();
-            services.AddRazorPages();
+            services.AddControllersWithViews()
+                    .AddMvcOptions(options =>
+                    {
+                        options.MaxModelValidationErrors = 50;
+                        options.ModelBindingMessageProvider.SetValueMustNotBeNullAccessor(
+                            _ => "Du mangler at udfylde her.");
+                    });
+            services.AddRazorPages()
+                    .AddMvcOptions(options =>
+                    {
+                        options.MaxModelValidationErrors = 50;
+                        options.ModelBindingMessageProvider.SetValueMustNotBeNullAccessor(
+                            _ => "Du mangler at udfylde her.");
+                    });
+
         }
 
         public void Configure(IApplicationBuilder app)

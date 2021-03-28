@@ -14,12 +14,14 @@
     --light-grey: #ededed;
     --dark-grey: #2b2b2b;
     --light-blue: #e8f8ff;
+    --light-blue2: #effbff;
+    --yellow: #ffd255;
     --small: 8px;
     --small-plus: 12px;
     --medium: 16px;
     --medium-plus: 20px;
     --large: 24px;
-    --extra-large:34px;
+    --extra-large: 34px;
     --black-fade: rgba(0, 0, 0, 0.1);
 }
 
@@ -351,21 +353,55 @@ ol, ul {
             background-color: black;
         }
 
+.green-button {
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    border-radius: 0px;
+    outline: none;
+    border:none;
+    background-color: darkgreen;
+    color: white;
+    height: 50px;
+    width: 100%;
+    cursor: pointer;
+    /*    transition: all ease 0.4s;*/
+    text-align: center;
+}
+
+    .green-button p {
+        padding-top: 13px;
+    }
+
+    .green-button:enabled {
+        cursor: pointer;
+    }
+
+    .green-button:hover {
+        color: black;
+        background-color: white;
+        font-weight: bolder;
+        border: 2px solid rgba(0,0,0,1);
+    }
+
+    .green-button:disabled {
+        cursor: initial;
+        color: grey;
+        box-shadow: none;
+        background-color: black;
+    }
+
     .hidden {
         display: none;
     }
 
-    .header {
-        margin-left: auto;
-        margin-right: auto;
-        width: 50%;
-        margin-top: 10px;
-        margin-bottom: 30px;
-        padding: 10px;
-        color: black;
-        text-align: center;
-        font-weight: bold;
-    }
+.header {
+    width: 100%;
+    margin-bottom: 30px;
+    color: black;
+    padding: 20px;
+    background-color: var(--light-blue);
+    text-align: center;
+}
 
     .green-border {
         border: 1px solid var(--green);

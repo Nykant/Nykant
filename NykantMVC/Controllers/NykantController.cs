@@ -7,6 +7,8 @@ using Newtonsoft.Json;
 using NykantMVC.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using NykantMVC.Extensions;
+using System;
 
 namespace NykantMVC.Controllers
 {
@@ -36,36 +38,80 @@ namespace NykantMVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> UpdateConsent(int consent)
+        public async Task<IActionResult> UpdateConsent(int functionalCookies)
         {
-            if (consent == 0)
+            Consent consent = new Consent();
+            switch (functionalCookies)
             {
-                var consentFeature = HttpContext.Features.Get<ITrackingConsentFeature>();
-                consentFeature.WithdrawConsent();
-                return NoContent();
+                case 1:
+                    consent.Functional = true;
+                    consent.OnlyEssential = false;
+                    consent.ShowBanner = false;
+                    break;
+
+                case 0:
+                    consent.Functional = false;
+                    consent.OnlyEssential = true;
+                    consent.ShowBanner = false;
+                    break;
             }
-            else
+            
+            HttpContext.Session.Set<Consent>(ConsentCookieKey, consent);
+
+            ViewBag.ShowBanner = consent.OnlyEssential;
+            ViewBag.OnlyEssential = consent.ShowBanner;
+            ViewBag.Functional = consent.Functional;
+
+            return new PartialViewResult
             {
-                var consentFeature = HttpContext.Features.Get<ITrackingConsentFeature>();
-                consentFeature.GrantConsent();
-                return NoContent();
-            }
+                ViewName = "_CookieSettingsPartial",
+                ViewData = this.ViewData
+            };
         }
 
         [HttpPost]
         public async Task<IActionResult> AllowAllConsent()
         {
-            var consentFeature = HttpContext.Features.Get<ITrackingConsentFeature>();
-            consentFeature.GrantConsent();
-            return Content("Du har givet os tilladelse til at bruge alle cookies.");
+            var consent = new Consent
+            {
+                OnlyEssential = false,
+                ShowBanner = false,
+                Functional = true
+            };
+            HttpContext.Session.Set<Consent>(ConsentCookieKey, consent);
+
+            ViewBag.ShowBanner = consent.OnlyEssential;
+            ViewBag.OnlyEssential = consent.ShowBanner;
+            ViewBag.Functional = consent.Functional;
+
+            return new PartialViewResult
+            {
+                ViewName = "_CookieSettingsPartial",
+                ViewData = this.ViewData
+            };
         }
 
         [HttpPost]
-        public async Task<IActionResult> AllowNoneConsent()
+        public async Task<IActionResult> OnlyEssentialConsent()
         {
-            var consentFeature = HttpContext.Features.Get<ITrackingConsentFeature>();
-            consentFeature.WithdrawConsent();
-            return Content("Du har fravalgt brugen af alle cookies, og cookies du før havde tilladt, er blevet slettet.");
+
+            var consent = new Consent
+            {
+                OnlyEssential = true,
+                ShowBanner = false,
+                Functional = false
+            };
+            HttpContext.Session.Set<Consent>(ConsentCookieKey, consent);
+
+            ViewBag.ShowBanner = consent.OnlyEssential;
+            ViewBag.OnlyEssential = consent.ShowBanner;
+            ViewBag.Functional = consent.Functional;
+
+            return new PartialViewResult
+            {
+                ViewName = "_CookieSettingsPartial",
+                ViewData = this.ViewData
+            };
         }
 
         [HttpPost]

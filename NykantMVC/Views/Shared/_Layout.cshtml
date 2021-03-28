@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 
     <link rel="stylesheet" href="~/css/style.css" />
-    @*<link rel="stylesheet" href="~/css/filter.css" />*@
     <link rel="stylesheet" href="~/css/down-arrow.css" />
     <link rel="stylesheet" href="~/css/bag.css" />
     <link rel="stylesheet" href="~/css/checkout.css" />
@@ -19,6 +18,7 @@
     <link rel="stylesheet" href="~/css/custom-select.css" />
     <link rel="stylesheet" href="~/css/custom-list.css" />
     <link rel="stylesheet" href="~/css/custom-list2.css" />
+    <link rel="stylesheet" href="~/css/custom-checkbox.css" />
     <link rel="stylesheet" href="~/css/breadcrumbs.css" />
     <link rel="stylesheet" href="~/css/navbar.css" />
     <link rel="stylesheet" href="~/css/product-details.css" />
@@ -34,27 +34,26 @@
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.unobtrusive-ajax/3.2.5/jquery.unobtrusive-ajax.min.js"></script>
     <script src="https://js.stripe.com/v3/"></script>
-    
+
 </head>
 <body>
 
-    @using NykantMVC.Extensions;
-    @{
-        ViewBag.BagItemAmount = Context.Session.Get<int>("verysecretseriouscheckoutsessionkeyspecial");
-        ViewBag.Url = Context.Request.Path;
-    }
     <div id="search-container">
         <partial name="_SearchPartial" />
     </div>
-    
-    <partial name="_CookieConsentPartial" />
-    <div class="row">
 
-        @*<partial name="_MobileNavbarPartial" />*@
-
-        <partial name="_DesktopNavbarPartial" />
-
+    <div id="cookie-settings-partial">
+        <partial name="_CookieSettingsPartial" />
     </div>
+
+    <div id="cookie-consent-updated">
+        <p style="text-align:center">cookie preferencer opdateret</p>
+    </div>
+
+    <partial name="_CookieConsentPartial" />
+
+    <partial name="_DesktopNavbarPartial" />
+
     <div>
         <main>
             @RenderBody()
@@ -106,7 +105,6 @@
     <script src="~/JS/downarrow-stop.js"></script>
     <script src="~/JS/slideshow.js"></script>
     <script src="~/JS/custom-input.js"></script>
-    <script src="~/JS/collapsible.js"></script>
     <script src="~/JS/search-button.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
