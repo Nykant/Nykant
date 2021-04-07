@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,8 +25,8 @@ namespace NykantMVC
 
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddDataProtection()
-                .PersistKeysToFileSystem(new DirectoryInfo(@"C:\Temp\Keys"))
                 .SetApplicationName("Nykant");
 
             JwtSecurityTokenHandler.DefaultMapInboundClaims = false;

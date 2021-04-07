@@ -40,12 +40,18 @@ namespace NykantIS
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
+
             string ISString = Configuration.GetConnectionString("IdentityServer");
             string IdentityString = Configuration.GetConnectionString("Identity");
             var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 
             services.AddDbContext<IdentityDbContext>(options =>
-                options.UseSqlServer(IdentityString));
+                options.UseMySql(IdentityString,  
+                    mySqlOptionsAction: mySql => {
+                        mySql.EnableRetryOnFailure();
+                    })
+                );
 
             services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<IdentityDbContext>()
@@ -70,13 +76,22 @@ namespace NykantIS
             })
             .AddConfigurationStore(options =>
             {
-                options.ConfigureDbContext = b => b.UseSqlServer(ISString,
-                    sql => sql.MigrationsAssembly(migrationsAssembly));
+                options.ConfigureDbContext = b => b.UseMySql(ISString,
+                                        mySqlOptionsAction: mySql =>
+                                        {
+                                            mySql.EnableRetryOnFailure();
+                                            mySql.MigrationsAssembly(migrationsAssembly);
+                                        });
             })
             .AddOperationalStore(options =>
             {
-                options.ConfigureDbContext = b => b.UseSqlServer(ISString,
-                    sql => sql.MigrationsAssembly(migrationsAssembly));
+                options.ConfigureDbContext = b => b.UseMySql(ISString,
+                    mySqlOptionsAction: mySql =>
+                    {
+                        mySql.EnableRetryOnFailure();
+                        mySql.MigrationsAssembly(migrationsAssembly);
+                    });
+
             })
             .AddAspNetIdentity<ApplicationUser>();
 

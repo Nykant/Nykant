@@ -32,15 +32,21 @@ namespace NykantAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddCors();
+
             services.AddDataProtection()
-                .PersistKeysToFileSystem(new DirectoryInfo(@"C:\Temp\Keys"))
                 .SetApplicationName("Nykant");
 
             services.AddControllers();
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("NykantDb")));
+                options.UseMySql(
+                    Configuration.GetConnectionString("NykantDb"),
+                    mySqlOptionsAction: mySql => {
+                        mySql.EnableRetryOnFailure();
+                    })
+                );
 
             services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>
@@ -61,7 +67,7 @@ namespace NykantAPI
                     policy.RequireClaim("scope", "NykantAPI");
                 });
             });
-
+            
             services.AddScoped<IProtectionService, ProtectionService>();
         }
 
