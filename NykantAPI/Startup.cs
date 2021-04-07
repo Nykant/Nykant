@@ -12,6 +12,7 @@ using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using NykantAPI.Data;
 using NykantAPI.Services;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -41,12 +42,19 @@ namespace NykantAPI
             services.AddControllers();
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseMySql(
-                    Configuration.GetConnectionString("NykantDb"),
-                    mySqlOptionsAction: mySql => {
-                        mySql.EnableRetryOnFailure();
-                    })
-                );
+                options
+                    .UseMySql(
+                        Configuration.GetConnectionString("NykantDb"),
+                        mySqlOptionsAction: mySql =>
+                        {
+                            mySql.ServerVersion(new Version(5, 5, 68), ServerType.MariaDb);
+                            mySql.EnableRetryOnFailure();
+                            mySql.CharSetBehavior(CharSetBehavior.NeverAppend);
+                        })
+                    .EnableSensitiveDataLogging()
+                    .EnableDetailedErrors()
+                    );
+              
 
             services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>

@@ -24,6 +24,7 @@ using Microsoft.Extensions.Logging;
 using MailKit;
 using NykantIS.Services;
 using Microsoft.AspNetCore.Mvc.DataAnnotations;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 namespace NykantIS
 {
@@ -47,11 +48,16 @@ namespace NykantIS
             var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 
             services.AddDbContext<IdentityDbContext>(options =>
-                options.UseMySql(IdentityString,  
-                    mySqlOptionsAction: mySql => {
-                        mySql.EnableRetryOnFailure();
-                    })
-                );
+                options.UseMySql(IdentityString,
+                        mySqlOptionsAction: mySql =>
+                        {
+                            mySql.ServerVersion(new Version(5, 5, 68), ServerType.MariaDb);
+                            mySql.EnableRetryOnFailure();
+                            mySql.CharSetBehavior(CharSetBehavior.NeverAppend);
+                        })
+                    .EnableSensitiveDataLogging()
+                    .EnableDetailedErrors()
+                    );
 
             services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<IdentityDbContext>()
@@ -76,23 +82,34 @@ namespace NykantIS
             })
             .AddConfigurationStore(options =>
             {
-                options.ConfigureDbContext = b => b.UseMySql(ISString,
-                                        mySqlOptionsAction: mySql =>
-                                        {
-                                            mySql.EnableRetryOnFailure();
-                                            mySql.MigrationsAssembly(migrationsAssembly);
-                                        });
+                options.ConfigureDbContext = b => b
+                .UseMySql(
+                    ISString,
+                    mySqlOptionsAction: mySql =>
+                    {
+                        mySql.ServerVersion(new Version(5, 5, 68), ServerType.MariaDb);
+                        mySql.EnableRetryOnFailure();
+                        mySql.CharSetBehavior(CharSetBehavior.NeverAppend);
+                        mySql.MigrationsAssembly(migrationsAssembly);
+                    })
+                .EnableSensitiveDataLogging()
+                .EnableDetailedErrors();
             })
             .AddOperationalStore(options =>
             {
-                options.ConfigureDbContext = b => b.UseMySql(ISString,
-                    mySqlOptionsAction: mySql =>
-                    {
-                        mySql.EnableRetryOnFailure();
-                        mySql.MigrationsAssembly(migrationsAssembly);
-                    });
-
-            })
+                options.ConfigureDbContext = b => b
+                    .UseMySql(
+                        ISString,
+                        mySqlOptionsAction: mySql =>
+                        {
+                            mySql.ServerVersion(new Version(5, 5, 68), ServerType.MariaDb);
+                            mySql.EnableRetryOnFailure();
+                            mySql.CharSetBehavior(CharSetBehavior.NeverAppend);
+                            mySql.MigrationsAssembly(migrationsAssembly);
+                        })
+                    .EnableSensitiveDataLogging()
+                    .EnableDetailedErrors();
+            }) 
             .AddAspNetIdentity<ApplicationUser>();
 
             // not recommended for production - you need to store your key material somewhere secure

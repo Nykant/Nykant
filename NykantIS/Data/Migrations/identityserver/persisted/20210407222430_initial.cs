@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace NykantIS.Data.Migrations.IdentityServer.PersistedGrantDb
+namespace NykantIS.data.migrations.identityserver.persisted
 {
-    public partial class InitialIdentityServerPersistedGrantDbMigration : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
