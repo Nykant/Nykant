@@ -38,7 +38,7 @@ namespace NykantMVC.Controllers
             {
                 // discover endpoints from metadata
                 var ISclient = new HttpClient();
-                var disco = await ISclient.GetDiscoveryDocumentAsync("https://172.17.0.3:443");
+                var disco = await ISclient.GetDiscoveryDocumentAsync("https://is");
                 if (disco.IsError)
                 {
                     Console.WriteLine(disco.Error);
@@ -69,7 +69,7 @@ namespace NykantMVC.Controllers
                 Encoding.UTF8,
                 "application/json");
 
-            string uri = "https://172.17.0.4:443" + url;
+            string uri = "https://api/api" + url;
             return await client.PostAsync(uri, itemJson);
         }
 
@@ -87,7 +87,7 @@ namespace NykantMVC.Controllers
             {
                 // discover endpoints from metadata
                 var ISclient = new HttpClient();
-                var disco = await ISclient.GetDiscoveryDocumentAsync("https://172.17.0.3:443");
+                var disco = await ISclient.GetDiscoveryDocumentAsync("https://is");
                 if (disco.IsError)
                 {
                     Console.WriteLine(disco.Error);
@@ -118,7 +118,7 @@ namespace NykantMVC.Controllers
                 Encoding.UTF8,
                 "application/json");
 
-            string uri = "https://172.17.0.4:443" + url;
+            string uri = "https://api/api" + url;
 
             return await client.PatchAsync(uri, itemJson);
         }
@@ -136,7 +136,7 @@ namespace NykantMVC.Controllers
             {
                 // discover endpoints from metadata
                 var ISclient = new HttpClient();
-                var disco = await ISclient.GetDiscoveryDocumentAsync("https://172.17.0.3:443");
+                var disco = await ISclient.GetDiscoveryDocumentAsync("https://is");
                 if (disco.IsError)
                 {
                     Console.WriteLine(disco.Error);
@@ -162,7 +162,7 @@ namespace NykantMVC.Controllers
                 client.SetBearerToken(tokenResponse.AccessToken);
             }
 
-            string uri = "https://172.17.0.4:443" + url;
+            string uri = "https://api/api" + url;
             return await client.GetStringAsync(uri);
         }
 
@@ -179,7 +179,7 @@ namespace NykantMVC.Controllers
             {
                 // discover endpoints from metadata
                 var ISclient = new HttpClient();
-                var disco = await ISclient.GetDiscoveryDocumentAsync("https://172.17.0.3:443");
+                var disco = await ISclient.GetDiscoveryDocumentAsync("https://is");
                 if (disco.IsError)
                 {
                     Console.WriteLine(disco.Error);
@@ -205,7 +205,7 @@ namespace NykantMVC.Controllers
                 client.SetBearerToken(tokenResponse.AccessToken);
             }
 
-            string uri = "https://172.17.0.4:443" + url;
+            string uri = "https://api/api" + url;
             return await client.DeleteAsync(uri);
         }
     }

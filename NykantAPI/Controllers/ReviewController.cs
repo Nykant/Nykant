@@ -13,7 +13,7 @@ using NykantAPI.Models;
 namespace NykantAPI.Controllers
 {
     [ApiController]
-    [Route("[controller]/[action]/")]
+    [Route("api/[controller]/[action]/")]
     public class ReviewController : BaseController
     {
 

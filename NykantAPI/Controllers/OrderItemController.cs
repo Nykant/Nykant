@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace NykantAPI.Controllers
 {
     [ApiController]
-    [Route("[controller]/[action]/")]
+    [Route("api/[controller]/[action]/")]
     public class OrderItemController : BaseController
     {
         public OrderItemController(ILogger<BaseController> logger, ApplicationDbContext context)

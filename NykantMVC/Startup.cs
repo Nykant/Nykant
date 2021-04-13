@@ -42,7 +42,7 @@ namespace NykantMVC
                 })
                 .AddOpenIdConnect("oidc", options =>
                 {
-                    options.Authority = "https://172.17.0.3:443";
+                    options.Authority = "https://is";
                     options.ClientId = "mvc";
                     options.ClientSecret = "secret";
                     options.ResponseType = "code";

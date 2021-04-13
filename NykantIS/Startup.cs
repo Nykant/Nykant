@@ -168,7 +168,9 @@ namespace NykantIS
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapDefaultControllerRoute();
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "is/{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }

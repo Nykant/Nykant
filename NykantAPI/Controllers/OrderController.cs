@@ -14,7 +14,7 @@ using NykantAPI.Models.DTO;
 namespace NykantAPI.Controllers
 {
     [ApiController]
-    [Route("[controller]/[action]/")]
+    [Route("api/[controller]/[action]/")]
     public class OrderController : BaseController
     {
         public OrderController(ILogger<BaseController> logger, ApplicationDbContext context)

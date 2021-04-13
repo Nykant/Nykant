@@ -16,7 +16,7 @@ using NykantAPI.Models.DTO;
 namespace NykantAPI.Controllers
 {
     [ApiController]
-    [Route("[controller]/[action]/")]
+    [Route("api/[controller]/[action]/")]
     public class BagItemController : BaseController
     {
         public BagItemController(ILogger<BaseController> logger, ApplicationDbContext context)

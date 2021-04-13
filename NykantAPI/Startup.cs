@@ -59,7 +59,7 @@ namespace NykantAPI
             services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>
                 {
-                    options.Authority = "https://172.17.0.3:443";
+                    options.Authority = "https://is";
 
                     options.TokenValidationParameters = new TokenValidationParameters
                     {

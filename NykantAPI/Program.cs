@@ -20,6 +20,7 @@ namespace NykantAPI
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    webBuilder.UseUrls("https://127.0.0.1:5003");
                     webBuilder.UseStartup<Startup>();
                 });
     }
