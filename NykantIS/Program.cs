@@ -14,13 +14,13 @@ using Serilog.Sinks.SystemConsole.Themes;
 using System;
 using System.Linq;
 
+
 namespace NykantIS
 {
     public class Program
     {
         public static int Main(string[] args)
         {
-
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Debug()
                 .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
@@ -73,7 +73,6 @@ namespace NykantIS
                 .UseSerilog()
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseUrls("https://localhost:5001");
                     webBuilder.UseStartup<Startup>();
                 });
     }

@@ -7,23 +7,23 @@
   //    "sslPort": 44301
   //  }
   //},
-  "profiles": {
-    //"IIS Express": {
-    //  "commandName": "IISExpress",
-    //  "launchBrowser": true,
-    //  "environmentVariables": {
-    //    "ASPNETCORE_ENVIRONMENT": "Development",
-    //    "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation"
-    //  }
-    //},
-    "Nykant": {
-      "commandName": "Project",
-      "launchBrowser": true,
-      "applicationUrl": "https://localhost:5002",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation"
-      }
-    }
-  }
+  //"profiles": {
+  //  //"IIS Express": {
+  //  //  "commandName": "IISExpress",
+  //  //  "launchBrowser": true,
+  //  //  "environmentVariables": {
+  //  //    "ASPNETCORE_ENVIRONMENT": "Development",
+  //  //    "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation"
+  //  //  }
+  //  //},
+  //  "Nykant": {
+  //    "commandName": "Project",
+  //    "launchBrowser": true,
+  //    "applicationUrl": "https://localhost:5002",
+  //    "environmentVariables": {
+  //      "ASPNETCORE_ENVIRONMENT": "Development",
+  //      "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation"
+  //    }
+  //  }
+  //}
 }

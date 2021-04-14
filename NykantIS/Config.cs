@@ -40,10 +40,10 @@ namespace NykantIS
                     AllowedGrantTypes = GrantTypes.Code,
 
                     // where to redirect to after login
-                    RedirectUris = { "https://nykant.dk:80/signin-oidc" },
+                    RedirectUris = { "https://nykant.dk/signin-oidc" },
 
                     // where to redirect to after logout
-                    PostLogoutRedirectUris = { "http://nykant.dk:80/signout-callback-oidc" },
+                    PostLogoutRedirectUris = { "https://nykant.dk/signout-callback-oidc" },
 
                     AllowOfflineAccess = true,
 

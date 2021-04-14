@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -42,7 +43,7 @@ namespace NykantMVC
                 })
                 .AddOpenIdConnect("oidc", options =>
                 {
-                    options.Authority = "https://is";
+                    options.Authority = "https://nykant.dk/is";
                     options.ClientId = "mvc";
                     options.ClientSecret = "secret";
                     options.ResponseType = "code";
@@ -87,6 +88,21 @@ namespace NykantMVC
                                         options.ModelBindingMessageProvider.SetValueMustNotBeNullAccessor(
                                             _ => "Du mangler at udfylde her.");
                                     });
+
+            //services.AddHsts(options =>
+            //{
+            //    options.Preload = true;
+            //    options.IncludeSubDomains = true;
+            //    options.MaxAge = TimeSpan.FromDays(60);
+            //    options.ExcludedHosts.Add("nykant.dk");
+            //    options.ExcludedHosts.Add("www.nykant.dk");
+            //});
+
+            //services.AddHttpsRedirection(options =>
+            //{
+            //    options.RedirectStatusCode = StatusCodes.Status308PermanentRedirect;
+            //    options.HttpsPort = 5002;
+            //});
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -102,7 +118,11 @@ namespace NykantMVC
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
 
             app.UseDefaultFiles();
             app.UseStaticFiles();

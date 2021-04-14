@@ -25,6 +25,9 @@ using MailKit;
 using NykantIS.Services;
 using Microsoft.AspNetCore.Mvc.DataAnnotations;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.IdentityModel.Logging;
 
 namespace NykantIS
 {
@@ -71,8 +74,8 @@ namespace NykantIS
                 options.Events.RaiseSuccessEvents = true;
                 options.EmitStaticAudienceClaim = true;
 
-                options.UserInteraction.LoginUrl = "/Account/Login";
-                options.UserInteraction.LogoutUrl = "/Account/Logout";
+                options.UserInteraction.LoginUrl = "is/Account/Login";
+                options.UserInteraction.LogoutUrl = "is/Account/Logout";
 
                 options.Authentication = new AuthenticationOptions()
                 {
@@ -147,6 +150,21 @@ namespace NykantIS
                             _ => "Du mangler at udfylde her.");
                     });
 
+            //services.AddHsts(options =>
+            //{
+            //    options.Preload = true;
+            //    options.IncludeSubDomains = true;
+            //    options.MaxAge = TimeSpan.FromDays(60);
+            //    options.ExcludedHosts.Add("nykant.dk");
+            //    options.ExcludedHosts.Add("www.nykant.dk");
+            //});
+
+            //services.AddHttpsRedirection(options =>
+            //{
+            //    options.RedirectStatusCode = StatusCodes.Status308PermanentRedirect;
+            //    options.HttpsPort = 5001;
+            //});
+
         }
 
         public void Configure(IApplicationBuilder app)
@@ -158,6 +176,11 @@ namespace NykantIS
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
             }
+            //app.UseHttpsRedirection();
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
 
             app.UseStaticFiles();
 
