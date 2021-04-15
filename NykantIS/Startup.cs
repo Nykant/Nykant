@@ -150,25 +150,17 @@ namespace NykantIS
                             _ => "Du mangler at udfylde her.");
                     });
 
-            //services.AddHsts(options =>
-            //{
-            //    options.Preload = true;
-            //    options.IncludeSubDomains = true;
-            //    options.MaxAge = TimeSpan.FromDays(60);
-            //    options.ExcludedHosts.Add("nykant.dk");
-            //    options.ExcludedHosts.Add("www.nykant.dk");
-            //});
-
-            //services.AddHttpsRedirection(options =>
-            //{
-            //    options.RedirectStatusCode = StatusCodes.Status308PermanentRedirect;
-            //    options.HttpsPort = 5001;
-            //});
+            services.Configure<ForwardedHeadersOptions>(options =>
+            {
+                options.ForwardedHeaders =
+                    ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+            });
 
         }
 
         public void Configure(IApplicationBuilder app)
         {
+            app.UseForwardedHeaders();
             InitializeDatabase(app);
 
             if (Environment.IsDevelopment())
@@ -176,11 +168,9 @@ namespace NykantIS
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
             }
+
+            IdentityModelEventSource.ShowPII = true;
             //app.UseHttpsRedirection();
-            app.UseForwardedHeaders(new ForwardedHeadersOptions
-            {
-                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
-            });
 
             app.UseStaticFiles();
 

@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Logging;
 using NykantMVC.Models;
 using NykantMVC.Services;
 using System;
@@ -117,7 +118,7 @@ namespace NykantMVC
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
-
+            IdentityModelEventSource.ShowPII = true;
             //app.UseHttpsRedirection();
             app.UseForwardedHeaders(new ForwardedHeadersOptions
             {
