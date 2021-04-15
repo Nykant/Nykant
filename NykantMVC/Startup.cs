@@ -104,10 +104,16 @@ namespace NykantMVC
             //    options.RedirectStatusCode = StatusCodes.Status308PermanentRedirect;
             //    options.HttpsPort = 5002;
             //});
+            services.Configure<ForwardedHeadersOptions>(options =>
+            {
+                options.ForwardedHeaders =
+                    ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseForwardedHeaders();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -120,10 +126,6 @@ namespace NykantMVC
             }
             IdentityModelEventSource.ShowPII = true;
             //app.UseHttpsRedirection();
-            app.UseForwardedHeaders(new ForwardedHeadersOptions
-            {
-                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
-            });
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
