@@ -152,7 +152,7 @@ namespace NykantIS
             services.Configure<ForwardedHeadersOptions>(options =>
             {
                 options.ForwardedHeaders =
-                    ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+                    ForwardedHeaders.All;
             });
 
         }
@@ -160,6 +160,7 @@ namespace NykantIS
         public void Configure(IApplicationBuilder app)
         {
             app.UseForwardedHeaders();
+
             InitializeDatabase(app);
 
             if (Environment.IsDevelopment())
@@ -167,9 +168,12 @@ namespace NykantIS
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
             }
-
-            IdentityModelEventSource.ShowPII = true;
+            else
+            {
+                app.UseHsts();
+            }
             //app.UseHttpsRedirection();
+            IdentityModelEventSource.ShowPII = true;
 
             app.UseStaticFiles();
 
@@ -182,7 +186,7 @@ namespace NykantIS
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "is/{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }

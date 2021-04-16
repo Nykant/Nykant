@@ -59,7 +59,7 @@ namespace NykantAPI
             services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>
                 {
-                    options.Authority = "https://nyaknt.dk/is";
+                    options.Authority = "https://nykant.dk:50001";
 
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
@@ -77,22 +77,27 @@ namespace NykantAPI
             });
             
             services.AddScoped<IProtectionService, ProtectionService>();
-
+            services.Configure<ForwardedHeadersOptions>(options =>
+            {
+                options.ForwardedHeaders =
+                    ForwardedHeaders.All;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseForwardedHeaders();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseHsts();
+            }
 
             //app.UseHttpsRedirection();
-            app.UseForwardedHeaders(new ForwardedHeadersOptions
-            {
-                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
-            });
 
             app.UseRouting();
 

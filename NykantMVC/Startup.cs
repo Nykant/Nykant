@@ -45,7 +45,7 @@ namespace NykantMVC
                 })
                 .AddOpenIdConnect("oidc", options =>
                 {
-                    options.Authority = "https://nykant.dk/is";
+                    options.Authority = "https://nykant.dk:50001";
                     options.ClientId = "mvc";
                     options.ClientSecret = "secret";
                     options.ResponseType = "code";
@@ -93,13 +93,14 @@ namespace NykantMVC
             services.Configure<ForwardedHeadersOptions>(options =>
             {
                 options.ForwardedHeaders =
-                    ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+                    ForwardedHeaders.All;
             });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseForwardedHeaders();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -110,6 +111,7 @@ namespace NykantMVC
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
+
             IdentityModelEventSource.ShowPII = true;
             //app.UseHttpsRedirection();
 
