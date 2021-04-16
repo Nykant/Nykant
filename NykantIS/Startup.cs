@@ -44,7 +44,6 @@ namespace NykantIS
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors();
 
             string ISString = Configuration.GetConnectionString("IdentityServer");
             string IdentityString = Configuration.GetConnectionString("Identity");

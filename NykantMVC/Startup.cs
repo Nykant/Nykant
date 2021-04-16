@@ -29,6 +29,7 @@ namespace NykantMVC
         {
 
             services.AddDataProtection()
+                .PersistKeysToFileSystem(new DirectoryInfo("/etc/nykant-keys"))
                 .SetApplicationName("Nykant");
 
             JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
@@ -59,7 +60,6 @@ namespace NykantMVC
 
             services.AddDistributedMemoryCache();
 
-            //---------------------------TO CONFIGURE COOKIE OPTIONS------------------------------------------ -
             services.Configure<CookiePolicyOptions>(options =>
             {
                 options.CheckConsentNeeded = context => true;
@@ -90,20 +90,6 @@ namespace NykantMVC
                                             _ => "Du mangler at udfylde her.");
                                     });
 
-            //services.AddHsts(options =>
-            //{
-            //    options.Preload = true;
-            //    options.IncludeSubDomains = true;
-            //    options.MaxAge = TimeSpan.FromDays(60);
-            //    options.ExcludedHosts.Add("nykant.dk");
-            //    options.ExcludedHosts.Add("www.nykant.dk");
-            //});
-
-            //services.AddHttpsRedirection(options =>
-            //{
-            //    options.RedirectStatusCode = StatusCodes.Status308PermanentRedirect;
-            //    options.HttpsPort = 5002;
-            //});
             services.Configure<ForwardedHeadersOptions>(options =>
             {
                 options.ForwardedHeaders =

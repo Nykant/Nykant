@@ -35,9 +35,8 @@ namespace NykantAPI
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddCors();
-
             services.AddDataProtection()
+                .PersistKeysToFileSystem(new DirectoryInfo("/etc/nykant-keys"))
                 .SetApplicationName("Nykant");
 
             services.AddControllers();
