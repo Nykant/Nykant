@@ -3,8 +3,8 @@
   //  "windowsAuthentication": false,
   //  "anonymousAuthentication": true,
   //  "iisExpress": {
-  //    "applicationUrl": "http://localhost:52417/",
-  //    "sslPort": 0
+  //    "applicationUrl": "https://localhost:5001/",
+  //    "sslPort": 5001
   //  }
   //},
   //"profiles": {

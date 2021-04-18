@@ -73,6 +73,15 @@ namespace NykantIS
                 .UseSerilog()
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    //webBuilder.UseKestrel(serverOptions =>
+                    //{
+                    //    serverOptions.Listen(new System.Net.IPAddress(127-0-0-1), 5001,
+                    //        listenOptions =>
+                    //        {
+                    //            listenOptions.UseHttps("fullchain.pem",
+                    //                "specialpassword123");
+                    //        });
+                    //});
                     webBuilder.UseStartup<Startup>();
                 });
     }

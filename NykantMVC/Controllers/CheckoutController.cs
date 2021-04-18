@@ -14,7 +14,6 @@ using System.Threading.Tasks;
 namespace NykantMVC.Controllers
 {
     [AllowAnonymous]
-    [Route("{controller}/{action}/")]
     public class CheckoutController : BaseController
     {
         private readonly IProtectionService _protectionService;

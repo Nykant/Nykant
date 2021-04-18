@@ -44,7 +44,6 @@ namespace NykantIS
 
         public void ConfigureServices(IServiceCollection services)
         {
-
             string ISString = Configuration.GetConnectionString("IdentityServer");
             string IdentityString = Configuration.GetConnectionString("Identity");
             var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
@@ -67,14 +66,16 @@ namespace NykantIS
 
             var builder = services.AddIdentityServer(options =>
             {
+                options.IssuerUri = "https://nykant.dk";
+
                 options.Events.RaiseErrorEvents = true;
                 options.Events.RaiseInformationEvents = true;
                 options.Events.RaiseFailureEvents = true;
                 options.Events.RaiseSuccessEvents = true;
                 options.EmitStaticAudienceClaim = true;
 
-                options.UserInteraction.LoginUrl = "is/Account/Login";
-                options.UserInteraction.LogoutUrl = "is/Account/Logout";
+                options.UserInteraction.LoginUrl = "/Account/Login";
+                options.UserInteraction.LogoutUrl = "/Account/Logout";
 
                 options.Authentication = new AuthenticationOptions()
                 {
@@ -116,6 +117,7 @@ namespace NykantIS
 
             // not recommended for production - you need to store your key material somewhere secure
             builder.AddDeveloperSigningCredential();
+
 
             services.AddAuthentication()
                 .AddGoogle("Google", options =>
@@ -172,7 +174,8 @@ namespace NykantIS
             {
                 app.UseHsts();
             }
-            //app.UseHttpsRedirection();
+
+            app.UseHttpsRedirection();
             IdentityModelEventSource.ShowPII = true;
 
             app.UseStaticFiles();
@@ -182,11 +185,15 @@ namespace NykantIS
             app.UseIdentityServer();
             app.UseAuthorization();
 
+            //app.Use((context, next) =>
+            //{
+            //    context.Request.Scheme = "https";
+            //    return next();
+            //});
+
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapDefaultControllerRoute();
                 endpoints.MapRazorPages();
             });
         }

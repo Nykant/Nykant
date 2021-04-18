@@ -59,7 +59,8 @@ namespace NykantAPI
             services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>
                 {
-                    options.Authority = "https://nykant.dk:50001";
+                    options.Authority = "https://nykant.dk";
+                    options.MetadataAddress = "https://nykant.dk/.well-known/openid-configuration";
 
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
@@ -97,7 +98,7 @@ namespace NykantAPI
                 app.UseHsts();
             }
 
-            //app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
 
             app.UseRouting();
 

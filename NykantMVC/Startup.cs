@@ -45,7 +45,10 @@ namespace NykantMVC
                 })
                 .AddOpenIdConnect("oidc", options =>
                 {
-                    options.Authority = "https://nykant.dk:50001";
+                    options.Authority = "https://nykant.dk";
+                    options.MetadataAddress = "https://nykant.dk/.well-known/openid-configuration";
+                    options.RequireHttpsMetadata = true;
+
                     options.ClientId = "mvc";
                     options.ClientSecret = "secret";
                     options.ResponseType = "code";
@@ -113,13 +116,30 @@ namespace NykantMVC
             }
 
             IdentityModelEventSource.ShowPII = true;
-            //app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
             app.UseRouting();
+
+            //app.Use(async (httpcontext, next) =>
+            //{
+            //    await next();
+            //    if (httpcontext.Response.StatusCode == StatusCodes.Status302Found)
+            //    {
+            //        string location = httpcontext.Response.Headers[Microsoft.Net.Http.Headers.HeaderNames.Location];
+            //        httpcontext.Response.Headers[Microsoft.Net.Http.Headers.HeaderNames.Location] =
+            //                location.Replace("://is/", "://nykant.dk/");
+            //    }
+
+            //});
+            //app.Use((context, next) =>
+            //{
+            //    context.Request.Scheme = "https";
+            //    return next();
+            //});
 
             app.UseAuthentication();
             app.UseAuthorization();
@@ -130,7 +150,7 @@ namespace NykantMVC
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Nykant}/{action=Index}/{id?}");
+                    pattern: "mvc/{controller=Nykant}/{action=Index}/{id?}");
             });
         }
 
