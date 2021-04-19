@@ -47,8 +47,8 @@ namespace NykantMVC
                 {
                     options.Authority = "https://nykant.dk";
                     options.MetadataAddress = "https://nykant.dk/.well-known/openid-configuration";
-                    options.RequireHttpsMetadata = true;
                     options.CallbackPath = "/mvc/signin-oidc";
+                    options.SignedOutCallbackPath = "/mvc/signout-callback-oidc";
 
                     options.ClientId = "mvc";
                     options.ClientSecret = "secret";
@@ -117,7 +117,7 @@ namespace NykantMVC
             }
 
             IdentityModelEventSource.ShowPII = true;
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseDefaultFiles();
             app.UseStaticFiles();

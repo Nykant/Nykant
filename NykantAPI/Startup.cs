@@ -44,17 +44,7 @@ namespace NykantAPI
             services.AddDbContext<ApplicationDbContext>(options =>
                 options
                     .UseMySql(
-                        Configuration.GetConnectionString("NykantDb"),
-                        mySqlOptionsAction: mySql =>
-                        {
-                            mySql.ServerVersion(new Version(5, 5, 68), ServerType.MariaDb);
-                            mySql.EnableRetryOnFailure();
-                            mySql.CharSetBehavior(CharSetBehavior.NeverAppend);
-                        })
-                    .EnableSensitiveDataLogging()
-                    .EnableDetailedErrors()
-                    );
-              
+                        Configuration.GetConnectionString("NykantDb")));
 
             services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>
@@ -98,7 +88,7 @@ namespace NykantAPI
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 
