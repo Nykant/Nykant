@@ -24,7 +24,6 @@ namespace NykantMVC.Controllers
             return View(products);
         }
 
-        [Route("/{controller}/{action}/{id}")]
         [HttpGet]
         public async Task<IActionResult> Details(int id)
         {

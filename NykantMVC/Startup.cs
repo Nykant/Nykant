@@ -48,6 +48,7 @@ namespace NykantMVC
                     options.Authority = "https://nykant.dk";
                     options.MetadataAddress = "https://nykant.dk/.well-known/openid-configuration";
                     options.RequireHttpsMetadata = true;
+                    options.CallbackPath = "/mvc/signin-oidc";
 
                     options.ClientId = "mvc";
                     options.ClientSecret = "secret";
