@@ -11,11 +11,11 @@ FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
 WORKDIR /app
 COPY --from=build-env /app/out .
 
-COPY certificate.pfx /etc/ssl/letsencrypt/certificate.pfx
+#COPY certificate.pfx /etc/ssl/letsencrypt/certificate.pfx
 
-ENV ASPNETCORE_URLS https://*:5003
-ENV ASPNETCORE_HTTPS_PORT 5001
-ENV ASPNETCORE_Kestrel__Certificates__Default__Password specialpassword123
-ENV ASPNETCORE_Kestrel__Certificates__Default__Path /etc/ssl/letsencrypt/certificate.pfx
+ENV ASPNETCORE_URLS http://*:5003
+#ENV ASPNETCORE_HTTPS_PORT 5003
+#ENV ASPNETCORE_Kestrel__Certificates__Default__Password specialpassword123
+#ENV ASPNETCORE_Kestrel__Certificates__Default__Path /etc/ssl/letsencrypt/certificate.pfx
 
 ENTRYPOINT ["dotnet", "NykantAPI.dll"]

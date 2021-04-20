@@ -49,8 +49,8 @@ namespace NykantAPI
             services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>
                 {
-                    options.Authority = "https://nykant.dk";
-                    options.MetadataAddress = "https://nykant.dk/.well-known/openid-configuration";
+                    options.Authority = "https://nykant.dk/is";
+                    options.MetadataAddress = "https://nykant.dk/is/.well-known/openid-configuration";
 
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
@@ -72,13 +72,17 @@ namespace NykantAPI
             {
                 options.ForwardedHeaders =
                     ForwardedHeaders.All;
+                options.KnownNetworks.Clear();
+                options.KnownProxies.Clear();
             });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UsePathBase("/api");
             app.UseForwardedHeaders();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -88,7 +92,9 @@ namespace NykantAPI
                 app.UseHsts();
             }
 
-            //app.UseHttpsRedirection();
+            app.UseCertificateForwarding();
+
+            app.UseHttpsRedirection();
 
             app.UseRouting();
 

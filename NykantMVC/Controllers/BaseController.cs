@@ -38,7 +38,7 @@ namespace NykantMVC.Controllers
             {
                 // discover endpoints from metadata
                 var ISclient = new HttpClient();
-                var disco = await ISclient.GetDiscoveryDocumentAsync("https://nykant.dk");
+                var disco = await ISclient.GetDiscoveryDocumentAsync("https://nykant.dk/is");
                 if (disco.IsError)
                 {
                     Console.WriteLine(disco.Error);
@@ -87,7 +87,7 @@ namespace NykantMVC.Controllers
             {
                 // discover endpoints from metadata
                 var ISclient = new HttpClient();
-                var disco = await ISclient.GetDiscoveryDocumentAsync("https://nykant.dk");
+                var disco = await ISclient.GetDiscoveryDocumentAsync("https://nykant.dk/is");
                 if (disco.IsError)
                 {
                     Console.WriteLine(disco.Error);
@@ -136,7 +136,7 @@ namespace NykantMVC.Controllers
             {
                 // discover endpoints from metadata
                 var ISclient = new HttpClient();
-                var disco = await ISclient.GetDiscoveryDocumentAsync("https://nykant.dk");
+                var disco = await ISclient.GetDiscoveryDocumentAsync("https://nykant.dk/is");
                 if (disco.IsError)
                 {
                     Console.WriteLine(disco.Error);
@@ -179,7 +179,7 @@ namespace NykantMVC.Controllers
             {
                 // discover endpoints from metadata
                 var ISclient = new HttpClient();
-                var disco = await ISclient.GetDiscoveryDocumentAsync("https://nykant.dk");
+                var disco = await ISclient.GetDiscoveryDocumentAsync("https://nykant.dk/is");
                 if (disco.IsError)
                 {
                     Console.WriteLine(disco.Error);

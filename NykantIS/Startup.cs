@@ -46,9 +46,9 @@ namespace NykantIS
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDataProtection()
-                .PersistKeysToFileSystem(new DirectoryInfo("/etc/nykant-keys"))
-                .SetApplicationName("Nykant");
+            //services.AddDataProtection()
+            //    .PersistKeysToFileSystem(new DirectoryInfo("/etc/nykant-keys"))
+            //    .SetApplicationName("Nykant");
 
             string ISString = Configuration.GetConnectionString("IdentityServer");
             string IdentityString = Configuration.GetConnectionString("Identity");
@@ -63,7 +63,7 @@ namespace NykantIS
 
             var builder = services.AddIdentityServer(options =>
             {
-                options.IssuerUri = "https://nykant.dk";
+                options.IssuerUri = "https://nykant.dk/is";
 
                 options.Events.RaiseErrorEvents = true;
                 options.Events.RaiseInformationEvents = true;
@@ -140,12 +140,15 @@ namespace NykantIS
             {
                 options.ForwardedHeaders =
                     ForwardedHeaders.All;
+                options.KnownNetworks.Clear();
+                options.KnownProxies.Clear();
             });
 
         }
 
         public void Configure(IApplicationBuilder app)
         {
+            app.UsePathBase("/is");
             app.UseForwardedHeaders();
 
             InitializeDatabase(app);
@@ -159,8 +162,10 @@ namespace NykantIS
             {
                 app.UseHsts();
             }
+            app.UseCertificateForwarding();
 
-            //app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
+
             IdentityModelEventSource.ShowPII = true;
 
             app.UseStaticFiles();

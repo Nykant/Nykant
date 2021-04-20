@@ -14,7 +14,7 @@ using Newtonsoft.Json;
 namespace NykantAPI.Controllers
 {
     [ApiController]
-    [Route("api/[controller]/[action]/")]
+    [Route("[controller]/[action]/")]
     public class ProductController : BaseController
     {
 

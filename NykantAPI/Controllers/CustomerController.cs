@@ -17,7 +17,7 @@ namespace NykantAPI.Controllers
 {
     
     [ApiController]
-    [Route("api/[controller]/[action]/")]
+    [Route("[controller]/[action]/")]
     public class CustomerController : BaseController
     {
         private readonly IProtectionService _protectionService;

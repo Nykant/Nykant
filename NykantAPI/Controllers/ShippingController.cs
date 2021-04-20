@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace NykantAPI.Controllers
 {
     [ApiController]
-    [Route("api/[controller]/[action]/")]
+    [Route("[controller]/[action]/")]
     public class ShippingController : BaseController
     {
         public ShippingController(ILogger<BaseController> logger, ApplicationDbContext context)

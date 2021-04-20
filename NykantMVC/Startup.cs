@@ -45,10 +45,10 @@ namespace NykantMVC
                 })
                 .AddOpenIdConnect("oidc", options =>
                 {
-                    options.Authority = "https://nykant.dk";
-                    options.MetadataAddress = "https://nykant.dk/.well-known/openid-configuration";
-                    options.CallbackPath = "/mvc/signin-oidc";
-                    options.SignedOutCallbackPath = "/mvc/signout-callback-oidc";
+                    options.Authority = "https://nykant.dk/is";
+                    options.MetadataAddress = "https://nykant.dk/is/.well-known/openid-configuration";
+                    options.CallbackPath = "/signin-oidc";
+                    options.SignedOutCallbackPath = "/signout-callback-oidc";
 
                     options.ClientId = "mvc";
                     options.ClientSecret = "secret";
@@ -98,6 +98,11 @@ namespace NykantMVC
             {
                 options.ForwardedHeaders =
                     ForwardedHeaders.All;
+                // Only loopback proxies are allowed by default.
+                // Clear that restriction because forwarders are enabled by explicit 
+                // configuration.
+                options.KnownNetworks.Clear();
+                options.KnownProxies.Clear();
             });
         }
 
@@ -116,8 +121,11 @@ namespace NykantMVC
                 app.UseHsts();
             }
 
+            app.UseCertificateForwarding();
+
             IdentityModelEventSource.ShowPII = true;
-            //app.UseHttpsRedirection();
+
+            app.UseHttpsRedirection();
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
@@ -151,7 +159,7 @@ namespace NykantMVC
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "mvc/{controller=Nykant}/{action=Index}/{id?}");
+                    pattern: "{controller=Nykant}/{action=Index}/{id?}");
             });
         }
 

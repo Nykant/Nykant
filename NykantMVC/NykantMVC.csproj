@@ -57,17 +57,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\mvc\css\style.css" />
-    <None Include="wwwroot\mvc\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
-    <None Include="wwwroot\mvc\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
-    <None Include="wwwroot\mvc\lib\jquery-validation\dist\additional-methods.js" />
-    <None Include="wwwroot\mvc\lib\jquery-validation\dist\additional-methods.min.js" />
-    <None Include="wwwroot\mvc\lib\jquery-validation\dist\jquery.validate.js" />
-    <None Include="wwwroot\mvc\lib\jquery-validation\dist\jquery.validate.min.js" />
-    <None Include="wwwroot\mvc\lib\jquery-validation\LICENSE.md" />
-    <None Include="wwwroot\mvc\lib\jquery\dist\jquery.js" />
-    <None Include="wwwroot\mvc\lib\jquery\dist\jquery.min.js" />
-    <None Include="wwwroot\mvc\lib\jquery\dist\jquery.min.map" />
+    <None Include="wwwroot\css\style.css" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\LICENSE.md" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.map" />
   </ItemGroup>
 
 </Project>
