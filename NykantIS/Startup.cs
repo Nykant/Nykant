@@ -116,7 +116,7 @@ namespace NykantIS
                     options.ClientSecret = "dvfRC2hzoa-obrao6uScXHSB";
                 });
 
-            services.Configure<EmailSettings>(Configuration.GetSection("MailSettings"));
+            //services.Configure<EmailSettings>(Configuration.GetSection("MailSettings"));
             services.AddTransient<Services.IMailService, EmailService>();
 
             services.AddScoped<IRazorViewToStringRenderer, RazorViewToStringRenderer>();
