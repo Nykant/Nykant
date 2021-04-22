@@ -18,10 +18,10 @@ namespace NykantIS.Services
 {
     public class EmailService : IMailService
     {
-        private readonly EmailSettings _mailSettings;
-        public EmailService(IOptions<EmailSettings> mailSettings)
+        //private readonly EmailSettings _mailSettings;
+        public EmailService(/*IOptions<EmailSettings> mailSettings*/)
         {
-            _mailSettings = mailSettings.Value;
+            //_mailSettings = mailSettings.Value;
         }
 
         public async Task SendEmailAsync(EmailRequest mailRequest)

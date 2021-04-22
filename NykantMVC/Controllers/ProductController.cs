@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using NykantMVC.Models;
 using NykantMVC.Models.ViewModels;
@@ -10,7 +11,7 @@ namespace NykantMVC.Controllers
 {
     public class ProductController : BaseController
     {
-        public ProductController(ILogger<BaseController> logger) : base(logger)
+        public ProductController(ILogger<BaseController> logger, IOptions<Urls> urls) : base(logger, urls)
         {
         }
 

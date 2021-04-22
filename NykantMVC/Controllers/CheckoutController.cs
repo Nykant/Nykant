@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using NykantMVC.Extensions;
 using NykantMVC.Models;
@@ -17,7 +18,7 @@ namespace NykantMVC.Controllers
     public class CheckoutController : BaseController
     {
         private readonly IProtectionService _protectionService;
-        public CheckoutController(ILogger<BaseController> logger, IProtectionService protectionService) : base(logger)
+        public CheckoutController(ILogger<BaseController> logger, IProtectionService protectionService, IOptions<Urls> urls) : base(logger, urls)
         {
             _protectionService = protectionService;
         }

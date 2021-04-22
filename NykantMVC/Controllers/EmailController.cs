@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using NykantMVC.Models;
 using NykantMVC.Services;
 
 namespace NykantMVC.Controllers
@@ -9,7 +11,7 @@ namespace NykantMVC.Controllers
     {
         private readonly IMailService mailService;
         private readonly IRazorViewToStringRenderer _razorViewToStringRenderer;
-        public EmailController(IMailService mailService, ILogger<BaseController> logger, IRazorViewToStringRenderer razorViewToStringRenderer) : base(logger)
+        public EmailController(IMailService mailService, ILogger<BaseController> logger, IRazorViewToStringRenderer razorViewToStringRenderer, IOptions<Urls> urls) : base(logger, urls)
         {
             this.mailService = mailService;
             _razorViewToStringRenderer = razorViewToStringRenderer;

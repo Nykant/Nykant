@@ -63,7 +63,7 @@ namespace NykantIS
 
             var builder = services.AddIdentityServer(options =>
             {
-                options.IssuerUri = "https://nykant.dk/is";
+                options.IssuerUri = Configuration.GetValue<string>("IssuerUri");
 
                 options.Events.RaiseErrorEvents = true;
                 options.Events.RaiseInformationEvents = true;
@@ -118,7 +118,7 @@ namespace NykantIS
 
             //services.Configure<EmailSettings>(Configuration.GetSection("MailSettings"));
             services.AddTransient<Services.IMailService, EmailService>();
-
+            services.Configure<Urls>(Configuration.GetSection("Urls"));
             services.AddScoped<IRazorViewToStringRenderer, RazorViewToStringRenderer>();
 
             services.AddControllersWithViews()
@@ -148,7 +148,7 @@ namespace NykantIS
 
         public void Configure(IApplicationBuilder app)
         {
-            app.UsePathBase("/is");
+            app.UsePathBase(Configuration.GetValue<string>("PathBase"));
             app.UseForwardedHeaders();
 
             InitializeDatabase(app);

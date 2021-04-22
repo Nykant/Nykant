@@ -45,8 +45,8 @@ namespace NykantMVC
                 })
                 .AddOpenIdConnect("oidc", options =>
                 {
-                    options.Authority = "https://nykant.dk/is";
-                    options.MetadataAddress = "https://nykant.dk/is/.well-known/openid-configuration";
+                    options.Authority = Configuration.GetValue<string>("Is");
+                    options.MetadataAddress = Configuration.GetValue<string>("MetadataAddress");
                     options.CallbackPath = "/signin-oidc";
                     options.SignedOutCallbackPath = "/signout-callback-oidc";
 
@@ -80,6 +80,7 @@ namespace NykantMVC
             });
 
             services.Configure<EmailSettings>(Configuration.GetSection("MailSettings"));
+            services.Configure<Urls>(Configuration.GetSection("Urls"));
             services.AddTransient<IMailService, EmailService>();
 
             services.AddScoped<IRazorViewToStringRenderer, RazorViewToStringRenderer>();
@@ -132,23 +133,6 @@ namespace NykantMVC
             app.UseCookiePolicy();
 
             app.UseRouting();
-
-            //app.Use(async (httpcontext, next) =>
-            //{
-            //    await next();
-            //    if (httpcontext.Response.StatusCode == StatusCodes.Status302Found)
-            //    {
-            //        string location = httpcontext.Response.Headers[Microsoft.Net.Http.Headers.HeaderNames.Location];
-            //        httpcontext.Response.Headers[Microsoft.Net.Http.Headers.HeaderNames.Location] =
-            //                location.Replace("://is/", "://nykant.dk/");
-            //    }
-
-            //});
-            //app.Use((context, next) =>
-            //{
-            //    context.Request.Scheme = "https";
-            //    return next();
-            //});
 
             app.UseAuthentication();
             app.UseAuthorization();

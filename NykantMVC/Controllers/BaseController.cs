@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
+using NykantMVC.Models;
 using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -18,10 +20,12 @@ namespace NykantMVC.Controllers
         public const string BagItemAmountKey = "verysecretseriousbagitemsessionkeyspecial";
         public const string ConsentCookieKey = "verysecretseriousconsentsessionkeyspecial";
         private readonly ILogger<BaseController> _logger;
+        private readonly Urls _urls;
 
-        public BaseController(ILogger<BaseController> logger)
+        public BaseController(ILogger<BaseController> logger, IOptions<Urls> urls)
         {
             _logger = logger;
+            _urls = urls.Value;
         }
 
         public async Task<HttpResponseMessage> PostRequest(string url, object item)
@@ -38,7 +42,7 @@ namespace NykantMVC.Controllers
             {
                 // discover endpoints from metadata
                 var ISclient = new HttpClient();
-                var disco = await ISclient.GetDiscoveryDocumentAsync("https://nykant.dk/is");
+                var disco = await ISclient.GetDiscoveryDocumentAsync(_urls.Is);
                 if (disco.IsError)
                 {
                     Console.WriteLine(disco.Error);
@@ -69,7 +73,7 @@ namespace NykantMVC.Controllers
                 Encoding.UTF8,
                 "application/json");
 
-            string uri = "https://nykant.dk/api" + url;
+            string uri = _urls.Api + url;
             return await client.PostAsync(uri, itemJson);
         }
 
@@ -87,7 +91,7 @@ namespace NykantMVC.Controllers
             {
                 // discover endpoints from metadata
                 var ISclient = new HttpClient();
-                var disco = await ISclient.GetDiscoveryDocumentAsync("https://nykant.dk/is");
+                var disco = await ISclient.GetDiscoveryDocumentAsync(_urls.Is);
                 if (disco.IsError)
                 {
                     Console.WriteLine(disco.Error);
@@ -118,7 +122,7 @@ namespace NykantMVC.Controllers
                 Encoding.UTF8,
                 "application/json");
 
-            string uri = "https://nykant.dk/api" + url;
+            string uri = _urls.Api + url;
 
             return await client.PatchAsync(uri, itemJson);
         }
@@ -136,7 +140,7 @@ namespace NykantMVC.Controllers
             {
                 // discover endpoints from metadata
                 var ISclient = new HttpClient();
-                var disco = await ISclient.GetDiscoveryDocumentAsync("https://nykant.dk/is");
+                var disco = await ISclient.GetDiscoveryDocumentAsync(_urls.Is);
                 if (disco.IsError)
                 {
                     Console.WriteLine(disco.Error);
@@ -162,7 +166,7 @@ namespace NykantMVC.Controllers
                 client.SetBearerToken(tokenResponse.AccessToken);
             }
 
-            string uri = "https://nykant.dk/api" + url;
+            string uri = _urls.Api + url;
             return await client.GetStringAsync(uri);
         }
 
@@ -179,7 +183,7 @@ namespace NykantMVC.Controllers
             {
                 // discover endpoints from metadata
                 var ISclient = new HttpClient();
-                var disco = await ISclient.GetDiscoveryDocumentAsync("https://nykant.dk/is");
+                var disco = await ISclient.GetDiscoveryDocumentAsync(_urls.Is);
                 if (disco.IsError)
                 {
                     Console.WriteLine(disco.Error);
@@ -205,7 +209,7 @@ namespace NykantMVC.Controllers
                 client.SetBearerToken(tokenResponse.AccessToken);
             }
 
-            string uri = "https://nykant.dk/api" + url;
+            string uri = _urls.Api + url;
             return await client.DeleteAsync(uri);
         }
     }

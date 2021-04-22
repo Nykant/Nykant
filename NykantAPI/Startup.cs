@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using NykantAPI.Data;
+using NykantAPI.Models;
 using NykantAPI.Services;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 using System;
@@ -49,8 +50,8 @@ namespace NykantAPI
             services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>
                 {
-                    options.Authority = "https://nykant.dk/is";
-                    options.MetadataAddress = "https://nykant.dk/is/.well-known/openid-configuration";
+                    options.Authority = Configuration.GetValue<string>("Is");
+                    options.MetadataAddress = Configuration.GetValue<string>("MetadataAddress");
 
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
@@ -66,7 +67,8 @@ namespace NykantAPI
                     policy.RequireClaim("scope", "NykantAPI");
                 });
             });
-            
+
+            services.Configure<Urls>(Configuration.GetSection("Urls"));
             services.AddScoped<IProtectionService, ProtectionService>();
             services.Configure<ForwardedHeadersOptions>(options =>
             {
@@ -80,7 +82,7 @@ namespace NykantAPI
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UsePathBase("/api");
+            app.UsePathBase(Configuration.GetValue<string>("PathBase"));
             app.UseForwardedHeaders();
 
             if (env.IsDevelopment())

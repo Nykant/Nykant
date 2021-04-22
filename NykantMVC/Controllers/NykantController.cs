@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using NykantMVC.Extensions;
 using System;
+using Microsoft.Extensions.Options;
 
 namespace NykantMVC.Controllers
 {
@@ -16,7 +17,7 @@ namespace NykantMVC.Controllers
     public class NykantController : BaseController
     {
 
-        public NykantController(ILogger<NykantController> logger) : base(logger)
+        public NykantController(ILogger<NykantController> logger, IOptions<Urls> urls) : base(logger, urls)
         {
         }
 

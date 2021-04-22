@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using NykantMVC.Extensions;
 using NykantMVC.Models;
@@ -17,7 +18,7 @@ namespace NykantMVC.Controllers
     {
         private IConfigurationRoot _configuration;
         private readonly IProtectionService _protectionService;
-        public PaymentController(ILogger<BaseController> logger, IConfiguration configuration, IProtectionService protectionService) : base(logger)
+        public PaymentController(ILogger<BaseController> logger, IConfiguration configuration, IProtectionService protectionService, IOptions<Urls> urls) : base(logger, urls)
         {
             _configuration = (IConfigurationRoot)configuration;
             _protectionService = protectionService;

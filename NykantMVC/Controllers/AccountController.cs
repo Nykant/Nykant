@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using NykantMVC.Extensions;
 using NykantMVC.Models;
@@ -13,7 +14,7 @@ namespace NykantMVC.Controllers
     [Authorize]
     public class AccountController : BaseController
     {
-        public AccountController(ILogger<BaseController> logger) : base(logger)
+        public AccountController(ILogger<BaseController> logger, IOptions<Urls> urls) : base(logger, urls)
         {
 
         }

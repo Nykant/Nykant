@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using NykantMVC.Models;
 using System.Threading.Tasks;
 
@@ -9,7 +10,7 @@ namespace NykantMVC.Controllers
     [Authorize]
     public class ReviewController : BaseController
     {
-        public ReviewController(ILogger<BaseController> logger) : base(logger)
+        public ReviewController(ILogger<BaseController> logger, IOptions<Urls> urls) : base(logger, urls)
         {
 
         }
