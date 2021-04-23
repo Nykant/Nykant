@@ -62,7 +62,6 @@ form.addEventListener("submit", function (event) {
     }
 });
 
-
 function stripePaymentMethodHandler(result) {
     if (result.error) {
         showError(result.error.message)
@@ -131,7 +130,7 @@ var orderComplete = function (paymentIntentId) {
         body: JSON.stringify(paymentIntentId)
     }).then(function (result) {
         if (result.ok) {
-            location.replace("https://localhost:5002/checkout/success")
+            location.replace("https://nykant.dk/checkout/success")
         }
     })
 };

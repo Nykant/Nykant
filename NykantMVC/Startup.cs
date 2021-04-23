@@ -128,6 +128,8 @@ namespace NykantMVC
 
             app.UseHttpsRedirection();
 
+            //app.UseCors();
+
             app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseCookiePolicy();

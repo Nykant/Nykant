@@ -47,6 +47,11 @@ namespace NykantIS.Services
                             {
                                 Charset = "UTF-8",
                                 Data = mailRequest.Body
+                            },
+                            Text = new Content
+                            {
+                                Charset = "UTF-8",
+                                Data = mailRequest.Body
                             }
                         }
                     },
