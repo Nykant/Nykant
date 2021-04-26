@@ -3,6 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    @*<meta http-equiv="Content-Security-Policy" content="default-src 'self' https://js.stripe.com/v3/ https://kit.fontawesome.com/dfade6c231.js">*@
+
     <title>@ViewData["Title"] - Nykant</title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -33,7 +35,7 @@
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.unobtrusive-ajax/3.2.5/jquery.unobtrusive-ajax.min.js"></script>
-    <script src="https://js.stripe.com"></script>
+    <script src="https://js.stripe.com/v3/"></script>
 
 </head>
 <body>
@@ -95,15 +97,12 @@
 
     <script src="https://kit.fontawesome.com/dfade6c231.js"></script>
     <script src="~/JS/mobileNav.js"></script>
-    <script src="~/JS/slide-details.js"></script>
     <script src="~/JS/counter.js"></script>
     <script src="~/JS/image-changer.js"></script>
     @*<script src="~/JS/jquery.mixitup.min.js"></script>*@
     @*<script src="~/JS/modernizr.js"></script>*@
     <!--<script src="~/JS/main.js"></script>-->  @*Resource jQuery*@
-    <script src="~/JS/slide-text.js"></script>
     <script src="~/JS/downarrow-stop.js"></script>
-    <script src="~/JS/slideshow.js"></script>
     <script src="~/JS/custom-input.js"></script>
     <script src="~/JS/search-button.js"></script>
     @RenderSection("Scripts", required: false)
