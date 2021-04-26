@@ -30,7 +30,7 @@ namespace NykantMVC.Controllers
             var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
             if (checkout == null)
             {
-                return NoContent();
+                Json(new { error = "checkout = null" });
             }
 
             if (checkout.Stage == Stage.payment)
@@ -86,7 +86,7 @@ namespace NykantMVC.Controllers
             }
             else
             {
-                return NoContent();
+                return Json(new { error = "stage not = payment" });
             }
         }
 
