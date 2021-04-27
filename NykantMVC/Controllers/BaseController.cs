@@ -166,7 +166,18 @@ namespace NykantMVC.Controllers
                 client.SetBearerToken(tokenResponse.AccessToken);
             }
 
-            string uri = _urls.Api + url;
+            string uri = null;
+            if (url.StartsWith("/api"))
+            {
+                Console.WriteLine("url starts with /api");
+                uri = "https://nykant.dk" + url;
+            }
+            else
+            {
+                Console.WriteLine("url doesnt start with /api");
+                uri = _urls.Api + url;
+            }
+
             return await client.GetStringAsync(uri);
         }
 

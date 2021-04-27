@@ -46,9 +46,13 @@ namespace NykantIS
 
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDataProtection()
-            //    .PersistKeysToFileSystem(new DirectoryInfo("/etc/nykant-keys"))
-            //    .SetApplicationName("Nykant");
+            services.AddDbContext<MyKeysContext>(options =>
+                options.UseMySql(
+                    Configuration.GetConnectionString("MyKeysConnection")));
+
+            services.AddDataProtection()
+                .PersistKeysToDbContext<MyKeysContext>()
+                .SetApplicationName("Nykant");
 
             string ISString = Configuration.GetConnectionString("IdentityServer");
             string IdentityString = Configuration.GetConnectionString("Identity");

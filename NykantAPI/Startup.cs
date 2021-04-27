@@ -36,11 +36,13 @@ namespace NykantAPI
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddDataProtection()
-                .PersistKeysToFileSystem(new DirectoryInfo("/etc/nykant-keys"))
-                .SetApplicationName("Nykant");
+            services.AddDbContext<MyKeysContext>(options =>
+                options.UseMySql(
+                    Configuration.GetConnectionString("MyKeysConnection")));
 
-            services.AddControllers();
+            services.AddDataProtection()
+                .PersistKeysToDbContext<MyKeysContext>()
+                .SetApplicationName("Nykant");
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options
@@ -77,6 +79,8 @@ namespace NykantAPI
                 options.KnownNetworks.Clear();
                 options.KnownProxies.Clear();
             });
+
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

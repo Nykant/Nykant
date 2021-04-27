@@ -39,25 +39,31 @@ namespace NykantAPI.Controllers
         public async Task<ActionResult<CustomerInf>> PostCustomer(CustomerInf customerInf)
         {
             customerInf = _protectionService.UnProtectCustomerInf(customerInf);
-
+            Console.WriteLine("unprotected customerinf");
             if (ModelState.IsValid)
             {
+                Console.WriteLine("ModelState Is Valid yes");
                 if (CustomerExists(customerInf.Id))
                 {
+                    Console.WriteLine("Customer Exists");
                     _context.CustomerInfs.Update(customerInf);
                     await _context.SaveChangesAsync();
+                    Console.WriteLine("Saved changes");
                     return Ok();
                 }
                 else
                 {
+                    Console.WriteLine("Customer doesnt Exists");
                     var entity = _context.CustomerInfs.Add(customerInf).Entity;
                     await _context.SaveChangesAsync();
+                    Console.WriteLine("Saved changes");
                     return CreatedAtAction("GetCustomer", new { id = entity.Id }, customerInf);
                 }
             }
             else
             {
-                return NotFound();
+                Console.WriteLine("Modelstate invalid");
+                return Content("couldnt unprotect it");
             }
         }
 

@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Logging;
+using NykantMVC.Data;
 using NykantMVC.Models;
 using NykantMVC.Services;
 using System;
@@ -27,9 +28,12 @@ namespace NykantMVC
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<MyKeysContext>(options =>
+                options.UseMySql(
+                    Configuration.GetConnectionString("MyKeysConnection")));
 
             services.AddDataProtection()
-                .PersistKeysToFileSystem(new DirectoryInfo("/etc/nykant-keys"))
+                .PersistKeysToDbContext<MyKeysContext>()
                 .SetApplicationName("Nykant");
 
             JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
@@ -62,20 +66,19 @@ namespace NykantMVC
                     options.Scope.Add("offline_access");
                 });
 
-            services.AddDistributedMemoryCache();
-
             services.Configure<CookiePolicyOptions>(options =>
             {
                 options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
+                options.MinimumSameSitePolicy = SameSiteMode.Lax;
             });
+
+            services.AddDistributedMemoryCache();
 
             services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromHours(10);
                 options.Cookie.Name = "SessionCookie";
                 options.Cookie.IsEssential = true;
-                options.Cookie.HttpOnly = true;
                 options.Cookie.SameSite = SameSiteMode.Lax;
             });
 
@@ -127,8 +130,6 @@ namespace NykantMVC
             IdentityModelEventSource.ShowPII = true;
 
             app.UseHttpsRedirection();
-
-            //app.UseCors();
 
             app.UseDefaultFiles();
             app.UseStaticFiles();

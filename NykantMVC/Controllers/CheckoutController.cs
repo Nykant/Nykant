@@ -146,14 +146,19 @@ namespace NykantMVC.Controllers
                 if (checkout.Stage == Stage.customerInf || editCustomer)
                 {
                     customerInf = _protectionService.ProtectCustomerInf(customerInf);
-                    var response = await PostRequest("/Customer/PostCustomer", customerInf);
-
+                    var response = await PostRequest("/Customer/PostCustomer/", customerInf);
+                    Console.WriteLine($"Post Complete statuscode: {response.StatusCode} absolutePath: {response.Headers.Location.AbsolutePath} ");
                     if (response.IsSuccessStatusCode)
                     {
+                        Console.WriteLine($"Success status code");
                         if (customerInf.Id == 0)
                         {
+                            Console.WriteLine($"Customer Inf Id = 0");
+                            Console.WriteLine($"Trying to get Customer inf id");
                             var json = await GetRequest(response.Headers.Location.AbsolutePath);
+                            Console.WriteLine($"Got id");
                             checkout.CustomerInfId = JsonConvert.DeserializeObject<CustomerInf>(json).Id;
+                            Console.WriteLine($"Deserialize id");
                         }
                         else
                         {
@@ -162,7 +167,9 @@ namespace NykantMVC.Controllers
 
                         if (!editCustomer)
                         {
+                            Console.WriteLine($"Set checkout stage = shipping");
                             checkout.Stage = Stage.shipping;
+                            Console.WriteLine($"Done setting stage");
                         }
 
                         HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
@@ -197,7 +204,7 @@ namespace NykantMVC.Controllers
             }
             else
             {
-                return NoContent();
+                return Json(new { error = "checkout stage is not correct" });
             }
         }
 
