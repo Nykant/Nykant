@@ -19,18 +19,32 @@ namespace NykantMVC
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+
+        public IConfiguration Configuration { get; }
+        public IWebHostEnvironment Environment { get; }
+
+        public Startup(IConfiguration configuration, IWebHostEnvironment environment)
         {
+            Environment = environment;
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
-
         public void ConfigureServices(IServiceCollection services)
         {
+            string mykeyConnection = null;
+            if (Environment.IsDevelopment())
+            {
+                mykeyConnection = Configuration.GetConnectionString("MyKeysConnection2");
+            }
+            else
+            {
+                mykeyConnection = Configuration.GetConnectionString("MyKeysConnection2");
+                //mykeyConnection = Configuration.GetConnectionString("MyKeysConnection");
+            }
+
             services.AddDbContext<MyKeysContext>(options =>
-                options.UseMySql(
-                    Configuration.GetConnectionString("MyKeysConnection")));
+                options.UseSqlServer(
+                    mykeyConnection));
 
             services.AddDataProtection()
                 .PersistKeysToDbContext<MyKeysContext>()

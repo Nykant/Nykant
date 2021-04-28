@@ -25,20 +25,37 @@ namespace NykantAPI
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public IConfiguration Configuration { get; }
+        public IWebHostEnvironment Environment { get; }
+
+        public Startup(IConfiguration configuration, IWebHostEnvironment environment)
         {
+            Environment = environment;
             Configuration = configuration;
         }
-
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string mykeyConnection = null;
+            string nykantConnection = null;
+
+            if (Environment.IsDevelopment())
+            {
+                mykeyConnection = Configuration.GetConnectionString("MyKeysConnection2");
+                nykantConnection = Configuration.GetConnectionString("NykantDb2");
+            }
+            else
+            {
+                mykeyConnection = Configuration.GetConnectionString("MyKeysConnection2");
+                nykantConnection = Configuration.GetConnectionString("NykantDb2");
+                //mykeyConnection = Configuration.GetConnectionString("MyKeysConnection");
+                //nykantConnection = Configuration.GetConnectionString("NykantDb");
+            }
 
             services.AddDbContext<MyKeysContext>(options =>
-                options.UseMySql(
-                    Configuration.GetConnectionString("MyKeysConnection")));
+                options.UseSqlServer(
+                    mykeyConnection));
 
             services.AddDataProtection()
                 .PersistKeysToDbContext<MyKeysContext>()
@@ -46,8 +63,8 @@ namespace NykantAPI
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options
-                    .UseMySql(
-                        Configuration.GetConnectionString("NykantDb")));
+                    .UseSqlServer(
+                        nykantConnection));
 
             services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>
