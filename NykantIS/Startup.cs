@@ -30,6 +30,7 @@ using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.AspNetCore.DataProtection;
 using System.IO;
+using IdentityServer4.Stores;
 
 namespace NykantIS
 {
@@ -101,8 +102,12 @@ namespace NykantIS
                     {
                         mySql.MigrationsAssembly(migrationsAssembly);
                     });
-            }) 
-            .AddAspNetIdentity<ApplicationUser>();
+            })
+            .AddAspNetIdentity<ApplicationUser>()
+            .AddInMemoryCaching();
+            //.AddClientStoreCache<IClientStore>()
+            //.AddResourceStoreCache<IResourceStore>()
+            //.AddCorsPolicyCache<ICorsPolicyService>();
 
             // not recommended for production - you need to store your key material somewhere secure
             builder.AddDeveloperSigningCredential();
