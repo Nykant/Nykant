@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace NykantIS.data.migrations.identityserver.persisted
+namespace NykantIS.data.migrations.persisted
 {
     public partial class initial : Migration
     {

@@ -46,20 +46,38 @@ namespace NykantIS
 
         public void ConfigureServices(IServiceCollection services)
         {
+            string mykeyConnection = null;
+            string identityserverConnection = null;
+            string identityConnection = null;
+            var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
+
+            if (Environment.IsDevelopment())
+            {
+                mykeyConnection = Configuration.GetConnectionString("MyKeysConnection2");
+                identityserverConnection = Configuration.GetConnectionString("IdentityServer2");
+                identityConnection = Configuration.GetConnectionString("Identity2");
+            }
+            else
+            {
+                mykeyConnection = Configuration.GetConnectionString("MyKeysConnection2");
+                identityserverConnection = Configuration.GetConnectionString("IdentityServer2");
+                identityConnection = Configuration.GetConnectionString("Identity2");
+                //mykeyConnection = Configuration.GetConnectionString("MyKeysConnection");
+                //identityserverConnection = Configuration.GetConnectionString("IdentityServer");
+                //identityConnection = Configuration.GetConnectionString("Identity");
+            }
+
             services.AddDbContext<MyKeysContext>(options =>
-                options.UseMySql(
-                    Configuration.GetConnectionString("MyKeysConnection")));
+                options.UseSqlServer(
+                    mykeyConnection));
 
             services.AddDataProtection()
                 .PersistKeysToDbContext<MyKeysContext>()
                 .SetApplicationName("Nykant");
 
-            string ISString = Configuration.GetConnectionString("IdentityServer");
-            string IdentityString = Configuration.GetConnectionString("Identity");
-            var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 
             services.AddDbContext<IdentityDbContext>(options =>
-                options.UseMySql(IdentityString));
+                options.UseSqlServer(identityConnection));
 
             services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<IdentityDbContext>()
@@ -87,19 +105,19 @@ namespace NykantIS
             .AddConfigurationStore(options =>
             {
                 options.ConfigureDbContext = b => b
-                    .UseMySql(ISString, mySqlOptionsAction: mySql =>
+                    .UseSqlServer(identityserverConnection, sqlServerOptionsAction: Sql =>
                     {
-                        mySql.MigrationsAssembly(migrationsAssembly);
+                        Sql.MigrationsAssembly(migrationsAssembly);
                     });
 
             })
             .AddOperationalStore(options =>
             {
                 options.ConfigureDbContext = b => b
-                    .UseMySql(ISString,
-                    mySqlOptionsAction: mySql =>
+                    .UseSqlServer(identityserverConnection,
+                    sqlServerOptionsAction: Sql =>
                     {
-                        mySql.MigrationsAssembly(migrationsAssembly);
+                        Sql.MigrationsAssembly(migrationsAssembly);
                     });
             }) 
             .AddAspNetIdentity<ApplicationUser>();

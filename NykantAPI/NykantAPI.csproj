@@ -21,9 +21,5 @@
     <PackageReference Include="Stripe.net" Version="39.35.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Data\migrations\" />
-  </ItemGroup>
-
 
 </Project>
