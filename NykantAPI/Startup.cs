@@ -42,29 +42,56 @@ namespace NykantAPI
 
             if (Environment.IsDevelopment())
             {
-                mykeyConnection = Configuration.GetConnectionString("MyKeysConnection2");
-                nykantConnection = Configuration.GetConnectionString("NykantDb2");
+                mykeyConnection = Configuration.GetConnectionString("MyKeysConnection");
+                nykantConnection = Configuration.GetConnectionString("NykantDb");
             }
             else
             {
-                mykeyConnection = Configuration.GetConnectionString("MyKeysConnection2");
-                nykantConnection = Configuration.GetConnectionString("NykantDb2");
+                mykeyConnection = Configuration.GetConnectionString("MyKeysConnection");
+                nykantConnection = Configuration.GetConnectionString("NykantDb");
                 //mykeyConnection = Configuration.GetConnectionString("MyKeysConnection");
                 //nykantConnection = Configuration.GetConnectionString("NykantDb");
             }
 
-            services.AddDbContext<MyKeysContext>(options =>
-                options.UseSqlServer(
-                    mykeyConnection));
+            if (Environment.IsDevelopment())
+            {
+                //services.AddDbContext<MyKeysContext>(options =>
+                //    options.UseSqlServer(
+                //        mykeyConnection));
+
+                //services.AddDbContext<ApplicationDbContext>(options =>
+                //    options
+                //        .UseSqlServer(
+                //            nykantConnection));
+
+                services.AddDbContext<MyKeysContext>(options =>
+                    options.UseMySql(
+                        mykeyConnection));
+
+                services.AddDbContext<ApplicationDbContext>(options =>
+                    options
+                        .UseMySql(
+                            nykantConnection));
+            }
+            else
+            {
+                services.AddDbContext<MyKeysContext>(options =>
+                    options.UseMySql(
+                        mykeyConnection));
+
+                services.AddDbContext<ApplicationDbContext>(options =>
+                    options
+                        .UseMySql(
+                            nykantConnection));
+            }
+
+            
 
             services.AddDataProtection()
                 .PersistKeysToDbContext<MyKeysContext>()
                 .SetApplicationName("Nykant");
 
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options
-                    .UseSqlServer(
-                        nykantConnection));
+            
 
             services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>

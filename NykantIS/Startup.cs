@@ -53,77 +53,199 @@ namespace NykantIS
 
             if (Environment.IsDevelopment())
             {
-                mykeyConnection = Configuration.GetConnectionString("MyKeysConnection2");
-                identityserverConnection = Configuration.GetConnectionString("IdentityServer2");
-                identityConnection = Configuration.GetConnectionString("Identity2");
+                mykeyConnection = Configuration.GetConnectionString("MyKeysConnection");
+                identityserverConnection = Configuration.GetConnectionString("IdentityServer");
+                identityConnection = Configuration.GetConnectionString("Identity");
             }
             else
             {
-                mykeyConnection = Configuration.GetConnectionString("MyKeysConnection2");
-                identityserverConnection = Configuration.GetConnectionString("IdentityServer2");
-                identityConnection = Configuration.GetConnectionString("Identity2");
+                mykeyConnection = Configuration.GetConnectionString("MyKeysConnection");
+                identityserverConnection = Configuration.GetConnectionString("IdentityServer");
+                identityConnection = Configuration.GetConnectionString("Identity");
                 //mykeyConnection = Configuration.GetConnectionString("MyKeysConnection");
                 //identityserverConnection = Configuration.GetConnectionString("IdentityServer");
                 //identityConnection = Configuration.GetConnectionString("Identity");
             }
 
-            services.AddDbContext<MyKeysContext>(options =>
-                options.UseSqlServer(
-                    mykeyConnection));
 
-            services.AddDataProtection()
-                .PersistKeysToDbContext<MyKeysContext>()
-                .SetApplicationName("Nykant");
-
-
-            services.AddDbContext<IdentityDbContext>(options =>
-                options.UseSqlServer(identityConnection));
-
-            services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<IdentityDbContext>()
-                .AddDefaultTokenProviders();
-
-            var builder = services.AddIdentityServer(options =>
+            if (Environment.IsDevelopment())
             {
-                options.IssuerUri = Configuration.GetValue<string>("IssuerUri");
+            //    services.AddDbContext<MyKeysContext>(options =>
+            //        options.UseSqlServer(mykeyConnection));
 
-                options.Events.RaiseErrorEvents = true;
-                options.Events.RaiseInformationEvents = true;
-                options.Events.RaiseFailureEvents = true;
-                options.Events.RaiseSuccessEvents = true;
-                options.EmitStaticAudienceClaim = true;
+            //    services.AddDataProtection()
+            //        .PersistKeysToDbContext<MyKeysContext>()
+            //        .SetApplicationName("Nykant");
 
-                options.UserInteraction.LoginUrl = "/Account/Login";
-                options.UserInteraction.LogoutUrl = "/Account/Logout";
+            //    services.AddDbContext<IdentityDbContext>(options =>
+            //        options.UseSqlServer(identityConnection));
 
-                options.Authentication = new AuthenticationOptions()
+            //    services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+            //        .AddEntityFrameworkStores<IdentityDbContext>()
+            //        .AddDefaultTokenProviders();
+
+            //    var builder = services.AddIdentityServer(options =>
+            //    {
+            //        options.IssuerUri = Configuration.GetValue<string>("IssuerUri");
+
+            //        options.Events.RaiseErrorEvents = true;
+            //        options.Events.RaiseInformationEvents = true;
+            //        options.Events.RaiseFailureEvents = true;
+            //        options.Events.RaiseSuccessEvents = true;
+            //        options.EmitStaticAudienceClaim = true;
+
+            //        options.UserInteraction.LoginUrl = "/Account/Login";
+            //        options.UserInteraction.LogoutUrl = "/Account/Logout";
+
+            //        options.Authentication = new AuthenticationOptions()
+            //        {
+            //            CookieLifetime = TimeSpan.FromHours(10), // ID server cookie timeout set to 10 hours
+            //            CookieSlidingExpiration = true
+            //        };
+            //    })
+            //    .AddConfigurationStore(options =>
+            //    {
+            //        options.ConfigureDbContext = b => b
+            //            .UseSqlServer(identityserverConnection, sqlServerOptionsAction: Sql =>
+            //            {
+            //                Sql.MigrationsAssembly(migrationsAssembly);
+            //            });
+
+            //    })
+            //.AddOperationalStore(options =>
+            //{
+            //    options.ConfigureDbContext = b => b
+            //        .UseSqlServer(identityserverConnection,
+            //        sqlServerOptionsAction: Sql =>
+            //        {
+            //            Sql.MigrationsAssembly(migrationsAssembly);
+            //        });
+            //})
+            //.AddAspNetIdentity<ApplicationUser>();
+
+            //    // not recommended for production - you need to store your key material somewhere secure
+            //    builder.AddDeveloperSigningCredential();
+
+
+
+
+
+                // FOR MIGRATIONS REMOTELY
+                services.AddDbContext<MyKeysContext>(options =>
+    options.UseMySql(mykeyConnection));
+
+                services.AddDataProtection()
+                    .PersistKeysToDbContext<MyKeysContext>()
+                    .SetApplicationName("Nykant");
+
+                services.AddDbContext<IdentityDbContext>(options =>
+                    options.UseMySql(identityConnection));
+
+                services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+                    .AddEntityFrameworkStores<IdentityDbContext>()
+                    .AddDefaultTokenProviders();
+
+                var builder = services.AddIdentityServer(options =>
                 {
-                    CookieLifetime = TimeSpan.FromHours(10), // ID server cookie timeout set to 10 hours
-                    CookieSlidingExpiration = true
-                };
-            })
-            .AddConfigurationStore(options =>
-            {
-                options.ConfigureDbContext = b => b
-                    .UseSqlServer(identityserverConnection, sqlServerOptionsAction: Sql =>
-                    {
-                        Sql.MigrationsAssembly(migrationsAssembly);
-                    });
+                    options.IssuerUri = Configuration.GetValue<string>("IssuerUri");
 
-            })
+                    options.Events.RaiseErrorEvents = true;
+                    options.Events.RaiseInformationEvents = true;
+                    options.Events.RaiseFailureEvents = true;
+                    options.Events.RaiseSuccessEvents = true;
+                    options.EmitStaticAudienceClaim = true;
+
+                    options.UserInteraction.LoginUrl = "/Account/Login";
+                    options.UserInteraction.LogoutUrl = "/Account/Logout";
+
+                    options.Authentication = new AuthenticationOptions()
+                    {
+                        CookieLifetime = TimeSpan.FromHours(10), // ID server cookie timeout set to 10 hours
+                        CookieSlidingExpiration = true
+                    };
+                })
+                .AddConfigurationStore(options =>
+                {
+                    options.ConfigureDbContext = b => b
+                        .UseMySql(identityserverConnection, mySqlOptionsAction: mySql =>
+                        {
+                            mySql.MigrationsAssembly(migrationsAssembly);
+                        });
+
+                })
             .AddOperationalStore(options =>
             {
                 options.ConfigureDbContext = b => b
-                    .UseSqlServer(identityserverConnection,
-                    sqlServerOptionsAction: Sql =>
+                    .UseMySql(identityserverConnection, mySqlOptionsAction: mySql =>
                     {
-                        Sql.MigrationsAssembly(migrationsAssembly);
+                        mySql.MigrationsAssembly(migrationsAssembly);
                     });
-            }) 
+            })
             .AddAspNetIdentity<ApplicationUser>();
 
-            // not recommended for production - you need to store your key material somewhere secure
-            builder.AddDeveloperSigningCredential();
+                // not recommended for production - you need to store your key material somewhere secure
+                builder.AddDeveloperSigningCredential();
+            }
+            else
+            {
+                services.AddDbContext<MyKeysContext>(options =>
+                    options.UseMySql(mykeyConnection));
+
+                services.AddDataProtection()
+                    .PersistKeysToDbContext<MyKeysContext>()
+                    .SetApplicationName("Nykant");
+
+                services.AddDbContext<IdentityDbContext>(options =>
+                    options.UseMySql(identityConnection));
+
+                services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+                    .AddEntityFrameworkStores<IdentityDbContext>()
+                    .AddDefaultTokenProviders();
+
+                var builder = services.AddIdentityServer(options =>
+                {
+                    options.IssuerUri = Configuration.GetValue<string>("IssuerUri");
+
+                    options.Events.RaiseErrorEvents = true;
+                    options.Events.RaiseInformationEvents = true;
+                    options.Events.RaiseFailureEvents = true;
+                    options.Events.RaiseSuccessEvents = true;
+                    options.EmitStaticAudienceClaim = true;
+
+                    options.UserInteraction.LoginUrl = "/Account/Login";
+                    options.UserInteraction.LogoutUrl = "/Account/Logout";
+
+                    options.Authentication = new AuthenticationOptions()
+                    {
+                        CookieLifetime = TimeSpan.FromHours(10), // ID server cookie timeout set to 10 hours
+                        CookieSlidingExpiration = true
+                    };
+                })
+                .AddConfigurationStore(options =>
+                {
+                    options.ConfigureDbContext = b => b
+                        .UseMySql(identityserverConnection, mySqlOptionsAction: mySql =>
+                        {
+                            mySql.MigrationsAssembly(migrationsAssembly);
+                        });
+
+                })
+            .AddOperationalStore(options =>
+            {
+                options.ConfigureDbContext = b => b
+                    .UseMySql(identityserverConnection, mySqlOptionsAction: mySql =>
+                    {
+                        mySql.MigrationsAssembly(migrationsAssembly);
+                    });
+            })
+            .AddAspNetIdentity<ApplicationUser>();
+
+                // not recommended for production - you need to store your key material somewhere secure
+                builder.AddDeveloperSigningCredential();
+            }
+            
+
+            
 
 
             services.AddAuthentication()
@@ -138,9 +260,10 @@ namespace NykantIS
                     options.ClientSecret = "dvfRC2hzoa-obrao6uScXHSB";
                 });
 
-            //services.Configure<EmailSettings>(Configuration.GetSection("MailSettings"));
-            services.AddTransient<Services.IMailService, EmailService>();
+            services.Configure<EmailSettings>(Configuration.GetSection("MailSettings"));
             services.Configure<Urls>(Configuration.GetSection("Urls"));
+            services.AddTransient<Services.IMailService, EmailService>();
+
             services.AddScoped<IRazorViewToStringRenderer, RazorViewToStringRenderer>();
 
             services.AddControllersWithViews()
