@@ -1,9 +1,8 @@
 ﻿#search-container {
-    top:90px;
-    left:50px;
+    top:97px;
+    margin:auto;
     position:absolute;
     background-color:white;
-    width:600px;
     z-index:30;
     height:auto;
     border:1px solid var(--black-fade);
@@ -43,11 +42,6 @@
     margin-bottom:30px;
 }
 
-#search-button {
-    margin-right:50px;
-    cursor:pointer;
-}
-
 #search-result .search-item {
     display: flex;
     padding: 10px;
@@ -70,7 +64,82 @@
 
 #searchspinner {
     position:absolute;
-    top:50%;
-    right:25%;
+    top:50px;
+    right:50px;
     transform:scale(2);
+}
+
+
+@media only screen and (max-width: 600px) {
+
+    #search-container {
+        width: 100%;
+        right: 0%;
+        left: 0%;
+    }
+    #search-result .search-item p {
+        padding-top: 20px;
+        padding-left: 5%;
+    }
+}
+
+/* navbar-desktop */
+
+@media only screen and (min-width: 600px) {
+    #search-container {
+        width: 100%;
+        right: 0%;
+        left: 0%;
+    }
+
+}
+
+
+@media only screen and (min-width: 768px) {
+
+    #search-container {
+        width: 50%;
+        right: 25%;
+        left: 25%;
+    }
+    #search-result .search-item p {
+        padding-top: 20px;
+        padding-left: 5%;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    #search-container {
+        width: 50%;
+        right: 25%;
+        left: 25%;
+    }
+    #search-result .search-item p {
+        padding-top: 20px;
+        padding-left: 7%;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    #search-container {
+        width: 50%;
+        right: 25%;
+        left: 25%;
+    }
+    #search-result .search-item p {
+        padding-top: 20px;
+        padding-left: 10%;
+    }
+}
+
+@media only screen and (min-width: 1500px) {
+    #search-container {
+        width: 50%;
+        right: 25%;
+        left: 25%;
+    }
+    #search-result .search-item p {
+        padding-top: 20px;
+        padding-left: 13%;
+    }
 }

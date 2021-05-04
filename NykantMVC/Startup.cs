@@ -34,7 +34,7 @@ namespace NykantMVC
             string mykeyConnection = null;
             if (Environment.IsDevelopment())
             {
-                mykeyConnection = Configuration.GetConnectionString("MyKeysConnection2");
+                mykeyConnection = Configuration.GetConnectionString("MyKeysConnection");
             }
             else
             {
