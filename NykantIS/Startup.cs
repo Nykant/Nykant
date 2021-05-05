@@ -126,13 +126,9 @@ namespace NykantIS
             //    // not recommended for production - you need to store your key material somewhere secure
             //    builder.AddDeveloperSigningCredential();
 
-
-
-
-
                 // FOR MIGRATIONS REMOTELY
                 services.AddDbContext<MyKeysContext>(options =>
-    options.UseMySql(mykeyConnection));
+                    options.UseMySql(mykeyConnection));
 
                 services.AddDataProtection()
                     .PersistKeysToDbContext<MyKeysContext>()
@@ -244,10 +240,6 @@ namespace NykantIS
                 builder.AddDeveloperSigningCredential();
             }
             
-
-            
-
-
             services.AddAuthentication()
                 .AddGoogle("Google", options =>
                 {
@@ -319,12 +311,6 @@ namespace NykantIS
 
             app.UseIdentityServer();
             app.UseAuthorization();
-
-            //app.Use((context, next) =>
-            //{
-            //    context.Request.Scheme = "https";
-            //    return next();
-            //});
 
             app.UseEndpoints(endpoints =>
             {
