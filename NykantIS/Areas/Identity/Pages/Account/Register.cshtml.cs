@@ -121,8 +121,12 @@ namespace NykantIS.Areas.Identity.Pages.Account
 
                         try
                         {
+                            _logger.LogInformation("trying to render email -------------------");
+
                             var confirmAccountModel = new ConfirmAccountEmailViewModel(HtmlEncoder.Default.Encode(callbackUrl));
                             string body = await _razorViewToStringRenderer.RenderViewToStringAsync("/Views/Shared/ConfirmEmail.cshtml", confirmAccountModel);
+
+                            _logger.LogInformation("email rendered -------------------");
 
                             var request = new EmailRequest
                             {
@@ -131,13 +135,18 @@ namespace NykantIS.Areas.Identity.Pages.Account
                                 Subject = "account confirmation email"
                             };
 
+                            _logger.LogInformation("trying to send email -------------------");
+
                             await _mailService.SendEmailAsync(request);
+
                         }
                         catch (Exception e)
                         {
-
+                            _logger.LogInformation($"{e.Message} -------------------");
+                            throw new Exception(e.Message);
                         }
 
+                        _logger.LogInformation("email sent -------------------");
 
                         return new NoContentResult();
 

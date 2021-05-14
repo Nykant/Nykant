@@ -41,6 +41,7 @@ namespace NykantMVC.Services
                 order.OrderItems[i].ContentId = image.ContentId;
             }
             string body = await _razorViewToStringRenderer.RenderViewToStringAsync("/Views/Shared/EmailViews/OrderEmail.cshtml", order);
+
             bodyBuilder.HtmlBody = body;
             email.Body = bodyBuilder.ToMessageBody();
 

@@ -16,16 +16,14 @@
 }
 
 .payment-elements {
+    width:100%;
     height: auto;
     background-color: white;
-    overflow: hidden;
-    padding: 30px;
 }
 
 .payment-elements-thing {
-    margin-top:20px;
-    text-align:left;
-    padding:20px;
+    width:50%;
+    margin-left:25%;
 }
 
 .payment-invalid {
@@ -73,7 +71,48 @@
 
 
 @media only screen and (max-width: 600px) {
-    form {
-        width: 80vw;
+
+    .payment-elements-thing {
+        width: 80%;
+        margin-left: 10%;
+    }
+
+}
+
+@media only screen and (min-width: 600px) {
+    .payment-elements-thing {
+        width: 50%;
+        margin-left: 25%;
+    }
+
+}
+
+@media only screen and (min-width: 768px) {
+    .payment-elements-thing {
+        width: 50%;
+        margin-left: 25%;
+    }
+
+}
+
+@media only screen and (min-width: 992px) {
+    .payment-elements-thing {
+        width: 50%;
+        margin-left: 25%;
+    }
+
+}
+
+@media only screen and (min-width: 1200px) {
+    .payment-elements-thing {
+        width: 50%;
+        margin-left: 25%;
+    }
+}
+
+@media only screen and (min-width: 1500px) {
+    .payment-elements-thing {
+        width: 50%;
+        margin-left: 25%;
     }
 }

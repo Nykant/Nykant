@@ -146,18 +146,19 @@ a.icon {
 
 
 #search-button {
-    margin-top: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
     font-size: 30px;
     color: white;
     background-color: transparent;
     outline: none;
-    border:none;
+    border: none;
     transition: all 0.3s;
     transform: scale(1);
-    font-size: 30px;
     position: relative;
     float: right;
-    padding-right:10px;
+    padding-right: 0px;
+    padding-left:0px;
 }
 
     #search-button:hover {
@@ -202,12 +203,19 @@ a.icon {
     }
 
         .desktop-navbar-wrap a {
-            margin-right: 35px;
+            margin-right: 15px;
+            font-size: 25px;
         }
 
     #search-button {
-        margin-right: 35px;
+        margin-right: 15px;
+        font-size:25px;
     }
+
+    a.icon {
+        font-size:25px;
+    }
+
 }
 
 /* navbar-desktop */
@@ -227,13 +235,19 @@ a.icon {
         padding-right: 0px;
         }
 
-        .desktop-navbar-wrap a {
-            margin-right: 35px;
-        }
+            .desktop-navbar-wrap a {
+                margin-right: 35px;
+                font-size: 30px;
+            }
 
-        #search-button {
-            margin-right:35px;
-        }
+    #search-button {
+        margin-right: 35px;
+        font-size: 30px;
+    }
+
+    a.icon {
+        font-size: 30px;
+    }
 }
 
 @media only screen and (min-width: 768px) {
@@ -259,6 +273,7 @@ a.icon {
     #search-button {
         margin-right: 50px;
     }
+
 }
 
 @media only screen and (min-width: 992px) {

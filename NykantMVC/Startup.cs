@@ -34,21 +34,38 @@ namespace NykantMVC
             string mykeyConnection = null;
             if (Environment.IsDevelopment())
             {
-                mykeyConnection = Configuration.GetConnectionString("MyKeysConnection2");
+                mykeyConnection = Configuration.GetConnectionString("MyKeysConnection");
             }
             else
             {
-                mykeyConnection = Configuration.GetConnectionString("MyKeysConnection2");
+                mykeyConnection = Configuration.GetConnectionString("MyKeysConnection");
                 //mykeyConnection = Configuration.GetConnectionString("MyKeysConnection");
             }
 
-            services.AddDbContext<MyKeysContext>(options =>
-                options.UseSqlServer(
-                    mykeyConnection));
+            if (Environment.IsDevelopment())
+            {
+                //services.AddDbContext<MyKeysContext>(options =>
+                //options.UseSqlServer(
+                //    mykeyConnection));
+
+                services.AddDbContext<MyKeysContext>(options =>
+                    options.UseMySql(
+                        mykeyConnection));
+
+            }
+            else
+            {
+                services.AddDbContext<MyKeysContext>(options =>
+                    options.UseMySql(
+                        mykeyConnection));
+
+            }
+
 
             services.AddDataProtection()
                 .PersistKeysToDbContext<MyKeysContext>()
                 .SetApplicationName("Nykant");
+
 
             JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace NykantIS.data.migrations.mykeys
 {
@@ -11,7 +12,7 @@ namespace NykantIS.data.migrations.mykeys
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     FriendlyName = table.Column<string>(nullable: true),
                     Xml = table.Column<string>(nullable: true)
                 },

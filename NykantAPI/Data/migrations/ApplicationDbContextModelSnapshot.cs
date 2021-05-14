@@ -2,29 +2,25 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NykantAPI.Data;
 
-namespace NykantAPI.data.migrations.application
+namespace NykantAPI.data.migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210428121111_initial")]
-    partial class initial
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.14")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("NykantAPI.Models.BagItem", b =>
                 {
                     b.Property<string>("Subject")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -43,11 +39,10 @@ namespace NykantAPI.data.migrations.application
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -85,40 +80,39 @@ namespace NykantAPI.data.migrations.application
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<string>("Address1")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("City")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Country")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Phone")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Postal")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -129,14 +123,13 @@ namespace NykantAPI.data.migrations.application
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<string>("Source")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -631,22 +624,21 @@ namespace NykantAPI.data.migrations.application
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Currency")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("CustomerInfId")
                         .HasColumnType("int");
 
                     b.Property<string>("PaymentIntent_Id")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("ShippingDeliveryId")
                         .HasColumnType("int");
@@ -655,11 +647,11 @@ namespace NykantAPI.data.migrations.application
                         .HasColumnType("int");
 
                     b.Property<string>("Subject")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("TotalPrice")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -692,50 +684,49 @@ namespace NykantAPI.data.migrations.application
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<string>("Alt")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<string>("Color")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("ImageSource")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("ImageSource2")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("ItemType")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<DateTime>("LastModified")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Path")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("Price")
                         .HasColumnType("int");
 
                     b.Property<string>("Size")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("TypeOfWood")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -753,8 +744,8 @@ namespace NykantAPI.data.migrations.application
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "stol",
-                            LastModified = new DateTime(2021, 4, 28, 14, 11, 8, 771, DateTimeKind.Local).AddTicks(3226),
-                            Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
+                            LastModified = new DateTime(2021, 5, 5, 12, 54, 27, 957, DateTimeKind.Local).AddTicks(3369),
+                            Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "5mm",
                             Title = "Grøntsags Skærebræt",
@@ -769,8 +760,8 @@ namespace NykantAPI.data.migrations.application
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "stol",
-                            LastModified = new DateTime(2021, 4, 28, 14, 11, 8, 774, DateTimeKind.Local).AddTicks(9185),
-                            Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
+                            LastModified = new DateTime(2021, 5, 5, 12, 54, 27, 960, DateTimeKind.Local).AddTicks(4526),
+                            Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "10mm",
                             Title = "Grøntsags Skærebræt",
@@ -785,8 +776,8 @@ namespace NykantAPI.data.migrations.application
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 4, 28, 14, 11, 8, 774, DateTimeKind.Local).AddTicks(9260),
-                            Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
+                            LastModified = new DateTime(2021, 5, 5, 12, 54, 27, 960, DateTimeKind.Local).AddTicks(4607),
+                            Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "20mm",
                             Title = "Grøntsags Skærebræt",
@@ -801,8 +792,8 @@ namespace NykantAPI.data.migrations.application
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "skærebræt",
-                            LastModified = new DateTime(2021, 4, 28, 14, 11, 8, 774, DateTimeKind.Local).AddTicks(9266),
-                            Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
+                            LastModified = new DateTime(2021, 5, 5, 12, 54, 27, 960, DateTimeKind.Local).AddTicks(4612),
+                            Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "5mm",
                             Title = "Grøntsags Skærebræt",
@@ -817,8 +808,8 @@ namespace NykantAPI.data.migrations.application
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 4, 28, 14, 11, 8, 774, DateTimeKind.Local).AddTicks(9270),
-                            Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
+                            LastModified = new DateTime(2021, 5, 5, 12, 54, 27, 960, DateTimeKind.Local).AddTicks(4616),
+                            Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "10mm",
                             Title = "Grøntsags Skærebræt",
@@ -833,8 +824,8 @@ namespace NykantAPI.data.migrations.application
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "skærebræt",
-                            LastModified = new DateTime(2021, 4, 28, 14, 11, 8, 774, DateTimeKind.Local).AddTicks(9273),
-                            Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
+                            LastModified = new DateTime(2021, 5, 5, 12, 54, 27, 960, DateTimeKind.Local).AddTicks(4619),
+                            Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "20mm",
                             Title = "Grøntsags Skærebræt",
@@ -849,8 +840,8 @@ namespace NykantAPI.data.migrations.application
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "stol",
-                            LastModified = new DateTime(2021, 4, 28, 14, 11, 8, 774, DateTimeKind.Local).AddTicks(9276),
-                            Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
+                            LastModified = new DateTime(2021, 5, 5, 12, 54, 27, 960, DateTimeKind.Local).AddTicks(4622),
+                            Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "5mm",
                             Title = "Grøntsags Skærebræt",
@@ -865,8 +856,8 @@ namespace NykantAPI.data.migrations.application
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "stol",
-                            LastModified = new DateTime(2021, 4, 28, 14, 11, 8, 774, DateTimeKind.Local).AddTicks(9279),
-                            Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
+                            LastModified = new DateTime(2021, 5, 5, 12, 54, 27, 960, DateTimeKind.Local).AddTicks(4625),
+                            Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "10mm",
                             Title = "Grøntsags Skærebræt",
@@ -881,8 +872,8 @@ namespace NykantAPI.data.migrations.application
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 4, 28, 14, 11, 8, 774, DateTimeKind.Local).AddTicks(9282),
-                            Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
+                            LastModified = new DateTime(2021, 5, 5, 12, 54, 27, 960, DateTimeKind.Local).AddTicks(4629),
+                            Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "20mm",
                             Title = "Grøntsags Skærebræt",
@@ -897,8 +888,8 @@ namespace NykantAPI.data.migrations.application
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "skærebræt",
-                            LastModified = new DateTime(2021, 4, 28, 14, 11, 8, 774, DateTimeKind.Local).AddTicks(9285),
-                            Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
+                            LastModified = new DateTime(2021, 5, 5, 12, 54, 27, 960, DateTimeKind.Local).AddTicks(4633),
+                            Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "5mm",
                             Title = "Grøntsags Skærebræt",
@@ -913,8 +904,8 @@ namespace NykantAPI.data.migrations.application
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 4, 28, 14, 11, 8, 774, DateTimeKind.Local).AddTicks(9288),
-                            Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
+                            LastModified = new DateTime(2021, 5, 5, 12, 54, 27, 960, DateTimeKind.Local).AddTicks(4640),
+                            Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "10mm",
                             Title = "Grøntsags Skærebræt",
@@ -929,8 +920,8 @@ namespace NykantAPI.data.migrations.application
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "skærebræt",
-                            LastModified = new DateTime(2021, 4, 28, 14, 11, 8, 774, DateTimeKind.Local).AddTicks(9291),
-                            Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
+                            LastModified = new DateTime(2021, 5, 5, 12, 54, 27, 960, DateTimeKind.Local).AddTicks(4643),
+                            Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "20mm",
                             Title = "Grøntsags Skærebræt",
@@ -945,8 +936,8 @@ namespace NykantAPI.data.migrations.application
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "stol",
-                            LastModified = new DateTime(2021, 4, 28, 14, 11, 8, 774, DateTimeKind.Local).AddTicks(9294),
-                            Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
+                            LastModified = new DateTime(2021, 5, 5, 12, 54, 27, 960, DateTimeKind.Local).AddTicks(4646),
+                            Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "5mm",
                             Title = "Grøntsags Skærebræt",
@@ -961,8 +952,8 @@ namespace NykantAPI.data.migrations.application
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "stol",
-                            LastModified = new DateTime(2021, 4, 28, 14, 11, 8, 774, DateTimeKind.Local).AddTicks(9296),
-                            Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
+                            LastModified = new DateTime(2021, 5, 5, 12, 54, 27, 960, DateTimeKind.Local).AddTicks(4649),
+                            Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "10mm",
                             Title = "Grøntsags Skærebræt",
@@ -977,8 +968,8 @@ namespace NykantAPI.data.migrations.application
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 4, 28, 14, 11, 8, 774, DateTimeKind.Local).AddTicks(9300),
-                            Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
+                            LastModified = new DateTime(2021, 5, 5, 12, 54, 27, 960, DateTimeKind.Local).AddTicks(4654),
+                            Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "20mm",
                             Title = "Grøntsags Skærebræt",
@@ -993,8 +984,8 @@ namespace NykantAPI.data.migrations.application
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "skærebræt",
-                            LastModified = new DateTime(2021, 4, 28, 14, 11, 8, 774, DateTimeKind.Local).AddTicks(9303),
-                            Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
+                            LastModified = new DateTime(2021, 5, 5, 12, 54, 27, 960, DateTimeKind.Local).AddTicks(4658),
+                            Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "5mm",
                             Title = "Grøntsags Skærebræt",
@@ -1009,8 +1000,8 @@ namespace NykantAPI.data.migrations.application
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 4, 28, 14, 11, 8, 774, DateTimeKind.Local).AddTicks(9306),
-                            Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
+                            LastModified = new DateTime(2021, 5, 5, 12, 54, 27, 960, DateTimeKind.Local).AddTicks(4662),
+                            Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "10mm",
                             Title = "Grøntsags Skærebræt",
@@ -1025,8 +1016,8 @@ namespace NykantAPI.data.migrations.application
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "skærebræt",
-                            LastModified = new DateTime(2021, 4, 28, 14, 11, 8, 774, DateTimeKind.Local).AddTicks(9308),
-                            Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
+                            LastModified = new DateTime(2021, 5, 5, 12, 54, 27, 960, DateTimeKind.Local).AddTicks(4667),
+                            Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "20mm",
                             Title = "Grøntsags Skærebræt",
@@ -1041,8 +1032,8 @@ namespace NykantAPI.data.migrations.application
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 4, 28, 14, 11, 8, 774, DateTimeKind.Local).AddTicks(9311),
-                            Path = "C:\\Users\\Christian\\Documents\\GitHub\\Nykant\\NykantMVC\\wwwroot\\images\\gyngestol.jpg",
+                            LastModified = new DateTime(2021, 5, 5, 12, 54, 27, 960, DateTimeKind.Local).AddTicks(4670),
+                            Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "5mm",
                             Title = "Grøntsags Skærebræt",
@@ -1054,12 +1045,11 @@ namespace NykantAPI.data.migrations.application
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<string>("Body")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -1069,10 +1059,10 @@ namespace NykantAPI.data.migrations.application
 
                     b.Property<string>("Subject")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -1085,11 +1075,10 @@ namespace NykantAPI.data.migrations.application
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("Price")
                         .HasColumnType("int");

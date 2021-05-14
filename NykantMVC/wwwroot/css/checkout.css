@@ -7,17 +7,17 @@
     display: block;
     color: black;
     font-size: 20px;
-    width:50%;
+    width:65%;
 }
 
 .gdpr-accept label {
-    display:block;
-    float:left;
+    display:inline;
+/*    float:left;*/
 
 }
     .gdpr-accept p {
-        display:block;
-        float:left;
+        display: inline;
+/*        float: left;*/
     }
 
 .sidebar {
