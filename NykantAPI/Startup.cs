@@ -40,29 +40,11 @@ namespace NykantAPI
             string mykeyConnection = null;
             string nykantConnection = null;
 
-            if (Environment.IsDevelopment())
-            {
+
                 mykeyConnection = Configuration.GetConnectionString("MyKeysConnection");
                 nykantConnection = Configuration.GetConnectionString("NykantDb");
-            }
-            else
-            {
-                mykeyConnection = Configuration.GetConnectionString("MyKeysConnection");
-                nykantConnection = Configuration.GetConnectionString("NykantDb");
-                //mykeyConnection = Configuration.GetConnectionString("MyKeysConnection");
-                //nykantConnection = Configuration.GetConnectionString("NykantDb");
-            }
 
-            if (Environment.IsDevelopment())
-            {
-                //services.AddDbContext<MyKeysContext>(options =>
-                //    options.UseSqlServer(
-                //        mykeyConnection));
 
-                //services.AddDbContext<ApplicationDbContext>(options =>
-                //    options
-                //        .UseSqlServer(
-                //            nykantConnection));
 
                 services.AddDbContext<MyKeysContext>(options =>
                     options.UseMySql(
@@ -72,19 +54,6 @@ namespace NykantAPI
                     options
                         .UseMySql(
                             nykantConnection));
-            }
-            else
-            {
-                services.AddDbContext<MyKeysContext>(options =>
-                    options.UseMySql(
-                        mykeyConnection));
-
-                services.AddDbContext<ApplicationDbContext>(options =>
-                    options
-                        .UseMySql(
-                            nykantConnection));
-            }
-
             
 
             services.AddDataProtection()
