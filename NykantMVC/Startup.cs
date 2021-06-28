@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -113,6 +114,13 @@ namespace NykantMVC
                 options.KnownNetworks.Clear();
                 options.KnownProxies.Clear();
             });
+
+
+            // Register the Google Analytics configuration
+            services.Configure<GoogleAnalyticsOptions>(options => Configuration.GetSection("GoogleAnalytics").Bind(options));
+
+            // Register the TagHelperComponent
+            services.AddTransient<ITagHelperComponent, GoogleAnalyticsTagHelperComponent>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
