@@ -45,7 +45,6 @@ namespace NykantAPI
                 nykantConnection = Configuration.GetConnectionString("NykantDb");
 
 
-
                 services.AddDbContext<MyKeysContext>(options =>
                     options.UseMySql(
                         mykeyConnection));
@@ -60,7 +59,6 @@ namespace NykantAPI
                 .PersistKeysToDbContext<MyKeysContext>()
                 .SetApplicationName("Nykant");
 
-            
 
             services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>
