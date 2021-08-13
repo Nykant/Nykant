@@ -165,6 +165,7 @@ a.icon {
         color: var(--blue);
         transition: all 0.3s;
         transform: scale(0.8);
+        cursor: pointer;
     }
 
 
@@ -204,6 +205,7 @@ a.icon {
 
         .desktop-navbar-wrap a {
             margin-right: 15px;
+            margin-left: 15px;
             font-size: 25px;
         }
 
@@ -237,6 +239,7 @@ a.icon {
 
             .desktop-navbar-wrap a {
                 margin-right: 35px;
+                margin-left: 0px;
                 font-size: 30px;
             }
 
@@ -248,6 +251,10 @@ a.icon {
     a.icon {
         font-size: 30px;
     }
+
+    #nav-links{
+        display:none;
+    }
 }
 
 @media only screen and (min-width: 768px) {
@@ -256,7 +263,7 @@ a.icon {
         display: inline-block;
     }
 
-    #navbar-burger {
+    #nav-burger {
         display: none;
     }
 
@@ -274,6 +281,9 @@ a.icon {
         margin-right: 50px;
     }
 
+    #nav-links {
+        display: none;
+    }
 }
 
 @media only screen and (min-width: 992px) {
@@ -282,7 +292,7 @@ a.icon {
         display: inline-block;
     }
 
-    #navbar-burger {
+    #nav-burger {
         display: none;
     }
 
@@ -298,6 +308,9 @@ a.icon {
     #search-button {
         margin-right: 50px;
     }
+    #nav-links {
+        display: none;
+    }
 }
 
 @media only screen and (min-width: 1200px) {
@@ -305,7 +318,7 @@ a.icon {
         display: inline-block;
     }
 
-    #navbar-burger {
+    #nav-burger {
         display: none;
     }
     .desktop-navbar-wrap {
@@ -320,6 +333,9 @@ a.icon {
     #search-button {
         margin-right: 50px;
     }
+    #nav-links {
+        display: none;
+    }
 }
 
 @media only screen and (min-width: 1500px) {
@@ -327,7 +343,7 @@ a.icon {
         display: inline-block;
     }
 
-    #navbar-burger {
+    #nav-burger {
         display: none;
     }
     .desktop-navbar-wrap {
@@ -341,5 +357,8 @@ a.icon {
 
     #search-button {
         margin-right: 50px;
+    }
+    #nav-links {
+        display: none;
     }
 }

@@ -462,8 +462,6 @@
     height:auto;
     padding:20px;
     background-color:white;
-    width:400px;
-
     animation:item-added 0.3s;
 }
 
@@ -504,7 +502,7 @@
 }
     .bagitem-added-product p {
         display: inline-block;
-        padding: 20px;
+        padding-top: 20px;
     }
 
 .bag-item-img {
@@ -521,184 +519,219 @@
         width: 70px;
     }
 
-
-
-@media only screen and (max-width: 600px) {
-    .details-info-wrap {
-        padding: 20px;
+@media only screen and (max-width: 400px) {
+    #bagitem-added {
+        width: 100%;
     }
-        .details-info-wrap p {
-            float: right;
-        }
-    .image-wrap {
-        padding:0px;
-    }
-}
-
-@media only screen and (min-width: 600px) {
-    .details-info-wrap {
-        padding: 20px;
-    }
-        .details-info-wrap p {
-            float: right;
-        }
-    .image-wrap {
-        padding: 0px;
-    }
-}
-
-@media only screen and (min-width: 768px) {
-    .details-info-wrap {
-        padding: 0px;
-        padding-top:10px;
-        padding-left:20px;
-        position:fixed;
-        right:20px;
-        width:220px;
-    }
-        .details-info-wrap p {
-            float: left;
-        }
-    #collapsible-wrapper {
-        padding-top: 50px;
+    .bagitem-added-product p {
         padding-left: 10px;
-    }
-    #details-wrapper {
-        min-width:768px;
-    }
-    #details-left {
-
+        padding-right: 10px;
+        font-size: 12px;
     }
 }
 
-@media only screen and (min-width: 800px) {
-    .details-info-wrap {
-        padding: 0px;
-        padding-top: 10px;
-        padding-left: 20px;
-        position: fixed;
-        right: 20px;
-        width: 260px;
+@media only screen and (min-width: 400px) {
+    #bagitem-added {
+        width: 400px;
     }
-        .details-info-wrap p {
-            float: left;
+
+    .bagitem-added-product p {
+        padding-left: 20px;
+        padding-right: 20px;
+        font-size: 16px;
+    }
+}
+
+    @media only screen and (max-width: 600px) {
+        .details-info-wrap {
+            padding: 20px;
         }
 
-    #collapsible-wrapper {
-        padding-top: 50px;
-        padding-left: 10px;
-    }
+            .details-info-wrap p {
+                float: right;
+            }
 
-    #details-wrapper {
-        min-width: 768px;
-    }
-
-    #details-left {
-    }
-}
-
-@media only screen and (min-width: 992px) {
-    .details-info-wrap {
-        padding: 0px;
-        padding-top: 10px;
-        padding-left: 20px;
-        position: fixed;
-        right: 20px;
-        width: 310px;
-    }
-        .details-info-wrap p {
-            float: right;
+        .image-wrap {
+            padding: 0px;
         }
 
-    #collapsible-wrapper {
-        padding-top: 50px;
-        padding-left: 10px;
-    }
-    #details-wrapper {
-        min-width: 992px;
     }
 
-    #details-left {
-    }
-}
-
-@media only screen and (min-width: 1200px) {
-    .details-info-wrap {
-        padding: 0px;
-        padding-top: 10px;
-        padding-left: 20px;
-        position: fixed;
-        right: 20px;
-        width: 350px;
-    }
-        .details-info-wrap p {
-            float: right;
+    @media only screen and (min-width: 600px) {
+        .details-info-wrap {
+            padding: 20px;
         }
 
-    #collapsible-wrapper {
-        padding-top: 50px;
-        padding-left: 10px;
-    }
-    #details-wrapper {
-        min-width: 1200px;
+            .details-info-wrap p {
+                float: right;
+            }
+
+        .image-wrap {
+            padding: 0px;
+        }
     }
 
-    #details-left {
-    }
-}
-
-@media only screen and (min-width: 1500px) {
-    .details-info-wrap {
-        padding: 0px;
-        padding-top: 10px;
-        padding-left: 20px;
-        position: fixed;
-        right: 20px;
-        width: 350px;
-        margin-right: 100px;
-    }
-        .details-info-wrap p {
-            float: right;
+    @media only screen and (min-width: 768px) {
+        .details-info-wrap {
+            padding: 0px;
+            padding-top: 10px;
+            padding-left: 20px;
+            position: fixed;
+            right: 20px;
+            width: 220px;
         }
 
-    #collapsible-wrapper {
-        padding-top: 50px;
-        padding-left:10px;
-    }
-    #details-wrapper {
-        min-width: 1500px;
-    }
+            .details-info-wrap p {
+                float: left;
+            }
 
-    #details-left {
-    }
-
-}
-
-@media only screen and (min-width: 1780px) {
-    .details-info-wrap {
-        padding: 0px;
-        padding-top: 10px;
-        padding-left: 20px;
-        position: fixed;
-        right: 20px;
-        width: 350px;
-        margin-right: 200px;
-    }
-
-        .details-info-wrap p {
-            float: right;
+        #collapsible-wrapper {
+            padding-top: 50px;
+            padding-left: 10px;
         }
 
-    #collapsible-wrapper {
-        padding-top: 50px;
-        padding-left: 10px;
+        #details-wrapper {
+            min-width: 768px;
+        }
+
+        #details-left {
+        }
     }
 
-    #details-wrapper {
-        min-width: 1780px;
+    @media only screen and (min-width: 800px) {
+        .details-info-wrap {
+            padding: 0px;
+            padding-top: 10px;
+            padding-left: 20px;
+            position: fixed;
+            right: 20px;
+            width: 260px;
+        }
+
+            .details-info-wrap p {
+                float: left;
+            }
+
+        #collapsible-wrapper {
+            padding-top: 50px;
+            padding-left: 10px;
+        }
+
+        #details-wrapper {
+            min-width: 768px;
+        }
+
+        #details-left {
+        }
     }
 
-    #details-left {
+    @media only screen and (min-width: 992px) {
+        .details-info-wrap {
+            padding: 0px;
+            padding-top: 10px;
+            padding-left: 20px;
+            position: fixed;
+            right: 20px;
+            width: 310px;
+        }
+
+            .details-info-wrap p {
+                float: right;
+            }
+
+        #collapsible-wrapper {
+            padding-top: 50px;
+            padding-left: 10px;
+        }
+
+        #details-wrapper {
+            min-width: 992px;
+        }
+
+        #details-left {
+        }
     }
-}
+
+    @media only screen and (min-width: 1200px) {
+        .details-info-wrap {
+            padding: 0px;
+            padding-top: 10px;
+            padding-left: 20px;
+            position: fixed;
+            right: 20px;
+            width: 350px;
+        }
+
+            .details-info-wrap p {
+                float: right;
+            }
+
+        #collapsible-wrapper {
+            padding-top: 50px;
+            padding-left: 10px;
+        }
+
+        #details-wrapper {
+            min-width: 1200px;
+        }
+
+        #details-left {
+        }
+    }
+
+    @media only screen and (min-width: 1500px) {
+        .details-info-wrap {
+            padding: 0px;
+            padding-top: 10px;
+            padding-left: 20px;
+            position: fixed;
+            right: 20px;
+            width: 350px;
+            margin-right: 100px;
+        }
+
+            .details-info-wrap p {
+                float: right;
+            }
+
+        #collapsible-wrapper {
+            padding-top: 50px;
+            padding-left: 10px;
+        }
+
+        #details-wrapper {
+            min-width: 1500px;
+        }
+
+        #details-left {
+        }
+    }
+
+    @media only screen and (min-width: 1780px) {
+        .details-info-wrap {
+            padding: 0px;
+            padding-top: 10px;
+            padding-left: 20px;
+            position: fixed;
+            right: 20px;
+            width: 350px;
+            margin-right: 200px;
+        }
+
+            .details-info-wrap p {
+                float: right;
+            }
+
+        #collapsible-wrapper {
+            padding-top: 50px;
+            padding-left: 10px;
+        }
+
+        #details-wrapper {
+            min-width: 1780px;
+        }
+
+        #details-left {
+        }
+    }
 

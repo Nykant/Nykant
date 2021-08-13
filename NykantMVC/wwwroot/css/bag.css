@@ -1,6 +1,4 @@
-﻿
-
-.bagtitle {
+﻿.bagtitle {
     padding: 15px;
     margin-bottom:15px;
     min-width: 100%;
@@ -105,7 +103,6 @@
 #add-bagitem {
     position: relative;
     width:5%;
-    /*transform: translate(+415px, +15px)*/
 }
     #add-bagitem button {
         width: auto;
@@ -122,7 +119,6 @@
 #remove-bagitem {
     position: relative;
     width: 5%;
-    /*transform: translate(+475px, +15px);*/
 }
     #remove-bagitem button {
         width: auto;
@@ -161,7 +157,6 @@
 @media only screen and (max-width: 600px) {
     #bag-wrapper {
         width: 100%;
-        
     }
     #checkout-box {
         padding: 10px;
@@ -207,6 +202,13 @@
     #remove-bagitem {
         padding-top: 20px;
     }
+    .bagtable-headers {
+        font-size:14px;
+    }
+    .bag-item .button{
+        padding:0px;
+    }
+
 }
 
 @media only screen and (min-width: 600px) {
