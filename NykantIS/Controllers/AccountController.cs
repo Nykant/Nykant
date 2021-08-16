@@ -25,6 +25,8 @@ using NykantIS.Services;
 using Microsoft.AspNetCore.WebUtilities;
 using System.Text;
 using System.Text.Encodings.Web;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
 
 namespace NykantIS.Controllers
 {
@@ -32,6 +34,7 @@ namespace NykantIS.Controllers
     [AllowAnonymous]
     public class AccountController : Controller
     {
+        private readonly IWebHostEnvironment webHostEnvironment;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IIdentityServerInteractionService _interaction;
@@ -45,7 +48,8 @@ namespace NykantIS.Controllers
             IIdentityServerInteractionService interaction,
             IClientStore clientStore,
             IAuthenticationSchemeProvider schemeProvider,
-            IEventService events)
+            IEventService events,
+            IWebHostEnvironment webHostEnvironment)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -53,6 +57,7 @@ namespace NykantIS.Controllers
             _clientStore = clientStore;
             _schemeProvider = schemeProvider;
             _events = events;
+            this.webHostEnvironment = webHostEnvironment;
         }
 
         /// <summary>
@@ -81,7 +86,15 @@ namespace NykantIS.Controllers
         {
             // check if we are in the context of an authorization request
             var context = await _interaction.GetAuthorizationContextAsync(model.ReturnUrl);
-
+            string baseAddress;
+            if (webHostEnvironment.IsDevelopment())
+            {
+                baseAddress = "https://localhost:5002";
+            }
+            else
+            {
+                baseAddress = "https://nykant.dk";
+            }
             // the user clicked the "cancel" button
             //if (button != "login")
             //{
@@ -113,7 +126,8 @@ namespace NykantIS.Controllers
             {
                 var user = await _userManager.FindByEmailAsync(model.Email);
                 if(_signInManager.IsSignedIn(User)) {
-                    return Redirect("https://localhost:5002/sign-me-in");
+                    
+                    return Redirect(model.ReturnUrl);
                 }
                 if(user != null)
                 {
@@ -141,7 +155,7 @@ namespace NykantIS.Controllers
                         }
                         else if (string.IsNullOrEmpty(model.ReturnUrl))
                         {
-                            return Redirect("https://localhost:5002/sign-me-in");
+                            return Redirect(model.ReturnUrl);
                         }
                         else
                         {
@@ -163,6 +177,15 @@ namespace NykantIS.Controllers
         [HttpGet]
         public async Task<IActionResult> ReturnMe(string returnUrl)
         {
+            string baseAddress;
+            if (webHostEnvironment.IsDevelopment())
+            {
+                baseAddress = "https://localhost:5002";
+            }
+            else
+            {
+                baseAddress = "https://nykant.dk";
+            }
             //var context = await _interaction.GetAuthorizationContextAsync(returnUrl);
 
             //if (context != null)
@@ -178,7 +201,7 @@ namespace NykantIS.Controllers
             //}
             //else
             //{
-                return Redirect("https://localhost:5002");
+            return Redirect(returnUrl);
             //}
         }
 

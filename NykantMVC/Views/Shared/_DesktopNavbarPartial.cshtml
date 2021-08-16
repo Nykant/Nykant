@@ -7,13 +7,12 @@
 <div class="navbar">
     <div class="desktop-navbar-wrap highlightTextIn">
         <a href="javascript:void(0);" class="icon" id="nav-burger">
-            @*---*@
             <i class="fa fa-bars"></i>
         </a>
-        <button id="search-button"><i class="fas fa-search"></i></button> @*---*@
+        <button id="search-button"><i class="fas fa-search"></i></button> 
         <a alt="NYKANT" asp-controller="Nykant" asp-action="Index"><span style="color:var(--blue)">NY</span>KANT</a>
         <a id="product-link" alt="PRODUKTER" asp-controller="Product" asp-action="Index">PRODUKTER</a>
-        <a class="icon" asp-controller="Bag" asp-action="Details"><span>@ViewBag.BagItemAmount</span> <i class="fa fa-shopping-bag" aria-hidden="true"></i></a> @*---*@
+        <a class="icon" asp-controller="Bag" asp-action="Details"><span>@ViewBag.BagItemAmount</span> <i class="fa fa-shopping-bag" aria-hidden="true"></i></a> 
 
         @if (User.Identity.IsAuthenticated)
         {
@@ -29,7 +28,6 @@
                 </a>
             </div>
             <a href="javascript:void(0);" class="icon" id="userLogo">
-                @*---*@
                 <i class="fas fa-user"></i>
             </a>
         }
@@ -41,7 +39,6 @@
                 </a>
             </div>
             <a href="javascript:void(0);" class="icon" id="userLogo">
-                @*---*@
                 <i class="fas fa-user"></i>
             </a>
         }
