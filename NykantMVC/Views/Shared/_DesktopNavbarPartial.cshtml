@@ -1,7 +1,9 @@
 ﻿@using NykantMVC.Extensions;
 @{
     ViewBag.BagItemAmount = Context.Session.Get<int>("verysecretseriousbagitemsessionkeyspecial");
-    ViewBag.Url = Context.Request.Path;
+    ViewBag.Url = Context.Request.Host;
+    var url1 = Context.Request.RouteValues;
+    var url2 = Context.Request.QueryString;
 }
 
 <div class="navbar">

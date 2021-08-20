@@ -11,7 +11,6 @@ using System.Threading.Tasks;
 
 namespace NykantMVC.Controllers
 {
-    [Authorize]
     public class AccountController : BaseController
     {
         public AccountController(ILogger<BaseController> logger, IOptions<Urls> urls) : base(logger, urls)
