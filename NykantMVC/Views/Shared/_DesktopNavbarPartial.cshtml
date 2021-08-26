@@ -1,9 +1,9 @@
 ﻿@using NykantMVC.Extensions;
 @{
     ViewBag.BagItemAmount = Context.Session.Get<int>("verysecretseriousbagitemsessionkeyspecial");
-    ViewBag.Url = Context.Request.Host;
-    var url1 = Context.Request.RouteValues;
-    var url2 = Context.Request.QueryString;
+    var routevalues = Context.Request.RouteValues;
+    var controller = routevalues["controller"];
+    var action = routevalues["action"];
 }
 
 <div class="navbar">
@@ -11,22 +11,22 @@
         <a href="javascript:void(0);" class="icon" id="nav-burger">
             <i class="fa fa-bars"></i>
         </a>
-        <button id="search-button"><i class="fas fa-search"></i></button> 
+        <button id="search-button"><i class="fas fa-search"></i></button>
         <a alt="NYKANT" asp-controller="Nykant" asp-action="Index"><span style="color:var(--blue)">NY</span>KANT</a>
         <a id="product-link" alt="PRODUKTER" asp-controller="Product" asp-action="Index">PRODUKTER</a>
-        <a class="icon" asp-controller="Bag" asp-action="Details"><span>@ViewBag.BagItemAmount</span> <i class="fa fa-shopping-bag" aria-hidden="true"></i></a> 
+        <a class="icon" asp-controller="Bag" asp-action="Details"><span>@ViewBag.BagItemAmount</span> <i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
 
         @if (User.Identity.IsAuthenticated)
         {
             <div id="userBurger2">
-                <a href="https://localhost:5001/profile/personalinfo">
-                    Profil
+                <a href="https://localhost:5001/settings/changeemail">
+                    Indstillinger
                 </a>
                 <a asp-controller="Order" asp-action="History">
-                    Ordre Historik
+                    Ordre historik
                 </a>
                 <a asp-controller="Account" asp-action="Logout">
-                    Logout
+                    Log ud
                 </a>
             </div>
             <a href="javascript:void(0);" class="icon" id="userLogo">
@@ -36,15 +36,17 @@
         else
         {
             <div id="userBurger2">
-                <a asp-controller="Account" asp-action="Login" asp-route-redirectUrl="@ViewBag.Url">
-                    Log ind eller Registrer
+                <a href="https://localhost:5001/account/login?redirectaction=@action&redirectcontroller=@controller">
+                    Log ind
+                </a>
+                <a href="https://localhost:5001/identity/account/register?redirectaction=@action&redirectcontroller=@controller">
+                    Registrer
                 </a>
             </div>
             <a href="javascript:void(0);" class="icon" id="userLogo">
                 <i class="fas fa-user"></i>
             </a>
         }
-
         <div id="nav-links">
             <a alt="PRODUKTER" asp-controller="Product" asp-action="Index">PRODUKTER</a>
         </div>

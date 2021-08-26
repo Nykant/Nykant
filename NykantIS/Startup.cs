@@ -63,11 +63,11 @@ namespace NykantIS
                     .PersistKeysToDbContext<MyKeysContext>()
                     .SetApplicationName("Nykant");
 
-                services.AddDbContext<IdentityDbContext>(options =>
+                services.AddDbContext<IdentityContext>(options =>
                     options.UseMySql(identityConnection));
 
                 services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
-                    .AddEntityFrameworkStores<IdentityDbContext>()
+                    .AddEntityFrameworkStores<IdentityContext>()
                     .AddDefaultTokenProviders();
 
                 var builder = services.AddIdentityServer(options =>

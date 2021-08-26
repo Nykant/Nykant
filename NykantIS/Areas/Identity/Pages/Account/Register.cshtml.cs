@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using NykantIS.Models;
 using NykantIS.Models.ViewModels;
@@ -29,25 +30,31 @@ namespace NykantIS.Areas.Identity.Pages.Account
         private readonly ILogger<RegisterModel> _logger;
         private readonly IMailService _mailService;
         private readonly IRazorViewToStringRenderer _razorViewToStringRenderer;
+        private readonly IConfiguration configuration;
 
         public RegisterModel(
             IRazorViewToStringRenderer razorViewToStringRenderer,
             IMailService mailService,
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
-            ILogger<RegisterModel> logger)
+            ILogger<RegisterModel> logger,
+            IConfiguration configuration)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _mailService = mailService;
             _razorViewToStringRenderer = razorViewToStringRenderer;
+            this.configuration = configuration;
         }
 
         [BindProperty]
         public InputModel Input { get; set; }
 
         public string ReturnUrl { get; set; }
+        public string RedirectAction { get; set; }
+        public string RedirectController { get; set; }
+        public string BasePath { get; set; }
 
         public IList<AuthenticationScheme> ExternalLogins { get; set; }
 
@@ -73,9 +80,12 @@ namespace NykantIS.Areas.Identity.Pages.Account
             public string AcceptPrivacyPolicy { get; set; }
         }
 
-        public async Task OnGetAsync(string returnUrl = null)
+        public async Task OnGetAsync(string redirectaction, string redirectcontroller, string returnUrl = null)
         {
+            BasePath = configuration.GetSection("Urls")["mvc"];
             ReturnUrl = returnUrl;
+            RedirectAction = redirectaction;
+            RedirectController = redirectcontroller;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
 
@@ -135,7 +145,7 @@ namespace NykantIS.Areas.Identity.Pages.Account
                         catch (Exception e)
                         {
                             _logger.LogInformation($"{e.Message} -------------------");
-                            throw new Exception(e.Message);
+                            return JsonResult("")
                         }
 
                         _logger.LogInformation("email sent -------------------");

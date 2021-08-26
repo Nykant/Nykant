@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace NykantMVC.Controllers
 {
+    [Authorize]
     public class AccountController : BaseController
     {
         public AccountController(ILogger<BaseController> logger, IOptions<Urls> urls) : base(logger, urls)
@@ -30,19 +31,18 @@ namespace NykantMVC.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Login(string redirectUrl)
+        public async Task<IActionResult> Login(string redirectaction = null, string redirectcontroller = null)
         {
             var json = await GetRequest($"/BagItem/GetBagItemsQuantity/{User.Claims.FirstOrDefault(x => x.Type == "sub").Value}");
             int bagItemsQuantity = JsonConvert.DeserializeObject<int>(json);
             HttpContext.Session.Set<int>(BagItemAmountKey, bagItemsQuantity);
-            return Redirect(redirectUrl);
-        }
-        [Route("sign-me-in")]
-        [HttpGet]
-        public IActionResult SignMeIn()
-        {
-            HttpContext.Session.Set<List<BagItem>>(BagSessionKey, null);
-            return RedirectToAction("Index", "Nykant");
+
+            if(redirectaction == null || redirectcontroller == null)
+            {
+                return RedirectToAction("Index", "Nykant");
+            }
+
+            return RedirectToAction(redirectaction, redirectcontroller);
         }
     }
 }

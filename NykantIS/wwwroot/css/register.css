@@ -20,6 +20,18 @@
     animation: register-complete 0.3s;
 }
 
+#register-failed {
+    padding: 40px;
+    position: fixed;
+    left: 25%;
+    top: 25%;
+    height: auto;
+    width: 50%;
+    background-color: var(--light-blue);
+    border: 1px solid var(--light-blue);
+    z-index: 20;
+}
+
 @keyframes register-complete {
     from {
         right: -400px;

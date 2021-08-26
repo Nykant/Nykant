@@ -1,12 +1,18 @@
-﻿@model ProfileVM
+﻿@model ChangeEmailVM
 
 <script src="~/js/email-updated.js" defer></script>
 
 <div class="modal" id="email-updated">
     <div class="email-updated">
-        <h1>Profil opdateret</h1>
-        <p id="email-updated-text"></p>
+        <h1 id="email-updated-text"></h1>
         <button id="email-updated-button" class="button margin-top-20" type="button">Okay</button>
+    </div>
+</div>
+
+<div class="modal" id="email-updated-error">
+    <div class="email-updated">
+        <h1 id="email-updated-text-error"></h1>
+        <button id="email-updated-button-error" class="button margin-top-20" type="button">Okay</button>
     </div>
 </div>
 
@@ -20,29 +26,24 @@
     
         <div class="sidebar">
             <div class="profile-nav">
-                <a class="current" asp-controller="profile" asp-action="personalinfo">Personlige Oplysninger</a>
+                <a class="current" asp-controller="profile" asp-action="personalinfo">Email</a>
             </div>
         </div>
 
 
     <div class="responsive-form-2 top-side-padding">
         <div class="row">
-            <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="update_success" asp-controller="profile" asp-action="postpersonalinfo">
+            <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="update_success" asp-controller="settings" asp-action="changeemail">
                 <div class="profile-inputs">
-                    <div class="header">Personlige Oplysninger</div>
+                    <div class="header">Email</div>
                     <div class="custom-input">
                         <input asp-for="@Model.Email" />
                         <label asp-for="@Model.Email"></label>
                         <span asp-validation-for="@Model.Email"></span>
                     </div>
-                    <div class="custom-input">
-                        <input asp-for="@Model.Username" />
-                        <label asp-for="@Model.Username"></label>
-                        <span asp-validation-for="@Model.Username"></span>
-                    </div>
                 </div>
                 <div class="col-12 right top-side-padding">
-                    <button type="submit" class="button">Opdater Profil</button>
+                    <button type="submit" class="button">Opdater</button>
                 </div>
             </form>
         </div>

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace NykantIS.Models.ViewModels
 {
-    public class ProfileVM
+    public class ChangeEmailVM
     {
         public string Email { get; set; }
         public string Username { get; set; }

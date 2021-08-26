@@ -7,7 +7,7 @@ using NykantIS.Data;
 
 namespace NykantIS.data.migrations.identity
 {
-    [DbContext(typeof(IdentityDbContext))]
+    [DbContext(typeof(IdentityContext))]
     partial class IdentityDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

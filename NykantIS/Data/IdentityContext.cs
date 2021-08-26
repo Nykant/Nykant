@@ -9,9 +9,9 @@ using NykantIS.Models;
 
 namespace NykantIS.Data
 {
-    public class IdentityDbContext : IdentityDbContext<ApplicationUser>
+    public class IdentityContext : IdentityDbContext<ApplicationUser>
     {
-        public IdentityDbContext(DbContextOptions<IdentityDbContext> options)
+        public IdentityContext(DbContextOptions<IdentityContext> options)
             : base(options)
         {
             Database.Migrate();

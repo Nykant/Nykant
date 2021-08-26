@@ -17,5 +17,8 @@ namespace NykantIS.Models
         public string Password { get; set; }
         public bool RememberLogin { get; set; }
         public string ReturnUrl { get; set; }
+        public string RedirectAction { get; set; }
+        public string RedirectController { get; set; }
+        public string BasePath { get; set; }
     }
 }

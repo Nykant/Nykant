@@ -5,7 +5,6 @@
     <div class="responsive-container">
         <div class="responsive-form">
             <form asp-route="Login">
-                <input type="hidden" asp-for="ReturnUrl" />
 
                 <div class="row top-padding">
                     @if (Model.EnableLocalLogin)
@@ -13,7 +12,7 @@
 
                         <div class="local-login">
                             <div class="header">
-                                NYKANT ACCOUNT LOGIN
+                                LOG IND
                             </div>
 
                             <div class="inputstyle">
@@ -30,7 +29,7 @@
                                 <div class="underline"></div>
                             </div>
 
-                            @if (Model.AllowRememberLogin)
+                            @*@if (Model.AllowRememberLogin)
                             {
                                 <div class="remember-me">
                                     <label class="checkbox" asp-for="RememberLogin">
@@ -39,7 +38,7 @@
                                     </label>
                                     <p>remember me</p>
                                 </div>
-                            }
+                            }*@
 
                         </div>
 
@@ -47,11 +46,19 @@
 
                 </div>
                 <div class="row ">
-
                     <div class="col-4 right top-side-padding">
                         <button class="button " type="submit" name="button" value="login">Log Ind</button>
                     </div>
-
+                    <a class="col-4 left top-side-padding" href="@Model.BasePath/@Model.RedirectController/@Model.RedirectAction">
+                        <div class="button">
+                            <p>Tilbage</p>
+                        </div>
+                    </a>
+                    <a class="col-4 left top-side-padding" asp-area="identity" asp-page="/account/register" asp-route-redirectaction="@Model.RedirectAction" asp-route-redirectcontroller="@Model.RedirectController">
+                        <div class="button">
+                            <p>Registrer</p>
+                        </div>
+                    </a>
                 </div>
             </form>
             

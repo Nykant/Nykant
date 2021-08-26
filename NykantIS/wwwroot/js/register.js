@@ -5,6 +5,11 @@ register_complete = function () {
     $('#register-modal').css('display', 'block');
 };
 
+register_failed = function () {
+    $('#register-failed').css('display', 'block');
+    $('#register-modal').css('display', 'block');
+};
+
 $('#register-complete-close').on('click', function () {
     $('#register-complete').css('display', 'none');
     $('#register-modal').css('display', 'none');

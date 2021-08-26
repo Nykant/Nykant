@@ -27,6 +27,7 @@ using System.Text;
 using System.Text.Encodings.Web;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Configuration;
 
 namespace NykantIS.Controllers
 {
@@ -41,6 +42,7 @@ namespace NykantIS.Controllers
         private readonly IClientStore _clientStore;
         private readonly IAuthenticationSchemeProvider _schemeProvider;
         private readonly IEventService _events;
+        private readonly IConfiguration configuration;
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
@@ -49,7 +51,8 @@ namespace NykantIS.Controllers
             IClientStore clientStore,
             IAuthenticationSchemeProvider schemeProvider,
             IEventService events,
-            IWebHostEnvironment webHostEnvironment)
+            IWebHostEnvironment webHostEnvironment,
+            IConfiguration configuration)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -58,16 +61,17 @@ namespace NykantIS.Controllers
             _schemeProvider = schemeProvider;
             _events = events;
             this.webHostEnvironment = webHostEnvironment;
+            this.configuration = configuration;
         }
 
         /// <summary>
         /// Entry point into the login workflow
         /// </summary>
         [HttpGet]
-        public async Task<IActionResult> Login(string returnUrl)
+        public async Task<IActionResult> Login(string redirectaction, string redirectcontroller, string returnUrl = null)
         {
             // build a model so we know what to show on the login page
-            var vm = await BuildLoginViewModelAsync(returnUrl);
+            var vm = await BuildLoginViewModelAsync(returnUrl, redirectaction, redirectcontroller);
 
             if (vm.IsExternalLoginOnly)
             {
@@ -86,48 +90,13 @@ namespace NykantIS.Controllers
         {
             // check if we are in the context of an authorization request
             var context = await _interaction.GetAuthorizationContextAsync(model.ReturnUrl);
-            string baseAddress;
-            if (webHostEnvironment.IsDevelopment())
-            {
-                baseAddress = "https://localhost:5002";
-            }
-            else
-            {
-                baseAddress = "https://nykant.dk";
-            }
-            // the user clicked the "cancel" button
-            //if (button != "login")
-            //{
-            //    if (context != null)
-            //    {
-            //        // if the user cancels, send a result back into IdentityServer as if they 
-            //        // denied the consent (even if this client does not require consent).
-            //        // this will send back an access denied OIDC error response to the client.
-            //        await _interaction.DenyAuthorizationAsync(context, AuthorizationError.AccessDenied);
-
-            //        // we can trust model.ReturnUrl since GetAuthorizationContextAsync returned non-null
-            //        if (context.IsNativeClient())
-            //        {
-            //            // The client is native, so this change in how to
-            //            // return the response is for better UX for the end user.
-            //            return this.LoadingPage("Redirect", model.ReturnUrl);
-            //        }
-
-            //        return Redirect(model.ReturnUrl);
-            //    }
-            //    else
-            //    {
-            //        // since we don't have a valid context, then we just go back to the home page
-            //        return Redirect("~/https://localhost:5002");
-            //    }
-            //}
 
             if (ModelState.IsValid)
             {
                 var user = await _userManager.FindByEmailAsync(model.Email);
                 if(_signInManager.IsSignedIn(User)) {
                     
-                    return Redirect(model.ReturnUrl);
+                    return Redirect($"{configuration.GetSection("Urls")["mvc"]}/account/login?redirectcontroller={model.RedirectController}&redirectaction={model.RedirectAction}");
                 }
                 if(user != null)
                 {
@@ -142,20 +111,20 @@ namespace NykantIS.Controllers
                             {
                                 // The client is native, so this change in how to
                                 // return the response is for better UX for the end user.
-                                return this.LoadingPage("Redirect", model.ReturnUrl);
+                                return this.LoadingPage("Redirect", $"{configuration.GetSection("Urls")["mvc"]}/account/login?redirectcontroller={model.RedirectController}&redirectaction={model.RedirectAction}");
                             }
 
-                            return Redirect(model.ReturnUrl);
+                            return Redirect($"{configuration.GetSection("Urls")["mvc"]}/account/login?redirectcontroller={model.RedirectController}&redirectaction={model.RedirectAction}");
                         }
 
                         // request for a local page
                         if (Url.IsLocalUrl(model.ReturnUrl))
                         {
-                            return Redirect(model.ReturnUrl);
+                            return Redirect($"{configuration.GetSection("Urls")["mvc"]}/account/login?redirectcontroller={model.RedirectController}&redirectaction={model.RedirectAction}");
                         }
                         else if (string.IsNullOrEmpty(model.ReturnUrl))
                         {
-                            return Redirect(model.ReturnUrl);
+                            return Redirect($"{configuration.GetSection("Urls")["mvc"]}/account/login?redirectcontroller={model.RedirectController}&redirectaction={model.RedirectAction}");
                         }
                         else
                         {
@@ -172,37 +141,6 @@ namespace NykantIS.Controllers
             // something went wrong, show form with error
             var vm = await BuildLoginViewModelAsync(model);
             return View(vm);
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> ReturnMe(string returnUrl)
-        {
-            string baseAddress;
-            if (webHostEnvironment.IsDevelopment())
-            {
-                baseAddress = "https://localhost:5002";
-            }
-            else
-            {
-                baseAddress = "https://nykant.dk";
-            }
-            //var context = await _interaction.GetAuthorizationContextAsync(returnUrl);
-
-            //if (context != null)
-            //{
-            //    //await _interaction.DenyAuthorizationAsync(context, AuthorizationError.AccessDenied);
-
-            //    if (context.IsNativeClient())
-            //    {
-            //        return this.LoadingPage("Redirect", returnUrl);
-            //    }
-
-            //    return Redirect(returnUrl);
-            //}
-            //else
-            //{
-            return Redirect(returnUrl);
-            //}
         }
 
         
@@ -256,7 +194,7 @@ namespace NykantIS.Controllers
                 return SignOut(new AuthenticationProperties { RedirectUri = url }, vm.ExternalAuthenticationScheme);
             }
 
-            return View("LoggedOut", vm);
+            return Redirect($"{configuration.GetSection("Urls")["mvc"]}");
         }
 
         [HttpGet]
@@ -265,11 +203,10 @@ namespace NykantIS.Controllers
             return View();
         }
 
-
         /*****************************************/
         /* helper APIs for the AccountController */
         /*****************************************/
-        private async Task<LoginViewModel> BuildLoginViewModelAsync(string returnUrl)
+        private async Task<LoginViewModel> BuildLoginViewModelAsync(string returnUrl, string redirectAction, string redirectController)
         {
             var context = await _interaction.GetAuthorizationContextAsync(returnUrl);
             if (context?.IdP != null && await _schemeProvider.GetSchemeAsync(context.IdP) != null)
@@ -282,6 +219,9 @@ namespace NykantIS.Controllers
                     EnableLocalLogin = local,
                     ReturnUrl = returnUrl,
                     Email = context?.LoginHint,
+                    RedirectAction = redirectAction,
+                    RedirectController = redirectController,
+                    BasePath = configuration.GetSection("Urls")["mvc"]
                 };
 
                 if (!local)
@@ -323,13 +263,16 @@ namespace NykantIS.Controllers
                 EnableLocalLogin = allowLocal && AccountOptions.AllowLocalLogin,
                 ReturnUrl = returnUrl,
                 Email = context?.LoginHint,
-                ExternalProviders = providers.ToArray()
+                ExternalProviders = providers.ToArray(),
+                RedirectAction = redirectAction,
+                RedirectController = redirectController,
+                BasePath = configuration.GetSection("Urls")["mvc"]
             };
         }
 
         private async Task<LoginViewModel> BuildLoginViewModelAsync(LoginInputModel model)
         {
-            var vm = await BuildLoginViewModelAsync(model.ReturnUrl);
+            var vm = await BuildLoginViewModelAsync(model.ReturnUrl, model.RedirectAction, model.RedirectController);
             vm.Email = model.Email;
             vm.RememberLogin = model.RememberLogin;
             return vm;

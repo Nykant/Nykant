@@ -1,5 +1,4 @@
 @model LoggedOutViewModel
-
 @{
     // set this so the layout rendering sees an anonymous user
     ViewData["signed-out"] = true;
@@ -18,7 +17,6 @@
             </div>
         </div>
         <div class="row">
-
             @if (Model.PostLogoutRedirectUri != null)
             {
                 <a href="@Model.PostLogoutRedirectUri" class="col-4 left fadein right-side-padding button-container ">
@@ -32,14 +30,9 @@
                     </div>
                 </a>
             }
-
         </div>
     </div>
-
 </div>
-
-
-
 @section scripts
 {
     @if (Model.AutomaticRedirectAfterSignOut)

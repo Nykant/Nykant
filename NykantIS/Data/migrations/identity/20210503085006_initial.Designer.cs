@@ -8,7 +8,7 @@ using NykantIS.Data;
 
 namespace NykantIS.data.migrations.identity
 {
-    [DbContext(typeof(IdentityDbContext))]
+    [DbContext(typeof(IdentityContext))]
     [Migration("20210503085006_initial")]
     partial class initial
     {

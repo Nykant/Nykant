@@ -20,18 +20,18 @@ namespace NykantIS.Data.Seed
         {
             var services = new ServiceCollection();
             services.AddLogging();
-            services.AddDbContext<IdentityDbContext>(options =>
+            services.AddDbContext<IdentityContext>(options =>
                options.UseMySql(connectionString));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<IdentityDbContext>()
+                .AddEntityFrameworkStores<IdentityContext>()
                 .AddDefaultTokenProviders();
 
             using (var serviceProvider = services.BuildServiceProvider())
             {
                 using (var scope = serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope())
                 {
-                    var context = scope.ServiceProvider.GetService<IdentityDbContext>();
+                    var context = scope.ServiceProvider.GetService<IdentityContext>();
                     context.Database.Migrate();
 
                     var userMgr = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
