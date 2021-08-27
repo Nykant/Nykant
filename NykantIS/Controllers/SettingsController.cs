@@ -92,8 +92,9 @@ namespace NykantIS.Controllers
                         }
 
                         await _userManager.UpdateAsync(user);
-                        await _signInManager.SignOutAsync();
-                        await HttpContext.SignOutAsync();
+                        await _signInManager.RefreshSignInAsync(user);
+                        //await _signInManager.SignOutAsync();
+                        //await HttpContext.SignOutAsync();
 
                         return Json("emailUpdated");
                     }

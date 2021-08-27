@@ -145,23 +145,26 @@ namespace NykantIS.Areas.Identity.Pages.Account
                         catch (Exception e)
                         {
                             _logger.LogInformation($"{e.Message} -------------------");
-                            return JsonResult("")
+                            return new JsonResult("emailError");
                         }
 
                         _logger.LogInformation("email sent -------------------");
 
-                        return new NoContentResult();
-
+                        return new JsonResult("success");
                     }
-                    foreach (var error in result.Errors)
+                    else
                     {
-                        ModelState.AddModelError(string.Empty, error.Description);
+                        return new JsonResult(result);
                     }
+                }
+                else
+                {
+                    return new JsonResult("userExist");
                 }
             }
 
             // If we got this far, something failed, redisplay form
-            return new BadRequestResult();
+            return new JsonResult("unknownError");
         }
     }
 }
