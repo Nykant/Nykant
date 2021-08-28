@@ -69,19 +69,7 @@
         opacity: 1;
     }
 
-a.icon {
-    transition: all 0.3s;
-    transform: scale(1);
-    font-size: 30px;
-    position: relative;
-    float: right;
-}
 
-    a.icon:hover {
-        color: var(--blue);
-        transition: all 0.3s;
-        transform: scale(0.8);
-    }
 
 #userBurger {
     width: 100%;
@@ -181,6 +169,69 @@ a.icon {
     }
 }
 
+.dropdown {
+    position: relative;
+    display: inline-block;
+    float: right;
+    padding-top: 30px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ededed;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropbtn {
+    background-color: transparent;
+    color: white;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    transform: scale(1);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+    .dropdown-content a:hover {
+        background-color: white;
+    }
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    color: var(--blue);
+    transition: all 0.3s;
+    transform: scale(0.8);
+    /*    background-color: #3e8e41;*/
+}
+
+a.icon {
+    transition: all 0.3s;
+    transform: scale(1);
+    font-size: 30px;
+    position: relative;
+    float: right;
+}
+
+    a.icon:hover {
+        color: var(--blue);
+        transition: all 0.3s;
+        transform: scale(0.8);
+    }
+
+
 /* navbar-mobile */
 @media only screen and (max-width: 600px) {
 
@@ -210,6 +261,15 @@ a.icon {
 
     a.icon {
         font-size:25px;
+    }
+
+    .dropdown {
+        padding-top:25px;
+        margin-right: 0px;
+    }
+
+    .dropbtn{
+        font-size: 25px;
     }
 }
 
@@ -248,6 +308,15 @@ a.icon {
     #nav-links{
         display:none;
     }
+
+    .dropdown {
+        padding-top: 30px;
+        margin-right: 35px;
+    }
+
+    .dropbtn {
+        font-size: 30px;
+    }
 }
 
 @media only screen and (min-width: 768px) {
@@ -276,6 +345,15 @@ a.icon {
     #nav-links {
         display: none;
     }
+
+    .dropdown {
+        padding-top: 30px;
+        margin-right: 50px;
+    }
+
+    .dropbtn {
+        font-size: 30px;
+    }
 }
 
 @media only screen and (min-width: 992px) {
@@ -303,6 +381,16 @@ a.icon {
     #nav-links {
         display: none;
     }
+
+
+    .dropdown {
+        padding-top: 30px;
+        margin-right: 50px;
+    }
+
+    .dropbtn {
+        font-size: 30px;
+    }
 }
 
 @media only screen and (min-width: 1200px) {
@@ -328,6 +416,15 @@ a.icon {
     #nav-links {
         display: none;
     }
+
+    .dropdown {
+        padding-top: 30px;
+        margin-right: 50px;
+    }
+
+    .dropbtn {
+        font-size: 30px;
+    }
 }
 
 @media only screen and (min-width: 1500px) {
@@ -352,4 +449,18 @@ a.icon {
     #nav-links {
         display: none;
     }
+
+    .dropdown {
+        padding-top: 30px;
+        margin-right: 50px;
+    }
+
+    .dropbtn {
+        font-size: 30px;
+    }
+}
+
+
+.dropdown-content a {
+    font-size:20px;
 }
