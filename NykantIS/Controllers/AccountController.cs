@@ -68,7 +68,7 @@ namespace NykantIS.Controllers
         /// Entry point into the login workflow
         /// </summary>
         [HttpGet]
-        public async Task<IActionResult> Login(string redirectaction, string redirectcontroller, string returnUrl = null)
+        public async Task<IActionResult> Login(string redirectaction = null, string redirectcontroller = null, string returnUrl = null)
         {
             // build a model so we know what to show on the login page
             var vm = await BuildLoginViewModelAsync(returnUrl, redirectaction, redirectcontroller);
@@ -95,8 +95,11 @@ namespace NykantIS.Controllers
             {
                 var user = await _userManager.FindByEmailAsync(model.Email);
                 if(_signInManager.IsSignedIn(User)) {
-                    
-                    return Redirect($"{configuration.GetSection("Urls")["mvc"]}/account/login?redirectcontroller={model.RedirectController}&redirectaction={model.RedirectAction}");
+                    if (model.RedirectController == null || model.RedirectAction == null)
+                    {
+                        return Redirect($"{model.BasePath}");
+                    }
+                    return Redirect($"{model.BasePath}?redirectcontroller={model.RedirectController}&redirectaction={model.RedirectAction}");
                 }
                 if(user != null)
                 {
@@ -111,20 +114,32 @@ namespace NykantIS.Controllers
                             {
                                 // The client is native, so this change in how to
                                 // return the response is for better UX for the end user.
-                                return this.LoadingPage("Redirect", $"{configuration.GetSection("Urls")["mvc"]}/account/login?redirectcontroller={model.RedirectController}&redirectaction={model.RedirectAction}");
+                                return this.LoadingPage("Redirect", $"{model.BasePath}?redirectcontroller={model.RedirectController}&redirectaction={model.RedirectAction}");
                             }
 
-                            return Redirect($"{configuration.GetSection("Urls")["mvc"]}/account/login?redirectcontroller={model.RedirectController}&redirectaction={model.RedirectAction}");
+                            if (model.RedirectController == null || model.RedirectAction == null)
+                            {
+                                return Redirect($"{model.BasePath}");
+                            }
+                            return Redirect($"{model.BasePath}?redirectcontroller={model.RedirectController}&redirectaction={model.RedirectAction}");
                         }
 
                         // request for a local page
                         if (Url.IsLocalUrl(model.ReturnUrl))
                         {
-                            return Redirect($"{configuration.GetSection("Urls")["mvc"]}/account/login?redirectcontroller={model.RedirectController}&redirectaction={model.RedirectAction}");
+                            if (model.RedirectController == null || model.RedirectAction == null)
+                            {
+                                return Redirect($"{model.BasePath}");
+                            }
+                            return Redirect($"{model.BasePath}?redirectcontroller={model.RedirectController}&redirectaction={model.RedirectAction}");
                         }
                         else if (string.IsNullOrEmpty(model.ReturnUrl))
                         {
-                            return Redirect($"{configuration.GetSection("Urls")["mvc"]}/account/login?redirectcontroller={model.RedirectController}&redirectaction={model.RedirectAction}");
+                            if (model.RedirectController == null || model.RedirectAction == null)
+                            {
+                                return Redirect($"{model.BasePath}");
+                            }
+                            return Redirect($"{model.BasePath}?redirectcontroller={model.RedirectController}&redirectaction={model.RedirectAction}");
                         }
                         else
                         {
@@ -221,7 +236,7 @@ namespace NykantIS.Controllers
                     Email = context?.LoginHint,
                     RedirectAction = redirectAction,
                     RedirectController = redirectController,
-                    BasePath = configuration.GetSection("Urls")["mvc"]
+                    BasePath = $"{configuration.GetSection("Urls")["mvc"]}/account/login"
                 };
 
                 if (!local)
@@ -266,7 +281,7 @@ namespace NykantIS.Controllers
                 ExternalProviders = providers.ToArray(),
                 RedirectAction = redirectAction,
                 RedirectController = redirectController,
-                BasePath = configuration.GetSection("Urls")["mvc"]
+                BasePath = $"{configuration.GetSection("Urls")["mvc"]}/account/login"
             };
         }
 

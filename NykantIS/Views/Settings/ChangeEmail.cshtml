@@ -2,48 +2,54 @@
 
 <script src="~/js/email-updated.js" defer></script>
 
-<div class="modal" id="email-updated">
+@*<div class="modal" id="email-updated">
     <div class="email-updated">
         <h1 id="email-updated-text"></h1>
         <button id="email-updated-button" class="button margin-top-20" type="button">Okay</button>
     </div>
-</div>
+</div>*@
 
 <div class="row border-bottom" style="background-color:white">
     <div class="col-10 center padding">
         <a class="nykant-logo" href="https://nykant.dk"><span style="color:var(--blue)">NY</span>KANT</a>
     </div>
 </div>
+<div style="width:100%; height:100%;" class="background-lightgrey top-side-padding">
+        <div class="responsive-container">
 
-<div class="responsive-container">
-    
         <div class="sidebar">
             <div class="profile-nav">
                 <a class="current" asp-controller="profile" asp-action="personalinfo">Email</a>
+                <a asp-area="identity" asp-page="/account/manage/changepassword">Change Password</a>
             </div>
         </div>
 
-    <div class="responsive-form-2 top-side-padding">
-        <div class="row">
-            <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="update_success" asp-controller="settings" asp-action="changeemail">
-                <div class="profile-inputs">
-                    <div class="header">Email</div>
-                    <div class="custom-input">
-                        <input asp-for="@Model.Email" />
-                        <label asp-for="@Model.Email"></label>
-                        <span asp-validation-for="@Model.Email"></span>
-                    </div>
+        <div class="responsive-form-2 top-side-padding">
+            <div class="row">
+                <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="update_success" asp-controller="settings" asp-action="changeemail">
+                    <div class="profile-inputs">
+                        <div class="header">Email</div>
+                        <div class="custom-input">
+                            <input asp-for="@Model.Email" />
+                            <label asp-for="@Model.Email"></label>
+                            <span asp-validation-for="@Model.Email"></span>
+                        </div>
 
-                    <div class="error-div" id="changeemail-error-div">
-                        <p id="changeemail-error-text"></p>
-                    </div>
+                        <div class="error-div" id="changeemail-error-div">
+                            <p id="changeemail-error-text"></p>
+                        </div>
+                        <div class="success-div" id="changeemail-success-div">
+                            <p id="changeemail-success-text"></p>
+                        </div>
 
-                </div>
-                <div class="col-12 right top-side-padding">
-                    <button type="submit" class="button">Opdater</button>
-                </div>
-            </form>
+                    </div>
+                    <div class="col-12 right top-side-padding">
+                        <button type="submit" class="button">Opdater</button>
+                    </div>
+                </form>
+            </div>
         </div>
+
     </div>
 
 </div>

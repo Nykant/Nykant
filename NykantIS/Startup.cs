@@ -96,7 +96,6 @@ namespace NykantIS
                         {
                             mySql.MigrationsAssembly(migrationsAssembly);
                         });
-
                 })
             .AddOperationalStore(options =>
             {

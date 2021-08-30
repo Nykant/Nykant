@@ -1,9 +1,12 @@
 ﻿@using NykantMVC.Extensions;
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
 @{
     ViewBag.BagItemAmount = Context.Session.Get<int>("verysecretseriousbagitemsessionkeyspecial");
     var routevalues = Context.Request.RouteValues;
     var controller = routevalues["controller"];
     var action = routevalues["action"];
+    var baseUrl = Configuration.GetSection("Urls")["Is"];
 }
 
 <div class="navbar">
@@ -19,23 +22,23 @@
         @if (User.Identity.IsAuthenticated)
         {
             @*<div id="userBurger2">
-                <a href="https://localhost:5001/settings/changeemail">
-                    Indstillinger
-                </a>
-                <a asp-controller="Order" asp-action="History">
-                    Ordre historik
-                </a>
-                <a asp-controller="Account" asp-action="Logout">
-                    Log ud
-                </a>
-            </div>*@
+                    <a href="https://localhost:5001/settings/changeemail">
+                        Indstillinger
+                    </a>
+                    <a asp-controller="Order" asp-action="History">
+                        Ordre historik
+                    </a>
+                    <a asp-controller="Account" asp-action="Logout">
+                        Log ud
+                    </a>
+                </div>*@
 
             <div class="dropdown">
-                <button href="javascript:void(0);" class="icon dropbtn" id="userLogo" >
+                <button href="javascript:void(0);" class="icon dropbtn" id="userLogo">
                     <i class="fas fa-user"></i>
                 </button>
                 <div class="dropdown-content">
-                    <a href="https://nykant.dk/is/settings/changeemail">
+                    <a href="@baseUrl/settings/changeemail">
                         Indstillinger
                     </a>
                     <a asp-controller="Order" asp-action="History">
@@ -51,23 +54,23 @@
         else
         {
             @*<div id="userBurger2">
-                <a href="https://localhost:5001/account/login?redirectaction=@action&redirectcontroller=@controller">
-                    Log ind
-                </a>
-                <a href="https://localhost:5001/identity/account/register?redirectaction=@action&redirectcontroller=@controller">
-                    Registrer
-                </a>
-            </div>*@
+                    <a href="https://localhost:5001/account/login?redirectaction=@action&redirectcontroller=@controller">
+                        Log ind
+                    </a>
+                    <a href="https://localhost:5001/identity/account/register?redirectaction=@action&redirectcontroller=@controller">
+                        Registrer
+                    </a>
+                </div>*@
 
             <div class="dropdown">
                 <button href="javascript:void(0);" class="icon dropbtn" id="userLogo">
                     <i class="fas fa-user"></i>
                 </button>
                 <div class="dropdown-content">
-                    <a href="https://nykant.dk/is/account/login?redirectaction=@action&redirectcontroller=@controller">
+                    <a href="@baseUrl/account/login?redirectaction=@action&redirectcontroller=@controller">
                         Log ind
                     </a>
-                    <a href="https://nykant.dk/is/identity/account/register?redirectaction=@action&redirectcontroller=@controller">
+                    <a href="@baseUrl/identity/account/register?redirectaction=@action&redirectcontroller=@controller">
                         Registrer
                     </a>
                 </div>

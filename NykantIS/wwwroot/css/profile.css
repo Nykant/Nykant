@@ -48,6 +48,26 @@
     z-index:20;
 }
 
+.password-updated {
+    padding: 40px;
+    position: fixed;
+    left: 25%;
+    top: 25%;
+    height: auto;
+    width: 50%;
+    background-color: var(--light-blue);
+    border: 1px solid var(--light-blue);
+    z-index: 20;
+}
+
+.password-updated p {
+}
+
+.password-updated h1 {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
 .email-updated p {
 
 }

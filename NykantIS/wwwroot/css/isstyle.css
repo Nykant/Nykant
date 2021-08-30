@@ -69,12 +69,9 @@ a:hover {
     font-weight:bold;
 }
 
-
-
 /*a .button:hover {
     font-weight:600;
 }*/
-
 
 .simple-link{
     color:black;
@@ -101,6 +98,16 @@ ol, ul {
     background-color: var(--light-blue);
     border-top:1px solid var(--black-fade);
 }
+.text-danger {
+    color:red;
+}
+.success-div {
+    display: none;
+}
+
+    .success-div p {
+        color: green;
+    }
 
 .error-div {
     display:none;

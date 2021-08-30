@@ -5,7 +5,9 @@
     <div class="responsive-container">
         <div class="responsive-form">
             <form asp-route="Login">
-
+                <input asp-for="@Model.BasePath" hidden />
+                <input asp-for="@Model.RedirectAction" hidden />
+                <input asp-for="@Model.RedirectController" hidden />
                 <div class="row top-padding">
                     @if (Model.EnableLocalLogin)
                     {
@@ -29,16 +31,17 @@
                                 <div class="underline"></div>
                             </div>
 
+                            <a asp-area="identity" asp-page="/account/forgotpassword">Glemt password</a>
                             @*@if (Model.AllowRememberLogin)
-                            {
-                                <div class="remember-me">
-                                    <label class="checkbox" asp-for="RememberLogin">
-                                        <input type="checkbox" asp-for="RememberLogin">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <p>remember me</p>
-                                </div>
-                            }*@
+                    {
+                        <div class="remember-me">
+                            <label class="checkbox" asp-for="RememberLogin">
+                                <input type="checkbox" asp-for="RememberLogin">
+                                <span class="checkmark"></span>
+                            </label>
+                            <p>remember me</p>
+                        </div>
+                    }*@
 
                         </div>
 
