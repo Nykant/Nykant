@@ -95,3 +95,40 @@ select:-webkit-autofill:focus {
         opacity: 0.5;
         color: black;
     }
+
+.email-verification {
+    position: absolute;
+    transform: translate(+235px, +15px);
+}
+
+.text-danger {
+    color:red;
+}
+
+.alert {
+    padding:5px;
+    background:#fff76a;
+}
+
+.alert-success {
+    color:green;
+}
+
+.alert-danger {
+    color:red;
+}
+
+.alert-dismissible {
+
+}
+
+.close {
+    background:black;
+    color:white;
+}
+
+    .close:hover {
+        background: white;
+        color: black;
+        cursor: pointer;
+    }

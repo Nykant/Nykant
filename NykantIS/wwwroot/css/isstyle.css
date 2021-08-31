@@ -98,9 +98,7 @@ ol, ul {
     background-color: var(--light-blue);
     border-top:1px solid var(--black-fade);
 }
-.text-danger {
-    color:red;
-}
+
 .success-div {
     display: none;
 }

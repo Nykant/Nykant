@@ -1,27 +1,15 @@
 ﻿
-@model ConfirmAccountEmailViewModel
+@model UrlEmailModel
 
 @{
-    Layout = "_EmailLayout";
-    ViewData["EmailTitle"] = "Welcome!";
+    Layout = "_ConfirmEmailLayout";
+    ViewData["EmailTitle"] = "Konto bekræftelse";
 }
 
 <p>
-    We're excited to have you get started. First, you need to confirm your account. Just press the button below.
+    Tryk på nedenstående link, for at bekræfte din konto på Nykant.dk.
 </p>
 
 <br />
 
-@await Html.PartialAsync("EmailButton", new EmailButtonViewModel("Confirm Account", Model.ConfirmEmailUrl))
-
-<br />
-
-<p>
-    If you have any questions, just reply to this email—we're always happy to help out.
-</p>
-
-<br />
-
-<p>
-    The Contoso Team
-</p>
+@await Html.PartialAsync("EmailButton", new EmailButtonViewModel("Bekræft Konto", Model.Url))

@@ -1,43 +1,81 @@
-﻿@*@page
+﻿@page
 @model EmailModel
 @{
     ViewData["Title"] = "Manage Email";
-    ViewData["ActivePage"] = ManageNavPages.Email;
+    //ViewData["ActivePage"] = ManageNavPages.Email;
 }
 
-<h4>@ViewData["Title"]</h4>
-<partial name="_StatusMessage" model="Model.StatusMessage" />
-<div class="row">
-    <div class="col-md-6">
-        <form id="email-form" method="post">
-            <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Email"></label>
-                @if (Model.IsEmailConfirmed)
-                {
-                    <div class="input-group">
-                        <input asp-for="Email" class="form-control" disabled />
-                        <div class="input-group-append">
-                            <span class="input-group-text text-success font-weight-bold">✓</span>
-                        </div>
-                    </div>
-                }
-                 else
-                {
-                    <input asp-for="Email" class="form-control" disabled />
-                    <button id="email-verification" type="submit" asp-page-handler="SendVerificationEmail" class="btn btn-link">Send verification email</button>
-                }
-            </div>
-            <div class="form-group">
-                <label asp-for="Input.NewEmail"></label>
-                <input asp-for="Input.NewEmail" class="form-control" />
-                <span asp-validation-for="Input.NewEmail" class="text-danger"></span>
-            </div>
-            <button id="change-email-button" type="submit" asp-page-handler="ChangeEmail" class="btn btn-primary">Change email</button>
-        </form>
+@*<script src="~/js/email-updated.js" defer></script>*@
+<partial name="_StatusMessage" for="StatusMessage" />
+
+<div class="row border-bottom" style="background-color:white">
+    <div class="col-10 center padding">
+        <a class="nykant-logo" href="https://nykant.dk"><span style="color:var(--blue)">NY</span>KANT</a>
     </div>
 </div>
+<div style="width:100%; height:100%;" class="background-lightgrey top-side-padding">
+    <div class="responsive-container">
+
+        <div class="sidebar">
+            <div class="profile-nav">
+                <a class="current" asp-area="identity" asp-page="/account/manage/email">Change Email</a>
+                <a asp-area="identity" asp-page="/account/manage/changepassword">Change Password</a>
+            </div>
+        </div>
+
+        <div class="responsive-form-2 top-side-padding">
+            <div class="row">
+                <form id="email-form" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="profile-inputs">
+                        <div class="header">Email</div>
+
+                        <div class="custom-input">
+                            @if (Model.IsEmailConfirmed)
+                            {
+                                <div class="email-verification" style="color:green">✓</div>
+                            }
+                            else
+                            {
+                                <div class="email-verification" style="color:red">X</div>
+                            }
+                            <input asp-for="Email" disabled />
+                            <label asp-for="Email"></label>
+                            <span asp-validation-for="Email"></span>
+
+                        </div>
+
+                        @if (!Model.IsEmailConfirmed)
+                        {
+                            <button id="email-verification" style="width:30%" type="submit" asp-page-handler="SendVerificationEmail" class="button">Send verification email</button>
+                        }
+
+                        <div class="custom-input">
+                            <input asp-for="Input.NewEmail" />
+                            <label asp-for="Input.NewEmail"></label>
+                            <span asp-validation-for="Input.NewEmail"></span>
+                        </div>
+
+                        @*<div class="error-div" id="changeemail-error-div">
+                            <p id="changeemail-error-text"></p>
+                        </div>
+                        <div class="success-div" id="changeemail-success-div">
+                            <p id="changeemail-success-text"></p>
+                        </div>*@
+
+                    </div>
+                    <div class="col-12 right top-side-padding">
+                        <button id="change-email-button" type="submit" asp-page-handler="ChangeEmail" class="button">Opdater Email</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
-}*@
+}

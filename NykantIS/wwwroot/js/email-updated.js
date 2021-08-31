@@ -3,7 +3,7 @@ var changeemail_error_text = document.getElementById("changeemail-error-text");
 var changeemail_success_div = document.getElementById("changeemail-success-div");
 var changeemail_success_text = document.getElementById("changeemail-success-text");
 
-update_success = function (xhr) {
+update_email_success = function (xhr) {
     if (xhr == "inUse") {
         changeemail_success_div.style.display = "none";
         changeemail_error_div.style.display = "block";
@@ -17,7 +17,7 @@ update_success = function (xhr) {
     else if (xhr == "emailUpdated") {
         changeemail_error_div.style.display = "none";
         changeemail_success_div.style.display = "block";
-        changeemail_success_text.innerHTML = "Din email er blevet ændret.";
+        changeemail_success_text.innerHTML = "Din email er blevet ændret. En mail er blevet sendt til din nye email, for at ";
     }
     else if (xhr == "fail") {
         changeemail_success_div.style.display = "none";

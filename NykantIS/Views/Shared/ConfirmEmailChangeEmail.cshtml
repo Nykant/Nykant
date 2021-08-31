@@ -1,0 +1,15 @@
+﻿
+@model UrlEmailModel
+
+@{
+    Layout = "_ConfirmEmailLayout";
+    ViewData["EmailTitle"] = "Bekræft ændring af email";
+}
+
+<p>
+    Tryk på nedenstående link, for at ændre din email.
+</p>
+
+<br />
+
+@await Html.PartialAsync("EmailButton", new EmailButtonViewModel("Bekræft ændring af email", Model.Url))
