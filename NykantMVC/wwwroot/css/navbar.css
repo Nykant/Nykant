@@ -40,10 +40,14 @@
         margin-right: 50px;
         display: inline-block;
         float: left;
+        color:white;
     }
 
         .desktop-navbar-wrap a:hover {
-            font-weight: 100;
+            transition: all 0.3s;
+            font-weight:100;
+            transform: scale(0.8);
+            color: var(--blue);
         }
 
 /* Highlight text in  */
@@ -463,4 +467,22 @@ a.icon {
 
 .dropdown-content a {
     font-size:20px;
+}
+
+#logo {
+    background-image: url('../images/Nykant-Logo-Finish-white.png');
+    background-size: contain;
+    display: block;
+    width: 150px;
+    height: 80px;
+    transition: all 0.3s;
+}
+
+    #logo:hover {
+        background-image: url('../images/Nykant-Logo-Finish-blue.png');
+    }
+
+.desktop-navbar-wrap .logo-link a {
+    padding-top: 10px;
+    padding-bottom: 0px;
 }

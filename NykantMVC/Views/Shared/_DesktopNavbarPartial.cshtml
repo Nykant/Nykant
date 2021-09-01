@@ -10,28 +10,37 @@
 }
 
 <div class="navbar">
-    <div class="desktop-navbar-wrap highlightTextIn">
+    <div class="desktop-navbar-wrap">
         <a href="javascript:void(0);" class="icon" id="nav-burger">
             <i class="fa fa-bars"></i>
         </a>
         <button id="search-button"><i class="fas fa-search"></i></button>
-        <a alt="NYKANT" asp-controller="Nykant" asp-action="Index"><span style="color:var(--blue)">NY</span>KANT</a>
-        <a id="product-link" alt="PRODUKTER" asp-controller="Product" asp-action="Index">PRODUKTER</a>
+
+        <div class="logo-link">
+            <a asp-controller="Nykant" asp-action="Index">
+                <div id="logo">
+
+                </div>
+            </a>
+        </div>
+
+
+        <a id="product-link" asp-controller="Product" asp-action="Index">PRODUKTER</a>
         <a class="icon" asp-controller="Bag" asp-action="Details"><span>@ViewBag.BagItemAmount</span> <i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
 
         @if (User.Identity.IsAuthenticated)
         {
             @*<div id="userBurger2">
-                    <a href="https://localhost:5001/settings/changeemail">
-                        Indstillinger
-                    </a>
-                    <a asp-controller="Order" asp-action="History">
-                        Ordre historik
-                    </a>
-                    <a asp-controller="Account" asp-action="Logout">
-                        Log ud
-                    </a>
-                </div>*@
+                <a href="https://localhost:5001/settings/changeemail">
+                    Indstillinger
+                </a>
+                <a asp-controller="Order" asp-action="History">
+                    Ordre historik
+                </a>
+                <a asp-controller="Account" asp-action="Logout">
+                    Log ud
+                </a>
+            </div>*@
 
             <div class="dropdown">
                 <button href="javascript:void(0);" class="icon dropbtn" id="userLogo">
@@ -54,13 +63,13 @@
         else
         {
             @*<div id="userBurger2">
-                    <a href="https://localhost:5001/account/login?redirectaction=@action&redirectcontroller=@controller">
-                        Log ind
-                    </a>
-                    <a href="https://localhost:5001/identity/account/register?redirectaction=@action&redirectcontroller=@controller">
-                        Registrer
-                    </a>
-                </div>*@
+                <a href="https://localhost:5001/account/login?redirectaction=@action&redirectcontroller=@controller">
+                    Log ind
+                </a>
+                <a href="https://localhost:5001/identity/account/register?redirectaction=@action&redirectcontroller=@controller">
+                    Registrer
+                </a>
+            </div>*@
 
             <div class="dropdown">
                 <button href="javascript:void(0);" class="icon dropbtn" id="userLogo">

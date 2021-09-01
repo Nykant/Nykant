@@ -50,8 +50,8 @@ namespace NykantIS.Areas.Identity.Pages.Account.Manage
 
         public class InputModel
         {
-            [Required]
-            [EmailAddress]
+            [Required(ErrorMessage = "Ny email feltet skal udfyldes.")]
+            [EmailAddress(ErrorMessage = "Dette er ikke en gyldig email.")]
             [Display(Name = "Ny email")]
             public string NewEmail { get; set; }
         }

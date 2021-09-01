@@ -30,6 +30,10 @@ using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.AspNetCore.DataProtection;
 using System.IO;
+using Microsoft.AspNetCore.Localization;
+using System.Globalization;
+using System.Collections.Generic;
+using Microsoft.Extensions.Localization;
 
 namespace NykantIS
 {
@@ -46,6 +50,7 @@ namespace NykantIS
 
         public void ConfigureServices(IServiceCollection services)
         {
+
             string mykeyConnection = null;
             string identityserverConnection = null;
             string identityConnection = null;
@@ -152,10 +157,21 @@ namespace NykantIS
                 options.KnownProxies.Clear();
             });
 
+            services.AddLocalization();
+
+            //services.AddScoped<IRequestCulture, RequestCultureFeature>();
+
         }
 
         public void Configure(IApplicationBuilder app)
         {
+            app.UseRequestLocalization(new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture(new CultureInfo("da")),
+                SupportedCultures = new List<CultureInfo> { new CultureInfo("en-GB"), new CultureInfo("da") },
+                SupportedUICultures = new List<CultureInfo> { new CultureInfo("en-GB"), new CultureInfo("da") }
+            });
+
             app.UsePathBase(Configuration.GetValue<string>("PathBase"));
             app.UseForwardedHeaders();
 
