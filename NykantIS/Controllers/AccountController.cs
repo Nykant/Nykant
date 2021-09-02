@@ -97,9 +97,9 @@ namespace NykantIS.Controllers
                 if(_signInManager.IsSignedIn(User)) {
                     if (model.RedirectController == null || model.RedirectAction == null)
                     {
-                        return Redirect($"{model.BasePath}");
+                        return Redirect($"{model.BasePath}/account/login");
                     }
-                    return Redirect($"{model.BasePath}?redirectcontroller={model.RedirectController}&redirectaction={model.RedirectAction}");
+                    return Redirect($"{model.BasePath}/account/login?redirectcontroller={model.RedirectController}&redirectaction={model.RedirectAction}");
                 }
                 if(user != null)
                 {
@@ -114,14 +114,14 @@ namespace NykantIS.Controllers
                             {
                                 // The client is native, so this change in how to
                                 // return the response is for better UX for the end user.
-                                return this.LoadingPage("Redirect", $"{model.BasePath}?redirectcontroller={model.RedirectController}&redirectaction={model.RedirectAction}");
+                                return this.LoadingPage("Redirect", $"{model.BasePath}/account/login?redirectcontroller={model.RedirectController}&redirectaction={model.RedirectAction}");
                             }
 
                             if (model.RedirectController == null || model.RedirectAction == null)
                             {
-                                return Redirect($"{model.BasePath}");
+                                return Redirect($"{model.BasePath}/account/login");
                             }
-                            return Redirect($"{model.BasePath}?redirectcontroller={model.RedirectController}&redirectaction={model.RedirectAction}");
+                            return Redirect($"{model.BasePath}/account/login?redirectcontroller={model.RedirectController}&redirectaction={model.RedirectAction}");
                         }
 
                         // request for a local page
@@ -129,17 +129,17 @@ namespace NykantIS.Controllers
                         {
                             if (model.RedirectController == null || model.RedirectAction == null)
                             {
-                                return Redirect($"{model.BasePath}");
+                                return Redirect($"{model.BasePath}/account/login");
                             }
-                            return Redirect($"{model.BasePath}?redirectcontroller={model.RedirectController}&redirectaction={model.RedirectAction}");
+                            return Redirect($"{model.BasePath}/account/login?redirectcontroller={model.RedirectController}&redirectaction={model.RedirectAction}");
                         }
                         else if (string.IsNullOrEmpty(model.ReturnUrl))
                         {
                             if (model.RedirectController == null || model.RedirectAction == null)
                             {
-                                return Redirect($"{model.BasePath}");
+                                return Redirect($"{model.BasePath}/account/login");
                             }
-                            return Redirect($"{model.BasePath}?redirectcontroller={model.RedirectController}&redirectaction={model.RedirectAction}");
+                            return Redirect($"{model.BasePath}/account/login?redirectcontroller={model.RedirectController}&redirectaction={model.RedirectAction}");
                         }
                         else
                         {
@@ -236,7 +236,7 @@ namespace NykantIS.Controllers
                     Email = context?.LoginHint,
                     RedirectAction = redirectAction,
                     RedirectController = redirectController,
-                    BasePath = $"{configuration.GetSection("Urls")["mvc"]}/account/login"
+                    BasePath = $"{configuration.GetSection("Urls")["mvc"]}"
                 };
 
                 if (!local)
@@ -281,7 +281,7 @@ namespace NykantIS.Controllers
                 ExternalProviders = providers.ToArray(),
                 RedirectAction = redirectAction,
                 RedirectController = redirectController,
-                BasePath = $"{configuration.GetSection("Urls")["mvc"]}/account/login"
+                BasePath = $"{configuration.GetSection("Urls")["mvc"]}"
             };
         }
 

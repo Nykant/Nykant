@@ -45,12 +45,13 @@ consent_settings_updated = function (response) {
         }, 300)
     }, 5000);
     if (cookie_consent !== null) {
-        cookie_consent.style.transition = "all 1s";
-        cookie_consent.style.transform = "translateY(+125px)";
-        setTimeout(function () {
-            cookie_consent.style.transition = "initial";
-            cookie_consent.style.display = "none";
-            cookie_consent.style.transform = "translateX(0px)";
-        }, 1000);
+        cookie_consent.style.display = "none";
+        //cookie_consent.style.transition = "all 1s";
+        //cookie_consent.style.transform = "translateY(+125px)";
+        //setTimeout(function () {
+        //    cookie_consent.style.transition = "initial";
+
+        //    cookie_consent.style.transform = "translateX(0px)";
+        //}, 1000);
     };
 };

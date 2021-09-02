@@ -197,6 +197,7 @@
     cursor: pointer;
     transition: all 0.3s;
     transform: scale(1);
+    padding: 0px;
 }
 
 .dropdown-content a {
@@ -235,6 +236,10 @@ a.icon {
         transform: scale(0.8);
     }
 
+#product-link {
+    padding-top:33px;
+    font-size:25px;
+}
 
 /* navbar-mobile */
 @media only screen and (max-width: 600px) {
@@ -274,6 +279,13 @@ a.icon {
 
     .dropbtn{
         font-size: 25px;
+    }
+
+    .desktop-navbar-wrap .logo-link a {
+        padding-top: 7px;
+        padding-bottom: 0px;
+        margin-right: 0px;
+        margin-left: 0px;
     }
 }
 
@@ -321,6 +333,11 @@ a.icon {
     .dropbtn {
         font-size: 30px;
     }
+
+    .desktop-navbar-wrap .logo-link a {
+        padding-top: 10px;
+        padding-bottom: 0px;
+    }
 }
 
 @media only screen and (min-width: 768px) {
@@ -358,6 +375,11 @@ a.icon {
     .dropbtn {
         font-size: 30px;
     }
+    .desktop-navbar-wrap .logo-link a {
+        padding-top: 10px;
+        padding-bottom: 0px;
+    }
+
 }
 
 @media only screen and (min-width: 992px) {
@@ -395,6 +417,11 @@ a.icon {
     .dropbtn {
         font-size: 30px;
     }
+
+    .desktop-navbar-wrap .logo-link a {
+        padding-top: 10px;
+        padding-bottom: 0px;
+    }
 }
 
 @media only screen and (min-width: 1200px) {
@@ -429,6 +456,11 @@ a.icon {
     .dropbtn {
         font-size: 30px;
     }
+
+    .desktop-navbar-wrap .logo-link a {
+        padding-top: 10px;
+        padding-bottom: 0px;
+    }
 }
 
 @media only screen and (min-width: 1500px) {
@@ -462,6 +494,11 @@ a.icon {
     .dropbtn {
         font-size: 30px;
     }
+
+    .desktop-navbar-wrap .logo-link a {
+        padding-top: 10px;
+        padding-bottom: 0px;
+    }
 }
 
 
@@ -482,7 +519,3 @@ a.icon {
         background-image: url('../images/Nykant-Logo-Finish-blue.png');
     }
 
-.desktop-navbar-wrap .logo-link a {
-    padding-top: 10px;
-    padding-bottom: 0px;
-}

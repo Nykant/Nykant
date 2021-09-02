@@ -80,3 +80,22 @@
 .nykant-logo {
     font-size:25px;
 }
+
+.logo-link {
+    position: relative;
+    padding-top:20px;
+    width:150px;
+}
+
+#logo {
+    background-image: url('../images/Nykant-Logo-Finish.png');
+    background-size: contain;
+    display: block;
+    width: 150px;
+    height: 80px;
+    transition: all 0.3s;
+}
+
+    #logo:hover {
+        background-image: url('../images/Nykant-Logo-Finish-blue.png');
+    }
