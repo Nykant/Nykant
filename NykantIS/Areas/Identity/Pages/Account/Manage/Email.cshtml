@@ -3,6 +3,9 @@
 @inject IConfiguration configuration
 @{
     ViewData["Title"] = "Skift Email";
+    ViewData["Description"] = "";
+}
+@{
     //ViewData["ActivePage"] = ManageNavPages.Email;
     var nykantBaseUrl = configuration.GetSection("Urls")["mvc"];
 }
