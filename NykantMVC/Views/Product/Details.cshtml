@@ -1,7 +1,8 @@
 ﻿@model Product
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = Model.Title;
+    ViewData["Description"] = Model.Description;
 }
 
 <script src="~/JS/product-details.js" defer></script>
@@ -108,99 +109,99 @@
 
 
 @*<div class="row top-side-padding border-bottom background-lightblue">
-    <div class="col-4 center">
-        <div class="reviews padding">
-            <h1>Reviews</h1>
-            @if (Model.Reviews.Count() == 0)
-            {
-                <p>Der er ingen reviews for dette produkt endnu</p>
-            }
-            @foreach (var item in Model.Reviews)
-            {
-                <div class="review">
-                    <h1>Brugernavn</h1>
-                    <div class="review-stars">
-                        @switch (item.Stars)
-                        {
-                            case 1:
-                                <i class="fas fa-star checked"></i>
-                                <i class="fas fa-star unchecked"></i>
-                                <i class="fas fa-star unchecked"></i>
-                                <i class="fas fa-star unchecked"></i>
-                                <i class="fas fa-star unchecked"></i>
-                                break;
-                            case 2:
-                                <i class="fas fa-star checked"></i>
-                                <i class="fas fa-star checked"></i>
-                                <i class="fas fa-star unchecked"></i>
-                                <i class="fas fa-star unchecked"></i>
-                                <i class="fas fa-star unchecked"></i>
-                                break;
-                            case 3:
-                                <i class="fas fa-star checked"></i>
-                                <i class="fas fa-star checked"></i>
-                                <i class="fas fa-star checked"></i>
-                                <i class="fas fa-star unchecked"></i>
-                                <i class="fas fa-star unchecked"></i>
-                                break;
-                            case 4:
-                                <i class="fas fa-star checked"></i>
-                                <i class="fas fa-star checked"></i>
-                                <i class="fas fa-star checked"></i>
-                                <i class="fas fa-star checked"></i>
-                                <i class="fas fa-star unchecked"></i>
-                                break;
-                            case 5:
-                                <i class="fas fa-star checked"></i>
-                                <i class="fas fa-star checked"></i>
-                                <i class="fas fa-star checked"></i>
-                                <i class="fas fa-star checked"></i>
-                                <i class="fas fa-star checked"></i>
-                                break;
-                        }
+        <div class="col-4 center">
+            <div class="reviews padding">
+                <h1>Reviews</h1>
+                @if (Model.Reviews.Count() == 0)
+                {
+                    <p>Der er ingen reviews for dette produkt endnu</p>
+                }
+                @foreach (var item in Model.Reviews)
+                {
+                    <div class="review">
+                        <h1>Brugernavn</h1>
+                        <div class="review-stars">
+                            @switch (item.Stars)
+                            {
+                                case 1:
+                                    <i class="fas fa-star checked"></i>
+                                    <i class="fas fa-star unchecked"></i>
+                                    <i class="fas fa-star unchecked"></i>
+                                    <i class="fas fa-star unchecked"></i>
+                                    <i class="fas fa-star unchecked"></i>
+                                    break;
+                                case 2:
+                                    <i class="fas fa-star checked"></i>
+                                    <i class="fas fa-star checked"></i>
+                                    <i class="fas fa-star unchecked"></i>
+                                    <i class="fas fa-star unchecked"></i>
+                                    <i class="fas fa-star unchecked"></i>
+                                    break;
+                                case 3:
+                                    <i class="fas fa-star checked"></i>
+                                    <i class="fas fa-star checked"></i>
+                                    <i class="fas fa-star checked"></i>
+                                    <i class="fas fa-star unchecked"></i>
+                                    <i class="fas fa-star unchecked"></i>
+                                    break;
+                                case 4:
+                                    <i class="fas fa-star checked"></i>
+                                    <i class="fas fa-star checked"></i>
+                                    <i class="fas fa-star checked"></i>
+                                    <i class="fas fa-star checked"></i>
+                                    <i class="fas fa-star unchecked"></i>
+                                    break;
+                                case 5:
+                                    <i class="fas fa-star checked"></i>
+                                    <i class="fas fa-star checked"></i>
+                                    <i class="fas fa-star checked"></i>
+                                    <i class="fas fa-star checked"></i>
+                                    <i class="fas fa-star checked"></i>
+                                    break;
+                            }
+                        </div>
+                        <div class="line"></div>
+                        <h2>@item.Title</h2>
+                        <p>@item.Body</p>
                     </div>
-                    <div class="line"></div>
-                    <h2>@item.Title</h2>
-                    <p>@item.Body</p>
-                </div>
-            }
+                }
+            </div>
         </div>
     </div>
-</div>
 
-<div class="row top-side-padding bottom-side-padding">
-    <div class="col-4 center">
-        <form class="review-form" method="post" asp-controller="Review" asp-action="PostReview">
-            <h1>Skriv et review</h1>
-            <div class="review-stars right right-side-padding">
-                <i id="star1" class="fas fa-star unchecked"></i>
-                <i id="star2" class="fas fa-star unchecked"></i>
-                <i id="star3" class="fas fa-star unchecked"></i>
-                <i id="star4" class="fas fa-star unchecked"></i>
-                <i id="star5" class="fas fa-star unchecked"></i>
-            </div>
-            @if (User.Identity.IsAuthenticated)
-            {
-                <input hidden asp-for="@Model.Review.Subject" value="@User.Claims.FirstOrDefault(x => x.Type == "sub").Value" />
-            }
-            <input hidden asp-for="@Model.Review.ProductId" value="@Model.Product.Id" />
-            <input hidden asp-for="@Model.Review.Stars" id="stars-input" />
-            <input id="review-title" class="title" asp-for="@Model.Review.Title" placeholder="Titel" />
-            <span class="title-val" asp-validation-for="@Model.Review.Title"></span>
-            <textarea id="review-body" class="body" asp-for="@Model.Review.Body" placeholder="Besked"></textarea>
-            <span class="body-val" asp-validation-for="@Model.Review.Body"></span>
-            @if (User.Identity.IsAuthenticated)
-            {
-                <button id="review-button" class="button" type="submit">Vælg stjerner</button>
-            }
-            else
-            {
-                <button class="button" type="submit" disabled>Log ind for at skrive review</button>
-            }
+    <div class="row top-side-padding bottom-side-padding">
+        <div class="col-4 center">
+            <form class="review-form" method="post" asp-controller="Review" asp-action="PostReview">
+                <h1>Skriv et review</h1>
+                <div class="review-stars right right-side-padding">
+                    <i id="star1" class="fas fa-star unchecked"></i>
+                    <i id="star2" class="fas fa-star unchecked"></i>
+                    <i id="star3" class="fas fa-star unchecked"></i>
+                    <i id="star4" class="fas fa-star unchecked"></i>
+                    <i id="star5" class="fas fa-star unchecked"></i>
+                </div>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <input hidden asp-for="@Model.Review.Subject" value="@User.Claims.FirstOrDefault(x => x.Type == "sub").Value" />
+                }
+                <input hidden asp-for="@Model.Review.ProductId" value="@Model.Product.Id" />
+                <input hidden asp-for="@Model.Review.Stars" id="stars-input" />
+                <input id="review-title" class="title" asp-for="@Model.Review.Title" placeholder="Titel" />
+                <span class="title-val" asp-validation-for="@Model.Review.Title"></span>
+                <textarea id="review-body" class="body" asp-for="@Model.Review.Body" placeholder="Besked"></textarea>
+                <span class="body-val" asp-validation-for="@Model.Review.Body"></span>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <button id="review-button" class="button" type="submit">Vælg stjerner</button>
+                }
+                else
+                {
+                    <button class="button" type="submit" disabled>Log ind for at skrive review</button>
+                }
 
-        </form>
-    </div>
-</div>*@
+            </form>
+        </div>
+    </div>*@
 
 
 

@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     @*<meta http-equiv="Content-Security-Policy" content="default-src 'self' https://js.stripe.com/v3/ https://kit.fontawesome.com/dfade6c231.js">*@
 
-    <title>@ViewData["Title"] - Nykant</title>
+    <title>@ViewData["Title"]</title>
+    <meta name="description" content="@ViewData["Description"]" />
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
@@ -82,7 +83,6 @@
                     <a asp-controller="Nykant" asp-action="PrivacyPolicy">Håndtering af persondata</a>
                     <a asp-controller="Nykant" asp-action="CookiePolicy">Cookie politik og instillinger</a>
                     <a asp-controller="Nykant" asp-action="TermsAndConditions">Vilkår og betingelser</a>
-                    <a asp-controller="Nykant" asp-action="DataSecurityReporting">Data sikkerhedsrapportering</a>
                 </div>
             </div>
         </div>

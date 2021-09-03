@@ -2,7 +2,7 @@
 @model EmailModel
 @inject IConfiguration configuration
 @{
-    ViewData["Title"] = "Manage Email";
+    ViewData["Title"] = "Skift Email";
     //ViewData["ActivePage"] = ManageNavPages.Email;
     var nykantBaseUrl = configuration.GetSection("Urls")["mvc"];
 }
@@ -20,8 +20,8 @@
 
         <div class="sidebar">
             <div class="profile-nav">
-                <a class="current" asp-area="identity" asp-page="/account/manage/email">Change Email</a>
-                <a asp-area="identity" asp-page="/account/manage/changepassword">Change Password</a>
+                <a class="current" asp-area="identity" asp-page="/account/manage/email">Skift Email</a>
+                <a asp-area="identity" asp-page="/account/manage/changepassword">Skift Password</a>
             </div>
         </div>
 
@@ -49,7 +49,7 @@
 
                         @if (!Model.IsEmailConfirmed)
                         {
-                            <button id="email-verification" style="width:30%" type="submit" asp-page-handler="SendVerificationEmail" class="button">Send verification email</button>
+                            <button id="email-verification" style="width:30%" type="submit" asp-page-handler="SendVerificationEmail" class="button">Send bekræftelses email</button>
                         }
 
                         <div class="custom-input">
@@ -67,7 +67,7 @@
 
                     </div>
                     <div class="col-12 right top-side-padding">
-                        <button id="change-email-button" type="submit" asp-page-handler="ChangeEmail" class="button">Opdater Email</button>
+                        <button id="change-email-button" type="submit" asp-page-handler="ChangeEmail" class="button">Skift Email</button>
                     </div>
                 </form>
             </div>

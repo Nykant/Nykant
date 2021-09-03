@@ -1,17 +1,19 @@
 ﻿@model CheckoutVM
-
 @{
-    ViewData["Title"] = "Checkout";
+    ViewData["Title"] = "Tjek Ud";
+    ViewData["Description"] = "";
+}
+@{
     int stage = 0;
     if (Model.Checkout.Stage == Stage.customerInf)
     {
         stage = (int)Stage.customerInf;
     }
-    else if(Model.Checkout.Stage == Stage.shipping)
+    else if (Model.Checkout.Stage == Stage.shipping)
     {
         stage = (int)Stage.shipping;
     }
-    else if(Model.Checkout.Stage == Stage.payment)
+    else if (Model.Checkout.Stage == Stage.payment)
     {
         stage = (int)Stage.payment;
     }

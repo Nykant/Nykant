@@ -661,6 +661,11 @@ ol, ul {
         float: none;
     }
 
+    .responsive-form-3 {
+        width: 100%;
+
+    }
+
 
     .sidebar {
         width: 100%;
@@ -686,6 +691,10 @@ ol, ul {
     .responsive-form-2 {
         width: 100%;
         float: none;
+    }
+
+    .responsive-form-3 {
+        width: 100%;
     }
 
 
@@ -716,6 +725,10 @@ ol, ul {
         float:right;
     }
 
+    .responsive-form-3 {
+        margin: auto;
+        width: 70%;
+    }
 
     .sidebar {
         border: none;
@@ -723,8 +736,6 @@ ol, ul {
         float: left;
         margin-bottom: 0px;
     }
-
-
 }
 
 @media only screen and (min-width: 873px) {
@@ -741,6 +752,11 @@ ol, ul {
     .responsive-form-2 {
         width: 70%;
         float: right;
+    }
+
+    .responsive-form-3 {
+        margin: auto;
+        width: 70%;
     }
 
 
@@ -767,6 +783,11 @@ ol, ul {
         float: right;
     }
 
+    .responsive-form-3 {
+        margin: auto;
+        width: 70%;
+    }
+
     .sidebar {
         float: left;
         border: none;
@@ -788,6 +809,11 @@ ol, ul {
     .responsive-form-2 {
         width: 70%;
         float: right;
+    }
+
+    .responsive-form-3 {
+        margin: auto;
+        width: 70%;
     }
 
     .sidebar {
@@ -813,6 +839,11 @@ ol, ul {
         float: right;
     }
 
+    .responsive-form-3 {
+        margin: auto;
+        width: 70%;
+    }
+
     .sidebar {
         float: left;
         border: none;
@@ -834,6 +865,11 @@ ol, ul {
     .responsive-form-2 {
         width: 70%;
         float: right;
+    }
+
+    .responsive-form-3 {
+        margin:auto;
+        width: 70%;
     }
 
     .sidebar {
