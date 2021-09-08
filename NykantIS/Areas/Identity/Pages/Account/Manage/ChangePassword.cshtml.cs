@@ -40,7 +40,7 @@ namespace NykantIS.Areas.Identity.Pages.Account.Manage
 
         public class InputModel
         {
-            [Required(ErrorMessage = "Nuværende password feltet skal udfyldes.")]
+            [Required(ErrorMessage = "The Email field is required.")]
             [DataType(DataType.Password)]
             [Display(Name = "Nuværende password")]
             public string OldPassword { get; set; }

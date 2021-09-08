@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
-
 using IdentityServer4;
 using NykantIS.Data;
 using NykantIS.Models;
@@ -34,6 +33,7 @@ using Microsoft.AspNetCore.Localization;
 using System.Globalization;
 using System.Collections.Generic;
 using Microsoft.Extensions.Localization;
+using Microsoft.AspNetCore.Mvc.Razor;
 
 namespace NykantIS
 {
@@ -56,52 +56,52 @@ namespace NykantIS
             string identityConnection = null;
             var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 
-                mykeyConnection = Configuration.GetConnectionString("MyKeysConnection");
-                identityserverConnection = Configuration.GetConnectionString("IdentityServer");
-                identityConnection = Configuration.GetConnectionString("Identity");
+            mykeyConnection = Configuration.GetConnectionString("MyKeysConnection");
+            identityserverConnection = Configuration.GetConnectionString("IdentityServer");
+            identityConnection = Configuration.GetConnectionString("Identity");
 
 
-                services.AddDbContext<MyKeysContext>(options =>
-                    options.UseMySql(mykeyConnection));
+            services.AddDbContext<MyKeysContext>(options =>
+                options.UseMySql(mykeyConnection));
 
-                services.AddDataProtection()
-                    .PersistKeysToDbContext<MyKeysContext>()
-                    .SetApplicationName("Nykant");
+            services.AddDataProtection()
+                .PersistKeysToDbContext<MyKeysContext>()
+                .SetApplicationName("Nykant");
 
-                services.AddDbContext<IdentityContext>(options =>
-                    options.UseMySql(identityConnection));
+            services.AddDbContext<IdentityContext>(options =>
+                options.UseMySql(identityConnection));
 
-                services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
-                    .AddEntityFrameworkStores<IdentityContext>()
-                    .AddDefaultTokenProviders();
+            services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<IdentityContext>()
+                .AddDefaultTokenProviders();
 
-                var builder = services.AddIdentityServer(options =>
+            var builder = services.AddIdentityServer(options =>
+            {
+                options.IssuerUri = Configuration.GetValue<string>("IssuerUri");
+
+                options.Events.RaiseErrorEvents = true;
+                options.Events.RaiseInformationEvents = true;
+                options.Events.RaiseFailureEvents = true;
+                options.Events.RaiseSuccessEvents = true;
+                options.EmitStaticAudienceClaim = true;
+
+                options.UserInteraction.LoginUrl = "/Account/Login";
+                options.UserInteraction.LogoutUrl = "/Account/Logout";
+
+                options.Authentication = new AuthenticationOptions()
                 {
-                    options.IssuerUri = Configuration.GetValue<string>("IssuerUri");
-
-                    options.Events.RaiseErrorEvents = true;
-                    options.Events.RaiseInformationEvents = true;
-                    options.Events.RaiseFailureEvents = true;
-                    options.Events.RaiseSuccessEvents = true;
-                    options.EmitStaticAudienceClaim = true;
-
-                    options.UserInteraction.LoginUrl = "/Account/Login";
-                    options.UserInteraction.LogoutUrl = "/Account/Logout";
-
-                    options.Authentication = new AuthenticationOptions()
+                    CookieLifetime = TimeSpan.FromHours(10), // ID server cookie timeout set to 10 hours
+                    CookieSlidingExpiration = true
+                };
+            })
+            .AddConfigurationStore(options =>
+            {
+                options.ConfigureDbContext = b => b
+                    .UseMySql(identityserverConnection, mySqlOptionsAction: mySql =>
                     {
-                        CookieLifetime = TimeSpan.FromHours(10), // ID server cookie timeout set to 10 hours
-                        CookieSlidingExpiration = true
-                    };
-                })
-                .AddConfigurationStore(options =>
-                {
-                    options.ConfigureDbContext = b => b
-                        .UseMySql(identityserverConnection, mySqlOptionsAction: mySql =>
-                        {
-                            mySql.MigrationsAssembly(migrationsAssembly);
-                        });
-                })
+                        mySql.MigrationsAssembly(migrationsAssembly);
+                    });
+            })
             .AddOperationalStore(options =>
             {
                 options.ConfigureDbContext = b => b
@@ -110,17 +110,17 @@ namespace NykantIS
                         mySql.MigrationsAssembly(migrationsAssembly);
                     });
             })
+
             .AddAspNetIdentity<ApplicationUser>();
 
-                // not recommended for production - you need to store your key material somewhere secure
-                builder.AddDeveloperSigningCredential();
-            
-            
+            // not recommended for production - you need to store your key material somewhere secure
+            builder.AddDeveloperSigningCredential();
+
             services.AddAuthentication()
                 .AddGoogle("Google", options =>
                 {
                     options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
-                    
+
                     // register your IdentityServer with Google at https://console.developers.google.com
                     // enable the Google+ API
                     // set the redirect URI to https://localhost:5001/signin-google
@@ -134,43 +134,32 @@ namespace NykantIS
 
             services.AddScoped<IRazorViewToStringRenderer, RazorViewToStringRenderer>();
 
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
+
             services.AddControllersWithViews()
-                    .AddMvcOptions(options =>
-                    {
-                        options.MaxModelValidationErrors = 50;
-                        options.ModelBindingMessageProvider.SetValueMustNotBeNullAccessor(
-                            _ => "Du mangler at udfylde her.");
-                    });
+                                    .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+                                    .AddDataAnnotationsLocalization();
             services.AddRazorPages()
-                    .AddMvcOptions(options =>
-                    {
-                        options.MaxModelValidationErrors = 50;
-                        options.ModelBindingMessageProvider.SetValueMustNotBeNullAccessor(
-                            _ => "Du mangler at udfylde her.");
-                    });
+                                    .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+                                    .AddDataAnnotationsLocalization();
 
             services.Configure<ForwardedHeadersOptions>(options =>
             {
                 options.ForwardedHeaders =
                     ForwardedHeaders.All;
-                options.KnownNetworks.Clear();
-                options.KnownProxies.Clear();
+
+                //options.KnownNetworks.Clear();
+                //options.KnownProxies.Clear();
             });
-
-            services.AddLocalization();
-
-            //services.AddScoped<IRequestCulture, RequestCultureFeature>();
-
         }
 
         public void Configure(IApplicationBuilder app)
         {
-            app.UseRequestLocalization(new RequestLocalizationOptions
+            var DK = new CultureInfo("da-DK");
+            var cultureList = new List<CultureInfo>
             {
-                DefaultRequestCulture = new RequestCulture(new CultureInfo("da")),
-                SupportedCultures = new List<CultureInfo> { new CultureInfo("en-GB"), new CultureInfo("da") },
-                SupportedUICultures = new List<CultureInfo> { new CultureInfo("en-GB"), new CultureInfo("da") }
-            });
+                DK
+            };
 
             app.UsePathBase(Configuration.GetValue<string>("PathBase"));
             app.UseForwardedHeaders();
@@ -195,6 +184,13 @@ namespace NykantIS
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseRequestLocalization(new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture(DK, DK),
+                SupportedCultures = cultureList,
+                SupportedUICultures = cultureList
+            });
 
             app.UseIdentityServer();
             app.UseAuthorization();

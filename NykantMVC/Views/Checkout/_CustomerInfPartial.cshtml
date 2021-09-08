@@ -2,7 +2,7 @@
 
 <div class="row bottom-side-padding">
         <div class="hide-overflow responsive-form" id="customerinf-wrapper">
-            <div class="checkout-header" id="customerInf-header" style="z-index:200;">
+            <div class="checkout-header z200" id="customerInf-header">
                 <h1>
                     Modtager oplysninger
                 </h1>
@@ -22,7 +22,7 @@
                 </div>
             </div>
 
-            <form style="z-index:50;" id="customer-form" method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="customer_completed" asp-controller="Checkout" asp-action="PostCustomerInf">
+            <form class="z50" id="customer-form" method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="customer_completed" asp-controller="Checkout" asp-action="PostCustomerInf">
                 <input type="hidden" id="edit-customer" name="editCustomer" value="false" />
                 <input type="hidden" asp-for="@Model.CustomerInf.Id" />
                 <div class="checkout-wrap" id="customer-wrap" >
@@ -96,7 +96,7 @@
                             </div>
                         </div>
 
-                        <div style="padding:10px;">
+                        <div class="padding-10">
 
                         </div>
                     </div>

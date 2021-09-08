@@ -13,14 +13,14 @@
     <script src="~/JS/consent.js" defer></script>
 
     <div id="cookie-consent" class="cookie-consent" role="alert">
-        <div class="header" style="margin-bottom:10px;">
+        <div class="header margin-bottom-10">
             Cookie Samtykke
         </div>
         <div class="col-6 left">
 
-            <div style="padding-bottom:10px;">
+            <div class="bottom-side-padding">
                 <p>
-                    Ved at klikke <span style="font-weight:bold;">accepter alle cookies</span> giver du dit samtykke på at vi må bruge alle vores cookies i din browser.
+                    Ved at klikke <span class="bold-text">accepter alle cookies</span> giver du dit samtykke på at vi må bruge alle vores cookies i din browser.
                 </p>
             </div>
             <div>
@@ -29,19 +29,19 @@
         </div>
 
         <div class="col-6 right">
-            <div class="col-4 left" style="padding:5px;">
+            <div class="col-4 left padding-5">
                 <button type="button" class="button" id="open-privacy2">
                     Instillinger
                 </button>
             </div>
 
-            <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#cookie-settings-partial" data-ajax-success="consent_updated" asp-controller="Nykant" asp-action="OnlyEssentialConsent" style="padding:5px;" class="col-4 left">
+            <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#cookie-settings-partial" data-ajax-success="consent_updated" asp-controller="Nykant" asp-action="OnlyEssentialConsent" class="col-4 left padding-5">
                 <button type="submit" class="button">
                     Kun essentielle cookies
                 </button>
             </form>
 
-            <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#cookie-settings-partial" data-ajax-success="consent_updated" asp-controller="Nykant" asp-action="AllowAllConsent" style="padding:5px;" class="col-4 left">
+            <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#cookie-settings-partial" data-ajax-success="consent_updated" asp-controller="Nykant" asp-action="AllowAllConsent" class="col-4 left padding-5">
                 <button type="submit" class="green-button">
                     Accepter alle cookies
                 </button>

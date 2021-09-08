@@ -10,15 +10,17 @@ using System.Threading.Tasks;
 using NykantMVC.Extensions;
 using System;
 using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Localization;
 
 namespace NykantMVC.Controllers
 {
     [AllowAnonymous]
     public class NykantController : BaseController
     {
-
-        public NykantController(ILogger<NykantController> logger, IOptions<Urls> urls) : base(logger, urls)
+        private readonly IStringLocalizer<NykantController> localizer;
+        public NykantController(ILogger<NykantController> logger, IOptions<Urls> urls, IStringLocalizer<NykantController> localizer) : base(logger, urls)
         {
+            this.localizer = localizer;
         }
 
         public IActionResult Index()
@@ -31,6 +33,7 @@ namespace NykantMVC.Controllers
         }
         public IActionResult PrivacyPolicy()
         {
+            ViewData["PrivacyPolicyTitle"] = localizer["PrivacyPolicyTitle"];
             return View();
         }
         public IActionResult TermsAndConditions()

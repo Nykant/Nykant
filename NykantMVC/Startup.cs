@@ -3,16 +3,21 @@ using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Localization;
 using Microsoft.IdentityModel.Logging;
 using NykantMVC.Data;
 using NykantMVC.Models;
 using NykantMVC.Services;
 using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.IdentityModel.Tokens.Jwt;
 using System.IO;
 
@@ -96,35 +101,37 @@ namespace NykantMVC
 
             services.AddScoped<IProtectionService, ProtectionService>();
 
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
+
             services.AddControllersWithViews()
-                                    .AddMvcOptions(options =>
-                                    {
-                                        options.MaxModelValidationErrors = 50;
-                                        options.ModelBindingMessageProvider.SetValueMustNotBeNullAccessor(
-                                            _ => "Du mangler at udfylde her.");
-                                    });
+                                    .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+                                    .AddDataAnnotationsLocalization();
 
             services.Configure<ForwardedHeadersOptions>(options =>
             {
                 options.ForwardedHeaders =
                     ForwardedHeaders.All;
-                // Only loopback proxies are allowed by default.
-                // Clear that restriction because forwarders are enabled by explicit 
-                // configuration.
-                options.KnownNetworks.Clear();
-                options.KnownProxies.Clear();
-            });
 
+                //options.KnownNetworks.Clear();
+                //options.KnownProxies.Clear();
+            });
 
             // Register the Google Analytics configuration
             services.Configure<GoogleAnalyticsOptions>(options => Configuration.GetSection("GoogleAnalytics").Bind(options));
 
             // Register the TagHelperComponent
             services.AddTransient<ITagHelperComponent, GoogleAnalyticsTagHelperComponent>();
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            var DK = new CultureInfo("da-DK");
+            var cultureList = new List<CultureInfo>
+            {
+                DK
+            };
+
             app.UseForwardedHeaders();
 
             if (env.IsDevelopment())
@@ -150,6 +157,13 @@ namespace NykantMVC
 
             app.UseRouting();
 
+            app.UseRequestLocalization(new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture(DK, DK),
+                SupportedCultures = cultureList,
+                SupportedUICultures = cultureList
+            });
+
             app.UseAuthentication();
             app.UseAuthorization();
 
@@ -162,62 +176,5 @@ namespace NykantMVC
                     pattern: "{controller=Nykant}/{action=Index}/{id?}");
             });
         }
-
-        // -------------------------- FOR COOKIES ---------------------------
-
-        //private void CheckSameSite(HttpContext httpContext, CookieOptions options)
-        //{
-        //    if (options.SameSite == SameSiteMode.None)
-        //    {
-        //        var userAgent = httpContext.Request.Headers["User-Agent"].ToString();
-        //        if (DisallowsSameSiteNone(userAgent))
-        //        {
-        //            options.SameSite = SameSiteMode.Unspecified;
-        //        }
-        //    }
-        //}
-
-        //public static bool DisallowsSameSiteNone(string userAgent)
-        //{
-        //    // Check if a null or empty string has been passed in, since this
-        //    // will cause further interrogation of the useragent to fail.
-        //    if (String.IsNullOrWhiteSpace(userAgent))
-        //        return false;
-
-        //    // Cover all iOS based browsers here. This includes:
-        //    // - Safari on iOS 12 for iPhone, iPod Touch, iPad
-        //    // - WkWebview on iOS 12 for iPhone, iPod Touch, iPad
-        //    // - Chrome on iOS 12 for iPhone, iPod Touch, iPad
-        //    // All of which are broken by SameSite=None, because they use the iOS networking
-        //    // stack.
-        //    if (userAgent.Contains("CPU iPhone OS 12") ||
-        //        userAgent.Contains("iPad; CPU OS 12"))
-        //    {
-        //        return true;
-        //    }
-
-        //    // Cover Mac OS X based browsers that use the Mac OS networking stack. 
-        //    // This includes:
-        //    // - Safari on Mac OS X.
-        //    // This does not include:
-        //    // - Chrome on Mac OS X
-        //    // Because they do not use the Mac OS networking stack.
-        //    if (userAgent.Contains("Macintosh; Intel Mac OS X 10_14") &&
-        //        userAgent.Contains("Version/") && userAgent.Contains("Safari"))
-        //    {
-        //        return true;
-        //    }
-
-        //    // Cover Chrome 50-69, because some versions are broken by SameSite=None, 
-        //    // and none in this range require it.
-        //    // Note: this covers some pre-Chromium Edge versions, 
-        //    // but pre-Chromium Edge does not require SameSite=None.
-        //    if (userAgent.Contains("Chrome/5") || userAgent.Contains("Chrome/6"))
-        //    {
-        //        return true;
-        //    }
-
-        //    return false;
-        //}
     }
 }

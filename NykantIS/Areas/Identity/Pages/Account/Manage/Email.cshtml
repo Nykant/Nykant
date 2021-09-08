@@ -18,7 +18,7 @@
     </a>
 </div>
 
-<div style="width:100%; height:100%;" class="background-lightgrey top-side-padding">
+<div class="fullscreen background-lightgrey top-side-padding">
     <div class="responsive-container">
 
         <div class="sidebar">
@@ -38,11 +38,11 @@
                         <div class="custom-input">
                             @if (Model.IsEmailConfirmed)
                             {
-                                <div class="email-verification" style="color:green">✓</div>
+                                <div class="email-verification green-text" >✓</div>
                             }
                             else
                             {
-                                <div class="email-verification" style="color:red">X</div>
+                                <div class="email-verification red-text" >X</div>
                             }
                             <input asp-for="Email" disabled />
                             <label asp-for="Email"></label>
@@ -52,7 +52,7 @@
 
                         @if (!Model.IsEmailConfirmed)
                         {
-                            <button id="email-verification" style="width:30%" type="submit" asp-page-handler="SendVerificationEmail" class="button">Send bekræftelses email</button>
+                            <button id="email-verification" type="submit" asp-page-handler="SendVerificationEmail" class="button width-30">Send bekræftelses email</button>
                         }
 
                         <div class="custom-input">

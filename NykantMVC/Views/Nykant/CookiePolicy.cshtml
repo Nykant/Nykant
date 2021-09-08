@@ -1,18 +1,19 @@
-﻿@{ 
+﻿@inject IViewLocalizer localizer
+@{ 
     ViewData["Title"] = "Nykants Cookie Politik";
     ViewData["Description"] = "Nykants politik om brug af cookies.";
+
 }
 
 <script src="~/JS/consent.js" defer></script>
 
 <div class="row background-lightblue">
     <div class="col-3 cookie-header center">
-        <h1>Nykants Cookie Politik</h1>
-
+        @localizer["Cookie Policy Title"]
     </div>
     <div class="col-5 center cookie-buttons">
 
-        <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#cookie-settings-partial" data-ajax-success="consent_updated" asp-controller="Nykant" asp-action="OnlyEssentialConsent" style="padding:5px;" class="col-4 left">
+        <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#cookie-settings-partial" data-ajax-success="consent_updated" asp-controller="Nykant" asp-action="OnlyEssentialConsent" class="col-4 left padding-5">
             <button type="submit" class="button">
                 Kun essentielle cookies
             </button>
@@ -22,7 +23,7 @@
                 Instillinger
             </button>
         </div>
-        <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#cookie-settings-partial" data-ajax-success="consent_updated" asp-controller="Nykant" asp-action="AllowAllConsent" style="padding:5px;" class="col-4 left">
+        <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#cookie-settings-partial" data-ajax-success="consent_updated" asp-controller="Nykant" asp-action="AllowAllConsent" class="col-4 left padding-5">
             <button type="submit" class="green-button">
                 Accepter alle cookies
             </button>
@@ -44,7 +45,7 @@
         <div>
             <h1>Hjemmesidens ejer og kontaktoplysninger</h1>
             <p>
-                <span style="font-weight:bold;">Denne hjemmeside er drevet og ejet af:</span><br />
+                <span class="bold-text">Denne hjemmeside er drevet og ejet af:</span><br />
                 Christian Salgård Svinding<br />
                 Annasholmsgade 14, 4<br />
                 5000 Odense C, Danmark.<br />
@@ -108,7 +109,7 @@
             <h1>Har du spørgsmål?</h1>
             <p>Har du kommentarer eller spørgsmål i forbindelse med vores information og/eller behandling af personlige oplysninger, er du velkommen til at kontakte os. </p>
         </div>
-        <div style="padding:50px;">
+        <div class="padding-50">
             @*------------------------- LISTE AF COOKIES ---------------------*@
             <h1>::LISTE AF COOKIES ER PÅ VEJ::</h1>
         </div>

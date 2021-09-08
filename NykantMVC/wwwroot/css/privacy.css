@@ -1,4 +1,9 @@
-﻿.cookie-consent {
+﻿.essential-cookies {
+    float: right;
+    color: green;
+}
+
+.cookie-consent {
     display:block;
     padding:10px;
     position: fixed;
