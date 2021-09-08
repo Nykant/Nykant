@@ -11,10 +11,10 @@
 
 <div class="navbar">
     <div class="desktop-navbar-wrap">
-        <a href="javascript:void(0);" class="icon" id="nav-burger">
-            <i class="fa fa-bars"></i>
+        <a href="javascript:void(0);" id="nav-burger">
+            <img class="nav-svg" src="~/lib/svg/bars.svg" />
         </a>
-        <button id="search-button"><i class="fas fa-search"></i></button>
+        <button id="search-button"><img class="nav-svg" src="~/lib/svg/search.svg" /></button>
 
         <div class="logo-link">
             <a asp-controller="Nykant" asp-action="Index">
@@ -26,7 +26,7 @@
 
 
         <a id="product-link" asp-controller="Product" asp-action="Index">PRODUKTER</a>
-        <a class="icon" asp-controller="Bag" asp-action="Details"><span>@ViewBag.BagItemAmount</span> <i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+        <a id="shopping-bag" asp-controller="Bag" asp-action="Details"><span>@ViewBag.BagItemAmount</span> <img class="nav-svg" src="~/lib/svg/shopping-bag.svg" /></a>
 
         @if (User.Identity.IsAuthenticated)
         {
@@ -43,8 +43,8 @@
             </div>*@
 
             <div class="dropdown">
-                <button href="javascript:void(0);" class="icon dropbtn" id="userLogo">
-                    <i class="fas fa-user"></i>
+                <button href="javascript:void(0);" class="dropbtn" id="userLogo">
+                    <img class="nav-svg" src="~/lib/svg/user.svg" />
                 </button>
                 <div class="dropdown-content">
                     <a href="@baseUrl/identity/account/manage/email">
@@ -72,8 +72,8 @@
             </div>*@
 
             <div class="dropdown">
-                <button href="javascript:void(0);" class="icon dropbtn" id="userLogo">
-                    <i class="fas fa-user"></i>
+                <button href="javascript:void(0);" class="dropbtn" id="userLogo">
+                    <img class="nav-svg" src="~/lib/svg/user.svg" />
                 </button>
                 <div class="dropdown-content">
                     <a href="@baseUrl/account/login?redirectaction=@action&redirectcontroller=@controller">

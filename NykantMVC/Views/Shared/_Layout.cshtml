@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    @*<meta http-equiv="Content-Security-Policy" content="default-src 'self' https://js.stripe.com/v3/ https://kit.fontawesome.com/dfade6c231.js">*@
 
     <title>@ViewData["Title"]</title>
     <meta name="description" content="@ViewData["Description"]" />
@@ -32,14 +31,16 @@
     <link rel="stylesheet" href="~/css/search.css" />
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/jquery-validation/dist/additional-methods.min.js"></script>
-    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
-    <script src="https://ajax.aspnetcdn.com/ajax/jquery.unobtrusive-ajax/3.2.5/jquery.unobtrusive-ajax.min.js"></script>
+    @*<script src="~/lib/jquery-validation/dist/additional-methods.min.js"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+        <script src="~/lib/ajax/jquery.unobtrusive-ajax.min.js"></script>*@
     <script src="https://js.stripe.com/v3/"></script>
+    <partial name="_ValidationScriptsPartial" />
 
 </head>
 <body>
+
 
     <div id="search-container">
         <partial name="_SearchPartial" />
@@ -71,7 +72,7 @@
                 <a asp-controller="Nykant" asp-action="Contact">Kontakt os</a>
             </div>
             <div class="socialmedia">
-                <a href="#" class="icon"><i class="fab fa-facebook"></i></a>
+                <a href="#"><img class="small-svg" src="~/lib/svg/facebook.svg" /></a>
             </div>
         </div>
         <div class="row background-dark">
@@ -92,13 +93,9 @@
 
     @* ----------------------------------GLOBAL SCRIPTS-------------------------------------- *@
 
-    <script src="https://kit.fontawesome.com/dfade6c231.js"></script>
     <script src="~/JS/mobileNav.js"></script>
     <script src="~/JS/counter.js"></script>
     <script src="~/JS/image-changer.js"></script>
-    @*<script src="~/JS/jquery.mixitup.min.js"></script>*@
-    @*<script src="~/JS/modernizr.js"></script>*@
-    <!--<script src="~/JS/main.js"></script>-->  @*Resource jQuery*@
     <script src="~/JS/downarrow-stop.js"></script>
     <script src="~/JS/custom-input.js"></script>
     <script src="~/JS/search-button.js"></script>
