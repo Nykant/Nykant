@@ -60,7 +60,7 @@
                     }
                 </div>
 
-                <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="item_added" data-ajax-complete="noop" data-ajax-confirm="noop" data-ajax-begin="noop" data-ajax-failure="noop" asp-controller="BagItem" asp-action="PostBagItem">
+                <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="item_added" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" asp-controller="BagItem" asp-action="PostBagItem">
                     @Html.HiddenFor(x => x.Id)
                     @Html.HiddenFor(x => x.Images)
                     @Html.HiddenFor(x => x.ImageSource)

@@ -11,7 +11,7 @@
         <div class="filter">
             @foreach (var category in ViewBag.Categories)
             {
-                <form class="filter-form" asp-controller="Product" asp-action="Filter" method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#product-list" data-ajax-complete="filtercomplete" data-ajax-confirm="noop" data-ajax-begin="noop" data-ajax-failure="noop" data-ajax-success="noop">
+                <form class="filter-form" asp-controller="Product" asp-action="Filter" method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#product-list" data-ajax-complete="filtercomplete" data-ajax-begin="noop" data-ajax-failure="noop" data-ajax-success="noop">
                     <div class="category">
                         <input type="submit" name="categoryName" value="@category.Name" />
                     </div>
