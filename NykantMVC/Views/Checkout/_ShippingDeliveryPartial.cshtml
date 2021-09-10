@@ -19,7 +19,7 @@
                 </div>
                 
             </div>
-            <form id="shipping-form" method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="shipping_completed" asp-controller="Checkout" asp-action="PostShipping">
+            <form id="shipping-form" method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="shipping_completed" data-ajax-complete="noop" data-ajax-confirm="noop" data-ajax-begin="noop" data-ajax-failure="noop" asp-controller="Checkout" asp-action="PostShipping">
                 <input type="hidden" id="edit-shipping" name="editShipping" />
                 <input required type="hidden" id="shipping-delivery-id" name="shippingDelivery.Id" asp-for="@Model.Checkout.ShippingDelivery.Id" />
                 <input required type="hidden" id="shipping-delivery-name" name="shippingDelivery.Name" asp-for="@Model.Checkout.ShippingDelivery.Name" />

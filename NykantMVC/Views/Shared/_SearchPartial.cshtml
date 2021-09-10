@@ -1,6 +1,6 @@
 ﻿
 <div id="search-box">
-    <form id="search-form" asp-controller="nykant" asp-action="search" method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#search-container" data-ajax-complete="searchcompleted">
+    <form id="search-form" asp-controller="nykant" asp-action="search" method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#search-container" data-ajax-complete="searchcompleted" data-ajax-confirm="noop" data-ajax-begin="noop" data-ajax-failure="noop" data-ajax-success="noop">
         <input type="search" id="search-input" name="searchString" placeholder="hvad leder du efter?.." />
         
     </form>

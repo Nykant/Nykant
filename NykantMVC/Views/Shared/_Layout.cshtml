@@ -30,7 +30,11 @@
     <link rel="stylesheet" href="~/css/custom-switch.css" />
     <link rel="stylesheet" href="~/css/search.css" />
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    @{ 
+        Context.Request.Headers.TryGetValue("X-Request-ID", out var request_id);
+    }
+
+    <script nonce="test" src="~/lib/jquery/dist/jquery.js"></script>
     @*<script src="~/lib/jquery-validation/dist/additional-methods.min.js"></script>
         <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
         <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
@@ -93,6 +97,7 @@
 
     @* ----------------------------------GLOBAL SCRIPTS-------------------------------------- *@
 
+    <script src="~/JS/noop.js"></script>
     <script src="~/JS/mobileNav.js"></script>
     <script src="~/JS/counter.js"></script>
     <script src="~/JS/image-changer.js"></script>

@@ -74,7 +74,7 @@ namespace NykantMVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AllowAllConsent()
+        public IActionResult AllowAllConsent()
         {
             var consent = new Consent
             {
