@@ -155,13 +155,20 @@ namespace NykantIS
 
         public void Configure(IApplicationBuilder app)
         {
+            app.UsePathBase(Configuration.GetValue<string>("PathBase"));
+
             var DK = new CultureInfo("da-DK");
             var cultureList = new List<CultureInfo>
             {
                 DK
             };
+            app.UseRequestLocalization(new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture(DK, DK),
+                SupportedCultures = cultureList,
+                SupportedUICultures = cultureList
+            });
 
-            app.UsePathBase(Configuration.GetValue<string>("PathBase"));
             app.UseForwardedHeaders();
 
             InitializeDatabase(app);
@@ -181,18 +188,13 @@ namespace NykantIS
 
             IdentityModelEventSource.ShowPII = true;
 
+            app.UseDefaultFiles();
             app.UseStaticFiles();
 
             app.UseRouting();
 
-            app.UseRequestLocalization(new RequestLocalizationOptions
-            {
-                DefaultRequestCulture = new RequestCulture(DK, DK),
-                SupportedCultures = cultureList,
-                SupportedUICultures = cultureList
-            });
-
             app.UseIdentityServer();
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

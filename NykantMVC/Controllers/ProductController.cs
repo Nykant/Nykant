@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
@@ -11,15 +12,16 @@ namespace NykantMVC.Controllers
 {
     public class ProductController : BaseController
     {
-        public ProductController(ILogger<BaseController> logger, IOptions<Urls> urls) : base(logger, urls)
+        private readonly IStringLocalizer<NykantController> localizer;
+        public ProductController(ILogger<BaseController> logger, IOptions<Urls> urls, IStringLocalizer<NykantController> localizer) : base(logger, urls)
         {
+            this.localizer = localizer;
         }
 
         [HttpGet]
         public async Task<IActionResult> Index()
         {
             var json = await GetRequest("/Product/GetProducts");
-
             var products = JsonConvert.DeserializeObject<List<Product>>(json);
             ViewBag.Categories = JsonConvert.DeserializeObject<List<Category>>(await GetRequest("/Category/GetCategories"));
             return View(products);
@@ -29,9 +31,7 @@ namespace NykantMVC.Controllers
         public async Task<IActionResult> Details(int id)
         {
             var json = await GetRequest($"/Product/GetProduct/{id}");
-
             Product product = JsonConvert.DeserializeObject<Product>(json);
-
             return View(product);
         }
 

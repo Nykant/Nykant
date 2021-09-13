@@ -101,11 +101,11 @@ namespace NykantMVC
 
             services.AddScoped<IProtectionService, ProtectionService>();
 
-            services.AddLocalization(options => options.ResourcesPath = "Resources");
+            //services.AddLocalization(options => options.ResourcesPath = "Resources");
 
-            services.AddControllersWithViews()
-                                    .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
-                                    .AddDataAnnotationsLocalization();
+            services.AddControllersWithViews();
+                                    //.AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+                                    //.AddDataAnnotationsLocalization();
 
             services.Configure<ForwardedHeadersOptions>(options =>
             {
@@ -134,6 +134,13 @@ namespace NykantMVC
 
             app.UseForwardedHeaders();
 
+            //app.UseRequestLocalization(new RequestLocalizationOptions
+            //{
+            //    DefaultRequestCulture = new RequestCulture(DK, DK),
+            //    SupportedCultures = cultureList,
+            //    SupportedUICultures = cultureList
+            //});
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -156,13 +163,6 @@ namespace NykantMVC
             app.UseCookiePolicy();
 
             app.UseRouting();
-
-            app.UseRequestLocalization(new RequestLocalizationOptions
-            {
-                DefaultRequestCulture = new RequestCulture(DK, DK),
-                SupportedCultures = cultureList,
-                SupportedUICultures = cultureList
-            });
 
             app.UseAuthentication();
             app.UseAuthorization();
