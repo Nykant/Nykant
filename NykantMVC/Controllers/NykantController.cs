@@ -118,29 +118,36 @@ namespace NykantMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> Search(string searchString)
         {
-            if(searchString != null)
+            if (ModelState.IsValid)
             {
-                var json = await GetRequest("/Product/GetProducts");
-                var searchList = new List<Product>();
-                foreach (var product in JsonConvert.DeserializeObject<List<Product>>(json))
+                if (searchString != null)
                 {
-                    if (product.Title.ToLower().Contains(searchString.ToLower()))
+                    var json = await GetRequest("/Product/GetProducts");
+                    var searchList = new List<Product>();
+                    foreach (var product in JsonConvert.DeserializeObject<List<Product>>(json))
                     {
-                        searchList.Add(product);
+                        if (product.Title.ToLower().Contains(searchString.ToLower()))
+                        {
+                            searchList.Add(product);
+                        }
                     }
+                    ViewBag.SearchProductList = searchList;
                 }
-                ViewBag.SearchProductList = searchList;
+                else
+                {
+                    ViewBag.SearchProductList = new List<Product>();
+                }
+
+                return new PartialViewResult
+                {
+                    ViewName = "_SearchPartial",
+                    ViewData = this.ViewData
+                };
             }
             else
             {
-                ViewBag.SearchProductList = new List<Product>();
+                return null;
             }
-            
-            return new PartialViewResult
-            {
-                ViewName = "_SearchPartial",
-                ViewData = this.ViewData
-            };
         }
     }
 }
