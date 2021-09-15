@@ -12,10 +12,8 @@ namespace NykantMVC.Controllers
 {
     public class ProductController : BaseController
     {
-        private readonly IStringLocalizer<NykantController> localizer;
-        public ProductController(ILogger<BaseController> logger, IOptions<Urls> urls, IStringLocalizer<NykantController> localizer) : base(logger, urls)
+        public ProductController(ILogger<BaseController> logger, IOptions<Urls> urls) : base(logger, urls)
         {
-            this.localizer = localizer;
         }
 
         [HttpGet]

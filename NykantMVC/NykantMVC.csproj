@@ -77,7 +77,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Resources\Controllers\NykantController.da.resx">
+    <EmbeddedResource Update="Resources\Views\Nykant\PrivacyPolicy.da.resx">
       <Generator></Generator>
     </EmbeddedResource>
   </ItemGroup>

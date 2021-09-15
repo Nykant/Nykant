@@ -17,10 +17,8 @@ namespace NykantMVC.Controllers
     [AllowAnonymous]
     public class NykantController : BaseController
     {
-        //private readonly IStringLocalizer<NykantController> localizer;
-        public NykantController(ILogger<NykantController> logger, IOptions<Urls> urls/*, IStringLocalizer<NykantController> localizer*/) : base(logger, urls)
+        public NykantController(ILogger<NykantController> logger, IOptions<Urls> urls) : base(logger, urls)
         {
-            //this.localizer = localizer;
         }
 
         public IActionResult Index()
@@ -33,7 +31,6 @@ namespace NykantMVC.Controllers
         }
         public IActionResult PrivacyPolicy()
         {
-            //ViewData["PrivacyPolicyTitle"] = localizer["PrivacyPolicyTitle"];
             return View();
         }
         public IActionResult TermsAndConditions()

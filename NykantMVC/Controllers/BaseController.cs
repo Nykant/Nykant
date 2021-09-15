@@ -143,7 +143,7 @@ namespace NykantMVC.Controllers
                 var disco = await ISclient.GetDiscoveryDocumentAsync(_urls.Is);
                 if (disco.IsError)
                 {
-                    Console.WriteLine(disco.Error);
+                    _logger.LogInformation($"is error: {disco.Error}");
                     return null;
                 }
 
@@ -151,7 +151,6 @@ namespace NykantMVC.Controllers
                 var tokenResponse = await ISclient.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
                 {
                     Address = disco.TokenEndpoint,
-
                     ClientId = "client",
                     ClientSecret = "secret",
                     Scope = "NykantAPI"
@@ -159,7 +158,7 @@ namespace NykantMVC.Controllers
 
                 if (tokenResponse.IsError)
                 {
-                    Console.WriteLine(tokenResponse.Error);
+                    _logger.LogInformation($"is error: {tokenResponse.Error}");
                     return null;
                 }
 

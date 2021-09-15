@@ -101,19 +101,19 @@ namespace NykantMVC
 
             services.AddScoped<IProtectionService, ProtectionService>();
 
-            //services.AddLocalization(options => options.ResourcesPath = "Resources");
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
 
-            services.AddControllersWithViews();
-                                    //.AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
-                                    //.AddDataAnnotationsLocalization();
+            services.AddControllersWithViews()
+                                    .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+                                    .AddDataAnnotationsLocalization();
 
             services.Configure<ForwardedHeadersOptions>(options =>
             {
                 options.ForwardedHeaders =
                     ForwardedHeaders.All;
 
-                //options.KnownNetworks.Clear();
-                //options.KnownProxies.Clear();
+                options.KnownNetworks.Clear();
+                options.KnownProxies.Clear();
             });
 
             // Register the Google Analytics configuration
@@ -131,15 +131,14 @@ namespace NykantMVC
             {
                 DK
             };
+            app.UseRequestLocalization(new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture(DK, DK),
+                SupportedCultures = cultureList,
+                SupportedUICultures = cultureList
+            });
 
             app.UseForwardedHeaders();
-
-            //app.UseRequestLocalization(new RequestLocalizationOptions
-            //{
-            //    DefaultRequestCulture = new RequestCulture(DK, DK),
-            //    SupportedCultures = cultureList,
-            //    SupportedUICultures = cultureList
-            //});
 
             if (env.IsDevelopment())
             {

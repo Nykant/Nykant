@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Changes" xml:space="preserve">
+    <value>&lt;div&gt;
+            &lt;h1&gt;11. Ændring af vilkår&lt;/h1&gt;
+            &lt;p&gt;Ændrer vi vores vilkår, samtykker og politikker, og har det væsentlig betydning for dig og dine købte ydelser, orienterer vi dig via e-mail. Du kan altid se de gældende vilkår på vores hjemmeside.&lt;/p&gt;
+        &lt;/div&gt;</value>
+  </data>
+  <data name="Complaints" xml:space="preserve">
+    <value>&lt;div&gt;
+            &lt;h1&gt;8. Reklamationer&lt;/h1&gt;
+        &lt;/div&gt;</value>
+  </data>
+  <data name="Delivery and delay" xml:space="preserve">
+    <value>&lt;div&gt;
+            &lt;h1&gt;5. Levering og forsinkelse&lt;/h1&gt;
+            &lt;p&gt;Hvor leverer vi til?&lt;/p&gt;
+            &lt;p&gt;Hvem bruger vi til levering?&lt;/p&gt;
+            &lt;p&gt;Levering vil tage imellem hvor lang tid???&lt;/p&gt;
+            &lt;p&gt;Pris for levering?&lt;/p&gt;
+            &lt;h2&gt;Leveringsomkostninger&lt;/h2&gt;
+            &lt;h2&gt;Leveringsmåde&lt;/h2&gt;
+            &lt;p&gt;
+                Leveringsmåden fremgår af ordrebekræftelsen. Sælger bærer risikoen for varen, indtil den er overgivet til dig, dvs. indtil varen er i din besiddelse.
+            &lt;/p&gt;
+            &lt;h2&gt;Forsinket levering&lt;/h2&gt;
+            &lt;p&gt;Hvis leveringen af din vare er forsinket, så får du besked, så snart Sælger bliver opmærksom på forsinkelsen. Du får samtidig besked om, hvornår du kan forvente, at din vare vil blive leveret.&lt;/p&gt;
+        &lt;/div&gt;</value>
+  </data>
+  <data name="Header" xml:space="preserve">
+    <value>&lt;h1&gt;Salgs- og leveringsbetingelser&lt;/h1&gt;</value>
+  </data>
+  <data name="Issues" xml:space="preserve">
+    <value>&lt;div&gt;
+            &lt;h1&gt;10. Tvister&lt;/h1&gt;
+            &lt;p&gt;Hvis du er utilfreds med Nykants håndtering af en reklamation eller andet, skal du først forsøge at løse tvisten direkte med os. Såfremt dette ikke lykkes, kan du indbringe sagen for Nævnenes Hus på www.naevneneshus.dk og herefter Forbrugerklagenævnet eller gøre brug af Europa-Kommissionens online klageportal ("ODR"). Alle tvister skal afgøres i henhold til dansk ret. Såfremt sagen indbringes for domstolene, skal den afgøres ved dit hjemting, dvs. i nærheden af, hvor du bor.&lt;/p&gt;
+        &lt;/div&gt;</value>
+  </data>
+  <data name="Online sale" xml:space="preserve">
+    <value>&lt;h1&gt;2. Online-handel&lt;/h1&gt;
+            &lt;p&gt;
+                Nedenfor følger en beskrivelse af købsprocessen, så du altid kan føle dig tryg, når du handler på Websiden.
+            &lt;/p&gt;</value>
+  </data>
+  <data name="Payment" xml:space="preserve">
+    <value>&lt;div&gt;
+            &lt;h1&gt;4. Betaling&lt;/h1&gt;
+            &lt;p&gt;Nykant bruger Stripe(PCI service provider/betalingstjenesteudbyder) til at håndtere betalingen og kvitteringer. &lt;/p&gt;
+            &lt;p&gt;Alle priser er i danske kroner og inkl. moms. Alle udgifter i relation til varen, herunder til porto, fragt, emballage mv., samt en samlet pris vil fremgå ved bestilling og af ordrebekræftelsen.&lt;/p&gt;
+            &lt;p&gt;Leveringsomkostninger vil variere afhængig af, hvilken vare og leveringsform du har valgt.&lt;/p&gt;
+            &lt;p&gt;Du kan vælge mellem de betalingsmåder, som vi tilbyder i købsprocessen. &lt;/p&gt;
+            &lt;p&gt;Beløb hæves først på dit kort, når dine varer er blevet sendt. &lt;/p&gt;
+        &lt;/div&gt;</value>
+  </data>
+  <data name="Personal Info" xml:space="preserve">
+    <value>&lt;div&gt;
+            &lt;h1&gt;9. Personoplysninger&lt;/h1&gt;
+            &lt;p&gt;Nykants databeskyttelsespolitik kan læses &lt;a asp-controller="Home" asp-action="PrivacyPolicy"&gt;her&lt;/a&gt;.&lt;/p&gt;
+        &lt;/div&gt;</value>
+  </data>
+  <data name="Regret" xml:space="preserve">
+    <value>&lt;div&gt;
+            &lt;h1&gt;6. Fortrydelsesret&lt;/h1&gt;
+        &lt;/div&gt;</value>
+  </data>
+  <data name="Returns" xml:space="preserve">
+    <value>&lt;div&gt;
+            &lt;h1&gt;7. Returret?&lt;/h1&gt;
+        &lt;/div&gt;</value>
+  </data>
+  <data name="Usage" xml:space="preserve">
+    <value>&lt;h1&gt;1. Anvendelsesområde&lt;/h1&gt;
+            &lt;p&gt;
+                Disse salgsbetingelser gælder altid, når du som forbruger handler på www.nykant.dk (herefter "Websiden").
+                Som en del af Websiden driver Nykant ApS (herefter "Nykant"), som er en handelsplatform, hvor du som forbruger kan købe varer direkte fra Nykant.
+            &lt;/p&gt;
+            &lt;p&gt;
+                Disse salgsbetingelser og vilkår udgør sammen med ordrebekræftelsen, det samlede aftalegrundlag for dit køb.
+            &lt;/p&gt;
+            &lt;p&gt;Den samlede aftale og de øvrige oplysninger på Websiden findes kun på dansk. &lt;/p&gt;
+            &lt;p&gt;
+                Bemærk, at Nykants netbutik www.nykant.dk er alene for forbrugere. Dermed ikke for erhvervsdrivende.
+            &lt;/p&gt;
+            &lt;p&gt;
+                Ved bestilling af varer via Nykants netbutik (www.nykant.dk) bekræfter du, at du hverken køber varer som erhvervsdrivende eller med henblik på videresalg.
+            &lt;/p&gt;</value>
+  </data>
+  <data name="Your orders" xml:space="preserve">
+    <value>&lt;h1&gt;
+                3. Din bestilling
+            &lt;/h1&gt;
+            &lt;h3&gt;Du skal være opmærksom på, at din afgivelse af bestilling ikke er en juridisk bindende aftale. Der er først indgået en bindende aftale mellem dig og Nykant, når du har modtaget en eller flere bindende ordrebekræftelser fra Nykant.&lt;/h3&gt;
+            &lt;h2&gt;Afgivelse af bestilling&lt;/h2&gt;
+            &lt;p&gt;
+                Afgivelse af bestilling via Websiden er ikke en juridisk bindende aftale for Sælger. Sælger er først bundet af aftalen, når du har modtaget en ordrebekræftelse. Det betyder, at Sælger har mulighed for at annullere din bestilling som følge af prisfejl, trykfejl, tekniske problemer, leveringssvigt, force majeure, hvis varen ikke er på lager og lignende situationer.
+            &lt;/p&gt;
+            &lt;p&gt;
+                Force majeure foreligger, når korrekt opfyldelse af aftalevilkårene er umulig, og dette skyldes ekstraordinære omstændigheder, som leverandøren ikke kunne afbøde og ikke burde have forudset f.eks. krig, usædvanlige naturbegivenheder, brand, strejker, lockouts og pandemi.
+
+            &lt;/p&gt;
+            &lt;p&gt;
+                Når du har afgivet en bestilling via Websiden, vil Nykants system sende dig en ordre bekræftelse. Du bør læse ordrebekræftelsen nøje igennem og tjekke, at den stemmer overens med bestillingen. Hvis den ikke stemmer overens med din bestilling, så vil du have mulighed for at annullere ordren på hjemmesiden, her - https://localhost:5002/Order/History.
+
+            &lt;/p&gt;
+            &lt;p&gt;
+                Først når du har modtaget en ordrebekræftelse, er der indgået en juridisk bindende aftale mellem dig og Nyaknt.
+
+            &lt;/p&gt;
+            &lt;p&gt;
+                Du kan læse mere om dine ordrer på Websiden. Hvis du har spørgsmål kan du altid kontakte os.
+            &lt;/p&gt;
+            &lt;h2&gt;Ordre foretaget på nykant.dk er behandlet af:&lt;/h2&gt;
+            &lt;p&gt;
+                Nykant ApS&lt;br /&gt;
+                CVR-nr.: 0000000&lt;br /&gt;
+                Kongensgade 31B 1&lt;br /&gt;
+                5000 Odense C, Danmark.&lt;br /&gt;
+                Telefonnr. til kundeservice: 27131499. E-mail: mail@nykant.dk
+            &lt;/p&gt;</value>
+  </data>
+</root>

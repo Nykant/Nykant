@@ -148,8 +148,8 @@ namespace NykantIS
                 options.ForwardedHeaders =
                     ForwardedHeaders.All;
 
-                //options.KnownNetworks.Clear();
-                //options.KnownProxies.Clear();
+                options.KnownNetworks.Clear();
+                options.KnownProxies.Clear();
             });
         }
 
