@@ -72,7 +72,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Resources\Models\" />
+    <Folder Include="Resources\Views\Shared\" />
+    <Folder Include="Resources\Views\Product\" />
     <Folder Include="wwwroot\lib\svg\" />
   </ItemGroup>
 

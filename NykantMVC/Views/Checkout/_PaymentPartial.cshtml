@@ -1,11 +1,10 @@
-﻿@model CheckoutVM
-
-
+﻿@inject IViewLocalizer localizer
+@model CheckoutVM
 
 <div class="row bottom-side-padding">
     <div class="responsive-form">
             <div class="checkout-header" id="payment-header">
-                <h1>Betalingsmetode</h1>
+                <h1>@localizer["Payment Method"]</h1>
             </div>
             <form id="payment-form">
                 <div class="checkout-wrap" id="payment-wrap">
@@ -31,8 +30,7 @@
                                 <span class="checkmark"></span>
                             </label>
                             <input required type="hidden" id="terms-and-conditions-input" asp-for="@Model.CustomerInf.AcceptPrivacyPolicy" />
-                            <span class="checkbox-validation" id="terms-and-conditions-validation">Du skal skrive under før du må fortsætte.</span>
-                            <p>for at færdiggøre ordren, skal du skrive under på at du har læst og accepterer vores <a class="simple-link" href="https://localhost:5002/nykant/termsandconditions">Salgs- og leveringsbetingelser</a> ved at klikke i boksen.</p>
+                            @localizer["Signature required"]
                         </div>
                     </div>
                     <div class="col-12 left hidden" id="payment-error">
@@ -48,7 +46,7 @@
                     <div class="col-12 right">
                         <button class="button" id="submit-payment" disabled>
                             <div class="spinner hidden" id="paymentspinner"></div>
-                            <span id="button-text">Betal</span>
+                            <span id="button-text">@localizer["Pay"]</span>
                         </button>
                     </div>
 

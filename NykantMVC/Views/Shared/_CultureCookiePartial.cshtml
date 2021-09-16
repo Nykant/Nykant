@@ -1,0 +1,22 @@
+﻿@using Microsoft.Extensions.Configuration
+@using NykantMVC.Friends;
+@inject IConfiguration Configuration
+@{
+    var routevalues = Context.Request.RouteValues;
+    var controller = routevalues["controller"];
+    var action = routevalues["action"];
+
+    bool cookieExists = HttpHelpers.CookieExists(Context.Request, ".AspNetCore.Culture");
+}
+
+@if (!cookieExists)
+{
+    <div class="culture-box">
+        <div class="culture-cover">
+            <form method="post" asp-controller="Nykant" asp-action="UpdateCulture" asp-route-redirectController="@controller" asp-route-redirectAction="@action">
+                <input name="culture" value="English" type="submit" />
+                <input name="culture" value="Dansk" type="submit" />
+            </form>
+        </div>
+    </div>
+}

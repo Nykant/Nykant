@@ -1,4 +1,5 @@
-﻿@model CheckoutVM
+﻿@inject IViewLocalizer localizer
+@model CheckoutVM
 
 @{
     var optionValue = 1;
@@ -8,14 +9,14 @@
     <div class="responsive-form">
 
             <div class="checkout-header" id="shipping-header">
-                <h1>Leveringsmetode</h1>
+                <h1>@localizer["Delivery Method"]</h1>
                 <div class="check-sign" id="shipping-check-sign">
                     <i class="fa fa-check" aria-hidden="true"></i>
                 </div>
                 <div id="shipping-summary">
-                    <p>leveringsmetode: <span id="shipping-method-summary">@Model.Checkout.ShippingDelivery.Name</span></p>
+                    <p>@localizer["Delivery Method"]: <span id="shipping-method-summary">@Model.Checkout.ShippingDelivery.Name</span></p>
 
-                    <button class="button edit-button" id="shipping-edit-button">RET</button>
+                    <button class="button edit-button" id="shipping-edit-button">@localizer["Change"]</button>
                 </div>
                 
             </div>
@@ -29,7 +30,7 @@
                         <div class="custom-list-options" id="custom-list-options">
                             <select>
                                 <option value="0">
-                                    Choose Shipping
+                                    @localizer["Choose Shipping"]
                                 </option>
                                 @foreach (var item in Model.ShippingDeliveries)
                                 {
@@ -43,7 +44,7 @@
                     </div>
 
                     <div class="col-12 right">
-                        <button id="custom-list-button" class="button" type="submit">VÆLG LEVERINGS UDBYDER</button> @*------------- SUBMIT FORM --------------*@
+                        <button id="custom-list-button" class="button" type="submit">@localizer["Continue"]</button> @*------------- SUBMIT FORM --------------*@
                     </div>
                 </div>
 

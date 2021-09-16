@@ -1,24 +1,25 @@
-﻿@model CheckoutVM
+﻿@inject IViewLocalizer localizer
+@model CheckoutVM
 
 <div class="row bottom-side-padding">
         <div class="hide-overflow responsive-form" id="customerinf-wrapper">
             <div class="checkout-header z200" id="customerInf-header">
                 <h1>
-                    Modtager oplysninger
+                    @localizer["Receiver header"]
                 </h1>
                 <div class="check-sign" id="customer-check-sign">
                     <i class="fa fa-check" aria-hidden="true"></i>
                 </div>
                 <div id="customerinf-summary">
-                    <p>email: <span id="customer-email-summary">@Model.CustomerInf.Email</span></p>
-                    <p>telefon: <span id="customer-phone-summary">@Model.CustomerInf.Phone</span></p>
-                    <p>fornavn: <span id="customer-firstname-summary">@Model.CustomerInf.FirstName</span></p>
-                    <p>efternavn: <span id="customer-lastname-summary">@Model.CustomerInf.LastName</span></p>
-                    <p>addresse: <span id="customer-address-summary">@Model.CustomerInf.Address1</span></p>
-                    <p>by: <span id="customer-city-summary">@Model.CustomerInf.City</span></p>
-                    <p>land: <span id="customer-country-summary">@Model.CustomerInf.Country</span></p>
-                    <p>postnummer: <span id="customer-postal-summary">@Model.CustomerInf.Postal</span></p>
-                    <button class="button edit-button" id="customer-edit-button">RET</button>
+                    <p>@localizer["Email"]: <span id="customer-email-summary">@Model.CustomerInf.Email</span></p>
+                    <p>@localizer["Telephone"]: <span id="customer-phone-summary">@Model.CustomerInf.Phone</span></p>
+                    <p>@localizer["First Name"]: <span id="customer-firstname-summary">@Model.CustomerInf.FirstName</span></p>
+                    <p>@localizer["Last Name"]: <span id="customer-lastname-summary">@Model.CustomerInf.LastName</span></p>
+                    <p>@localizer["Address"]: <span id="customer-address-summary">@Model.CustomerInf.Address1</span></p>
+                    <p>@localizer["City"]: <span id="customer-city-summary">@Model.CustomerInf.City</span></p>
+                    <p>@localizer["Country"]: <span id="customer-country-summary">@Model.CustomerInf.Country</span></p>
+                    <p>@localizer["Postal"]: <span id="customer-postal-summary">@Model.CustomerInf.Postal</span></p>
+                    <button class="button edit-button" id="customer-edit-button">@localizer["Change"]</button>
                 </div>
             </div>
 
@@ -68,13 +69,13 @@
 
                         <div class="inputstyle left">
                             <input id="customer-country-input" class="hidden" asp-for="@Model.CustomerInf.Country" />
-                            <div class="country-label">Modtagers Land</div>
+                            <div class="country-label">@localizer["Receivers Country"]</div>
                             <select required id="country-picker">
-                                <option>Vælg Land</option>
+                                <option>@localizer["Choose Country"]</option>
                                 <option>DK</option>
                             </select>
                             <div class="country-error hidden" id="country-error">
-                                vælg et land før du kan fortsætte.
+                                @localizer["Choose country to continue"]
                             </div>
                         </div>
                         <div class="inputstyle left">
@@ -91,8 +92,7 @@
                                     <span class="checkmark"></span>
                                 </label>
                                 <input required type="hidden" id="privacy-policy-input" asp-for="@Model.CustomerInf.AcceptPrivacyPolicy" />
-                                <span class="checkbox-validation" id="privacy-policy-validation-customerInf">Du skal skrive under før du må fortsætte.</span>
-                                <p>for at fortsætte skal du skrive under på at du har læst og accepterer vores <a class="simple-link" href="https://localhost:5002/nykant/privacypolicy">håndtering af persondata</a> ved at klikke i boksen.</p>
+                                @localizer["Signature required"]
                             </div>
                         </div>
 
@@ -102,7 +102,7 @@
                     </div>
                     
                     <div class="col-12 left" id="customer-button">
-                        <button id="customerInf-submit" class="button" type="submit" disabled>Fortsæt</button> @*------------- SUBMIT FORM --------------*@
+                        <button id="customerInf-submit" class="button" type="submit" disabled>@localizer["Continue"]</button> @*------------- SUBMIT FORM --------------*@
                     </div>
                 </div>
             </form>

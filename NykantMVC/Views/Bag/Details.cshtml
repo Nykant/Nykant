@@ -1,5 +1,5 @@
 ﻿@model List<BagItem>
-
+@inject IViewLocalizer localizer
 @{
     ViewData["Title"] = "Kurv";
     ViewData["Description"] = "";
@@ -11,7 +11,7 @@
     <div class="col-10 center" id="bag-wrapper">
         <div class="col-8 left fadein" id="bagtable-container">
             <div class="bagtitle">
-                Kurv
+                @localizer["Bag"]
             </div>
             <div class="bagtable" id="bagtable">
                 <partial name="_BagTablePartial" />
@@ -19,16 +19,16 @@
         </div>
         <div class="col-3 left" id="checkout-box">
             <div class="order-info">
-                <h1>Ordre</h1>
-                <p class="left">Levering</p>
-                <p id="price-info" class="right">Total ekskl. levering</p>
+                <h1>@localizer["Order"]</h1>
+                <p class="left">@localizer["Delivery"]</p>
+                <p id="price-info" class="right">@localizer["Total without delivery"]</p>
             </div>
             <div class="checkout-price">
-                <p id="total-price-text">total: @ViewBag.PriceSum</p>
+                <p id="total-price-text">@localizer["Total"]: @ViewBag.PriceSum</p>
             </div>
             <a asp-controller="Checkout" asp-action="Checkout">
                 <div class="button">
-                    <p>Gå til kassen</p>
+                    <p>@localizer["Go to checkout"]</p>
                 </div>
             </a>
         </div>

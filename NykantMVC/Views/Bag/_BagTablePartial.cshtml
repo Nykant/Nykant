@@ -1,10 +1,11 @@
 ﻿@model List<BagItem>
+@inject IViewLocalizer localizer
 
 <div class="bagtable-headers">
-    <div>I alt</div>
-    <div>Mængde</div>
-    <div>Pris</div>
-    <div>Produkt</div>
+    <div>@localizer["Total"]</div>
+    <div>@localizer["Amount"]</div>
+    <div>@localizer["Price"]</div>
+    <div>@localizer["Product"]</div>
 </div>
 @foreach (var bagItem in Model)
 {

@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="~/css/privacy.css" />
     <link rel="stylesheet" href="~/css/custom-switch.css" />
     <link rel="stylesheet" href="~/css/search.css" />
+    <link rel="stylesheet" href="~/css/culture.css" />
 
     <script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
     <partial name="_ValidationScriptsPartial" />
@@ -45,8 +46,9 @@
         <partial name="_CookieSettingsPartial" />
     </div>
 
-
     <partial name="_CookieConsentPartial" />
+
+    <partial name="_CultureCookiePartial" />
 
     <partial name="_DesktopNavbarPartial" />
 
@@ -66,6 +68,9 @@
                 <h1>Kundeservice</h1>
                 <a asp-controller="Nykant" asp-action="Contact">Kontakt os</a>
             </div>
+
+            <partial name="_UtilityPartial" />
+
             <div class="socialmedia">
                 <a href="#"><img class="small-svg" src="~/lib/svg/facebook.svg" /></a>
             </div>

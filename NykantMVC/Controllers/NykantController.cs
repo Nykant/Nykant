@@ -11,6 +11,8 @@ using NykantMVC.Extensions;
 using System;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Localization;
+using Microsoft.AspNetCore.Localization;
+using NykantMVC.Friends;
 
 namespace NykantMVC.Controllers
 {
@@ -81,8 +83,8 @@ namespace NykantMVC.Controllers
             };
             HttpContext.Session.Set<Consent>(ConsentCookieKey, consent);
 
-            ViewBag.ShowBanner = consent.OnlyEssential;
-            ViewBag.OnlyEssential = consent.ShowBanner;
+            ViewBag.ShowBanner = consent.ShowBanner;
+            ViewBag.OnlyEssential = consent.OnlyEssential;
             ViewBag.Functional = consent.Functional;
 
             return new PartialViewResult
@@ -95,7 +97,6 @@ namespace NykantMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> OnlyEssentialConsent()
         {
-
             var consent = new Consent
             {
                 OnlyEssential = true,
@@ -104,8 +105,8 @@ namespace NykantMVC.Controllers
             };
             HttpContext.Session.Set<Consent>(ConsentCookieKey, consent);
 
-            ViewBag.ShowBanner = consent.OnlyEssential;
-            ViewBag.OnlyEssential = consent.ShowBanner;
+            ViewBag.ShowBanner = consent.ShowBanner;
+            ViewBag.OnlyEssential = consent.OnlyEssential;
             ViewBag.Functional = consent.Functional;
 
             return new PartialViewResult
@@ -148,6 +149,35 @@ namespace NykantMVC.Controllers
             {
                 return null;
             }
+        }
+
+        [HttpPost]
+        public IActionResult UpdateCulture(string culture, string redirectController, string redirectAction)
+        {
+            if(culture == "Dansk")
+            {
+                culture = "da-DK";
+            }
+            else
+            {
+                culture = "en-GB";
+            }
+
+            Response.Cookies.Append(
+                CookieRequestCultureProvider.DefaultCookieName,
+                CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture, culture)),
+                    new CookieOptions
+                    {
+                        Expires = DateTimeOffset.UtcNow.AddYears(1),
+                        SameSite = SameSiteMode.Lax,
+                        IsEssential = true,
+                        HttpOnly = true,
+                        Secure = true,
+                        Domain = "localhost"
+
+                    });
+
+            return RedirectToAction(redirectAction, redirectController);
         }
     }
 }

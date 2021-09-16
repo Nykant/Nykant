@@ -49,6 +49,8 @@ namespace NykantMVC
 
             JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
 
+            services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
+
             services.AddAuthentication(options =>
             {
                 options.DefaultScheme = "Cookies";
@@ -127,9 +129,11 @@ namespace NykantMVC
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             var DK = new CultureInfo("da-DK");
+            var EN = new CultureInfo("en-GB");
             var cultureList = new List<CultureInfo>
             {
-                DK
+                DK,
+                EN
             };
             app.UseRequestLocalization(new RequestLocalizationOptions
             {

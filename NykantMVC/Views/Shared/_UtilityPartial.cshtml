@@ -1,0 +1,22 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@{
+    var routevalues = Context.Request.RouteValues;
+    var controller = routevalues["controller"];
+    var action = routevalues["action"];
+}
+
+<div class="utility">
+    <form method="post" asp-controller="Nykant" asp-action="UpdateCulture" asp-route-redirectController="@controller" asp-route-redirectAction="@action">
+        <div class="dropdown">
+            <button class="dropbtn" id="language-btn">
+                Language
+            </button>
+
+            <div class="dropdown-content">
+                <input name="culture" value="English" type="submit" />
+                <input name="culture" value="Dansk" type="submit" />
+            </div>
+        </div>
+    </form>
+</div>
