@@ -8,13 +8,17 @@
     padding:10px;
     position: fixed;
     width: 100%;
-    border:1px solid var(--black-fade);
-    background-color: white;
+    background-color: var(--yellow);
     margin:auto;
     bottom:0px;
     z-index: 101;
 /*    animation-name:rollup;
     animation-duration:1s;*/
+}
+
+.cookie-consent .header {
+    background-color:transparent;
+    font-size:20px;
 }
 
 @keyframes rollup {

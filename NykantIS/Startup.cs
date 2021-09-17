@@ -158,9 +158,11 @@ namespace NykantIS
             app.UsePathBase(Configuration.GetValue<string>("PathBase"));
 
             var DK = new CultureInfo("da-DK");
+            var GB = new CultureInfo("en-GB");
             var cultureList = new List<CultureInfo>
             {
-                DK
+                DK,
+                GB
             };
             app.UseRequestLocalization(new RequestLocalizationOptions
             {

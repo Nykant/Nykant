@@ -79,12 +79,6 @@ namespace NykantMVC
                     options.Scope.Add("offline_access");
                 });
 
-            services.Configure<CookiePolicyOptions>(options =>
-            {
-                options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.Lax;
-            });
-
             services.AddDistributedMemoryCache();
 
             services.AddSession(options =>
@@ -163,7 +157,6 @@ namespace NykantMVC
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
-            app.UseCookiePolicy();
 
             app.UseRouting();
 

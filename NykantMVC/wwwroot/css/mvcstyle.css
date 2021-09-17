@@ -15,7 +15,7 @@
     --dark-grey: #2b2b2b;
     --light-blue: #e8f8ff;
     --light-blue2: #effbff;
-    --yellow: #ffd255;
+    --yellow: #feff99;
     --small: 8px;
     --small-plus: 12px;
     --medium: 16px;
@@ -89,13 +89,13 @@ ol, ul {
 }
 
 .top-footer {
-    position:relative;
+    position: relative;
     color: black;
     padding: 30px;
-    padding-left:200px;
+    padding-left: 70px;
     font-family: 'Lato', sans-serif;
     background-color: var(--light-blue);
-    border-top:1px solid var(--black-fade);
+    border-top: 1px solid var(--black-fade);
 }
 
 .success-div {
@@ -130,9 +130,8 @@ ol, ul {
 
     .socialmedia {
         display: inline;
-        position: absolute;
-        right: 35px;
-        bottom: 35px;
+        float:right;
+        margin-left:20px;
     }
 
     .privacy {
@@ -144,8 +143,6 @@ ol, ul {
             padding-bottom: 10px;
             text-decoration: underline;
         }
-
-
 
     header span {
         color: #222;

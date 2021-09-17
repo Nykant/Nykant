@@ -217,14 +217,9 @@
 }
 
 .collapsible-button:after {
-    content: '\02795'; /* Unicode character for "plus" sign (+) */
     font-size: 13px;
     margin-right: 5px;
     float:left;
-}
-
-.active:after {
-    content: "\2796"; /* Unicode character for "minus" sign (-) */
 }
 
 .notification {

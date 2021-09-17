@@ -118,6 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Info" xml:space="preserve">
-    <value>&lt;p&gt;En email med din ordre er blevet sendt til dig. &lt;br /&gt; hvis ikke du har modtaget en email med din ordre inden for få minutter, skal du kontakte os på | mail@nykant.dk |&lt;/p&gt;</value>
+    <value>&lt;p&gt;En email med din ordrebekræftelse er blevet sendt til dig. &lt;br /&gt; hvis ikke du har modtaget en email med din ordre inden for få minutter, skal du kontakte os på [mail@nykant.dk] &lt;/p&gt;</value>
   </data>
 </root>
