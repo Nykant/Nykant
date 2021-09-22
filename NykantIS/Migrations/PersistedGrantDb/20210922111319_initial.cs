@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace NykantIS.data.migrations.persisted
+namespace NykantIS.Migrations.PersistedGrantDb
 {
     public partial class initial : Migration
     {

@@ -39,9 +39,18 @@ namespace NykantMVC
         {
             string mykeyConnection = Configuration.GetConnectionString("MyKeysConnection");
 
+            if (Environment.IsDevelopment())
+            {
+                services.AddDbContext<MyKeysContext>(options =>
+                    options.UseSqlServer(
+                        mykeyConnection));
+            }
+            else
+            {
                 services.AddDbContext<MyKeysContext>(options =>
                     options.UseMySql(
                         mykeyConnection));
+            }
 
             services.AddDataProtection()
                 .PersistKeysToDbContext<MyKeysContext>()

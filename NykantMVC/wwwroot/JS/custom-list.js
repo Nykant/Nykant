@@ -26,8 +26,6 @@ for (i = 0; i < l; i++) {
                 if (select.options[i].innerHTML == this.innerHTML) {
                     select.selectedIndex = i;
                     shippingdelivery_id.value = i;
-                    shippingdelivery_name.value = select.options[i].innerHTML;
-                    button.innerHTML = "VIDERE";
                     button.disabled = false;
                     y = this.parentNode.getElementsByClassName("custom-list-option selected");
                     yl = y.length;

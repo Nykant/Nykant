@@ -60,16 +60,31 @@ namespace NykantIS
             identityserverConnection = Configuration.GetConnectionString("IdentityServer");
             identityConnection = Configuration.GetConnectionString("Identity");
 
+            if (Environment.IsDevelopment())
+            {
+                services.AddDbContext<MyKeysContext>(options =>
+options.UseSqlServer(mykeyConnection));
 
-            services.AddDbContext<MyKeysContext>(options =>
-                options.UseMySql(mykeyConnection));
+                services.AddDataProtection()
+                    .PersistKeysToDbContext<MyKeysContext>()
+                    .SetApplicationName("Nykant");
 
-            services.AddDataProtection()
-                .PersistKeysToDbContext<MyKeysContext>()
-                .SetApplicationName("Nykant");
+                services.AddDbContext<IdentityContext>(options =>
+                    options.UseSqlServer(identityConnection));
+            }
+            else
+            {
+                services.AddDbContext<MyKeysContext>(options =>
+    options.UseMySql(mykeyConnection));
 
-            services.AddDbContext<IdentityContext>(options =>
-                options.UseMySql(identityConnection));
+                services.AddDataProtection()
+                    .PersistKeysToDbContext<MyKeysContext>()
+                    .SetApplicationName("Nykant");
+
+                services.AddDbContext<IdentityContext>(options =>
+                    options.UseMySql(identityConnection));
+            }
+
 
             services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<IdentityContext>()
@@ -96,19 +111,43 @@ namespace NykantIS
             })
             .AddConfigurationStore(options =>
             {
-                options.ConfigureDbContext = b => b
-                    .UseMySql(identityserverConnection, mySqlOptionsAction: mySql =>
-                    {
-                        mySql.MigrationsAssembly(migrationsAssembly);
-                    });
+                if (Environment.IsDevelopment())
+                {
+                    options.ConfigureDbContext = b => b
+                        .UseSqlServer(identityserverConnection, sqlServerOptionsAction: sql =>
+                        {
+                        sql.MigrationsAssembly(migrationsAssembly);
+                        });
+                }
+                else
+                {
+                    options.ConfigureDbContext = b => b
+                        .UseMySql(identityserverConnection, mySqlOptionsAction: mySql =>
+                        {
+                            mySql.MigrationsAssembly(migrationsAssembly);
+                        });
+                }
+
             })
             .AddOperationalStore(options =>
             {
-                options.ConfigureDbContext = b => b
-                    .UseMySql(identityserverConnection, mySqlOptionsAction: mySql =>
-                    {
-                        mySql.MigrationsAssembly(migrationsAssembly);
-                    });
+                if (Environment.IsDevelopment())
+                {
+                    options.ConfigureDbContext = b => b
+                        .UseSqlServer(identityserverConnection, sqlServerOptionsAction: sql =>
+                        {
+                        sql.MigrationsAssembly(migrationsAssembly);
+                        });
+                }
+                else
+                {
+                    options.ConfigureDbContext = b => b
+                        .UseMySql(identityserverConnection, mySqlOptionsAction: mySql =>
+                        {
+                            mySql.MigrationsAssembly(migrationsAssembly);
+                        });
+                }
+
             })
 
             .AddAspNetIdentity<ApplicationUser>();
