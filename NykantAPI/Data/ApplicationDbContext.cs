@@ -114,7 +114,7 @@ namespace NykantAPI.Data
                 new Image { Id = 46, ProductId = 9, Source = "../images/Finback-Chairs1-1280x853-c-default.jpg" },
                 new Image { Id = 47, ProductId = 10, Source = "../images/Finback-Chairs1-1280x853-c-default.jpg" },
                 new Image { Id = 48, ProductId = 11, Source = "../images/Finback-Chairs1-1280x853-c-default.jpg" },
-                new Image { Id = 49, ProductId = 12, Source = "../images/Finback-Chairs1-1280x853-c-default.jpg" },
+                new Image { Id = 49, ProductId = 12, Source = "../images/Finback-Chairs1-1280x853-c-default.jpg" }, 
                 new Image { Id = 50, ProductId = 13, Source = "../images/Finback-Chairs1-1280x853-c-default.jpg" },
                 new Image { Id = 51, ProductId = 14, Source = "../images/Finback-Chairs1-1280x853-c-default.jpg" },
                 new Image { Id = 52, ProductId = 15, Source = "../images/Finback-Chairs1-1280x853-c-default.jpg" },

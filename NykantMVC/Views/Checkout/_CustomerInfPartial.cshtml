@@ -34,12 +34,6 @@
                             <span asp-validation-for="@Model.CustomerInf.Email"></span>
                             <div class="underline"></div>
                         </div>
-                        <div class="inputstyle left">
-                            <input id="customer-phone-input" required asp-for="@Model.CustomerInf.Phone" />
-                            <label asp-for="@Model.CustomerInf.Phone"></label>
-                            <span asp-validation-for="@Model.CustomerInf.Phone"></span>
-                            <div class="underline"></div>
-                        </div>
 
                         <div class="inputstyle left">
                             <input id="customer-firstname-input" required asp-for="@Model.CustomerInf.FirstName" />
@@ -58,6 +52,18 @@
                             <input id="customer-address-input" required asp-for="@Model.CustomerInf.Address1" />
                             <label asp-for="@Model.CustomerInf.Address1"></label>
                             <span asp-validation-for="@Model.CustomerInf.Address1"></span>
+                            <div class="underline"></div>
+                        </div>
+                        <div class="inputstyle left">
+                            <input id="customer-address-input" asp-for="@Model.CustomerInf.Address2" />
+                            <label asp-for="@Model.CustomerInf.Address2"></label>
+                            <span asp-validation-for="@Model.CustomerInf.Address2"></span>
+                            <div class="underline"></div>
+                        </div>
+                        <div class="inputstyle left">
+                            <input id="customer-phone-input" required asp-for="@Model.CustomerInf.Phone" />
+                            <label asp-for="@Model.CustomerInf.Phone"></label>
+                            <span asp-validation-for="@Model.CustomerInf.Phone"></span>
                             <div class="underline"></div>
                         </div>
                         <div class="inputstyle left">

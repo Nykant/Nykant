@@ -23,7 +23,6 @@ namespace NykantMVC.Models
         [StringLength(50)]
         [Display(Name = "Address1")]
         public string Address1 { get; set; }
-        [Required]
         [StringLength(50)]
         [Display(Name = "Address2")]
         public string Address2 { get; set; }

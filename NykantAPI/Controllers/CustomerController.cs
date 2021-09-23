@@ -38,32 +38,32 @@ namespace NykantAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<CustomerInf>> PostCustomer(CustomerInf customerInf)
         {
-            customerInf = _protectionService.UnProtectCustomerInf(customerInf);
-            Console.WriteLine("unprotected customerinf");
-            if (ModelState.IsValid)
+            try
             {
-                Console.WriteLine("ModelState Is Valid yes");
-                if (CustomerExists(customerInf.Id))
+                customerInf = _protectionService.UnProtectCustomerInf(customerInf);
+                if (ModelState.IsValid)
                 {
-                    Console.WriteLine("Customer Exists");
-                    _context.CustomerInfs.Update(customerInf);
-                    await _context.SaveChangesAsync();
-                    Console.WriteLine("Saved changes");
-                    return Ok();
+                    if (CustomerExists(customerInf.Id))
+                    {
+                        _context.CustomerInfs.Update(customerInf);
+                        await _context.SaveChangesAsync();
+                        return Ok();
+                    }
+                    else
+                    {
+
+                        var entity = _context.CustomerInfs.Add(customerInf).Entity;
+                        await _context.SaveChangesAsync();
+
+                        return CreatedAtAction("GetCustomer", new { id = entity.Id }, customerInf);
+                    }
                 }
-                else
-                {
-                    Console.WriteLine("Customer doesnt Exists");
-                    var entity = _context.CustomerInfs.Add(customerInf).Entity;
-                    await _context.SaveChangesAsync();
-                    Console.WriteLine("Saved changes");
-                    return CreatedAtAction("GetCustomer", new { id = entity.Id }, customerInf);
-                }
+                return Content("error");
             }
-            else
+            catch (Exception e)
             {
-                Console.WriteLine("Modelstate invalid");
-                return Content("couldnt unprotect it");
+                _logger.LogInformation(e.Message);
+                return Content(e.Message);
             }
         }
 

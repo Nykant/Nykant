@@ -117,50 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Address" xml:space="preserve">
-    <value>Address</value>
-  </data>
-  <data name="Change" xml:space="preserve">
-    <value>Change</value>
-  </data>
-  <data name="Choose Country" xml:space="preserve">
-    <value>Choose Country</value>
-  </data>
-  <data name="Choose country to continue" xml:space="preserve">
-    <value>Choose a country to continue</value>
-  </data>
-  <data name="City" xml:space="preserve">
-    <value>City</value>
-  </data>
-  <data name="Continue" xml:space="preserve">
-    <value>Continue</value>
-  </data>
-  <data name="Country" xml:space="preserve">
-    <value>Country</value>
-  </data>
-  <data name="Email" xml:space="preserve">
-    <value>Email</value>
-  </data>
-  <data name="First Name" xml:space="preserve">
-    <value>First name</value>
-  </data>
-  <data name="Last Name" xml:space="preserve">
-    <value>Last name</value>
-  </data>
-  <data name="Postal" xml:space="preserve">
-    <value>Postal</value>
-  </data>
-  <data name="Receiver header" xml:space="preserve">
-    <value>Delivery Information</value>
-  </data>
-  <data name="Receivers Country" xml:space="preserve">
-    <value>Country</value>
-  </data>
-  <data name="Signature required" xml:space="preserve">
-    <value>&lt;span class="checkbox-validation" id="privacy-policy-validation-customerInf"&gt;You have to sign before you can continue.&lt;/span&gt;
-                                &lt;p&gt;To continue you have to sign that you have read and aggree to our &lt;a class="simple-link" href="https://localhost:5002/nykant/privacypolicy"&gt;Privacy Policy&lt;/a&gt; by clicking in the box.&lt;/p&gt;</value>
-  </data>
-  <data name="Telephone" xml:space="preserve">
-    <value>Telephone</value>
+  <data name="Test" xml:space="preserve">
+    <value>Heeej</value>
   </data>
 </root>
