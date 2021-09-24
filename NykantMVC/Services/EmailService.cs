@@ -25,7 +25,7 @@ namespace NykantMVC.Services
             _protectionService = protectionService;
         }
 
-        public async Task SendOrderEmailAsync(CustomerInf customerInf, Order order)
+        public async Task SendOrderEmailAsync(Customer customerInf, Order order)
         {
             var email = new MimeMessage();
             email.From.Add(MailboxAddress.Parse(_mailSettings.Mail));
@@ -55,6 +55,6 @@ namespace NykantMVC.Services
 
     public interface IMailService
     {
-        Task SendOrderEmailAsync(CustomerInf customerInf, Order order);
+        Task SendOrderEmailAsync(Customer customerInf, Order order);
     }
 }

@@ -1,16 +1,17 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace NykantMVC.Models
 {
-    public class CustomerInf
+    public class ShippingAddress
     {
+        [Key]
         public int Id { get; set; }
-        [Required]
-        [EmailAddress]
-        [DataType(DataType.EmailAddress)]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
+        public int CustomerId { get; set; }
+        public Customer Customer { get; set; }
         [Required]
         [StringLength(20)]
         [Display(Name = "First Name")]
@@ -20,12 +21,9 @@ namespace NykantMVC.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
         [Required]
-        [StringLength(50)]
-        [Display(Name = "Address1")]
-        public string Address1 { get; set; }
-        [StringLength(50)]
-        [Display(Name = "Address2")]
-        public string Address2 { get; set; }
+        [StringLength(200)]
+        [Display(Name = "Address")]
+        public string Address { get; set; }
         [Required]
         [StringLength(20)]
         [Display(Name = "City")]
@@ -38,11 +36,6 @@ namespace NykantMVC.Models
         [StringLength(20)]
         [Display(Name = "Postal")]
         public string Postal { get; set; }
-        [Required]
-        [Phone]
-        [Display(Name = "Telephone")]
-        public string Phone { get; set; }
-        [Required]
-        public string AcceptPrivacyPolicy { get; set; }
+        public bool SameAsInvoice { get; set; } = true;
     }
 }

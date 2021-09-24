@@ -15,7 +15,7 @@ namespace NykantAPI.Models
         public string Subject { get; set; }
         [Required]
         public int CustomerInfId { get; set; }
-        public CustomerInf CustomerInf { get; set; }
+        public Customer Customer { get; set; }
         [Required]
         public int ShippingDeliveryId { get; set; }
         public ShippingDelivery ShippingDelivery { get; set; }

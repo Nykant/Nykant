@@ -9,14 +9,6 @@
             <form id="payment-form">
                 <div class="checkout-wrap" id="payment-wrap">
                     <div class="payment-elements">
-                        <div class="cardinfo-line">
-                            <div class="inputstyle left">
-                                <input required id="cardholder-name" asp-for="@Model.CardInfo.Card_OwnerName" />
-                                <label asp-for="@Model.CardInfo.Card_OwnerName"></label>
-                                <span asp-validation-for="@Model.CardInfo.Card_OwnerName"></span>
-                                <div class="underline"></div>
-                            </div>
-                        </div>
                         <div class="payment-elements-thing" id="payment-elements-thing">
                             <div class="card-element" id="card-element-number"><!--Stripe.js injects the Card Element--></div>
                             <div class="margin-top-20 card-element" id="card-element-expiry"><!--Stripe.js injects the Card Element--></div>
@@ -29,7 +21,7 @@
                                 <input id="terms-and-conditions-consent" value="false" type="checkbox">
                                 <span class="checkmark"></span>
                             </label>
-                            <input required type="hidden" id="terms-and-conditions-input" asp-for="@Model.CustomerInf.AcceptPrivacyPolicy" />
+                            <input required type="hidden" id="terms-and-conditions-input" asp-for="@Model.Customer.TermsAndConditionsConsent" />
                             @localizer["Signature required"]
                         </div>
                     </div>

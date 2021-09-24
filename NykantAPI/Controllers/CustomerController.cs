@@ -28,15 +28,15 @@ namespace NykantAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<CustomerInf>> GetCustomer(int id)
+        public async Task<ActionResult<Customer>> GetCustomer(int id)
         {
-            var customerInf = await _context.CustomerInfs.FindAsync(id);
+            var customerInf = await _context.Customer.FindAsync(id);
             customerInf = _protectionService.ProtectCustomerInf(customerInf);
             return Ok(JsonConvert.SerializeObject(customerInf));
         }
 
         [HttpPost]
-        public async Task<ActionResult<CustomerInf>> PostCustomer(CustomerInf customerInf)
+        public async Task<ActionResult<Customer>> PostCustomer(Customer customerInf)
         {
             try
             {
@@ -45,14 +45,14 @@ namespace NykantAPI.Controllers
                 {
                     if (CustomerExists(customerInf.Id))
                     {
-                        _context.CustomerInfs.Update(customerInf);
+                        _context.Customer.Update(customerInf);
                         await _context.SaveChangesAsync();
                         return Ok();
                     }
                     else
                     {
 
-                        var entity = _context.CustomerInfs.Add(customerInf).Entity;
+                        var entity = _context.Customer.Add(customerInf).Entity;
                         await _context.SaveChangesAsync();
 
                         return CreatedAtAction("GetCustomer", new { id = entity.Id }, customerInf);
@@ -68,11 +68,11 @@ namespace NykantAPI.Controllers
         }
 
         [HttpDelete("{customerInfId}")]
-        public async Task<ActionResult<CustomerInf>> DeleteCustomerInf(int customerInfId)
+        public async Task<ActionResult<Customer>> DeleteCustomerInf(int customerInfId)
         {
             try
             {
-                _context.CustomerInfs.Remove(await _context.CustomerInfs.FindAsync(customerInfId));
+                _context.Customer.Remove(await _context.Customer.FindAsync(customerInfId));
                 await _context.SaveChangesAsync();
                 return Ok();
             }
@@ -84,7 +84,7 @@ namespace NykantAPI.Controllers
 
         private bool CustomerExists(int id)
         {
-            return _context.CustomerInfs.Any(e => e.Id == id);
+            return _context.Customer.Any(e => e.Id == id);
         }
     }
 }

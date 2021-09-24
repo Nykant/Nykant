@@ -18,10 +18,12 @@ namespace NykantAPI.Data
         public DbSet<BagItem> BagItems { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
-        public DbSet<CustomerInf> CustomerInfs { get; set; }
+        public DbSet<Customer> Customer { get; set; }
         public DbSet<ShippingDelivery> ShippingDeliveries { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Review> Reviews { get; set; }
+        public DbSet<InvoiceAddress> InvoiceAddress { get; set; }
+        public DbSet<ShippingAddress> ShippingAddress { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

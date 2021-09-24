@@ -1,0 +1,179 @@
+﻿@inject IViewLocalizer localizer
+@model CheckoutVM
+
+<div class="row bottom-side-padding">
+        <div class="hide-overflow responsive-form" id="customerinf-wrapper">
+            <div class="checkout-header z200" id="customerInf-header">
+                <h1>
+                    @localizer["Receiver header"]
+                </h1>
+                <div class="check-sign" id="customer-check-sign">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                </div>
+                <div id="customerinf-summary">
+                    <p>@localizer["Email"]: <span id="customer-email-summary">@Model.Customer.Email</span></p>
+                    <p>@localizer["Telephone"]: <span id="customer-phone-summary">@Model.Customer.Phone</span></p>
+                    <p>@localizer["First Name"]: <span id="customer-firstname-summary">@Model.Customer.InvoiceAddress.FirstName</span></p>
+                    <p>@localizer["Last Name"]: <span id="customer-lastname-summary">@Model.Customer.InvoiceAddress.LastName</span></p>
+                    <p>@localizer["Address"]: <span id="customer-address-summary">@Model.Customer.InvoiceAddress.Address</span></p>
+                    <p>@localizer["City"]: <span id="customer-city-summary">@Model.Customer.InvoiceAddress.City</span></p>
+                    <p>@localizer["Country"]: <span id="customer-country-summary">@Model.Customer.InvoiceAddress.Country</span></p>
+                    <p>@localizer["Postal"]: <span id="customer-postal-summary">@Model.Customer.InvoiceAddress.Postal</span></p>
+                    <button class="button edit-button" id="customer-edit-button">@localizer["Change"]</button>
+                </div>
+            </div>
+
+            <form class="z50" id="customer-form" method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="customer_completed" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" asp-controller="Checkout" asp-action="PostCustomerInf">
+                <input type="hidden" id="edit-customer" name="editCustomer" value="false" />
+                <input type="hidden" asp-for="@Model.Customer.Id" />
+                <div class="checkout-wrap" id="customer-wrap" >
+                    <div class="customerinfo">
+                        <div class="checkout-header">
+                            @localizer["Where do we send the order?"]
+                        </div>
+                        <div class="customer-box">
+                            <div class="inputstyle left">
+                                <input id="customer-email-input" required asp-for="@Model.Customer.Email" />
+                                <label asp-for="@Model.Customer.Email"></label>
+                                <span asp-validation-for="@Model.Customer.Email"></span>
+                                <div class="underline"></div>
+                            </div>
+                            <div class="inputstyle left">
+                                <input id="customer-city-input" required asp-for="@Model.Customer.Phone" />
+                                <label asp-for="@Model.Customer.Phone"></label>
+                                <span asp-validation-for="@Model.Customer.Phone"></span>
+                                <div class="underline"></div>
+                            </div>
+                        </div>
+
+                        <div class="invoice-address-box">
+                            <div class="checkout-header">
+                                @localizer["Invoice Address"]
+                            </div>
+                            <div class="inputstyle left">
+                                <input id="customer-firstname-input" required asp-for="@Model.Customer.InvoiceAddress.FirstName" />
+                                <label asp-for="@Model.Customer.InvoiceAddress.FirstName"></label>
+                                <span asp-validation-for="@Model.Customer.InvoiceAddress.FirstName"></span>
+                                <div class="underline"></div>
+                            </div>
+                            <div class="inputstyle left">
+                                <input id="customer-lastname-input" required asp-for="@Model.Customer.InvoiceAddress.LastName" />
+                                <label asp-for="@Model.Customer.InvoiceAddress.LastName"></label>
+                                <span asp-validation-for="@Model.Customer.InvoiceAddress.LastName"></span>
+                                <div class="underline"></div>
+                            </div>
+
+                            <div class="inputstyle left">
+                                <input id="customer-address-input" required asp-for="@Model.Customer.InvoiceAddress.Address" />
+                                <label asp-for="@Model.Customer.InvoiceAddress.Address"></label>
+                                <span asp-validation-for="@Model.Customer.InvoiceAddress.Address"></span>
+                                <div class="underline"></div>
+                            </div>
+                            <div class="inputstyle left">
+                                <input id="customer-address-input" required asp-for="@Model.Customer.InvoiceAddress.City" />
+                                <label asp-for="@Model.Customer.InvoiceAddress.City"></label>
+                                <span asp-validation-for="@Model.Customer.InvoiceAddress.City"></span>
+                                <div class="underline"></div>
+                            </div>
+                            <div class="inputstyle left">
+                                <input id="customer-country-input" class="hidden" asp-for="@Model.Customer.InvoiceAddress.Country" />
+                                <div class="country-label">@localizer[""]</div>
+                                <select required id="country-picker">
+                                    <option>@localizer[""]</option>
+                                    <option>DK</option>
+                                </select>
+                                <div class="country-error hidden" id="country-error">
+                                    @localizer["Choose country to continue"]
+                                </div>
+                            </div>
+                            <div class="inputstyle left">
+                                <input id="customer-postal-input" required asp-for="@Model.Customer.InvoiceAddress.Postal" />
+                                <label asp-for="@Model.Customer.InvoiceAddress.Postal"></label>
+                                <span asp-validation-for="@Model.Customer.InvoiceAddress.Postal"></span>
+                                <div class="underline"></div>
+                            </div>
+                            <div class="same-as-invoice">
+                                <label class="simple-checkbox">
+                                    <input checked asp-for="@Model.Customer.ShippingAddress.SameAsInvoice" value="true" type="checkbox">
+                                    <span class="simple-checkmark"></span>
+                                </label>
+                                <p>
+                                    @localizer["Use invoice address as shipping address"]
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="shipping-address-box">
+                            <div class="checkout-header">
+                                @localizer["Shipping Address"]
+                            </div>
+                            <div class="inputstyle left">
+                                <input id="customer-firstname-input" required asp-for="@Model.Customer.ShippingAddress.FirstName" />
+                                <label asp-for="@Model.Customer.ShippingAddress.FirstName"></label>
+                                <span asp-validation-for="@Model.Customer.ShippingAddress.FirstName"></span>
+                                <div class="underline"></div>
+                            </div>
+                            <div class="inputstyle left">
+                                <input id="customer-lastname-input" required asp-for="@Model.Customer.ShippingAddress.LastName" />
+                                <label asp-for="@Model.Customer.ShippingAddress.LastName"></label>
+                                <span asp-validation-for="@Model.Customer.ShippingAddress.LastName"></span>
+                                <div class="underline"></div>
+                            </div>
+
+                            <div class="inputstyle left">
+                                <input id="customer-address-input" required asp-for="@Model.Customer.ShippingAddress.Address" />
+                                <label asp-for="@Model.Customer.ShippingAddress.Address"></label>
+                                <span asp-validation-for="@Model.Customer.ShippingAddress.Address"></span>
+                                <div class="underline"></div>
+                            </div>
+                            <div class="inputstyle left">
+                                <input id="customer-address-input" required asp-for="@Model.Customer.ShippingAddress.City" />
+                                <label asp-for="@Model.Customer.ShippingAddress.City"></label>
+                                <span asp-validation-for="@Model.Customer.ShippingAddress.City"></span>
+                                <div class="underline"></div>
+                            </div>
+                            <div class="inputstyle left">
+                                <input id="customer-country-input" class="hidden" asp-for="@Model.Customer.ShippingAddress.Country" />
+                                <div class="country-label">@localizer[""]</div>
+                                <select required id="country-picker">
+                                    <option>@localizer[""]</option>
+                                    <option>DK</option>
+                                </select>
+                                <div class="country-error hidden" id="country-error">
+                                    @localizer["Choose country to continue"]
+                                </div>
+                            </div>
+                            <div class="inputstyle left">
+                                <input id="customer-postal-input" required asp-for="@Model.Customer.ShippingAddress.Postal" />
+                                <label asp-for="@Model.Customer.ShippingAddress.Postal"></label>
+                                <span asp-validation-for="@Model.Customer.ShippingAddress.Postal"></span>
+                                <div class="underline"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 left top-padding bottom-side-padding">
+                            <div class="gdpr-accept">
+                                <label class="checkbox">
+                                    <input id="privacy-policy-consent" value="false" type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <input required type="hidden" id="privacy-policy-input" asp-for="@Model.Customer.PrivacyPolicyConsent" />
+                            </div>
+                        </div>
+
+                        <div class="padding-10">
+
+                        </div>
+                    </div>
+                    
+                    <div class="col-12 left" id="customer-button">
+                        <button id="customerInf-submit" class="button" type="submit" disabled>@localizer[""]</button> @*------------- SUBMIT FORM --------------*@
+                    </div>
+                </div>
+            </form>
+        </div>
+</div>
+
+
+
+

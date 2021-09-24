@@ -105,6 +105,33 @@
     padding: 5px;
 }
 
+.customer-box {
+    width:100%;
+    min-height:110px;
+    position:relative;
+}
+
+.invoice-address-box {
+    width: 100%;
+    min-height: 110px;
+    position: relative;
+}
+
+.shipping-address-box {
+    display: none;
+    width: 100%;
+    min-height: 110px;
+    position: relative;
+}
+
+.same-as-invoice {
+    float:left;
+    min-width:280px;
+    min-height:110px;
+    position:relative;
+    padding:35px;
+}
+
 @keyframes hideerror {
     from {
         transform: translate(0px, 1px);
@@ -148,7 +175,13 @@
     float:right;
 }
 
-
+.checkout-header {
+    width: 100%;
+    color: black;
+    padding: 20px;
+    background-color: var(--light-blue);
+    text-align: center;
+}
 
 #shipping-form {
 /*    background-color: white;*/

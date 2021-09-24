@@ -64,10 +64,13 @@ namespace NykantMVC.Controllers
 
                         CheckoutVM checkoutVM = new CheckoutVM
                         {
-                            CustomerInf = new CustomerInf(),
+                            Customer = new Customer 
+                            { 
+                                InvoiceAddress = new InvoiceAddress(),
+                                ShippingAddress = new ShippingAddress()
+                            },
                             ShippingDeliveries = shippingDeliveries,
-                            Checkout = checkout,
-                            CardInfo = new CardInfo(),
+                            Checkout = checkout
                         };
 
                         return View(checkoutVM);
@@ -96,10 +99,13 @@ namespace NykantMVC.Controllers
 
                         CheckoutVM checkoutVM = new CheckoutVM
                         {
-                            CustomerInf = new CustomerInf(),
+                            Customer = new Customer
+                            {
+                                InvoiceAddress = new InvoiceAddress(),
+                                ShippingAddress = new ShippingAddress()
+                            },
                             ShippingDeliveries = shippingDeliveries,
-                            Checkout = checkout,
-                            CardInfo = new CardInfo()
+                            Checkout = checkout
                         };
 
                         return View(checkoutVM);
@@ -113,21 +119,25 @@ namespace NykantMVC.Controllers
                     HttpContext.Session.Set<Checkout>(CheckoutSessionKey, null);
                     return RedirectToAction("Details", "Bag");
                 }
-                CustomerInf customerInf = null;
+                Customer customerInf = null;
                 if(checkout.CustomerInfId != 0)
                 {
                     var jsonCustomer = await GetRequest($"/Customer/GetCustomer/{checkout.CustomerInfId}");
-                    customerInf = JsonConvert.DeserializeObject<CustomerInf>(jsonCustomer);
+                    customerInf = JsonConvert.DeserializeObject<Customer>(jsonCustomer);
                     customerInf = _protectionService.UnProtectCustomerInf(customerInf);
                 }
                 else
                 {
-                    customerInf = new CustomerInf();
+                    customerInf = new Customer();
                 }
 
                 CheckoutVM checkoutVM = new CheckoutVM
                 {
-                    CustomerInf = customerInf,
+                    Customer = new Customer
+                    {
+                        InvoiceAddress = new InvoiceAddress(),
+                        ShippingAddress = new ShippingAddress()
+                    },
                     ShippingDeliveries = shippingDeliveries,
                     Checkout = checkout
                 };
@@ -137,7 +147,7 @@ namespace NykantMVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostCustomerInf(CustomerInf customerInf, bool editCustomer)
+        public async Task<IActionResult> PostCustomerInf(Customer customerInf, bool editCustomer)
         {
             if (ModelState.IsValid)
             {
@@ -157,7 +167,7 @@ namespace NykantMVC.Controllers
                             Console.WriteLine($"Trying to get Customer inf id");
                             var json = await GetRequest(response.Headers.Location.AbsolutePath);
                             Console.WriteLine($"Got id");
-                            checkout.CustomerInfId = JsonConvert.DeserializeObject<CustomerInf>(json).Id;
+                            checkout.CustomerInfId = JsonConvert.DeserializeObject<Customer>(json).Id;
                             Console.WriteLine($"Deserialize id");
                         }
                         else

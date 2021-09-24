@@ -9,7 +9,6 @@ namespace NykantMVC.Models.ViewModels
     {
         public Checkout Checkout { get; set; }
         public List<ShippingDelivery> ShippingDeliveries { get; set; }
-        public CustomerInf CustomerInf { get; set; }
-        public CardInfo CardInfo { get; set; }
+        public Customer Customer { get; set; }
     }
 }

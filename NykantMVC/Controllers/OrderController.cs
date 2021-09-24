@@ -91,7 +91,7 @@ namespace NykantMVC.Controllers
                 }
 
                 var jsonCustomer = await GetRequest($"/Customer/GetCustomer/{checkout.CustomerInfId}");
-                var customerInf = JsonConvert.DeserializeObject<CustomerInf>(jsonCustomer);
+                var customerInf = JsonConvert.DeserializeObject<Customer>(jsonCustomer);
                 customerInf = _protectionService.UnProtectCustomerInf(customerInf);
 
                 await mailService.SendOrderEmailAsync(customerInf, order);
@@ -129,7 +129,7 @@ namespace NykantMVC.Controllers
             {
                 CreatedAt = DateTime.Now,
                 Currency = "dkk",
-                CustomerInfId = checkout.CustomerInfId,
+                CustomerId = checkout.CustomerInfId,
                 PaymentIntent_Id = paymentIntentId,
                 ShippingDeliveryId = checkout.ShippingDelivery.Id,
                 Status = Status.Pending,
