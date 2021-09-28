@@ -18,8 +18,6 @@ namespace NykantMVC.Models
         public ShippingAddress ShippingAddress { get; set; }
         [Required]
         public string PrivacyPolicyConsent { get; set; }
-        [Required]
-        public string TermsAndConditionsConsent { get; set; }
     }
 }
 

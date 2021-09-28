@@ -31,6 +31,21 @@ var shipping_summary = document.getElementById("shipping-summary");
 var shipping_edit_button = document.getElementById("shipping-edit-button");
 var shipping_delivery_name = document.getElementById("shipping-delivery-name");
 var stage_value = document.getElementById("stage").value;
+var reuse_invoice = document.getElementById('reuse-invoice');
+var shippingaddress_firstname = document.getElementById('shippingaddress-firstname');
+var shippingaddress_lastname = document.getElementById('shippingaddress-lastname');
+var shippingaddress_city = document.getElementById('shippingaddress-city');
+var shippingaddress_country = document.getElementById('shippingaddress-country');
+var shippingaddress_postal = document.getElementById('shippingaddress-postal');
+var shippingaddress_address = document.getElementById('shippingaddress-address');
+var shippingaddress_firstname_summary = document.getElementById('shippingaddress-firstname-summary');
+var shippingaddress_lastname_summary = document.getElementById('shippingaddress-lastname-summary');
+var shippingaddress_city_summary = document.getElementById('shippingaddress-city-summary');
+var shippingaddress_country_summary = document.getElementById('shippingaddress-country-summary');
+var shippingaddress_postal_summary = document.getElementById('shippingaddress-postal-summary');
+var shippingaddress_address_summary = document.getElementById('shippingaddress-address-summary');
+var shippingaddress_summary = document.getElementById('shippingaddress-summary');
+var terms_and_conditions = document.getElementById('terms-and-conditions-consent');
 
 if (stage_value == 1) {
     customer_wrap.style.transition = "all 1s";
@@ -66,7 +81,19 @@ else if (stage_value == 3) {
     shipping_edit_button.style.display = "block";
 };
 
-customer_completed = function () {
+customer_completed = function (msg) {
+    if (reuse_invoice.checked) {
+        shippingaddress_summary.style.display = "none";
+        shippingaddress_address.value = address_input.value;
+        shippingaddress_city.value = city_input.value;
+        shippingaddress_country.value = country_input.value;
+        shippingaddress_firstname.value = firstname_input.value;
+        shippingaddress_lastname.value = lastname_input.value;
+        shippingaddress_postal.value = postal_input.value;
+    }
+    else {
+        shippingaddress_summary.style.display = "block";
+    }
     document.getElementById("edit-customer").value = false;
     customer_check_sign.style.display = "block";
     customer_form_complete.value = 1;
@@ -85,6 +112,12 @@ customer_completed = function () {
     city_summary.innerHTML = city_input.value;
     postal_summary.innerHTML = postal_input.value;
     address_summary.innerHTML = address_input.value;
+    shippingaddress_address_summary.textContent = shippingaddress_address.value;
+    shippingaddress_city_summary.textContent = shippingaddress_city.value;
+    shippingaddress_country_summary.textContent = shippingaddress_country.value;
+    shippingaddress_firstname_summary.textContent = shippingaddress_firstname.value;
+    shippingaddress_lastname_summary.textContent = shippingaddress_lastname.value;
+    shippingaddress_postal_summary.textContent = shippingaddress_postal.value;
 
     customer_wrap.style.transform = "translateY(-100%)";
     customer_form.style.height = "0px";
@@ -93,8 +126,6 @@ customer_completed = function () {
         shipping_form.style.height = "auto";
         shipping_wrap.style.transform = "translateY(0%)";
     };
-
-
 
     $('html,body').animate({
         scrollTop: $("#shipping-header").offset().top
@@ -175,14 +206,26 @@ $('#privacy-policy-consent').on('click', function () {
 
 
 $('#terms-and-conditions-consent').on('click', function () {
-    if (document.getElementById('terms-and-conditions-consent').value == "true") {
-        document.getElementById('terms-and-conditions-consent').value = "false";
-        document.getElementById('terms-and-conditions-input').value = null;
+    if (terms_and_conditions.checked == false) {
         document.getElementById('submit-payment').disabled = true;
     }
     else {
-        document.getElementById('terms-and-conditions-consent').value = "true";
-        document.getElementById('terms-and-conditions-input').value = "true";
         document.getElementById('submit-payment').disabled = false;
     }
 });
+
+if (reuse_invoice.checked) {
+    document.getElementById('shipping-address-box').style.display = "none";
+}
+else {
+    document.getElementById('shipping-address-box').style.display = "block";
+}
+
+reuse_invoice.onclick = function() {
+    if (this.checked) {
+        document.getElementById('shipping-address-box').style.display = "none";
+    }
+    else {
+        document.getElementById('shipping-address-box').style.display = "block";
+    }
+}

@@ -2,6 +2,10 @@
 var country_input = document.getElementById("customer-country-input");
 var customer_wrap = document.getElementById("customer-form");
 var country_error = document.getElementById("country-error");
+var reuse_invoice = document.getElementById('reuse-invoice');
+var shippingaddress_country_picker = document.getElementById("shippingaddress-country-picker");
+var shippingaddress_country = document.getElementById("shippingaddress-country");
+var shippingaddress_country_error = document.getElementById("shippingaddress-country-error");
 
 country_picker.addEventListener("change", function () {
     var x = country_picker.selectedIndex;
@@ -11,11 +15,27 @@ country_picker.addEventListener("change", function () {
 });
 
 customer_wrap.addEventListener("submit", function (event) {
-    if (country_input.value === "" || country_input.value === "Vælg Land") {
+    if (country_input.value === "" || country_input.value === "Vælg Land" || country_input.value === "Choose Country") {
         event.preventDefault();
         country_error.style.display = "block";
         setTimeout(function () {
             country_error.style.display = "none";
         }, 6000);
     };
+    if (reuse_invoice.checked == false) {
+        if (shippingaddress_country.value === "" || shippingaddress_country.value === "Vælg Land" || shippingaddress_country.value === "Choose Country") {
+            event.preventDefault();
+            shippingaddress_country_error.style.display = "block";
+            setTimeout(function () {
+                shippingaddress_country_error.style.display = "none";
+            }, 6000);
+        };
+    }
+});
+
+shippingaddress_country_picker.addEventListener("change", function () {
+    var x = shippingaddress_country_picker.selectedIndex;
+    shippingaddress_country.value = document.getElementsByTagName("option")[x].value;
+    shippingaddress_country_picker.style.color = "black";
+    shippingaddress_country_picker.style.border = "2px solid black";
 });

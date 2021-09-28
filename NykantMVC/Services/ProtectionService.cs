@@ -13,24 +13,76 @@ namespace NykantMVC.Services
             _orderProtector = provider.CreateProtector("Nykant.Order.Protect.v1");
         }
 
-        public Customer ProtectCustomerInf(Customer customer)
+        public Customer ProtectCustomer(Customer customer)
         {
             customer.Email = _customerProtector.Protect(customer.Email);
             customer.Phone = _customerProtector.Protect(customer.Phone);
-            customer.InvoiceAddress.FirstName = _customerProtector.Protect(customer.InvoiceAddress.FirstName);
-            customer.InvoiceAddress.Address = _customerProtector.Protect(customer.InvoiceAddress.Address);
-            customer.InvoiceAddress.City = _customerProtector.Protect(customer.InvoiceAddress.City);
-            customer.InvoiceAddress.Country = _customerProtector.Protect(customer.InvoiceAddress.Country);
-            customer.InvoiceAddress.LastName = _customerProtector.Protect(customer.InvoiceAddress.LastName);
-            customer.InvoiceAddress.Postal = _customerProtector.Protect(customer.InvoiceAddress.Postal);
 
-            customer.ShippingAddress.FirstName = _customerProtector.Protect(customer.ShippingAddress.FirstName);
-            customer.ShippingAddress.Address = _customerProtector.Protect(customer.ShippingAddress.Address);
-            customer.ShippingAddress.City = _customerProtector.Protect(customer.ShippingAddress.City);
-            customer.ShippingAddress.Country = _customerProtector.Protect(customer.ShippingAddress.Country);
-            customer.ShippingAddress.LastName = _customerProtector.Protect(customer.ShippingAddress.LastName);
-            customer.ShippingAddress.Postal = _customerProtector.Protect(customer.ShippingAddress.Postal);
             return customer;
+        }
+
+        public Customer UnprotectCustomer(Customer customer)
+        {
+            customer.Email = _customerProtector.Unprotect(customer.Email);
+            customer.Phone = _customerProtector.Unprotect(customer.Phone);
+
+            return customer;
+        }
+
+        public ShippingAddress ProtectShippingAddress(ShippingAddress shippingAddress)
+        {
+            shippingAddress.FirstName = _customerProtector.Protect(shippingAddress.FirstName);
+            shippingAddress.Address = _customerProtector.Protect(shippingAddress.Address);
+            shippingAddress.City = _customerProtector.Protect(shippingAddress.City);
+            shippingAddress.Country = _customerProtector.Protect(shippingAddress.Country);
+            shippingAddress.LastName = _customerProtector.Protect(shippingAddress.LastName);
+            shippingAddress.Postal = _customerProtector.Protect(shippingAddress.Postal);
+
+            return shippingAddress;
+        }
+
+        public ShippingAddress UnprotectShippingAddress(ShippingAddress shippingAddress)
+        {
+            shippingAddress.FirstName = _customerProtector.Unprotect(shippingAddress.FirstName);
+            shippingAddress.Address = _customerProtector.Unprotect(shippingAddress.Address);
+            shippingAddress.City = _customerProtector.Unprotect(shippingAddress.City);
+            shippingAddress.Country = _customerProtector.Unprotect(shippingAddress.Country);
+            shippingAddress.LastName = _customerProtector.Unprotect(shippingAddress.LastName);
+            shippingAddress.Postal = _customerProtector.Unprotect(shippingAddress.Postal);
+
+            return shippingAddress;
+        }
+
+        public InvoiceAddress UnprotectInvoiceAddress(InvoiceAddress invoiceAddress)
+        {
+            invoiceAddress.Address = _customerProtector.Unprotect(invoiceAddress.Address);
+            invoiceAddress.City = _customerProtector.Unprotect(invoiceAddress.City);
+            invoiceAddress.Country = _customerProtector.Unprotect(invoiceAddress.Country);
+            invoiceAddress.Postal = _customerProtector.Unprotect(invoiceAddress.Postal);
+            invoiceAddress.FirstName = _customerProtector.Unprotect(invoiceAddress.FirstName);
+            invoiceAddress.LastName = _customerProtector.Unprotect(invoiceAddress.LastName);
+
+            return invoiceAddress;
+        }
+
+        public InvoiceAddress ProtectInvoiceAddress(InvoiceAddress invoiceAddress)
+        {
+            invoiceAddress.Address = _customerProtector.Protect(invoiceAddress.Address);
+            invoiceAddress.City = _customerProtector.Protect(invoiceAddress.City);
+            invoiceAddress.Country = _customerProtector.Protect(invoiceAddress.Country);
+            invoiceAddress.Postal = _customerProtector.Protect(invoiceAddress.Postal);
+            invoiceAddress.FirstName = _customerProtector.Protect(invoiceAddress.FirstName);
+            invoiceAddress.LastName = _customerProtector.Protect(invoiceAddress.LastName);
+
+            return invoiceAddress;
+        }
+
+        public Order UnprotectOrder(Order order)
+        {
+            order.Currency = _orderProtector.Unprotect(order.Currency);
+            order.PaymentIntent_Id = _orderProtector.Unprotect(order.PaymentIntent_Id);
+            order.TotalPrice = _orderProtector.Unprotect(order.TotalPrice);
+            return order;
         }
 
         public Order ProtectOrder(Order order)
@@ -40,42 +92,19 @@ namespace NykantMVC.Services
             order.TotalPrice = _orderProtector.Protect(order.TotalPrice);
             return order;
         }
-
-        public Customer UnProtectCustomerInf(Customer customer)
-        {
-            customer.Email = _customerProtector.Unprotect(customer.Email);
-
-            customer.Phone = _customerProtector.Unprotect(customer.Phone);
-            customer.InvoiceAddress.FirstName = _customerProtector.Unprotect(customer.InvoiceAddress.FirstName);
-            customer.InvoiceAddress.Address = _customerProtector.Unprotect(customer.InvoiceAddress.Address);
-            customer.InvoiceAddress.City = _customerProtector.Unprotect(customer.InvoiceAddress.City);
-            customer.InvoiceAddress.Country = _customerProtector.Unprotect(customer.InvoiceAddress.Country);
-            customer.InvoiceAddress.LastName = _customerProtector.Unprotect(customer.InvoiceAddress.LastName);
-            customer.InvoiceAddress.Postal = _customerProtector.Unprotect(customer.InvoiceAddress.Postal);
-
-            customer.ShippingAddress.FirstName = _customerProtector.Unprotect(customer.ShippingAddress.FirstName);
-            customer.ShippingAddress.Address = _customerProtector.Unprotect(customer.ShippingAddress.Address);
-            customer.ShippingAddress.City = _customerProtector.Unprotect(customer.ShippingAddress.City);
-            customer.ShippingAddress.Country = _customerProtector.Unprotect(customer.ShippingAddress.Country);
-            customer.ShippingAddress.LastName = _customerProtector.Unprotect(customer.ShippingAddress.LastName);
-            customer.ShippingAddress.Postal = _customerProtector.Unprotect(customer.ShippingAddress.Postal);
-            return customer;
-        }
-
-        public Order UnProtectOrder(Order order)
-        {
-            order.Currency = _orderProtector.Unprotect(order.Currency);
-            order.PaymentIntent_Id = _orderProtector.Unprotect(order.PaymentIntent_Id);
-            order.TotalPrice = _orderProtector.Unprotect(order.TotalPrice);
-            return order;
-        }
     }
 
     public interface IProtectionService
     {
-        public Customer ProtectCustomerInf(Customer customerInf);
-        public Customer UnProtectCustomerInf(Customer customerInf);
+        public Customer ProtectCustomer(Customer customerInf);
+        public Customer UnprotectCustomer(Customer customerInf);
+
+        public ShippingAddress ProtectShippingAddress(ShippingAddress customerInf);
+        public ShippingAddress UnprotectShippingAddress(ShippingAddress customerInf);
+
+        public InvoiceAddress ProtectInvoiceAddress(InvoiceAddress customerInf);
+        public InvoiceAddress UnprotectInvoiceAddress(InvoiceAddress customerInf);
         public Order ProtectOrder(Order order);
-        public Order UnProtectOrder(Order order);
+        public Order UnprotectOrder(Order order);
     }
 }

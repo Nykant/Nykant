@@ -31,7 +31,7 @@ namespace NykantAPI.Controllers
         public async Task<ActionResult<Customer>> GetCustomer(int id)
         {
             var customerInf = await _context.Customer.FindAsync(id);
-            customerInf = _protectionService.ProtectCustomerInf(customerInf);
+            customerInf = _protectionService.ProtectCustomer(customerInf);
             return Ok(JsonConvert.SerializeObject(customerInf));
         }
 
@@ -40,7 +40,7 @@ namespace NykantAPI.Controllers
         {
             try
             {
-                customerInf = _protectionService.UnProtectCustomerInf(customerInf);
+                customerInf = _protectionService.UnProtectCustomer(customerInf);
                 if (ModelState.IsValid)
                 {
                     if (CustomerExists(customerInf.Id))

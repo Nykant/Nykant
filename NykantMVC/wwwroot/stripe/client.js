@@ -1,7 +1,6 @@
 ﻿// Set your publishable key: remember to change this to your live publishable key in production
 // See your keys here: https://dashboard.stripe.com/account/apikeys
 var stripe = Stripe('pk_test_51Hyy3eKS99T7pxPWSbrIYqKDcyKomhVp3hrXymvg8cPkupAmEcbeEoV26ckeJF9GZnfKdvTeQwyKdnwO6uNrIaih001cWPBSI2');
-
 var elements = stripe.elements();
 
 var style = {
@@ -44,10 +43,14 @@ cardNumber.mount("#card-element-number");
 cardExpiry.mount("#card-element-expiry");
 cardCvc.mount("#card-element-cvc");
 
+var terms_and_conditions = document.getElementById('terms-and-conditions-consent');
 var form = document.getElementById("payment-form");
 form.addEventListener("submit", function (event) {
     event.preventDefault();
     loading(true);
+    if (terms_and_conditions.checked == false) {
+        showError("Du skal acceptere vores handelsbetingelser før du kan gennemføre betalingen.");
+    }
     if (document.getElementById("shipping-form-complete").value == 0 || document.getElementById("customer-form-complete").value == 0) {
         showError("Du skal udfylde både kunde oplysninger og leveringsmetode formularerne før du kan færdiggøre ordren");
     }

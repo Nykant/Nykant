@@ -1,13 +1,10 @@
 ﻿
 .gdpr-accept {
-    position:relative;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    margin:auto;
-    display: block;
-    color: black;
-    font-size: 20px;
-    width:65%;
+    float: left;
+    min-width: 280px;
+    min-height: 110px;
+    position: relative;
+    padding: 35px;
 }
 
 .gdpr-accept label {
@@ -106,30 +103,33 @@
 }
 
 .customer-box {
-    width:100%;
-    min-height:110px;
-    position:relative;
+    width: 100%;
+    min-height: 110px;
+    position: relative;
+    float: left;
 }
 
 .invoice-address-box {
     width: 100%;
-    min-height: 110px;
+    min-height: auto;
     position: relative;
+    float: left;
 }
 
 .shipping-address-box {
     display: none;
     width: 100%;
-    min-height: 110px;
+    min-height: auto;
     position: relative;
+    float:left;
 }
 
 .same-as-invoice {
-    float:left;
-    min-width:280px;
-    min-height:110px;
-    position:relative;
-    padding:35px;
+    float: left;
+    width: 100%;
+    min-height: auto;
+    position: relative;
+    padding: 35px;
 }
 
 @keyframes hideerror {

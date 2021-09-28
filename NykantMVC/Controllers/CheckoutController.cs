@@ -124,7 +124,7 @@ namespace NykantMVC.Controllers
                 {
                     var jsonCustomer = await GetRequest($"/Customer/GetCustomer/{checkout.CustomerInfId}");
                     customerInf = JsonConvert.DeserializeObject<Customer>(jsonCustomer);
-                    customerInf = _protectionService.UnProtectCustomerInf(customerInf);
+                    customerInf = _protectionService.UnProtectCustomer(customerInf);
                 }
                 else
                 {
@@ -147,39 +147,49 @@ namespace NykantMVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostCustomerInf(Customer customerInf, bool editCustomer)
+        public async Task<IActionResult> PostCustomerInf(Customer customer, bool editCustomer)
         {
+            if (customer.ShippingAddress.SameAsInvoice)
+            {
+                customer.ShippingAddress.Address = customer.InvoiceAddress.Address;
+                customer.ShippingAddress.City = customer.InvoiceAddress.City;
+                customer.ShippingAddress.Country = customer.InvoiceAddress.Country;
+                customer.ShippingAddress.FirstName = customer.InvoiceAddress.FirstName;
+                customer.ShippingAddress.LastName = customer.InvoiceAddress.LastName;
+                customer.ShippingAddress.Postal = customer.InvoiceAddress.Postal;
+            }
             if (ModelState.IsValid)
             {
                 var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
 
                 if (checkout.Stage == Stage.customerInf || editCustomer)
                 {
-                    customerInf = _protectionService.ProtectCustomerInf(customerInf);
-                    var response = await PostRequest("/Customer/PostCustomer/", customerInf);
-                    Console.WriteLine($"Post Complete statuscode: {response.StatusCode} absolutePath: {response.Headers.Location.AbsolutePath} ");
+                    customer = _protectionService.ProtectCustomer(customer);
+                    var response = await PostRequest("/Customer/PostCustomer/", new Customer { Email = customer.Email, Phone = customer.Phone });
                     if (response.IsSuccessStatusCode)
                     {
-                        Console.WriteLine($"Success status code");
-                        if (customerInf.Id == 0)
+                        if (customer.Id == 0)
                         {
-                            Console.WriteLine($"Customer Inf Id = 0");
-                            Console.WriteLine($"Trying to get Customer inf id");
                             var json = await GetRequest(response.Headers.Location.AbsolutePath);
-                            Console.WriteLine($"Got id");
                             checkout.CustomerInfId = JsonConvert.DeserializeObject<Customer>(json).Id;
-                            Console.WriteLine($"Deserialize id");
                         }
                         else
                         {
-                            checkout.CustomerInfId = customerInf.Id;
+                            checkout.CustomerInfId = customer.Id;
                         }
 
+                        var shippingAddress = _protectionService.ProtectShippingAddress(customer.ShippingAddress);
+                        shippingAddress.CustomerId = checkout.CustomerInfId;
+                        var postResponse = await PostRequest("/Customer/PostShippingAddress", shippingAddress);
+
+                        var invoiceAddress = _protectionService.ProtectInvoiceAddress(customer.InvoiceAddress);
+                        invoiceAddress.CustomerId = checkout.CustomerInfId;
+                        var postResponse2 = await PostRequest("/Customer/PostInvoiceAddress", invoiceAddress);
+
+                        hmmmm
                         if (!editCustomer)
                         {
-                            Console.WriteLine($"Set checkout stage = shipping");
                             checkout.Stage = Stage.shipping;
-                            Console.WriteLine($"Done setting stage");
                         }
 
                         HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
