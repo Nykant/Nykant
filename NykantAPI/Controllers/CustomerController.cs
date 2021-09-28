@@ -40,9 +40,43 @@ namespace NykantAPI.Controllers
         {
             try
             {
-                customerInf = _protectionService.UnProtectCustomer(customerInf);
+                customerInf = _protectionService.UnprotectCustomer(customerInf);
                 if (ModelState.IsValid)
                 {
+                    if (CustomerExists(customerInf.Id))
+                    {
+                        _context.Customer.Update(customerInf);
+                        await _context.SaveChangesAsync();
+                        return Ok();
+                    }
+                    else
+                    {
+
+                        var entity = _context.Customer.Add(customerInf).Entity;
+                        await _context.SaveChangesAsync();
+
+                        return CreatedAtAction("GetCustomer", new { id = entity.Id }, customerInf);
+                    }
+                }
+                return Content("error");
+            }
+            catch (Exception e)
+            {
+                _logger.LogInformation(e.Message);
+                return Content(e.Message);
+            }
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<Customer>> PostShippingAddress(ShippingAddress shippingAddress)
+        {
+            try
+            {
+                shippingAddress = _protectionService.UnprotectShippingAddress(shippingAddress);
+                if (ModelState.IsValid)
+                {
+                    _context.ShippingAddress.Add(shippingAddress);
+
                     if (CustomerExists(customerInf.Id))
                     {
                         _context.Customer.Update(customerInf);
