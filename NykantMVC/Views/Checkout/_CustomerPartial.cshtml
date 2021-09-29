@@ -15,12 +15,12 @@
                     <p>@localizer["Telephone"]: <span id="customer-phone-summary">@Model.Customer.Phone</span></p>
                     <div class="invoice-summary margin-top-10">
                         <p class="bold-text">Invoice Address</p>
-                        <p>@localizer["First Name"]: <span id="customer-firstname-summary">@Model.Customer.InvoiceAddress.FirstName</span></p>
-                        <p>@localizer["Last Name"]: <span id="customer-lastname-summary">@Model.Customer.InvoiceAddress.LastName</span></p>
-                        <p>@localizer["Address"]: <span id="customer-address-summary">@Model.Customer.InvoiceAddress.Address</span></p>
-                        <p>@localizer["City"]: <span id="customer-city-summary">@Model.Customer.InvoiceAddress.City</span></p>
-                        <p>@localizer["Country"]: <span id="customer-country-summary">@Model.Customer.InvoiceAddress.Country</span></p>
-                        <p>@localizer["Postal"]: <span id="customer-postal-summary">@Model.Customer.InvoiceAddress.Postal</span></p>
+                        <p>@localizer["First Name"]: <span id="customer-firstname-summary">@Model.Customer.BillingAddress.FirstName</span></p>
+                        <p>@localizer["Last Name"]: <span id="customer-lastname-summary">@Model.Customer.BillingAddress.LastName</span></p>
+                        <p>@localizer["Address"]: <span id="customer-address-summary">@Model.Customer.BillingAddress.Address</span></p>
+                        <p>@localizer["City"]: <span id="customer-city-summary">@Model.Customer.BillingAddress.City</span></p>
+                        <p>@localizer["Country"]: <span id="customer-country-summary">@Model.Customer.BillingAddress.Country</span></p>
+                        <p>@localizer["Postal"]: <span id="customer-postal-summary">@Model.Customer.BillingAddress.Postal</span></p>
                     </div>
                     <div id="shippingaddress-summary" class="shipping-summary margin-top-10">
                         <p class="bold-text">Shipping Address</p>
@@ -36,7 +36,7 @@
                 </div>
             </div>
 
-            <form class="z50" id="customer-form" method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="noop" data-ajax-complete="customer_completed" data-ajax-begin="noop" data-ajax-failure="noop" asp-controller="Checkout" asp-action="PostCustomerInf">
+            <form class="z50" id="customer-form" method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#payment-partial" data-ajax-success="noop" data-ajax-complete="customer_completed" data-ajax-begin="noop" onclick="customer_begin()" data-ajax-failure="noop" asp-controller="Checkout" asp-action="PostCustomerInf">
                 <input type="hidden" id="edit-customer" name="editCustomer" value="false" />
                 <input type="hidden" asp-for="@Model.Customer.Id" />
                 <div class="checkout-wrap" id="customer-wrap" >
@@ -59,35 +59,35 @@
 
                         <div class="invoice-address-box">
                             <div class="checkout-header">
-                                @localizer["Invoice Address"]
+                                @localizer[""]
                             </div>
                             <div class="inputstyle left">
-                                <input id="customer-firstname-input" required asp-for="@Model.Customer.InvoiceAddress.FirstName" />
-                                <label asp-for="@Model.Customer.InvoiceAddress.FirstName"></label>
-                                <span asp-validation-for="@Model.Customer.InvoiceAddress.FirstName"></span>
+                                <input id="customer-firstname-input" required asp-for="@Model.Customer.BillingAddress.FirstName" />
+                                <label asp-for="@Model.Customer.BillingAddress.FirstName"></label>
+                                <span asp-validation-for="@Model.Customer.BillingAddress.FirstName"></span>
                                 <div class="underline"></div>
                             </div>
                             <div class="inputstyle left">
-                                <input id="customer-lastname-input" required asp-for="@Model.Customer.InvoiceAddress.LastName" />
-                                <label asp-for="@Model.Customer.InvoiceAddress.LastName"></label>
-                                <span asp-validation-for="@Model.Customer.InvoiceAddress.LastName"></span>
+                                <input id="customer-lastname-input" required asp-for="@Model.Customer.BillingAddress.LastName" />
+                                <label asp-for="@Model.Customer.BillingAddress.LastName"></label>
+                                <span asp-validation-for="@Model.Customer.BillingAddress.LastName"></span>
                                 <div class="underline"></div>
                             </div>
 
                             <div class="inputstyle left">
-                                <input id="customer-address-input" required asp-for="@Model.Customer.InvoiceAddress.Address" />
-                                <label asp-for="@Model.Customer.InvoiceAddress.Address"></label>
-                                <span asp-validation-for="@Model.Customer.InvoiceAddress.Address"></span>
+                                <input id="customer-address-input" required asp-for="@Model.Customer.BillingAddress.Address" />
+                                <label asp-for="@Model.Customer.BillingAddress.Address"></label>
+                                <span asp-validation-for="@Model.Customer.BillingAddress.Address"></span>
                                 <div class="underline"></div>
                             </div>
                             <div class="inputstyle left">
-                                <input id="customer-city-input" required asp-for="@Model.Customer.InvoiceAddress.City" />
-                                <label asp-for="@Model.Customer.InvoiceAddress.City"></label>
-                                <span asp-validation-for="@Model.Customer.InvoiceAddress.City"></span>
+                                <input id="customer-city-input" required asp-for="@Model.Customer.BillingAddress.City" />
+                                <label asp-for="@Model.Customer.BillingAddress.City"></label>
+                                <span asp-validation-for="@Model.Customer.BillingAddress.City"></span>
                                 <div class="underline"></div>
                             </div>
                             <div class="inputstyle left">
-                                <input id="customer-country-input" class="hidden" asp-for="@Model.Customer.InvoiceAddress.Country" />
+                                <input id="customer-country-input" class="hidden" asp-for="@Model.Customer.BillingAddress.Country" />
                                 <div class="country-label">@localizer[""]</div>
                                 <select required id="country-picker">
                                     <option>@localizer[""]</option>
@@ -98,9 +98,9 @@
                                 </div>
                             </div>
                             <div class="inputstyle left">
-                                <input id="customer-postal-input" required asp-for="@Model.Customer.InvoiceAddress.Postal" />
-                                <label asp-for="@Model.Customer.InvoiceAddress.Postal"></label>
-                                <span asp-validation-for="@Model.Customer.InvoiceAddress.Postal"></span>
+                                <input id="customer-postal-input" required asp-for="@Model.Customer.BillingAddress.Postal" />
+                                <label asp-for="@Model.Customer.BillingAddress.Postal"></label>
+                                <span asp-validation-for="@Model.Customer.BillingAddress.Postal"></span>
                                 <div class="underline"></div>
                             </div>
                             <div class="same-as-invoice">
@@ -145,7 +145,7 @@
                             </div>
                             <div class="inputstyle left">
                                 <input id="shippingaddress-country" class="hidden" asp-for="@Model.Customer.ShippingAddress.Country" />
-                                <div class="country-label">@localizer[""]</div>
+                                <div class="country-label">@localizer["Choose country to continue"]</div>
                                 <select required id="shippingaddress-country-picker">
                                     <option>@localizer[""]</option>
                                     <option>DK</option>

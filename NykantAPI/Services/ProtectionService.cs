@@ -59,7 +59,7 @@ namespace NykantAPI.Services
             return shippingAddress;
         }
 
-        public InvoiceAddress UnprotectInvoiceAddress(InvoiceAddress invoiceAddress)
+        public BillingAddress UnprotectInvoiceAddress(BillingAddress invoiceAddress)
         {
             invoiceAddress.Address = _customerProtector.Unprotect(invoiceAddress.Address);
             invoiceAddress.City = _customerProtector.Unprotect(invoiceAddress.City);
@@ -71,7 +71,7 @@ namespace NykantAPI.Services
             return invoiceAddress;
         }
 
-        public InvoiceAddress ProtectInvoiceAddress(InvoiceAddress invoiceAddress)
+        public BillingAddress ProtectInvoiceAddress(BillingAddress invoiceAddress)
         {
             invoiceAddress.Address = _customerProtector.Protect(invoiceAddress.Address);
             invoiceAddress.City = _customerProtector.Protect(invoiceAddress.City);
@@ -108,8 +108,8 @@ namespace NykantAPI.Services
         public ShippingAddress ProtectShippingAddress(ShippingAddress customerInf);
         public ShippingAddress UnprotectShippingAddress(ShippingAddress customerInf);
 
-        public InvoiceAddress ProtectInvoiceAddress(InvoiceAddress customerInf);
-        public InvoiceAddress UnprotectInvoiceAddress(InvoiceAddress customerInf);
+        public BillingAddress ProtectInvoiceAddress(BillingAddress customerInf);
+        public BillingAddress UnprotectInvoiceAddress(BillingAddress customerInf);
         public Order ProtectOrder(Order order);
         public Order UnprotectOrder(Order order);
     }

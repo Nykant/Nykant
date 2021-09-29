@@ -66,7 +66,7 @@ namespace NykantMVC.Controllers
                         {
                             Customer = new Customer 
                             { 
-                                InvoiceAddress = new InvoiceAddress(),
+                                BillingAddress = new BillingAddress(),
                                 ShippingAddress = new ShippingAddress()
                             },
                             ShippingDeliveries = shippingDeliveries,
@@ -101,7 +101,7 @@ namespace NykantMVC.Controllers
                         {
                             Customer = new Customer
                             {
-                                InvoiceAddress = new InvoiceAddress(),
+                                BillingAddress = new BillingAddress(),
                                 ShippingAddress = new ShippingAddress()
                             },
                             ShippingDeliveries = shippingDeliveries,
@@ -124,20 +124,16 @@ namespace NykantMVC.Controllers
                 {
                     var jsonCustomer = await GetRequest($"/Customer/GetCustomer/{checkout.CustomerInfId}");
                     customerInf = JsonConvert.DeserializeObject<Customer>(jsonCustomer);
-                    customerInf = _protectionService.UnProtectCustomer(customerInf);
+                    customerInf = _protectionService.UnprotectCustomer(customerInf);
                 }
                 else
                 {
-                    customerInf = new Customer();
+                    customerInf = new Customer { BillingAddress = new BillingAddress(), ShippingAddress = new ShippingAddress() };
                 }
 
                 CheckoutVM checkoutVM = new CheckoutVM
                 {
-                    Customer = new Customer
-                    {
-                        InvoiceAddress = new InvoiceAddress(),
-                        ShippingAddress = new ShippingAddress()
-                    },
+                    Customer = customerInf,
                     ShippingDeliveries = shippingDeliveries,
                     Checkout = checkout
                 };
@@ -149,51 +145,60 @@ namespace NykantMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> PostCustomerInf(Customer customer, bool editCustomer)
         {
-            if (customer.ShippingAddress.SameAsInvoice)
-            {
-                customer.ShippingAddress.Address = customer.InvoiceAddress.Address;
-                customer.ShippingAddress.City = customer.InvoiceAddress.City;
-                customer.ShippingAddress.Country = customer.InvoiceAddress.Country;
-                customer.ShippingAddress.FirstName = customer.InvoiceAddress.FirstName;
-                customer.ShippingAddress.LastName = customer.InvoiceAddress.LastName;
-                customer.ShippingAddress.Postal = customer.InvoiceAddress.Postal;
-            }
             if (ModelState.IsValid)
             {
                 var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
-
+                Customer old;
+                if (editCustomer)
+                {
+                    old = await GetCustomer(checkout.CustomerInfId);
+                    customer.ShippingAddress.Id = old.ShippingAddress.Id;
+                    customer.BillingAddress.Id = old.BillingAddress.Id;
+                    customer.Id = old.Id;
+                }
                 if (checkout.Stage == Stage.customerInf || editCustomer)
                 {
                     customer = _protectionService.ProtectCustomer(customer);
-                    var response = await PostRequest("/Customer/PostCustomer/", new Customer { Email = customer.Email, Phone = customer.Phone });
+                    var response = await PostRequest("/Customer/PostCustomer/", new Customer { Email = customer.Email, Phone = customer.Phone, Id = customer.Id });
                     if (response.IsSuccessStatusCode)
                     {
-                        if (customer.Id == 0)
+                        if (!editCustomer)
                         {
-                            var json = await GetRequest(response.Headers.Location.AbsolutePath);
-                            checkout.CustomerInfId = JsonConvert.DeserializeObject<Customer>(json).Id;
-                        }
-                        else
-                        {
-                            checkout.CustomerInfId = customer.Id;
+                            if (customer.Id == 0)
+                            {
+                                var json = await GetRequest(response.Headers.Location.AbsolutePath);
+                                checkout.CustomerInfId = JsonConvert.DeserializeObject<Customer>(json).Id;
+                                customer.Id = checkout.CustomerInfId;
+                            }
+                            else
+                            {
+                                checkout.CustomerInfId = customer.Id;
+                                customer.Id = checkout.CustomerInfId;
+                            }
                         }
 
                         var shippingAddress = _protectionService.ProtectShippingAddress(customer.ShippingAddress);
-                        shippingAddress.CustomerId = checkout.CustomerInfId;
+                        shippingAddress.CustomerId = customer.Id;
                         var postResponse = await PostRequest("/Customer/PostShippingAddress", shippingAddress);
 
-                        var invoiceAddress = _protectionService.ProtectInvoiceAddress(customer.InvoiceAddress);
-                        invoiceAddress.CustomerId = checkout.CustomerInfId;
+                        var invoiceAddress = _protectionService.ProtectInvoiceAddress(customer.BillingAddress);
+                        invoiceAddress.CustomerId = customer.Id;
                         var postResponse2 = await PostRequest("/Customer/PostInvoiceAddress", invoiceAddress);
 
-                        hmmmm
                         if (!editCustomer)
                         {
                             checkout.Stage = Stage.shipping;
                         }
 
                         HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
-                        return NoContent();
+
+                        ViewData.Model = new CheckoutVM { Customer = customer, Checkout = checkout };
+
+                        return new PartialViewResult
+                        {
+                            ViewName = "_PaymentPartial",
+                            ViewData = this.ViewData
+                        };
                     }
                     return Content("Noget gik galt, vær sød og kontakt support hvis det sker igen");
                 }
@@ -284,6 +289,15 @@ namespace NykantMVC.Controllers
                 price += item.Product.Price;
             }
             return price;
+        }
+
+        private async Task<Customer> GetCustomer(int id)
+        {
+            Customer customer;
+            var jsonCustomer = await GetRequest($"/Customer/GetCustomer/{id}");
+            customer = JsonConvert.DeserializeObject<Customer>(jsonCustomer);
+            customer = _protectionService.UnprotectCustomer(customer);
+            return customer;
         }
     }
 }

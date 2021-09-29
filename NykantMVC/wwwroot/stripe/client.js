@@ -59,7 +59,7 @@ form.addEventListener("submit", function (event) {
             type: 'card',
             card: cardNumber,
             billing_details: {
-                name: document.getElementById('cardholder-name').value,
+                name: document.getElementById('billing-name').value
             }
         }).then(stripePaymentMethodHandler)
     }

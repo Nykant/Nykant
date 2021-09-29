@@ -14,7 +14,7 @@ namespace NykantMVC.Models
         public string Email { get; set; }
         [Required]
         public string Phone { get; set; }
-        public InvoiceAddress InvoiceAddress { get; set; }
+        public BillingAddress BillingAddress { get; set; }
         public ShippingAddress ShippingAddress { get; set; }
         [Required]
         public string PrivacyPolicyConsent { get; set; }

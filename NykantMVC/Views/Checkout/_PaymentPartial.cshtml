@@ -7,6 +7,7 @@
                 <h1>@localizer["Payment Method"]</h1>
             </div>
             <form id="payment-form">
+                <input id="billing-name" hidden disabled value="@Model.Customer.BillingAddress.FirstName @Model.Customer.BillingAddress.LastName" />
                 <div class="checkout-wrap" id="payment-wrap">
                     <div class="payment-elements">
                         <div class="payment-elements-thing" id="payment-elements-thing">

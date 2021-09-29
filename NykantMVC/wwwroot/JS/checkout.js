@@ -81,9 +81,8 @@ else if (stage_value == 3) {
     shipping_edit_button.style.display = "block";
 };
 
-customer_completed = function (msg) {
+customer_begin = function () {
     if (reuse_invoice.checked) {
-        shippingaddress_summary.style.display = "none";
         shippingaddress_address.value = address_input.value;
         shippingaddress_city.value = city_input.value;
         shippingaddress_country.value = country_input.value;
@@ -91,9 +90,22 @@ customer_completed = function (msg) {
         shippingaddress_lastname.value = lastname_input.value;
         shippingaddress_postal.value = postal_input.value;
     }
+}
+
+customer_completed = function (msg) {
+    if (reuse_invoice.checked) {
+        shippingaddress_summary.style.display = "none";
+    }
     else {
         shippingaddress_summary.style.display = "block";
+        shippingaddress_address_summary.textContent = shippingaddress_address.value;
+        shippingaddress_city_summary.textContent = shippingaddress_city.value;
+        shippingaddress_country_summary.textContent = shippingaddress_country.value;
+        shippingaddress_firstname_summary.textContent = shippingaddress_firstname.value;
+        shippingaddress_lastname_summary.textContent = shippingaddress_lastname.value;
+        shippingaddress_postal_summary.textContent = shippingaddress_postal.value;
     }
+
     document.getElementById("edit-customer").value = false;
     customer_check_sign.style.display = "block";
     customer_form_complete.value = 1;
@@ -112,12 +124,6 @@ customer_completed = function (msg) {
     city_summary.innerHTML = city_input.value;
     postal_summary.innerHTML = postal_input.value;
     address_summary.innerHTML = address_input.value;
-    shippingaddress_address_summary.textContent = shippingaddress_address.value;
-    shippingaddress_city_summary.textContent = shippingaddress_city.value;
-    shippingaddress_country_summary.textContent = shippingaddress_country.value;
-    shippingaddress_firstname_summary.textContent = shippingaddress_firstname.value;
-    shippingaddress_lastname_summary.textContent = shippingaddress_lastname.value;
-    shippingaddress_postal_summary.textContent = shippingaddress_postal.value;
 
     customer_wrap.style.transform = "translateY(-100%)";
     customer_form.style.height = "0px";
@@ -143,7 +149,7 @@ shipping_completed = function () {
     payment_form.style.transition = "all 1s";
 
     shipping_edit_button.style.display = "block";
-    shipping_method_summary.innerHTML = shipping_delivery_name.value;
+    shipping_method_summary.textContent = shipping_delivery_name.value;
 
     shipping_form.style.height = "0px";
     shipping_wrap.style.transform = "translateY(-100%)";

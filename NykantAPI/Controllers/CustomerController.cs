@@ -30,9 +30,9 @@ namespace NykantAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Customer>> GetCustomer(int id)
         {
-            var customerInf = await _context.Customer.FindAsync(id);
+            var customerInf = await _context.Customer.Include(x => x.BillingAddress).Include(x => x.ShippingAddress).FirstOrDefaultAsync(x => x.Id == id);
             customerInf = _protectionService.ProtectCustomer(customerInf);
-            return Ok(JsonConvert.SerializeObject(customerInf));
+            return Ok(JsonConvert.SerializeObject(customerInf, Extensions.JsonOptions.jsonSettings));
         }
 
         [HttpPost]
@@ -68,36 +68,58 @@ namespace NykantAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Customer>> PostShippingAddress(ShippingAddress shippingAddress)
+        public async Task<ActionResult> PostShippingAddress(ShippingAddress shippingAddress)
         {
             try
             {
                 shippingAddress = _protectionService.UnprotectShippingAddress(shippingAddress);
                 if (ModelState.IsValid)
                 {
-                    _context.ShippingAddress.Add(shippingAddress);
-
-                    if (CustomerExists(customerInf.Id))
+                    if (ShippingAddressExists(shippingAddress.Id))
                     {
-                        _context.Customer.Update(customerInf);
-                        await _context.SaveChangesAsync();
-                        return Ok();
+                        _context.ShippingAddress.Update(shippingAddress);
                     }
                     else
                     {
-
-                        var entity = _context.Customer.Add(customerInf).Entity;
-                        await _context.SaveChangesAsync();
-
-                        return CreatedAtAction("GetCustomer", new { id = entity.Id }, customerInf);
+                        _context.ShippingAddress.Add(shippingAddress);
                     }
+                    await _context.SaveChangesAsync();
+                    return Ok();
                 }
-                return Content("error");
+                return BadRequest();
             }
             catch (Exception e)
             {
                 _logger.LogInformation(e.Message);
-                return Content(e.Message);
+                return BadRequest();
+            }
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> PostInvoiceAddress(BillingAddress invoiceAddress)
+        {
+            try
+            {
+                invoiceAddress = _protectionService.UnprotectInvoiceAddress(invoiceAddress);
+                if (ModelState.IsValid)
+                {
+                    if (InvoiceAddressExists(invoiceAddress.Id))
+                    {
+                        _context.BillingAddress.Update(invoiceAddress);
+                    }
+                    else
+                    {
+                        _context.BillingAddress.Add(invoiceAddress);
+                    }
+                    await _context.SaveChangesAsync();
+                    return Ok();
+                }
+                return BadRequest();
+            }
+            catch (Exception e)
+            {
+                _logger.LogInformation(e.Message);
+                return BadRequest();
             }
         }
 
@@ -119,6 +141,16 @@ namespace NykantAPI.Controllers
         private bool CustomerExists(int id)
         {
             return _context.Customer.Any(e => e.Id == id);
+        }
+
+        private bool ShippingAddressExists(int id)
+        {
+            return _context.ShippingAddress.Any(e => e.Id == id);
+        }
+
+        private bool InvoiceAddressExists(int id)
+        {
+            return _context.BillingAddress.Any(e => e.Id == id);
         }
     }
 }

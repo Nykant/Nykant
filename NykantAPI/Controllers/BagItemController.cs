@@ -31,7 +31,7 @@ namespace NykantAPI.Controllers
                 .Include(x => x.Product)
                 .Where(x => x.Subject == subject);
 
-            var json = JsonConvert.SerializeObject(bagItems, Extensions.JsonOptions.jsonSettings);
+            var json = JsonConvert.SerializeObject(bagItems, Extensions.JsonOptions.jsonSettings );
 
             return Ok(json);
         }

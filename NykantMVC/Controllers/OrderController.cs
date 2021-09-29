@@ -92,7 +92,7 @@ namespace NykantMVC.Controllers
 
                 var jsonCustomer = await GetRequest($"/Customer/GetCustomer/{checkout.CustomerInfId}");
                 var customerInf = JsonConvert.DeserializeObject<Customer>(jsonCustomer);
-                customerInf = _protectionService.UnProtectCustomer(customerInf);
+                customerInf = _protectionService.UnprotectCustomer(customerInf);
 
                 await mailService.SendOrderEmailAsync(customerInf, order);
 
