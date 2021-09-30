@@ -24,5 +24,7 @@ namespace NykantAPI.Models
         public string Country { get; set; }
         [Required]
         public string Postal { get; set; }
+        [Required]
+        public string Region { get; set; }
     }
 }

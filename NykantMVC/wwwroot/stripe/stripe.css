@@ -11,19 +11,16 @@
     padding: 40px;
 }*/
 
-.cardinfo-line {
-    padding-bottom: 50px;
-}
 
 .payment-elements {
     width:100%;
     height: auto;
     background-color: white;
+    padding:30px;
 }
 
 .payment-elements-thing {
     width:50%;
-    margin-left:25%;
 }
 
 .payment-invalid {

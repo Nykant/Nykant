@@ -7,7 +7,6 @@
                 <h1>@localizer["Payment Method"]</h1>
             </div>
             <form id="payment-form">
-                <input id="billing-name" hidden disabled value="@Model.Customer.BillingAddress.FirstName @Model.Customer.BillingAddress.LastName" />
                 <div class="checkout-wrap" id="payment-wrap">
                     <div class="payment-elements">
                         <div class="payment-elements-thing" id="payment-elements-thing">
@@ -16,7 +15,7 @@
                             <div class="margin-top-20 card-element" id="card-element-cvc"><!--Stripe.js injects the Card Element--></div>
                         </div>
                     </div>
-                    <div class="col-12 left top-padding bottom-side-padding">
+                    <div class="col-12 left">
                         <div class="gdpr-accept">
                             <label class="checkbox">
                                 <input id="terms-and-conditions-consent" value="false" type="checkbox">

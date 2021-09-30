@@ -47,6 +47,15 @@ var shippingaddress_address_summary = document.getElementById('shippingaddress-a
 var shippingaddress_summary = document.getElementById('shippingaddress-summary');
 var terms_and_conditions = document.getElementById('terms-and-conditions-consent');
 
+if (reuse_invoice.checked) {
+    document.getElementById('shipping-address-box').style.display = "none";
+    shippingaddress_summary.style.display = "none";
+}
+else {
+    document.getElementById('shipping-address-box').style.display = "block";
+    shippingaddress_summary.style.display = "block";
+}
+
 if (stage_value == 1) {
     customer_wrap.style.transition = "all 1s";
     customer_form.style.transition = "all 1s";
@@ -219,13 +228,6 @@ $('#terms-and-conditions-consent').on('click', function () {
         document.getElementById('submit-payment').disabled = false;
     }
 });
-
-if (reuse_invoice.checked) {
-    document.getElementById('shipping-address-box').style.display = "none";
-}
-else {
-    document.getElementById('shipping-address-box').style.display = "block";
-}
 
 reuse_invoice.onclick = function() {
     if (this.checked) {

@@ -192,13 +192,14 @@ namespace NykantMVC.Controllers
 
                         HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
 
-                        ViewData.Model = new CheckoutVM { Customer = customer, Checkout = checkout };
+                        //ViewData.Model = new CheckoutVM { Customer = customer, Checkout = checkout };
 
-                        return new PartialViewResult
-                        {
-                            ViewName = "_PaymentPartial",
-                            ViewData = this.ViewData
-                        };
+                        //return new PartialViewResult
+                        //{
+                        //    ViewName = "_PaymentPartial",
+                        //    ViewData = this.ViewData
+                        //};
+                        return NoContent();
                     }
                     return Content("Noget gik galt, vær sød og kontakt support hvis det sker igen");
                 }

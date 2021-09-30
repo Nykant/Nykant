@@ -103,7 +103,6 @@ namespace NykantMVC
             services.AddTransient<IMailService, EmailService>();
 
             services.AddScoped<IRazorViewToStringRenderer, RazorViewToStringRenderer>();
-
             services.AddScoped<IProtectionService, ProtectionService>();
 
             services.AddLocalization(options => options.ResourcesPath = "Resources");
