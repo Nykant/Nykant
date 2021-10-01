@@ -102,6 +102,7 @@ customer_begin = function () {
 }
 
 customer_completed = function (msg) {
+
     if (reuse_invoice.checked) {
         shippingaddress_summary.style.display = "none";
     }

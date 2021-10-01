@@ -8,47 +8,48 @@
 <div class="row bottom-side-padding">
     <div class="responsive-form">
 
-            <div class="checkout-header" id="shipping-header">
-                <h1>@localizer["Delivery Method"]</h1>
-                <div class="check-sign" id="shipping-check-sign">
-                    <i class="fa fa-check" aria-hidden="true"></i>
-                </div>
-                <div id="shipping-summary">
-                    <p>@localizer["Delivery Method"]: <span id="shipping-method-summary">@Model.Checkout.ShippingDelivery.Name</span></p>
-
-                    <button class="button edit-button" id="shipping-edit-button">@localizer["Change"]</button>
-                </div>
-                
+        <div class="checkout-header" id="shipping-header">
+            <h1>@localizer["Delivery Method"]</h1>
+            <div class="check-sign" id="shipping-check-sign">
+                <i class="fa fa-check" aria-hidden="true"></i>
             </div>
-            <form id="shipping-form" method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="shipping_completed" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" asp-controller="Checkout" asp-action="PostShipping">
-                <input type="hidden" id="edit-shipping" name="editShipping" />
-                <input required type="hidden" id="shipping-delivery-id" name="shippingDelivery.Id" asp-for="@Model.Checkout.ShippingDelivery.Id" />
-                <input required type="hidden" id="shipping-delivery-name" name="shippingDelivery.Name" asp-for="@Model.Checkout.ShippingDelivery.Name" />
-                <input required type="hidden" id="shipping-delivery-price" name="shippingDelivery.Price" asp-for="@Model.Checkout.ShippingDelivery.Price" />
-                <div class="checkout-wrap" id="shipping-wrap">
-                    <div class="custom-list">
-                        <div class="custom-list-options" id="custom-list-options">
-                            <select>
-                                <option value="0">
-                                    @localizer["Choose Shipping"]
-                                </option>
-                                @foreach (var item in Model.ShippingDeliveries)
-                                {
-                                    <option value="@optionValue">
-                                        @item.Name
-                                    </option>
-                                    optionValue += 1;
-                                }
-                            </select>
-                        </div>
-                    </div>
+            <div id="shipping-summary">
+                <p>@localizer["Delivery Method"]: <span id="shipping-method-summary">@Model.Checkout.ShippingDelivery.Name</span></p>
 
-                    <div class="col-12 right">
-                        <button id="custom-list-button" class="button" type="submit">@localizer["Continue"]</button> @*------------- SUBMIT FORM --------------*@
+                <button class="button edit-button" id="shipping-edit-button">@localizer["Change"]</button>
+            </div>
+
+        </div>
+        <form id="shipping-form" method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="shipping_completed" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" asp-controller="Checkout" asp-action="PostShipping">
+            <input type="hidden" id="edit-shipping" name="editShipping" />
+            <input required type="hidden" id="shipping-delivery-id" name="shippingDelivery.Id" asp-for="@Model.Checkout.ShippingDelivery.Id" />
+            <input required type="hidden" id="shipping-delivery-name" name="shippingDelivery.Name" asp-for="@Model.Checkout.ShippingDelivery.Name" />
+            <input required type="hidden" id="shipping-delivery-price" name="shippingDelivery.Price" asp-for="@Model.Checkout.ShippingDelivery.Price" />
+            <div class="checkout-wrap" id="shipping-wrap">
+                <div class="custom-list">
+                    <div class="custom-list-options" id="custom-list-options">
+                        <select>
+                            <option value="0">
+                                @localizer["Choose Shipping"]
+                            </option>
+                            @foreach (var item in Model.ShippingDeliveries)
+                            {
+                                <option value="@optionValue">@item.Name</option>
+                                optionValue += 1;
+                            }
+                        </select>
                     </div>
                 </div>
+                <div class="parcel-shops">
 
-            </form>
+                </div>
+
+                <div class="col-12 right">
+                    <button id="custom-list-button" class="button" type="submit">@localizer["Continue"]</button> @*------------- SUBMIT FORM --------------*@
+                </div>
+            </div>
+
+        </form>
 
     </div>
 </div>

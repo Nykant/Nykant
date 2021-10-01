@@ -35,6 +35,14 @@ for (i = 0; i < l; i++) {
                     }
                     this.setAttribute("class", "custom-list-option selected");
 
+                    if (this.textContent == 'Shop') {
+                        fetch('/checkout/GetNearbyShopsJson?Street=' + shippingaddress_address.value + '&ZipCode=' + shippingaddress_postal.value + '&CountryIso=DK&Amount=5'
+                        ).then(function (result) {
+                            result.json().then(function (json) {
+                                return null;
+                            })
+                        });
+                    }
                     break;
                 }
             }
@@ -43,4 +51,6 @@ for (i = 0; i < l; i++) {
         elem.appendChild(c);
     }
 }
+
+
 

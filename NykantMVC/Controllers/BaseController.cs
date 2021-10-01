@@ -5,11 +5,14 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using NykantMVC.Models;
+using NykantMVC.Models.XmlModels;
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace NykantMVC.Controllers
 {
@@ -221,6 +224,27 @@ namespace NykantMVC.Controllers
 
             string uri = _urls.Api + url;
             return await client.DeleteAsync(uri);
+        }
+
+        public async Task<ParcelShopSearchResult> GetNearbyShops(GlsAddress glsAddress)
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(ParcelShopSearchResult));
+
+                var stream = await client.GetStreamAsync("http://www.gls.dk/webservices_v4/wsShopFinder.asmx/GetParcelShopDropPoint?"
+                    + $"street={glsAddress.Street}&zipcode={glsAddress.ZipCode}&countryIso3166A2={glsAddress.CountryIso}&Amount={glsAddress.Amount}");
+
+                ParcelShopSearchResult parcelSearch = (ParcelShopSearchResult)xmlSerializer.Deserialize(stream);
+
+                return parcelSearch;
+            }
+            catch (Exception e)
+            {
+                _logger.LogInformation(e.Message);
+                return null;
+            }
         }
     }
 }

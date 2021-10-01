@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NykantAPI.Data;
 
 namespace NykantAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211001114214_addit")]
+    partial class addit
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -772,7 +774,7 @@ namespace NykantAPI.Migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "stol",
-                            LastModified = new DateTime(2021, 10, 1, 14, 15, 52, 656, DateTimeKind.Local).AddTicks(6154),
+                            LastModified = new DateTime(2021, 10, 1, 13, 42, 13, 119, DateTimeKind.Local).AddTicks(6491),
                             Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "5mm",
@@ -788,7 +790,7 @@ namespace NykantAPI.Migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "stol",
-                            LastModified = new DateTime(2021, 10, 1, 14, 15, 52, 658, DateTimeKind.Local).AddTicks(9728),
+                            LastModified = new DateTime(2021, 10, 1, 13, 42, 13, 121, DateTimeKind.Local).AddTicks(7988),
                             Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "10mm",
@@ -804,7 +806,7 @@ namespace NykantAPI.Migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 10, 1, 14, 15, 52, 658, DateTimeKind.Local).AddTicks(9805),
+                            LastModified = new DateTime(2021, 10, 1, 13, 42, 13, 121, DateTimeKind.Local).AddTicks(8065),
                             Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "20mm",
@@ -820,7 +822,7 @@ namespace NykantAPI.Migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "skærebræt",
-                            LastModified = new DateTime(2021, 10, 1, 14, 15, 52, 658, DateTimeKind.Local).AddTicks(9811),
+                            LastModified = new DateTime(2021, 10, 1, 13, 42, 13, 121, DateTimeKind.Local).AddTicks(8071),
                             Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "5mm",
@@ -836,7 +838,7 @@ namespace NykantAPI.Migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 10, 1, 14, 15, 52, 658, DateTimeKind.Local).AddTicks(9814),
+                            LastModified = new DateTime(2021, 10, 1, 13, 42, 13, 121, DateTimeKind.Local).AddTicks(8075),
                             Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "10mm",
@@ -852,7 +854,7 @@ namespace NykantAPI.Migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "skærebræt",
-                            LastModified = new DateTime(2021, 10, 1, 14, 15, 52, 658, DateTimeKind.Local).AddTicks(9817),
+                            LastModified = new DateTime(2021, 10, 1, 13, 42, 13, 121, DateTimeKind.Local).AddTicks(8077),
                             Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "20mm",
@@ -868,7 +870,7 @@ namespace NykantAPI.Migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "stol",
-                            LastModified = new DateTime(2021, 10, 1, 14, 15, 52, 658, DateTimeKind.Local).AddTicks(9820),
+                            LastModified = new DateTime(2021, 10, 1, 13, 42, 13, 121, DateTimeKind.Local).AddTicks(8080),
                             Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "5mm",
@@ -884,7 +886,7 @@ namespace NykantAPI.Migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "stol",
-                            LastModified = new DateTime(2021, 10, 1, 14, 15, 52, 658, DateTimeKind.Local).AddTicks(9823),
+                            LastModified = new DateTime(2021, 10, 1, 13, 42, 13, 121, DateTimeKind.Local).AddTicks(8083),
                             Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "10mm",
@@ -900,7 +902,7 @@ namespace NykantAPI.Migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 10, 1, 14, 15, 52, 658, DateTimeKind.Local).AddTicks(9826),
+                            LastModified = new DateTime(2021, 10, 1, 13, 42, 13, 121, DateTimeKind.Local).AddTicks(8087),
                             Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "20mm",
@@ -916,7 +918,7 @@ namespace NykantAPI.Migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "skærebræt",
-                            LastModified = new DateTime(2021, 10, 1, 14, 15, 52, 658, DateTimeKind.Local).AddTicks(9829),
+                            LastModified = new DateTime(2021, 10, 1, 13, 42, 13, 121, DateTimeKind.Local).AddTicks(8090),
                             Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "5mm",
@@ -932,7 +934,7 @@ namespace NykantAPI.Migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 10, 1, 14, 15, 52, 658, DateTimeKind.Local).AddTicks(9832),
+                            LastModified = new DateTime(2021, 10, 1, 13, 42, 13, 121, DateTimeKind.Local).AddTicks(8093),
                             Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "10mm",
@@ -948,7 +950,7 @@ namespace NykantAPI.Migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "skærebræt",
-                            LastModified = new DateTime(2021, 10, 1, 14, 15, 52, 658, DateTimeKind.Local).AddTicks(9835),
+                            LastModified = new DateTime(2021, 10, 1, 13, 42, 13, 121, DateTimeKind.Local).AddTicks(8096),
                             Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "20mm",
@@ -964,7 +966,7 @@ namespace NykantAPI.Migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "stol",
-                            LastModified = new DateTime(2021, 10, 1, 14, 15, 52, 658, DateTimeKind.Local).AddTicks(9838),
+                            LastModified = new DateTime(2021, 10, 1, 13, 42, 13, 121, DateTimeKind.Local).AddTicks(8098),
                             Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "5mm",
@@ -980,7 +982,7 @@ namespace NykantAPI.Migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "stol",
-                            LastModified = new DateTime(2021, 10, 1, 14, 15, 52, 658, DateTimeKind.Local).AddTicks(9841),
+                            LastModified = new DateTime(2021, 10, 1, 13, 42, 13, 121, DateTimeKind.Local).AddTicks(8101),
                             Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "10mm",
@@ -996,7 +998,7 @@ namespace NykantAPI.Migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 10, 1, 14, 15, 52, 658, DateTimeKind.Local).AddTicks(9844),
+                            LastModified = new DateTime(2021, 10, 1, 13, 42, 13, 121, DateTimeKind.Local).AddTicks(8104),
                             Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "20mm",
@@ -1012,7 +1014,7 @@ namespace NykantAPI.Migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "skærebræt",
-                            LastModified = new DateTime(2021, 10, 1, 14, 15, 52, 658, DateTimeKind.Local).AddTicks(9847),
+                            LastModified = new DateTime(2021, 10, 1, 13, 42, 13, 121, DateTimeKind.Local).AddTicks(8107),
                             Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "5mm",
@@ -1028,7 +1030,7 @@ namespace NykantAPI.Migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 10, 1, 14, 15, 52, 658, DateTimeKind.Local).AddTicks(9850),
+                            LastModified = new DateTime(2021, 10, 1, 13, 42, 13, 121, DateTimeKind.Local).AddTicks(8110),
                             Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "10mm",
@@ -1044,7 +1046,7 @@ namespace NykantAPI.Migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "skærebræt",
-                            LastModified = new DateTime(2021, 10, 1, 14, 15, 52, 658, DateTimeKind.Local).AddTicks(9852),
+                            LastModified = new DateTime(2021, 10, 1, 13, 42, 13, 121, DateTimeKind.Local).AddTicks(8113),
                             Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "20mm",
@@ -1060,7 +1062,7 @@ namespace NykantAPI.Migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 10, 1, 14, 15, 52, 658, DateTimeKind.Local).AddTicks(9855),
+                            LastModified = new DateTime(2021, 10, 1, 13, 42, 13, 121, DateTimeKind.Local).AddTicks(8116),
                             Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "5mm",
@@ -1163,13 +1165,19 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "Shop",
-                            Price = 0
+                            Name = "GLS",
+                            Price = 35
                         },
                         new
                         {
                             Id = 2,
-                            Name = "Home",
+                            Name = "PostNord",
+                            Price = 50
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "GLS Privat",
                             Price = 65
                         });
                 });

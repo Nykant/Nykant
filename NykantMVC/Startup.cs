@@ -109,7 +109,8 @@ namespace NykantMVC
 
             services.AddControllersWithViews()
                                     .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
-                                    .AddDataAnnotationsLocalization();
+                                    .AddDataAnnotationsLocalization()
+                                    .AddXmlSerializerFormatters();
 
             services.Configure<ForwardedHeadersOptions>(options =>
             {

@@ -33,9 +33,8 @@ namespace NykantAPI.Data
                 .HasKey(bi => new { bi.OrderId, bi.ProductId });
 
             modelBuilder.Entity<ShippingDelivery>().HasData(
-                new ShippingDelivery { Id = 1, Name = "GLS", Price = 35 },
-                new ShippingDelivery { Id = 2, Name = "PostNord", Price = 50 },
-                new ShippingDelivery { Id = 3, Name = "GLS Privat", Price = 65 }
+                new ShippingDelivery { Id = 1, Name = "Shop", Price = 0 },
+                new ShippingDelivery { Id = 2, Name = "Home", Price = 65 }
                 );
 
             modelBuilder.Entity<Category>().HasData(

@@ -177,6 +177,9 @@ namespace NykantMVC.Controllers
                             }
                         }
 
+                        var parcelShopSearchResult = await GetNearbyShops(new GlsAddress { Street = customer.ShippingAddress.Address, ZipCode = customer.ShippingAddress.Postal, CountryIso = customer.ShippingAddress.Country, Amount = "5" });
+                        checkout.ParcelShopSearchResult = parcelShopSearchResult;
+
                         var shippingAddress = _protectionService.ProtectShippingAddress(customer.ShippingAddress);
                         shippingAddress.CustomerId = customer.Id;
                         var postResponse = await PostRequest("/Customer/PostShippingAddress", shippingAddress);
@@ -191,14 +194,6 @@ namespace NykantMVC.Controllers
                         }
 
                         HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
-
-                        //ViewData.Model = new CheckoutVM { Customer = customer, Checkout = checkout };
-
-                        //return new PartialViewResult
-                        //{
-                        //    ViewName = "_PaymentPartial",
-                        //    ViewData = this.ViewData
-                        //};
                         return NoContent();
                     }
                     return Content("Noget gik galt, vær sød og kontakt support hvis det sker igen");
@@ -299,6 +294,12 @@ namespace NykantMVC.Controllers
             customer = JsonConvert.DeserializeObject<Customer>(jsonCustomer);
             customer = _protectionService.UnprotectCustomer(customer);
             return customer;
+        }
+
+        [HttpGet]
+        public async Task<JsonResult> GetNearbyShopsJson(GlsAddress glsAddress)
+        {
+            return Json(await GetNearbyShops(glsAddress));
         }
     }
 }
