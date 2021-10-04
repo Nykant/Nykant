@@ -23,5 +23,25 @@ namespace NykantAPI.Controllers
         {
             return Ok(JsonConvert.SerializeObject(_context.ShippingDeliveries.ToList()));
         }
+
+        [HttpPost]
+        public async Task<ActionResult<ShippingDelivery>> Post(ShippingDelivery shippingDelivery)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    await _context.ShippingDeliveries.AddAsync(shippingDelivery);
+                    await _context.SaveChangesAsync();
+                    return Ok();
+                }
+                return BadRequest();
+            }
+            catch(Exception e)
+            {
+                _logger.LogInformation(e.Message);
+                return BadRequest();
+            }
+        }
     }
 }

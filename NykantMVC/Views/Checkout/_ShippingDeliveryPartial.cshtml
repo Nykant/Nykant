@@ -3,6 +3,11 @@
 
 @{
     var optionValue = 1;
+    var shippingMethods = new List<ShippingMethod>
+    {
+        new ShippingMethod { Type = "Home", Price = 65 },
+        new ShippingMethod { Type = "Shop", Price = 0 }
+    };
 }
 
 <div class="row bottom-side-padding">
@@ -14,7 +19,7 @@
                 <i class="fa fa-check" aria-hidden="true"></i>
             </div>
             <div id="shipping-summary">
-                <p>@localizer["Delivery Method"]: <span id="shipping-method-summary">@Model.Checkout.ShippingDelivery.Name</span></p>
+                <p>@localizer["Delivery Method"]: <span id="shipping-method-summary">@Model.Checkout.ShippingDelivery.Type</span></p>
 
                 <button class="button edit-button" id="shipping-edit-button">@localizer["Change"]</button>
             </div>
@@ -22,9 +27,16 @@
         </div>
         <form id="shipping-form" method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="shipping_completed" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" asp-controller="Checkout" asp-action="PostShipping">
             <input type="hidden" id="edit-shipping" name="editShipping" />
-            <input required type="hidden" id="shipping-delivery-id" name="shippingDelivery.Id" asp-for="@Model.Checkout.ShippingDelivery.Id" />
-            <input required type="hidden" id="shipping-delivery-name" name="shippingDelivery.Name" asp-for="@Model.Checkout.ShippingDelivery.Name" />
+            <input required type="hidden" id="shipping-delivery-type" name="shippingDelivery.Type" asp-for="@Model.Checkout.ShippingDelivery.Type" />
             <input required type="hidden" id="shipping-delivery-price" name="shippingDelivery.Price" asp-for="@Model.Checkout.ShippingDelivery.Price" />
+            <input required type="hidden" id="parcelshop-Number" name="shippingDelivery.PakkeshopData.Number" asp-for="@Model.Checkout.ShippingDelivery.ParcelshopData.Number" />
+            <input required type="hidden" id="parcelshop-CompanyName" name="shippingDelivery.PakkeshopData.Number" asp-for="@Model.Checkout.ShippingDelivery.ParcelshopData.Number" />
+            <input required type="hidden" id="parcelshop-Streetname" name="shippingDelivery.PakkeshopData.Streetname" asp-for="@Model.Checkout.ShippingDelivery.ParcelshopData.Streetname" />
+            <input required type="hidden" id="parcelshop-Streetname2" name="shippingDelivery.PakkeshopData.Streetname2" asp-for="@Model.Checkout.ShippingDelivery.ParcelshopData.Streetname2" />
+            <input required type="hidden" id="parcelshop-ZipCode" name="shippingDelivery.PakkeshopData.ZipCode" asp-for="@Model.Checkout.ShippingDelivery.ParcelshopData.ZipCode" />
+            <input required type="hidden" id="parcelshop-CityName" name="shippingDelivery.PakkeshopData.CityName" asp-for="@Model.Checkout.ShippingDelivery.ParcelshopData.CityName" />
+            <input required type="hidden" id="parcelshop-CountryCode" name="shippingDelivery.PakkeshopData.CountryCode" asp-for="@Model.Checkout.ShippingDelivery.ParcelshopData.CountryCode" />
+            <input required type="hidden" id="parcelshop-CountryCodeISO3166A2" name="shippingDelivery.PakkeshopData.CountryCodeISO3166A2" asp-for="@Model.Checkout.ShippingDelivery.ParcelshopData.CountryCodeISO3166A2" />
             <div class="checkout-wrap" id="shipping-wrap">
                 <div class="custom-list">
                     <div class="custom-list-options" id="custom-list-options">
@@ -32,16 +44,13 @@
                             <option value="0">
                                 @localizer["Choose Shipping"]
                             </option>
-                            @foreach (var item in Model.ShippingDeliveries)
+                            @foreach (var item in shippingMethods)
                             {
-                                <option value="@optionValue">@item.Name</option>
+                                <option value="@optionValue">@item.Type | @item.Price dkk,-</option>
                                 optionValue += 1;
                             }
                         </select>
                     </div>
-                </div>
-                <div class="parcel-shops">
-
                 </div>
 
                 <div class="col-12 right">
@@ -54,3 +63,11 @@
     </div>
 </div>
 
+<div class="modal" id="nearby-shops-modal">
+
+    <div id="nearby-shops">
+        <div class="header no-margin">
+            @localizer["Choose Parcelshop"]
+        </div>
+    </div>
+</div>

@@ -59,6 +59,10 @@ namespace NykantMVC.Controllers
             {
                 var order = BuildOrder(checkout, paymentIntentId);
                 var response = await PostRequest("/Order/PostOrder", order);
+                if (!response.IsSuccessStatusCode)
+                {
+                    return NotFound();
+                }
 
                 var json = await GetRequest(response.Headers.Location.AbsolutePath);
                 Models.Order newOrder = JsonConvert.DeserializeObject<Models.Order>(json);
@@ -67,6 +71,9 @@ namespace NykantMVC.Controllers
                 {
                     return NotFound();
                 }
+
+                checkout.ShippingDelivery.OrderId = order.Id;
+                var postShipping = await PostRequest("/ShippingDelivery/Post", checkout.ShippingDelivery);
 
                 var orderItems = new List<Models.OrderItem>();
                 foreach (var item in checkout.BagItems)
@@ -78,23 +85,15 @@ namespace NykantMVC.Controllers
                 {
                     return NotFound();
                 }
-                order.OrderItems = orderItems;
-                foreach (var item in order.OrderItems)
-                {
-                    foreach (var bagItem in checkout.BagItems)
-                    {
-                        if (bagItem.ProductId == item.ProductId)
-                        {
-                            item.Product = bagItem.Product;
-                        }
-                    }
-                }
 
                 var jsonCustomer = await GetRequest($"/Customer/GetCustomer/{checkout.CustomerInfId}");
-                var customerInf = JsonConvert.DeserializeObject<Customer>(jsonCustomer);
-                customerInf = _protectionService.UnprotectCustomer(customerInf);
+                var customer = JsonConvert.DeserializeObject<Customer>(jsonCustomer);
+                customer = _protectionService.UnprotectCustomer(customer);
 
-                await mailService.SendOrderEmailAsync(customerInf, order);
+                json = await GetRequest($"/Order/GetOrder/{order.Id}");
+                order = JsonConvert.DeserializeObject<Models.Order>(json);
+
+                await mailService.SendOrderEmailAsync(customer, order);
 
                 if (User.Identity.IsAuthenticated)
                 {
@@ -131,7 +130,6 @@ namespace NykantMVC.Controllers
                 Currency = "dkk",
                 CustomerId = checkout.CustomerInfId,
                 PaymentIntent_Id = paymentIntentId,
-                ShippingDeliveryId = checkout.ShippingDelivery.Id,
                 Status = Status.Pending,
                 TotalPrice = checkout.TotalPrice
             };

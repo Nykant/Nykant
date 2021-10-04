@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NykantAPI.Models;
+using NykantMVC.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -24,6 +25,7 @@ namespace NykantAPI.Data
         public DbSet<Review> Reviews { get; set; }
         public DbSet<BillingAddress> BillingAddress { get; set; }
         public DbSet<ShippingAddress> ShippingAddress { get; set; }
+        public DbSet<ParcelshopData> ParcelshopData { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -31,11 +33,6 @@ namespace NykantAPI.Data
                 .HasKey(bi => new { bi.Subject, bi.ProductId });
             modelBuilder.Entity<OrderItem>()
                 .HasKey(bi => new { bi.OrderId, bi.ProductId });
-
-            modelBuilder.Entity<ShippingDelivery>().HasData(
-                new ShippingDelivery { Id = 1, Name = "Shop", Price = 0 },
-                new ShippingDelivery { Id = 2, Name = "Home", Price = 65 }
-                );
 
             modelBuilder.Entity<Category>().HasData(
                 new Category { Id = 1, Name = "Stole" },

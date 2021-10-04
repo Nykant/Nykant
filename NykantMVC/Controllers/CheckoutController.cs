@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using NykantMVC.Extensions;
 using NykantMVC.Models;
 using NykantMVC.Models.ViewModels;
+using NykantMVC.Models.XmlModels;
 using NykantMVC.Services;
 using System;
 using System.Collections.Generic;
@@ -40,9 +41,6 @@ namespace NykantMVC.Controllers
                 bagItemsSession = HttpContext.Session.Get<List<BagItem>>(BagSessionKey);
             }
 
-            var jsonShippings = await GetRequest("/ShippingDelivery/GetShippingDeliveries");
-            var shippingDeliveries = JsonConvert.DeserializeObject<List<ShippingDelivery>>(jsonShippings);
-
             if (checkout == null)
             {
                 if (User.Identity.IsAuthenticated)
@@ -69,7 +67,6 @@ namespace NykantMVC.Controllers
                                 BillingAddress = new BillingAddress(),
                                 ShippingAddress = new ShippingAddress()
                             },
-                            ShippingDeliveries = shippingDeliveries,
                             Checkout = checkout
                         };
 
@@ -104,7 +101,6 @@ namespace NykantMVC.Controllers
                                 BillingAddress = new BillingAddress(),
                                 ShippingAddress = new ShippingAddress()
                             },
-                            ShippingDeliveries = shippingDeliveries,
                             Checkout = checkout
                         };
 
@@ -134,7 +130,6 @@ namespace NykantMVC.Controllers
                 CheckoutVM checkoutVM = new CheckoutVM
                 {
                     Customer = customerInf,
-                    ShippingDeliveries = shippingDeliveries,
                     Checkout = checkout
                 };
 
@@ -176,9 +171,6 @@ namespace NykantMVC.Controllers
                                 customer.Id = checkout.CustomerInfId;
                             }
                         }
-
-                        var parcelShopSearchResult = await GetNearbyShops(new GlsAddress { Street = customer.ShippingAddress.Address, ZipCode = customer.ShippingAddress.Postal, CountryIso = customer.ShippingAddress.Country, Amount = "5" });
-                        checkout.ParcelShopSearchResult = parcelShopSearchResult;
 
                         var shippingAddress = _protectionService.ProtectShippingAddress(customer.ShippingAddress);
                         shippingAddress.CustomerId = customer.Id;
@@ -297,9 +289,10 @@ namespace NykantMVC.Controllers
         }
 
         [HttpGet]
-        public async Task<JsonResult> GetNearbyShopsJson(GlsAddress glsAddress)
+        public async Task<ParcelShopSearchResult> GetNearbyShopsJson(GlsAddress glsAddress)
         {
-            return Json(await GetNearbyShops(glsAddress));
+            var shops = await GetNearbyShops(glsAddress);
+            return shops;
         }
     }
 }

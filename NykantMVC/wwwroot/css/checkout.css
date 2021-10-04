@@ -76,7 +76,35 @@
     height: 0px;
 }
 
+#nearby-shops {
+    position: fixed;
+    top:20%;
+    left:40%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+    height: 500px;
+    overflow-y:scroll;
+    background: white;
+    z-index: 101;
+}
 
+.shop {
+    height:auto;
+    width:100%;
+    background:white;
+    padding:30px;
+    cursor:pointer;
+}
+
+.shop:hover {
+    background: var(--light-grey);
+}
+
+.shop-label {
+    display: block;
+    cursor: pointer;
+}
 
 .customerinfo-line {
     padding:50px;

@@ -17,9 +17,6 @@ namespace NykantAPI.Models
         public int CustomerInfId { get; set; }
         public Customer Customer { get; set; }
         [Required]
-        public int ShippingDeliveryId { get; set; }
-        public ShippingDelivery ShippingDelivery { get; set; }
-        [Required]
         public DateTime CreatedAt { get; set; }
         [Required]
         public string TotalPrice { get; set; }
@@ -30,6 +27,7 @@ namespace NykantAPI.Models
         [Required]
         public string PaymentIntent_Id { get; set; }
         public List<OrderItem> OrderItems { get; set; }
+        public ShippingDelivery ShippingDelivery { get; set; }
     }
 
     public enum Status

@@ -466,6 +466,10 @@ ol, ul {
     text-align: center;
 }
 
+.no-margin {
+    margin:0;
+}
+
     .green-border {
         border: 1px solid var(--green);
     }
