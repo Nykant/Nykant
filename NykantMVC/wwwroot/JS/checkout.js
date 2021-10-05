@@ -90,17 +90,6 @@ else if (stage_value == 3) {
     shipping_edit_button.style.display = "block";
 };
 
-customer_begin = function () {
-    if (reuse_invoice.checked) {
-        shippingaddress_address.value = address_input.value;
-        shippingaddress_city.value = city_input.value;
-        shippingaddress_country.value = country_input.value;
-        shippingaddress_firstname.value = firstname_input.value;
-        shippingaddress_lastname.value = lastname_input.value;
-        shippingaddress_postal.value = postal_input.value;
-    }
-}
-
 customer_completed = function (msg) {
 
     if (reuse_invoice.checked) {
@@ -126,14 +115,14 @@ customer_completed = function (msg) {
     customer_form.style.transition = "all 1s";
 
     customer_edit_button.style.display = "block";
-    firstname_summary.innerHTML = firstname_input.value;
-    lastname_summary.innerHTML = lastname_input.value;
-    email_summary.innerHTML = email_input.value;
-    phone_summary.innerHTML = phone_input.value;
-    country_summary.innerHTML = country_input.value;
-    city_summary.innerHTML = city_input.value;
-    postal_summary.innerHTML = postal_input.value;
-    address_summary.innerHTML = address_input.value;
+    firstname_summary.textContent = firstname_input.value;
+    lastname_summary.textContent = lastname_input.value;
+    email_summary.textContent = email_input.value;
+    phone_summary.textContent = phone_input.value;
+    country_summary.textContent = country_input.value;
+    city_summary.textContent = city_input.value;
+    postal_summary.textContent = postal_input.value;
+    address_summary.textContent = address_input.value;
 
     customer_wrap.style.transform = "translateY(-100%)";
     customer_form.style.height = "0px";

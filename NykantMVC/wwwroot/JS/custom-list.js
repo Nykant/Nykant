@@ -25,7 +25,7 @@ for (i = 0; i < l; i++) {
     for (j = 1; j < ll; j++) {
         c = document.createElement("div");
         c.setAttribute("class", "custom-list-option notselected");
-        c.innerHTML = selElmnt.options[j].innerHTML;
+        c.textContent = selElmnt.options[j].textContent;
 
         c.addEventListener("click", function (e) {
             var y, i, k, select, h, selectlength, yl;
@@ -33,7 +33,7 @@ for (i = 0; i < l; i++) {
             selectlength = select.length;
             h = this.parentNode.previousSibling;
             for (i = 1; i < selectlength; i++) {
-                if (select.options[i].innerHTML == this.innerHTML) {
+                if (select.options[i].textContent == this.textContent) {
                     select.selectedIndex = i;
                     if (this.textContent.includes("Home")) {
                         shippingdelivery_type.value = 'Home';

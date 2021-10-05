@@ -6,6 +6,6 @@
         }
     }).then(response => response.json())
         .then(function (data) {
-            document.getElementById("total-price-text").innerHTML = 'total: ' + data.price;
+            document.getElementById("total-price-text").textContent = 'total: ' + data.price;
         })
 };

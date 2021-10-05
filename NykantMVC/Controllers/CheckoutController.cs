@@ -140,62 +140,69 @@ namespace NykantMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> PostCustomerInf(Customer customer, bool editCustomer)
         {
-            if (ModelState.IsValid)
+            if (customer.ShippingAddress.SameAsInvoice)
             {
-                var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
-                Customer old;
-                if (editCustomer)
+                customer.ShippingAddress.Postal = customer.BillingAddress.Postal;
+                customer.ShippingAddress.LastName = customer.BillingAddress.LastName;
+                customer.ShippingAddress.FirstName = customer.BillingAddress.FirstName;
+                customer.ShippingAddress.Address = customer.BillingAddress.Address;
+                customer.ShippingAddress.Country = customer.BillingAddress.Country;
+                customer.ShippingAddress.City = customer.BillingAddress.City;
+            }
+
+            var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
+            Customer old;
+            if (editCustomer)
+            {
+                old = await GetCustomer(checkout.CustomerInfId);
+                customer.ShippingAddress.Id = old.ShippingAddress.Id;
+                customer.BillingAddress.Id = old.BillingAddress.Id;
+                customer.Id = old.Id;
+            }
+            if (checkout.Stage == Stage.customerInf || editCustomer)
+            {
+                customer = _protectionService.ProtectCustomer(customer);
+                var response = await PostRequest("/Customer/PostCustomer/", new Customer { Email = customer.Email, Phone = customer.Phone, Id = customer.Id });
+                if (response.IsSuccessStatusCode)
                 {
-                    old = await GetCustomer(checkout.CustomerInfId);
-                    customer.ShippingAddress.Id = old.ShippingAddress.Id;
-                    customer.BillingAddress.Id = old.BillingAddress.Id;
-                    customer.Id = old.Id;
-                }
-                if (checkout.Stage == Stage.customerInf || editCustomer)
-                {
-                    customer = _protectionService.ProtectCustomer(customer);
-                    var response = await PostRequest("/Customer/PostCustomer/", new Customer { Email = customer.Email, Phone = customer.Phone, Id = customer.Id });
-                    if (response.IsSuccessStatusCode)
+                    if (!editCustomer)
                     {
-                        if (!editCustomer)
+                        if (customer.Id == 0)
                         {
-                            if (customer.Id == 0)
-                            {
-                                var json = await GetRequest(response.Headers.Location.AbsolutePath);
-                                checkout.CustomerInfId = JsonConvert.DeserializeObject<Customer>(json).Id;
-                                customer.Id = checkout.CustomerInfId;
-                            }
-                            else
-                            {
-                                checkout.CustomerInfId = customer.Id;
-                                customer.Id = checkout.CustomerInfId;
-                            }
+                            var json = await GetRequest(response.Headers.Location.AbsolutePath);
+                            checkout.CustomerInfId = JsonConvert.DeserializeObject<Customer>(json).Id;
+                            customer.Id = checkout.CustomerInfId;
                         }
-
-                        var shippingAddress = _protectionService.ProtectShippingAddress(customer.ShippingAddress);
-                        shippingAddress.CustomerId = customer.Id;
-                        var postResponse = await PostRequest("/Customer/PostShippingAddress", shippingAddress);
-
-                        var invoiceAddress = _protectionService.ProtectInvoiceAddress(customer.BillingAddress);
-                        invoiceAddress.CustomerId = customer.Id;
-                        var postResponse2 = await PostRequest("/Customer/PostInvoiceAddress", invoiceAddress);
-
-                        if (!editCustomer)
+                        else
                         {
-                            checkout.Stage = Stage.shipping;
+                            checkout.CustomerInfId = customer.Id;
+                            customer.Id = checkout.CustomerInfId;
                         }
-
-                        HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
-                        return NoContent();
                     }
-                    return Content("Noget gik galt, vær sød og kontakt support hvis det sker igen");
-                }
-                else
-                {
+
+                    var shippingAddress = _protectionService.ProtectShippingAddress(customer.ShippingAddress);
+                    shippingAddress.CustomerId = customer.Id;
+                    var postResponse = await PostRequest("/Customer/PostShippingAddress", shippingAddress);
+
+                    var invoiceAddress = _protectionService.ProtectInvoiceAddress(customer.BillingAddress);
+                    invoiceAddress.CustomerId = customer.Id;
+                    var postResponse2 = await PostRequest("/Customer/PostInvoiceAddress", invoiceAddress);
+
+                    if (!editCustomer)
+                    {
+                        checkout.Stage = Stage.shipping;
+                    }
+
+                    HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
+
                     return NoContent();
                 }
+                return Content("Noget gik galt, vær sød og kontakt support hvis det sker igen");
             }
-            return Content("Vær sød at udfylde alle nødvendige felter markeret med *");
+            else
+            {
+                return NoContent();
+            }
         }
 
         [HttpPost]

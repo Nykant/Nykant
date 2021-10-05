@@ -1,0 +1,35 @@
+﻿@inject IViewLocalizer localizer
+@model CheckoutVM
+
+<div class="checkout-header z200" id="customerInf-header">
+    <h1>
+        @localizer["Customer Header"]
+    </h1>
+    <div class="check-sign" id="customer-check-sign">
+        <i class="fa fa-check" aria-hidden="true"></i>
+    </div>
+    <div id="customerinf-summary">
+        <p>@localizer["Email"]: <span id="customer-email-summary">@Model.Customer.Email</span></p>
+        <p>@localizer["Telephone"]: <span id="customer-phone-summary">@Model.Customer.Phone</span></p>
+        <div class="invoice-summary margin-top-10">
+            <p class="bold-text">Invoice Address</p>
+            <p>@localizer["First Name"]: <span id="customer-firstname-summary">@Model.Customer.BillingAddress.FirstName</span></p>
+            <p>@localizer["Last Name"]: <span id="customer-lastname-summary">@Model.Customer.BillingAddress.LastName</span></p>
+            <p>@localizer["Address"]: <span id="customer-address-summary">@Model.Customer.BillingAddress.Address</span></p>
+            <p>@localizer["City"]: <span id="customer-city-summary">@Model.Customer.BillingAddress.City</span></p>
+            <p>@localizer["Country"]: <span id="customer-country-summary">@Model.Customer.BillingAddress.Country</span></p>
+            <p>@localizer["Postal"]: <span id="customer-postal-summary">@Model.Customer.BillingAddress.Postal</span></p>
+        </div>
+        <div id="shippingaddress-summary" class="shipping-summary margin-top-10">
+            <p class="bold-text">Shipping Address</p>
+            <p>@localizer["First Name"]: <span id="shippingaddress-firstname-summary">@Model.Customer.ShippingAddress.FirstName</span></p>
+            <p>@localizer["Last Name"]: <span id="shippingaddress-lastname-summary">@Model.Customer.ShippingAddress.LastName</span></p>
+            <p>@localizer["Address"]: <span id="shippingaddress-address-summary">@Model.Customer.ShippingAddress.Address</span></p>
+            <p>@localizer["City"]: <span id="shippingaddress-city-summary">@Model.Customer.ShippingAddress.City</span></p>
+            <p>@localizer["Country"]: <span id="shippingaddress-country-summary">@Model.Customer.ShippingAddress.Country</span></p>
+            <p>@localizer["Postal"]: <span id="shippingaddress-postal-summary">@Model.Customer.ShippingAddress.Postal</span></p>
+        </div>
+
+        <button class="button edit-button" id="customer-edit-button">@localizer["Change"]</button>
+    </div>
+</div>
