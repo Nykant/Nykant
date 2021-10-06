@@ -82,7 +82,6 @@ namespace NykantAPI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(int id, [Bind("Id,ProductId,Subject,Title,Body,Stars")] Review review)
         {
             if (id != review.Id)
@@ -115,7 +114,6 @@ namespace NykantAPI.Controllers
 
         // POST: Review/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             var review = await _context.Reviews.FindAsync(id);

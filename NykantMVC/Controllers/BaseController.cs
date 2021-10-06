@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
@@ -24,11 +25,49 @@ namespace NykantMVC.Controllers
         public const string ConsentCookieKey = "verysecretseriousconsentsessionkeyspecial";
         private readonly ILogger<BaseController> _logger;
         private readonly Urls _urls;
+        private readonly HtmlEncoder htmlEncoder;
 
-        public BaseController(ILogger<BaseController> logger, IOptions<Urls> urls)
+
+        public BaseController(ILogger<BaseController> logger, IOptions<Urls> urls, HtmlEncoder htmlEncoder)
         {
+            this.htmlEncoder = htmlEncoder;
             _logger = logger;
             _urls = urls.Value;
+        }
+
+        public Customer EncodeCustomer(Customer customer)
+        {
+            if(customer.Email != null)
+            {
+                customer.Email = htmlEncoder.Encode(customer.Email);
+                if(customer.Phone != null)
+                {
+                    customer.Phone = htmlEncoder.Encode(customer.Phone);
+                }
+
+
+                if(customer.ShippingAddress != null)
+                {
+                    customer.ShippingAddress.Address = htmlEncoder.Encode(customer.ShippingAddress.Address);
+                    customer.ShippingAddress.City = htmlEncoder.Encode(customer.ShippingAddress.City);
+                    customer.ShippingAddress.Country = htmlEncoder.Encode(customer.ShippingAddress.Country);
+                    customer.ShippingAddress.FirstName = htmlEncoder.Encode(customer.ShippingAddress.FirstName);
+                    customer.ShippingAddress.LastName = htmlEncoder.Encode(customer.ShippingAddress.LastName);
+                    customer.ShippingAddress.Postal = htmlEncoder.Encode(customer.ShippingAddress.Postal);
+                }
+
+                if(customer.BillingAddress != null)
+                {
+                    customer.BillingAddress.Postal = htmlEncoder.Encode(customer.BillingAddress.Postal);
+                    customer.BillingAddress.Address = htmlEncoder.Encode(customer.BillingAddress.Address);
+                    customer.BillingAddress.City = htmlEncoder.Encode(customer.BillingAddress.City);
+                    customer.BillingAddress.Country = htmlEncoder.Encode(customer.BillingAddress.Country);
+                    customer.BillingAddress.FirstName = htmlEncoder.Encode(customer.BillingAddress.FirstName);
+                    customer.BillingAddress.LastName = htmlEncoder.Encode(customer.BillingAddress.LastName);
+                }
+            }
+
+            return customer;
         }
 
         public async Task<HttpResponseMessage> PostRequest(string url, object item)

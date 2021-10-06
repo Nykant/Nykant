@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace NykantAPI.Controllers
 {
+
     [ApiController]
     [Route("[controller]/[action]/")]
     public class CategoryController : BaseController

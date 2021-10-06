@@ -9,14 +9,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Text.Encodings.Web;
 
 namespace NykantMVC.Controllers
 {
+    [AutoValidateAntiforgeryToken]
     public class OrderController : BaseController
     {
         private readonly IMailService mailService;
         private readonly IProtectionService _protectionService;
-        public OrderController(IMailService mailService, ILogger<BaseController> logger, IProtectionService protectionService, IOptions<Urls> urls) : base(logger, urls)
+        public OrderController(IMailService mailService, ILogger<BaseController> logger, IProtectionService protectionService, IOptions<Urls> urls, HtmlEncoder htmlEncoder) : base(logger, urls, htmlEncoder)
         {
             this.mailService = mailService;
             _protectionService = protectionService;

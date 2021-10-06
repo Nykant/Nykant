@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace NykantAPI.Controllers
 {
+
     [ApiController]
     [Route("[controller]/[action]/")]
     public class ShippingDeliveryController : BaseController
@@ -23,6 +24,7 @@ namespace NykantAPI.Controllers
         {
             return Ok(JsonConvert.SerializeObject(_context.ShippingDeliveries.ToList()));
         }
+
 
         [HttpPost]
         public async Task<ActionResult<ShippingDelivery>> Post(ShippingDelivery shippingDelivery)

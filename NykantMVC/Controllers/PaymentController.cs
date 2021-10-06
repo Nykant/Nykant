@@ -10,15 +10,17 @@ using NykantMVC.Services;
 using Stripe;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Text.Encodings.Web;
 
 namespace NykantMVC.Controllers
 {
+    [AutoValidateAntiforgeryToken]
     [AllowAnonymous]
     public class PaymentController : BaseController
     {
         private IConfigurationRoot _configuration;
         private readonly IProtectionService _protectionService;
-        public PaymentController(ILogger<BaseController> logger, IConfiguration configuration, IProtectionService protectionService, IOptions<Urls> urls) : base(logger, urls)
+        public PaymentController(ILogger<BaseController> logger, IConfiguration configuration, IProtectionService protectionService, IOptions<Urls> urls, HtmlEncoder htmlEncoder) : base(logger, urls, htmlEncoder)
         {
             _configuration = (IConfigurationRoot)configuration;
             _protectionService = protectionService;

@@ -16,6 +16,7 @@ using Microsoft.Extensions.Logging;
 using NykantIS.Models;
 namespace NykantIS.Areas.Identity.Pages.Account.Manage
 {
+    [AutoValidateAntiforgeryToken]
     public class ChangePasswordModel : PageModel
     {
         private readonly UserManager<ApplicationUser> _userManager;

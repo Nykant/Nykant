@@ -17,7 +17,6 @@ namespace NykantAPI.Controllers
     [Route("[controller]/[action]/")]
     public class ProductController : BaseController
     {
-
         public ProductController(ILogger<BaseController> logger, ApplicationDbContext context) : base(logger, context)
         {
         }

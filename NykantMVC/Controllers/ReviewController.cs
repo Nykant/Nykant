@@ -3,14 +3,16 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using NykantMVC.Models;
+using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 
 namespace NykantMVC.Controllers
 {
+    [AutoValidateAntiforgeryToken]
     [Authorize]
     public class ReviewController : BaseController
     {
-        public ReviewController(ILogger<BaseController> logger, IOptions<Urls> urls) : base(logger, urls)
+        public ReviewController(ILogger<BaseController> logger, IOptions<Urls> urls, HtmlEncoder htmlEncoder) : base(logger, urls, htmlEncoder)
         {
 
         }

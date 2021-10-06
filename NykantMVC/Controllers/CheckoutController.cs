@@ -11,15 +11,18 @@ using NykantMVC.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 
 namespace NykantMVC.Controllers
 {
+    [AutoValidateAntiforgeryToken]
     [AllowAnonymous]
     public class CheckoutController : BaseController
     {
         private readonly IProtectionService _protectionService;
-        public CheckoutController(ILogger<BaseController> logger, IProtectionService protectionService, IOptions<Urls> urls) : base(logger, urls)
+
+        public CheckoutController(ILogger<BaseController> logger, IProtectionService protectionService, IOptions<Urls> urls, HtmlEncoder htmlEncoder) : base(logger, urls, htmlEncoder)
         {
             _protectionService = protectionService;
         }
@@ -115,21 +118,23 @@ namespace NykantMVC.Controllers
                     HttpContext.Session.Set<Checkout>(CheckoutSessionKey, null);
                     return RedirectToAction("Details", "Bag");
                 }
-                Customer customerInf = null;
+                Customer customer = null;
                 if(checkout.CustomerInfId != 0)
                 {
                     var jsonCustomer = await GetRequest($"/Customer/GetCustomer/{checkout.CustomerInfId}");
-                    customerInf = JsonConvert.DeserializeObject<Customer>(jsonCustomer);
-                    customerInf = _protectionService.UnprotectCustomer(customerInf);
+                    customer = JsonConvert.DeserializeObject<Customer>(jsonCustomer);
+                    customer = _protectionService.UnprotectCustomer(customer);
                 }
                 else
                 {
-                    customerInf = new Customer { BillingAddress = new BillingAddress(), ShippingAddress = new ShippingAddress() };
+                    customer = new Customer { BillingAddress = new BillingAddress(), ShippingAddress = new ShippingAddress() };
                 }
+
+                customer = EncodeCustomer(customer);
 
                 CheckoutVM checkoutVM = new CheckoutVM
                 {
-                    Customer = customerInf,
+                    Customer = customer,
                     Checkout = checkout
                 };
 

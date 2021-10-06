@@ -7,12 +7,14 @@ using NykantMVC.Models;
 using NykantMVC.Models.ViewModels;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Text.Encodings.Web;
 
 namespace NykantMVC.Controllers
 {
+    [AutoValidateAntiforgeryToken]
     public class ProductController : BaseController
     {
-        public ProductController(ILogger<BaseController> logger, IOptions<Urls> urls) : base(logger, urls)
+        public ProductController(ILogger<BaseController> logger, IOptions<Urls> urls, HtmlEncoder htmlEncoder) : base(logger, urls, htmlEncoder)
         {
         }
 

@@ -90,6 +90,10 @@ else if (stage_value == 3) {
     shipping_edit_button.style.display = "block";
 };
 
+customer_begin = function () {
+    xdfghsdfg dfg sdgsdg heeer
+}
+
 customer_completed = function (msg) {
 
     if (reuse_invoice.checked) {

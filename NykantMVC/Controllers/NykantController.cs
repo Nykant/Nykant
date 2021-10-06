@@ -13,13 +13,15 @@ using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Localization;
 using Microsoft.AspNetCore.Localization;
 using NykantMVC.Friends;
+using System.Text.Encodings.Web;
 
 namespace NykantMVC.Controllers
 {
+    [AutoValidateAntiforgeryToken]
     [AllowAnonymous]
     public class NykantController : BaseController
     {
-        public NykantController(ILogger<NykantController> logger, IOptions<Urls> urls) : base(logger, urls)
+        public NykantController(ILogger<NykantController> logger, IOptions<Urls> urls, HtmlEncoder htmlEncoder) : base(logger, urls, htmlEncoder)
         {
         }
 

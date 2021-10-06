@@ -16,6 +16,7 @@ using NykantIS.Models.ViewModels;
 
 namespace NykantIS.Areas.Identity.Pages.Account.Manage
 {
+    [AutoValidateAntiforgeryToken]
     public partial class EmailModel : PageModel
     {
         private readonly UserManager<ApplicationUser> _userManager;

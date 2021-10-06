@@ -70,6 +70,10 @@ namespace NykantIS.Controllers
         [HttpGet]
         public async Task<IActionResult> Login(string redirectaction = null, string redirectcontroller = null, string returnUrl = null)
         {
+            if(redirectaction == "Details")
+            {
+                redirectaction = "Index";
+            }
             // build a model so we know what to show on the login page
             var vm = await BuildLoginViewModelAsync(returnUrl, redirectaction, redirectcontroller);
 

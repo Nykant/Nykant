@@ -7,17 +7,21 @@ using NykantMVC.Extensions;
 using NykantMVC.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 
 namespace NykantMVC.Controllers
 {
+    [AutoValidateAntiforgeryToken]
     [Authorize]
     public class AccountController : BaseController
     {
-        public AccountController(ILogger<BaseController> logger, IOptions<Urls> urls) : base(logger, urls)
+        public AccountController(ILogger<BaseController> logger, IOptions<Urls> urls, HtmlEncoder htmlEncoder) : base(logger, urls, htmlEncoder)
         {
 
         }
+
+        [ValidateAntiForgeryToken]
         [HttpGet]
         public IActionResult Logout()
         {

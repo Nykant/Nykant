@@ -175,6 +175,8 @@ options.UseSqlServer(mykeyConnection));
 
             services.AddLocalization(options => options.ResourcesPath = "Resources");
 
+            services.AddAntiforgery();
+
             services.AddControllersWithViews()
                                     .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
                                     .AddDataAnnotationsLocalization();
@@ -190,6 +192,8 @@ options.UseSqlServer(mykeyConnection));
                 options.KnownNetworks.Clear();
                 options.KnownProxies.Clear();
             });
+
+
         }
 
         public void Configure(IApplicationBuilder app)

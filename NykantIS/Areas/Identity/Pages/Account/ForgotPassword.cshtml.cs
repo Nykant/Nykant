@@ -16,6 +16,7 @@ using NykantIS.Services;
 
 namespace NykantIS.Areas.Identity.Pages.Account
 {
+    [AutoValidateAntiforgeryToken]
     [AllowAnonymous]
     public class ForgotPasswordModel : PageModel
     {

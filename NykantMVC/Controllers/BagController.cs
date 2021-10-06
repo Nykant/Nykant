@@ -7,14 +7,16 @@ using NykantMVC.Extensions;
 using NykantMVC.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 
 namespace NykantMVC.Controllers
 {
+    [AutoValidateAntiforgeryToken]
     [AllowAnonymous]
     public class BagController : BaseController
     {
-        public BagController(ILogger<BaseController> logger, IOptions<Urls> urls) : base(logger, urls)
+        public BagController(ILogger<BaseController> logger, IOptions<Urls> urls, HtmlEncoder htmlEncoder) : base(logger, urls, htmlEncoder)
         {
         }
 

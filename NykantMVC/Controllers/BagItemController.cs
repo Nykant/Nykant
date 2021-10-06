@@ -9,16 +9,18 @@ using NykantMVC.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 
 namespace NykantMVC.Controllers
 {
+    [AutoValidateAntiforgeryToken]
     [AllowAnonymous]
 
     public class BagItemController : BaseController
     {
 
-        public BagItemController(ILogger<BaseController> logger, IOptions<Urls> urls) : base(logger, urls)
+        public BagItemController(ILogger<BaseController> logger, IOptions<Urls> urls, HtmlEncoder htmlEncoder) : base(logger, urls, htmlEncoder)
         {
         }
 

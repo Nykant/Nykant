@@ -107,6 +107,8 @@ namespace NykantMVC
 
             services.AddLocalization(options => options.ResourcesPath = "Resources");
 
+            services.AddAntiforgery();
+
             services.AddControllersWithViews()
                                     .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
                                     .AddDataAnnotationsLocalization()
@@ -120,6 +122,8 @@ namespace NykantMVC
                 options.KnownNetworks.Clear();
                 options.KnownProxies.Clear();
             });
+
+
 
             // Register the Google Analytics configuration
             services.Configure<GoogleAnalyticsOptions>(options => Configuration.GetSection("GoogleAnalytics").Bind(options));

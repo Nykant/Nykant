@@ -22,6 +22,7 @@ using NykantIS.Services;
 
 namespace NykantIS.Areas.Identity.Pages.Account
 {
+    [AutoValidateAntiforgeryToken]
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
@@ -82,6 +83,10 @@ namespace NykantIS.Areas.Identity.Pages.Account
 
         public async Task OnGetAsync(string redirectaction, string redirectcontroller, string returnUrl = null)
         {
+            if (redirectaction == "Details")
+            {
+                redirectaction = "Index";
+            }
             BasePath = configuration.GetSection("Urls")["mvc"];
             ReturnUrl = returnUrl;
             RedirectAction = redirectaction;

@@ -12,6 +12,7 @@ using NykantIS.Models;
 
 namespace NykantIS.Areas.Identity.Pages.Account
 {
+    [AutoValidateAntiforgeryToken]
     [AllowAnonymous]
     public class ConfirmEmailModel : PageModel
     {
