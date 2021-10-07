@@ -232,7 +232,7 @@
 }
 
 
-#customerinf-summary {
+.summary {
     display:inline-block;
     padding:15px;
     padding-left:50px;
@@ -240,29 +240,17 @@
     display:none;
 }
 
-    #customerinf-summary p {
+#parcelshop-summary {
+    display:none;
+}
+
+    .summary p {
         font-size: var(--small-plus);
         font-weight:bold;
     }
-    #customerinf-summary span {
+    .summary span {
         font-weight:normal;
     }
-
-#shipping-summary {
-    display: inline-block;
-    padding: 15px;
-    padding-left: 50px;
-    text-align: left;
-    display: none;
-}
-#shipping-summary p {
-    font-size: var(--small-plus);
-    font-weight: bold;
-}
-
-#shipping-summary span {
-    font-weight: normal;
-}
 
 .edit-button {
     height: 30px;

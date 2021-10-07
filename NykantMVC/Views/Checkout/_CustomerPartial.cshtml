@@ -4,8 +4,7 @@
 <div class="row bottom-side-padding">
         <div class="hide-overflow responsive-form" id="customerinf-wrapper">
             <partial name="_CustomerSummaryPartial" />
-            @customerbegin
-            <form class="z50" id="customer-form" method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="noop" data-ajax-complete="customer_completed" data-ajax-begin="noop" onclick="customer_begin()" data-ajax-failure="noop" asp-controller="Checkout" asp-action="PostCustomerInf">
+            <form class="z50" id="customer-form" method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="noop" data-ajax-complete="customer_completed" data-ajax-begin="customer_begin" data-ajax-failure="noop" asp-controller="Checkout" asp-action="PostCustomerInf">
                 <input type="hidden" id="edit-customer" name="editCustomer" value="false" />
                 <input type="hidden" asp-for="@Model.Customer.Id" />
                 <div class="checkout-wrap" id="customer-wrap" >
@@ -25,7 +24,7 @@
                                 <div class="underline"></div>
                             </div>
                         </div>
-
+                       
                         <div class="invoice-address-box">
                             <div class="checkout-header">
                                 @localizer[""]
@@ -74,7 +73,7 @@
                             </div>
                             <div class="same-as-invoice">
                                 <label class="simple-checkbox">
-                                    <input id="reuse-invoice" asp-for="@Model.Customer.ShippingAddress.SameAsInvoice" value="true" type="checkbox">
+                                    <input id="reuse-invoice" asp-for="@Model.Customer.ShippingAddress.SameAsInvoice" type="checkbox">
                                     <span class="simple-checkmark"></span>
                                 </label>
                                 <p>

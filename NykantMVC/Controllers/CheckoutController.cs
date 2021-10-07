@@ -59,7 +59,7 @@ namespace NykantMVC.Controllers
                             BagItems = bagItemsDb,
                             Stage = Stage.customerInf,
                             TotalPrice = CalculateAmount(bagItemsDb).ToString(),
-                            ShippingDelivery = new ShippingDelivery()
+                            ShippingDelivery = new ShippingDelivery { ParcelshopData = new ParcelshopData() }
                         };
                         HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
 
@@ -70,7 +70,8 @@ namespace NykantMVC.Controllers
                                 BillingAddress = new BillingAddress(),
                                 ShippingAddress = new ShippingAddress()
                             },
-                            Checkout = checkout
+                            Checkout = checkout,
+                            ShippingDelivery = new ShippingDelivery { ParcelshopData = new ParcelshopData() }
                         };
 
                         return View(checkoutVM);
@@ -93,7 +94,7 @@ namespace NykantMVC.Controllers
                             BagItems = bagItemsSession,
                             Stage = Stage.customerInf,
                             TotalPrice = CalculateAmount(bagItemsSession).ToString(),
-                            ShippingDelivery = new ShippingDelivery()
+                            ShippingDelivery = new ShippingDelivery { ParcelshopData = new ParcelshopData() }
                         };
                         HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
 
@@ -104,7 +105,8 @@ namespace NykantMVC.Controllers
                                 BillingAddress = new BillingAddress(),
                                 ShippingAddress = new ShippingAddress()
                             },
-                            Checkout = checkout
+                            Checkout = checkout,
+                            ShippingDelivery = new ShippingDelivery { ParcelshopData = new ParcelshopData() }
                         };
 
                         return View(checkoutVM);
@@ -135,7 +137,8 @@ namespace NykantMVC.Controllers
                 CheckoutVM checkoutVM = new CheckoutVM
                 {
                     Customer = customer,
-                    Checkout = checkout
+                    Checkout = checkout,
+                     ShippingDelivery = new ShippingDelivery { ParcelshopData = new ParcelshopData() }
                 };
 
                 return View(checkoutVM);
@@ -213,6 +216,7 @@ namespace NykantMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> PostShipping(ShippingDelivery shippingDelivery, bool editShipping)
         {
+
             var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
 
             if (checkout.Stage == Stage.shipping || editShipping)
