@@ -22,7 +22,7 @@ namespace NykantMVC.Controllers
     {
         private readonly IProtectionService _protectionService;
 
-        public CheckoutController(ILogger<BaseController> logger, IProtectionService protectionService, IOptions<Urls> urls, HtmlEncoder htmlEncoder) : base(logger, urls, htmlEncoder)
+        public CheckoutController(ILogger<CheckoutController> logger, IProtectionService protectionService, IOptions<Urls> urls, HtmlEncoder htmlEncoder) : base(logger, urls, htmlEncoder)
         {
             _protectionService = protectionService;
         }
@@ -148,7 +148,7 @@ namespace NykantMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> PostCustomerInf(Customer customer, bool editCustomer)
         {
-            if (customer.ShippingAddress.SameAsInvoice)
+            if (customer.ShippingAddress.SameAsBilling)
             {
                 customer.ShippingAddress.Postal = customer.BillingAddress.Postal;
                 customer.ShippingAddress.LastName = customer.BillingAddress.LastName;
@@ -188,13 +188,21 @@ namespace NykantMVC.Controllers
                         }
                     }
 
-                    var shippingAddress = _protectionService.ProtectShippingAddress(customer.ShippingAddress);
-                    shippingAddress.CustomerId = customer.Id;
-                    var postResponse = await PostRequest("/Customer/PostShippingAddress", shippingAddress);
+                    try
+                    {
+                        var shippingAddress = _protectionService.ProtectShippingAddress(customer.ShippingAddress);
+                        shippingAddress.CustomerId = customer.Id;
+                        var postResponse = await PostRequest("/Customer/PostShippingAddress", shippingAddress);
+                    }
+                    catch (Exception e)
+                    {
+                        _logger.LogInformation(e.Message);
+                    }
 
-                    var invoiceAddress = _protectionService.ProtectInvoiceAddress(customer.BillingAddress);
+
+                    var invoiceAddress = _protectionService.ProtectBillingAddress(customer.BillingAddress);
                     invoiceAddress.CustomerId = customer.Id;
-                    var postResponse2 = await PostRequest("/Customer/PostInvoiceAddress", invoiceAddress);
+                    var postResponse2 = await PostRequest("/Customer/PostBillingAddress", invoiceAddress);
 
                     if (!editCustomer)
                     {

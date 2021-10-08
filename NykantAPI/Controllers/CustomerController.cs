@@ -30,7 +30,7 @@ namespace NykantAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Customer>> GetCustomer(int id)
         {
-            var customerInf = await _context.Customer.Include(x => x.BillingAddress).Include(x => x.ShippingAddress).FirstOrDefaultAsync(x => x.Id == id);
+            var customerInf = await _context.Customer.Include(x => x.ShippingAddress).Include(x => x.BillingAddress).FirstOrDefaultAsync(x => x.Id == id);
             customerInf = _protectionService.ProtectCustomer(customerInf);
             return Ok(JsonConvert.SerializeObject(customerInf, Extensions.JsonOptions.jsonSettings));
         }
@@ -68,7 +68,7 @@ namespace NykantAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> PostShippingAddress(ShippingAddress shippingAddress)
+        public async Task<ActionResult<ShippingAddress>> PostShippingAddress(ShippingAddress shippingAddress)
         {
             try
             {
@@ -96,20 +96,20 @@ namespace NykantAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> PostInvoiceAddress(BillingAddress invoiceAddress)
+        public async Task<ActionResult<BillingAddress>> PostBillingAddress(BillingAddress billingAddress)
         {
             try
             {
-                invoiceAddress = _protectionService.UnprotectInvoiceAddress(invoiceAddress);
+                billingAddress = _protectionService.UnprotectInvoiceAddress(billingAddress);
                 if (ModelState.IsValid)
                 {
-                    if (InvoiceAddressExists(invoiceAddress.Id))
+                    if (InvoiceAddressExists(billingAddress.Id))
                     {
-                        _context.BillingAddress.Update(invoiceAddress);
+                        _context.BillingAddress.Update(billingAddress);
                     }
                     else
                     {
-                        _context.BillingAddress.Add(invoiceAddress);
+                        _context.BillingAddress.Add(billingAddress);
                     }
                     await _context.SaveChangesAsync();
                     return Ok();

@@ -60,6 +60,16 @@ var parcelshop_CityName = document.getElementById("parcelshop-CityName");
 var parcelshop_CountryCodeISO3166A2 = document.getElementById("parcelshop-CountryCodeISO3166A2");
 var parcelshop_summary = document.getElementById("parcelshop-summary");
 
+if (parcelshop_CityName.value != '') {
+    parcelshop_summary.style.display = "block";
+    parcelshop_companyname_summary.textContent = parcelshop_CompanyName.value;
+    parcelshop_cityname_summary.textContent = parcelshop_CityName.value;
+    parcelshop_countrycode_summary.textContent = parcelshop_CountryCodeISO3166A2.value;
+    parcelshop_streetname_summary.textContent = parcelshop_StreetName.value;
+    parcelshop_streetname2_summary.textContent = parcelshop_StreetName2.value;
+    parcelshop_zipcode_summary.textContent = parcelshop_ZipCode.value;
+}
+
 if (reuse_invoice.checked) {
     document.getElementById('shipping-address-box').style.display = "none";
     shippingaddress_summary.style.display = "none";
@@ -181,6 +191,9 @@ shipping_completed = function () {
         parcelshop_streetname_summary.textContent = parcelshop_StreetName.value;
         parcelshop_streetname2_summary.textContent = parcelshop_StreetName2.value;
         parcelshop_zipcode_summary.textContent = parcelshop_ZipCode.value;
+    }
+    else {
+        parcelshop_summary.style.display = "none";
     }
 
     shipping_form.style.height = "0px";

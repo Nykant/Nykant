@@ -23,7 +23,7 @@ namespace NykantMVC.Controllers
         public const string CheckoutSessionKey = "verysecretseriouscheckoutsessionkey";
         public const string BagItemAmountKey = "verysecretseriousbagitemsessionkeyspecial";
         public const string ConsentCookieKey = "verysecretseriousconsentsessionkeyspecial";
-        private readonly ILogger<BaseController> _logger;
+        public readonly ILogger<BaseController> _logger;
         private readonly Urls _urls;
         private readonly HtmlEncoder htmlEncoder;
 

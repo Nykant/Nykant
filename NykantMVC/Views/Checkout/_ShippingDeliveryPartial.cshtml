@@ -21,7 +21,7 @@
             <div class="summary" id="shipping-summary">
                 <p>@localizer["Delivery Method"]: <span id="shipping-method-summary">@Model.Checkout.ShippingDelivery.Type</span></p>
 
-                <div class="summary margin-top-10" id="parcelshop-summary">
+                <div class="margin-top-10" id="parcelshop-summary">
                     <p>@localizer["Company Name"]: <span id="parcelshop-companyname-summary">@Model.Checkout.ShippingDelivery.ParcelshopData.CompanyName</span></p>
                     <p>@localizer["StreetName"]: <span id="parcelshop-streetname-summary">@Model.Checkout.ShippingDelivery.ParcelshopData.Streetname</span></p>
                     <p>@localizer["StreetName2"]: <span id="parcelshop-streetname2-summary">@Model.Checkout.ShippingDelivery.ParcelshopData.Streetname2</span></p>
@@ -59,13 +59,9 @@
                     </div>
                 </div>
 
-                @{
-                    // localizer["Continue"]
-                }
-                <!--<div class="col-12 right">
-                    <button hidden id="custom-list-button" class="button" type="submit"></button>-->
-                @*------------- SUBMIT FORM --------------*@
-                <!--</div>-->
+                <div class="col-12 right">
+                    <button id="custom-list-button" class="button" type="submit">@localizer["Continue"]</button>
+                </div>
             </div>
 
         </form>
@@ -74,7 +70,6 @@
 </div>
 
 <div class="modal" id="nearby-shops-modal">
-
     <div id="nearby-shops">
         <div class="header no-margin">
             @localizer["Choose Parcelshop"]

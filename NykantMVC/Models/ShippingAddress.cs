@@ -36,6 +36,6 @@ namespace NykantMVC.Models
         [StringLength(20)]
         [Display(Name = "Postal")]
         public string Postal { get; set; }
-        public bool SameAsInvoice { get; set; } = true;
+        public bool SameAsBilling { get; set; } = true;
     }
 }

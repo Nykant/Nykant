@@ -53,28 +53,28 @@ namespace NykantMVC.Services
             return shippingAddress;
         }
 
-        public BillingAddress UnprotectInvoiceAddress(BillingAddress invoiceAddress)
+        public BillingAddress UnprotectBillingAddress(BillingAddress billingAddress)
         {
-            invoiceAddress.Address = _customerProtector.Unprotect(invoiceAddress.Address);
-            invoiceAddress.City = _customerProtector.Unprotect(invoiceAddress.City);
-            invoiceAddress.Country = _customerProtector.Unprotect(invoiceAddress.Country);
-            invoiceAddress.Postal = _customerProtector.Unprotect(invoiceAddress.Postal);
-            invoiceAddress.FirstName = _customerProtector.Unprotect(invoiceAddress.FirstName);
-            invoiceAddress.LastName = _customerProtector.Unprotect(invoiceAddress.LastName);
+            billingAddress.Address = _customerProtector.Unprotect(billingAddress.Address);
+            billingAddress.City = _customerProtector.Unprotect(billingAddress.City);
+            billingAddress.Country = _customerProtector.Unprotect(billingAddress.Country);
+            billingAddress.Postal = _customerProtector.Unprotect(billingAddress.Postal);
+            billingAddress.FirstName = _customerProtector.Unprotect(billingAddress.FirstName);
+            billingAddress.LastName = _customerProtector.Unprotect(billingAddress.LastName);
 
-            return invoiceAddress;
+            return billingAddress;
         }
 
-        public BillingAddress ProtectInvoiceAddress(BillingAddress invoiceAddress)
+        public BillingAddress ProtectBillingAddress(BillingAddress billingAddress)
         {
-            invoiceAddress.Address = _customerProtector.Protect(invoiceAddress.Address);
-            invoiceAddress.City = _customerProtector.Protect(invoiceAddress.City);
-            invoiceAddress.Country = _customerProtector.Protect(invoiceAddress.Country);
-            invoiceAddress.Postal = _customerProtector.Protect(invoiceAddress.Postal);
-            invoiceAddress.FirstName = _customerProtector.Protect(invoiceAddress.FirstName);
-            invoiceAddress.LastName = _customerProtector.Protect(invoiceAddress.LastName);
+            billingAddress.Address = _customerProtector.Protect(billingAddress.Address);
+            billingAddress.City = _customerProtector.Protect(billingAddress.City);
+            billingAddress.Country = _customerProtector.Protect(billingAddress.Country);
+            billingAddress.Postal = _customerProtector.Protect(billingAddress.Postal);
+            billingAddress.FirstName = _customerProtector.Protect(billingAddress.FirstName);
+            billingAddress.LastName = _customerProtector.Protect(billingAddress.LastName);
 
-            return invoiceAddress;
+            return billingAddress;
         }
 
         public Order UnprotectOrder(Order order)
@@ -96,14 +96,14 @@ namespace NykantMVC.Services
 
     public interface IProtectionService
     {
-        public Customer ProtectCustomer(Customer customerInf);
-        public Customer UnprotectCustomer(Customer customerInf);
+        public Customer ProtectCustomer(Customer customer);
+        public Customer UnprotectCustomer(Customer customer);
 
-        public ShippingAddress ProtectShippingAddress(ShippingAddress customerInf);
-        public ShippingAddress UnprotectShippingAddress(ShippingAddress customerInf);
+        public ShippingAddress ProtectShippingAddress(ShippingAddress shippingAddress);
+        public ShippingAddress UnprotectShippingAddress(ShippingAddress shippingAddress);
 
-        public BillingAddress ProtectInvoiceAddress(BillingAddress customerInf);
-        public BillingAddress UnprotectInvoiceAddress(BillingAddress customerInf);
+        public BillingAddress ProtectBillingAddress(BillingAddress billingAddress);
+        public BillingAddress UnprotectBillingAddress(BillingAddress billingAddress);
         public Order ProtectOrder(Order order);
         public Order UnprotectOrder(Order order);
     }

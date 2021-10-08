@@ -7,9 +7,21 @@ var shippingaddress_country_picker = document.getElementById("shippingaddress-co
 var shippingaddress_country = document.getElementById("shippingaddress-country");
 var shippingaddress_country_error = document.getElementById("shippingaddress-country-error");
 
+if (country_input.value != null) {
+    var options = country_picker.children;
+    for (var i = 0; i < options.length; i++) {
+        if (options[i].value == country_input.value && country_input.value != '') {
+            country_picker.selectedIndex = i;
+            country_picker.style.color = "black";
+            country_picker.style.border = "2px solid black";
+        }
+    }
+}
+
 country_picker.addEventListener("change", function () {
     var x = country_picker.selectedIndex;
-    country_input.value = document.getElementsByTagName("option")[x].value;
+    var options = country_picker.children;
+    country_input.value = options[x].value;
     country_picker.style.color = "black";
     country_picker.style.border = "2px solid black";
 });
@@ -33,9 +45,21 @@ customer_wrap.addEventListener("submit", function (event) {
     }
 });
 
+if (shippingaddress_country.value != null) {
+    var options = shippingaddress_country_picker.children;
+    for (var i = 0; i < options.length; i++) {
+        if (options[i].value == shippingaddress_country.value && shippingaddress_country.value != '') {
+            shippingaddress_country_picker.selectedIndex = i;
+            shippingaddress_country_picker.style.color = "black";
+            shippingaddress_country_picker.style.border = "2px solid black";
+        }
+    }
+}
+
 shippingaddress_country_picker.addEventListener("change", function () {
     var x = shippingaddress_country_picker.selectedIndex;
-    shippingaddress_country.value = document.getElementsByTagName("option")[x].value;
+    var options = shippingaddress_country_picker.children;
+    shippingaddress_country.value = options[x].value;
     shippingaddress_country_picker.style.color = "black";
     shippingaddress_country_picker.style.border = "2px solid black";
 });

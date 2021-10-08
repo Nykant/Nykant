@@ -24,5 +24,6 @@ namespace NykantAPI.Models
         public string Country { get; set; }
         [Required]
         public string Postal { get; set; }
+        public bool SameAsBilling { get; set; }
     }
 }
