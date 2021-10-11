@@ -14,7 +14,6 @@ using System.Text.Encodings.Web;
 
 namespace NykantMVC.Controllers
 {
-    [AutoValidateAntiforgeryToken]
     [AllowAnonymous]
     public class PaymentController : BaseController
     {
@@ -32,7 +31,7 @@ namespace NykantMVC.Controllers
             var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
             if (checkout == null)
             {
-                Json(new { error = "checkout = null" });
+                return Json(new { error = "checkout = null" });
             }
 
             if (checkout.Stage == Stage.payment)

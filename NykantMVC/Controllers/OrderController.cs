@@ -13,7 +13,6 @@ using System.Text.Encodings.Web;
 
 namespace NykantMVC.Controllers
 {
-    [AutoValidateAntiforgeryToken]
     public class OrderController : BaseController
     {
         private readonly IMailService mailService;

@@ -75,12 +75,14 @@ form.addEventListener("submit", function (event) {
 
 function stripePaymentMethodHandler(result) {
     if (result.error) {
-        showError(result.error.message)
+        showError(result.error)
     } else {
         // Otherwise send paymentMethod.id to your server (see Step 4)
         fetch('/payment/payment', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify(result.paymentMethod.id)
         }).then(function (result) {
             // Handle server response (see Step 4)
@@ -93,7 +95,7 @@ function stripePaymentMethodHandler(result) {
 
 function handleServerResponse(response) {
     if (response.error) {
-        showError(response.error.message);
+        showError(response.error);
     } else if (response.requires_action) {
         // Use Stripe.js to handle required card action
         stripe.handleCardAction(
@@ -106,7 +108,7 @@ function handleServerResponse(response) {
 
 function handleStripeJsResult(result) {
     if (result.error) {
-        showError(result.error.message)
+        showError(result.error)
     } else {
         // The card action has been handled
         // The PaymentIntent can be confirmed again on the server
@@ -123,13 +125,8 @@ function handleStripeJsResult(result) {
 /* Show the customer the error from Stripe if their card fails to charge*/
 var showError = function (errorMsgText) {
     loading(false);
-    document.getElementById("payment-error").style.display = "block";
-    var errorMsg = document.querySelector("#card-error");
-    errorMsg.textContent = errorMsgText;
-    setTimeout(function () {
-        errorMsg.textContent = "";
-        document.getElementById("payment-error").style.display = "none";
-    }, 10000);
+        $('#checkout-modal').css('display', 'block');
+        document.getElementById('checkout-error').textContent = errorMsgText;
 };
 
 var orderComplete = function (paymentIntentId) {
@@ -149,10 +146,10 @@ var orderComplete = function (paymentIntentId) {
 var loading = function (isLoading) {
     if (isLoading) {
         document.querySelector("#paymentspinner").classList.remove("hidden");
-        document.getElementById("button-text").classList.remove("hidden");
+        document.getElementById("button-text").classList.add("hidden");
     }
     else {
         document.querySelector("#paymentspinner").classList.add("hidden");
-        document.getElementById("button-text").classList.add("hidden");
+        document.getElementById("button-text").classList.remove("hidden");
     }
 };

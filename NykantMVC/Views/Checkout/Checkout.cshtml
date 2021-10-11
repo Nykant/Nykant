@@ -1,4 +1,5 @@
 ﻿@model CheckoutVM
+
 @{
     ViewData["Title"] = "Tjek Ud";
     ViewData["Description"] = "";
@@ -25,6 +26,11 @@
 <script src="~/JS/country-picker.js" defer></script>
 <script src="~/JS/custom-list.js" defer></script>
 <script src="~/stripe/client.js" defer></script>
+
+<div class="modal" id="checkout-modal">
+    <div class="error-thing" id="checkout-error">
+    </div>
+</div>
 
 <div class="fullscreen background-lightgrey top-side-padding">
     <div class="responsive-container">

@@ -84,6 +84,10 @@ if (stage_value == 1) {
     customer_form.style.transition = "all 1s";
     customer_form.style.height = "auto";
     customer_wrap.style.transform = "translateY(0%)";
+
+    $('html,body').animate({
+        scrollTop: $("#customerInf-header").offset().top
+    }, 'slow');
 }
 else if (stage_value == 2) {
     shipping_wrap.style.transition = "all 1s";
@@ -95,6 +99,10 @@ else if (stage_value == 2) {
     customer_check_sign.style.display = "block";
     customer_form_complete.value = 1;
     customer_edit_button.style.display = "block";
+
+    $('html,body').animate({
+        scrollTop: $("#shipping-headerr").offset().top
+    }, 'slow');
 }
 else if (stage_value == 3) {
     payment_wrap.style.transition = "all 1s";
@@ -111,9 +119,14 @@ else if (stage_value == 3) {
     shipping_check_sign.style.display = "block";
     shipping_form_complete.value = 1;
     shipping_edit_button.style.display = "block";
+
+    $('html,body').animate({
+        scrollTop: $("#payment-header").offset().top
+    }, 'slow');
 };
 
 customer_begin = function () {
+    customerloading(true);
     if (reuse_invoice) {
         shippingaddress_firstname.textContent = firstname_input.value;
         shippingaddress_lastname.textContent = lastname_input.value;
@@ -124,88 +137,111 @@ customer_begin = function () {
     }
 }
 
-customer_completed = function (msg) {
+customer_completed = function (response) {
+    customerloading(false);
+    if (response.responseJSON == undefined) {
+        if (reuse_invoice.checked) {
+            shippingaddress_summary.style.display = "none";
+        }
+        else {
+            shippingaddress_summary.style.display = "block";
+            shippingaddress_address_summary.textContent = shippingaddress_address.value;
+            shippingaddress_city_summary.textContent = shippingaddress_city.value;
+            shippingaddress_country_summary.textContent = shippingaddress_country.value;
+            shippingaddress_firstname_summary.textContent = shippingaddress_firstname.value;
+            shippingaddress_lastname_summary.textContent = shippingaddress_lastname.value;
+            shippingaddress_postal_summary.textContent = shippingaddress_postal.value;
+        }
 
-    if (reuse_invoice.checked) {
-        shippingaddress_summary.style.display = "none";
+        document.getElementById("edit-customer").value = false;
+        customer_check_sign.style.display = "block";
+        customer_form_complete.value = 1;
+        customerinf_summary.style.display = "block";
+        shipping_wrap.style.transition = "all 1s";
+        shipping_form.style.transition = "all 1s";
+        customer_wrap.style.transition = "all 1s";
+        customer_form.style.transition = "all 1s";
+
+        customer_edit_button.style.display = "block";
+        firstname_summary.textContent = firstname_input.value;
+        lastname_summary.textContent = lastname_input.value;
+        email_summary.textContent = email_input.value;
+        phone_summary.textContent = phone_input.value;
+        country_summary.textContent = country_input.value;
+        city_summary.textContent = city_input.value;
+        postal_summary.textContent = postal_input.value;
+        address_summary.textContent = address_input.value;
+
+        customer_wrap.style.transform = "translateY(-100%)";
+        customer_form.style.height = "0px";
+
+        if (shipping_form_complete.value == 0) {
+            shipping_form.style.height = "auto";
+            shipping_wrap.style.transform = "translateY(0%)";
+        };
+
+        $('html,body').animate({
+            scrollTop: $("#shipping-headerr").offset().top
+        }, 'slow');
     }
     else {
-        shippingaddress_summary.style.display = "block";
-        shippingaddress_address_summary.textContent = shippingaddress_address.value;
-        shippingaddress_city_summary.textContent = shippingaddress_city.value;
-        shippingaddress_country_summary.textContent = shippingaddress_country.value;
-        shippingaddress_firstname_summary.textContent = shippingaddress_firstname.value;
-        shippingaddress_lastname_summary.textContent = shippingaddress_lastname.value;
-        shippingaddress_postal_summary.textContent = shippingaddress_postal.value;
+        $('#checkout-modal').css('display', 'block');
+        document.getElementById('checkout-error').textContent = response.responseJSON.error + ' --- sorry: you will have to restart checkout process';
+        setTimeout(function () {
+            location.replace("https://localhost:5002/checkout/cancelcheckout")
+        }, 5000);
     }
-
-    document.getElementById("edit-customer").value = false;
-    customer_check_sign.style.display = "block";
-    customer_form_complete.value = 1;
-    customerinf_summary.style.display = "block";
-    shipping_wrap.style.transition = "all 1s";
-    shipping_form.style.transition = "all 1s";
-    customer_wrap.style.transition = "all 1s";
-    customer_form.style.transition = "all 1s";
-
-    customer_edit_button.style.display = "block";
-    firstname_summary.textContent = firstname_input.value;
-    lastname_summary.textContent = lastname_input.value;
-    email_summary.textContent = email_input.value;
-    phone_summary.textContent = phone_input.value;
-    country_summary.textContent = country_input.value;
-    city_summary.textContent = city_input.value;
-    postal_summary.textContent = postal_input.value;
-    address_summary.textContent = address_input.value;
-
-    customer_wrap.style.transform = "translateY(-100%)";
-    customer_form.style.height = "0px";
-
-    if (shipping_form_complete.value == 0) {
-        shipping_form.style.height = "auto";
-        shipping_wrap.style.transform = "translateY(0%)";
-    };
-
-    $('html,body').animate({
-        scrollTop: $("#shipping-header").offset().top
-    }, 'slow');
 };
 
-shipping_completed = function () {
-    document.getElementById("edit-shipping").value = false;
-    shipping_check_sign.style.display = "block";
-    shipping_form_complete.value = 1;
-    shipping_summary.style.display = "block";
-    shipping_form.style.transition = "all 1s";
-    shipping_wrap.style.transition = "all 1s";
-    payment_wrap.style.transition = "all 1s";
-    payment_form.style.transition = "all 1s";
-
-    shipping_edit_button.style.display = "block";
-    shipping_method_summary.textContent = shipping_delivery_type.value;
-    if (shipping_delivery_type.value == 'Shop' || shipping_delivery_type.value == 'Butik') {
-        parcelshop_summary.style.display = "block";
-        parcelshop_companyname_summary.textContent = parcelshop_CompanyName.value;
-        parcelshop_cityname_summary.textContent = parcelshop_CityName.value;
-        parcelshop_countrycode_summary.textContent = parcelshop_CountryCodeISO3166A2.value;
-        parcelshop_streetname_summary.textContent = parcelshop_StreetName.value;
-        parcelshop_streetname2_summary.textContent = parcelshop_StreetName2.value;
-        parcelshop_zipcode_summary.textContent = parcelshop_ZipCode.value;
+$(document).mouseup(function (e) {
+    if ($(e.target).closest("#checkout-error").length === 0) {
+        $('#checkout-modal').css('display', 'none');
     }
-    else {
-        parcelshop_summary.style.display = "none";
-    }
+});
 
-    shipping_form.style.height = "0px";
-    shipping_wrap.style.transform = "translateY(-100%)";
-    payment_form.style.height = "auto";
-    payment_wrap.style.transform = "translateY(0%)";
+shipping_completed = function (response) {
+    if (response.responseJSON == undefined) {
+        document.getElementById("edit-shipping").value = false;
+        shipping_check_sign.style.display = "block";
+        shipping_form_complete.value = 1;
+        shipping_summary.style.display = "block";
+        shipping_form.style.transition = "all 1s";
+        shipping_wrap.style.transition = "all 1s";
+        payment_wrap.style.transition = "all 1s";
+        payment_form.style.transition = "all 1s";
+
+        shipping_edit_button.style.display = "block";
+        shipping_method_summary.textContent = shipping_delivery_type.value;
+        if (shipping_delivery_type.value == 'Shop' || shipping_delivery_type.value == 'Butik') {
+            parcelshop_summary.style.display = "block";
+            parcelshop_companyname_summary.textContent = parcelshop_CompanyName.value;
+            parcelshop_cityname_summary.textContent = parcelshop_CityName.value;
+            parcelshop_countrycode_summary.textContent = parcelshop_CountryCodeISO3166A2.value;
+            parcelshop_streetname_summary.textContent = parcelshop_StreetName.value;
+            parcelshop_streetname2_summary.textContent = parcelshop_StreetName2.value;
+            parcelshop_zipcode_summary.textContent = parcelshop_ZipCode.value;
+        }
+        else {
+            parcelshop_summary.style.display = "none";
+        }
+
+        shipping_form.style.height = "0px";
+        shipping_wrap.style.transform = "translateY(-100%)";
+        payment_form.style.height = "auto";
+        payment_wrap.style.transform = "translateY(0%)";
 
 
         $('html,body').animate({
             scrollTop: $("#payment-header").offset().top
         }, 'slow');
-
+    }
+    else {
+        $('#checkout-modal').css('display', 'block');
+        document.getElementById('checkout-error').textContent = response.responseJSON.error + ' --- sorry: you will have to restart checkout process';
+        setTimeout(function () {
+            location.replace("https://localhost:5002/checkout/cancelcheckout")
+        }, 5000);
+    }
 };
 
 shipping_edit_button.addEventListener("click", function () {
@@ -240,8 +276,6 @@ customer_edit_button.addEventListener("click", function () {
     $("#customer-wrap").css("transform", "translateY(0%)");
 });
 
-
-
 $('#privacy-policy-consent').on('click', function () {
     if (document.getElementById('privacy-policy-consent').value == "true") {
         document.getElementById('privacy-policy-consent').value = "false";
@@ -273,3 +307,14 @@ reuse_invoice.onclick = function() {
         document.getElementById('shipping-address-box').style.display = "block";
     }
 }
+
+var customerloading = function (isLoading) {
+    if (isLoading) {
+        document.querySelector("#customerspinner").classList.remove("hidden");
+        document.getElementById("customer-button-text").classList.add("hidden");
+    }
+    else {
+        document.querySelector("#customerspinner").classList.add("hidden");
+        document.getElementById("customer-button-text").classList.remove("hidden");
+    }
+};

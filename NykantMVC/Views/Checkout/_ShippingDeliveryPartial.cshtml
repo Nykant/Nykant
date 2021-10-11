@@ -4,16 +4,16 @@
 @{
     var optionValue = 1;
     var shippingMethods = new List<ShippingMethod>
-    {
+{
         new ShippingMethod { Type = "Home", Price = 65 },
         new ShippingMethod { Type = "Shop", Price = 0 }
     };
 }
 
 <div class="row bottom-side-padding">
-    <div class="responsive-form">
+    <div class="responsive-form" id="shipping-headerr">
 
-        <div class="checkout-header" id="shipping-header">
+        <div class="checkout-header">
             <h1>@localizer["Delivery Method"]</h1>
             <div class="check-sign" id="shipping-check-sign">
                 <i class="fa fa-check" aria-hidden="true"></i>
@@ -60,7 +60,10 @@
                 </div>
 
                 <div class="col-12 right">
-                    <button id="custom-list-button" class="button" type="submit">@localizer["Continue"]</button>
+                    <button id="custom-list-button" class="button" type="submit">
+                        <div class="spinner hidden" id="shippingspinner"></div>
+                        <span id="shipping-button-text">@localizer["Continue"]</span>
+                    </button>
                 </div>
             </div>
 

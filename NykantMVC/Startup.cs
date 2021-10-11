@@ -109,6 +109,13 @@ namespace NykantMVC
 
             services.AddAntiforgery();
 
+
+            services.AddAntiforgery(options => {
+                options.Cookie.Name = "X-CSRF-TOKEN-Nykant";
+                options.HeaderName = "X-CSRF-TOKEN-Nykant";
+                options.FormFieldName = "X-CSRF-TOKEN-Nykant";
+            });
+
             services.AddControllersWithViews()
                                     .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
                                     .AddDataAnnotationsLocalization()

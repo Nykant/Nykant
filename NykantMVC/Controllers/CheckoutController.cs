@@ -148,100 +148,123 @@ namespace NykantMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> PostCustomerInf(Customer customer, bool editCustomer)
         {
-            if (customer.ShippingAddress.SameAsBilling)
+            try
             {
-                customer.ShippingAddress.Postal = customer.BillingAddress.Postal;
-                customer.ShippingAddress.LastName = customer.BillingAddress.LastName;
-                customer.ShippingAddress.FirstName = customer.BillingAddress.FirstName;
-                customer.ShippingAddress.Address = customer.BillingAddress.Address;
-                customer.ShippingAddress.Country = customer.BillingAddress.Country;
-                customer.ShippingAddress.City = customer.BillingAddress.City;
-            }
-
-            var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
-            Customer old;
-            if (editCustomer)
-            {
-                old = await GetCustomer(checkout.CustomerInfId);
-                customer.ShippingAddress.Id = old.ShippingAddress.Id;
-                customer.BillingAddress.Id = old.BillingAddress.Id;
-                customer.Id = old.Id;
-            }
-            if (checkout.Stage == Stage.customerInf || editCustomer)
-            {
-                customer = _protectionService.ProtectCustomer(customer);
-                var response = await PostRequest("/Customer/PostCustomer/", new Customer { Email = customer.Email, Phone = customer.Phone, Id = customer.Id });
-                if (response.IsSuccessStatusCode)
+                if (customer.ShippingAddress.SameAsBilling)
                 {
-                    if (!editCustomer)
-                    {
-                        if (customer.Id == 0)
-                        {
-                            var json = await GetRequest(response.Headers.Location.AbsolutePath);
-                            checkout.CustomerInfId = JsonConvert.DeserializeObject<Customer>(json).Id;
-                            customer.Id = checkout.CustomerInfId;
-                        }
-                        else
-                        {
-                            checkout.CustomerInfId = customer.Id;
-                            customer.Id = checkout.CustomerInfId;
-                        }
-                    }
+                    customer.ShippingAddress.Postal = customer.BillingAddress.Postal;
+                    customer.ShippingAddress.LastName = customer.BillingAddress.LastName;
+                    customer.ShippingAddress.FirstName = customer.BillingAddress.FirstName;
+                    customer.ShippingAddress.Address = customer.BillingAddress.Address;
+                    customer.ShippingAddress.Country = customer.BillingAddress.Country;
+                    customer.ShippingAddress.City = customer.BillingAddress.City;
+                }
 
-                    try
+                var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
+                Customer old;
+                if (editCustomer)
+                {
+                    old = await GetCustomer(checkout.CustomerInfId);
+                    customer.ShippingAddress.Id = old.ShippingAddress.Id;
+                    customer.BillingAddress.Id = old.BillingAddress.Id;
+                    customer.Id = old.Id;
+                }
+                if (checkout.Stage == Stage.customerInf || editCustomer)
+                {
+                    customer = _protectionService.ProtectCustomer(customer);
+                    var response = await PostRequest("/Customer/PostCustomer/", new Customer { Email = customer.Email, Phone = customer.Phone, Id = customer.Id });
+                    if (response.IsSuccessStatusCode)
                     {
+                        if (!editCustomer)
+                        {
+                            if (customer.Id == 0)
+                            {
+                                var json = await GetRequest(response.Headers.Location.AbsolutePath);
+                                checkout.CustomerInfId = JsonConvert.DeserializeObject<Customer>(json).Id;
+                                customer.Id = checkout.CustomerInfId;
+                            }
+                            else
+                            {
+                                checkout.CustomerInfId = customer.Id;
+                                customer.Id = checkout.CustomerInfId;
+                            }
+                        }
+
                         var shippingAddress = _protectionService.ProtectShippingAddress(customer.ShippingAddress);
                         shippingAddress.CustomerId = customer.Id;
                         var postResponse = await PostRequest("/Customer/PostShippingAddress", shippingAddress);
+                        if (postResponse.IsSuccessStatusCode)
+                        {
+
+                            var invoiceAddress = _protectionService.ProtectBillingAddress(customer.BillingAddress);
+                            invoiceAddress.CustomerId = customer.Id;
+                            var postResponse2 = await PostRequest("/Customer/PostBillingAddress", invoiceAddress);
+                            if (postResponse2.IsSuccessStatusCode)
+                            {
+                                if (!editCustomer)
+                                {
+                                    checkout.Stage = Stage.shipping;
+                                }
+
+                                HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
+
+                                return NoContent();
+                            }
+                            else
+                            {
+                                return Json(new { error = "Could not post billing" });
+                            }
+                        }
+                        else
+                        {
+                            return Json(new { error = "Could not post shipping" });
+                        }
                     }
-                    catch (Exception e)
+                    else
                     {
-                        _logger.LogInformation(e.Message);
+                        return Json(new { error = "Could not post customer" });
                     }
-
-
-                    var invoiceAddress = _protectionService.ProtectBillingAddress(customer.BillingAddress);
-                    invoiceAddress.CustomerId = customer.Id;
-                    var postResponse2 = await PostRequest("/Customer/PostBillingAddress", invoiceAddress);
-
-                    if (!editCustomer)
-                    {
-                        checkout.Stage = Stage.shipping;
-                    }
-
-                    HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
-
-                    return NoContent();
                 }
-                return Content("Noget gik galt, vær sød og kontakt support hvis det sker igen");
+                else
+                {
+                    return Json(new { error = "Wrong stage" });
+                }
             }
-            else
+            catch (Exception e)
             {
-                return NoContent();
+                _logger.LogInformation(e.Message);
+                return Json(new { error = e.Message });
             }
         }
 
         [HttpPost]
         public async Task<IActionResult> PostShipping(ShippingDelivery shippingDelivery, bool editShipping)
         {
-
-            var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
-
-            if (checkout.Stage == Stage.shipping || editShipping)
+            try
             {
-                checkout.ShippingDelivery = shippingDelivery;
+                var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
 
-                if (!editShipping)
+                if (checkout.Stage == Stage.shipping || editShipping)
                 {
-                    checkout.Stage = Stage.payment;
-                }
+                    checkout.ShippingDelivery = shippingDelivery;
 
-                HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
-                return NoContent();
+                    if (!editShipping)
+                    {
+                        checkout.Stage = Stage.payment;
+                    }
+
+                    HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
+                    return NoContent();
+                }
+                else
+                {
+                    return Json(new { error = "checkout stage is not correct" });
+                }
             }
-            else
+            catch (Exception e)
             {
-                return Json(new { error = "checkout stage is not correct" });
+                _logger.LogInformation(e.Message);
+                return Json(new { error = e.Message });
             }
         }
 
@@ -266,30 +289,31 @@ namespace NykantMVC.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> CancelCheckout()
         {
-            var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
-
-            if(checkout.CustomerInfId != 0)
-            {
-                var response = await DeleteRequest($"/Customer/DeleteCustomerInf/{checkout.CustomerInfId}");
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    return Content("error :(");
-                }
-            }
-            
             try
             {
+                var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
+
+                if (checkout.CustomerInfId != 0)
+                {
+                    var response = await DeleteRequest($"/Customer/DeleteCustomerInf/{checkout.CustomerInfId}");
+
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        _logger.LogInformation(response.ReasonPhrase);
+                    }
+                }
+
                 HttpContext.Session.Set<Checkout>(CheckoutSessionKey, null);
 
                 return RedirectToAction("Details", "Bag");
             }
             catch(Exception e)
             {
-                return Content(e.Message);
+                _logger.LogInformation(e.Message);
+                return RedirectToAction("Details", "Bag");
             }
         }
 

@@ -51,6 +51,7 @@ for (i = 0; i < l; i++) {
                         break;
                     }
                     else {
+                        shippingloading(true);
                         shippingdelivery_type.value = 'Shop';
                         shippingdelivery_price.value = 0;
                         submit_button.disabled = true;
@@ -149,6 +150,7 @@ for (i = 0; i < l; i++) {
 
                                             nearby_shops_modal.style.display = "none";
                                             submit_button.disabled = false;
+                                            shippingloading(false);
                                         });
 
                                         nearby_shops.appendChild(a);
@@ -168,5 +170,14 @@ for (i = 0; i < l; i++) {
     }
 }
 
-
+var shippingloading = function (isLoading) {
+    if (isLoading) {
+        document.querySelector("#shippingspinner").classList.remove("hidden");
+        document.getElementById("shipping-button-text").classList.add("hidden");
+    }
+    else {
+        document.querySelector("#shippingspinner").classList.add("hidden");
+        document.getElementById("shipping-button-text").classList.remove("hidden");
+    }
+};
 

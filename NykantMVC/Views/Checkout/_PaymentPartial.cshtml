@@ -1,49 +1,56 @@
 ﻿@inject IViewLocalizer localizer
+@using Microsoft.AspNetCore.Antiforgery
+@inject IAntiforgery antiforgery
+
+@{
+    var tokenSet = antiforgery.GetAndStoreTokens(Context);
+}
+
 @model CheckoutVM
 
 <div class="row bottom-side-padding">
     <div class="responsive-form">
-            <div class="checkout-header" id="payment-header">
-                <h1>@localizer["Payment Method"]</h1>
-            </div>
-            <form id="payment-form">
-                <div class="checkout-wrap" id="payment-wrap">
-                    <div class="payment-elements">
-                        <div class="payment-elements-thing" id="payment-elements-thing">
-                            <div class="card-element" id="card-element-number"><!--Stripe.js injects the Card Element--></div>
-                            <div class="margin-top-20 card-element" id="card-element-expiry"><!--Stripe.js injects the Card Element--></div>
-                            <div class="margin-top-20 card-element" id="card-element-cvc"><!--Stripe.js injects the Card Element--></div>
-                        </div>
+        <div class="checkout-header" id="payment-header">
+            <h1>@localizer["Payment Method"]</h1>
+        </div>
+        <form id="payment-form">
+            <div class="checkout-wrap" id="payment-wrap">
+                <div class="payment-elements">
+                    <div class="payment-elements-thing" id="payment-elements-thing">
+                        <div class="card-element" id="card-element-number"><!--Stripe.js injects the Card Element--></div>
+                        <div class="margin-top-20 card-element" id="card-element-expiry"><!--Stripe.js injects the Card Element--></div>
+                        <div class="margin-top-20 card-element" id="card-element-cvc"><!--Stripe.js injects the Card Element--></div>
                     </div>
-                    <div class="col-12 left">
-                        <div class="gdpr-accept">
-                            <label class="checkbox">
-                                <input id="terms-and-conditions-consent" value="false" type="checkbox">
-                                <span class="checkmark"></span>
-                            </label>
-                            @localizer["Signature required"]
-                        </div>
-                    </div>
-                    <div class="col-12 left hidden" id="payment-error">
-                        <div class="payment-error">
-                            <p id="card-error" role="alert"></p>
-                            <p class="result-message hidden">
-                                Payment succeeded, see the result in your
-                                <a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay again.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="col-12 right">
-                        <button class="button" id="submit-payment" disabled>
-                            <div class="spinner hidden" id="paymentspinner"></div>
-                            <span id="button-text">@localizer["Pay"]</span>
-                        </button>
-                    </div>
-
                 </div>
-            </form>
-       
+                <div class="col-12 left">
+                    <div class="gdpr-accept">
+                        <label class="checkbox">
+                            <input id="terms-and-conditions-consent" value="false" type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                        @localizer["Signature required"]
+                    </div>
+                </div>
+                <div class="col-12 left hidden" id="payment-error">
+                    <div class="payment-error">
+                        <p id="card-error" role="alert"></p>
+                        <p class="result-message hidden">
+                            Payment succeeded, see the result in your
+                            <a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay again.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-12 right">
+                    <button class="button" id="submit-payment" disabled>
+                        <div class="spinner hidden" id="paymentspinner"></div>
+                        <span id="button-text">@localizer["Pay"]</span>
+                    </button>
+                </div>
+
+            </div>
+        </form>
+
 
         <div class="col-8 left right-side-padding top-side-padding">
             <div class="padding">

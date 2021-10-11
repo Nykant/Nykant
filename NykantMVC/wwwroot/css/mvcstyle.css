@@ -106,8 +106,21 @@ ol, ul {
         color: green;
     }
 
+    .error-thing{
+        width:20%;
+        height:auto;
+        z-index:101;
+        background:#ff5f5f;
+        color:white;
+        margin-left:40%;
+        margin-right:40%;
+        margin-top:20%;
+        padding:30px;
+    }
+
 .error-div {
     display: none;
+    padding:20px;
 }
 
     .error-div p {

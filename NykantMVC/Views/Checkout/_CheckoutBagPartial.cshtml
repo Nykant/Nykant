@@ -17,8 +17,10 @@
             <p><span>@localizer["Total"]</span> @Model.Checkout.TotalPrice</p>
         </div>
 
-        <form method="post" asp-controller="Checkout" asp-action="CancelCheckout">
-            <button type="submit" class="button">@localizer["Cancel order"]</button>
-        </form>
+        <a asp-controller="Checkout" asp-action="CancelCheckout">
+            <div class="button top-side-padding">
+                @localizer["Cancel order"]
+            </div>
+        </a>
     </div>
 </div>
