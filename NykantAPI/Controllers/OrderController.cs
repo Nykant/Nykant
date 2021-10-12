@@ -93,7 +93,7 @@ namespace NykantAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Order>> GetOrder(int id)
         {
-            var order = await _context.Orders.Include(x => x.OrderItems).ThenInclude(x => x.Product).Include(x => x.Customer).Include(x => x.ShippingDelivery).FirstOrDefaultAsync(x => x.Id == id);
+            var order = await _context.Orders.Include(x => x.OrderItems).ThenInclude(x => x.Product).Include(x => x.Customer).Include(x => x.ShippingDelivery).ThenInclude(x => x.ParcelshopData).FirstOrDefaultAsync(x => x.Id == id);
             return Ok(JsonConvert.SerializeObject(order, Extensions.JsonOptions.jsonSettings));
         }
 

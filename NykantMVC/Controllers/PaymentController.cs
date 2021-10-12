@@ -14,6 +14,7 @@ using System.Text.Encodings.Web;
 
 namespace NykantMVC.Controllers
 {
+    [AutoValidateAntiforgeryToken]
     [AllowAnonymous]
     public class PaymentController : BaseController
     {
@@ -26,7 +27,7 @@ namespace NykantMVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Payment([FromBody] string payment_method_id)
+        public async Task<IActionResult> Payment(string paymentMethodId)
         {
             var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
             if (checkout == null)
@@ -60,12 +61,12 @@ namespace NykantMVC.Controllers
                     //    Phone = customerInf.Phone,
                     //};
 
-                    if (payment_method_id != null)
+                    if (paymentMethodId != null)
                     {
                         int.TryParse(checkout.TotalPrice, out int amount);
                         var PIoptions = new PaymentIntentCreateOptions
                         {
-                            PaymentMethod = payment_method_id,
+                            PaymentMethod = paymentMethodId,
                             //Shipping = chargeShippingOptions,
                             Amount = amount,
                             Currency = "dkk",
@@ -92,7 +93,7 @@ namespace NykantMVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> ConfirmPayment([FromBody] string payment_intent_id)
+        public async Task<IActionResult> ConfirmPayment(string paymentIntentId)
         {
             StripeConfiguration.ApiKey = _configuration["StripeTESTKey"];
 
@@ -101,11 +102,11 @@ namespace NykantMVC.Controllers
 
             try
             {
-                if (payment_intent_id != null)
+                if (paymentIntentId != null)
                 {
                     var confirmOptions = new PaymentIntentConfirmOptions { };
                     paymentIntent = paymentIntentService.Confirm(
-                        payment_intent_id,
+                        paymentIntentId,
                         confirmOptions
                     );
                 }
@@ -157,7 +158,7 @@ namespace NykantMVC.Controllers
 
             if (paymentIntent.StripeResponse.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                order.Status = Status.Succeeded;
+                order.Status = Status.Sent;
                 await PatchRequest("/Order/UpdateOrder", order);
 
                 var json2 = await GetRequest("/Order/GetOrders");

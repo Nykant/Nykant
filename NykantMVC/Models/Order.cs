@@ -30,7 +30,7 @@ namespace NykantMVC.Models
     {
         Unset = 0,
         Pending = 1,
-        Succeeded = 2,
+        Sent = 2,
         Received = 3,
         Cancelled = 4
     }

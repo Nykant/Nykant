@@ -1,4 +1,7 @@
 ﻿// Set your publishable key: remember to change this to your live publishable key in production
+
+/*const { ajax } = require("jquery");*/
+
 // See your keys here: https://dashboard.stripe.com/account/apikeys
 var stripe = Stripe('pk_test_51Hyy3eKS99T7pxPWSbrIYqKDcyKomhVp3hrXymvg8cPkupAmEcbeEoV26ckeJF9GZnfKdvTeQwyKdnwO6uNrIaih001cWPBSI2');
 var elements = stripe.elements();
@@ -78,17 +81,15 @@ function stripePaymentMethodHandler(result) {
         showError(result.error)
     } else {
         // Otherwise send paymentMethod.id to your server (see Step 4)
-        fetch('/payment/payment', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(result.paymentMethod.id)
+        $.ajax({
+            type: "POST",
+            url: '/payment/payment',
+            data: AddAntiCSRFToken ({
+                paymentMethodId: result.paymentMethod.id
+            })
         }).then(function (result) {
             // Handle server response (see Step 4)
-            result.json().then(function (json) {
-                handleServerResponse(json);
-            })
+            handleServerResponse(result);
         });
     }
 }
@@ -112,12 +113,12 @@ function handleStripeJsResult(result) {
     } else {
         // The card action has been handled
         // The PaymentIntent can be confirmed again on the server
-        fetch('/payment/confirmpayment', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(result.paymentIntent.id)
-        }).then(function (confirmResult) {
-            return confirmResult.json();
+        $.ajax({
+            url: '/payment/confirmpayment',
+            type: 'POST',
+            data: AddAntiCSRFToken({
+                paymentIntentId: result.paymentIntent.id
+            })
         }).then(handleServerResponse);
     }
 }
@@ -130,15 +131,18 @@ var showError = function (errorMsgText) {
 };
 
 var orderComplete = function (paymentIntentId) {
-    fetch("/order/postorder", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(paymentIntentId)
+    $.ajax({
+        url: '/order/postorder',
+        type: 'POST',
+        data: AddAntiCSRFToken({
+            paymentIntentId: paymentIntentId
+        })
     }).then(function (result) {
         if (result.ok) {
             location.replace("https://localhost:5002/checkout/success")
+        }
+        else {
+            showError(result.error);
         }
     })
 };

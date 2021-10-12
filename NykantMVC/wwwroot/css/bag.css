@@ -42,6 +42,7 @@
     color: black;
 }
 
+
     .bag-item div {
         width: 20%;
      
@@ -111,10 +112,11 @@
         color: black;
         border: none;
         transition: all .1s;
+        cursor:pointer;
     }
 
 #add-bagitem button:hover {
-    transform: scale(1.7);
+    transform: scale(1.3);
 }
 #remove-bagitem {
     position: relative;
@@ -126,11 +128,12 @@
         background-color: transparent;
         color: black;
         border: none;
-        transition:all .1s;
+        transition: all .1s;
+        cursor: pointer;
     }
 
     #remove-bagitem button:hover {
-        transform:scale(1.7);
+        transform:scale(1.3);
     }
 
 .order-info {
@@ -410,11 +413,13 @@
     }
 
     #add-bagitem {
-        padding-top: 32px;
+        padding-top: 36px;
+        width:4%;
     }
 
     #remove-bagitem {
-        padding-top: 32px;
+        padding-top: 36px;
+        width: 4%;
     }
 }
 
@@ -462,11 +467,13 @@
     }
 
     #add-bagitem {
-        padding-top: 32px;
+        padding-top: 36px;
+        width: 4%;
     }
 
     #remove-bagitem {
-        padding-top: 32px;
+        padding-top: 36px;
+        width: 4%;
     }
 }
 
@@ -514,10 +521,12 @@
     }
 
     #add-bagitem {
-        padding-top: 32px;
+        padding-top: 36px;
+        width: 4%;
     }
 
     #remove-bagitem {
-        padding-top: 32px;
+        padding-top: 36px;
+        width: 4%;
     }
 }

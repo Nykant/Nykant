@@ -13,6 +13,7 @@ using System.Text.Encodings.Web;
 
 namespace NykantMVC.Controllers
 {
+    [AutoValidateAntiforgeryToken]
     public class OrderController : BaseController
     {
         private readonly IMailService mailService;
@@ -48,78 +49,86 @@ namespace NykantMVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostOrder([FromBody]string paymentIntentId)
+        public async Task<IActionResult> PostOrder(string paymentIntentId)
         {
-            var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
-            if (checkout == null)
+            try
             {
-                return RedirectToAction(nameof(CheckoutController.Checkout));
-            }
-
-            if (checkout.Stage == Stage.payment)
-            {
-                var order = BuildOrder(checkout, paymentIntentId);
-                var response = await PostRequest("/Order/PostOrder", order);
-                if (!response.IsSuccessStatusCode)
+                var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
+                if (checkout == null)
                 {
-                    return NotFound();
+                    return Json(new { ok = false, error = "checkout = null" });
                 }
 
-                var json = await GetRequest(response.Headers.Location.AbsolutePath);
-                Models.Order newOrder = JsonConvert.DeserializeObject<Models.Order>(json);
-                order = newOrder;
-                if (!response.IsSuccessStatusCode)
+                if (checkout.Stage == Stage.payment)
                 {
-                    return NotFound();
-                }
-
-                checkout.ShippingDelivery.OrderId = order.Id;
-                var postShipping = await PostRequest("/ShippingDelivery/Post", checkout.ShippingDelivery);
-
-                var orderItems = new List<Models.OrderItem>();
-                foreach (var item in checkout.BagItems)
-                {
-                    orderItems.Add(new Models.OrderItem { Quantity = item.Quantity, ProductId = item.ProductId, OrderId = order.Id });
-                }
-                var postRequest = await PostRequest("/Orderitem/PostOrderItems", orderItems);
-                if (!postRequest.IsSuccessStatusCode)
-                {
-                    return NotFound();
-                }
-
-                var jsonCustomer = await GetRequest($"/Customer/GetCustomer/{checkout.CustomerInfId}");
-                var customer = JsonConvert.DeserializeObject<Customer>(jsonCustomer);
-                customer = _protectionService.UnprotectCustomer(customer);
-
-                json = await GetRequest($"/Order/GetOrder/{order.Id}");
-                order = JsonConvert.DeserializeObject<Models.Order>(json);
-
-                await mailService.SendOrderEmailAsync(customer, order);
-
-                if (User.Identity.IsAuthenticated)
-                {
-                    var url = $"/BagItem/DeleteBagItems/{User.Claims.FirstOrDefault(x => x.Type == "sub").Value}";
-                    var deleteRequest = await DeleteRequest(url);
-                    if (!deleteRequest.IsSuccessStatusCode)
+                    var order = BuildOrder(checkout, paymentIntentId);
+                    var response = await PostRequest("/Order/PostOrder", order);
+                    if (!response.IsSuccessStatusCode)
                     {
-                        return NotFound(deleteRequest.StatusCode);
+                        return Json(new { ok = false, error = "could not post order" });
                     }
+
+                    var json = await GetRequest(response.Headers.Location.AbsolutePath);
+                    Models.Order newOrder = JsonConvert.DeserializeObject<Models.Order>(json);
+                    order = newOrder;
+
+                    checkout.ShippingDelivery.OrderId = order.Id;
+                    var postShipping = await PostRequest("/ShippingDelivery/Post", checkout.ShippingDelivery);
+                    if (!postShipping.IsSuccessStatusCode)
+                    {
+                        return Json(new { ok = false, error = "could not post shipping" });
+                    }
+
+                    var orderItems = new List<Models.OrderItem>();
+                    foreach (var item in checkout.BagItems)
+                    {
+                        orderItems.Add(new Models.OrderItem { Quantity = item.Quantity, ProductId = item.ProductId, OrderId = order.Id });
+                    }
+                    var postRequest = await PostRequest("/Orderitem/PostOrderItems", orderItems);
+                    if (!postRequest.IsSuccessStatusCode)
+                    {
+                        return Json(new { ok = false, error = "could not post order items" });
+                    }
+
+                    var jsonCustomer = await GetRequest($"/Customer/GetCustomer/{checkout.CustomerInfId}");
+                    var customer = JsonConvert.DeserializeObject<Customer>(jsonCustomer);
+                    customer = _protectionService.UnprotectCustomer(customer);
+
+                    json = await GetRequest($"/Order/GetOrder/{order.Id}");
+                    order = JsonConvert.DeserializeObject<Models.Order>(json);
+
+                    await mailService.SendOrderEmailAsync(customer, order);
+
+                    if (User.Identity.IsAuthenticated)
+                    {
+                        var url = $"/BagItem/DeleteBagItems/{User.Claims.FirstOrDefault(x => x.Type == "sub").Value}";
+                        var deleteRequest = await DeleteRequest(url);
+                        if (!deleteRequest.IsSuccessStatusCode)
+                        {
+                            return Json(new { ok = false, error = "could not delete bag items" });
+                        }
+                    }
+                    else
+                    {
+                        HttpContext.Session.Set<List<BagItem>>(BagSessionKey, null);
+                        HttpContext.Session.Set<int>(BagItemAmountKey, 0);
+                    }
+
+                    checkout.Stage = Stage.completed;
+                    HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
+
+                    return Json(new { ok = true });
                 }
                 else
                 {
-                    HttpContext.Session.Set<List<BagItem>>(BagSessionKey, null);
-                    HttpContext.Session.Set<int>(BagItemAmountKey, 0);
+                    return Json(new { ok = false, error = "wrong stage" });
                 }
-
-                checkout.Stage = Stage.completed;
-                HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
-
-                return Ok();
             }
-            else
+            catch (Exception e)
             {
-                return RedirectToAction(nameof(CheckoutController.Checkout));
+                return Json(new { ok = false, error = e.Message });
             }
+            
         }
 
         private Models.Order BuildOrder(Checkout checkout, string paymentIntentId)

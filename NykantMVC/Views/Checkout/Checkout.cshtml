@@ -26,6 +26,9 @@
 <script src="~/JS/country-picker.js" defer></script>
 <script src="~/JS/custom-list.js" defer></script>
 <script src="~/stripe/client.js" defer></script>
+<script src="~/JS/AjaxAntiCSRF.js" defer></script>
+
+<form id="AntiCSRFTokenForm">@Html.AntiForgeryToken()</form>
 
 <div class="modal" id="checkout-modal">
     <div class="error-thing" id="checkout-error">

@@ -15,6 +15,6 @@ namespace NykantAPI.Models
         public Order Order { get; set; }
         public string Type { get; set; }
         public int Price { get; set; }
-        public ParcelshopData PakkeshopData { get; set; }
+        public ParcelshopData ParcelshopData { get; set; }
     }
 }
