@@ -63,7 +63,7 @@ namespace NykantMVC.Controllers
 
                     if (paymentMethodId != null)
                     {
-                        int.TryParse(checkout.TotalPrice, out int amount);
+                        int.TryParse(checkout.SubTotalPrice, out int amount);
                         var PIoptions = new PaymentIntentCreateOptions
                         {
                             PaymentMethod = paymentMethodId,

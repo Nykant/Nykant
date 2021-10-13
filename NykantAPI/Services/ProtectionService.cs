@@ -87,7 +87,6 @@ namespace NykantAPI.Services
         {
             order.Currency = _orderProtector.Unprotect(order.Currency);
             order.PaymentIntent_Id = _orderProtector.Unprotect(order.PaymentIntent_Id);
-            order.TotalPrice = _orderProtector.Unprotect(order.TotalPrice);
             return order;
         }
 

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NykantAPI.Data;
 
 namespace NykantAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211013102228_thenewsetasss")]
+    partial class thenewsetasss
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -670,14 +672,6 @@ namespace NykantAPI.Migrations
                     b.Property<string>("Subject")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SubtotalPrice")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Taxes")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("TotalPrice")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -759,9 +753,6 @@ namespace NykantAPI.Migrations
                     b.Property<string>("TypeOfWood")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("WeightInKg")
-                        .HasColumnType("float");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
@@ -778,14 +769,13 @@ namespace NykantAPI.Migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "stol",
-                            LastModified = new DateTime(2021, 10, 13, 14, 57, 18, 869, DateTimeKind.Local).AddTicks(1384),
+                            LastModified = new DateTime(2021, 10, 13, 12, 22, 26, 479, DateTimeKind.Local).AddTicks(4715),
                             Name = "Grøntsags Skærebræt",
                             Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "5mm",
                             Title = "Grøntsags Skærebræt",
-                            TypeOfWood = "valnød",
-                            WeightInKg = 11.6
+                            TypeOfWood = "valnød"
                         },
                         new
                         {
@@ -796,14 +786,13 @@ namespace NykantAPI.Migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "stol",
-                            LastModified = new DateTime(2021, 10, 13, 14, 57, 18, 871, DateTimeKind.Local).AddTicks(4727),
+                            LastModified = new DateTime(2021, 10, 13, 12, 22, 26, 481, DateTimeKind.Local).AddTicks(6082),
                             Name = "Grøntsags Skærebræt",
                             Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "10mm",
                             Title = "Grøntsags Skærebræt",
-                            TypeOfWood = "eg",
-                            WeightInKg = 13.4
+                            TypeOfWood = "eg"
                         },
                         new
                         {
@@ -814,14 +803,13 @@ namespace NykantAPI.Migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 10, 13, 14, 57, 18, 871, DateTimeKind.Local).AddTicks(4813),
+                            LastModified = new DateTime(2021, 10, 13, 12, 22, 26, 481, DateTimeKind.Local).AddTicks(6154),
                             Name = "Grøntsags Skærebræt",
                             Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "20mm",
                             Title = "Grøntsags Skærebræt",
-                            TypeOfWood = "fyr",
-                            WeightInKg = 17.399999999999999
+                            TypeOfWood = "fyr"
                         },
                         new
                         {
@@ -832,14 +820,13 @@ namespace NykantAPI.Migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "skærebræt",
-                            LastModified = new DateTime(2021, 10, 13, 14, 57, 18, 871, DateTimeKind.Local).AddTicks(4819),
+                            LastModified = new DateTime(2021, 10, 13, 12, 22, 26, 481, DateTimeKind.Local).AddTicks(6160),
                             Name = "Grøntsags Skærebræt",
                             Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "5mm",
                             Title = "Grøntsags Skærebræt",
-                            TypeOfWood = "eg",
-                            WeightInKg = 7.0
+                            TypeOfWood = "eg"
                         },
                         new
                         {
@@ -850,14 +837,13 @@ namespace NykantAPI.Migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 10, 13, 14, 57, 18, 871, DateTimeKind.Local).AddTicks(4823),
+                            LastModified = new DateTime(2021, 10, 13, 12, 22, 26, 481, DateTimeKind.Local).AddTicks(6164),
                             Name = "Grøntsags Skærebræt",
                             Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "10mm",
                             Title = "Grøntsags Skærebræt",
-                            TypeOfWood = "valnød",
-                            WeightInKg = 8.8000000000000007
+                            TypeOfWood = "valnød"
                         },
                         new
                         {
@@ -868,14 +854,13 @@ namespace NykantAPI.Migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "skærebræt",
-                            LastModified = new DateTime(2021, 10, 13, 14, 57, 18, 871, DateTimeKind.Local).AddTicks(4826),
+                            LastModified = new DateTime(2021, 10, 13, 12, 22, 26, 481, DateTimeKind.Local).AddTicks(6167),
                             Name = "Grøntsags Skærebræt",
                             Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "20mm",
                             Title = "Grøntsags Skærebræt",
-                            TypeOfWood = "fyr",
-                            WeightInKg = 13.4
+                            TypeOfWood = "fyr"
                         },
                         new
                         {
@@ -886,14 +871,13 @@ namespace NykantAPI.Migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "stol",
-                            LastModified = new DateTime(2021, 10, 13, 14, 57, 18, 871, DateTimeKind.Local).AddTicks(4829),
+                            LastModified = new DateTime(2021, 10, 13, 12, 22, 26, 481, DateTimeKind.Local).AddTicks(6170),
                             Name = "Grøntsags Skærebræt",
                             Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "5mm",
                             Title = "Grøntsags Skærebræt",
-                            TypeOfWood = "valnød",
-                            WeightInKg = 13.4
+                            TypeOfWood = "valnød"
                         },
                         new
                         {
@@ -904,14 +888,13 @@ namespace NykantAPI.Migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "stol",
-                            LastModified = new DateTime(2021, 10, 13, 14, 57, 18, 871, DateTimeKind.Local).AddTicks(4833),
+                            LastModified = new DateTime(2021, 10, 13, 12, 22, 26, 481, DateTimeKind.Local).AddTicks(6173),
                             Name = "Grøntsags Skærebræt",
                             Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "10mm",
                             Title = "Grøntsags Skærebræt",
-                            TypeOfWood = "eg",
-                            WeightInKg = 13.4
+                            TypeOfWood = "eg"
                         },
                         new
                         {
@@ -922,14 +905,13 @@ namespace NykantAPI.Migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 10, 13, 14, 57, 18, 871, DateTimeKind.Local).AddTicks(4836),
+                            LastModified = new DateTime(2021, 10, 13, 12, 22, 26, 481, DateTimeKind.Local).AddTicks(6176),
                             Name = "Grøntsags Skærebræt",
                             Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "20mm",
                             Title = "Grøntsags Skærebræt",
-                            TypeOfWood = "fyr",
-                            WeightInKg = 13.4
+                            TypeOfWood = "fyr"
                         },
                         new
                         {
@@ -940,14 +922,13 @@ namespace NykantAPI.Migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "skærebræt",
-                            LastModified = new DateTime(2021, 10, 13, 14, 57, 18, 871, DateTimeKind.Local).AddTicks(4839),
+                            LastModified = new DateTime(2021, 10, 13, 12, 22, 26, 481, DateTimeKind.Local).AddTicks(6180),
                             Name = "Grøntsags Skærebræt",
                             Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "5mm",
                             Title = "Grøntsags Skærebræt",
-                            TypeOfWood = "eg",
-                            WeightInKg = 13.4
+                            TypeOfWood = "eg"
                         },
                         new
                         {
@@ -958,14 +939,13 @@ namespace NykantAPI.Migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 10, 13, 14, 57, 18, 871, DateTimeKind.Local).AddTicks(4842),
+                            LastModified = new DateTime(2021, 10, 13, 12, 22, 26, 481, DateTimeKind.Local).AddTicks(6183),
                             Name = "Grøntsags Skærebræt",
                             Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "10mm",
                             Title = "Grøntsags Skærebræt",
-                            TypeOfWood = "valnød",
-                            WeightInKg = 13.4
+                            TypeOfWood = "valnød"
                         },
                         new
                         {
@@ -976,14 +956,13 @@ namespace NykantAPI.Migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "skærebræt",
-                            LastModified = new DateTime(2021, 10, 13, 14, 57, 18, 871, DateTimeKind.Local).AddTicks(4845),
+                            LastModified = new DateTime(2021, 10, 13, 12, 22, 26, 481, DateTimeKind.Local).AddTicks(6186),
                             Name = "Grøntsags Skærebræt",
                             Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "20mm",
                             Title = "Grøntsags Skærebræt",
-                            TypeOfWood = "fyr",
-                            WeightInKg = 13.4
+                            TypeOfWood = "fyr"
                         },
                         new
                         {
@@ -994,14 +973,13 @@ namespace NykantAPI.Migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "stol",
-                            LastModified = new DateTime(2021, 10, 13, 14, 57, 18, 871, DateTimeKind.Local).AddTicks(4848),
+                            LastModified = new DateTime(2021, 10, 13, 12, 22, 26, 481, DateTimeKind.Local).AddTicks(6188),
                             Name = "Grøntsags Skærebræt",
                             Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "5mm",
                             Title = "Grøntsags Skærebræt",
-                            TypeOfWood = "valnød",
-                            WeightInKg = 13.4
+                            TypeOfWood = "valnød"
                         },
                         new
                         {
@@ -1012,14 +990,13 @@ namespace NykantAPI.Migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "stol",
-                            LastModified = new DateTime(2021, 10, 13, 14, 57, 18, 871, DateTimeKind.Local).AddTicks(4851),
+                            LastModified = new DateTime(2021, 10, 13, 12, 22, 26, 481, DateTimeKind.Local).AddTicks(6191),
                             Name = "Grøntsags Skærebræt",
                             Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "10mm",
                             Title = "Grøntsags Skærebræt",
-                            TypeOfWood = "eg",
-                            WeightInKg = 13.4
+                            TypeOfWood = "eg"
                         },
                         new
                         {
@@ -1030,14 +1007,13 @@ namespace NykantAPI.Migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 10, 13, 14, 57, 18, 871, DateTimeKind.Local).AddTicks(4854),
+                            LastModified = new DateTime(2021, 10, 13, 12, 22, 26, 481, DateTimeKind.Local).AddTicks(6194),
                             Name = "Grøntsags Skærebræt",
                             Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "20mm",
                             Title = "Grøntsags Skærebræt",
-                            TypeOfWood = "fyr",
-                            WeightInKg = 13.4
+                            TypeOfWood = "fyr"
                         },
                         new
                         {
@@ -1048,14 +1024,13 @@ namespace NykantAPI.Migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "skærebræt",
-                            LastModified = new DateTime(2021, 10, 13, 14, 57, 18, 871, DateTimeKind.Local).AddTicks(4857),
+                            LastModified = new DateTime(2021, 10, 13, 12, 22, 26, 481, DateTimeKind.Local).AddTicks(6197),
                             Name = "Grøntsags Skærebræt",
                             Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "5mm",
                             Title = "Grøntsags Skærebræt",
-                            TypeOfWood = "eg",
-                            WeightInKg = 13.4
+                            TypeOfWood = "eg"
                         },
                         new
                         {
@@ -1066,14 +1041,13 @@ namespace NykantAPI.Migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 10, 13, 14, 57, 18, 871, DateTimeKind.Local).AddTicks(4861),
+                            LastModified = new DateTime(2021, 10, 13, 12, 22, 26, 481, DateTimeKind.Local).AddTicks(6200),
                             Name = "Grøntsags Skærebræt",
                             Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "10mm",
                             Title = "Grøntsags Skærebræt",
-                            TypeOfWood = "valnød",
-                            WeightInKg = 13.4
+                            TypeOfWood = "valnød"
                         },
                         new
                         {
@@ -1084,14 +1058,13 @@ namespace NykantAPI.Migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "skærebræt",
-                            LastModified = new DateTime(2021, 10, 13, 14, 57, 18, 871, DateTimeKind.Local).AddTicks(4865),
+                            LastModified = new DateTime(2021, 10, 13, 12, 22, 26, 481, DateTimeKind.Local).AddTicks(6204),
                             Name = "Grøntsags Skærebræt",
                             Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "20mm",
                             Title = "Grøntsags Skærebræt",
-                            TypeOfWood = "fyr",
-                            WeightInKg = 13.4
+                            TypeOfWood = "fyr"
                         },
                         new
                         {
@@ -1102,14 +1075,13 @@ namespace NykantAPI.Migrations
                             ImageSource = "../images/Finback-Chairs1-1280x853-c-default.jpg",
                             ImageSource2 = "../images/gyngestol.jpg",
                             ItemType = "bænk",
-                            LastModified = new DateTime(2021, 10, 13, 14, 57, 18, 871, DateTimeKind.Local).AddTicks(4868),
+                            LastModified = new DateTime(2021, 10, 13, 12, 22, 26, 481, DateTimeKind.Local).AddTicks(6207),
                             Name = "Grøntsags Skærebræt",
                             Path = "wwwroot/images/gyngestol.jpg",
                             Price = 1000,
                             Size = "5mm",
                             Title = "Grøntsags Skærebræt",
-                            TypeOfWood = "valnød",
-                            WeightInKg = 13.4
+                            TypeOfWood = "valnød"
                         });
                 });
 

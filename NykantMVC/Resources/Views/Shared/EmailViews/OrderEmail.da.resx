@@ -117,10 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Contact Us" xml:space="preserve">
+    <value>Hvis du har nogle problemer eller spørgsmål, kan du nemt kontakte os.</value>
+  </data>
   <data name="Header" xml:space="preserve">
     <value>Ordre Bekræftelse</value>
   </data>
   <data name="Sub Header" xml:space="preserve">
-    <value />
+    <value>Vi har modtaget din ordre</value>
   </data>
 </root>

@@ -14,12 +14,16 @@ namespace NykantAPI.Models
         public int Id { get; set; }
         public string Subject { get; set; }
         [Required]
-        public int CustomerInfId { get; set; }
+        public int CustomerId { get; set; }
         public Customer Customer { get; set; }
         [Required]
         public DateTime CreatedAt { get; set; }
         [Required]
         public string TotalPrice { get; set; }
+        [Required]
+        public string SubtotalPrice { get; set; }
+        [Required]
+        public string Taxes { get; set; }
         [Required]
         public string Currency { get; set; }
         [Required]

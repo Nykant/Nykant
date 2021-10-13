@@ -14,7 +14,7 @@
         <div class="checkout-price">
             <p><span>@localizer["Shipping"]</span> @localizer["Price"]</p>
             <p><span>@localizer["Taxes"]</span> @localizer["Price"]</p>
-            <p><span>@localizer["Total"]</span> @Model.Checkout.TotalPrice</p>
+            <p><span>@localizer["Total"]</span> @Model.Checkout.SubTotalPrice</p>
         </div>
 
         <a asp-controller="Checkout" asp-action="CancelCheckout">

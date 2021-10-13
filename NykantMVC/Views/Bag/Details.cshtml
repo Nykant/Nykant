@@ -19,12 +19,12 @@
         </div>
         <div class="col-3 left" id="checkout-box">
             <div class="order-info">
-                <h1>@localizer["Order"]</h1>
-                <p class="left">@localizer["Delivery"]</p>
-                <p id="price-info" class="right">@localizer["Total without delivery"]</p>
+                @*<h1>@localizer["Order"]</h1>
+                <p class="left">@localizer["Delivery"]</p>*@
+                <p id="price-info" class="left">@localizer["Total without delivery"]</p>
             </div>
             <div class="checkout-price">
-                <p id="total-price-text">@localizer["Total"]: @ViewBag.PriceSum</p>
+                <p id="total-price-text">@ViewBag.PriceSum kr.</p>
             </div>
             <a asp-controller="Checkout" asp-action="Checkout">
                 <div class="button">

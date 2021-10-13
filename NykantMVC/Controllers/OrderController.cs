@@ -107,6 +107,10 @@ namespace NykantMVC.Controllers
                         {
                             return Json(new { ok = false, error = "could not delete bag items" });
                         }
+                        else
+                        {
+                            HttpContext.Session.Set<int>(BagItemAmountKey, 0);
+                        }
                     }
                     else
                     {
@@ -133,6 +137,10 @@ namespace NykantMVC.Controllers
 
         private Models.Order BuildOrder(Checkout checkout, string paymentIntentId)
         {
+            var subtotal = CalculateSubtotal(checkout.BagItems);
+            double.TryParse(subtotal, out double subtotalint);
+            var total = subtotalint + checkout.ShippingDelivery.Price;
+            var taxes = total / 5;
 
             Models.Order order = new Models.Order
             {
@@ -141,7 +149,9 @@ namespace NykantMVC.Controllers
                 CustomerId = checkout.CustomerInfId,
                 PaymentIntent_Id = paymentIntentId,
                 Status = Status.Pending,
-                TotalPrice = checkout.TotalPrice
+                TotalPrice = total.ToString(),
+                SubtotalPrice = subtotal,
+                Taxes = taxes.ToString()
             };
 
             if (User.Identity.IsAuthenticated)
@@ -150,14 +160,14 @@ namespace NykantMVC.Controllers
             return order;
         }
 
-        private int CalculateOrderAmount(List<BagItem> items)
+        private string CalculateSubtotal(List<BagItem> items)
         {
-            int price = 0;
+            double price = 0;
             foreach (var item in items)
             {
-                price += item.Product.Price;
+                price += item.Product.Price * item.Quantity;
             }
-            return price;
+            return price.ToString();
         }
     }
 }

@@ -62,15 +62,15 @@ form.addEventListener("submit", function (event) {
             type: 'card',
             card: cardNumber,
             billing_details: {
-                name: document.getElementById('customer-firstname-summary').textContent + ' ' + document.getElementById('customer-lastname-summary').textContent,
-                email: document.getElementById('customer-email-summary').textContent,
-                phone: document.getElementById('customer-phone-summary').textContent,
-                address: {
-                    country: document.getElementById('customer-country-summary').textContent,
-                    postal_code: document.getElementById('customer-postal-summary').textContent,
-                    city: document.getElementById('customer-city-summary').textContent,
-                    line1: document.getElementById('customer-address-summary').textContent
-                }
+                name: document.getElementById('customer-firstname-summary').textContent + ' ' + document.getElementById('customer-lastname-summary').textContent
+                //email: document.getElementById('customer-email-summary').textContent,
+                //phone: document.getElementById('customer-phone-summary').textContent,
+                //address: {
+                //    country: document.getElementById('customer-country-summary').textContent,
+                //    postal_code: document.getElementById('customer-postal-summary').textContent,
+                //    city: document.getElementById('customer-city-summary').textContent,
+                //    line1: document.getElementById('customer-address-summary').textContent
+                //}
             }
         }).then(stripePaymentMethodHandler)
     }

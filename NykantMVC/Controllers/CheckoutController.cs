@@ -58,8 +58,9 @@ namespace NykantMVC.Controllers
                         {
                             BagItems = bagItemsDb,
                             Stage = Stage.customerInf,
-                            TotalPrice = CalculateAmount(bagItemsDb).ToString(),
-                            ShippingDelivery = new ShippingDelivery { ParcelshopData = new ParcelshopData() }
+                            SubTotalPrice = CalculateAmount(bagItemsDb),
+                            ShippingDelivery = new ShippingDelivery { ParcelshopData = new ParcelshopData() },
+                             
                         };
                         HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
 
@@ -93,7 +94,7 @@ namespace NykantMVC.Controllers
                         {
                             BagItems = bagItemsSession,
                             Stage = Stage.customerInf,
-                            TotalPrice = CalculateAmount(bagItemsSession).ToString(),
+                            SubTotalPrice = CalculateAmount(bagItemsSession),
                             ShippingDelivery = new ShippingDelivery { ParcelshopData = new ParcelshopData() }
                         };
                         HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
@@ -115,11 +116,25 @@ namespace NykantMVC.Controllers
             }
             else
             {
+                if (User.Identity.IsAuthenticated)
+                {
+                    checkout.BagItems = bagItemsDb;
+                    checkout.SubTotalPrice = CalculateAmount(bagItemsDb);
+                    HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
+                }
+                else
+                {
+                    checkout.BagItems = bagItemsSession;
+                    checkout.SubTotalPrice = CalculateAmount(bagItemsSession);
+                    HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
+                }
+
                 if (bagItemsSession.Count() == 0 && bagItemsDb.Count() == 0)
                 {
                     HttpContext.Session.Set<Checkout>(CheckoutSessionKey, null);
                     return RedirectToAction("Details", "Bag");
                 }
+
                 Customer customer = null;
                 if(checkout.CustomerInfId != 0)
                 {
@@ -317,14 +332,14 @@ namespace NykantMVC.Controllers
             }
         }
 
-        private int CalculateAmount(List<BagItem> items)
+        private string CalculateAmount(List<BagItem> items)
         {
-            int price = 0;
+            double price = 0;
             foreach (var item in items)
             {
-                price += item.Product.Price;
+                price += item.Product.Price * item.Quantity;
             }
-            return price;
+            return price.ToString();
         }
 
         private async Task<Customer> GetCustomer(int id)

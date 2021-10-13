@@ -20,6 +20,7 @@ namespace NykantMVC.Models
         public string Size { get; set; }
         public string Color { get; set; }
         public string Alt { get; set; }
+        public double WeightInKg { get; set; }
         public IEnumerable<Image> Images { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; }

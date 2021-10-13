@@ -9,6 +9,8 @@ namespace NykantMVC.Models
         public ShippingDelivery ShippingDelivery { get; set; }
         public List<BagItem> BagItems { get; set; }
         public string TotalPrice { get; set; }
+        public string SubTotalPrice { get; set; }
+        public string Taxes { get; set; }
         public Stage Stage { get; set; }
         public ParcelShopSearchResult ParcelShopSearchResult { get; set; }
     }
