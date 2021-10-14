@@ -19,7 +19,8 @@
                 <i class="fa fa-check" aria-hidden="true"></i>
             </div>
             <div class="summary" id="shipping-summary">
-                <p>@localizer["Delivery Method"]: <span id="shipping-method-summary">@Model.Checkout.ShippingDelivery.Type</span></p>
+                <p>@localizer["Shipping Method"]: <span id="shipping-method-summary">@Model.Checkout.ShippingDelivery.Type</span></p>
+                <p>@localizer["Shipping Price"]: <span id="shipping-price-summary">@Model.Checkout.ShippingDelivery.Price</span> kr.</p>
 
                 <div class="margin-top-10" id="parcelshop-summary">
                     <p>@localizer["Company Name"]: <span id="parcelshop-companyname-summary">@Model.Checkout.ShippingDelivery.ParcelshopData.CompanyName</span></p>
@@ -33,7 +34,7 @@
             </div>
 
         </div>
-        <form id="shipping-form" method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="noop" data-ajax-complete="shipping_completed" data-ajax-begin="noop" data-ajax-failure="noop" asp-controller="Checkout" asp-action="PostShipping">
+        <form id="shipping-form" method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="noop" data-ajax-complete="shipping_completed" data-ajax-begin="noop" data-ajax-failure="noop"  asp-controller="Checkout" asp-action="PostShipping">
             <input type="hidden" id="edit-shipping" name="editShipping" />
             <input required type="hidden" id="shipping-delivery-type" name="shippingDelivery.Type" asp-for="@Model.Checkout.ShippingDelivery.Type" />
             <input required type="hidden" id="shipping-delivery-price" name="shippingDelivery.Price" asp-for="@Model.Checkout.ShippingDelivery.Price" />

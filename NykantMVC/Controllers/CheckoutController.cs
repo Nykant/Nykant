@@ -54,13 +54,16 @@ namespace NykantMVC.Controllers
                     }
                     else
                     {
+                        int.TryParse(CalculateAmount(bagItemsDb), out int total);
+                        var taxes = total / 5;
                         checkout = new Checkout
                         {
                             BagItems = bagItemsDb,
                             Stage = Stage.customerInf,
-                            SubTotalPrice = CalculateAmount(bagItemsDb),
+                            TotalPrice = total.ToString(),
                             ShippingDelivery = new ShippingDelivery { ParcelshopData = new ParcelshopData() },
-                             
+                            Taxes = taxes.ToString(),
+                            SubTotalPrice = total.ToString()
                         };
                         HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
 
@@ -90,12 +93,16 @@ namespace NykantMVC.Controllers
                     }
                     else
                     {
+                        int.TryParse(CalculateAmount(bagItemsSession), out int total);
+                        var taxes = total / 5;
                         checkout = new Checkout
                         {
                             BagItems = bagItemsSession,
                             Stage = Stage.customerInf,
-                            SubTotalPrice = CalculateAmount(bagItemsSession),
-                            ShippingDelivery = new ShippingDelivery { ParcelshopData = new ParcelshopData() }
+                            TotalPrice = total.ToString(),
+                            ShippingDelivery = new ShippingDelivery { ParcelshopData = new ParcelshopData() },
+                            Taxes = taxes.ToString(),
+                            SubTotalPrice = total.ToString()
                         };
                         HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
 
@@ -116,16 +123,46 @@ namespace NykantMVC.Controllers
             }
             else
             {
+                double taxes = 0;
+                double total = 0;
                 if (User.Identity.IsAuthenticated)
                 {
+                    double.TryParse(CalculateAmount(bagItemsDb), out double subtotal);
+                    if(checkout.ShippingDelivery.Price != 0)
+                    {
+                        total = subtotal + checkout.ShippingDelivery.Price;
+                    }
+                    else
+                    {
+                        total = subtotal;
+                    }
+                    taxes = total / 5;
+
+                    checkout.TotalPrice = subtotal.ToString();
+                    checkout.Taxes = taxes.ToString();
+                    checkout.SubTotalPrice = subtotal.ToString();
+
                     checkout.BagItems = bagItemsDb;
-                    checkout.SubTotalPrice = CalculateAmount(bagItemsDb);
                     HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
                 }
                 else
                 {
+                    double.TryParse(CalculateAmount(bagItemsSession), out double subtotal);
+                    if (checkout.ShippingDelivery.Price != 0)
+                    {
+                        total = subtotal + checkout.ShippingDelivery.Price;
+                    }
+                    else
+                    {
+                        total = subtotal;
+                    }
+                    taxes = total / 5;
+
+                    checkout.TotalPrice = subtotal.ToString();
+                    checkout.Taxes = taxes.ToString();
+                    checkout.SubTotalPrice = subtotal.ToString();
+
                     checkout.BagItems = bagItemsSession;
-                    checkout.SubTotalPrice = CalculateAmount(bagItemsSession);
                     HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
                 }
 
@@ -153,7 +190,7 @@ namespace NykantMVC.Controllers
                 {
                     Customer = customer,
                     Checkout = checkout,
-                     ShippingDelivery = new ShippingDelivery { ParcelshopData = new ParcelshopData() }
+                    ShippingDelivery = checkout.ShippingDelivery
                 };
 
                 return View(checkoutVM);
@@ -257,6 +294,19 @@ namespace NykantMVC.Controllers
         {
             try
             {
+                if(shippingDelivery.Type == "Home")
+                {
+                    shippingDelivery.Price = 65;
+                }
+                else if(shippingDelivery.Type == "Shop")
+                {
+                    shippingDelivery.Price = 0;
+                }
+                else
+                {
+                    return Json(new { error = "An unexpected error has occured" });
+                }
+
                 var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
 
                 if (checkout.Stage == Stage.shipping || editShipping)
@@ -269,7 +319,7 @@ namespace NykantMVC.Controllers
                     }
 
                     HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
-                    return NoContent();
+                    return Json(new { shippingPrice = shippingDelivery.Price });
                 }
                 else
                 {

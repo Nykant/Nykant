@@ -30,6 +30,7 @@ var shipping_method_summary = document.getElementById("shipping-method-summary")
 var shipping_summary = document.getElementById("shipping-summary");
 var shipping_edit_button = document.getElementById("shipping-edit-button");
 var shipping_delivery_type = document.getElementById("shipping-delivery-type");
+var shipping_price_summary = document.getElementById("shipping-price-summary");
 var stage_value = document.getElementById("stage").value;
 var reuse_invoice = document.getElementById('reuse-invoice');
 var shippingaddress_firstname = document.getElementById('shippingaddress-firstname');
@@ -200,7 +201,7 @@ $(document).mouseup(function (e) {
 });
 
 shipping_completed = function (response) {
-    if (response.responseJSON == undefined) {
+    if (response.responseJSON.shippingPrice != undefined) {
         document.getElementById("edit-shipping").value = false;
         shipping_check_sign.style.display = "block";
         shipping_form_complete.value = 1;
@@ -212,6 +213,7 @@ shipping_completed = function (response) {
 
         shipping_edit_button.style.display = "block";
         shipping_method_summary.textContent = shipping_delivery_type.value;
+
         if (shipping_delivery_type.value == 'Shop' || shipping_delivery_type.value == 'Butik') {
             parcelshop_summary.style.display = "block";
             parcelshop_companyname_summary.textContent = parcelshop_CompanyName.value;
@@ -225,6 +227,19 @@ shipping_completed = function (response) {
             parcelshop_summary.style.display = "none";
         }
 
+        var shippingprice = parseInt(response.responseJSON.shippingPrice);
+        var totalelem = document.getElementById('checkout-total');
+        var subtotalelem = document.getElementById('checkout-subtotal');
+
+        var subtotal = parseInt(subtotalelem.dataset.subtotal);
+        var total = subtotal + shippingprice;
+
+        shipping_price_summary.textContent = shippingprice;
+        subtotalelem.textContent = subtotal;
+        document.getElementById('checkout-shipping-price').textContent = shippingprice;
+        document.getElementById('checkout-taxes').textContent = total / 5;
+        totalelem.textContent = total;
+
         shipping_form.style.height = "0px";
         shipping_wrap.style.transform = "translateY(-100%)";
         payment_form.style.height = "auto";
@@ -235,7 +250,7 @@ shipping_completed = function (response) {
             scrollTop: $("#payment-header").offset().top
         }, 'slow');
     }
-    else {
+    else{
         $('#checkout-modal').css('display', 'block');
         document.getElementById('checkout-error').textContent = response.responseJSON.error + ' --- sorry: you will have to restart checkout process';
         setTimeout(function () {
