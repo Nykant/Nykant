@@ -1,4 +1,4 @@
-﻿var x, i, j, l, ll, selElmnt, a, b, c, shopOption;
+﻿var x, i, j, l, ll, selElmnt, img, img2, c, shopOption;
 x = document.getElementsByClassName("custom-list");
 l = x.length;
 
@@ -78,53 +78,53 @@ for (i = 0; i < l; i++) {
                         }).then(function (result) {
                             for (var t = 0; t < result.parcelshops.length; t++) {
                                 if (nearby_shops.children.length < 6) {
-                                    a = document.createElement("div");
-                                    a.setAttribute("class", "shop");
-                                    a.style.zIndex = "100";
+                                    img = document.createElement("div");
+                                    img.setAttribute("class", "shop");
+                                    img.style.zIndex = "100";
 
-                                    b = document.createElement("label");
-                                    b.setAttribute("class", "shop-label");
-                                    b.style.pointerEvents = "none";
-                                    b.textContent = result.parcelshops[t].companyName;
-                                    b.setAttribute("data-type", "companyName");
-                                    a.appendChild(b);
+                                    img2 = document.createElement("label");
+                                    img2.setAttribute("class", "shop-label");
+                                    img2.style.pointerEvents = "none";
+                                    img2.textContent = result.parcelshops[t].companyName;
+                                    img2.setAttribute("data-type", "companyName");
+                                    img.appendChild(img2);
 
-                                    b = document.createElement("label");
-                                    b.setAttribute("class", "shop-label");
-                                    b.style.pointerEvents = "none";
-                                    b.textContent = result.parcelshops[t].streetname;
-                                    b.setAttribute("data-type", "streetname");
-                                    a.appendChild(b);
+                                    img2 = document.createElement("label");
+                                    img2.setAttribute("class", "shop-label");
+                                    img2.style.pointerEvents = "none";
+                                    img2.textContent = result.parcelshops[t].streetname;
+                                    img2.setAttribute("data-type", "streetname");
+                                    img.appendChild(img2);
 
-                                    b = document.createElement("label");
-                                    b.setAttribute("class", "shop-label");
-                                    b.style.pointerEvents = "none";
-                                    b.textContent = result.parcelshops[t].streetname2;
-                                    b.setAttribute("data-type", "streetname2");
-                                    a.appendChild(b);
+                                    img2 = document.createElement("label");
+                                    img2.setAttribute("class", "shop-label");
+                                    img2.style.pointerEvents = "none";
+                                    img2.textContent = result.parcelshops[t].streetname2;
+                                    img2.setAttribute("data-type", "streetname2");
+                                    img.appendChild(img2);
 
-                                    b = document.createElement("label");
-                                    b.setAttribute("class", "shop-label");
-                                    b.style.pointerEvents = "none";
-                                    b.textContent = result.parcelshops[t].zipCode;
-                                    b.setAttribute("data-type", "zipCode");
-                                    a.appendChild(b);
+                                    img2 = document.createElement("label");
+                                    img2.setAttribute("class", "shop-label");
+                                    img2.style.pointerEvents = "none";
+                                    img2.textContent = result.parcelshops[t].zipCode;
+                                    img2.setAttribute("data-type", "zipCode");
+                                    img.appendChild(img2);
 
-                                    b = document.createElement("label");
-                                    b.setAttribute("class", "shop-label");
-                                    b.style.pointerEvents = "none";
-                                    b.textContent = result.parcelshops[t].cityName;
-                                    b.setAttribute("data-type", "cityName");
-                                    a.appendChild(b);
+                                    img2 = document.createElement("label");
+                                    img2.setAttribute("class", "shop-label");
+                                    img2.style.pointerEvents = "none";
+                                    img2.textContent = result.parcelshops[t].cityName;
+                                    img2.setAttribute("data-type", "cityName");
+                                    img.appendChild(img2);
 
-                                    b = document.createElement("label");
-                                    b.setAttribute("class", "shop-label");
-                                    b.style.pointerEvents = "none";
-                                    b.textContent = result.parcelshops[t].countryCodeISO3166A2;
-                                    b.setAttribute("data-type", "countryCodeISO3166A2");
-                                    a.appendChild(b);
+                                    img2 = document.createElement("label");
+                                    img2.setAttribute("class", "shop-label");
+                                    img2.style.pointerEvents = "none";
+                                    img2.textContent = result.parcelshops[t].countryCodeISO3166A2;
+                                    img2.setAttribute("data-type", "countryCodeISO3166A2");
+                                    img.appendChild(img2);
 
-                                    a.addEventListener("click", function (e) {
+                                    img.addEventListener("click", function (e) {
                                         var props = e.target.children;
                                         for (var i = 0; i < props.length; i++) {
                                             var prop_type = props[i].getAttribute("data-type");
@@ -155,7 +155,7 @@ for (i = 0; i < l; i++) {
                                         shippingloading(false);
                                     });
 
-                                    nearby_shops.appendChild(a);
+                                    nearby_shops.appendChild(img);
                                 }
                             }
 

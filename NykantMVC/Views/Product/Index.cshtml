@@ -114,7 +114,7 @@
         <ul>
             @foreach (var product in Model)
             {
-                <li class="mix @product.TypeOfWood @product.ItemType @product.Color @product.Size">
+                <li class="mix @product.TypeOfWood @product.ItemType @product.Oil @product.Size">
 
                     <div class="product-container">
                         <a asp-action="Details" asp-controller="Product" asp-route-id="@product.Id">

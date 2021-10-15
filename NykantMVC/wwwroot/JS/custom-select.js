@@ -1,4 +1,4 @@
-﻿var x, i, j, l, ll, selElmnt, a, b, c;
+﻿var x, i, j, l, ll, selElmnt, img, img2, c;
 /* Look for any elements with the class "custom-select": */
 x = document.getElementsByClassName("custom-select");
 l = x.length;
@@ -6,13 +6,13 @@ for (i = 0; i < l; i++) {
   selElmnt = x[i].getElementsByTagName("select")[0];
   ll = selElmnt.length;
   /* For each element, create a new DIV that will act as the selected item: */
-  a = document.createElement("DIV");
-    a.setAttribute("class", "select-selected");
-  a.textContent = selElmnt.options[selElmnt.selectedIndex].textContent;
-  x[i].appendChild(a);
+  img = document.createElement("DIV");
+    img.setAttribute("class", "select-selected");
+  img.textContent = selElmnt.options[selElmnt.selectedIndex].textContent;
+  x[i].appendChild(img);
   /* For each element, create a new DIV that will contain the option list: */
-  b = document.createElement("DIV");
-  b.setAttribute("class", "select-items select-hide");
+  img2 = document.createElement("DIV");
+  img2.setAttribute("class", "select-items select-hide");
   for (j = 1; j < ll; j++) {
     /* For each option in the original select element,
     create a new DIV that will act as an option item: */
@@ -40,10 +40,10 @@ for (i = 0; i < l; i++) {
         }
         h.click();
     });
-    b.appendChild(c);
+    img2.appendChild(c);
   }
-  x[i].appendChild(b);
-  a.addEventListener("click", function(e) {
+  x[i].appendChild(img2);
+  img.addEventListener("click", function(e) {
     /* When the select box is clicked, close any other select boxes,
     and open/close the current select box: */
     e.stopPropagation();

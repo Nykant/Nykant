@@ -1,6 +1,7 @@
 ﻿/* Navbar --------------------------------------------------------*/
 
 .navbar {
+    transition:all .4s ease-in;
     display: table;
     position: relative;
     height: auto;
@@ -8,6 +9,19 @@
     background-color: var(--dark);
     border-bottom:1px solid var(--black-fade);
 /*    box-shadow: 0px 0px 15px #000000;*/
+}
+
+.navbar-transparent {
+    transition: all .4s ease-in;
+    display: table;
+    position: fixed;
+    height: auto;
+    width: 100%;
+    background-color: var(--dark);
+    opacity: 0.8;
+    border-bottom: 1px solid var(--black-fade);
+    z-index: 100;
+    /*    box-shadow: 0px 0px 15px #000000;*/
 }
 
 /* navbar settings */
@@ -50,10 +64,11 @@
             color: var(--blue);
         }
 
-.desktop-navbar-wrap a:hover .nav-svg {
-    filter: invert(65%) sepia(93%) saturate(325%) hue-rotate(173deg) brightness(103%) contrast(104%);
-    transform: scale(0.8);
-}
+            .desktop-navbar-wrap a:hover .nav-svg {
+                filter: invert(65%) sepia(93%) saturate(325%) hue-rotate(173deg) brightness(103%) contrast(104%);
+                transform: scale(0.8);
+
+            }
 
             .desktop-navbar-wrap button:hover .nav-svg {
                 filter: invert(65%) sepia(93%) saturate(325%) hue-rotate(173deg) brightness(103%) contrast(104%);

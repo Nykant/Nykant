@@ -23,7 +23,7 @@ namespace NykantAPI.Models
         public string TypeOfWood { get; set; }
         public string ItemType { get; set; }
         public string Size { get; set; }
-        public string Color { get; set; }
+        public string Oil { get; set; }
         public string Alt { get; set; }
         public double WeightInKg { get; set; }
         public IEnumerable<Image> Images { get; set; }
