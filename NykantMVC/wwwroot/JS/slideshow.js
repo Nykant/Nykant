@@ -1,5 +1,5 @@
 ﻿var slideshow = document.getElementById('slideshow');
-var img, c, d, e, f, g, l, i, j;
+var img, img2, c, d, e, f, g, l, i, j;
 i = 1;
 
 document.getElementById('navbar').setAttribute("class", "navbar-transparent");
@@ -21,32 +21,44 @@ var updateSrc = function (number) {
 
 img = document.createElement('img');
 img.setAttribute('src', updateSrc(i));
-img.setAttribute("class", "slide-out");
+img.setAttribute("class", "current-slide");
+
 slideshow.appendChild(img);
 
 i++;
 
+img2 = document.createElement('img');
+img2.setAttribute('src', updateSrc(i));
+img2.setAttribute("class", "waiting-slide");
+
+slideshow.appendChild(img2);
+
+i++;
+
 setTimeout(function () {
-    img.setAttribute('src', updateSrc(i));
-    img.setAttribute("class", "slide-in");
+    img.setAttribute("class", "waiting-slide");
+    img2.setAttribute('src', updateSrc(i));
+    img2.setAttribute("class", "current-slide");
     i++;
 
-}, 10000)
+}, 5000)
 
 var theInterval = setInterval(function () {
+    img2.setAttribute("class", "waiting-slide");
     img.setAttribute('src', updateSrc(i));
-    img.setAttribute("class", "slide-out");
+    img.setAttribute("class", "current-slide");
     i++;
 
     if (i == 5) { i = 1 }
     setTimeout(function () {
-        img.setAttribute('src', updateSrc(i));
-        img.setAttribute("class", "slide-in");
+        img.setAttribute("class", "waiting-slide");
+        img2.setAttribute('src', updateSrc(i));
+        img2.setAttribute("class", "current-slide");
         i++;
 
         if (i == 5) { i = 1 }
-    }, 10000)
-}, 20000);
+    }, 5000)
+}, 10000);
 
 window.onbeforeunload = function (e) {
     clearInterval(theInterval);
