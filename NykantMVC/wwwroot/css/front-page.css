@@ -14,22 +14,136 @@
     overflow: hidden;
 }
 
-.current-slide {
+.infobox {
     position:absolute;
+    z-index:100;
+    bottom:5%;
+    left:5%;
+    height:200px;
+    width:500px;
+    background: white;
+    opacity:0.9;
+}
+
+.infobox h1 {
+    font-size:30px;
+    padding:10px;
+    text-align:center;
+}
+
+.infobox p {
+    padding:20px;
+}
+
+.miljo-link {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    border: 2px solid var(--dark);
+    opacity: 0.6;
+    z-index: 100;
+    cursor: pointer;
+    transition: all ease-in .3s;
+}
+
+.miljo-link-text {
+    position: absolute;
+    background: white;
+    height:auto;
+    width:200px;
+    z-index: 100;
+    padding: 20px;
+    display: none;
+    animation:miljo-text-fade .3s ease-in;
+}
+
+@keyframes miljo-text-fade {
+    from {
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}
+
+
+.miljo-link-text h1 {
+    color: black;
+    font-size: 20px;
+    text-align: center;
+    padding:10px;
+}
+
+.miljo-link-text p {
+    color: black;
+    font-weight: lighter;
+}
+
+.table-1 {
+    left:60%;
+    top:70%;
+}
+
+.table-1-text {
+    top: -200%;
+    left: +200%;
+}
+
+    .miljo-link:hover {
+/*        border: 6px solid var(--dark);*/
+        background-color: white;
+        opacity:0.9;
+    }
+
+.first-slide {
+    position: absolute;
     transform: translate(0%, 0%);
-    height: auto;
+    height: 100vh;
     width: 100%;
-    object-fit: contain;
-    animation: in .5s ease;
+    object-fit: cover;
+    object-position: center;
+}
+
+.second-slide {
+    display:none;
+}
+
+.current-slide {
+    position: absolute;
+    transform: translate(0%, 0%);
+    height: 100vh;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    animation: in .4s ease;
 }
 
 .waiting-slide {
     position: absolute;
     transform: translate(100%, 0%);
-    height: auto;
+    height: 100vh;
     width: 100%;
-    object-fit: contain;
-    animation: out .5s ease;
+    object-fit: cover;
+    object-position: center;
+    animation: out .4s ease;
+}
+
+.img-grow {
+    animation: grow 12s linear;
+}
+
+@keyframes grow {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.05);
+    }
 }
 
 @keyframes in {
@@ -51,7 +165,7 @@
     }
 }
 
-@media only screen and (max-width: 600px) {
+/*@media only screen and (max-width: 600px) {
     .current-slide {
         height: 100%;
         width: auto;
@@ -202,4 +316,4 @@
         max-height: 100vh;
         width: 100%;
     }
-}
+}*/
