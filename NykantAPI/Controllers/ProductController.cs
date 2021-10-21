@@ -24,7 +24,9 @@ namespace NykantAPI.Controllers
         [HttpGet]
         public async Task<ActionResult> GetProducts()
         {
-            return Ok(JsonConvert.SerializeObject(_context.Products));
+            var products = _context.Products.Include(x => x.Category);
+            var json = JsonConvert.SerializeObject(products, Extensions.JsonOptions.jsonSettings);
+            return Ok(json);
         }
 
         [HttpGet("{id}")]

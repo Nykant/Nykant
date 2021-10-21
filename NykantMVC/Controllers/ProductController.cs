@@ -19,12 +19,30 @@ namespace NykantMVC.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
             var json = await GetRequest("/Product/GetProducts");
-            var products = JsonConvert.DeserializeObject<List<Product>>(json);
             ViewBag.Categories = JsonConvert.DeserializeObject<List<Category>>(await GetRequest("/Category/GetCategories"));
-            return View(products);
+
+            if (searchString == null)
+            {
+                var products = JsonConvert.DeserializeObject<List<Product>>(json);
+                return View(products);
+            }
+            else
+            {
+                var filteredList = new List<Product>();
+                foreach (var product in JsonConvert.DeserializeObject<List<Product>>(json))
+                {
+                    if (product.Category.Name.Contains(searchString))
+                    {
+                        filteredList.Add(product);
+                    }
+                }
+
+                ViewBag.CurrentFilter = searchString;
+                return View(filteredList);
+            }
         }
 
         [HttpGet]

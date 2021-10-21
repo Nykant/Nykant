@@ -1,29 +1,36 @@
-﻿@{
+﻿@model List<Product>
+@{
     ViewData["Title"] = "Nykant - Egetræsmøbler Af Dansk Design";
     ViewData["Description"] = "Nykant er en dansk virksomhed, som er dedikeret til at designe møbler af træ, inspireret af dansk design.";
 }
 
 <script src="~/JS/viewport.js"></script>
 <script src="~/JS/slideshow.js" defer></script>
+<script src="~/JS/tripple-slide.js" defer></script>
 
-<div class="blank">
+<div class="row">
     <div id="slideshow">
     </div>
 </div>
 
-@*<div class="modal" id="modal">
-        <div class="col-6 center development">
-            <p style="font-weight:bold;">hjemmesiden er stadig i udvikling :) det betyder: </p>
-            <p>At hvis man vil købe et produkt, skal man bruge de test kortnumre som er på købs siden.</p>
-            <p>Hvis du opretter en bruger, så skal du stadig bruge en rigtig email, da der er email aktivering i denne testing fase.</p>
-            <p>Dine personlige data som du giver nykant, er beskyttet (hvilket du kan læse mere om <a>her(link til privatlivs siden)</a>), så du kan teste alle hjemmesidens funktioner, sikkert.</p>
-            <button class="button" type="button" id="development-button">Okay</button>
+<div class="row">
+    <div class="col-8 center">
+        <div id="tripple-slider" class="tripple-slider">
+            @foreach (var item in Model)
+            {
+                <div class="col-4 productslide">
+                    <img src="@item.ImageSource" />
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6 center">
+        <div class="tripple-slider-controller">
+            <button id="back-button" type="button"><</button><button id="forward-button" type="button">></button>
         </div>
     </div>
 
-    <script defer>
-        document.getElementById("modal").style.display = "block";
-        document.getElementById("development-button").addEventListener("click", function () {
-            document.getElementById("modal").style.display = "none";
-        });
-    </script>*@
+</div>
+
