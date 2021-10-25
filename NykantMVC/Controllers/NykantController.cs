@@ -131,7 +131,7 @@ namespace NykantMVC.Controllers
                     var searchList = new List<Product>();
                     foreach (var product in JsonConvert.DeserializeObject<List<Product>>(json))
                     {
-                        if (product.Title.ToLower().Contains(searchString.ToLower()))
+                        if (product.Description.ToLower().Contains(searchString.ToLower()) || product.Category.Name.ToLower().Contains(searchString.ToLower()))
                         {
                             searchList.Add(product);
                         }

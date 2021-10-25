@@ -34,7 +34,7 @@ namespace NykantMVC.Controllers
                 var filteredList = new List<Product>();
                 foreach (var product in JsonConvert.DeserializeObject<List<Product>>(json))
                 {
-                    if (product.Category.Name.Contains(searchString))
+                    if (product.Description.ToLower().Contains(searchString.ToLower()) || product.Category.Name.ToLower().Contains(searchString.ToLower()))
                     {
                         filteredList.Add(product);
                     }
@@ -56,21 +56,11 @@ namespace NykantMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> Filter(string categoryName)
         {
-            var categories = JsonConvert.DeserializeObject<List<Category>>(await GetRequest("/Category/GetCategories"));
-            Category category = null;
-            foreach(var item in categories)
-            {
-                if(item.Name == categoryName)
-                {
-                    category = item;
-                    break;
-                }
-            }
             var json = await GetRequest("/Product/GetProducts");
             var filteredList = new List<Product>();
             foreach (var product in JsonConvert.DeserializeObject<List<Product>>(json))
             {
-                if (product.CategoryId == category.Id)
+                if (product.Category.Name.ToLower().Contains(categoryName.ToLower()))
                 {
                     filteredList.Add(product);
                 }

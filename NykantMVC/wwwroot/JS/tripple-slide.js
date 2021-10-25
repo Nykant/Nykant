@@ -1,65 +1,165 @@
 ﻿var slides = document.getElementById('tripple-slider').children;
 var forwardbutton = document.getElementById('forward-button');
 var backbutton = document.getElementById('back-button');
-
-var position = 0;
+var radioform = document.getElementById('product-slides-radio');
+var groups = [];
 backbutton.disabled = true;
+var position = 0;
+var j = 0;
+for (var i = 0; i < slides.length / 3; i++) {
+    var group = [];
+    group.push(slides[j]);
+    if (slides[j + 1] !== undefined) {
+        group.push(slides[j + 1]);
+    }
+    if (slides[j + 2] !== undefined) {
+        group.push(slides[j + 2]);
+    }
+    groups.push(group);
+    j = j + 3;
+}
+
+for (var l = 0; l < groups.length; l++) {
+    var radioinput = document.createElement('input');
+    radioinput.setAttribute('type', 'radio');
+    radioinput.setAttribute('name', 'product-slide-radio');
+    radioinput.setAttribute('class', 'slide-radio');
+    radioinput.dataset.radionumber = l;
+    radioinput.addEventListener('click', function (event) {
+        backbutton.disabled = true;
+        forwardbutton.disabled = true;
+        hideall();
+        position = parseInt(event.currentTarget.dataset.radionumber);
+        var k = 0;
+        var interval = setInterval(function () {
+            if (groups[position][k] !== undefined) {
+                groups[position][k].style.display = 'block';
+
+                k++;
+                if (k >= 3) {
+                    if (position == groups.length - 1) {
+                        forwardbutton.disabled = true;
+                    }
+                    else {
+                        forwardbutton.disabled = false;
+                    }
+                    if (position == 0) {
+                        backbutton.disabled = true;
+                    }
+                    else {
+                        backbutton.disabled = false;
+                    }
+                    clearInterval(interval);
+                }
+            }
+            else {
+                if (position == groups.length - 1) {
+                    forwardbutton.disabled = true;
+                }
+                else {
+                    forwardbutton.disabled = false;
+                }
+                if (position == 0) {
+                    backbutton.disabled = true;
+                }
+                else {
+                    backbutton.disabled = false;
+                }
+                clearInterval(interval);
+            }
+        }, 100);
+    });
+
+    radioform.appendChild(radioinput);
+}
+
+groups[0][0].style.display = 'block';
+groups[0][1].style.display = 'block';
+groups[0][2].style.display = 'block';
 
 forwardbutton.addEventListener('click', function (e) {
-    hideall(slides);
-    if (backbutton.disabled) {
-        backbutton.disabled = false;
-    }
-    if (position < 10) {
-        slides[position].style.display = 'block';
-        slides[position + 1].style.display = 'block';
-        slides[position + 2].style.display = 'block';
-        position = position + 3;
-        if (position == 4) {
-            backbutton.disabled = true;
-        }
-    }
-    else {
-        forwardbutton.disabled = true;
+    backbutton.disabled = true;
+    forwardbutton.disabled = true;
+
+    hideall();
+    if (position < groups.length - 1) {
+        position++;
+        var i = 0;
+        var interval = setInterval(function () {
+            if (groups[position][i] !== undefined) {
+                groups[position][i].style.display = 'block';
+
+                i++;
+                if (i >= 3) {
+                    if (position == groups.length - 1) {
+                        forwardbutton.disabled = true;
+                    }
+                    else {
+                        forwardbutton.disabled = false;
+                    }
+                    backbutton.disabled = false;
+                    clearInterval(interval);
+                }
+            }
+            else {
+                if (position == groups.length - 1) {
+                    forwardbutton.disabled = true;
+                }
+                else {
+                    forwardbutton.disabled = false;
+                }
+                backbutton.disabled = false;
+                clearInterval(interval);
+            }
+        }, 100);
+
     }
 });
 
 backbutton.addEventListener('click', function (e) {
-    hideall(slides);
-    if (forwardbutton.disabled) {
-        forwardbutton.disabled = false;
-    }
-    if (position > 2) {
-        slides[position].style.display = 'block';
-        slides[position - 1].style.display = 'block';
-        slides[position - 2].style.display = 'block';
-        position = position - 3;
-        if (position == 0) {
-            backbutton.disabled = true;
-        }
-    }
-    else {
-        backbutton.disabled = true;
+    backbutton.disabled = true;
+    forwardbutton.disabled = true;
+
+    hideall();
+    if (position > 0) {
+        position--;
+        var i = 0;
+        var interval = setInterval(function () {
+            if (groups[position][i] !== undefined) {
+                groups[position][i].style.display = 'block';
+
+                i++;
+                if (i >= 3) {
+                    if (position == 0) {
+                        backbutton.disabled = true;
+                    }
+                    else {
+                        backbutton.disabled = false;
+                    }
+                    forwardbutton.disabled = false;
+                    clearInterval(interval);
+                }
+            }
+            else {
+                if (position == 0) {
+                    backbutton.disabled = true;
+                }
+                else {
+                    backbutton.disabled = false;
+                }
+                forwardbutton.disabled = false;
+                clearInterval(interval);
+            }
+            
+        }, 100);
+
     }
 });
 
-var hideall = function (slides) {
-    for (var i = 0; i < slides.length; i++) {
-        slides[i].style.display = 'none';
+var hideall = function () {
+    for (var i = 0; i < groups.length; i++) {
+        for (var j = 0; j < groups[i].length; j++) {
+            groups[i][j].style.display = 'none';
+        }
     }
 };
-
-setTimeout(function () {
-    var save = slides[0];
-    var save1 = slides[1];
-    var save2 = slides[2];
-
-    slides[0] = slides[3];
-    slides[1] = slides[4];
-    slides[2] = slides[5];
-
-    slides[3] = slides[save];
-    slides[4] = slides[save1];
-    slides[5] = slides[save2];
-
-}, 5000);

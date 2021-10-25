@@ -1,7 +1,7 @@
 ﻿@model Product
 
 @{
-    ViewData["Title"] = Model.Title;
+    ViewData["Title"] = Model.Name;
     ViewData["Description"] = Model.Description;
 }
 
@@ -18,7 +18,7 @@
             <div class="bag-item-img">
                 <img src="../@Model.ImageSource" />
             </div>
-            <p>@Model.Title</p>
+            <p>@Model.Name</p>
             <p>@Model.Price.-</p>
         </div>
         <a asp-controller="Bag" asp-action="Details">
@@ -45,7 +45,7 @@
         <div class="col-4 right" id="details-right">
             <div class="details-info-wrap fadein">
 
-                <h1>@Model.Title</h1>
+                <h1>@Model.Name</h1>
                 <p>@Model.Price.-</p>
 
                 <div id="color-select">
@@ -65,13 +65,8 @@
                     @Html.HiddenFor(x => x.Images)
                     @Html.HiddenFor(x => x.ImageSource)
                     @Html.HiddenFor(x => x.ImageSource2)
-                    @Html.HiddenFor(x => x.ItemType)
-                    @Html.HiddenFor(x => x.LastModified)
                     @Html.HiddenFor(x => x.Name)
-                    @Html.HiddenFor(x => x.Path)
                     @Html.HiddenFor(x => x.Price)
-                    @Html.HiddenFor(x => x.Size)
-                    @Html.HiddenFor(x => x.Title)
                     @Html.HiddenFor(x => x.TypeOfWood)
                     @Html.HiddenFor(x => x.Alt)
                     @Html.HiddenFor(x => x.Oil)

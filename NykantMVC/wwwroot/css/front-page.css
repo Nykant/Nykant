@@ -124,18 +124,31 @@
     }
 }
 
+.slide-radio {
+    
+}
+
+.tripple-slider-controller {
+
+}
+
+.tripple-slider-controller button {
+    background-color:transparent;
+}
+
 .tripple-slider {
     padding:30px;
-    height:310px;
+    height:auto;
     overflow:hidden;
 }
 
 .productslide {
-    padding:10px;
-    float:left;
-    display:none;
-    animation:productslide .4s ease;
-    transition:all .4s ease;
+    height:200px;
+    padding: 10px;
+    float: left;
+    display: none;
+    animation: productslide .4s ease;
+    transition: all .4s ease;
 }
 
 @keyframes productslide {
@@ -147,7 +160,7 @@
     }
 }
 
-    .productslide img {
+    .productslide img {Chroz
         height: 100%;
         width: 100%;
         object-fit: cover;
