@@ -26,17 +26,10 @@ var hideall = function () {
                 }
 
                 outgroup.push(groups[i][j]);
-
-                setTimeout(function () {
-                    for (var i = 0; i < outgroup.length; i++) {
-                        if (outgroup[i].className.includes('productslide-out')) {
-                            outgroup[i].style.display = 'none';
-                        }
-                    }
-                }, 300);
             }
         }
     }
+    return outgroup;
 };
 
 var makegroups = function () {
@@ -83,23 +76,50 @@ var settimeout = function () {
 };
 
 var slideInterval = function (direction) {
-    hideall();
-    var i = 0;
-    var interval = setInterval(function () {
-        if (groups[position][i] !== undefined) {
-            if (direction == 1) {
-                groups[position][i].setAttribute('class', 'col-4 productslide-in-left');
+    var outgroup = hideall();
+    if (outgroup.length > 0) {
+        setTimeout(function () {
+            for (var i = 0; i < outgroup.length; i++) {
+                if (outgroup[i].className.includes('productslide-out')) {
+                    outgroup[i].style.display = 'none';
+                }
             }
-            else if (direction == 2) {
-                groups[position][i].setAttribute('class', 'col-4 productslide-in-right');
-            }
+        }, 300);
+    }
 
-            //groups[position][i].classList.remove('hidden');
-            //groups[position][i].classList.remove('productslide-out-left');
-            //groups[position][i].classList.add('productslide-in');
-            groups[position][i].style.display = 'block';
-            i++;
-            if (i >= amount) {
+    setTimeout(function () {
+        var i = 0;
+        var interval = setInterval(function () {
+            if (groups[position][i] !== undefined) {
+                if (direction == 1) {
+                    groups[position][i].setAttribute('class', 'col-4 productslide-in-left');
+                }
+                else if (direction == 2) {
+                    groups[position][i].setAttribute('class', 'col-4 productslide-in-right');
+                }
+
+                //groups[position][i].classList.remove('hidden');
+                //groups[position][i].classList.remove('productslide-out-left');
+                //groups[position][i].classList.add('productslide-in');
+                groups[position][i].style.display = 'block';
+                i++;
+                if (i >= amount) {
+                    if (position >= groups.length - 1) {
+                        forwardbutton.disabled = true;
+                    }
+                    else {
+                        forwardbutton.disabled = false;
+                    }
+                    if (position <= 0) {
+                        backbutton.disabled = true;
+                    }
+                    else {
+                        backbutton.disabled = false;
+                    }
+                    clearInterval(interval);
+                }
+            }
+            else {
                 if (position >= groups.length - 1) {
                     forwardbutton.disabled = true;
                 }
@@ -114,23 +134,8 @@ var slideInterval = function (direction) {
                 }
                 clearInterval(interval);
             }
-        }
-        else {
-            if (position >= groups.length - 1) {
-                forwardbutton.disabled = true;
-            }
-            else {
-                forwardbutton.disabled = false;
-            }
-            if (position <= 0) {
-                backbutton.disabled = true;
-            }
-            else {
-                backbutton.disabled = false;
-            }
-            clearInterval(interval);
-        }
-    }, 100);
+        }, 100);
+    }, 300);
 };
 
 var clearRadiobuttons = function () {
@@ -206,5 +211,33 @@ window.addEventListener('resize', function () {
     checkresize();
 });
 
+trippleslider.addEventListener('swiped-right', function () {
+    backbutton.disabled = true;
+    forwardbutton.disabled = true;
+    if (position > 0) {
+        position--;
+        direction = 2;
+        slideInterval(direction);
+        for (var i = 0; i < radioform.children.length; i++) {
+            if (radioform.children[i].dataset.radionumber == position) {
+                radioform.children[i].checked = true;
+            }
+        }
+    }
+});
 
+trippleslider.addEventListener('swiped-left', function () {
+    backbutton.disabled = true;
+    forwardbutton.disabled = true;
+    if (position < groups.length - 1) {
+        position++;
+        direction = 1;
+        slideInterval(direction);
+        for (var i = 0; i < radioform.children.length; i++) {
+            if (radioform.children[i].dataset.radionumber == position) {
+                radioform.children[i].checked = true;
+            }
+        }
+    }
+});
 
