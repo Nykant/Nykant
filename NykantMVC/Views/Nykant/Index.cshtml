@@ -3,48 +3,96 @@
     ViewData["Title"] = "Nykant - Egetræsmøbler Af Dansk Design";
     ViewData["Description"] = "Nykant er en dansk virksomhed, som er dedikeret til at designe møbler af træ, inspireret af dansk design.";
 }
-
-<script src="~/JS/viewport.js"></script>
 <script src="~/JS/slideshow.js" defer></script>
-<script src="~/JS/tripple-slide.js" defer></script>
-<script src="~/JS/swiped-events.min.js" defer></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="~/css/carousel.css" />
+<script type="text/javascript" src="~/JS/carousel.js"></script>
+
+@*<script src="~/JS/tripple-slide.js" defer></script>*@
+@*<script src="~/JS/swiped-events.min.js" defer></script>*@
 
 <div class="row">
     <div id="slideshow">
     </div>
 </div>
 
-<div class="row">
-    <div class="col-8 center">
-        <div id="tripple-slider" class="tripple-slider">
-            @foreach (var item in Model)
-            {
-                <div class="col-4 hidden">
-                    <img src="@item.ImageSource" />
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="owl-carousel">
+                @foreach (var product in Model)
+                {
+                    <div class="product-card">
+                        @*<div class="product-badge text-danger">28% Off</div>*@<a class="product-thumb" href="/Product/Details/@product.Id" data-abc="true"><img src="@product.ImageSource" alt="Product"></a>
+                        <h3 class="product-title"><a href="#" data-abc="true">@product.Name</a></h3>
+                        <h4 class="product-price"> @*<del>$844.99</del>*@@product.Price kr.</h4>
+                        <div class="product-buttons"> <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="" data-original-title="Whishlist"><i class="fa fa-heart"></i></button> <button class="button">Add to Cart</button> </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="background-base">
+    <div class="row">
+        <div class="col-8 center ">
+            <div class="business-values">
+                <div class="col-6 left">
+                    <i class="fas fa-user-tie"></i>
+                    <p>Ingen mellem-mænd,<br /> ingen bullshit,<br /> direkte til kunden.</p>
                 </div>
-            }
-        </div>
-
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-4 center">
-        <div class="tripple-slider-controller">
-            <div class="slide-button left">
-                <button id="back-button" type="button"><img class="small-svg" src="~/lib/svg/arrow-left.svg" /></button>
-            </div>
-            <div class="slide-button right">
-                <button id="forward-button" type="button"><img class="small-svg" src="~/lib/svg/arrow-right.svg" /></button>
-            </div>
-            <div class="center">
-                <form id="product-slides-radio">
-                </form>
+                <div class="col-6 left">
+                    <i class="fas fa-user-tie"></i>
+                    <p>test</p>
+                </div>
+                <div class="col-6 left">
+                    <i class="fas fa-user-tie"></i>
+                    <p>test</p>
+                </div>
+                <div class="col-6 left">
+                    <i class="fas fa-user-tie"></i>
+                    <p>test</p>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="row">
 
-</div>
+@*<div class="row">
+        <div class="tripple-slider-container center">
+            <div id="tripple-slider" class="tripple-slider">
+                @foreach (var item in Model)
+                {
+                    <div class="col-4 hidden">
+                        <img src="@item.ImageSource" />
+                    </div>
+                }
+            </div>
+
+        </div>
+    </div>*@
+
+@*<div class="row">
+        <div class="col-4 center">
+            <div class="tripple-slider-controller">
+                <div class="slide-button left">
+                    <button id="back-button" type="button"><img class="small-svg" src="~/lib/svg/arrow-left.svg" /></button>
+                </div>
+                <div class="slide-button right">
+                    <button id="forward-button" type="button"><img class="small-svg" src="~/lib/svg/arrow-right.svg" /></button>
+                </div>
+                <div class="center">
+                    <form id="product-slides-radio">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fullscreen-row">
+
+    </div>*@

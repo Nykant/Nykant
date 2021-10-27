@@ -15,6 +15,7 @@
     --dark-grey: #2b2b2b;
     --light-blue: #e8f8ff;
     --light-blue2: #effbff;
+    --base: #ffe7e7;
     --yellow: #feff99;
     --small: 8px;
     --small-plus: 12px;
@@ -38,6 +39,7 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
+    display:block;
     margin: 0;
     padding: 0;
     border: 0;
@@ -215,16 +217,29 @@ ol, ul {
 
     /* GRID ---------------------------------------------------------------*/
 
-    .row::after {
-        content: "";
-        clear: both;
-        display: table;
-    }
+.row {
+    display: initial;
+    -ms-flex-wrap: initial;
+    flex-wrap: initial;
+    margin-right: initial;
+    margin-left: initial;
+}
 
-    [class*="col-"] {
-        height: auto;
-        width: 100%;
-    }
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+[class*="col-"] {
+    height: auto;
+    width: 100%;
+    -ms-flex: initial;
+    flex: initial;
+    max-width: initial;
+    padding-right: initial;
+    padding-left: initial;
+}
 
     @media only screen and (min-width: 768px) {
         /* For desktop: */
@@ -557,9 +572,14 @@ ol, ul {
         background-color: var(--light-grey);
     }
 
-    .background-dark {
-        background-color: var(--dark);
-    }
+.background-dark {
+    background: var(--dark);
+    background-color: var(--dark);
+}
+
+.background-base {
+    background: var(--light-blue);
+}
 
     .border-bottom {
         border-bottom: 1px solid var(--black-fade);

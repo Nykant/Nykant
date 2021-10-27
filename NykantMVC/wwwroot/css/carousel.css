@@ -1,0 +1,99 @@
+﻿.container {
+    margin-top: 50px;
+    margin-bottom: 50px
+}
+
+.product-card {
+    display: block;
+    position: relative;
+    width: 100%;
+    padding: 18px;
+    border: 1px solid #e1e7ec;
+    border-radius: 7px;
+    background-color: #fff
+}
+
+    .product-card .product-badge {
+        top: 15px;
+        left: 18px
+    }
+
+.product-badge {
+    position: absolute;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: .07em;
+    text-transform: uppercase
+}
+
+.text-danger {
+    color: #ff5252 !important
+}
+
+.product-card .product-thumb {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px
+}
+
+.product-card .product-title {
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: normal;
+    text-align: center
+}
+
+.product-card .product-price {
+    margin-bottom: 10px;
+    color: #606975;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center
+}
+
+.product-card .product-buttons {
+    padding: 12px 0 8px;
+    text-align: center
+}
+
+    .product-card .product-buttons > .btn.btn-wishlist {
+        width: 36px;
+        padding: 5px;
+        padding-left: 6px;
+        border-radius: 50%
+    }
+
+        .product-card .product-buttons > .btn.btn-wishlist > i {
+            font-size: 1.2em
+        }
+
+.btn > i {
+    display: inline-block;
+    margin-top: -12px;
+    vertical-align: middle
+}
+
+.btn-outline-primary {
+    border-color: #0da9ef;
+    background-color: transparent;
+    color: #0da9ef
+}
+
+.btn-sm {
+    height: 36px;
+    padding: 0 18px;
+    border-radius: 18px;
+    font-size: 12px;
+    line-height: 34px
+}
+
+img,
+figure {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle
+}
+
+.product-card {
+    margin-right: 10px
+}

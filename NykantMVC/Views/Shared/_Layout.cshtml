@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
-    <meta http-equiv="content-security-policy" content="default-src 'self' https://nykant.dk; img-src 'self' https://www.google.dk; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://js.stripe.com; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-src 'self' https://js.stripe.com https://hooks.stripe.com; connect-src 'self' https://nykant.dk https://analytics.google.com https://api.stripe.com;" always;" />
+    <meta http-equiv="content-security-policy" content="default-src 'self' https://nykant.dk; img-src 'self' https://www.googletagmanager.com https://www.google.dk; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://js.stripe.com https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js; style-src 'self' https://use.fontawesome.com https://cdn.jsdelivr.net https://fonts.googleapis.com https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css https://use.fontawesome.com/releases/v5.7.2/css/all.css; font-src 'self' https://use.fontawesome.com https://fonts.gstatic.com; frame-src 'self' https://js.stripe.com https://hooks.stripe.com; connect-src 'self' https://google.dk https://nykant.dk https://analytics.google.com https://api.stripe.com;" always;" />
 
     <title>@ViewData["Title"]</title>
     <meta name="description" content="@ViewData["Description"]" />
@@ -13,6 +13,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+
+    <script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 
     <link rel="stylesheet" href="~/css/mvcstyle.css" />
     <link rel="stylesheet" href="~/css/down-arrow.css" />
@@ -34,8 +42,6 @@
     <link rel="stylesheet" href="~/css/culture.css" />
     <link rel="stylesheet" href="~/css/simple-checkbox.css" />
 
-    <script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
-    <partial name="_ValidationScriptsPartial" />
     <script src="https://js.stripe.com/v3/"></script>
 </head>
 <body>
@@ -78,7 +84,7 @@
             <partial name="_UtilityPartial" />
         </div>
         <div class="row background-dark">
-            <div class="col-12">
+            <div class="col-12 background-dark">
                 <div class="copyright left">
                     <p>&copy; Nykant ApS 2021</p>
                 </div>

@@ -177,9 +177,10 @@ input[type='radio']:checked:after {
             transform: none;
         }
 
+
 .tripple-slider {
     padding:30px;
-    height:auto;
+    height:300px;
     overflow:hidden;
     margin-left:0px;
     margin-right:0px;
@@ -230,10 +231,6 @@ input[type='radio']:checked:after {
 }
 
 .productslide-in-left img {
-    /*    min-height: 100%;
-    min-width: 100%;*/
-    /*max-height: 100%;
-    max-width: 100%;*/
     max-height: 100%;
     width: 100%;
     object-fit: cover;
@@ -241,10 +238,6 @@ input[type='radio']:checked:after {
 }
 
 .productslide-out-left img {
-    /*    min-height: 100%;
-    min-width: 100%;*/
-    /*max-height: 100%;
-    max-width: 100%;*/
     max-height: 100%;
     width: 100%;
     object-fit: cover;
@@ -255,7 +248,6 @@ input[type='radio']:checked:after {
 
 .productslide-in-right {
     height: 100%;
-
     padding: 10px;
     float: left;
     animation: productslide-in-right .5s ease;
@@ -297,10 +289,6 @@ input[type='radio']:checked:after {
 }
 
 .productslide-in-right img {
-    /*    min-height: 100%;
-    min-width: 100%;*/
-    /*max-height: 100%;
-    max-width: 100%;*/
     max-height: 100%;
     width: 100%;
     object-fit: cover;
@@ -308,153 +296,64 @@ input[type='radio']:checked:after {
 }
 
 .productslide-out-right img {
-    /*    min-height: 100%;
-    min-width: 100%;*/
-    /*max-height: 100%;
-    max-width: 100%;*/
     max-height: 100%;
     width: 100%;
     object-fit: cover;
     object-position: center;
 }
 
+.business-values {
+padding:50px;
+}
 
+.business-values div {
+    text-align:center;
+    margin-bottom:50px;
+}
 
-/*@media only screen and (max-width: 600px) {
-    .current-slide {
-        height: 100%;
-        width: auto;
+    .business-values div i {
+        font-size:70px;
     }
 
-    .waiting-slide {
-        height: 100%;
-        width: auto;
-    }
-
-    #slideshow {
-        min-height: 100vh;
-        max-height: 100vh;
-    }
-
-    .blank {
-        min-height: 100vh;
-        max-height: 100vh;
+@media only screen and (max-width: 600px) {
+    .tripple-slider-container {
         width: 100%;
     }
 }
 
 @media only screen and (min-width: 600px) {
-    .current-slide {
-        height: 100%;
-        width: auto;
-    }
-
-    .waiting-slide {
-        height: auto;
-        width: auto;
-    }
-    #slideshow {
-        min-height: 100vh;
-        max-height: 100vh;
-    }
-
-    .blank {
-        min-height: 100vh;
-        max-height: 100vh;
+    .tripple-slider-container {
         width: 100%;
     }
-}*/
+}
 
 @media only screen and (min-width: 768px) {
 
+    .tripple-slider-container {
+        width: 100%;
+    }
     .tripple-slider {
         margin-left: 5px;
         margin-right: 5px;
     }
 }
 
-/*@media only screen and (min-width: 992px) {
-    .current-slide {
-        height: 120%;
-        width: auto;
-    }
-
-    .waiting-slide {
-        height: 120%;
-        width: auto;
-    }
-    #slideshow {
-        min-height: 100vh;
-        max-height: 100vh;
-    }
-
-    .blank {
-        min-height: 100vh;
-        max-height: 100vh;
-        width: 100%;
+@media only screen and (min-width: 992px) {
+    .tripple-slider-container {
+        width: 992px;
     }
 }
 
 @media only screen and (min-width: 1200px) {
-    .current-slide {
-        height: 120%;
-        width: auto;
-    }
-
-    .waiting-slide {
-        height: 120%;
-        width: auto;
-    }
-    #slideshow {
-        min-height: 100vh;
-        max-height: 100vh;
-    }
-
-    .blank {
-        min-height: 100vh;
-        max-height: 100vh;
-        width: 100%;
+    .tripple-slider-container {
+        width:1200px;
     }
 }
 
 @media only screen and (min-width: 1500px) {
-    .current-slide {
-        height: auto;
-        width: 100%;
-    }
-
-    .waiting-slide {
-        height: auto;
-        width: 100%;
-    }
-    #slideshow {
-        min-height: 100vh;
-        max-height: 100vh;
-    }
-    .blank {
-        min-height: 100vh;
-        max-height: 100vh;
-        width: 100%;
-    }
+    
 }
 
 @media only screen and (min-width: 1780px) {
-    .current-slide {
-        height: auto;
-        width: 100%;
-    }
-
-    .waiting-slide {
-        height: auto;
-        width: 100%;
-    }
-    #slideshow {
-        min-height: 100vh;
-        max-height: 100vh;
-    }
-    .blank {
-        min-height: 100vh;
-        max-height: 100vh;
-        width: 100%;
-    }
-}*/
+    
+}
