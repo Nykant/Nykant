@@ -28,19 +28,8 @@
         <a id="product-link" asp-controller="Product" asp-action="Index">PRODUKTER</a>
         <a id="shopping-bag" asp-controller="Bag" asp-action="Details"><span>@ViewBag.BagItemAmount</span> <img class="nav-svg" src="~/lib/svg/shopping-bag.svg" /></a>
 
-        @if (User.Identity.IsAuthenticated)
+        @*@if (User.Identity.IsAuthenticated)
         {
-            @*<div id="userBurger2">
-                <a href="https://localhost:5001/settings/changeemail">
-                    Indstillinger
-                </a>
-                <a asp-controller="Order" asp-action="History">
-                    Ordre historik
-                </a>
-                <a asp-controller="Account" asp-action="Logout">
-                    Log ud
-                </a>
-            </div>*@
 
             <div class="dropdown">
                 <button href="javascript:void(0);" class="dropbtn" id="userLogo">
@@ -62,14 +51,6 @@
         }
         else
         {
-            @*<div id="userBurger2">
-                <a href="https://localhost:5001/account/login?redirectaction=@action&redirectcontroller=@controller">
-                    Log ind
-                </a>
-                <a href="https://localhost:5001/identity/account/register?redirectaction=@action&redirectcontroller=@controller">
-                    Registrer
-                </a>
-            </div>*@
 
             <div class="dropdown">
                 <button href="javascript:void(0);" class="dropbtn" id="userLogo">
@@ -85,7 +66,7 @@
                 </div>
             </div>
 
-        }
+        }*@
         <div id="nav-links">
             <a alt="PRODUKTER" asp-controller="Product" asp-action="Index">PRODUKTER</a>
         </div>

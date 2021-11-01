@@ -217,15 +217,7 @@ ol, ul {
 
     /* GRID ---------------------------------------------------------------*/
 
-.row {
-    display: initial;
-    -ms-flex-wrap: initial;
-    flex-wrap: initial;
-    margin-right: initial;
-    margin-left: initial;
-}
-
-.row::after {
+.my-row::after {
     content: "";
     clear: both;
     display: table;
