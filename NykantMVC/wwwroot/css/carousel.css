@@ -13,6 +13,15 @@
     background-color: #fff
 }
 
+.product-card:hover .product-title {
+    font-weight:bold;
+}
+
+.product-card img {
+    margin:auto;
+    max-height:250px;
+}
+
     .product-card .product-badge {
         top: 15px;
         left: 18px

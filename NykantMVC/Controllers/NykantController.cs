@@ -27,9 +27,9 @@ namespace NykantMVC.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var json = await GetRequest("/Product/GetProducts");
-            var products = JsonConvert.DeserializeObject<List<Product>>(json);
-            return View(products);
+            var jsonResponse = await GetRequest("/Category/GetCategories");
+            var categories = JsonConvert.DeserializeObject<List<Category>>(jsonResponse);
+            return View(categories);
         }
         public IActionResult CookiePolicy()
         {

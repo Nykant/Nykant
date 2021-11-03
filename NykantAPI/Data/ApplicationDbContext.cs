@@ -35,11 +35,11 @@ namespace NykantAPI.Data
                 .HasKey(bi => new { bi.OrderId, bi.ProductId });
 
             modelBuilder.Entity<Category>().HasData(
-                new Category { Id = 1, Name = "Stativ" },
-                new Category { Id = 2, Name = "Bord" },
-                new Category { Id = 3, Name = "Hylde"},
-                new Category { Id = 4, Name = "Bænk" },
-                new Category { Id = 5, Name = "Bøjle"}
+                new Category { Id = 1, Name = "Tøjstativer", ImgSource = "../images/Products/NYKANT_rack_naturolie_02.png" },
+                new Category { Id = 2, Name = "Borde", ImgSource = "../images/Products/NYKANT_bord_naturolie_02.png" },
+                new Category { Id = 3, Name = "Hylder", ImgSource = "../images/Products/NYKANT_hylde_naturolie_01.png" },
+                new Category { Id = 4, Name = "Bænke", ImgSource = "../images/Products/NYKANT_opbevaringsbaenk_naturolie_03.png" },
+                new Category { Id = 5, Name = "Bøjler", ImgSource = "../images/Products/NYKANT_boejle_naturolie_01.png" }
                 );
 
             modelBuilder.Entity<Product>().HasData(

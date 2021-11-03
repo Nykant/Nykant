@@ -1,4 +1,4 @@
-﻿@model List<Product>
+﻿@model List<Category>
 @{
     ViewData["Title"] = "Nykant - Egetræsmøbler Af Dansk Design";
     ViewData["Description"] = "Nykant er en dansk virksomhed, som er dedikeret til at designe møbler af træ, inspireret af dansk design.";
@@ -13,8 +13,43 @@
 @*<script src="~/JS/tripple-slide.js" defer></script>*@
 @*<script src="~/JS/swiped-events.min.js" defer></script>*@
 
-<div class="my-row">
+@*<div class="my-row">
     <div id="slideshow">
+    </div>
+</div>*@
+
+<div class="slideshow-space">
+
+</div>
+
+<div class="my-row">
+    <div class="slideshow">
+        <span id="slide-1"></span>
+        <span id="slide-2"></span>
+        <span id="slide-3"></span>
+        <div class="slide-container" id="slide-container">
+            <div class="slide">
+                <div class="slide-info">
+                    test
+                </div>
+                <img src="../images/Products/NYKANT_miljoe 1.png" />
+            </div>
+            <div class="slide">
+                <div class="slide-info">
+                    test
+                </div>
+                <img src="../images/Products/NYKANT_miljoe 4.png" />
+            </div>
+            <div class="slide">
+                <div class="slide-info">
+                    test
+                </div>
+                <img src="../images/Products/NYKANT_miljoe 5.png" />
+            </div>
+        </div>
+        <input id="radio1" type="radio" name="slide" />
+        <input id="radio2" type="radio" name="slide" />
+        <input id="radio3" type="radio" name="slide" />
     </div>
 </div>
 
@@ -22,13 +57,13 @@
     <div class="row">
         <div class="col-md-12">
             <div class="owl-carousel">
-                @foreach (var product in Model)
+                @foreach (var category in Model)
                 {
                     <div class="product-card">
-                        @*<div class="product-badge text-danger">28% Off</div>*@<a class="product-thumb" href="/Product/Details/@product.Id" data-abc="true"><img src="@product.ImageSource" alt="Product"></a>
-                        <h3 class="product-title"><a href="#" data-abc="true">@product.Name</a></h3>
-                        <h4 class="product-price"> @*<del>$844.99</del>*@@product.Price kr.</h4>
-                        <div class="product-buttons"> <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="" data-original-title="Whishlist"><i class="fa fa-heart"></i></button> <button class="button">Add to Cart</button> </div>
+                        @*<div class="product-badge text-danger">28% Off</div>*@<a class="product-thumb" href="/Product/Index?searchString=@category.Name" data-abc="true"><img src="@category.ImgSource" alt="Category"></a>
+                        <h3 class="product-title"><a href="/Product/Index?searchString=@category.Name" data-abc="true">@category.Name</a></h3>
+                        @*<h4 class="product-price"> <del>$844.99</del>@cat.Price kr.</h4>*@
+                        @*<div class="product-buttons"> <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="" data-original-title="Whishlist"><i class="fa fa-heart"></i></button> <button class="button">Add to Cart</button> </div>*@
                     </div>
                 }
             </div>
@@ -36,7 +71,7 @@
     </div>
 </div>
 
-<div class="my-row background-base">
+@*<div class="my-row background-base">
     <div class="col-8 center ">
         <div class="business-values">
             <div class="col-6 left">
@@ -57,7 +92,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>*@
 
 @*<div class="row">
         <div class="tripple-slider-container center">

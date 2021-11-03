@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NykantAPI.Data;
 
 namespace NykantAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211103112256_categoryImg")]
+    partial class categoryImg
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -100,31 +102,31 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 1,
-                            ImgSource = "../images/Products/NYKANT_rack_naturolie_02.png",
+                            ImgSource = "../images/Products/NYKANT_rack_naturolie_02",
                             Name = "Tøjstativer"
                         },
                         new
                         {
                             Id = 2,
-                            ImgSource = "../images/Products/NYKANT_bord_naturolie_02.png",
+                            ImgSource = "../images/Products/NYKANT_bord_naturolie_02",
                             Name = "Borde"
                         },
                         new
                         {
                             Id = 3,
-                            ImgSource = "../images/Products/NYKANT_hylde_naturolie_01.png",
+                            ImgSource = "../images/Products/NYKANT_hylde_naturolie_01",
                             Name = "Hylder"
                         },
                         new
                         {
                             Id = 4,
-                            ImgSource = "../images/Products/NYKANT_opbevaringsbaenk_naturolie_03.png",
+                            ImgSource = "../images/Products/NYKANT_opbevaringsbaenk_naturolie_03",
                             Name = "Bænke"
                         },
                         new
                         {
                             Id = 5,
-                            ImgSource = "../images/Products/NYKANT_boejle_naturolie_01.png",
+                            ImgSource = "../images/Products/NYKANT_boejle_naturolie_01",
                             Name = "Bøjler"
                         });
                 });
