@@ -70,25 +70,30 @@
             }
 
     .bag-item img {
-        height: auto;
-        width: 100%;
-        display: block;
+        max-height: 100%;
+        max-width: 100%;
+        object-fit: cover;
+        object-position: center;
     }
 
 #bag-item-name {
-    padding-top: 35px;
+    margin-top:auto;
+    margin-bottom:auto;
 }
 
 #bag-item-price {
-    padding-top:40px;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 #bag-item-total {
-    padding-top:40px;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 #bag-item-quantity {
-    padding-top:40px;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .checkout-price {
@@ -102,8 +107,10 @@
 }
 
 #add-bagitem {
+    margin-top: auto;
+    margin-bottom: auto;
     position: relative;
-    width:5%;
+    width: 5%;
 }
     #add-bagitem button {
         width: auto;
@@ -119,6 +126,8 @@
     transform: scale(1.3);
 }
 #remove-bagitem {
+    margin-top: auto;
+    margin-bottom: auto;
     position: relative;
     width: 5%;
 }
@@ -171,7 +180,7 @@
         padding:10px;
     }
     .bag-item {
-        height:80px;
+        height:initial;
     }
 
     .bag-item div {
@@ -179,31 +188,25 @@
         
     }
     #bag-item-name {
-        padding-top: 20px;
         font-size: 10px;
     }
 
     #bag-item-price {
-        padding-top: 25px;
         font-size: 10px;
     }
 
     #bag-item-total {
-        padding-top: 25px;
         font-size: 10px;
     }
 
     #bag-item-quantity {
-        padding-top: 25px;
         font-size: 10px;
     }
 
     #add-bagitem {
-        padding-top: 22px;
     }
 
     #remove-bagitem {
-        padding-top: 22px;
     }
     .bagtable-headers {
         font-size:14px;
@@ -237,31 +240,25 @@
         }
 
     #bag-item-name {
-        padding-top: 20px;
         font-size: 14px;
     }
 
     #bag-item-price {
-        padding-top: 30px;
         font-size: 14px;
     }
 
     #bag-item-total {
-        padding-top: 30px;
         font-size: 14px;
     }
 
     #bag-item-quantity {
-        padding-top: 30px;
         font-size: 14px;
     }
 
     #add-bagitem {
-        padding-top: 30px;
     }
 
     #remove-bagitem {
-        padding-top: 30px;
     }
 
 }
@@ -289,31 +286,25 @@
         }
 
     #bag-item-name {
-        padding-top: 15px;
         font-size: 14px;
     }
 
     #bag-item-price {
-        padding-top: 25px;
         font-size: 14px;
     }
 
     #bag-item-total {
-        padding-top: 25px;
         font-size: 14px;
     }
 
     #bag-item-quantity {
-        padding-top: 25px;
         font-size: 14px;
     }
 
     #add-bagitem {
-        padding-top: 26px;
     }
 
     #remove-bagitem {
-        padding-top: 26px;
     }
 }
 
@@ -341,31 +332,25 @@
         }
 
     #bag-item-name {
-        padding-top: 25px;
         font-size: 14px;
     }
 
     #bag-item-price {
-        padding-top: 35px;
         font-size: 14px;
     }
 
     #bag-item-total {
-        padding-top: 35px;
         font-size: 14px;
     }
 
     #bag-item-quantity {
-        padding-top: 35px;
         font-size: 14px;
     }
 
     #add-bagitem {
-        padding-top: 30px;
     }
 
     #remove-bagitem {
-        padding-top: 30px;
     }
 }
 
@@ -393,32 +378,26 @@
         }
 
     #bag-item-name {
-        padding-top: 40px;
         font-size: 14px;
     }
 
     #bag-item-price {
-        padding-top: 40px;
         font-size: 14px;
     }
 
     #bag-item-total {
-        padding-top: 40px;
         font-size: 14px;
     }
 
     #bag-item-quantity {
-        padding-top: 40px;
         font-size: 14px;
     }
 
     #add-bagitem {
-        padding-top: 36px;
         width:4%;
     }
 
     #remove-bagitem {
-        padding-top: 36px;
         width: 4%;
     }
 }
@@ -447,32 +426,26 @@
         }
 
     #bag-item-name {
-        padding-top: 40px;
         font-size: 14px;
     }
 
     #bag-item-price {
-        padding-top: 40px;
         font-size: 14px;
     }
 
     #bag-item-total {
-        padding-top: 40px;
         font-size: 14px;
     }
 
     #bag-item-quantity {
-        padding-top: 40px;
         font-size: 14px;
     }
 
     #add-bagitem {
-        padding-top: 36px;
         width: 4%;
     }
 
     #remove-bagitem {
-        padding-top: 36px;
         width: 4%;
     }
 }
@@ -501,32 +474,26 @@
         }
 
     #bag-item-name {
-        padding-top: 40px;
         font-size: 14px;
     }
 
     #bag-item-price {
-        padding-top: 40px;
         font-size: 14px;
     }
 
     #bag-item-total {
-        padding-top: 40px;
         font-size: 14px;
     }
 
     #bag-item-quantity {
-        padding-top: 40px;
         font-size: 14px;
     }
 
     #add-bagitem {
-        padding-top: 36px;
         width: 4%;
     }
 
     #remove-bagitem {
-        padding-top: 36px;
         width: 4%;
     }
 }

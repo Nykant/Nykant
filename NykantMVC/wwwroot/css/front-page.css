@@ -15,11 +15,6 @@
     overflow: hidden;
 }
 
-.slideshow input{
-    bottom:100px;
-text-align:center;
-}
-
 .slide-container {
     top: 100px;
     width: 300%;
@@ -70,18 +65,6 @@ text-align:center;
     left: -200%;
 }
 
-/*#slide-1:target ~ .slide-container {
-    left: 0%;
-}
-
-#slide-2:target ~ .slide-container {
-    left: -100%;
-}
-
-#slide-3:target ~ .slide-container {
-    left: -200%;
-}*/
-
 .slide-buttons {
     position: relative;
     top: -20px;
@@ -99,320 +82,41 @@ text-align:center;
 /*      ------------------------------ ----------------------------------      */
 /*      ------------------------------ ----------------------------------      */
 
-#slideshow {
-    position:relative;
-    min-height: 80vh;
-    max-height: 80vh;
-    left:0;
-    right:0;
-    top:0;
-    overflow: hidden;
-}
 
-.infobox {
-    position: absolute;
-    margin: auto;
-    left: 0;
-    right: 0;
-    bottom: 5%;
-    text-align: center;
-    z-index: 100;
-    height: 200px;
-    width: 400px;
-    max-width: 90%;
-    background: white;
-    opacity: 0.9;
-}
-
-.infobutton {
-    position:absolute;
-    margin:auto;
-    left:0;
-    right:0;
-    text-align:center;
-    bottom:0;
-    padding:12px;
-}
-
-.infobox h1 {
-    font-size:30px;
-    padding:10px;
+.about-us {
+    padding:100px;
+    height:400px;
     text-align:center;
 }
 
-.infobox p {
-    padding:20px;
-}
-
-@keyframes miljo-text-fade {
-    from {
-        opacity:0;
-    }
-    to{
-        opacity:1;
-    }
-}
-
-.first-slide {
-    position: absolute;
-    transform: translate(0%, 0%);
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
-.second-slide {
-    display:none;
-}
-
-.current-slide {
-    position: absolute;
-    transform: translate(0%, 0%);
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
-    animation: in .4s ease;
-}
-
-.waiting-slide {
-    position: absolute;
-    transform: translate(100%, 0%);
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
-    animation: out .4s ease;
-}
-
-.img-grow {
-    animation: grow 12s linear;
-}
-
-@keyframes grow {
-    from {
-        transform: scale(1);
-    }
-
-    to {
-        transform: scale(1.05);
-    }
-}
-
-@keyframes in {
-    from {
-        transform: translate(100%, 0%);
-    }
-    to {
-        transform: translate(0%, 0%);
-    }
-}
-
-@keyframes out {
-    from {
-        transform: translate(0%, 0%);
-    }
-
-    to {
-        transform: translate(-100%, 0%);
-    }
-}
-
-.slide-radio {
+.about-us h1 {
 
 }
 
-.tripple-slider-controller {
+.about-us p {
 
 }
 
-.tripple-slider-controller button {
-    background-color:transparent;
-    border:none;
-    cursor:pointer;
-}
-
-    .tripple-slider-controller button:disabled {
-        cursor: initial;
-    }
-
-        .tripple-slider-controller button:disabled img {
-            cursor: initial;
-            filter: invert(84%) sepia(7%) saturate(51%) hue-rotate(71deg) brightness(105%);
-            transform: none;
-        }
-
-.tripple-slider {
-    padding:30px;
-    height:300px;
-    overflow:hidden;
-    margin-left:0px;
-    margin-right:0px;
-}
-
-/*  left  */
-
-.productslide-in-left {
-    height: 100%;
-    padding: 10px;
-    float: left;
-    animation: productslide-in-left .5s ease;
-    transition: all .5s ease;
-    z-index: 3;
-}
-
-@keyframes productslide-in-left {
-    from {
-        transform: translate(100%, 0%);
-    }
-
-    to {
-        transform: translate(0%, 0%);
-    }
-}
-
-.productslide-out-left {
-    height: 100%;
-    padding: 10px;
-    float: left;
-    transform: translate(-100%, 0%);
-    animation: productslide-out-left .5s ease;
-    transition: all .5s ease;
-    z-index: 3;
-    opacity: 0;
-}
-
-@keyframes productslide-out-left {
-    from {
-        transform: translate(0%, 0%);
-        opacity: 1;
-    }
-
-    to {
-        transform: translate(-50%, 0%);
-        opacity: 0;
-    }
-}
-
-.productslide-in-left img {
-    max-height: 100%;
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
-.productslide-out-left img {
-    max-height: 100%;
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
-/*  right  */
-
-.productslide-in-right {
-    height: 100%;
-    padding: 10px;
-    float: left;
-    animation: productslide-in-right .5s ease;
-    transition: all .5s ease;
-    z-index: 3;
-}
-
-@keyframes productslide-in-right {
-    from {
-        transform: translate(-100%, 0%);
-    }
-
-    to {
-        transform: translate(0%, 0%);
-    }
-}
-
-.productslide-out-right {
-    height: 100%;
-    padding: 10px;
-    float: left;
-    transform: translate(+100%, 0%);
-    animation: productslide-out-right .5s ease;
-    transition: all .5s ease;
-    z-index: 3;
-    opacity: 0;
-}
-
-@keyframes productslide-out-right {
-    from {
-        transform: translate(0%, 0%);
-        opacity: 1;
-    }
-
-    to {
-        transform: translate(+50%, 0%);
-        opacity: 0;
-    }
-}
-
-.productslide-in-right img {
-    max-height: 100%;
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
-.productslide-out-right img {
-    max-height: 100%;
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
-.business-values {
-padding:50px;
-}
-
-.business-values div {
-    text-align:center;
-    margin-bottom:50px;
-}
-
-    .business-values div i {
-        font-size:70px;
-    }
 
 @media only screen and (max-width: 600px) {
-    .tripple-slider-container {
-        width: 100%;
-    }
+
 }
 
 @media only screen and (min-width: 600px) {
-    .tripple-slider-container {
-        width: 100%;
-    }
+
 }
 
 @media only screen and (min-width: 768px) {
 
-    .tripple-slider-container {
-        width: 100%;
-    }
-    .tripple-slider {
-        margin-left: 5px;
-        margin-right: 5px;
-    }
+
 }
 
 @media only screen and (min-width: 992px) {
-    .tripple-slider-container {
-        width: 992px;
-    }
+
 }
 
 @media only screen and (min-width: 1200px) {
-    .tripple-slider-container {
-        width:1200px;
-    }
+
 }
 
 @media only screen and (min-width: 1500px) {

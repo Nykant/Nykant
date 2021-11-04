@@ -7,19 +7,22 @@
 }
 
 .product-item {
+    padding:10px;
+    background-color:var(--base);
     margin: auto;
-    margin-bottom: 70px;
     width:100%;
-
-    height: auto;
-    border-bottom: 2px solid var(--black-fade);
+    height: 300px;
 }
 
     .product-item:hover {
-        border-bottom: 2px solid var(--blue);
+
     }
 
 .product-text {
+    padding:10px;
+    background-color:var(--light-blue);
+    position:absolute;
+    bottom:10px;
     padding-top:20px;
     text-align:left;
 }
@@ -47,7 +50,10 @@
 
 .product-item img {
     max-width: 100%;
-    height: auto;
+    max-height: 250px;
+    object-fit: cover;
+    object-position: center;
+    margin:auto;
 }
 
 .product-images {

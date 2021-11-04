@@ -1,4 +1,58 @@
-﻿////var slideshow = document.getElementById('slideshow');
+﻿var theInterval = undefined;
+var slidebuttons = document.getElementById('slide-buttons').children;
+var slidecontainer = document.getElementById('slide-container');
+var slidenumber = 1;
+slidecontainer.style.left = '-0%';
+
+for (var i = 0; i < slidebuttons.length; i++) {
+    if (i == 0) {
+        slidebuttons[i].addEventListener('click', function () {
+            slidecontainer.style.left = '-0%';
+            slidenumber = 0;
+        });
+    }
+    else if (i == 1) {
+        slidebuttons[i].addEventListener('click', function () {
+            slidecontainer.style.left = '-100%';
+            slidenumber = 1;
+        });
+    }
+    else if (i == 2) {
+        slidebuttons[i].addEventListener('click', function () {
+            slidecontainer.style.left = '-200%';
+            slidenumber = 2;
+        });
+    }
+}
+
+$(document).ready(function () {
+    theInterval = setInterval(function () {
+        slidebuttons[slidenumber].click();
+        slidenumber++;
+        if (slidenumber > 2) {
+            slidenumber = 0;
+        }
+    }, 3000)
+});
+
+window.onbeforeunload = function (e) {
+    clearInterval(theInterval);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////var slideshow = document.getElementById('slideshow');
 ////var img, img2, infobox, header, info, productlink1, productlink2, productlink3, i, shelf, hanger, productlink1text, productlink1header, productlink1p, productlink2text, productlink2header, productlink2p, productlink3text, productlink3header, productlink3p;
 ////i = 1;
 
@@ -29,7 +83,7 @@
 ////infobuttondiv.setAttribute('class', 'button infobutton');
 ////infobuttondiv.textContent = 'Se Alle';
 ////infobutton.appendChild(infobuttondiv);
-    
+
 ////img = document.createElement('img');
 ////img.setAttribute('src', updateSrc(i));
 ////i++;
@@ -95,43 +149,3 @@
 
 ////    }, 10000)
 ////}, 20000);
-
-
-
-
-
-
-$(document).ready(function () {
-    var slidebuttons = document.getElementById('slide-buttons').children;
-    var slidecontainer = document.getElementById('slide-container');
-    var left = undefined;
-    for (var i = 0; i < slidebuttons.length; i++) {
-        if (i == 0) {
-            left = '-0%';
-        }
-        else if (i == 1) {
-            left = '-100%';
-        }
-        else if (i == 2) {
-            left = '-200%';
-        }
-
-        slidebuttons[i].addEventListener('click', function () {
-            slidecontainer.style.left = left;
-        });
-    }
-
-    //var theInterval = setInterval(function () {
-    //    slidebuttons[slidenumber].click();
-    //    slidenumber++;
-    //    if (slidenumber > 2) {
-    //        slidenumber = 0;
-    //    }
-    //}, 3000)
-
-    //window.onbeforeunload = function (e) {
-    //    clearInterval(theInterval);
-    //    /*    document.getElementById('navbar').setAttribute("class", "navbar");*/
-    //}
-});
-
