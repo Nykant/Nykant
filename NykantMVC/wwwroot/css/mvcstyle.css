@@ -11,7 +11,7 @@
     --blue: #7ed8ff;
     --dark: #303030;
     --red: #ff5f5f;
-    --light-grey: #ededed;
+    --light-grey: #f1f1f1;
     --dark-grey: #2b2b2b;
     --light-blue: #e8f8ff;
     --light-blue2: #effbff;
@@ -24,6 +24,8 @@
     --large: 24px;
     --extra-large: 34px;
     --black-fade: rgba(0, 0, 0, 0.1);
+    --basish: #fffff7;
+    --nicegreen: #d8ffec;
 }
 
 html, body, div, span, applet, object, iframe,
@@ -595,6 +597,10 @@ ol, ul {
         background-color: var(--light-grey);
     }
 
+    .background-basish {
+        background-color:var(--basish);
+    }
+
 .background-dark {
     background: var(--dark);
     background-color: var(--dark);
@@ -607,6 +613,14 @@ ol, ul {
     .border-bottom {
         border-bottom: 1px solid var(--black-fade);
     }
+
+.border {
+    border: 1px solid var(--black-fade);
+}
+
+.border-top {
+    border: 1px solid var(--black-fade);
+}
 
 .modal {
     top: 0;

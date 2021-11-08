@@ -3,6 +3,7 @@
     ViewData["Title"] = "Nykant - Egetræsmøbler Af Dansk Design";
     ViewData["Description"] = "Nykant er en dansk virksomhed, som er dedikeret til at designe møbler af træ, inspireret af dansk design.";
 }
+<script src="~/JS/viewport.js" ></script>
 <script src="~/JS/slideshow.js" defer></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
@@ -73,14 +74,25 @@
     </div>
 </div>
 
-<div class="my-row background-lightgrey">
-    <div class="about-us">
-        <h1>
-            Om Os
-        </h1>
-        <p>
-            Hej vi er en blablabla
+<div class="my-row bottom-padding">
+    <div class="about-us" id="about-us">
+        <p id="about-us-text">
+            <span>Om Os</span>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br /> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,<br /> when an unknown printer took a galley of type and scrambled it to make a type specimen book.<br /> It has survived not only five centuries,<br /> but also the leap into electronic typesetting,<br /> remaining essentially unchanged. It was popularised in the 1960s with <br /> the release of Letraset sheets containing Lorem Ipsum passages,<br /> and more recently with desktop publishing software like Aldus<br /> PageMaker including versions of Lorem Ipsum.
+
         </p>
+    </div>
+</div>
+
+<div class="my-row background-basish border-top">
+    <div class="newsletter col-6 center">
+        <h1>
+            Nyhedsbrev
+        </h1>
+        <form>
+            <input placeholder="Type your email" />
+            <button>Join</button>
+        </form>
     </div>
 </div>
 

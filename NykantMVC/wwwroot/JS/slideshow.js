@@ -1,6 +1,7 @@
 ﻿var theInterval = undefined;
 var slidebuttons = document.getElementById('slide-buttons').children;
 var slidecontainer = document.getElementById('slide-container');
+var aboutus = document.getElementById('about-us');
 var slidenumber = 1;
 slidecontainer.style.left = '-0%';
 
@@ -39,7 +40,11 @@ window.onbeforeunload = function (e) {
     clearInterval(theInterval);
 }
 
-
+window.onscroll = function () {
+    if (elementInViewport(aboutus)) {
+        document.getElementById('about-us-text').style.display = 'table';
+    }
+}
 
 
 
