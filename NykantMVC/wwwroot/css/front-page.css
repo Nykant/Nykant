@@ -21,10 +21,10 @@
     height: 100%;
     clear: both;
     position: relative;
-    -webkit-transition: left 0.5s;
-    -moz-transition: left 0.5s;
-    -o-transition: left 0.5s;
-    transition: left 0.5s;
+    -webkit-transition: left 2s;
+    -moz-transition: left 2s;
+    -o-transition: left 2s;
+    transition: left 2s;
 }
 
 .slide {
@@ -46,11 +46,18 @@
     }
 
     .slide .slide-info {
-        background-color:var(--basish);
-        padding:50px;
+        background-color: var(--basish);
+        padding: 70px;
+        padding-top: 100px;
         height: 90%;
         width: 30%;
         float: left;
+        font-size: 50px;
+    }
+
+    .slide .slide-info span {
+        text-decoration:  underline;
+        text-decoration-thickness:2px;
     }
 
 #radio1:checked #slide-container {
