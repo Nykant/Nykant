@@ -24,6 +24,7 @@
     --large: 24px;
     --extra-large: 34px;
     --black-fade: rgba(0, 0, 0, 0.1);
+    --white-fade: rgba(255, 255, 255, 0.7);
     --basish: #fffff7;
     --nicegreen: #d8ffec;
 }
@@ -67,18 +68,20 @@ body {
 
 /* ----------------------- */
 
+
 input[type='radio']:after {
+    transition:all ease .4s;
     width: 15px;
     height: 15px;
     border-radius: 15px;
     top: -2px;
     left: -1px;
     position: relative;
-    background-color: #d1d3d1;
+    background-color: white;
+    border:1px solid black;
     content: '';
     display: inline-block;
     visibility: visible;
-    border: 2px solid white;
     cursor: pointer;
 }
 
@@ -89,11 +92,11 @@ input[type='radio']:checked:after {
     top: -2px;
     left: -1px;
     position: relative;
-    background-color: var(--blue);
+    background-color: var(--dark);
+    border: none;
     content: '';
     display: inline-block;
     visibility: visible;
-    border: 2px solid white;
 }
 
 a {
@@ -131,6 +134,16 @@ ol, ul {
     font-family: 'Lato', sans-serif;
     background-color: var(--light-blue);
     border-top: 1px solid var(--black-fade);
+}
+
+.sidepadding100 {
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.sidepadding {
+    padding-left:20px;
+    padding-right:20px;
 }
 
 .success-div {

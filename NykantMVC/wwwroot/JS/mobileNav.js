@@ -7,3 +7,7 @@ $('#nav-burger').on('click', function () {
         x.style.display = "block";
     }
 }) 
+
+$('#burger-close').on('click', function () {
+    $('#nav-links').css('display', 'none');
+})

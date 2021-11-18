@@ -6,17 +6,17 @@
 
 .slideshow {
     z-index: 0;
-    position: absolute;
+    position: relative;
     top: 0px;
     width: 100%;
-    height: 90vh;
+    height: 75vh;
     text-align: center;
     overflow: hidden;
-    border-bottom: 1px solid var(--black-fade);
+    border: 1px solid black;
+
 }
 
 .slide-container {
-    top: 100px;
     width: 300%;
     height: 100%;
     clear: both;
@@ -37,28 +37,13 @@
 }
 
     .slide img {
-        width: 70%;
-        height: 90%;
+        width: 100%;
+        height: 100%;
         float: right;
         object-fit: cover;
         object-position: center;
-        border-left: 1px solid var(--black-fade);
     }
 
-    .slide .slide-info {
-        background-color: var(--basish);
-        padding: 70px;
-        padding-top: 100px;
-        height: 90%;
-        width: 30%;
-        float: left;
-        font-size: 50px;
-    }
-
-    .slide .slide-info span {
-        text-decoration:  underline;
-        text-decoration-thickness:2px;
-    }
 
 #radio1:checked #slide-container {
     left: 0%;
@@ -74,16 +59,8 @@
 
 .slide-buttons {
     position: relative;
-    top: -20px;
+    top: -30px;
 }
-
-    .slide-buttons a {
-        display: inline-block;
-        height: 15px;
-        width: 15px;
-        border-radius: 50px;
-        background-color: var(--blue);
-    }
 
 /*      ------------------------------ ----------------------------------      */
 /*      ------------------------------ ----------------------------------      */
@@ -135,10 +112,14 @@
 }
 
 .newsletter h1 {
-    padding-bottom: 70px;
+    padding-bottom: 30px;
     width:100%;
     font-size:30px;
 }
+
+    .newsletter p {
+        padding-bottom: 30px;
+    }
 
 .newsletter form {
 

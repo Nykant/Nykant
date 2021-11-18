@@ -1,5 +1,5 @@
 ﻿.sb-example-3 {
-    float:right;
+    padding-top:20px;
 }
 
 .sb-example-3 .search__title {
@@ -59,7 +59,7 @@
     height: auto;
     width:100%;
     background-color: white;
-    border-bottom:1px solid var(--black-fade);
+    border-bottom:1px solid black;
 /*    box-shadow: 0px 0px 15px #000000;*/
 }
 
@@ -80,7 +80,7 @@
 
 .mobile-navbar-wrap {
     position: relative;
-    font-size: 30px;
+    font-size: 20px;
 }
 
     .mobile-navbar-wrap a {
@@ -97,7 +97,7 @@
 
 .desktop-navbar-wrap {
     position: relative;
-    font-size: 30px;
+    font-size: 20px;
 }
 
     .desktop-navbar-wrap a {
@@ -108,13 +108,13 @@
         float: left;
         color: var(--dark);
         transition: all 0.3s;
+        font-weight: bold;
     }
 
         .desktop-navbar-wrap a:hover {
-
-            font-weight:100;
+            font-weight: bold;
             transform: scale(1.2);
-/*            color: var(--blue);*/
+            /*            color: var(--blue);*/
         }
 
 
@@ -204,17 +204,36 @@
 
 #nav-links {
     display:none;
-    animation:nav-links .1s;
+    position:fixed;
+    text-align:center;
+    padding:50px;
+    font-size:40px;
+    width:100vw;
+    height:100vh;
+    background-color:var(--white-fade);
+    z-index:230;
 }
 
-@keyframes nav-links {
-    from{
-        top:-150px;
+    #nav-links i {
+        padding-bottom: 20px;
+        cursor:pointer; 
+        transition:all ease .4s;
     }
-    to{
-        top:0px;
+
+    #nav-links i:hover {
+        transform:scale(1.2);
     }
-}
+
+    #nav-links a {
+        padding-top: 30px;
+        transition: all ease .4s;
+    }
+
+    #nav-links a:hover {
+        font-weight:100;
+        transform:scale(1.2);
+    }
+
 
 #shopping-bag {
     float:right;
@@ -320,12 +339,18 @@ a.icon {
 }
 
 #product-link {
-    padding-top:33px;
-    font-size:25px;
 }
 
 /* navbar-mobile */
 @media only screen and (max-width: 600px) {
+
+
+    #searchbox {
+        display: none;
+    }
+    #desktop-row{
+        display:none;
+    }
 
     #product-link {
         display: none;
@@ -343,7 +368,7 @@ a.icon {
         .desktop-navbar-wrap a {
             margin-right: 15px;
             margin-left: 15px;
-            font-size: 25px;
+            font-size: 20px;
         }
 
     #search-button {
@@ -376,6 +401,15 @@ a.icon {
 
 @media only screen and (min-width: 600px) {
 
+
+    #searchbox {
+        display: block;
+    }
+
+    #desktop-row {
+        display: block;
+    }
+
     #product-link {
         display: inline-block;
     }
@@ -392,13 +426,9 @@ a.icon {
             .desktop-navbar-wrap a {
                 margin-right: 35px;
                 margin-left: 0px;
-                font-size: 30px;
+                font-size: 20px;
             }
 
-    #search-button {
-        margin-right: 35px;
-        font-size: 30px;
-    }
 
     a.icon {
         font-size: 30px;
@@ -425,6 +455,7 @@ a.icon {
 
 @media only screen and (min-width: 768px) {
 
+
     #product-link {
         display: inline-block;
     }
@@ -434,8 +465,8 @@ a.icon {
     }
 
     .desktop-navbar-wrap {
-        padding-left: 60px;
-        padding-right: 60px;
+        padding-left: 100px;
+        padding-right: 100px;
     }
 
         .desktop-navbar-wrap a {
@@ -476,8 +507,8 @@ a.icon {
     }
 
     .desktop-navbar-wrap {
-        padding-left: 180px;
-        padding-right: 180px;
+        padding-left: 200px;
+        padding-right: 200px;
     }
 
         .desktop-navbar-wrap a {
@@ -516,8 +547,8 @@ a.icon {
         display: none;
     }
     .desktop-navbar-wrap {
-        padding-left: 280px;
-        padding-right: 280px;
+        padding-left: 300px;
+        padding-right: 300px;
     }
 
         .desktop-navbar-wrap a {

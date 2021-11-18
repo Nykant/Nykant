@@ -8,19 +8,25 @@
     position: relative;
     width: 100%;
     padding: 18px;
-    border: 1px solid #e1e7ec;
-    border-radius: 7px;
-    background-color: #fff
+/*    border: 1px solid var(--black-fade);*/
+    background-image: linear-gradient(white, var(--black-fade));
 }
 
-.product-card:hover .product-title {
-    font-weight:bold;
+
+
+    .product-card:hover .product-title {
+        font-weight: bold;
+    }
+
+.product-card:hover img {
+    transform:scale(1.2);
 }
 
-.product-card img {
-    margin:auto;
-    max-height:250px;
-}
+    .product-card img {
+        transition: all ease .4s;
+        margin: auto;
+        max-height: 150px;
+    }
 
     .product-card .product-badge {
         top: 15px;
