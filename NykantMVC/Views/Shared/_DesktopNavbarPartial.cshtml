@@ -11,64 +11,83 @@
 
 <div id="navbar" class="navbar">
     <div class="desktop-navbar-wrap">
-        <a href="javascript:void(0);" id="nav-burger">
-            <img class="nav-svg" src="~/lib/svg/bars.svg" />
-        </a>
-        <button id="search-button"><img class="nav-svg" src="~/lib/svg/search.svg" /></button>
+        <div class="my-row">
+            <div class="logo-link">
+                <a asp-controller="Nykant" asp-action="Index">
+                    <div id="logo">
 
-        <div class="logo-link">
-            <a asp-controller="Nykant" asp-action="Index">
-                <div id="logo">
+                    </div>
+                </a>
+            </div>
 
+            <div class="sb-example-3">
+                <!-- partial:index.partial.html -->
+                <div class="search__container">
+                    <form>
+                        <input class="search__input" type="text" placeholder="Search">
+                    </form>
                 </div>
+            </div>
+
+            <a href="javascript:void(0);" id="nav-burger">
+                <img class="nav-svg" src="~/lib/svg/bars.svg" />
             </a>
+        </div>
+        <div class="my-row">
+            <a id="product-link" asp-controller="Product" asp-action="Index">PRODUKTER</a>
+            <a id="shopping-bag" asp-controller="Bag" asp-action="Details"><span>@ViewBag.BagItemAmount</span> <img class="nav-svg" src="~/lib/svg/shopping-bag.svg" /></a>
+
+            @if (User.Identity.IsAuthenticated)
+            {
+
+                <div class="dropdown">
+                    <button href="javascript:void(0);" class="dropbtn" id="userLogo">
+                        <img class="nav-svg" src="~/lib/svg/user.svg" />
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="@baseUrl/identity/account/manage/email">
+                            Indstillinger
+                        </a>
+                        <a asp-controller="Order" asp-action="History">
+                            Ordre historik
+                        </a>
+                        <a asp-controller="Account" asp-action="Logout">
+                            Log ud
+                        </a>
+                    </div>
+                </div>
+
+            }
+            else
+            {
+
+                <div class="dropdown">
+                    <button href="javascript:void(0);" class="dropbtn" id="userLogo">
+                        <img class="nav-svg" src="~/lib/svg/user.svg" />
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="@baseUrl/account/login?redirectaction=@action&redirectcontroller=@controller">
+                            Log ind
+                        </a>
+                        <a href="@baseUrl/identity/account/register?redirectaction=@action&redirectcontroller=@controller">
+                            Registrer
+                        </a>
+                    </div>
+                </div>
+
+            }
+
         </div>
 
 
-        <a id="product-link" asp-controller="Product" asp-action="Index">PRODUKTER</a>
-        <a id="shopping-bag" asp-controller="Bag" asp-action="Details"><span>@ViewBag.BagItemAmount</span> <img class="nav-svg" src="~/lib/svg/shopping-bag.svg" /></a>
 
-        @if (User.Identity.IsAuthenticated)
-        {
 
-            <div class="dropdown">
-                <button href="javascript:void(0);" class="dropbtn" id="userLogo">
-                    <img class="nav-svg" src="~/lib/svg/user.svg" />
-                </button>
-                <div class="dropdown-content">
-                    <a href="@baseUrl/identity/account/manage/email">
-                        Indstillinger
-                    </a>
-                    <a asp-controller="Order" asp-action="History">
-                        Ordre historik
-                    </a>
-                    <a asp-controller="Account" asp-action="Logout">
-                        Log ud
-                    </a>
-                </div>
-            </div>
-
-        }
-        else
-        {
-
-            <div class="dropdown">
-                <button href="javascript:void(0);" class="dropbtn" id="userLogo">
-                    <img class="nav-svg" src="~/lib/svg/user.svg" />
-                </button>
-                <div class="dropdown-content">
-                    <a href="@baseUrl/account/login?redirectaction=@action&redirectcontroller=@controller">
-                        Log ind
-                    </a>
-                    <a href="@baseUrl/identity/account/register?redirectaction=@action&redirectcontroller=@controller">
-                        Registrer
-                    </a>
-                </div>
-            </div>
-
-        }
         <div id="nav-links">
             <a alt="PRODUKTER" asp-controller="Product" asp-action="Index">PRODUKTER</a>
         </div>
+
+
+
+
     </div>
 </div>
