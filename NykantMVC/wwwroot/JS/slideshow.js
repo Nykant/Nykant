@@ -42,7 +42,7 @@ window.onbeforeunload = function (e) {
 
 window.onscroll = function () {
     if (elementInViewport(aboutus)) {
-        document.getElementById('about-us-text').style.display = 'table';
+        document.getElementById('about-us-text').style.opacity = '1';
     }
 }
 

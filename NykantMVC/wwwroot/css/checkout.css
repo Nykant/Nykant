@@ -294,7 +294,7 @@
 
 @media only screen and (min-width: 600px) {
     .responsive-container {
-        width: 600px;
+        width: 540px;
         margin: auto;
     }
 
@@ -315,7 +315,7 @@
 
 @media only screen and (min-width: 768px) {
     .responsive-container {
-        width: 768px;
+        width: 700px;
         margin: auto;
     }
 
@@ -335,7 +335,7 @@
 
 @media only screen and (min-width: 873px) {
     .responsive-container {
-        width: 873px;
+        width: 800px;
         margin: auto;
     }
 
@@ -354,7 +354,7 @@
 
 @media only screen and (min-width: 992px) {
     .responsive-container {
-        width: 992px;
+        width: 900px;
         margin: auto;
     }
 
@@ -374,7 +374,7 @@
 
 @media only screen and (min-width: 1200px) {
     .responsive-container {
-        width: 1200px;
+        width: 1100px;
         margin: auto;
     }
 

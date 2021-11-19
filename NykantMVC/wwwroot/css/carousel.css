@@ -8,11 +8,8 @@
     position: relative;
     width: 100%;
     padding: 18px;
-/*    border: 1px solid var(--black-fade);*/
     background-image: linear-gradient(white, var(--black-fade));
 }
-
-
 
     .product-card:hover .product-title {
         font-weight: bold;
