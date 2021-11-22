@@ -6,7 +6,7 @@
         @foreach (var item in Model.Checkout.BagItems)
         {
             <div class="sidebar-item">
-                <img src="~/images/gyngestol.jpg" />
+                <img src="@item.Product.ImageSource" />
                 <p>@item.Product.Name</p>
                 <p>@item.Quantity @localizer["Pieces"]</p>
             </div>
@@ -17,7 +17,6 @@
         <p>@localizer["Taxes:"] <span id="checkout-taxes" data-taxes="@Model.Checkout.TotalPrice">@Model.Checkout.Taxes</span> kr.</p>
         <p>@localizer["Total Inc. Taxes:"] <span id="checkout-total" data-totalPrice="@Model.Checkout.TotalPrice">@Model.Checkout.TotalPrice</span> kr.</p>
     </div>
-
         <a asp-controller="Checkout" asp-action="CancelCheckout">
             <div class="button top-side-padding">
                 @localizer["Cancel order"]

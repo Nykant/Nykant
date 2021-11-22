@@ -8,7 +8,8 @@
     position: relative;
     width: 100%;
     padding: 18px;
-    background-image: linear-gradient(white, var(--black-fade));
+    background:white;
+/*    border:1px solid black;*/
 }
 
     .product-card:hover .product-title {

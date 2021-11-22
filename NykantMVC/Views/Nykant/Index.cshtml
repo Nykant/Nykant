@@ -1,8 +1,10 @@
 ﻿@model List<Category>
+
 @{
     ViewData["Title"] = "Nykant - Egetræsmøbler Af Dansk Design";
     ViewData["Description"] = "Nykant er en dansk virksomhed, som er dedikeret til at designe møbler af træ, inspireret af dansk design.";
 }
+
 <script src="~/JS/viewport.js"></script>
 <script src="~/JS/slideshow.js" defer></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
@@ -19,8 +21,8 @@
         </div>
     </div>*@
 
-<div class="my-row top-padding mobile-sidepadding">
-    <div class="slideshow responsive-container">
+<div class="my-row">
+    <div class="slideshow">
         <span id="slide-1"></span>
         <span id="slide-2"></span>
         <span id="slide-3"></span>
@@ -35,7 +37,6 @@
                 <img src="../images/Products/NYKANT_miljoe 5.png" />
             </div>
         </div>
-
     </div>
 </div>
 
@@ -49,31 +50,7 @@
     </div>
 </div>
 
-<div class="my-row">
-    <div class="info-row">
-        <div class="col-6 center">
-            <div class="col-6 left">
-                <svg class="e-mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 801">
-                    <g>
-                        <path  d="M135.58,290H19.05A11.29,11.29,0,0,1,9.4,272.84c17.19-28,59.07-86.29,138.83-144.57l.15-.12c2.7-2.39,86.76-75.72,234.86-105.94,0,0,205.51-48.46,404.1,43.7,0,0,166.13,82.92,235.55,207.35A11.3,11.3,0,0,1,1013,290H963.3a45,45,0,0,1-39.17-22.64c-14.61-25.71-46.91-70.29-113-117.63,0,0-119.41-88.17-306.75-69.56,0,0-106.79,7.78-195,63.1l-.19.11c-2.47,1.19-56.09,27.76-134.12,127.45A50.14,50.14,0,0,1,135.58,290Z"></path>
-                        <path  d="M895.73,335.93h116.52a11.29,11.29,0,0,1,9.65,17.18c-17.18,28-59,86.26-138.77,144.53a2.23,2.23,0,0,0-.24.19c-3.39,3-87.35,75.82-234.83,105.91,0,0-205.51,48.46-404.1-43.7,0,0-166.13-82.92-235.54-207.35a11.3,11.3,0,0,1,9.91-16.76H68a45,45,0,0,1,39.17,22.63c14.62,25.72,46.92,70.3,113,117.64,0,0,119.41,88.17,306.75,69.56,0,0,106.72-7.78,195-63.06l.33-.18c3.18-1.54,56.58-28.45,134.06-127.42A50.09,50.09,0,0,1,895.73,335.93Z"></path>
-                        <path  d="M633.66,362.34A40.1,40.1,0,0,0,601,379.48c-9.29,13.33-25.94,31-52.52,39.46,0,0-64.15,23.19-111.34-30.78L680,279.18a20.42,20.42,0,0,0,10.52-25.6A184.52,184.52,0,0,0,511.88,135.07c-97.11,3.25-175.78,82.7-178.12,179.83a184.49,184.49,0,0,0,360.33,60.23,10.06,10.06,0,0,0-9.66-13.05ZM412.28,320.67a103.52,103.52,0,0,1,183.2-66.09l-182,82.11A104.42,104.42,0,0,1,412.28,320.67Z"></path>
-                    </g>
-                </svg>
-                <p>Vi er e-mærket</p>
-            </div>
-            <div class="col-6 left">
-                <div class="truck">
-                    <i class="fas fa-truck"></i>
-                    <p>Gratis levering</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="container top-padding">
+<div class="container">
     <div class="row">
         <div class="col-md-12">
             <div class="owl-carousel">
@@ -91,19 +68,39 @@
     </div>
 </div>
 
-<div class="my-row bottom-padding">
-    <div class="about-us" id="about-us">
-        <p id="about-us-text">
-            <span>HVAD KAN VI?</span>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br /> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,<br /> when an unknown printer took a galley of type and scrambled it to make a type specimen book.<br /> It has survived not only five centuries,<br /> but also the leap into electronic typesetting,<br /> remaining essentially unchanged. It was popularised in the 1960s with <br /> the release of Letraset sheets containing Lorem Ipsum passages,<br /> and more recently with desktop publishing software like Aldus<br /> PageMaker including versions of Lorem Ipsum.
-
-        </p>
+<div class="my-row">
+    <div class="info-row ">
+        <div class="responsive-container center">
+            <div class="col-6 left">
+                <svg class="e-mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 801">
+                    <g>
+                        <path class="fill" d="M135.58,290H19.05A11.29,11.29,0,0,1,9.4,272.84c17.19-28,59.07-86.29,138.83-144.57l.15-.12c2.7-2.39,86.76-75.72,234.86-105.94,0,0,205.51-48.46,404.1,43.7,0,0,166.13,82.92,235.55,207.35A11.3,11.3,0,0,1,1013,290H963.3a45,45,0,0,1-39.17-22.64c-14.61-25.71-46.91-70.29-113-117.63,0,0-119.41-88.17-306.75-69.56,0,0-106.79,7.78-195,63.1l-.19.11c-2.47,1.19-56.09,27.76-134.12,127.45A50.14,50.14,0,0,1,135.58,290Z"></path>
+                        <path class="fill" d="M895.73,335.93h116.52a11.29,11.29,0,0,1,9.65,17.18c-17.18,28-59,86.26-138.77,144.53a2.23,2.23,0,0,0-.24.19c-3.39,3-87.35,75.82-234.83,105.91,0,0-205.51,48.46-404.1-43.7,0,0-166.13-82.92-235.54-207.35a11.3,11.3,0,0,1,9.91-16.76H68a45,45,0,0,1,39.17,22.63c14.62,25.72,46.92,70.3,113,117.64,0,0,119.41,88.17,306.75,69.56,0,0,106.72-7.78,195-63.06l.33-.18c3.18-1.54,56.58-28.45,134.06-127.42A50.09,50.09,0,0,1,895.73,335.93Z"></path>
+                        <path class="fill" d="M633.66,362.34A40.1,40.1,0,0,0,601,379.48c-9.29,13.33-25.94,31-52.52,39.46,0,0-64.15,23.19-111.34-30.78L680,279.18a20.42,20.42,0,0,0,10.52-25.6A184.52,184.52,0,0,0,511.88,135.07c-97.11,3.25-175.78,82.7-178.12,179.83a184.49,184.49,0,0,0,360.33,60.23,10.06,10.06,0,0,0-9.66-13.05ZM412.28,320.67a103.52,103.52,0,0,1,183.2-66.09l-182,82.11A104.42,104.42,0,0,1,412.28,320.67Z"></path>
+                    </g>
+                </svg>
+                <p>Vi er e-mærket</p>
+            </div>
+            <div class="col-6 left">
+                <div class="truck">
+                    <i class="fas fa-truck"></i>
+                    <p>Gratis levering</p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
-
-
-
+<div class="my-row bottom-padding">
+    <div class="responsive-container">
+        <div class="about-us" id="about-us">
+            <p id="about-us-text">
+                <span>HVEM ER VI?</span>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            </p>
+        </div>
+    </div>
+</div>
 
 <div class="my-row background-basish border-top">
     <div class="newsletter col-6 center">
