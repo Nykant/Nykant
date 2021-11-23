@@ -24,7 +24,7 @@
     --large: 24px;
     --extra-large: 34px;
     --black-fade: rgba(0, 0, 0, 0.1);
-    --white-fade: rgba(255, 255, 255, 0.7);
+    --white-fade: rgba(255, 255, 255, 0.9);
     --basish: #fffff7;
     --nicegreen: #d8ffec;
     --font1: #777069;
@@ -140,7 +140,7 @@ ol, ul {
     padding: 30px;
     padding-left: 70px;
     font-family: 'Lato', sans-serif;
-    background-color: var(--light-blue);
+    background-color: white;
     border-top: 1px solid var(--black-fade);
 }
 
@@ -640,7 +640,7 @@ ol, ul {
 }
 
 .border-top {
-    border: 1px solid var(--black-fade);
+    border-top: 1px solid var(--black-fade);
 }
 
 .modal {

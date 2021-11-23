@@ -210,12 +210,10 @@ namespace NykantMVC.Controllers
             string uri = null;
             if (url.StartsWith("/api"))
             {
-                Console.WriteLine("url starts with /api");
                 uri = "https://nykant.dk" + url;
             }
             else
             {
-                Console.WriteLine("url doesnt start with /api");
                 uri = _urls.Api + url;
             }
 
