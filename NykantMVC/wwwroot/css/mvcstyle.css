@@ -24,11 +24,15 @@
     --large: 24px;
     --extra-large: 34px;
     --black-fade: rgba(0, 0, 0, 0.1);
+    --black-fade2: rgba(0, 0, 0, 0.7);
     --white-fade: rgba(255, 255, 255, 0.9);
     --basish: #fffff7;
     --nicegreen: #d8ffec;
     --font1: #777069;
     --font2: #e6e6e6;
+    --color1: #F7F5F2;
+    --color2: #eae7de;
+    --color3: #e5ded0;
 }
 
 html, body, div, span, applet, object, iframe,
@@ -458,10 +462,10 @@ ol, ul {
         font-family: 'Lato', sans-serif;
         font-size: 14px;
         border-radius: 0px;
-        border: 2px solid rgba(0,0,0,1);
+        border: 2px solid var(--dark);
         outline: none;
-        background-color: black;
-        color: white;
+        background-color: var(--dark);
+        color: var(--font2);
         height: 50px;
         width: 100%;
         cursor: pointer;

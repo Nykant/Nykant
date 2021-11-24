@@ -4,9 +4,10 @@
     ViewData["Title"] = Model.Name;
     ViewData["Description"] = Model.Description;
 }
-
+<script src="~/JS/swiped-events.min.js"></script>
 <script src="~/JS/product-details.js" defer></script>
 <script src="~/JS/collapsible.js"></script>
+<script src="~/JS/product-slideshow.js" defer></script>
 
 <div class="modal" id="item-added-modal">
     <div id="bagitem-added">
@@ -33,17 +34,41 @@
 <div class="my-row top-padding border-bottom bottom-padding">
     <div class="col-10 center" id="details-wrapper">
         <div class="col-8 left" id="details-left">
-            @foreach (var image in Model.Images)
-            {
-                <div class="col-6 left">
-                    <div class="image-wrap">
-                        <img src="../@image.Source" />
+            <div class="my-row">
+                <div class="product-slideshow" id="product-slideshow">
+                    <div class="product-slide-container" id="product-slide-container">
+                        @foreach (var image in Model.Images)
+                        {
+                            <div class="product-slide">
+                                <img src="../@image.Source" />
+                            </div>
+                        }
                     </div>
                 </div>
-            }
+
+                <div class="my-row top-side-padding">
+                    <div class="col-2 center">
+                        <div class="product-slide-buttons" id="product-slide-buttons">
+                            @{
+                                <input id="radio1" type="radio" name="slide" checked />
+
+                                @for (int i = 0; i < Model.Images.Count() - 1; i++)
+                                {
+                                    int h = 1;
+                                    h++;
+                                    <input id="radio-@h " type="radio" name="slide" />
+                                }
+                            }
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
-        <div class="col-4 right" id="details-right">
+        <div id="details-right">
             <div class="details-info-wrap fadein">
 
                 <h1>@Model.Name</h1>

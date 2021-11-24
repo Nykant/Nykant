@@ -40,11 +40,11 @@ window.onbeforeunload = function (e) {
     clearInterval(theInterval);
 }
 
-window.onscroll = function () {
-    if (elementInViewport(aboutus)) {
-        document.getElementById('about-us-text').style.opacity = '1';
-    }
-}
+//window.onscroll = function () {
+//    if (elementInViewport(aboutus)) {
+//        document.getElementById('about-us-text').style.opacity = '1';
+//    }
+//}
 
 
 
