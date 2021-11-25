@@ -54,36 +54,6 @@ product_slideshow.addEventListener('swiped-right', function () {
     if (product_slidenumber != 0) {
         product_slidenumber--;
         product_slidebuttons[product_slidenumber].click();
-        //if (product_slidenumber == 0) {
-
-        //        product_slidecontainer.style.left = '-0%';
-
-        //}
-        //else if (product_slidenumber == 1) {
-
-        //        product_slidecontainer.style.left = '-100%';
-
-        //}
-        //else if (product_slidenumber == 2) {
-
-        //        product_slidecontainer.style.left = '-200%';
-
-        //}
-        //else if (product_slidenumber == 3) {
-
-        //        product_slidecontainer.style.left = '-300%';
-
-        //}
-        //else if (product_slidenumber == 4) {
-
-        //        product_slidecontainer.style.left = '-400%';
-
-        //}
-        //else if (product_slidenumber == 5) {
-
-        //        product_slidecontainer.style.left = '-500%';
-
-        //}
     }
 });
 
@@ -91,39 +61,32 @@ product_slideshow.addEventListener('swiped-left', function () {
     if (product_slidenumber != 6) {
         product_slidenumber++;
         product_slidebuttons[product_slidenumber].click();
-        //if (product_slidenumber == 1) {
-
-        //        product_slidecontainer.style.left = '-100%';
-        //}
-        //else if (product_slidenumber == 2) {
-
-        //        product_slidecontainer.style.left = '-200%';
-
-        //}
-        //else if (product_slidenumber == 3) {
-
-        //        product_slidecontainer.style.left = '-300%';
-
-        //}
-        //else if (product_slidenumber == 4) {
-
-        //        product_slidecontainer.style.left = '-400%';
-
-        //}
-        //else if (product_slidenumber == 5) {
-
-        //        product_slidecontainer.style.left = '-500%';
-
-        //}
-        //else if (product_slidenumber == 6) {
-
-        //        product_slidecontainer.style.left = '-600%';
-
-        //}
     }
 });
 
+window.addEventListener("load", function () {
+    var pop = document.getElementById('pop');
+    var bigImg = document.getElementById('bigImg');
+    var close = document.getElementById('close-pop');
 
+    var product_slides = document.getElementsByClassName('product-slide');
+    for (var i = 0; i < product_slides.length; i++) {
+        var children = product_slides[i].children;
+        var img = children[0];
+        img.addEventListener('click', function (event) {
+            bigImg.src = event.currentTarget.src;
+            pop.style.display = 'flex';
+        });
+    }
+
+    pop.addEventListener('click', function () {
+        pop.style.display = 'none';
+    });
+
+    close.addEventListener('click', function () {
+        pop.style.display = 'none';
+    });
+});
 
 
 
@@ -182,14 +145,7 @@ product_slideshow.addEventListener('swiped-left', function () {
 //    }
 //}
 
-//window.addEventListener("load", function () {
-//    var product_slides = document.getElementsByClassName('product-slide');
-//    for (var i = 0; i < product_slides.length; i++) {
-//        var children = product_slides[i].children;
-//        var img = children[0];
-//        addZoom(img);
-//    }
-//});
+
 
 
 

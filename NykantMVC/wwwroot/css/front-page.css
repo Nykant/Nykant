@@ -165,7 +165,7 @@
         outline: none;
     }
         .newsletter form input:focus {
-            border: 2px solid var(--nicegreen);
+            border: 2px solid var(--color3);
         }
 
     .newsletter form button {
@@ -174,7 +174,7 @@
         width: 28%;
         border-radius: 5px;
         border: 1px solid var(--black-fade);
-        background:var(--nicegreen);
+        background:var(--color3);
         outline: none;
     }
 
@@ -184,7 +184,7 @@
         width: 28%;
         border-radius: 5px;
         border: 1px solid var(--black-fade);
-        background: #d8ffec;
+        background: var(--nicegreen);
         outline: none;
     }
 

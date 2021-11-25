@@ -31,19 +31,58 @@
     position: relative;
     background-position: center;
     background-size: cover;
-}
 
+}
 
     .product-slide img {
         max-width: 100%;
-        max-height: 500px;
+        max-height: 600px;
         object-fit: cover;
         object-position: center;
         margin: auto;
+        cursor: zoom-in;
+        border-radius: 20px;
     }
 
 .product-slide-buttons {
     position: relative;
+}
+
+.pop {
+    display: none;
+    position: fixed;
+    z-index: 369;
+    height: 100vh;
+    width: 100%;
+    background: var(--black-fade2);
+    padding: 20px;
+    margin: auto;
+    cursor: zoom-out;
+    justify-content: center;
+    align-items: center;
+}
+
+.bigImg {
+    display: block;
+    width:95%;
+    max-height: 95%;
+    object-fit: cover;
+    object-position: center;
+    margin: auto;
+    border-radius: 20px;
+}
+
+.pop i {
+    position:absolute;
+    font-size:60px;
+    right:40px;
+    top:40px;
+    transition:all ease .5s;
+    cursor:pointer;
+}
+
+.pop i:hover {
+    transform:scale(1.2);
 }
 
 /*.img-zoom-container {
@@ -262,7 +301,7 @@
 
 /* Style the button that is used to open and close the collapsible content */
 .collapsible-button2 {
-    background-color: transparent;
+    background-color: var(--color2);
     color: black;
     cursor: pointer;
     padding: 18px;
@@ -275,7 +314,7 @@
 
     /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
     .active, .collapsible-button2:hover {
-        background-color: var(--color2);
+        background-color: var(--color3);
     }
 
     .collapsible-button2:focus {
@@ -551,8 +590,7 @@
 }
 
 #bagitem-added p {
-    padding-bottom:30px;
-    display:inline-block;
+
 }
 
 #bagitem-added-close {
@@ -564,7 +602,7 @@
 }
 
 #bagitem-added .button {
-    margin-top:50px;
+
 }
 
     #bagitem-added-close:hover {
@@ -572,9 +610,9 @@
     }
 
 .bagitem-added-product {
-    background-color:var(--light-blue);
+    background-color:var(--color1);
     height:65px;
-    margin-bottom:20px;
+    margin-bottom:50px;
 }
     .bagitem-added-product p {
         display: inline-block;

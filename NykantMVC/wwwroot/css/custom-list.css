@@ -17,7 +17,7 @@
 }
 
     .custom-list-option:hover {
-        background-color:var(--light-blue);
+        background-color:var(--color2);
 /*        border-bottom: 1px solid black;
         border-left: 1px solid black;*/
         /*background: linear-gradient(to right, RGBA(109,206,255,0), rgba(71, 71, 71, 1))*/
@@ -30,7 +30,7 @@
     }
 
 .selected {
-    background-color: var(--light-blue);
+    background-color: var(--color2);
     /*    border-bottom: 1px solid black;
     border-left: 1px solid black;*/
     /*    background: linear-gradient(to right, RGBA(109,206,255,0.1), rgba(71, 71, 71, 1));*/

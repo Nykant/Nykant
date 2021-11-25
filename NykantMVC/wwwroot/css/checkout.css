@@ -36,7 +36,7 @@
     display: flex;
     padding: 10px;
     margin-bottom:10px;
-    border:1px solid black;
+    background:var(--color2);
 }
 
     .sidebar-item img {
@@ -188,7 +188,7 @@
 
 .checkout-price {
     width: 100%;
-    border-top: 3px solid var(--dark);
+    border-top: 1px solid var(--black-fade);
     text-align: left;
     font-weight: normal;
     padding-bottom: 30px;
@@ -209,7 +209,7 @@
 .check-sign {
     position:relative;
     font-size:40px;
-    color:green;
+    color:white;
     transform:translate(-25px, -60px);
     display: none;
     float:right;
@@ -217,9 +217,9 @@
 
 .checkout-header {
     width: 100%;
-    color: var(--font2);
+    color: var(--font1);
     padding: 20px;
-    background-color: var(--dark);
+    background-color: var(--color2);
     text-align: center;
 }
 
@@ -266,10 +266,9 @@
 }
 
 .edit-button {
-    height: 30px;
     width: 80px;
     position: relative;
-    transform: translateY(-30px);
+    transform: translateY(-40px);
     display: none;
     float:right;
 }
