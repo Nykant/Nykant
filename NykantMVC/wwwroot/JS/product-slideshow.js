@@ -64,29 +64,93 @@ product_slideshow.addEventListener('swiped-left', function () {
     }
 });
 
-window.addEventListener("load", function () {
-    var pop = document.getElementById('pop');
-    var bigImg = document.getElementById('bigImg');
-    var close = document.getElementById('close-pop');
+// Magnifying glass
 
-    var product_slides = document.getElementsByClassName('product-slide');
-    for (var i = 0; i < product_slides.length; i++) {
-        var children = product_slides[i].children;
-        var img = children[0];
-        img.addEventListener('click', function (event) {
-            bigImg.src = event.currentTarget.src;
-            pop.style.display = 'flex';
-        });
-    }
+//var zoom = document.querySelector("#zoom");
+//var zoomImg = document.querySelector("#zoom-img");
+//var product_slides = document.getElementsByClassName('product-slide');
+//var enterTL = new TimelineMax({ paused: true });
+//var timer = TweenLite.delayedCall(1, () => enterTL.reverse()).pause();
+//var cx, cy, ratio;
 
-    pop.addEventListener('click', function () {
-        pop.style.display = 'none';
-    });
+//function init(img) {
+//    zoomImg.src = img.src;
+//    ratio = img.naturalWidth / img.width;
+//    resize(img);
 
-    close.addEventListener('click', function () {
-        pop.style.display = 'none';
-    });
-});
+//    TweenLite.set(zoomImg, { xPercent: -50, yPercent: -50 });
+//    TweenLite.set(zoom, { autoAlpha: 0, scale: 0, xPercent: -75, yPercent: -150 });
+
+//    enterTL
+//        .to(
+//            img,
+//            0.5,
+//            { filter: "grayscale(1)", "-webkit-filter": "grayscale(1)" },
+//            0
+//        )
+//        .to(zoom, 0.5, { autoAlpha: 1, scale: 1.5 }, 1);
+
+//    window.addEventListener("resize", resize(img));
+//    img.addEventListener("mouseleave", leaveAction);
+//    img.addEventListener("mousemove", moveAction);
+//}
+
+//function leaveAction() {
+//    enterTL.reverse();
+//}
+
+//function moveAction(e) {
+//    enterTL.play();
+//    timer.restart(true);
+//    TweenLite.set(zoom, { x: e.x, y: e.y });
+//    TweenLite.set(zoomImg, { x: (cx - e.x) * ratio, y: (cy - e.y) * ratio });
+//}
+
+//function resize(img) {
+//    var rect = img.getBoundingClientRect();
+//    cx = rect.left + rect.width / 2;
+//    cy = rect.top + rect.height / 2;
+//}
+
+//for (var i = 0; i < product_slides.length; i++) {
+//    var children = product_slides[i].children;
+//    var img = children[0];
+//    img.addEventListener('mouseover', function (event) {
+//        init(event.currentTarget);
+//    });
+//}
+
+
+// -------------------
+
+
+
+
+
+
+//window.addEventListener("load", function () {
+//    var pop = document.getElementById('pop');
+//    var bigImg = document.getElementById('bigImg');
+//    var close = document.getElementById('close-pop');
+
+//    var product_slides = document.getElementsByClassName('product-slide');
+//    for (var i = 0; i < product_slides.length; i++) {
+//        var children = product_slides[i].children;
+//        var img = children[0];
+//        img.addEventListener('click', function (event) {
+//            bigImg.src = event.currentTarget.src;
+//            pop.style.display = 'flex';
+//        });
+//    }
+
+//    pop.addEventListener('click', function () {
+//        pop.style.display = 'none';
+//    });
+
+//    close.addEventListener('click', function () {
+//        pop.style.display = 'none';
+//    });
+//});
 
 
 

@@ -40,9 +40,33 @@
         object-fit: cover;
         object-position: center;
         margin: auto;
-        cursor: zoom-in;
+/*        cursor: zoom-in;*/
         border-radius: 20px;
+        filter: grayscale(0);
     }
+
+#zoom-img {
+    z-index: 369;
+    pointer-events: none;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    background: var(--color1);
+    border-radius: 20px;
+}
+
+#zoom {
+    z-index:369;
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.5), 5px 5px 10px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    overflow: hidden;
+    pointer-events: none;
+    visibility: hidden;
+    opacity: 0;
+}
 
 .product-slide-buttons {
     position: relative;
@@ -215,6 +239,8 @@
 .product-preferences button {
     outline: none;
 }
+
+
 
 
 /*---*/
@@ -570,27 +596,18 @@
 
 
 #bagitem-added {
-    top:97px;
     display:none;
-    right:0px;
-    position:fixed;
     height:auto;
+    top:30%;
+    width:500px;
     padding:20px;
     background-color:white;
-    animation:item-added 0.3s;
 }
 
-@keyframes item-added {
-    from{
-        right:-400px;
-    }
-    to{
-        right:0px;
-    }
-}
 
 #bagitem-added p {
-
+    padding-bottom:10px;
+    text-align:center;
 }
 
 #bagitem-added-close {
@@ -634,9 +651,7 @@
     }
 
 @media only screen and (max-width: 400px) {
-    #bagitem-added {
-        width: 100%;
-    }
+
     .bagitem-added-product p {
         padding-left: 10px;
         padding-right: 10px;
@@ -645,9 +660,7 @@
 }
 
 @media only screen and (min-width: 400px) {
-    #bagitem-added {
-        width: 400px;
-    }
+
 
     .bagitem-added-product p {
         padding-left: 20px;

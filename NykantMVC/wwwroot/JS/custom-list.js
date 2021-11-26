@@ -17,6 +17,8 @@ var shipping_form = document.getElementById('shipping-form');
 var submit_button = document.getElementById('custom-list-button')
 submit_button.disabled = true;
 
+
+
 for (i = 0; i < l; i++) {
     selElmnt = x[i].getElementsByTagName("select")[0];
     ll = selElmnt.length;

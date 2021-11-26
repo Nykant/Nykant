@@ -10,18 +10,18 @@
 <script src="~/JS/product-slideshow.js" defer></script>
 
 <div class="modal" id="item-added-modal">
-    <div id="bagitem-added">
+    <div id="bagitem-added" class="centered">
         <div id="bagitem-added-close">
             <i class="fas fa-times"></i>
         </div>
-        <p>Du har tilføjet et produkt til din kurv:</p>
+        <p>Produkt tilføjet til din kurv</p>
 
         <div class="bagitem-added-product">
             <div class="bag-item-img">
                 <img src="../@Model.ImageSource" />
             </div>
             <p>@Model.Name</p>
-            <p>@Model.Price.-</p>
+            <p class="right">@Model.Price.-</p>
         </div>
         <a asp-controller="Bag" asp-action="Details">
             <div class="button">
@@ -34,8 +34,12 @@
 <div class="my-row top-padding border-bottom bottom-padding">
     <div class="col-10 center" id="details-wrapper">
         <div class="col-8 left" id="details-left">
-            <div class="my-row">
+
+                <div id="zoom">
+                    <img id="zoom-img" />
+                </div>
                 <div class="product-slideshow" id="product-slideshow">
+
                     <div class="product-slide-container" id="product-slide-container">
                         @foreach (var image in Model.Images)
                         {
@@ -43,7 +47,9 @@
                                 <img src="../@image.Source" />
                             </div>
                         }
+
                     </div>
+
                 </div>
 
                 <div class="my-row top-side-padding">
@@ -64,7 +70,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+
 
         </div>
 

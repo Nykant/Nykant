@@ -36,7 +36,7 @@ namespace NykantMVC.Services
             var bodyBuilder = new BodyBuilder();
             for (int i = 0; i < order.OrderItems.Count(); i++)
             {
-                var image = bodyBuilder.LinkedResources.Add(order.OrderItems[i].Product.ImageSource);
+                var image = bodyBuilder.LinkedResources.Add(order.OrderItems[i].Product.Path);
                 image.ContentId = MimeUtils.GenerateMessageId();
                 order.OrderItems[i].ContentId = image.ContentId;
             }

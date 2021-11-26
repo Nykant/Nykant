@@ -37,7 +37,9 @@
 
                 <div class="col-12 right">
                     <button class="button" id="submit-payment" disabled>
-                        <div class="spinner hidden" id="paymentspinner"></div>
+                        <div id="paymentspinner" class="hidden">
+                            <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                        </div>
                         <span id="button-text">@localizer["Pay"]</span>
                     </button>
                 </div>

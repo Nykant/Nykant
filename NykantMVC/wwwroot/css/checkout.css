@@ -7,16 +7,22 @@
     padding: 10px;
     padding-left: 35px;
     padding-right: 35px;
+    line-height:normal;
+    text-align:left;
 }
 
-.gdpr-accept label {
-    display:inline;
-/*    float:left;*/
+    .gdpr-accept a {
+/*        display:inline-block;*/
+    }
 
-}
+    .gdpr-accept label {
+        display: inline;
+        /*    float:left;*/
+    }
     .gdpr-accept p {
         display: inline;
-/*        float: left;*/
+        margin-left:20px;
+        float: left;
     }
 
 .sidebar {
@@ -101,7 +107,7 @@
 }
 
 .shop:hover {
-    background: var(--light-grey);
+    background: var(--color1);
 }
 
 .shop-label {
@@ -129,7 +135,7 @@
     z-index: 10;
     text-align: left;
     animation: hideerror 0.3s ease-in 5s forwards;
-    background-color: var(--yellow);
+    background-color: var(--color3);
     padding: 5px;
 }
 
@@ -163,6 +169,14 @@
     padding: 10px;
     padding-left: 35px;
     padding-right: 35px;
+    line-height: normal;
+    text-align: left;
+}
+
+.same-as-invoice p {
+    display: inline;
+    margin-left: 20px;
+    float: left;
 }
 
 @keyframes hideerror {
@@ -221,6 +235,7 @@
     padding: 20px;
     background-color: var(--color2);
     text-align: center;
+    line-height:normal;
 }
 
 #shipping-form {
@@ -276,8 +291,6 @@
 /*#shipping-edit-button {
     transform:translate(+25px, -30px);
 }*/
-
-
 
 
 @media only screen and (max-width: 600px) {

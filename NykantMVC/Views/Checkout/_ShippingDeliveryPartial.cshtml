@@ -11,9 +11,9 @@
 }
 
 <div class="my-row bottom-side-padding">
-    <div class="responsive-form" id="shipping-headerr">
+    <div class="responsive-form">
 
-        <div class="checkout-header">
+        <div class="checkout-header" id="shipping-headerr">
             <h1>@localizer["Delivery Method"]</h1>
             <div class="check-sign" id="shipping-check-sign">
                 <i class="fa fa-check" aria-hidden="true"></i>
@@ -62,7 +62,9 @@
 
                 <div class="col-12 right">
                     <button id="custom-list-button" class="button" type="submit">
-                        <div class="spinner hidden" id="shippingspinner"></div>
+                        <div id="shippingspinner" class="hidden">
+                            <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                        </div>
                         <span id="shipping-button-text">@localizer["Continue"]</span>
                     </button>
                 </div>

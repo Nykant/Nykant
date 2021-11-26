@@ -8,32 +8,32 @@ var elements = stripe.elements();
 
 var style = {
     base: {
-        backgroundColor: "transparent",
+        backgroundColor: "#F7F5F2",
         textAlign: "left",
-        color: "black",
+        color: "#777069",
         fontFamily: 'Lato, sans-serif',
         fontSmoothing: "antialiased",
         fontSize: "25px",
         "::placeholder": {
-            color: "grey"
+            color: "#777069"
         },
         ":-webkit-autofill": {
-            color: "black",
-            backgroundColor: "transparent"
+            color: "#777069",
+            backgroundColor: "#F7F5F2"
         }
     },
     invalid: {
         fontFamily: 'Lato, sans-serif',
         color: "orange",
-        backgroundColor: "transparent",
+        backgroundColor: "#F7F5F2",
         iconColor: "#fa755a"
     },
-    complete: {
-        backgroundColor: "transparent",
-        color: "#8cffa4"
-    },
+    //complete: {
+    //    backgroundColor: "#F7F5F2",
+    //    color: "#8cffa4"
+    //},
     webkitAutoFill: {
-        backgroundColor: "transparent"
+        backgroundColor: "#F7F5F2"
     }
 };
 

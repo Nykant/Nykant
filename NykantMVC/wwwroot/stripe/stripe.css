@@ -20,7 +20,7 @@
 }
 
 .payment-elements-thing {
-    width:50%;
+    width:100%;
 }
 
 .payment-invalid {
@@ -65,7 +65,21 @@
     font-size: 20px;
 }
 
+.card-element {
+    padding:10px;
+    margin-bottom:10px;
+    outline:1px solid var(--black-fade);
+    background:var(--color1);
+    border-radius:10px;
+}
 
+    /*.card-element:hover {
+        outline: 3px solid var(--color3);
+    }
+
+    .card-element:focus {
+        outline: 3px solid var(--color3);
+    }*/
 
 @media only screen and (max-width: 600px) {
 
