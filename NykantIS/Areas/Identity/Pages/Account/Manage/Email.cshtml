@@ -1,4 +1,4 @@
-﻿@page
+﻿<!--@page
 @model EmailModel
 @inject IConfiguration configuration
 @{
@@ -59,7 +59,7 @@
                             <input asp-for="Input.NewEmail" />
                             <label asp-for="Input.NewEmail"></label>
                             <span asp-validation-for="Input.NewEmail"></span>
-                        </div>
+                        </div>-->
 
                         @*<div class="error-div" id="changeemail-error-div">
                                 <p id="changeemail-error-text"></p>
@@ -68,7 +68,7 @@
                                 <p id="changeemail-success-text"></p>
                             </div>*@
 
-                    </div>
+                    <!--</div>
                     <div class="col-12 right top-side-padding">
                         <button id="change-email-button" type="submit" asp-page-handler="ChangeEmail" class="button">Skift Email</button>
                     </div>
@@ -83,4 +83,4 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
-}
+}-->

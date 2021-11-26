@@ -66,7 +66,7 @@ namespace NykantIS.Controllers
             var grants = await _interaction.GetAllUserGrantsAsync();
 
             var list = new List<GrantViewModel>();
-            foreach(var grant in grants)
+            foreach (var grant in grants)
             {
                 var client = await _clients.FindClientByIdAsync(grant.ClientId);
                 if (client != null)
