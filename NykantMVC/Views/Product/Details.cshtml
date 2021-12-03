@@ -34,17 +34,13 @@
 <div class="my-row top-padding border-bottom bottom-padding">
     <div class="col-10 center" id="details-wrapper">
         <div class="col-8 left" id="details-left">
-
-                <div id="zoom">
-                    <img id="zoom-img" />
-                </div>
                 <div class="product-slideshow" id="product-slideshow">
 
                     <div class="product-slide-container" id="product-slide-container">
                         @foreach (var image in Model.Images)
                         {
                             <div class="product-slide">
-                                <img src="../@image.Source" />
+                                <img align="middle" src="../@image.Source" />
                             </div>
                         }
 

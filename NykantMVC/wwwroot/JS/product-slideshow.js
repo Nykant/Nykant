@@ -64,11 +64,82 @@ product_slideshow.addEventListener('swiped-left', function () {
     }
 });
 
+
+function magnify(img, zoom) {
+    var prevglasses = document.getElementsByClassName('img-magnifier-glass');
+    for (var i = 0; i < prevglasses.length; i++) {
+        prevglasses[i].remove();
+    }
+    var glass, w, h, bw;
+
+    /* Create magnifier glass: */
+    glass = document.createElement("DIV");
+    glass.setAttribute("class", "img-magnifier-glass");
+
+    /* Insert magnifier glass: */
+    img.parentElement.insertBefore(glass, img);
+
+    /* Set background properties for the magnifier glass: */
+    glass.style.backgroundImage = "url('" + img.src + "')";
+    glass.style.backgroundRepeat = "no-repeat";
+    glass.style.backgroundSize = (img.width * zoom) + "px " + (img.height * zoom) + "px";
+    bw = 3;
+    w = glass.offsetWidth / 2;
+    h = glass.offsetHeight / 2;
+
+    /* Execute a function when someone moves the magnifier glass over the image: */
+    glass.addEventListener("mousemove", moveMagnifier);
+    img.addEventListener("mousemove", moveMagnifier);
+
+    /*and also for touch screens:*/
+    glass.addEventListener("touchmove", moveMagnifier);
+    img.addEventListener("touchmove", moveMagnifier);
+    function moveMagnifier(e) {
+        var pos, x, y;
+        /* Prevent any other actions that may occur when moving over the image */
+        e.preventDefault();
+        /* Get the cursor's x and y positions: */
+        pos = getCursorPos(e);
+        x = pos.x;
+        y = pos.y;
+        /* Prevent the magnifier glass from being positioned outside the image: */
+        if (x > img.width - (w / zoom)) { x = img.width - (w / zoom); }
+        if (x < w / zoom) { x = w / zoom; }
+        if (y > img.height - (h / zoom)) { y = img.height - (h / zoom); }
+        if (y < h / zoom) { y = h / zoom; }
+        /* Set the position of the magnifier glass: */
+        var style = window.getComputedStyle(img);
+        style.marginLeft
+        var text = 'translateX(' + style.marginLeft + ')'
+        glass.style.left = (x - w) + "px";
+        glass.style.top = (y - h) + "px";
+        glass.style.transform = text;
+        /* Display what the magnifier glass "sees": */
+        glass.style.backgroundPosition = "-" + ((x * zoom) - w + bw) + "px -" + ((y * zoom) - h + bw) + "px";
+    }
+
+    function getCursorPos(e) {
+        var a, x = 0, y = 0;
+        e = e || window.event;
+        /* Get the x and y positions of the image: */
+        a = img.getBoundingClientRect();
+        /* Calculate the cursor's x and y coordinates, relative to the image: */
+        x = e.pageX - a.left;
+        y = e.pageY - a.top;
+        /* Consider any page scrolling: */
+        x = x - window.pageXOffset;
+        y = y - window.pageYOffset;
+        return { x: x, y: y };
+    }
+}
+
+
+
 // Magnifying glass
 
 //var zoom = document.querySelector("#zoom");
 //var zoomImg = document.querySelector("#zoom-img");
-//var product_slides = document.getElementsByClassName('product-slide');
+var product_slides = document.getElementsByClassName('product-slide');
 //var enterTL = new TimelineMax({ paused: true });
 //var timer = TweenLite.delayedCall(1, () => enterTL.reverse()).pause();
 //var cx, cy, ratio;
@@ -112,13 +183,13 @@ product_slideshow.addEventListener('swiped-left', function () {
 //    cy = rect.top + rect.height / 2;
 //}
 
-//for (var i = 0; i < product_slides.length; i++) {
-//    var children = product_slides[i].children;
-//    var img = children[0];
-//    img.addEventListener('mouseover', function (event) {
-//        init(event.currentTarget);
-//    });
-//}
+for (var i = 0; i < product_slides.length; i++) {
+    var children = product_slides[i].children;
+    var img = children[0];
+    img.addEventListener('mouseover', function (event) {
+        magnify(event.currentTarget, 3);
+    });
+}
 
 
 // -------------------
