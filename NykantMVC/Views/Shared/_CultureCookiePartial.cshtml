@@ -12,6 +12,11 @@
 @if (!cookieExists)
 {
     <div class="culture-box">
+        <div class="culture-close">
+            <form method="post" asp-controller="Nykant" asp-action="UpdateCulture" asp-route-redirectController="@controller" asp-route-redirectAction="@action" asp-route-culture="Dansk">
+                <button type="submit"><i class="fas fa-times"></i></button>
+            </form>
+        </div>
         <div class="culture-cover">
             <form method="post" asp-controller="Nykant" asp-action="UpdateCulture" asp-route-redirectController="@controller" asp-route-redirectAction="@action">
                 <input name="culture" value="English" type="submit" />

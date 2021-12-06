@@ -52,7 +52,7 @@
     background:var(--color1);
     z-index:999;
     position: absolute;
-    border: 3px solid #000;
+    border: 1px solid var(--black-fade);
     border-radius: 50%;
     cursor: none;
 /*    transform: translateX(+5%);*/
