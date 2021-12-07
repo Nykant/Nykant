@@ -187,7 +187,7 @@ for (var i = 0; i < product_slides.length; i++) {
     var children = product_slides[i].children;
     var img = children[0];
     img.addEventListener('mouseover', function (event) {
-        magnify(event.currentTarget, 3);
+        magnify(event.currentTarget, 4);
     });
 }
 

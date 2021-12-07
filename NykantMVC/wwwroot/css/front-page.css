@@ -67,56 +67,52 @@
 
 .info-row {
     padding: 30px;
-        margin-top:20px;
-
-    height: auto;
+    margin-top:20px;
     background: white;
 /*    border:1px solid black;*/
 }
 
 .e-mark {
-    padding-left: 50px;
+    display: block;
+    width: auto;
+    float: none;
+
 }
 
     .e-mark p {
-        float: left;
-        margin: auto;
-        padding: 10px;
+        width: auto;
         display: inline;
+        padding: 10px;
     }
 
 .e-mark-svg {
-    float:left;
-    height:3.3em;
+    display: inline;
+    height: 3.3em;
 }
 
 .fill {
     fill: #777069;
 }
 
-.info-row p {
-    margin:auto;
-    padding:10px;
-    display:inline;
-}
-
 .truck {
-    padding-left:50px;
-
+    display: block;
+    width: auto;
+    float: none;
 }
 
     .truck i {
+        display: inline;
         font-size: 43px;
-        float:left;
     }
 
     .truck p {
-        float:left;
+        width: auto;
         display: inline;
         font-size: 16px;
-        line-height:normal;
+        line-height: normal;
+        padding: 10px;
+        transform:translateY(-20px);
     }
-
 
 .about-us {
 
@@ -217,15 +213,13 @@
         padding-right:20px;
     }
     .info-row {
-        height: auto;
+        height: 300px;
     }
     .e-mark {
-        margin:auto;
-        float:none;
+
     }
     .truck {
-        margin: auto;
-        float: none;
+        padding-top: 50px;
     }
 }
 
@@ -236,21 +230,29 @@
     }
 
     .info-row {
-        height:100px;
+        height: 300px;
     }
     .e-mark {
-        margin: 0;
-        float: left;
+
     }
 
     .truck {
-        margin: 0;
-        float: left;
+        padding-top: 50px;
     }
 }
 
 @media only screen and (min-width: 768px) {
+    .info-row {
+        height: 100px;
+    }
 
+    .e-mark {
+
+    }
+
+    .truck {
+        padding-top: 0px;
+    }
 
 }
 

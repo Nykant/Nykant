@@ -24,9 +24,19 @@ for (i = 0; i < l; i++) {
     ll = selElmnt.length;
     for (j = 1; j < ll; j++) {
         c = document.createElement("div");
+        var price = document.createElement("div");
+        price.setAttribute("class", "delivery-price");
+        price.textContent = selElmnt.options[j].dataset.price;
+        var type = document.createElement("div");
+        type.setAttribute("class", "delivery-type");
+        type.textContent = selElmnt.options[j].dataset.type;
+        var shop = document.createElement("div");
+        shop.setAttribute("class", "delivery-shop");
+        c.appendChild(type);
+        c.appendChild(price);
+        c.appendChild(shop);
         c.setAttribute("class", "custom-list-option notselected");
-        c.textContent = selElmnt.options[j].textContent;
-        if (selElmnt.options[j].textContent.includes('Shop')) {
+        if (selElmnt.options[j].dataset.type == 'Shop') {
             shopOption = c;
         }
 
@@ -36,7 +46,7 @@ for (i = 0; i < l; i++) {
             selectlength = select.length;
             h = this.parentNode.previousSibling;
             for (i = 1; i < selectlength; i++) {
-                if (select.options[i].textContent == this.textContent) {
+                if (select.options[i].dataset.type === this.children[0].textContent) {
                     select.selectedIndex = i;
                     
                     y = this.parentNode.getElementsByClassName("custom-list-option selected");
@@ -132,8 +142,7 @@ for (i = 0; i < l; i++) {
                                             var prop_type = props[i].getAttribute("data-type");
                                             if (prop_type == "companyName") {
                                                 parcelshop_CompanyName.value = props[i].textContent;
-                                                select.options[select.selectedIndex].textContent = "Shop | " + props[i].textContent + "   |   0 dkk,-";
-                                                shopOption.textContent = "Shop | " + props[i].textContent + "   |   0 dkk,-";
+                                                y[0].children[2].textContent = props[i].textContent;
                                             }
                                             else if (prop_type == "streetname") {
                                                 parcelshop_StreetName.value = props[i].textContent;

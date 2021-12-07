@@ -53,7 +53,7 @@
                             </option>
                             @foreach (var item in shippingMethods)
                             {
-                                <option value="@optionValue">@item.Type | @item.Price dkk,-</option>
+                                <option value="@optionValue" data-price="@item.Price kr." data-type="@item.Type"></option>
                                 optionValue += 1;
                             }
                         </select>
