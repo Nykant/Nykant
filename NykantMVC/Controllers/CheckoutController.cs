@@ -178,6 +178,8 @@ namespace NykantMVC.Controllers
                     var jsonCustomer = await GetRequest($"/Customer/GetCustomer/{checkout.CustomerInfId}");
                     customer = JsonConvert.DeserializeObject<Customer>(jsonCustomer);
                     customer = _protectionService.UnprotectCustomer(customer);
+                    customer.ShippingAddress = _protectionService.UnprotectShippingAddress(customer.ShippingAddress);
+                    customer.BillingAddress = _protectionService.UnprotectBillingAddress(customer.BillingAddress);
                 }
                 else
                 {

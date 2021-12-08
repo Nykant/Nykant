@@ -61,6 +61,8 @@ var parcelshop_CityName = document.getElementById("parcelshop-CityName");
 var parcelshop_CountryCodeISO3166A2 = document.getElementById("parcelshop-CountryCodeISO3166A2");
 var parcelshop_summary = document.getElementById("parcelshop-summary");
 
+history.scrollRestoration = "manual";
+
 if (parcelshop_CityName.value != '') {
     parcelshop_summary.style.display = "block";
     parcelshop_companyname_summary.textContent = parcelshop_CompanyName.value;

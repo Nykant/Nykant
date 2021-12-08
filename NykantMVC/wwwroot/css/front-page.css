@@ -155,6 +155,7 @@
     height:300px;
     text-align:center;
     padding:50px;
+
 }
 
 .newsletter h1 {
@@ -166,6 +167,21 @@
     .newsletter p {
         padding-bottom: 30px;
     }
+
+
+.newsletter-check-sign {
+    position: relative;
+    font-size: 40px;
+    color: white;
+    display: none;
+}
+
+#newsletter-error {
+    position: relative;
+    font-size: 40px;
+    color: var(--red);
+    display: none;
+}
 
 .newsletter form {
 

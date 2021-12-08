@@ -238,6 +238,10 @@
     line-height:normal;
 }
 
+.checkout-header p {
+    display:block;
+}
+
 #shipping-form {
 /*    background-color: white;*/
     width: 100%;
@@ -283,9 +287,9 @@
 .edit-button {
     width: 80px;
     position: relative;
-    transform: translateY(-40px);
     display: none;
-    float:right;
+    transform:translateY(-40px);
+    float: right;
 }
 
 /*#shipping-edit-button {

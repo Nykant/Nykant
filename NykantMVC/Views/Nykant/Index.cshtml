@@ -1,4 +1,4 @@
-﻿@model List<Category>
+﻿@model FrontPageVM
 
 @{
     ViewData["Title"] = "Nykant - Egetræsmøbler Af Dansk Design";
@@ -55,7 +55,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="owl-carousel">
-                @foreach (var category in Model)
+                @foreach (var category in Model.Categories)
                 {
                     <div class="product-card">
                         @*<div class="product-badge text-danger">28% Off</div>*@<a class="product-thumb" href="/Product/Index?searchString=@category.Name" data-abc="true"><img src="@category.ImgSource" alt="Category"></a>
@@ -115,15 +115,28 @@
     </div>
 </div>
 
-<div class="my-row background-color2 border-top">
+<div class="my-row background-color2 border-top bottom-padding">
     <div class="newsletter col-6 center">
         <h1>
             Nyhedsbrev
         </h1>
         <p>Hvis du er interesseret i at få besked når der for eksempel kommer nye møbler, så skal du være velkommen til at tilmelde dig vores nyhedsbrev.</p>
-        <form>
-            <input placeholder="Type your email" />
-            <button>Join</button>
+        <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="newssub_succeed" data-ajax-complete="noop" data-ajax-begin="newssub_begin" data-ajax-failure="newssub_error" asp-controller="Nykant" asp-action="AddNewsSub">
+            <input placeholder="Type your email" asp-for="@Model.NewsSub.Email" />
+            <button type="submit" id="newsletter-button">
+                <div id="newsletter-error">
+                    <i class="fas fa-times"></i>
+                </div>
+                <div id="newsletter-spinner" class="hidden">
+                    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                </div>
+                <div class="newsletter-check-sign" id="newsletter-check-sign">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                </div>
+                <div id="newsletter-text">
+                    Join
+                </div>
+            </button>
         </form>
     </div>
 </div>

@@ -14,6 +14,8 @@ using Microsoft.Extensions.Localization;
 using Microsoft.AspNetCore.Localization;
 using NykantMVC.Friends;
 using System.Text.Encodings.Web;
+using NykantMVC.Models.ViewModels;
+using NykantMVC.Services;
 
 namespace NykantMVC.Controllers
 {
@@ -21,15 +23,22 @@ namespace NykantMVC.Controllers
     [AllowAnonymous]
     public class NykantController : BaseController
     {
-        public NykantController(ILogger<NykantController> logger, IOptions<Urls> urls, HtmlEncoder htmlEncoder) : base(logger, urls, htmlEncoder)
+        private readonly IProtectionService _protectionService;
+        public NykantController(ILogger<NykantController> logger, IProtectionService protectionService, IOptions<Urls> urls, HtmlEncoder htmlEncoder) : base(logger, urls, htmlEncoder)
         {
+            _protectionService = protectionService;
         }
 
         public async Task<IActionResult> Index()
         {
             var jsonResponse = await GetRequest("/Category/GetCategories");
             var categories = JsonConvert.DeserializeObject<List<Category>>(jsonResponse);
-            return View(categories);
+
+            FrontPageVM frontPageVM = new FrontPageVM()
+            {
+                Categories = categories
+            };
+            return View(frontPageVM);
         }
         public IActionResult CookiePolicy()
         {
@@ -182,6 +191,32 @@ namespace NykantMVC.Controllers
                     });
 
             return RedirectToAction(redirectAction, redirectController);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddNewsSub(NewsSub newsSub)
+        {
+            try
+            {
+                newsSub = _protectionService.ProtectNewsSub(newsSub);
+                var response = await PostRequest("/NewsSub/Post", newsSub);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return Json("Success");
+                }
+                else
+                {
+                    _logger.LogInformation($"{response.ReasonPhrase} - {response.StatusCode}");
+                    return Json("Error");
+                }
+            }
+            catch(Exception e)
+            {
+                _logger.LogInformation(e.Message);
+                return Json("Error");
+            }
+
         }
     }
 }

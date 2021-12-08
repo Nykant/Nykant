@@ -11,10 +11,27 @@ namespace NykantAPI.Services
     {
         IDataProtector _customerProtector;
         IDataProtector _orderProtector;
+        IDataProtector _newsSubProtector;
+
         public ProtectionService(IDataProtectionProvider provider)
         {
+            _newsSubProtector = provider.CreateProtector("Nykant.NewsSub.Protect.v1");
             _customerProtector = provider.CreateProtector("Nykant.Customer.Protect.v1");
             _orderProtector = provider.CreateProtector("Nykant.Order.Protect.v1");
+        }
+
+        public NewsSub ProtectNewsSub(NewsSub newsSub)
+        {
+            newsSub.Email = _newsSubProtector.Protect(newsSub.Email);
+
+            return newsSub;
+        }
+
+        public NewsSub UnprotectNewsSub(NewsSub newsSub)
+        {
+            newsSub.Email = _newsSubProtector.Unprotect(newsSub.Email);
+
+            return newsSub;
         }
 
         public Customer ProtectCustomer(Customer customer)
@@ -101,6 +118,8 @@ namespace NykantAPI.Services
 
     public interface IProtectionService
     {
+        public NewsSub ProtectNewsSub(NewsSub newsSub);
+        public NewsSub UnprotectNewsSub(NewsSub newsSub);
         public Customer ProtectCustomer(Customer customerInf);
         public Customer UnprotectCustomer(Customer customerInf);
 

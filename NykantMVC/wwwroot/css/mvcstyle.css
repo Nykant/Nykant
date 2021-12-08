@@ -97,6 +97,7 @@ input[type='radio']:after {
     cursor: pointer;
 }
 
+
 input[type='radio']:checked:after {
     width: 15px;
     height: 15px;
@@ -112,14 +113,14 @@ input[type='radio']:checked:after {
 }
 
 a {
-  color: black;
+  color: var(--font1);
   text-decoration: none;
 }
 
 a:hover {
     font-weight:bold;
     text-decoration:none;
-    color:black;
+    color:initial;
 }
 
 .simple-link{
@@ -140,13 +141,25 @@ ol, ul {
 
 .top-footer {
     position: relative;
-    color: black;
+    color: var(--color1);
     padding: 30px;
     padding-left: 70px;
     font-family: 'Lato', sans-serif;
     background-color: white;
     border-top: 1px solid var(--black-fade);
+    border-bottom: 1px solid var(--black-fade);
 }
+
+    .top-footer a {
+
+    }
+
+.top-footer h1 {
+    color:var(--dark);
+    font-size: 18px;
+    font-weight:bold;
+}
+
 
 .sidepadding100 {
     padding-left: 100px;
@@ -197,6 +210,7 @@ ol, ul {
 }
 
     .nykant-info {
+        padding-bottom:20px;
         display: inline-block;
         padding-right: 100px;
     }
@@ -206,6 +220,8 @@ ol, ul {
         float:right;
         margin-left:20px;
     }
+
+    
 
     .privacy {
         text-align: left;
@@ -231,8 +247,8 @@ ol, ul {
         padding-top: 20px;
         padding-bottom: 20px;
         height: auto;
-        background: var(--dark);
-        color: white;
+        background: var(--color1);
+        color: var(--font1);
     }
 
         .copyright p {
@@ -244,21 +260,17 @@ ol, ul {
     height: auto;
     position: relative;
     display: inline-block;
-    background: var(--dark);
+    background: var(--color1);
+
     padding-top: 20px;
 }
 
-        .policy-links a {
-            color: white;
-            display: inline-block;
-            padding-right: 20px;
+    .policy-links a {
+        display: inline-block;
+        padding-right: 20px;
+        padding-bottom: 20px;
+    }
 
-            padding-bottom: 20px;
-        }
-
-            .policy-links a:hover {
-                color: var(--blue);
-            }
 
 .fixed {
     position:fixed;
@@ -484,7 +496,7 @@ button span {
         }
 
         .button:hover {
-            color: black;
+            color: var(--dark);
             background-color: white;
             font-weight:initial;
         }

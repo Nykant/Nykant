@@ -11,8 +11,10 @@ namespace NykantMVC.Models
         [Key]
         public int Id { get; set; }
         [Required]
+        [EmailAddress]
         public string Email { get; set; }
         [Required]
+        [Phone]
         public string Phone { get; set; }
         public BillingAddress BillingAddress { get; set; }
         public ShippingAddress ShippingAddress { get; set; }

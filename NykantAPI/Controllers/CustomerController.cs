@@ -31,7 +31,6 @@ namespace NykantAPI.Controllers
         public async Task<ActionResult<Customer>> GetCustomer(int id)
         {
             var customerInf = await _context.Customer.Include(x => x.ShippingAddress).Include(x => x.BillingAddress).FirstOrDefaultAsync(x => x.Id == id);
-            customerInf = _protectionService.ProtectCustomer(customerInf);
             return Ok(JsonConvert.SerializeObject(customerInf, Extensions.JsonOptions.jsonSettings));
         }
 
@@ -43,6 +42,7 @@ namespace NykantAPI.Controllers
                 customerInf = _protectionService.UnprotectCustomer(customerInf);
                 if (ModelState.IsValid)
                 {
+                    customerInf = _protectionService.ProtectCustomer(customerInf);
                     if (CustomerExists(customerInf.Id))
                     {
                         _context.Customer.Update(customerInf);
@@ -75,6 +75,7 @@ namespace NykantAPI.Controllers
                 shippingAddress = _protectionService.UnprotectShippingAddress(shippingAddress);
                 if (ModelState.IsValid)
                 {
+                    shippingAddress = _protectionService.ProtectShippingAddress(shippingAddress);
                     if (ShippingAddressExists(shippingAddress.Id))
                     {
                         _context.ShippingAddress.Update(shippingAddress);
@@ -103,6 +104,7 @@ namespace NykantAPI.Controllers
                 billingAddress = _protectionService.UnprotectInvoiceAddress(billingAddress);
                 if (ModelState.IsValid)
                 {
+                    billingAddress = _protectionService.ProtectInvoiceAddress(billingAddress);
                     if (InvoiceAddressExists(billingAddress.Id))
                     {
                         _context.BillingAddress.Update(billingAddress);

@@ -149,6 +149,7 @@
 }
 
     .details-info-wrap h1 {
+
         display: inline-block;
         font-size:24px;
     }
@@ -643,38 +644,20 @@
         width: 70px;
     }
 
-@media only screen and (max-width: 400px) {
 
-    .bagitem-added-product p {
-        padding-left: 10px;
-        padding-right: 10px;
-        font-size: 12px;
-    }
-}
-
-@media only screen and (min-width: 400px) {
-
-
-    .bagitem-added-product p {
-        padding-left: 20px;
-        padding-right: 20px;
-        font-size: 16px;
-    }
-}
 
     @media only screen and (max-width: 600px) {
         .details-info-wrap {
             padding: 20px;
         }
 
-            .details-info-wrap p {
-                float: right;
-            }
-
         .image-wrap {
             padding: 0px;
         }
 
+        #bagitem-added {
+            width:100%;
+        }
     }
 
     @media only screen and (min-width: 600px) {
@@ -682,12 +665,12 @@
             padding: 20px;
         }
 
-            .details-info-wrap p {
-                float: right;
-            }
-
         .image-wrap {
             padding: 0px;
+        }
+
+        #bagitem-added {
+            width: 500px;
         }
     }
 
@@ -700,10 +683,6 @@
             right: 20px;
             width: 220px;
         }
-
-            .details-info-wrap p {
-                float: left;
-            }
 
         #collapsible-wrapper {
             padding-top: 50px;
@@ -728,10 +707,6 @@
             width: 260px;
         }
 
-            .details-info-wrap p {
-                float: left;
-            }
-
         #collapsible-wrapper {
             padding-top: 50px;
             padding-left: 10px;
@@ -755,10 +730,6 @@
             width: 310px;
         }
 
-            .details-info-wrap p {
-                float: right;
-            }
-
         #collapsible-wrapper {
             padding-top: 50px;
             padding-left: 10px;
@@ -781,10 +752,6 @@
             right: 20px;
             width: 350px;
         }
-
-            .details-info-wrap p {
-                float: right;
-            }
 
         #collapsible-wrapper {
             padding-top: 50px;
@@ -810,10 +777,6 @@
             margin-right: 100px;
         }
 
-            .details-info-wrap p {
-                float: right;
-            }
-
         #collapsible-wrapper {
             padding-top: 50px;
             padding-left: 10px;
@@ -837,10 +800,6 @@
             width: 350px;
             margin-right: 200px;
         }
-
-            .details-info-wrap p {
-                float: right;
-            }
 
         #collapsible-wrapper {
             padding-top: 50px;

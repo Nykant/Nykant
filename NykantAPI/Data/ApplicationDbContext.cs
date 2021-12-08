@@ -26,6 +26,7 @@ namespace NykantAPI.Data
         public DbSet<BillingAddress> BillingAddress { get; set; }
         public DbSet<ShippingAddress> ShippingAddress { get; set; }
         public DbSet<ParcelshopData> ParcelshopData { get; set; }
+        public DbSet<NewsSub> NewsSubs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

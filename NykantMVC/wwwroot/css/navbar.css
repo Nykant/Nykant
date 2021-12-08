@@ -209,8 +209,9 @@
     font-size:40px;
     width:100vw;
     height:100vh;
-    background-color:var(--white-fade);
+    background-color:var(--color1);
     z-index:230;
+    color:var(--dark);
 }
 
     #nav-links i {
@@ -224,6 +225,7 @@
     }
 
     #nav-links a {
+        color: var(--dark);
         padding-top: 30px;
         transition: all ease .4s;
     }
