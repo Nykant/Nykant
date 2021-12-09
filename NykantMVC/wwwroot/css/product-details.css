@@ -57,8 +57,8 @@
     cursor: none;
 /*    transform: translateX(+5%);*/
     /*Set the size of the magnifier glass:*/
-    width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 200px;
 }
 
 .product-slide-buttons {
