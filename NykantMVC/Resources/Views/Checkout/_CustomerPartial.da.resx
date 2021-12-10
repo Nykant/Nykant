@@ -135,14 +135,14 @@
   <data name="City" xml:space="preserve">
     <value>By</value>
   </data>
+  <data name="Contact Information" xml:space="preserve">
+    <value>Kontakt Oplysninger</value>
+  </data>
   <data name="Continue" xml:space="preserve">
     <value>Gem</value>
   </data>
   <data name="Country" xml:space="preserve">
     <value>Land</value>
-  </data>
-  <data name="Customer Header" xml:space="preserve">
-    <value>Kunde Oplysninger</value>
   </data>
   <data name="Email" xml:space="preserve">
     <value>Email</value>
@@ -168,5 +168,8 @@
   </data>
   <data name="Telephone" xml:space="preserve">
     <value>Telefon</value>
+  </data>
+  <data name="UseInvoice" xml:space="preserve">
+    <value>Brug faktureringsaddressen som leveringsaddresse</value>
   </data>
 </root>

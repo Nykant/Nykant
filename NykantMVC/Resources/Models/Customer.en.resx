@@ -120,7 +120,7 @@
   <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>
-  <data name="Telephone" xml:space="preserve">
+  <data name="Phone" xml:space="preserve">
     <value>Telephone</value>
   </data>
 </root>

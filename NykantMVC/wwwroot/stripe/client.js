@@ -50,29 +50,32 @@ var terms_and_conditions = document.getElementById('terms-and-conditions-consent
 var form = document.getElementById("payment-form");
 form.addEventListener("submit", function (event) {
     event.preventDefault();
-    loading(true);
-    if (terms_and_conditions.checked == false) {
-        showError("Du skal acceptere vores handelsbetingelser før du kan gennemføre betalingen.");
-    }
-    if (document.getElementById("shipping-form-complete").value == 0 || document.getElementById("customer-form-complete").value == 0) {
-        showError("Du skal udfylde både kunde oplysninger og leveringsmetode formularerne før du kan færdiggøre ordren");
-    }
-    else {
-        stripe.createPaymentMethod({
-            type: 'card',
-            card: cardNumber,
-            billing_details: {
-                name: document.getElementById('customer-firstname-summary').textContent + ' ' + document.getElementById('customer-lastname-summary').textContent
-                //email: document.getElementById('customer-email-summary').textContent,
-                //phone: document.getElementById('customer-phone-summary').textContent,
-                //address: {
-                //    country: document.getElementById('customer-country-summary').textContent,
-                //    postal_code: document.getElementById('customer-postal-summary').textContent,
-                //    city: document.getElementById('customer-city-summary').textContent,
-                //    line1: document.getElementById('customer-address-summary').textContent
-                //}
-            }
-        }).then(stripePaymentMethodHandler)
+    if (!backbuttonclicked) {
+        backbuttonclicked = false;
+        loading(true);
+        if (terms_and_conditions.checked == false) {
+            showError("Du skal acceptere vores handelsbetingelser før du kan gennemføre betalingen.");
+        }
+        if (document.getElementById("shipping-form-complete").value == 0 || document.getElementById("customer-form-complete").value == 0) {
+            showError("Du skal udfylde både kunde oplysninger og leveringsmetode formularerne før du kan færdiggøre ordren");
+        }
+        else {
+            stripe.createPaymentMethod({
+                type: 'card',
+                card: cardNumber,
+                billing_details: {
+                    name: document.getElementById('customer-firstname-summary').textContent + ' ' + document.getElementById('customer-lastname-summary').textContent
+                    //email: document.getElementById('customer-email-summary').textContent,
+                    //phone: document.getElementById('customer-phone-summary').textContent,
+                    //address: {
+                    //    country: document.getElementById('customer-country-summary').textContent,
+                    //    postal_code: document.getElementById('customer-postal-summary').textContent,
+                    //    city: document.getElementById('customer-city-summary').textContent,
+                    //    line1: document.getElementById('customer-address-summary').textContent
+                    //}
+                }
+            }).then(stripePaymentMethodHandler)
+        }
     }
 });
 
@@ -127,7 +130,7 @@ function handleStripeJsResult(result) {
 var showError = function (errorMsgText) {
     loading(false);
         $('#checkout-modal').css('display', 'block');
-        document.getElementById('checkout-error').textContent = errorMsgText;
+        document.getElementById('checkout-error').textContent = errorMsgText.message;
 };
 
 var orderComplete = function (paymentIntentId) {

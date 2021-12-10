@@ -60,7 +60,14 @@ var parcelshop_ZipCode = document.getElementById("parcelshop-ZipCode");
 var parcelshop_CityName = document.getElementById("parcelshop-CityName");
 var parcelshop_CountryCodeISO3166A2 = document.getElementById("parcelshop-CountryCodeISO3166A2");
 var parcelshop_summary = document.getElementById("parcelshop-summary");
+var payment_options_list = document.getElementById('payment-options-list');
+var payment_options_container = document.getElementById('payment-options');
+var payment_options = payment_options_list.children;
+var payment_card_option = document.getElementById('payment-card-option');
+var back_button = document.getElementById('back-button');
+var backbuttonclicked = false;
 
+/*payment_form.style.display = "none";*/
 history.scrollRestoration = "manual";
 
 if (parcelshop_CityName.value != '') {
@@ -108,10 +115,27 @@ else if (stage_value == 2) {
     }, 'slow');
 }
 else if (stage_value == 3) {
+
     payment_wrap.style.transition = "all 1s";
     payment_form.style.transition = "all 1s";
+
     payment_form.style.height = "auto";
     payment_wrap.style.transform = "translateY(0%)";
+
+
+    payment_options_list.style.display = "block";
+    payment_options_container.style.display = "block";
+    payment_card_option.style.display = "none";
+    for (var i = 0; i < payment_options.length; i++) {
+        payment_options[i].addEventListener('click', function () {
+            if (this.dataset.paymentoption == 'card') {
+                payment_options_list.style.display = "none";
+                payment_options_container.style.display = "none";
+                payment_card_option.style.display = "block";
+                backbuttonclicked = false;
+            }
+        })
+    }
 
     customerinf_summary.style.display = "block";
     customer_check_sign.style.display = "block";
@@ -127,6 +151,16 @@ else if (stage_value == 3) {
         scrollTop: $("#payment-header").offset().top
     }, 'slow');
 };
+
+
+back_button.addEventListener('click', function () {
+    terms_and_conditions.checked = false;
+    document.getElementById('submit-payment').disabled = true;
+    backbuttonclicked = true;
+    payment_options_container.style.display = "block";
+    payment_options_list.style.display = "block";
+    payment_card_option.style.display = "none";
+})
 
 customer_begin = function () {
     customerloading(true);
@@ -214,7 +248,6 @@ shipping_completed = function (response) {
         payment_form.style.transition = "all 1s";
 
         shipping_edit_button.style.display = "block";
-        shipping_method_summary.textContent = shipping_delivery_type.value;
 
         if (shipping_delivery_type.value == 'Shop' || shipping_delivery_type.value == 'Butik') {
             parcelshop_summary.style.display = "block";
@@ -244,6 +277,27 @@ shipping_completed = function (response) {
 
         shipping_form.style.height = "0px";
         shipping_wrap.style.transform = "translateY(-100%)";
+
+
+        payment_wrap.style.transition = "all 1s";
+        payment_form.style.transition = "all 1s";
+        payment_options_container.style.transition = "all 1s";
+        payment_form.style.height = "auto";
+        payment_wrap.style.transform = "translateY(0%)";
+
+        payment_options_list.style.display = "block";
+        payment_options_container.style.display = "block";
+        payment_card_option.style.display = "none";
+        for (var i = 0; i < payment_options.length; i++) {
+            payment_options[i].addEventListener('click', function () {
+                if (this.dataset.paymentoption == 'card') {
+                    payment_options_list.style.display = "none";
+                    payment_options_container.style.display = "none";
+                    payment_card_option.style.display = "block";
+                    backbuttonclicked = false;
+                }
+            })
+        }
         payment_form.style.height = "auto";
         payment_wrap.style.transform = "translateY(0%)";
 
@@ -251,6 +305,7 @@ shipping_completed = function (response) {
         $('html,body').animate({
             scrollTop: $("#payment-header").offset().top
         }, 'slow');
+
     }
     else{
         $('#checkout-modal').css('display', 'block');

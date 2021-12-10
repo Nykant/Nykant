@@ -117,31 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Address1" xml:space="preserve">
-    <value>Addresse 1</value>
-  </data>
-  <data name="Address2" xml:space="preserve">
-    <value>Addresse 2</value>
-  </data>
-  <data name="City" xml:space="preserve">
-    <value>By</value>
-  </data>
-  <data name="Country" xml:space="preserve">
-    <value>Land</value>
-  </data>
   <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>
-  <data name="First Name" xml:space="preserve">
-    <value>Fornavn</value>
-  </data>
-  <data name="Last Name" xml:space="preserve">
-    <value>Efternavn</value>
-  </data>
-  <data name="Postal" xml:space="preserve">
-    <value>Postnummer</value>
-  </data>
-  <data name="Telephone" xml:space="preserve">
+  <data name="Phone" xml:space="preserve">
     <value>Telefon</value>
   </data>
 </root>

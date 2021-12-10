@@ -12,7 +12,7 @@
 }
 
     .gdpr-accept a {
-/*        display:inline-block;*/
+        display:inline;
     }
 
     .gdpr-accept label {
@@ -21,8 +21,6 @@
     }
     .gdpr-accept p {
         display: inline;
-        margin-left:20px;
-        float: left;
     }
 
 .sidebar {
@@ -175,8 +173,6 @@
 
 .same-as-invoice p {
     display: inline;
-    margin-left: 20px;
-    float: left;
 }
 
 @keyframes hideerror {
@@ -255,6 +251,43 @@
     }
 }
 
+.back-button {
+    color:var(--dark);
+    position:absolute;
+    left:30px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+    .back-button:hover #arrow-icon {
+        transform: scale(1.3);
+        transition: all 0.3s;
+    }
+
+.payment-options {
+    display:block;
+    width:auto;
+    height:auto;
+    margin:20px;
+    padding:20px;
+    transition:none !important;
+    cursor:pointer;
+}
+
+.payment-card-list {
+    margin-top:30px;
+}
+
+.payment-options:hover {
+    background:var(--color1);
+}
+
+.credit-card-logos {
+    right:40px;
+}
+
 #payment-form {
     background-color: white;
     width: 100%;
@@ -288,7 +321,7 @@
     width: 80px;
     position: relative;
     display: none;
-    transform:translateY(-40px);
+    transform:translateY(-50px);
     float: right;
 }
 
@@ -315,6 +348,19 @@
         border: none;
         margin-bottom: 30px;
     }
+
+    #nearby-shops {
+        position: fixed;
+        top: 0%;
+        left: 0%;
+
+        width: 100vw;
+        height: 100%;
+        overflow-y: scroll;
+        background: white;
+        z-index: 101;
+    }
+
 }
 
 @media only screen and (min-width: 600px) {
@@ -336,6 +382,20 @@
         margin:auto;
         margin-bottom: 10px;
     }
+
+    #nearby-shops {
+        position: fixed;
+        top: 20%;
+        left: 40%;
+        margin-left: auto;
+        margin-right: auto;
+        width: 300px;
+        height: 500px;
+        overflow-y: scroll;
+        background: white;
+        z-index: 101;
+    }
+
 }
 
 @media only screen and (min-width: 768px) {

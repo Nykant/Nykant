@@ -117,28 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Cancel order" xml:space="preserve">
-    <value>Fortryd Ordre</value>
+  <data name="Address" xml:space="preserve">
+    <value>Addresse</value>
   </data>
-  <data name="Pieces" xml:space="preserve">
-    <value>stk.</value>
+  <data name="City" xml:space="preserve">
+    <value>By</value>
   </data>
-  <data name="Price" xml:space="preserve">
-    <value>Pris</value>
+  <data name="Country" xml:space="preserve">
+    <value>Land</value>
   </data>
-  <data name="Shipping Costs" xml:space="preserve">
-    <value>Pris for levering</value>
+  <data name="First Name" xml:space="preserve">
+    <value>Fornavn</value>
   </data>
-  <data name="Subtotal" xml:space="preserve">
-    <value>Subtotal</value>
+  <data name="Last Name" xml:space="preserve">
+    <value>Efternavn</value>
   </data>
-  <data name="Taxes" xml:space="preserve">
-    <value>Moms</value>
-  </data>
-  <data name="Total" xml:space="preserve">
-    <value>I Alt</value>
-  </data>
-  <data name="Total Inc. Taxes" xml:space="preserve">
-    <value>I Alt. Inkl. Moms</value>
+  <data name="Postal" xml:space="preserve">
+    <value>Postnummer</value>
   </data>
 </root>

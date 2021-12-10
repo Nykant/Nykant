@@ -128,17 +128,10 @@ namespace NykantMVC.Controllers
                 if (User.Identity.IsAuthenticated)
                 {
                     double.TryParse(CalculateAmount(bagItemsDb), out double subtotal);
-                    if(checkout.ShippingDelivery.Price != 0)
-                    {
-                        total = subtotal + checkout.ShippingDelivery.Price;
-                    }
-                    else
-                    {
-                        total = subtotal;
-                    }
+                    total = subtotal + checkout.ShippingDelivery.Price;
                     taxes = total / 5;
 
-                    checkout.TotalPrice = subtotal.ToString();
+                    checkout.TotalPrice = total.ToString();
                     checkout.Taxes = taxes.ToString();
                     checkout.SubTotalPrice = subtotal.ToString();
 
@@ -148,17 +141,10 @@ namespace NykantMVC.Controllers
                 else
                 {
                     double.TryParse(CalculateAmount(bagItemsSession), out double subtotal);
-                    if (checkout.ShippingDelivery.Price != 0)
-                    {
-                        total = subtotal + checkout.ShippingDelivery.Price;
-                    }
-                    else
-                    {
-                        total = subtotal;
-                    }
+                    total = subtotal + checkout.ShippingDelivery.Price;
                     taxes = total / 5;
 
-                    checkout.TotalPrice = subtotal.ToString();
+                    checkout.TotalPrice = total.ToString();
                     checkout.Taxes = taxes.ToString();
                     checkout.SubTotalPrice = subtotal.ToString();
 

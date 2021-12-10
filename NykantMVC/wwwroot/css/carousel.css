@@ -80,6 +80,38 @@
             font-size: 1.2em
         }
 
+.slick-prev {
+    position: absolute;
+    border-radius: 20px;
+    left: 0;
+    top: 0;
+    border: 1px solid var(--black-fade);
+    color: var(--font1);
+    border: none;
+    outline: none;
+    background-color: var(--color2);
+    padding: 10px;
+    transform: translateY(-60px);
+}
+
+.slick-next {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    border-radius: 20px;
+    border: 1px solid var(--black-fade);
+    color: var(--font1);
+    border: none;
+    outline: none;
+    background-color: var(--color2);
+    padding: 10px;
+    transform: translateY(-60px);
+}
+
+.slick-prev:hover, .slick-next:hover {
+    background-color: var(--color3);
+}
+
 .btn > i {
     display: inline-block;
     margin-top: -12px;
@@ -107,6 +139,24 @@ figure {
     vertical-align: middle
 }
 
-.product-card {
-    margin-right: 10px
+@media only screen and (max-width: 600px) {
+    .product-card {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    .slick-next {
+        right:0px;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+
+    .product-card {
+        margin-right: 10px;
+    }
+
+    .slick-next {
+        right: 10px;
+    }
 }

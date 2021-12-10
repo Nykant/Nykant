@@ -1,0 +1,24 @@
+﻿@inject IViewLocalizer localizer
+
+<div class="newsletter">
+    <h1>
+        Tilmeld Nyhedsbrev
+    </h1>
+    <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="newssub_succeed" data-ajax-complete="noop" data-ajax-begin="newssub_begin" data-ajax-failure="newssub_error" asp-controller="Nykant" asp-action="AddNewsSub">
+        <input placeholder="Type your email" name="email" />
+        <button type="submit" id="newsletter-button">
+            <div id="newsletter-error">
+                <i class="fas fa-times"></i>
+            </div>
+            <div id="newsletter-spinner" class="hidden">
+                <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+            </div>
+            <div class="newsletter-check-sign" id="newsletter-check-sign">
+                <i class="fa fa-check" aria-hidden="true"></i>
+            </div>
+            <div id="newsletter-text">
+                Tilmeld
+            </div>
+        </button>
+    </form>
+</div>

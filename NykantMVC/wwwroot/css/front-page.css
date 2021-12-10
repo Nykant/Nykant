@@ -151,75 +151,7 @@
         }
     }
 
-.newsletter {
-    height:300px;
-    text-align:center;
-    padding:50px;
 
-}
-
-.newsletter h1 {
-    padding-bottom: 30px;
-    width:100%;
-    font-size:30px;
-}
-
-    .newsletter p {
-        padding-bottom: 30px;
-    }
-
-
-.newsletter-check-sign {
-    position: relative;
-    font-size: 40px;
-    color: white;
-    display: none;
-}
-
-#newsletter-error {
-    position: relative;
-    font-size: 40px;
-    color: var(--red);
-    display: none;
-}
-
-.newsletter form {
-
-}
-
-    .newsletter form input {
-        float: left;
-        width: 70%;
-        height: 50px;
-        padding-left: 20px;
-        padding-right: 20px;
-        border: 1px solid var(--black-fade);
-        border-radius: 5px;
-        outline: none;
-    }
-        .newsletter form input:focus {
-            border: 2px solid var(--color3);
-        }
-
-    .newsletter form button {
-        float:right;
-        height: 50px;
-        width: 28%;
-        border-radius: 5px;
-        border: 1px solid var(--black-fade);
-        background:var(--color3);
-        outline: none;
-    }
-
-    .newsletter form button:hover {
-        float: right;
-        height: 50px;
-        width: 28%;
-        border-radius: 5px;
-        border: 1px solid var(--black-fade);
-        background: var(--nicegreen);
-        outline: none;
-    }
 
 
 

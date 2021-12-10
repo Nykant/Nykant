@@ -123,10 +123,40 @@
   <data name="Choose Shipping" xml:space="preserve">
     <value>Vælg Levering</value>
   </data>
+  <data name="CityName" xml:space="preserve">
+    <value>By</value>
+  </data>
+  <data name="Company Name" xml:space="preserve">
+    <value>Butik</value>
+  </data>
   <data name="Continue" xml:space="preserve">
     <value>Gem</value>
   </data>
+  <data name="CountryCode" xml:space="preserve">
+    <value>Landekode</value>
+  </data>
   <data name="Delivery Method" xml:space="preserve">
+    <value>Levering</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Hjem</value>
+  </data>
+  <data name="Shipping Method" xml:space="preserve">
     <value>Leveringsmetode</value>
+  </data>
+  <data name="Shipping Price" xml:space="preserve">
+    <value>Pris</value>
+  </data>
+  <data name="Shop" xml:space="preserve">
+    <value>Pakkeshop</value>
+  </data>
+  <data name="StreetName" xml:space="preserve">
+    <value>Addresse</value>
+  </data>
+  <data name="StreetName2" xml:space="preserve">
+    <value>Addresse2</value>
+  </data>
+  <data name="ZipCode" xml:space="preserve">
+    <value>Postnummer</value>
   </data>
 </root>

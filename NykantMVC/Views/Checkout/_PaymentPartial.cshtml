@@ -1,30 +1,51 @@
 ﻿@inject IViewLocalizer localizer
-
 @model CheckoutVM
+
+
 
 <div class="my-row bottom-side-padding">
     <div class="responsive-form">
         <div class="checkout-header" id="payment-header">
             <h1>@localizer["Payment Method"]</h1>
         </div>
+
+    
+
         <form id="payment-form">
             <div class="checkout-wrap" id="payment-wrap">
-                <div class="payment-elements">
-                    <div class="payment-elements-thing" id="payment-elements-thing">
-                        <div class="card-element" id="card-element-number"><!--Stripe.js injects the Card Element--></div>
-                        <div class="margin-top-20 card-element" id="card-element-expiry"><!--Stripe.js injects the Card Element--></div>
-                        <div class="margin-top-20 card-element" id="card-element-cvc"><!--Stripe.js injects the Card Element--></div>
+
+                <div class="payment-options" id="payment-options">
+                    <ul id="payment-options-list">
+                        <li data-paymentoption="card">
+                            <p>@localizer["Card"]</p>  <div class="credit-card-logos vertical-center"><img class="center" alt="Credit Card Logos" title="Credit Card Logos" src="http://www.credit-card-logos.com/images/multiple_credit-card-logos-1/credit_card_logos_17.gif" width="235" height="35" border="0" /></div>
+                        </li>
+                    </ul>
+                </div>
+                <div id="payment-card-option">
+                    <button class="back-button" id="back-button">
+                        <img class="small-svg" src="~/lib/svg/arrow-left.svg" />
+                    </button>
+                    <div class="payment-card-list">
+                        <img class="center" alt="Credit Card Logos" title="Credit Card Logos" src="http://www.credit-card-logos.com/images/multiple_credit-card-logos-1/credit_card_logos_17.gif" width="235" height="35" border="0" />
+                    </div>
+                    <div class="payment-elements">
+                        <div class="payment-elements-thing" id="payment-elements-thing">
+                            <div class="card-element" id="card-element-number"><!--Stripe.js injects the Card Element--></div>
+                            <div class="margin-top-20 card-element" id="card-element-expiry"><!--Stripe.js injects the Card Element--></div>
+                            <div class="margin-top-20 card-element" id="card-element-cvc"><!--Stripe.js injects the Card Element--></div>
+                        </div>
+                    </div>
+                    <div class="col-12 left">
+                        <div class="gdpr-accept">
+                            <label class="checkbox">
+                                <input id="terms-and-conditions-consent" value="false" type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            @localizer["Signature required"]
+                        </div>
                     </div>
                 </div>
-                <div class="col-12 left">
-                    <div class="gdpr-accept">
-                        <label class="checkbox">
-                            <input id="terms-and-conditions-consent" value="false" type="checkbox">
-                            <span class="checkmark"></span>
-                        </label>
-                        @localizer["Signature required"]
-                    </div>
-                </div>
+
                 <div class="col-12 left hidden" id="payment-error">
                     <div class="payment-error">
                         <p id="card-error" role="alert"></p>

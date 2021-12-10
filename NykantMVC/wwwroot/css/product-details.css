@@ -604,6 +604,10 @@
     text-align:center;
 }
 
+.bagitem-added-product p {
+    padding:10px;
+}
+
 #bagitem-added-close {
     position: absolute;
     transform: scale(1.5);
@@ -622,26 +626,36 @@
 
 .bagitem-added-product {
     background-color:var(--color1);
-    height:65px;
+    height:auto;
     margin-bottom:50px;
+    display:flex;
 }
     .bagitem-added-product p {
-        display: inline-block;
-        padding-top: 20px;
+        display:inline;
+        margin-top: auto;
+        margin-bottom: auto;
     }
 
 .bag-item-img {
     display: inline-block;
     overflow: hidden;
-    height: 50px;
-    width: 70px;
-    float:left;
+    height: auto;
+    width: 120px;
     padding:10px;
 }
 
+.abs-right {
+    display: inline;
+    position: absolute;
+    right: 25px;
+    transform: translateY(+19%);
+}
+
     .bag-item-img img {
-        height:auto;
-        width: 70px;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
     }
 
 

@@ -29,7 +29,7 @@ for (i = 0; i < l; i++) {
         price.textContent = selElmnt.options[j].dataset.price;
         var type = document.createElement("div");
         type.setAttribute("class", "delivery-type");
-        type.textContent = selElmnt.options[j].dataset.type;
+        type.textContent = selElmnt.options[j].dataset.transtype;
         var shop = document.createElement("div");
         shop.setAttribute("class", "delivery-shop");
         c.appendChild(type);
@@ -46,9 +46,10 @@ for (i = 0; i < l; i++) {
             selectlength = select.length;
             h = this.parentNode.previousSibling;
             for (i = 1; i < selectlength; i++) {
-                if (select.options[i].dataset.type === this.children[0].textContent) {
+                if (select.options[i].dataset.transtype === this.children[0].textContent) {
+                    shipping_method_summary.textContent = select.options[i].dataset.transtype;
                     select.selectedIndex = i;
-                    
+
                     y = this.parentNode.getElementsByClassName("custom-list-option selected");
                     yl = y.length;
                     for (k = 0; k < yl; k++) {
@@ -56,7 +57,7 @@ for (i = 0; i < l; i++) {
                     }
                     this.setAttribute("class", "custom-list-option selected");
 
-                    if (this.textContent.includes("Home")) {
+                    if (this.textContent.includes("Home") || this.textContent.includes("Hjem")) {
                         shippingdelivery_type.value = 'Home';
                         shippingdelivery_price.value = 65;
                         submit_button.disabled = false;
@@ -69,7 +70,7 @@ for (i = 0; i < l; i++) {
                         submit_button.disabled = true;
                     }
 
-                    if (this.textContent.includes('Shop')) {
+                    if (this.textContent.includes('Pakkeshop') || this.textContent.includes('Shop')) {
                         var address, postal;
                         if (shippingaddress_address.value != '') {
                             address = shippingaddress_address.value;
@@ -176,7 +177,7 @@ for (i = 0; i < l; i++) {
                     break;
                 }
             }
-            h.click();
+            h.Click();
         });
         elem.appendChild(c);
     }

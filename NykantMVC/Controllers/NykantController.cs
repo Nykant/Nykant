@@ -16,6 +16,7 @@ using NykantMVC.Friends;
 using System.Text.Encodings.Web;
 using NykantMVC.Models.ViewModels;
 using NykantMVC.Services;
+using System.Net.Mail;
 
 namespace NykantMVC.Controllers
 {
@@ -194,10 +195,12 @@ namespace NykantMVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddNewsSub(NewsSub newsSub)
+        public async Task<IActionResult> AddNewsSub(string email)
         {
+            NewsSub newsSub = new NewsSub { Email = email };
             try
             {
+                var test = new MailAddress(email);
                 newsSub = _protectionService.ProtectNewsSub(newsSub);
                 var response = await PostRequest("/NewsSub/Post", newsSub);
 
