@@ -93,9 +93,12 @@ namespace NykantMVC.Controllers
                     var jsonCustomer = await GetRequest($"/Customer/GetCustomer/{checkout.CustomerInfId}");
                     var customer = JsonConvert.DeserializeObject<Customer>(jsonCustomer);
                     customer = _protectionService.UnprotectCustomer(customer);
+                    customer.BillingAddress = _protectionService.UnprotectBillingAddress(customer.BillingAddress);
+                    customer.ShippingAddress = _protectionService.UnprotectShippingAddress(customer.ShippingAddress);
 
                     json = await GetRequest($"/Order/GetOrder/{order.Id}");
                     order = JsonConvert.DeserializeObject<Models.Order>(json);
+                    order.Customer = customer;
 
                     await mailService.SendOrderEmailAsync(customer, order);
 
@@ -139,7 +142,7 @@ namespace NykantMVC.Controllers
         {
             var subtotal = CalculateSubtotal(checkout.BagItems);
             double.TryParse(subtotal, out double subtotalint);
-            var total = subtotalint + checkout.ShippingDelivery.Price;
+            var total = subtotalint;
             var taxes = total / 5;
 
             Models.Order order = new Models.Order
@@ -150,7 +153,6 @@ namespace NykantMVC.Controllers
                 PaymentIntent_Id = paymentIntentId,
                 Status = Status.Pending,
                 TotalPrice = total.ToString(),
-                SubtotalPrice = subtotal,
                 Taxes = taxes.ToString()
             };
 

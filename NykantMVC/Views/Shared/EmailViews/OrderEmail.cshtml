@@ -6,16 +6,6 @@
     ViewData["EmailTitle"] = "Ordre";
 }
 
-@{
-    if (Model.Customer.Email != null)
-    {
-        Model.Customer = protectionService.UnprotectCustomer(Model.Customer);
-        Model.Customer.BillingAddress = protectionService.UnprotectBillingAddress(Model.Customer.BillingAddress);
-        Model.Customer.ShippingAddress = protectionService.UnprotectShippingAddress(Model.Customer.ShippingAddress);
-    }
-
-}
-
 <div class="es-wrapper-color" style="background-color:#FFFF">
     <!--[if gte mso 9]>
     <v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="t">
@@ -182,7 +172,7 @@
                                                                 <td align="left" style="padding:0;Margin:0;padding-top:5px"><p style="Margin: 0; -webkit-text-size-adjust: none; -ms-text-size-adjust: none; mso-line-height-rule: exactly; font-family: arial, 'helvetica neue', helvetica, sans-serif; line-height: 21px; color: #777069; font-size: 14px">@item.Product.Description</p></td>
                                                             </tr>
                                                             <tr style="border-collapse:collapse">
-                                                                <td align="left" class="es-m-txt-l" style="padding:0;Margin:0;padding-top:10px"><h3 style="Margin: 0; line-height: 23px; mso-line-height-rule: exactly; font-family: arial, 'helvetica neue', helvetica, sans-serif; font-size: 19px; font-style: normal; font-weight: normal; color: #777069 "><strong><span style="color: #303030; font-size: 16px ">@localizer["Quantity and Weight:"]</span>&nbsp;@item.Quantity of @item.Product.WeightInKg kg.</strong></h3></td>
+                                                                <td align="left" class="es-m-txt-l" style="padding:0;Margin:0;padding-top:10px"><h3 style="Margin: 0; line-height: 23px; mso-line-height-rule: exactly; font-family: arial, 'helvetica neue', helvetica, sans-serif; font-size: 19px; font-style: normal; font-weight: normal; color: #777069 "><strong><span style="color: #303030; font-size: 16px ">@localizer["Quantity and Weight:"]</span>&nbsp;@item.Quantity à @item.Product.WeightInKg kg.</strong></h3></td>
                                                             </tr>
                                                             <tr style="border-collapse:collapse">
                                                                 <td align="left" class="es-m-txt-l" style="padding:0;Margin:0;padding-top:10px"><h3 style="Margin: 0; line-height: 23px; mso-line-height-rule: exactly; font-family: arial, 'helvetica neue', helvetica, sans-serif; font-size: 19px; font-style: normal; font-weight: normal; color: #777069"><strong><span style="color: #303030; font-size: 16px ">@localizer["Price:"]</span>&nbsp;@(item.Product.Price * item.Quantity) kr.</strong></h3></td>
@@ -214,19 +204,11 @@
                                                             <td align="left" style="padding:0;Margin:0;padding-top:10px">
                                                                 <table border="0" cellspacing="1" cellpadding="1" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:500px" class="cke_show_border" role="presentation">
                                                                     <tr style="border-collapse:collapse">
-                                                                        <td style="padding:0;Margin:0"><h4 style="Margin:0;line-height:200%;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;color:#303030">@localizer["Subtotal:"]</h4></td>
-                                                                        <td style="padding: 0; Margin: 0; color: #777069"><strong>@Model.SubtotalPrice kr.</strong></td>
-                                                                    </tr>
-                                                                    <tr style="border-collapse:collapse">
-                                                                        <td style="padding:0;Margin:0"><h4 style="Margin: 0; line-height: 200%; mso-line-height-rule: exactly; font-family: arial, 'helvetica neue', helvetica, sans-serif; color: #303030">Shipping:</h4></td>
-                                                                        <td style="padding: 0; Margin: 0; color: #777069"><strong>@Model.ShippingDelivery.Price kr.</strong></td>
-                                                                    </tr>
-                                                                    <tr style="border-collapse:collapse">
-                                                                        <td style="padding:0;Margin:0"><h4 style="Margin: 0; line-height: 200%; mso-line-height-rule: exactly; font-family: arial, 'helvetica neue', helvetica, sans-serif; color: #303030">Taxes:</h4></td>
+                                                                        <td style="padding:0;Margin:0"><h4 style="Margin: 0; line-height: 200%; mso-line-height-rule: exactly; font-family: arial, 'helvetica neue', helvetica, sans-serif; color: #303030">@localizer["Taxes:"] </h4></td>
                                                                         <td style="padding: 0; Margin: 0; color: #777069"><strong>@Model.Taxes kr.</strong></td>
                                                                     </tr>
                                                                     <tr style="border-collapse:collapse">
-                                                                        <td style="padding:0;Margin:0"><h4 style="Margin: 0; line-height: 200%; mso-line-height-rule: exactly; font-family: arial, 'helvetica neue', helvetica, sans-serif; color: #303030">Order Total inkl. moms:</h4></td>
+                                                                        <td style="padding:0;Margin:0"><h4 style="Margin: 0; line-height: 200%; mso-line-height-rule: exactly; font-family: arial, 'helvetica neue', helvetica, sans-serif; color: #303030">@localizer["Total:"]</h4></td>
                                                                         <td style="padding: 0; Margin: 0; color: #777069"><strong>@Model.TotalPrice kr.</strong></td>
                                                                     </tr>
                                                                 </table>
@@ -246,7 +228,7 @@
                                                 <td class="es-m-p20b" align="left" style="padding:0;Margin:0;width:270px">
                                                     <table width="100%" cellspacing="0" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-position:center center" role="presentation">
                                                         <tr style="border-collapse:collapse">
-                                                            <td align="left" style="padding:0;Margin:0"><h4 style="Margin: 0; line-height: 120%; mso-line-height-rule: exactly; font-family: arial, 'helvetica neue', helvetica, sans-serif; color: #303030">Contact Us:</h4></td>
+                                                            <td align="left" style="padding:0;Margin:0"><h4 style="Margin: 0; line-height: 120%; mso-line-height-rule: exactly; font-family: arial, 'helvetica neue', helvetica, sans-serif; color: #303030">@localizer["Contact Us Header"]</h4></td>
                                                         </tr>
                                                         <tr style="border-collapse:collapse">
                                                             <td align="left" style="padding:0;Margin:0;padding-top:10px;padding-bottom:15px"><p style="Margin: 0; -webkit-text-size-adjust: none; -ms-text-size-adjust: none; mso-line-height-rule: exactly; font-family: arial, 'helvetica neue', helvetica, sans-serif; line-height: 21px; color: #777069; font-size: 14px">@localizer["Contact Us"]</p></td>

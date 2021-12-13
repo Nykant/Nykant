@@ -262,22 +262,13 @@ shipping_completed = function (response) {
             parcelshop_summary.style.display = "none";
         }
 
-        var shippingprice = parseInt(response.responseJSON.shippingPrice);
         var totalelem = document.getElementById('checkout-total');
-        var subtotalelem = document.getElementById('checkout-subtotal');
 
-        var subtotal = parseInt(subtotalelem.dataset.subtotal);
-        var total = subtotal + shippingprice;
-
-        shipping_price_summary.textContent = shippingprice;
-        subtotalelem.textContent = subtotal;
-        document.getElementById('checkout-shipping-price').textContent = shippingprice;
+        var total = parseInt(totalelem.dataset.totalprice);
         document.getElementById('checkout-taxes').textContent = total / 5;
-        totalelem.textContent = total;
 
         shipping_form.style.height = "0px";
         shipping_wrap.style.transform = "translateY(-100%)";
-
 
         payment_wrap.style.transition = "all 1s";
         payment_form.style.transition = "all 1s";

@@ -12,7 +12,7 @@
         <p>@localizer["Email"]: <span id="customer-email-summary">@Model.Customer.Email</span></p>
         <p>@localizer["Telephone"]: <span id="customer-phone-summary">@Model.Customer.Phone</span></p>
         <div class="margin-top-10">
-            <p class="bold-text">Invoice Address</p>
+            <p class="bold-text">@localizer["Billing Address"]</p>
             <p>@localizer["First Name"]: <span id="customer-firstname-summary">@Model.Customer.BillingAddress.FirstName</span></p>
             <p>@localizer["Last Name"]: <span id="customer-lastname-summary">@Model.Customer.BillingAddress.LastName</span></p>
             <p>@localizer["Address"]: <span id="customer-address-summary">@Model.Customer.BillingAddress.Address</span></p>
@@ -29,8 +29,6 @@
             <p>@localizer["Country"]: <span id="shippingaddress-country-summary">@Model.Customer.ShippingAddress.Country</span></p>
             <p>@localizer["Postal"]: <span id="shippingaddress-postal-summary">@Model.Customer.ShippingAddress.Postal</span></p>
         </div>
-
-
     </div>
     <button class="button edit-button" id="customer-edit-button">@localizer["Fix"]</button>
 </div>

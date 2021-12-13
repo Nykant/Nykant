@@ -8,6 +8,5 @@ namespace NykantMVC.Models
     public class ShippingMethod
     {
         public string Type { get; set; }
-        public int Price { get; set; }
     }
 }

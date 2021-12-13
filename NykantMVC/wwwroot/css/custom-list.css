@@ -50,6 +50,7 @@
 
 .delivery-shop {
     display:inline;
+    float:right;
 }
 
 .delivery-type {

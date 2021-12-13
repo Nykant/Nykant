@@ -126,22 +126,24 @@
   <data name="Complaints" xml:space="preserve">
     <value>&lt;div&gt;
             &lt;h1&gt;8. Reklamationer&lt;/h1&gt;
+&lt;p&gt; Hvis der mod forventning skulle være problemer med et produkt, så ordner vi selvfølgelig dette uden
+                             Omkostninger for jer.&lt;/p&gt;
+                            
+&lt;p class=pushed-text&gt;- Send en mail med ordre nummer.&lt;/p&gt;
+&lt;p class=pushed-text&gt;- Beskrivelse af reklamationen&lt;/p&gt;
+&lt;p class=pushed-text&gt;- Billeder af problemet.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
         &lt;/div&gt;</value>
   </data>
   <data name="Delivery and delay" xml:space="preserve">
-    <value>&lt;div&gt;
-            &lt;h1&gt;5. Levering og forsinkelse&lt;/h1&gt;
-            &lt;p&gt;Hvor leverer vi til?&lt;/p&gt;
-            &lt;p&gt;Hvem bruger vi til levering?&lt;/p&gt;
-            &lt;p&gt;Levering vil tage imellem hvor lang tid???&lt;/p&gt;
-            &lt;p&gt;Pris for levering?&lt;/p&gt;
-            &lt;h2&gt;Leveringsomkostninger&lt;/h2&gt;
-            &lt;h2&gt;Leveringsmåde&lt;/h2&gt;
-            &lt;p&gt;
-                Leveringsmåden fremgår af ordrebekræftelsen. Sælger bærer risikoen for varen, indtil den er overgivet til dig, dvs. indtil varen er i din besiddelse.
-            &lt;/p&gt;
-            &lt;h2&gt;Forsinket levering&lt;/h2&gt;
-            &lt;p&gt;Hvis leveringen af din vare er forsinket, så får du besked, så snart Sælger bliver opmærksom på forsinkelsen. Du får samtidig besked om, hvornår du kan forvente, at din vare vil blive leveret.&lt;/p&gt;
+    <value>&lt;div&gt;&lt;h1&gt;5. Levering&lt;/h1&gt;
+            &lt;p&gt;Vi har fri levering af alle vores produkter til Pakkeshop, eller hjemmeadressen med GLS. 
+                             Varer over 20 kg. kan kun tilbydes leveret på hjemmeadressen.
+&lt;/p&gt;
+            &lt;p&gt;                             Hvis en vare eventuelt er forsinket ud over det lovede, kan ordren altid annulleres, og I vil
+                             Få pengene returneret.
+&lt;/p&gt;
         &lt;/div&gt;</value>
   </data>
   <data name="Header" xml:space="preserve">
@@ -172,17 +174,18 @@
   <data name="Personal Info" xml:space="preserve">
     <value>&lt;div&gt;
             &lt;h1&gt;9. Personoplysninger&lt;/h1&gt;
-            &lt;p&gt;Nykants databeskyttelsespolitik kan læses &lt;a asp-controller="Home" asp-action="PrivacyPolicy"&gt;her&lt;/a&gt;.&lt;/p&gt;
+            &lt;p&gt;Nykants databeskyttelsespolitik kan læses &lt;a asp-controller="Nykant" asp-action="PrivacyPolicy"&gt;her&lt;/a&gt;.&lt;/p&gt;
         &lt;/div&gt;</value>
   </data>
   <data name="Regret" xml:space="preserve">
-    <value>&lt;div&gt;
-            &lt;h1&gt;6. Fortrydelsesret&lt;/h1&gt;
-        &lt;/div&gt;</value>
-  </data>
-  <data name="Returns" xml:space="preserve">
-    <value>&lt;div&gt;
-            &lt;h1&gt;7. Returret?&lt;/h1&gt;
+    <value>&lt;div&gt; 
+            &lt;h1&gt;6. Fortrydelsesret/Returret&lt;/h1&gt;&lt;p&gt;   Alle varer kan returneres, men skal være i original emballage og returneres igennem pakkeshop.  Returomkostninger vil være 65 kr. &lt;/p&gt;
+                            
+
+&lt;p class=pushed-text&gt;- Ved returnering sendes en mail til os, hvor efter i vil modtage en returlabel, og varen 
+Afleveres i pakkeshop. &lt;/p&gt;
+&lt;p class=pushed-text&gt;- Omkostningerne fraregnes beløbet som tilbagebetales. &lt;/p&gt;
+
         &lt;/div&gt;</value>
   </data>
   <data name="Usage" xml:space="preserve">

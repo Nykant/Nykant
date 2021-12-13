@@ -118,6 +118,7 @@
 
 .privacy-information a {
     text-decoration:underline;
+    display:inline;
 }
 
 .privacy-information a:hover {

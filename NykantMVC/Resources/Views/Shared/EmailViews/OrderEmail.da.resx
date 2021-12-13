@@ -120,10 +120,37 @@
   <data name="Contact Us" xml:space="preserve">
     <value>Hvis du har nogle problemer eller spørgsmål, kan du nemt kontakte os.</value>
   </data>
+  <data name="Contact Us Header" xml:space="preserve">
+    <value>Kontakt os:</value>
+  </data>
+  <data name="CUSTOMER:" xml:space="preserve">
+    <value>KUNDE:</value>
+  </data>
   <data name="Header" xml:space="preserve">
     <value>Ordre Bekræftelse</value>
   </data>
+  <data name="Price:" xml:space="preserve">
+    <value>Pris:</value>
+  </data>
+  <data name="Quantity and Weight:" xml:space="preserve">
+    <value>Mængde og vægt:</value>
+  </data>
+  <data name="RECEIVER:" xml:space="preserve">
+    <value>MODTAGER:</value>
+  </data>
+  <data name="SHIPPING ADDRESS:" xml:space="preserve">
+    <value>LEVERINGSADDRESSE:</value>
+  </data>
   <data name="Sub Header" xml:space="preserve">
     <value>Vi har modtaget din ordre</value>
+  </data>
+  <data name="SUMMARY:" xml:space="preserve">
+    <value>RESUMÉ:</value>
+  </data>
+  <data name="Taxes:" xml:space="preserve">
+    <value>Moms:</value>
+  </data>
+  <data name="Total:" xml:space="preserve">
+    <value>I Alt:</value>
   </data>
 </root>

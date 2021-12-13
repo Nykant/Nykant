@@ -128,7 +128,7 @@ namespace NykantMVC.Controllers
                 if (User.Identity.IsAuthenticated)
                 {
                     double.TryParse(CalculateAmount(bagItemsDb), out double subtotal);
-                    total = subtotal + checkout.ShippingDelivery.Price;
+                    total = subtotal;
                     taxes = total / 5;
 
                     checkout.TotalPrice = total.ToString();
@@ -141,7 +141,7 @@ namespace NykantMVC.Controllers
                 else
                 {
                     double.TryParse(CalculateAmount(bagItemsSession), out double subtotal);
-                    total = subtotal + checkout.ShippingDelivery.Price;
+                    total = subtotal;
                     taxes = total / 5;
 
                     checkout.TotalPrice = total.ToString();
@@ -282,19 +282,6 @@ namespace NykantMVC.Controllers
         {
             try
             {
-                if(shippingDelivery.Type == "Home")
-                {
-                    shippingDelivery.Price = 65;
-                }
-                else if(shippingDelivery.Type == "Shop")
-                {
-                    shippingDelivery.Price = 0;
-                }
-                else
-                {
-                    return Json(new { error = "An unexpected error has occured" });
-                }
-
                 var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
 
                 if (checkout.Stage == Stage.shipping || editShipping)
@@ -307,7 +294,7 @@ namespace NykantMVC.Controllers
                     }
 
                     HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
-                    return Json(new { shippingPrice = shippingDelivery.Price });
+                    return Json(new { shippingPrice = 0 });
                 }
                 else
                 {

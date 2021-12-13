@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NykantAPI.Data;
 
 namespace NykantAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211213095031_ShippingdeliveryPriceRemove")]
+    partial class ShippingdeliveryPriceRemove
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -430,6 +432,10 @@ namespace NykantAPI.Migrations
                     b.Property<string>("Subject")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("SubtotalPrice")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Taxes")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -520,7 +526,7 @@ namespace NykantAPI.Migrations
                             Description = "Bøjlen.",
                             ImageSource = "../images/Products/NYKANT_boejle_naturolie_01.png",
                             ImageSource2 = "../images/Products/NYKANT_boejle_naturolie_02.png",
-                            Name = "Bøjlen Gertrud",
+                            Name = "Nora",
                             Oil = "Naturolie",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_boejle_naturolie_01.png",
                             Price = 1000,
@@ -534,7 +540,7 @@ namespace NykantAPI.Migrations
                             Description = "Bøjlen.",
                             ImageSource = "../images/Products/NYKANT_boejle_sortolie_01.png",
                             ImageSource2 = "../images/Products/NYKANT_boejle_sortolie_02.png",
-                            Name = "Bøjlen Gertrud",
+                            Name = "Nora",
                             Oil = "Sortolie",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_boejle_sortolie_01.png",
                             Price = 1000,
@@ -548,7 +554,7 @@ namespace NykantAPI.Migrations
                             Description = "Bøjlen.",
                             ImageSource = "../images/Products/NYKANT_boejle_hvidolie_01.png",
                             ImageSource2 = "../images/Products/NYKANT_boejle_hvidolie_02.png",
-                            Name = "Bøjlen Gertrud",
+                            Name = "Nora",
                             Oil = "Hvidolie",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_boejle_hvidolie_01.png",
                             Price = 1000,
@@ -562,7 +568,7 @@ namespace NykantAPI.Migrations
                             Description = "Hylden.",
                             ImageSource = "../images/Products/NYKANT_hylde_hvidolie_01.png",
                             ImageSource2 = "../images/Products/NYKANT_hylde_hvidolie_02.png",
-                            Name = "Ingeborg Hylden",
+                            Name = "Nora",
                             Oil = "Hvidolie",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_hvidolie_01.png",
                             Price = 1000,
@@ -576,7 +582,7 @@ namespace NykantAPI.Migrations
                             Description = "Hylden.",
                             ImageSource = "../images/Products/NYKANT_hylde_sortolie_01.png",
                             ImageSource2 = "../images/Products/NYKANT_hylde_sortolie_02.png",
-                            Name = "Ingeborg Hylden",
+                            Name = "Nora",
                             Oil = "Sortolie",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_sortolie_01.png",
                             Price = 1000,
@@ -590,7 +596,7 @@ namespace NykantAPI.Migrations
                             Description = "Hylden.",
                             ImageSource = "../images/Products/NYKANT_hylde_naturolie_01.png",
                             ImageSource2 = "../images/Products/NYKANT_hylde_naturolie_02.png",
-                            Name = "Ingeborg Hylden",
+                            Name = "Nora",
                             Oil = "Naturolie",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_naturolie_01.png",
                             Price = 1000,
@@ -604,7 +610,7 @@ namespace NykantAPI.Migrations
                             Description = "Bordet.",
                             ImageSource = "../images/Products/NYKANT_bord_naturolie_01.png",
                             ImageSource2 = "../images/Products/NYKANT_bord_naturolie_02.png",
-                            Name = "Dagmar Bordet",
+                            Name = "Nora",
                             Oil = "Naturolie",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_bord_naturolie_01.png",
                             Price = 1000,
@@ -618,7 +624,7 @@ namespace NykantAPI.Migrations
                             Description = "Den korte bænk",
                             ImageSource = "../images/Products/NYKANT_kortbaenk_naturolie_01.png",
                             ImageSource2 = "../images/Products/NYKANT_kortbaenk_naturolie_02.png",
-                            Name = "Thyra Bænken",
+                            Name = "Nora",
                             Oil = "Naturolie",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_kortbaenk_naturolie_01.png",
                             Price = 1000,
@@ -632,7 +638,7 @@ namespace NykantAPI.Migrations
                             Description = "Den lange bænk",
                             ImageSource = "../images/Products/NYKANT_langbaenk_naturolie_01.png",
                             ImageSource2 = "../images/Products/NYKANT_langbaenk_naturolie_02.png",
-                            Name = "Thyra Bænken",
+                            Name = "Nora",
                             Oil = "Naturolie",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_langbaenk_naturolie_01.png",
                             Price = 1000,
@@ -646,12 +652,12 @@ namespace NykantAPI.Migrations
                             Description = "Opbevaringsbænk",
                             ImageSource = "../images/Products/NYKANT_opbevaringsbaenk_naturolie_01.png",
                             ImageSource2 = "../images/Products/NYKANT_opbevaringsbaenk_naturolie_02.png",
-                            Name = "Filippa Bænk",
+                            Name = "Grete",
                             Oil = "Naturolie",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_opbevaringsbaenk_naturolie_01.png",
                             Price = 1000,
                             TypeOfWood = "Eg",
-                            WeightInKg = 23.0
+                            WeightInKg = 13.4
                         },
                         new
                         {
@@ -660,7 +666,7 @@ namespace NykantAPI.Migrations
                             Description = "Vores tøjstativ ”Nora” er udviklet i et system hvor det samles uden skruer og lim, men udelukkende med kiler i massiv egetræ. Detaljen i sig selv er både meget nem at samle og skille, men viser måske i endnu højere grad nogle meget smukke og enkle detaljer, Der klæder møblet med en meget høj snedkermæssig niveau.",
                             ImageSource = "../images/Products/NYKANT_rack_naturolie_01.png",
                             ImageSource2 = "../images/Products/NYKANT_rack_naturolie_02.png",
-                            Name = "Nora Tøjstativ",
+                            Name = "Ingrid",
                             Oil = "Naturolie",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_rack_naturolie_01.png",
                             Price = 1000,

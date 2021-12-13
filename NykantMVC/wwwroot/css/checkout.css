@@ -302,6 +302,7 @@
     padding-left:50px;
     text-align:left;
     display:none;
+    min-height:100px;
 }
 
 #parcelshop-summary {

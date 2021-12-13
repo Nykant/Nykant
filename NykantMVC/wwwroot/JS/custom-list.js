@@ -4,7 +4,7 @@ l = x.length;
 
 var elem = document.getElementById("custom-list-options");
 var shippingdelivery_type = document.getElementById("shipping-delivery-type");
-var shippingdelivery_price = document.getElementById("shipping-delivery-price");
+
 var parcelshop_CompanyName = document.getElementById("parcelshop-CompanyName");
 var parcelshop_StreetName = document.getElementById("parcelshop-StreetName");
 var parcelshop_StreetName2 = document.getElementById("parcelshop-StreetName2");
@@ -24,16 +24,12 @@ for (i = 0; i < l; i++) {
     ll = selElmnt.length;
     for (j = 1; j < ll; j++) {
         c = document.createElement("div");
-        var price = document.createElement("div");
-        price.setAttribute("class", "delivery-price");
-        price.textContent = selElmnt.options[j].dataset.price;
         var type = document.createElement("div");
         type.setAttribute("class", "delivery-type");
         type.textContent = selElmnt.options[j].dataset.transtype;
         var shop = document.createElement("div");
         shop.setAttribute("class", "delivery-shop");
         c.appendChild(type);
-        c.appendChild(price);
         c.appendChild(shop);
         c.setAttribute("class", "custom-list-option notselected");
         if (selElmnt.options[j].dataset.type == 'Shop') {
@@ -57,20 +53,18 @@ for (i = 0; i < l; i++) {
                     }
                     this.setAttribute("class", "custom-list-option selected");
 
-                    if (this.textContent.includes("Home") || this.textContent.includes("Hjem")) {
+                    if (select.options[i].dataset.type.includes("Home")) {
                         shippingdelivery_type.value = 'Home';
-                        shippingdelivery_price.value = 65;
                         submit_button.disabled = false;
                         break;
                     }
                     else {
                         shippingloading(true);
                         shippingdelivery_type.value = 'Shop';
-                        shippingdelivery_price.value = 0;
                         submit_button.disabled = true;
                     }
 
-                    if (this.textContent.includes('Pakkeshop') || this.textContent.includes('Shop')) {
+                    if (select.options[i].dataset.type.includes('Shop')) {
                         var address, postal;
                         if (shippingaddress_address.value != '') {
                             address = shippingaddress_address.value;
@@ -143,7 +137,7 @@ for (i = 0; i < l; i++) {
                                             var prop_type = props[i].getAttribute("data-type");
                                             if (prop_type == "companyName") {
                                                 parcelshop_CompanyName.value = props[i].textContent;
-                                                y[0].children[2].textContent = props[i].textContent;
+                                                y[0].children[1].textContent = props[i].textContent;
                                             }
                                             else if (prop_type == "streetname") {
                                                 parcelshop_StreetName.value = props[i].textContent;

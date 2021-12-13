@@ -3,16 +3,34 @@
 
 @{
     var optionValue = 1;
-    var shippingMethods = new List<ShippingMethod>
-{
-        new ShippingMethod { Type = "Home", Price = 65 },
-        new ShippingMethod { Type = "Shop", Price = 0 }
-    };
+    List<ShippingMethod> shippingMethods = new List<ShippingMethod>();
+    bool tooHeavyForShop = false;
+    foreach(var item in Model.Checkout.BagItems)
+    {
+        if(item.Product.WeightInKg > 19.9)
+        {
+            tooHeavyForShop = true;
+        }
+    }
+    if (tooHeavyForShop)
+    {
+        shippingMethods = new List<ShippingMethod>
+        {
+            new ShippingMethod { Type = "Home"}
+        };
+    }
+    else
+    {
+        shippingMethods = new List<ShippingMethod>
+        {
+            new ShippingMethod { Type = "Home"},
+            new ShippingMethod { Type = "Shop"}
+        };
+    }
 }
 
 <div class="my-row bottom-side-padding">
     <div class="responsive-form">
-
         <div class="checkout-header" id="shipping-headerr">
             <h1>@localizer["Delivery Method"]</h1>
             <div class="check-sign" id="shipping-check-sign">
@@ -20,8 +38,6 @@
             </div>
             <div class="summary" id="shipping-summary">
                 <p>@localizer["Shipping Method"]: <span id="shipping-method-summary">@localizer[$"{Model.Checkout.ShippingDelivery.Type}"]</span></p>
-                <p>@localizer["Shipping Price"]: <span id="shipping-price-summary">@Model.Checkout.ShippingDelivery.Price</span> kr.</p>
-
                 <div class="margin-top-10" id="parcelshop-summary">
                     <p>@localizer["Company Name"]: <span id="parcelshop-companyname-summary">@Model.Checkout.ShippingDelivery.ParcelshopData.CompanyName</span></p>
                     <p>@localizer["StreetName"]: <span id="parcelshop-streetname-summary">@Model.Checkout.ShippingDelivery.ParcelshopData.Streetname</span></p>
@@ -30,14 +46,12 @@
                     <p>@localizer["ZipCode"]: <span id="parcelshop-zipcode-summary">@Model.Checkout.ShippingDelivery.ParcelshopData.ZipCode</span></p>
                     <p>@localizer["CountryCode"]: <span id="parcelshop-countrycode-summary">@Model.Checkout.ShippingDelivery.ParcelshopData.CountryCodeISO3166A2</span></p>
                 </div>
-
             </div>
             <button class="button edit-button" id="shipping-edit-button">@localizer["Change"]</button>
         </div>
         <form id="shipping-form" method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="noop" data-ajax-complete="shipping_completed" data-ajax-begin="noop" data-ajax-failure="noop"  asp-controller="Checkout" asp-action="PostShipping">
             <input type="hidden" id="edit-shipping" name="editShipping" />
             <input required type="hidden" id="shipping-delivery-type" name="shippingDelivery.Type" asp-for="@Model.Checkout.ShippingDelivery.Type" />
-            <input required type="hidden" id="shipping-delivery-price" name="shippingDelivery.Price" asp-for="@Model.Checkout.ShippingDelivery.Price" />
             <input required type="hidden" id="parcelshop-CompanyName" name="shippingDelivery.ParcelshopData.CompanyName" asp-for="@Model.Checkout.ShippingDelivery.ParcelshopData.CompanyName" />
             <input required type="hidden" id="parcelshop-StreetName" name="shippingDelivery.ParcelshopData.Streetname" asp-for="@Model.Checkout.ShippingDelivery.ParcelshopData.Streetname" />
             <input required type="hidden" id="parcelshop-StreetName2" name="shippingDelivery.ParcelshopData.Streetname2" asp-for="@Model.Checkout.ShippingDelivery.ParcelshopData.Streetname2" />
@@ -53,13 +67,12 @@
                             </option>
                             @foreach (var item in shippingMethods)
                             {
-                                <option value="@optionValue" data-transtype="@localizer[$"{item.Type}"]" data-price="@item.Price kr." data-type="@item.Type"></option>
+                                <option value="@optionValue" data-transtype="@localizer[$"{item.Type}"]" data-type="@item.Type"></option>
                                 optionValue += 1;
                             }
                         </select>
                     </div>
                 </div>
-
                 <div class="col-12 right">
                     <button id="custom-list-button" class="button" type="submit">
                         <div id="shippingspinner" class="hidden">
@@ -69,9 +82,7 @@
                     </button>
                 </div>
             </div>
-
         </form>
-
     </div>
 </div>
 

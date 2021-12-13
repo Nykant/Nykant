@@ -21,8 +21,6 @@ namespace NykantAPI.Models
         [Required]
         public string TotalPrice { get; set; }
         [Required]
-        public string SubtotalPrice { get; set; }
-        [Required]
         public string Taxes { get; set; }
         [Required]
         public string Currency { get; set; }

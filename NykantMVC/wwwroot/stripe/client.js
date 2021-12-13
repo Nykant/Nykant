@@ -128,9 +128,19 @@ function handleStripeJsResult(result) {
 
 /* Show the customer the error from Stripe if their card fails to charge*/
 var showError = function (errorMsgText) {
+    var msg;
+    if (errorMsgText.message != undefined) {
+        msg = errorMsgText.message;
+    }
+    else if (errorMsgText.error != undefined) {
+        msg = errorMsgText.error;
+    }
+    else {
+        msg = errorMsgText;
+    }
     loading(false);
         $('#checkout-modal').css('display', 'block');
-        document.getElementById('checkout-error').textContent = errorMsgText.message;
+        document.getElementById('checkout-error').textContent = msg;
 };
 
 var orderComplete = function (paymentIntentId) {
