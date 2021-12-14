@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Add To Bag" xml:space="preserve">
+    <value>Tilføj til kurven</value>
+  </data>
+  <data name="Dagmar Description" xml:space="preserve">
+    <value>Enkelt egetræsbord i bæredygtigt FSC certificeret egetræ fremstår smukt og elegant med de affasede bordkanter, 
+De drejede koniske ben som skråer ud mod hjørnerne og bordpladen med gennemgående egelameller og den
+Høje snedkerkvalitet.</value>
+  </data>
+  <data name="Dagmar Materials" xml:space="preserve">
+    <value>&lt;strong&gt;Materialer:&lt;/strong&gt; Bæredygtigt FSC certificeret egetræ, olie, metal fittings.</value>
+  </data>
+  <data name="Dagmar Note" xml:space="preserve">
+    <value>&lt;strong&gt;Note:&lt;/strong&gt;
+Leveres knockdown:                1 stk. bordplade, 4 stk. ben m/limet skrue som nemt samles ( tjek samlevejledning)
+Størrelse og vægt:                     1 stk. karton 11 x 75 x 114 cm, 22 kg.</value>
+  </data>
+  <data name="Dagmar Size" xml:space="preserve">
+    <value>&lt;strong&gt;Størrelse:&lt;/strong&gt;         70 x 110 cm, højde 74 cm.</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Beskrivelse</value>
+  </data>
+  <data name="Filippa Description" xml:space="preserve">
+    <value>Vores smukke opbevaringsbænk FILIPPA i massiv bæredygtigt FSC certificeret egetræ, med drejede ben som er synlige i top, og afrundede
+Hjørner passer ind i rigtig mange hjem.  De fine detaljer omkring ben, og åbningen til opmagasineringen
+Er enkel og virkelig pragtigst.</value>
+  </data>
+  <data name="Filippa Materials" xml:space="preserve">
+    <value>&lt;strong&gt;Materialer:&lt;/strong&gt; Bæredygtigt FSC certificeret egetræ, Olie, læderstrop, metalbeslag.</value>
+  </data>
+  <data name="Filippa Note" xml:space="preserve">
+    <value>&lt;strong&gt;Note:&lt;/strong&gt;
+Indvendig mål opbevaring:                       30 x 30 x 85 cm
+Karton størrelse og vægt:             40 x 50 x 115 cm, 24 kg.</value>
+  </data>
+  <data name="Filippa Size" xml:space="preserve">
+    <value>&lt;strong&gt;Størrelse:&lt;/strong&gt;         Højde 45 x Længde 110 x Dybde 35 cm.
+</value>
+  </data>
+  <data name="Gertrud Description" xml:space="preserve">
+    <value>Denne smukke bøjle med de klassiske fine linjer, afrunde hjørner og ender som giver tøjet støtte og mindst mulige
+Mærker i tøjet, produceres i bæredygtigt FSC certificeret egetræ, og med en sort bøjlekrog som passer super til
+Massivt egetræ.</value>
+  </data>
+  <data name="Gertrud Materials" xml:space="preserve">
+    <value>&lt;strong&gt;Materialer:&lt;/strong&gt; Bæredygtigt FSC certificeret egetræ, olie, metalkrog i sort.</value>
+  </data>
+  <data name="Gertrud Note" xml:space="preserve">
+    <value>&lt;strong&gt;Note:&lt;/strong&gt;
+Leveres samlet med 3 stk. pr. karton.</value>
+  </data>
+  <data name="Gertrud Size" xml:space="preserve">
+    <value>&lt;strong&gt;Størrelse:&lt;/strong&gt; Længde 45 cm x tykk. 2,0 cm</value>
+  </data>
+  <data name="Ingeborg Description" xml:space="preserve">
+    <value>Denne enkle hylde i bæredygtigt FSC certificeret egetræ indeholder flere fine detaljer, som øjet ikke med det
+Samme registrerer.  De sammen skarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde 
+Monteres helt fladt til væggen, og uden synlig fastgørelse.
+Hylden fås i 4 længder, men med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er
+Monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.</value>
+  </data>
+  <data name="Ingeborg Materials" xml:space="preserve">
+    <value>&lt;strong&gt;Materialer:&lt;/strong&gt;Bæredygtigt FSC certificeret egetræ, olie, skruer, nøglehulsbeslag.</value>
+  </data>
+  <data name="Ingeborg Note" xml:space="preserve">
+    <value>&lt;strong&gt;Note:&lt;/strong&gt;
+Leveres knockdown:                1 stk. hylde, 2 stk. hyldeknægte, 4 stk. messingskruer, 2 stk. skruer til væg
+                                                          Med Plugs.  (Bemærk tjek om disse Plugs passer præcist til jeres væg)</value>
+  </data>
+  <data name="Ingeborg Size" xml:space="preserve">
+    <value>&lt;strong&gt;Størrelse:&lt;/strong&gt;
+20 mm tykkelse x 20 x 40 – 60 – 80 og 100 cm længde.
+</value>
+  </data>
+  <data name="Nora Description" xml:space="preserve">
+    <value>Dette tøjstativ NORA i bæredygtigt FSC certificeret massivt egetræ, er designet således at det samles uden skruer, men alene
+Med 6 stk. trækiler.  Bøjlestangen er drejet rundstok, som er fræset ud i enderne således at kilerne passer igennem.
+Det massive egetræsmøbel står sikkert og dekorativt med det fine snedkerarbejde, og de lækre detaljer.
+
+Passe perfekt i soveværelset, pigeværelset eller hvor tøj hænger synligt.</value>
+  </data>
+  <data name="Nora Materials" xml:space="preserve">
+    <value>&lt;strong&gt;Materialer:&lt;/strong&gt; Bæredygtigt FSC certificeret egetræ, olie.</value>
+  </data>
+  <data name="Nora Note" xml:space="preserve">
+    <value>&lt;strong&gt;Note:&lt;/strong&gt;
+Leveres knockdown i 2 kartoner :  4 stk. sider, 1 stk. bøjlestang, 1 stk. bund (som er samlet), 6 skt. Kiler.
+Kartonstørrelse og vægt:                                                  1 stk. karton 7 x 12 x 186 cm, 5 kg. + 1 stk. karton 6 x 54 x 119 cm, 3 kg.</value>
+  </data>
+  <data name="Nora Size" xml:space="preserve">
+    <value>&lt;strong&gt;Størrelse:&lt;/strong&gt;         højde 180 cm x bredde 100 cm x dybde 55 cm.
+</value>
+  </data>
+  <data name="Specifications" xml:space="preserve">
+    <value>Specifikationer</value>
+  </data>
+  <data name="Thyra Description" xml:space="preserve">
+    <value>Den elegante og praktiske bænk THYRA i massivt egetræ, med de afrundede hjørner og synlige drejede ben
+Er fantastisk stabil og robust. Bænken er meget nem at samle med de 2 stk. ben gavle som skrues på de
+Fastmonterede sarg. (se samle vejledning). 
+
+Passer perfekt ind på badeværelset, entreen, soveværelset, og ved spisebordet.</value>
+  </data>
+  <data name="Thyra Materials" xml:space="preserve">
+    <value>&lt;strong&gt;Materialer:&lt;/strong&gt; Bæredygtigt FSC certificeret egetræ, Olie, skruer.</value>
+  </data>
+  <data name="Thyra Note" xml:space="preserve">
+    <value>&lt;strong&gt;Note:&lt;/strong&gt;
+Karton størrelse og vægt:            11 x 47 x 175 cm, 20 kg.
+Karton størrelse og vægt:            11 x 47 x 120 cm, 14 kg.</value>
+  </data>
+  <data name="Thyra Size" xml:space="preserve">
+    <value>&lt;strong&gt;Størrelse:&lt;/strong&gt;        Fås i 2 længder:
+                                              Højde 47 cm x 40 x 170 cm
+                                                          Højde 47 cm x 40 x 115 cm
+</value>
+  </data>
+</root>

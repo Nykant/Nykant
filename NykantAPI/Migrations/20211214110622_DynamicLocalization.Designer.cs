@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NykantAPI.Data;
 
 namespace NykantAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211214110622_DynamicLocalization")]
+    partial class DynamicLocalization
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -671,13 +673,7 @@ namespace NykantAPI.Migrations
                     b.Property<string>("ImageSource2")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Materials")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Note")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Number")
@@ -692,7 +688,7 @@ namespace NykantAPI.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
-                    b.Property<string>("Size")
+                    b.Property<string>("TypeOfWood")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("WeightInKg")
@@ -712,14 +708,12 @@ namespace NykantAPI.Migrations
                             Description = "Gertrud Description",
                             ImageSource = "../images/Products/NYKANT_boejle_naturolie_01.png",
                             ImageSource2 = "../images/Products/NYKANT_boejle_naturolie_02.png",
-                            Materials = "Gertrud Materials",
                             Name = "Bøjlen Gertrud",
-                            Note = "Gertrud Note",
                             Number = "101",
                             Oil = "Naturolie",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_boejle_naturolie_01.png",
                             Price = 375.0,
-                            Size = "Gertrud Size",
+                            TypeOfWood = "Eg",
                             WeightInKg = 11.6
                         },
                         new
@@ -729,14 +723,12 @@ namespace NykantAPI.Migrations
                             Description = "Gertrud Description",
                             ImageSource = "../images/Products/NYKANT_boejle_sortolie_01.png",
                             ImageSource2 = "../images/Products/NYKANT_boejle_sortolie_02.png",
-                            Materials = "Gertrud Materials",
                             Name = "Bøjlen Gertrud",
-                            Note = "Gertrud Note",
                             Number = "101",
                             Oil = "Sortolie",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_boejle_sortolie_01.png",
                             Price = 375.0,
-                            Size = "Gertrud Size",
+                            TypeOfWood = "Eg",
                             WeightInKg = 11.6
                         },
                         new
@@ -746,14 +738,12 @@ namespace NykantAPI.Migrations
                             Description = "Gertrud Description",
                             ImageSource = "../images/Products/NYKANT_boejle_hvidolie_01.png",
                             ImageSource2 = "../images/Products/NYKANT_boejle_hvidolie_02.png",
-                            Materials = "Gertrud Materials",
                             Name = "Bøjlen Gertrud",
-                            Note = "Gertrud Note",
                             Number = "101",
                             Oil = "Hvidolie",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_boejle_hvidolie_01.png",
                             Price = 375.0,
-                            Size = "Gertrud Size",
+                            TypeOfWood = "Eg",
                             WeightInKg = 11.6
                         },
                         new
@@ -763,14 +753,12 @@ namespace NykantAPI.Migrations
                             Description = "Ingeborg Description",
                             ImageSource = "../images/Products/NYKANT_hylde_hvidolie_01.png",
                             ImageSource2 = "../images/Products/NYKANT_hylde_hvidolie_02.png",
-                            Materials = "Ingeborg Materials",
                             Name = "Ingeborg Hylden",
-                            Note = "Ingeborg Note",
                             Number = "101",
                             Oil = "Hvidolie",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_hvidolie_01.png",
                             Price = 595.0,
-                            Size = "Ingeborg Size",
+                            TypeOfWood = "Eg",
                             WeightInKg = 11.6
                         },
                         new
@@ -780,14 +768,12 @@ namespace NykantAPI.Migrations
                             Description = "Ingeborg Description",
                             ImageSource = "../images/Products/NYKANT_hylde_sortolie_01.png",
                             ImageSource2 = "../images/Products/NYKANT_hylde_sortolie_02.png",
-                            Materials = "Ingeborg Materials",
                             Name = "Ingeborg Hylden",
-                            Note = "Ingeborg Note",
                             Number = "101",
                             Oil = "Sortolie",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_sortolie_01.png",
                             Price = 595.0,
-                            Size = "Ingeborg Size",
+                            TypeOfWood = "Eg",
                             WeightInKg = 11.6
                         },
                         new
@@ -797,14 +783,12 @@ namespace NykantAPI.Migrations
                             Description = "Ingeborg Description",
                             ImageSource = "../images/Products/NYKANT_hylde_naturolie_01.png",
                             ImageSource2 = "../images/Products/NYKANT_hylde_naturolie_02.png",
-                            Materials = "Ingeborg Materials",
                             Name = "Ingeborg Hylden",
-                            Note = "Ingeborg Note",
                             Number = "101",
                             Oil = "Naturolie",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_naturolie_01.png",
                             Price = 595.0,
-                            Size = "Ingeborg Size",
+                            TypeOfWood = "Eg",
                             WeightInKg = 11.6
                         },
                         new
@@ -814,15 +798,13 @@ namespace NykantAPI.Migrations
                             Description = "Dagmar Description",
                             ImageSource = "../images/Products/NYKANT_bord_naturolie_01.png",
                             ImageSource2 = "../images/Products/NYKANT_bord_naturolie_02.png",
-                            Materials = "Dagmar Materials",
                             Name = "Dagmar Bordet",
-                            Note = "Dagmar Note",
                             Number = "101",
                             Oil = "Naturolie",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_bord_naturolie_01.png",
                             Price = 2995.0,
-                            Size = "Dagmar Size",
-                            WeightInKg = 22.0
+                            TypeOfWood = "Eg",
+                            WeightInKg = 11.6
                         },
                         new
                         {
@@ -831,15 +813,13 @@ namespace NykantAPI.Migrations
                             Description = "Thyra Description",
                             ImageSource = "../images/Products/NYKANT_kortbaenk_naturolie_01.png",
                             ImageSource2 = "../images/Products/NYKANT_kortbaenk_naturolie_02.png",
-                            Materials = "Thyra Materials",
                             Name = "Thyra Kortbænken",
-                            Note = "Thyra Note",
                             Number = "101",
                             Oil = "Naturolie",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_kortbaenk_naturolie_01.png",
                             Price = 2985.0,
-                            Size = "Thyra Size",
-                            WeightInKg = 14.0
+                            TypeOfWood = "Eg",
+                            WeightInKg = 13.4
                         },
                         new
                         {
@@ -848,15 +828,13 @@ namespace NykantAPI.Migrations
                             Description = "Thyra Description",
                             ImageSource = "../images/Products/NYKANT_langbaenk_naturolie_01.png",
                             ImageSource2 = "../images/Products/NYKANT_langbaenk_naturolie_02.png",
-                            Materials = "Thyra Materials",
                             Name = "Thyra Langbænken",
-                            Note = "Thyra Note",
                             Number = "101",
                             Oil = "Naturolie",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_langbaenk_naturolie_01.png",
                             Price = 3885.0,
-                            Size = "Thyra Size",
-                            WeightInKg = 20.0
+                            TypeOfWood = "Eg",
+                            WeightInKg = 13.4
                         },
                         new
                         {
@@ -865,15 +843,13 @@ namespace NykantAPI.Migrations
                             Description = "Filippa Description",
                             ImageSource = "../images/Products/NYKANT_opbevaringsbaenk_naturolie_01.png",
                             ImageSource2 = "../images/Products/NYKANT_opbevaringsbaenk_naturolie_02.png",
-                            Materials = "Filippa Materials",
                             Name = "Filippa Bænk",
-                            Note = "Filippa Note",
                             Number = "101",
                             Oil = "Naturolie",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_opbevaringsbaenk_naturolie_01.png",
                             Price = 4395.0,
-                            Size = "Filippa Size",
-                            WeightInKg = 24.0
+                            TypeOfWood = "Eg",
+                            WeightInKg = 23.0
                         },
                         new
                         {
@@ -882,14 +858,12 @@ namespace NykantAPI.Migrations
                             Description = "Nora Description",
                             ImageSource = "../images/Products/NYKANT_rack_naturolie_01.png",
                             ImageSource2 = "../images/Products/NYKANT_rack_naturolie_02.png",
-                            Materials = "Nora Materials",
                             Name = "Nora Tøjstativ",
-                            Note = "Nora Note",
                             Number = "101",
                             Oil = "Naturolie",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_rack_naturolie_01.png",
                             Price = 2295.0,
-                            Size = "Nora Size",
+                            TypeOfWood = "Eg",
                             WeightInKg = 13.4
                         });
                 });

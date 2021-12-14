@@ -72,10 +72,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Resources\Views\Product\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <EmbeddedResource Update="Resources\Views\Nykant\PrivacyPolicy.da.resx">
       <Generator></Generator>
     </EmbeddedResource>

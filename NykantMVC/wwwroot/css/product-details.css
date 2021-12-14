@@ -181,10 +181,12 @@
     padding-right:20px;
 }
 
-.color img {
-    height:40px;
-    width:65px;
-}
+    .color img {
+        max-height: 80px;
+        max-width: 80px;
+        object-fit: cover;
+        object-position: center;
+    }
 
 .secondary-image-wrap {
     padding-right: 10%;
@@ -345,14 +347,16 @@
 .collapsible-content {
     background-color: white;
     max-height: 0;
-    overflow:hidden;
+    overflow: hidden;
     transition: max-height 0.2s ease-out;
+    text-align: left;
 }
 
 .collapsible-content:last-child {
 }
 
 .collapsible-content p {
+    text-align:left;
     padding:20px;
 }
 

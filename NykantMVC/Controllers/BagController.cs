@@ -46,7 +46,7 @@ namespace NykantMVC.Controllers
                 }
                 else
                 {
-                    int priceSum = 0;
+                    double priceSum = 0;
                     foreach (var bagItem in bagItems)
                     {
                         priceSum += bagItem.Product.Price;
@@ -171,9 +171,9 @@ namespace NykantMVC.Controllers
             }
         }
 
-        private int CalculateAmount(List<BagItem> items)
+        private double CalculateAmount(List<BagItem> items)
         {
-            int price = 0;
+            double price = 0;
             foreach (var item in items)
             {
                 for (int i = 0; i < item.Quantity; i++)

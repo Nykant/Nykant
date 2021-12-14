@@ -132,6 +132,9 @@
   <data name="Price:" xml:space="preserve">
     <value>Pris:</value>
   </data>
+  <data name="Product Number:" xml:space="preserve">
+    <value>Produkt Nummer:</value>
+  </data>
   <data name="Quantity and Weight:" xml:space="preserve">
     <value>Mængde og vægt:</value>
   </data>

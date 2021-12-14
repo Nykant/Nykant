@@ -1,8 +1,9 @@
 ﻿@model Product
+@inject IViewLocalizer localizer
 
 @{
     ViewData["Title"] = Model.Name;
-    ViewData["Description"] = Model.Description;
+    ViewData["Description"] = localizer[Model.Description];
 }
 <script src="~/JS/swiped-events.min.js"></script>
 <script src="~/JS/product-details.js" defer></script>
@@ -35,40 +36,36 @@
 <div class="my-row top-padding border-bottom bottom-padding">
     <div class="col-10 center" id="details-wrapper">
         <div class="col-8 left" id="details-left">
-                <div class="product-slideshow" id="product-slideshow">
+            <div class="product-slideshow" id="product-slideshow">
 
-                    <div class="product-slide-container" id="product-slide-container">
-                        @foreach (var image in Model.Images)
-                        {
-                            <div class="product-slide">
-                                <img align="middle" src="../@image.Source" />
-                            </div>
-                        }
-
-                    </div>
-
-                </div>
-
-                <div class="my-row top-side-padding">
-                    <div class="col-2 center">
-                        <div class="product-slide-buttons" id="product-slide-buttons">
-                            @{
-                                <input id="radio1" type="radio" name="slide" checked />
-
-                                @for (int i = 0; i < Model.Images.Count() - 1; i++)
-                                {
-                                    int h = 1;
-                                    h++;
-                                    <input id="radio-@h " type="radio" name="slide" />
-                                }
-                            }
-
-
+                <div class="product-slide-container" id="product-slide-container">
+                    @foreach (var image in Model.Images)
+                    {
+                        <div class="product-slide">
+                            <img align="middle" src="../@image.Source" />
                         </div>
-                    </div>
+                    }
+
                 </div>
 
+            </div>
 
+            <div class="my-row top-side-padding">
+                <div class="col-2 center">
+                    <div class="product-slide-buttons" id="product-slide-buttons">
+                        @{
+                            <input id="radio1" type="radio" name="slide" checked />
+
+                            @for (int i = 0; i < Model.Images.Count() - 1; i++)
+                            {
+                                int h = 1;
+                                h++;
+                                <input id="radio-@h " type="radio" name="slide" />
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div id="details-right">
@@ -79,11 +76,11 @@
 
                 <div id="color-select">
                     <h3>Farver</h3>
-                    @for (int i = 0; i < 3; i++)
+                    @foreach (var color in Model.Colors)
                     {
                         <div class="color">
-                            <a asp-controller="Product" asp-action="details" asp-route-id="@Model.Id">
-                                <img src="../@Model.ImageSource" />
+                            <a asp-controller="Product" asp-action="details" asp-route-id="@color.ProductSourceId">
+                                <img src="../@color.ImgSrc" />
                             </a>
                         </div>
                     }
@@ -96,35 +93,33 @@
                     @Html.HiddenFor(x => x.ImageSource2)
                     @Html.HiddenFor(x => x.Name)
                     @Html.HiddenFor(x => x.Price)
-                    @Html.HiddenFor(x => x.TypeOfWood)
+                    @Html.HiddenFor(x => x.Materials)
                     @Html.HiddenFor(x => x.Alt)
                     @Html.HiddenFor(x => x.Oil)
                     @Html.HiddenFor(x => x.Description)
                     @Html.HiddenFor(x => x.CategoryId)
+                    @Html.HiddenFor(x => x.WeightInKg)
+                    @Html.HiddenFor(x => x.Number)
 
                     <div class="top-side-padding bottom-side-padding fadein " id="addproduct-button">
-                        <button class="button" type="submit">ADD TO BAG</button> @*style=border-radius="0"????*@
+                        <button class="button" type="submit">@localizer["Add To Bag"]</button> @*style=border-radius="0"????*@
                     </div>
                 </form>
             </div>
         </div>
         <div id="collapsible-wrapper" class="col-8 left">
             <div class="collapsible">
-                <button type="button" class="collapsible-button2">Beskrivelse</button>
+                <button type="button" class="collapsible-button2 active">@localizer["Description"]</button>
                 <div class="collapsible-content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <p>@localizer[Model.Description]</p>
                 </div>
             </div>
             <div class="collapsible">
-                <button type="button" class="collapsible-button2">Specifikationer</button>
+                <button type="button" class="collapsible-button2 active">@localizer["Specifications"]</button>
                 <div class="collapsible-content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                </div>
-            </div>
-            <div class="collapsible">
-                <button type="button" class="collapsible-button2">Description</button>
-                <div class="collapsible-content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <p>@localizer[Model.Size]</p>
+                    <p>@localizer[Model.Materials]</p>
+                    <p>@localizer[Model.Note]</p>
                 </div>
             </div>
         </div>

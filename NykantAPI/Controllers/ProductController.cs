@@ -32,9 +32,9 @@ namespace NykantAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductDTO>> GetProduct(int id) 
         {
-
             var product = await _context.Products
                 .Include(x => x.Images)
+                .Include(x => x.Colors)
                 .FirstOrDefaultAsync(x => x.Id == id);
 
             var json = JsonConvert.SerializeObject(product, Extensions.JsonOptions.jsonSettings);
