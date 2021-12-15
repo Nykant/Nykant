@@ -118,21 +118,27 @@
 
     padding:90px;
     height:auto;
-    text-align:center;
+    text-align:left;
     border-radius:10px;
 
 /*    border:1px solid var(--black-fade);*/
 /*    background:var(--light-blue);*/
 }
 
+.about-us h1 {
+    font-size:30px;
+    padding-bottom:30px;
+    color:var(--dark);
+}
 
     .about-us p {
         line-height:40px;
         display:table;
         margin: 0px auto 0px auto;
 /*        border: 1px solid black;*/
-        font-size: 22px;
+        font-size: 18px;
         opacity:1;
+        color:var(--dark);
 /*        animation: about-us-in 1s ease;*/
         transition:all ease 1s;
     }

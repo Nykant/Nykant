@@ -126,18 +126,22 @@ De drejede koniske ben som skråer ud mod hjørnerne og bordpladen med gennemgå
 Høje snedkerkvalitet.</value>
   </data>
   <data name="Dagmar Materials" xml:space="preserve">
-    <value>&lt;strong&gt;Materialer:&lt;/strong&gt; Bæredygtigt FSC certificeret egetræ, olie, metal fittings.</value>
+    <value>
+&lt;div class="product-detail-text"&gt;&lt;strong&gt;Materialer:&lt;/strong&gt; &lt;p&gt;Bæredygtigt FSC certificeret egetræ, olie, metal fittings.&lt;/p&gt;&lt;/div&gt;</value>
   </data>
   <data name="Dagmar Note" xml:space="preserve">
-    <value>&lt;strong&gt;Note:&lt;/strong&gt;
-Leveres knockdown:                1 stk. bordplade, 4 stk. ben m/limet skrue som nemt samles ( tjek samlevejledning)
-Størrelse og vægt:                     1 stk. karton 11 x 75 x 114 cm, 22 kg.</value>
+    <value>
+&lt;div class="product-detail-text no-border"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
+&lt;p&gt;Leveres knockdown:                1 stk. bordplade, 4 stk. ben m/limet skrue som nemt samles ( tjek samlevejledning)
+Størrelse og vægt:                     1 stk. karton 11 x 75 x 114 cm, 22 kg. &lt;/p&gt;&lt;/div&gt;</value>
   </data>
   <data name="Dagmar Size" xml:space="preserve">
-    <value>&lt;strong&gt;Størrelse:&lt;/strong&gt;         70 x 110 cm, højde 74 cm.</value>
+    <value>&lt;div class="product-detail-text"&gt;&lt;strong&gt;Størrelse:&lt;/strong&gt;         &lt;p&gt;70 x 110 cm, højde 74 cm.&lt;/p&gt;&lt;/div&gt;</value>
+    <comment>&lt;div class="product-detail-text"&gt;&lt;/div&gt;</comment>
   </data>
   <data name="Description" xml:space="preserve">
     <value>Beskrivelse</value>
+    <comment>&lt;p&gt; &lt;/p&gt;</comment>
   </data>
   <data name="Filippa Description" xml:space="preserve">
     <value>Vores smukke opbevaringsbænk FILIPPA i massiv bæredygtigt FSC certificeret egetræ, med drejede ben som er synlige i top, og afrundede
@@ -145,16 +149,18 @@ Hjørner passer ind i rigtig mange hjem.  De fine detaljer omkring ben, og åbni
 Er enkel og virkelig pragtigst.</value>
   </data>
   <data name="Filippa Materials" xml:space="preserve">
-    <value>&lt;strong&gt;Materialer:&lt;/strong&gt; Bæredygtigt FSC certificeret egetræ, Olie, læderstrop, metalbeslag.</value>
+    <value>
+&lt;div class="product-detail-text"&gt;&lt;strong&gt;Materialer:&lt;/strong&gt;&lt;p&gt; Bæredygtigt FSC certificeret egetræ, Olie, læderstrop, metalbeslag. &lt;/p&gt;&lt;/div&gt;</value>
   </data>
   <data name="Filippa Note" xml:space="preserve">
-    <value>&lt;strong&gt;Note:&lt;/strong&gt;
-Indvendig mål opbevaring:                       30 x 30 x 85 cm
-Karton størrelse og vægt:             40 x 50 x 115 cm, 24 kg.</value>
+    <value>
+&lt;div class="product-detail-text no-border"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
+&lt;p&gt;Indvendig mål opbevaring:                       30 x 30 x 85 cm
+Karton størrelse og vægt:             40 x 50 x 115 cm, 24 kg. &lt;/p&gt;&lt;/div&gt;</value>
   </data>
   <data name="Filippa Size" xml:space="preserve">
-    <value>&lt;strong&gt;Størrelse:&lt;/strong&gt;         Højde 45 x Længde 110 x Dybde 35 cm.
-</value>
+    <value>
+&lt;div class="product-detail-text"&gt;&lt;strong&gt;Størrelse:&lt;/strong&gt;      &lt;p&gt;  Højde 45 x Længde 110 x Dybde 35 cm.&lt;/p&gt;  &lt;/div&gt;</value>
   </data>
   <data name="Gertrud Description" xml:space="preserve">
     <value>Denne smukke bøjle med de klassiske fine linjer, afrunde hjørner og ender som giver tøjet støtte og mindst mulige
@@ -162,14 +168,15 @@ Mærker i tøjet, produceres i bæredygtigt FSC certificeret egetræ, og med en 
 Massivt egetræ.</value>
   </data>
   <data name="Gertrud Materials" xml:space="preserve">
-    <value>&lt;strong&gt;Materialer:&lt;/strong&gt; Bæredygtigt FSC certificeret egetræ, olie, metalkrog i sort.</value>
+    <value>
+&lt;div class="product-detail-text"&gt;&lt;strong&gt;Materialer:&lt;/strong&gt; &lt;p&gt; Bæredygtigt FSC certificeret egetræ, olie, metalkrog i sort. &lt;/p&gt;&lt;/div&gt;</value>
   </data>
   <data name="Gertrud Note" xml:space="preserve">
-    <value>&lt;strong&gt;Note:&lt;/strong&gt;
-Leveres samlet med 3 stk. pr. karton.</value>
+    <value>
+&lt;div class="product-detail-text no-border"&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;p&gt; Leveres samlet med 3 stk. pr. karton.&lt;/p&gt;&lt;/div&gt;</value>
   </data>
   <data name="Gertrud Size" xml:space="preserve">
-    <value>&lt;strong&gt;Størrelse:&lt;/strong&gt; Længde 45 cm x tykk. 2,0 cm</value>
+    <value> &lt;div class="product-detail-text"&gt;&lt;strong&gt;Størrelse:&lt;/strong&gt;&lt;p&gt;Længde 45 cm x tykk. 2,0 cm &lt;/p&gt;&lt;/div&gt;</value>
   </data>
   <data name="Ingeborg Description" xml:space="preserve">
     <value>Denne enkle hylde i bæredygtigt FSC certificeret egetræ indeholder flere fine detaljer, som øjet ikke med det
@@ -179,17 +186,19 @@ Hylden fås i 4 længder, men med de samme hyldeknægte som også vil kunne oph�
 Monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.</value>
   </data>
   <data name="Ingeborg Materials" xml:space="preserve">
-    <value>&lt;strong&gt;Materialer:&lt;/strong&gt;Bæredygtigt FSC certificeret egetræ, olie, skruer, nøglehulsbeslag.</value>
+    <value>
+&lt;div class="product-detail-text"&gt;&lt;strong&gt;Materialer:&lt;/strong&gt;&lt;p&gt;Bæredygtigt FSC certificeret egetræ, olie, skruer, nøglehulsbeslag. &lt;/p&gt;&lt;/div&gt;</value>
   </data>
   <data name="Ingeborg Note" xml:space="preserve">
-    <value>&lt;strong&gt;Note:&lt;/strong&gt;
-Leveres knockdown:                1 stk. hylde, 2 stk. hyldeknægte, 4 stk. messingskruer, 2 stk. skruer til væg
-                                                          Med Plugs.  (Bemærk tjek om disse Plugs passer præcist til jeres væg)</value>
+    <value>
+&lt;div class="product-detail-text no-border"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
+&lt;p&gt;Leveres knockdown:                1 stk. hylde, 2 stk. hyldeknægte, 4 stk. messingskruer, 2 stk. skruer til væg
+                                                          Med Plugs.  (Bemærk tjek om disse Plugs passer præcist til jeres væg) &lt;/p&gt;&lt;/div&gt;</value>
   </data>
   <data name="Ingeborg Size" xml:space="preserve">
-    <value>&lt;strong&gt;Størrelse:&lt;/strong&gt;
-20 mm tykkelse x 20 x 40 – 60 – 80 og 100 cm længde.
-</value>
+    <value>
+&lt;div class="product-detail-text"&gt;&lt;strong&gt;Størrelse:&lt;/strong&gt;
+&lt;p&gt; 20 mm tykkelse x 20 x 40 – 60 – 80 og 100 cm længde.&lt;/p&gt;&lt;/div&gt;</value>
   </data>
   <data name="Nora Description" xml:space="preserve">
     <value>Dette tøjstativ NORA i bæredygtigt FSC certificeret massivt egetræ, er designet således at det samles uden skruer, men alene
@@ -199,16 +208,18 @@ Det massive egetræsmøbel står sikkert og dekorativt med det fine snedkerarbej
 Passe perfekt i soveværelset, pigeværelset eller hvor tøj hænger synligt.</value>
   </data>
   <data name="Nora Materials" xml:space="preserve">
-    <value>&lt;strong&gt;Materialer:&lt;/strong&gt; Bæredygtigt FSC certificeret egetræ, olie.</value>
+    <value>
+&lt;div class="product-detail-text"&gt;&lt;strong&gt;Materialer:&lt;/strong&gt;&lt;p&gt; Bæredygtigt FSC certificeret egetræ, olie. &lt;/p&gt;&lt;/div&gt;</value>
   </data>
   <data name="Nora Note" xml:space="preserve">
-    <value>&lt;strong&gt;Note:&lt;/strong&gt;
-Leveres knockdown i 2 kartoner :  4 stk. sider, 1 stk. bøjlestang, 1 stk. bund (som er samlet), 6 skt. Kiler.
-Kartonstørrelse og vægt:                                                  1 stk. karton 7 x 12 x 186 cm, 5 kg. + 1 stk. karton 6 x 54 x 119 cm, 3 kg.</value>
+    <value>
+&lt;div class="product-detail-text no-border"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
+&lt;p&gt; Leveres knockdown i 2 kartoner :  4 stk. sider, 1 stk. bøjlestang, 1 stk. bund (som er samlet), 6 skt. Kiler.
+Kartonstørrelse og vægt:                                                  1 stk. karton 7 x 12 x 186 cm, 5 kg. + 1 stk. karton 6 x 54 x 119 cm, 3 kg.&lt;/p&gt;&lt;/div&gt;</value>
   </data>
   <data name="Nora Size" xml:space="preserve">
-    <value>&lt;strong&gt;Størrelse:&lt;/strong&gt;         højde 180 cm x bredde 100 cm x dybde 55 cm.
-</value>
+    <value>
+&lt;div class="product-detail-text"&gt;&lt;strong&gt;Størrelse:&lt;/strong&gt;        &lt;p&gt; højde 180 cm x bredde 100 cm x dybde 55 cm. &lt;/p&gt;&lt;/div&gt;</value>
   </data>
   <data name="Specifications" xml:space="preserve">
     <value>Specifikationer</value>
@@ -221,17 +232,19 @@ Fastmonterede sarg. (se samle vejledning).
 Passer perfekt ind på badeværelset, entreen, soveværelset, og ved spisebordet.</value>
   </data>
   <data name="Thyra Materials" xml:space="preserve">
-    <value>&lt;strong&gt;Materialer:&lt;/strong&gt; Bæredygtigt FSC certificeret egetræ, Olie, skruer.</value>
+    <value>&lt;div class="product-detail-text"&gt;&lt;strong&gt;Materialer:&lt;/strong&gt; &lt;p&gt; Bæredygtigt FSC certificeret egetræ, Olie, skruer.&lt;/p&gt;&lt;/div&gt;
+</value>
   </data>
   <data name="Thyra Note" xml:space="preserve">
-    <value>&lt;strong&gt;Note:&lt;/strong&gt;
-Karton størrelse og vægt:            11 x 47 x 175 cm, 20 kg.
-Karton størrelse og vægt:            11 x 47 x 120 cm, 14 kg.</value>
+    <value>
+&lt;div class="product-detail-text no-border"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
+&lt;p&gt;Karton størrelse og vægt:            11 x 47 x 175 cm, 20 kg.
+Karton størrelse og vægt:            11 x 47 x 120 cm, 14 kg. &lt;/p&gt;&lt;/div&gt;</value>
   </data>
   <data name="Thyra Size" xml:space="preserve">
-    <value>&lt;strong&gt;Størrelse:&lt;/strong&gt;        Fås i 2 længder:
+    <value>
+&lt;div class="product-detail-text"&gt;&lt;strong&gt;Størrelse:&lt;/strong&gt;       &lt;p&gt;  Fås i 2 længder:
                                               Højde 47 cm x 40 x 170 cm
-                                                          Højde 47 cm x 40 x 115 cm
-</value>
+                                                          Højde 47 cm x 40 x 115 cm&lt;/p&gt;&lt;/div&gt;</value>
   </data>
 </root>

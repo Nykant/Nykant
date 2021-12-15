@@ -124,17 +124,17 @@ a:hover {
 }
 
 .simple-link{
-    color:black;
+    color: var(--dark);
     text-decoration:underline;
     cursor:pointer;
     display:inline;
 }
 
-.simple-link:hover {
-    text-decoration:none;
-    font-weight:bold;
-    color:black;
-}
+    .simple-link:hover {
+        text-decoration: none;
+        font-weight: bold;
+        color: var(--dark);
+    }
 
 ol, ul {
     list-style: none;
@@ -619,7 +619,7 @@ button span {
     }
 
     .green-button:hover {
-        color: black;
+        color: var(--dark);
         background-color: white;
         border: 2px solid rgba(0,0,0,1);
     }
@@ -628,7 +628,7 @@ button span {
         cursor: initial;
         color: grey;
         box-shadow: none;
-        background-color: black;
+        background-color: var(--dark);
     }
 
     .hidden {
