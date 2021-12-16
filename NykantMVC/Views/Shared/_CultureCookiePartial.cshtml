@@ -1,12 +1,23 @@
 ﻿@using Microsoft.Extensions.Configuration
 @using NykantMVC.Friends;
 @inject IConfiguration Configuration
+
 @{
     var routevalues = Context.Request.RouteValues;
     var controller = routevalues["controller"];
     var action = routevalues["action"];
 
-    bool cookieExists = HttpHelpers.CookieExists(Context.Request, ".AspNetCore.Culture");
+    bool cookieExists = false;
+    try
+    {
+        cookieExists = HttpHelpers.CookieExists(Context.Request, ".AspNetCore.Culture");
+        Console.WriteLine("cookie exists: " + cookieExists);
+    }
+    catch(Exception e)
+    {
+        Console.WriteLine(e.Message);
+    }
+
 }
 
 @if (!cookieExists)

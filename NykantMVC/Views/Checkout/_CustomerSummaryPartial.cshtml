@@ -12,7 +12,7 @@
         <p>@localizer["Email"]: <span id="customer-email-summary">@Model.Customer.Email</span></p>
         <p>@localizer["Telephone"]: <span id="customer-phone-summary">@Model.Customer.Phone</span></p>
         <div class="margin-top-10">
-            <p class="bold-text">@localizer["Billing Address"]</p>
+            <p class="summary-header">@localizer["Billing Address"]</p>
             <p>@localizer["First Name"]: <span id="customer-firstname-summary">@Model.Customer.BillingAddress.FirstName</span></p>
             <p>@localizer["Last Name"]: <span id="customer-lastname-summary">@Model.Customer.BillingAddress.LastName</span></p>
             <p>@localizer["Address"]: <span id="customer-address-summary">@Model.Customer.BillingAddress.Address</span></p>
@@ -21,7 +21,7 @@
             <p>@localizer["Postal"]: <span id="customer-postal-summary">@Model.Customer.BillingAddress.Postal</span></p>
         </div>
         <div id="shippingaddress-summary" class="margin-top-10">
-            <p class="bold-text">Shipping Address</p>
+            <p class="summary-header">Shipping Address</p>
             <p>@localizer["First Name"]: <span id="shippingaddress-firstname-summary">@Model.Customer.ShippingAddress.FirstName</span></p>
             <p>@localizer["Last Name"]: <span id="shippingaddress-lastname-summary">@Model.Customer.ShippingAddress.LastName</span></p>
             <p>@localizer["Address"]: <span id="shippingaddress-address-summary">@Model.Customer.ShippingAddress.Address</span></p>

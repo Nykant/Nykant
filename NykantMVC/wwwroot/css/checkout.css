@@ -159,6 +159,12 @@
     float:left;
 }
 
+.summary-header {
+    font-size:18px;
+    padding:10px;
+    border-top:1px solid var(--black-fade);
+}
+
 .same-as-invoice {
     float: left;
     width: 100%;

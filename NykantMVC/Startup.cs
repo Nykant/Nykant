@@ -118,6 +118,7 @@ namespace NykantMVC
                 options.Cookie.Name = "NykantAntiCSRFToken";
                 options.HeaderName = "NykantAntiCSRFToken";
                 options.FormFieldName = "NykantAntiCSRFToken";
+                options.Cookie.Domain = ".nykant.dk";
             });
 
             services.AddControllersWithViews()

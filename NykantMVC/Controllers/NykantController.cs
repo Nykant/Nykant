@@ -17,6 +17,9 @@ using System.Text.Encodings.Web;
 using NykantMVC.Models.ViewModels;
 using NykantMVC.Services;
 using System.Net.Mail;
+using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
 
 namespace NykantMVC.Controllers
 {
@@ -25,9 +28,11 @@ namespace NykantMVC.Controllers
     public class NykantController : BaseController
     {
         private readonly IProtectionService _protectionService;
-        public NykantController(ILogger<NykantController> logger, IProtectionService protectionService, IOptions<Urls> urls, HtmlEncoder htmlEncoder) : base(logger, urls, htmlEncoder)
+        private  IHostEnvironment Environment { get; set; }
+        public NykantController(ILogger<NykantController> logger, IHostEnvironment _environment, IProtectionService protectionService, IOptions<Urls> urls, HtmlEncoder htmlEncoder) : base(logger, urls, htmlEncoder)
         {
             _protectionService = protectionService;
+            Environment = _environment;
         }
 
         public async Task<IActionResult> Index()
@@ -108,6 +113,11 @@ namespace NykantMVC.Controllers
             };
         }
 
+        public void Log(string message)
+        {
+            _logger.LogInformation(message);
+        }
+
         [HttpPost]
         public async Task<IActionResult> OnlyEssentialConsent()
         {
@@ -177,19 +187,48 @@ namespace NykantMVC.Controllers
                 culture = "en-GB";
             }
 
-            Response.Cookies.Append(
-                CookieRequestCultureProvider.DefaultCookieName,
-                CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture, culture)),
-                    new CookieOptions
-                    {
-                        Expires = DateTimeOffset.UtcNow.AddYears(1),
-                        SameSite = SameSiteMode.Lax,
-                        IsEssential = true,
-                        HttpOnly = true,
-                        Secure = true,
-                        Domain = "localhost"
+            try
+            {
+                if (Environment.IsDevelopment())
+                {
+                    Response.Cookies.Append(
+                        CookieRequestCultureProvider.DefaultCookieName,
+                        CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture, culture)),
+                            new CookieOptions
+                            {
+                                Expires = DateTimeOffset.UtcNow.AddYears(1),
+                                SameSite = SameSiteMode.Lax,
+                                IsEssential = true,
+                                HttpOnly = true,
+                                Secure = true,
+                                Domain = "localhost"
 
-                    });
+                            });
+                }
+                else
+                {
+                    _logger.LogInformation("environment is in production - trying to append culture cookie with domain name nykant.dk");
+                    Response.Cookies.Append(
+                        CookieRequestCultureProvider.DefaultCookieName,
+                        CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture, culture)),
+                            new CookieOptions
+                            {
+                                Expires = DateTimeOffset.UtcNow.AddYears(1),
+                                SameSite = SameSiteMode.Lax,
+                                IsEssential = true,
+                                HttpOnly = true,
+                                Secure = true,
+                                Domain = ".nykant.dk"
+
+                            });
+
+                }
+            }
+            catch(Exception e)
+            {
+                _logger.LogInformation(e.Message);
+            }
+
 
             return RedirectToAction(redirectAction, redirectController);
         }

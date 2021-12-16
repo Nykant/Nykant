@@ -152,7 +152,7 @@ var orderComplete = function (paymentIntentId) {
         })
     }).then(function (result) {
         if (result.ok) {
-            location.replace("https://localhost:5002/checkout/success")
+            location.replace("https://nykant.dk/checkout/success")
         }
         else {
             showError(result.error);

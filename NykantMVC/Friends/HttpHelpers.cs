@@ -16,18 +16,32 @@ namespace NykantMVC.Friends
                     {
                         return true;
                     }
-            return false; ;
+            return false;
         }
 
         public static bool CookieExists(HttpRequest request, string cookieName)
         {
-            foreach (var headers in request.Headers.Values)
-                foreach (var header in headers)
-                    if (header.StartsWith($"{cookieName}="))
+            try
+            {
+                foreach (var headers in request.Headers.Values)
+                    foreach (var header in headers)
                     {
-                        return true;
+                        Console.WriteLine($"searching cookie... - {header}");
+                        if (header.Contains($"{cookieName}="))
+                        {
+                            Console.WriteLine($"cookie found");
+                            return true;
+                        }
                     }
-            return false; ;
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            Console.WriteLine($"cookie not found");
+            return false;
         }
     }
 }

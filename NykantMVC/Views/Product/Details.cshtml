@@ -2,7 +2,7 @@
 @inject IViewLocalizer localizer
 
 @{
-    ViewData["Title"] = Model.Name;
+    ViewData["Title"] = Model.Title;
     ViewData["Description"] = localizer[Model.Description];
 }
 <script src="~/JS/swiped-events.min.js"></script>
@@ -45,9 +45,7 @@
                             <img align="middle" data-shortsrc="../@image.Source" src="../@image.Source" />
                         </div>
                     }
-
                 </div>
-
             </div>
 
             <div class="my-row top-side-padding">
