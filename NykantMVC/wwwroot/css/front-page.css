@@ -164,7 +164,7 @@
         padding-right:20px;
     }
     .info-row {
-        height: 410px;
+        height: 530px;
     }
     .e-mark {
 
@@ -187,7 +187,7 @@
     }
 
     .info-row {
-        height: 410px;
+        height: 530px;
     }
     .e-mark {
 
@@ -206,7 +206,7 @@
 
 @media only screen and (min-width: 768px) {
     .info-row {
-        height: 100px;
+        height: 140px;
     }
 
     .e-mark {

@@ -114,12 +114,25 @@ namespace NykantMVC
             services.AddAntiforgery();
 
 
-            services.AddAntiforgery(options => {
-                options.Cookie.Name = "NykantAntiCSRFToken";
-                options.HeaderName = "NykantAntiCSRFToken";
-                options.FormFieldName = "NykantAntiCSRFToken";
-                options.Cookie.Domain = ".nykant.dk";
-            });
+            if (Environment.IsDevelopment())
+            {
+                services.AddAntiforgery(options => {
+                    options.Cookie.Name = "NykantAntiCSRFToken";
+                    options.HeaderName = "NykantAntiCSRFToken";
+                    options.FormFieldName = "NykantAntiCSRFToken";
+                    options.Cookie.Domain = "localhost";
+                });
+            }
+            else
+            {
+                services.AddAntiforgery(options => {
+                    options.Cookie.Name = "NykantAntiCSRFToken";
+                    options.HeaderName = "NykantAntiCSRFToken";
+                    options.FormFieldName = "NykantAntiCSRFToken";
+                    options.Cookie.Domain = ".nykant.dk";
+                });
+            }
+
 
             services.AddControllersWithViews()
                                     .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
