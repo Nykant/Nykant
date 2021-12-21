@@ -28,11 +28,13 @@ namespace NykantMVC.Controllers
     public class NykantController : BaseController
     {
         private readonly IProtectionService _protectionService;
+        private readonly IMailService mailService;
         private  IHostEnvironment Environment { get; set; }
-        public NykantController(ILogger<NykantController> logger, IHostEnvironment _environment, IProtectionService protectionService, IOptions<Urls> urls, HtmlEncoder htmlEncoder) : base(logger, urls, htmlEncoder)
+        public NykantController(ILogger<NykantController> logger, IHostEnvironment _environment, IMailService _mailService, IProtectionService protectionService, IOptions<Urls> urls, HtmlEncoder htmlEncoder) : base(logger, urls, htmlEncoder)
         {
             _protectionService = protectionService;
             Environment = _environment;
+            mailService = _mailService;
         }
 
         public async Task<IActionResult> Index()
@@ -50,6 +52,18 @@ namespace NykantMVC.Controllers
         {
             return View();
         }
+        public IActionResult Contact()
+        {
+            return View();
+        }
+        public IActionResult About()
+        {
+            return View();
+        }
+        //public IActionResult Feedback()
+        //{
+        //    return View();
+        //}
         public IActionResult PrivacyPolicy()
         {
             return View();
@@ -58,6 +72,32 @@ namespace NykantMVC.Controllers
         {
             return View();
         }
+
+        //[HttpPost]
+        //public async Task<IActionResult> SendEmail(SimpleMail simpleMail)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        if(simpleMail.Body == null)
+        //        {
+        //            return Json("Error");
+        //        }
+        //        else
+        //        {
+        //            try
+        //            {
+        //                await mailService.SendEmailAsync(simpleMail);
+        //                return Json("Success");
+        //            }
+        //            catch (Exception e)
+        //            {
+        //                _logger.LogInformation(e.Message);
+        //                return Json("Error");
+        //            }
+        //        }
+        //    }
+        //    return Json("Error");
+        //}
 
         [HttpPost]
         public async Task<IActionResult> UpdateConsent(int functionalCookies)

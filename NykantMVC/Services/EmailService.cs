@@ -51,10 +51,32 @@ namespace NykantMVC.Services
             await smtp.SendAsync(email);
             smtp.Disconnect(true);
         }
+
+        public async Task SendEmailAsync(SimpleMail simpleMail)
+        {
+            var email = new MimeMessage();
+            email.From.Add(MailboxAddress.Parse(_mailSettings.Mail));
+            email.Sender = MailboxAddress.Parse(_mailSettings.Mail);
+            email.To.Add(MailboxAddress.Parse("Christian@svinding.dk"));
+            email.Subject = "Feedback";
+
+            var bodyBuilder = new BodyBuilder();
+            string body = await _razorViewToStringRenderer.RenderViewToStringAsync("/Views/Shared/EmailViews/ContactEmail.cshtml", simpleMail);
+
+            bodyBuilder.HtmlBody = body;
+            email.Body = bodyBuilder.ToMessageBody();
+
+            using var smtp = new SmtpClient();
+            smtp.Connect(_mailSettings.Host, _mailSettings.Port, SecureSocketOptions.StartTls);
+            smtp.Authenticate(_mailSettings.Username, _mailSettings.Password);
+            await smtp.SendAsync(email);
+            smtp.Disconnect(true);
+        }
     }
 
     public interface IMailService
     {
         Task SendOrderEmailAsync(Customer customerInf, Order order);
+        Task SendEmailAsync(SimpleMail simpleMail);
     }
 }

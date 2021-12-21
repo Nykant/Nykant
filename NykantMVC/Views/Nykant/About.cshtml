@@ -1,5 +1,21 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@inject IViewLocalizer localizer
 @{
+    ViewData["Title"] = "OM OS";
+    ViewData["Description"] = "Om Nykant.";
+
 }
+
+<div class="my-row background-color2">
+    <div class="privacy-header center">
+        <h1>@localizer["About Us"]</h1>
+    </div>
+</div>
+
+<div class="my-row">
+    <div class="responsive-container center">
+        <div class="simple-info">
+            @localizer["About Info"]
+        </div>
+    </div>
+</div>
+

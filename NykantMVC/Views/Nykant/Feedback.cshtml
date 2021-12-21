@@ -1,0 +1,38 @@
+﻿@model SimpleMail
+@inject IViewLocalizer localizer
+@{
+    ViewData["Title"] = "Feedback";
+    ViewData["Description"] = "Giv nykant feedback!";
+
+}
+
+@*<link rel="stylesheet" href="~/css/feedback.css" />
+<script src="~/JS/sendemail.js" defer></script>
+
+<div class="my-row background-color2">
+    <div class="privacy-header center">
+        <h1>@localizer["Feedback"]</h1>
+    </div>
+</div>
+
+<div class="my-row">
+    <div class="responsive-container center">
+        <form class="mail-form" method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="noop" data-ajax-complete="sendemail_complete" data-ajax-begin="sendemail_begin" data-ajax-failure="noop" asp-controller="Nykant" asp-action="SendEmail">
+            <textarea placeholder="..." asp-for="@Model.Body" required></textarea>
+            <button id="sendemail-button" class="button margin-top-10" type="submit">
+                <div class="error" id="sendemail-error">
+                    <i class="fas fa-times"></i>
+                </div>
+                <div id="sendemail-spinner" class="hidden">
+                    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                </div>
+                <div class="check-sign" id="sendemail-check-sign">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                </div>
+                <div id="sendemail-text">
+                    Send
+                </div>
+            </button>
+        </form>
+    </div>
+</div>*@

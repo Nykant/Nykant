@@ -76,6 +76,8 @@ body {
 }
 
 /* ----------------------- */
+
+
 input[type='radio'] {
     line-height: 22px;
 }
@@ -273,6 +275,28 @@ ol, ul {
         padding-bottom: 20px;
     }
 
+.simple-info {
+    text-align: left;
+    background: white;
+    padding: 40px;
+    margin: 50px;
+}
+
+    .simple-info h1 {
+        font-size: 20px;
+        padding-bottom: 20px;
+    }
+
+    .simple-info p {
+    }
+
+        .simple-info p a {
+            display: inline;
+        }
+
+        .simple-info p bold {
+        }
+
 
 .newsletter {
     vertical-align: top;
@@ -290,15 +314,14 @@ ol, ul {
     .newsletter p {
     }
 
-
 .newsletter-check-sign {
     position: relative;
     font-size: 40px;
-    color: #81c466;
+    color: #8cffa4;
     display: none;
 }
 
-#newsletter-error {
+.newsletter-error {
     position: relative;
     font-size: 40px;
     color: var(--red);
@@ -571,7 +594,7 @@ ol, ul {
 }
 
     button:focus {
-        border-color: transparent !important;
+/*        border-color: transparent !important;*/
         outline: none;
     }
 
@@ -736,6 +759,10 @@ button span {
 
 .background-base {
     background: var(--base);
+}
+
+.background-white {
+    background:white;
 }
 
     .border-bottom {
@@ -953,5 +980,189 @@ button span {
 @media only screen and (min-width: 1780px) {
     .col-wrapper {
         min-width: 1780px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .responsive-container {
+        width: 100%;
+    }
+
+    .responsive-form {
+        width: 100%;
+        float: none;
+    }
+
+    .sidebar {
+        position: relative;
+        right: unset;
+        width: 100%;
+        padding: 10px;
+        border: none;
+        margin-bottom: 30px;
+    }
+
+    #nearby-shops {
+        position: fixed;
+        top: 0%;
+        left: 0%;
+        width: 100vw;
+        height: 100%;
+        overflow-y: scroll;
+        background: white;
+        z-index: 101;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .responsive-container {
+        width: 540px;
+        margin: auto;
+    }
+
+    .responsive-form {
+        width: 100%;
+        float: none;
+    }
+
+    .sidebar {
+        position: relative;
+        right: unset;
+        width: 600px;
+        border: none;
+        margin: auto;
+        margin-bottom: 10px;
+    }
+
+    #nearby-shops {
+        position: fixed;
+        top: 20%;
+        left: 40%;
+        margin-left: auto;
+        margin-right: auto;
+        width: 300px;
+        height: 500px;
+        overflow-y: scroll;
+        background: white;
+        z-index: 101;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .responsive-container {
+        width: 700px;
+        margin: auto;
+    }
+
+    .responsive-form {
+        width: 70%;
+        float: left;
+    }
+
+    .sidebar {
+        position: fixed;
+        right: 10px;
+        border: none;
+        margin: 0px;
+        width: 25%;
+    }
+}
+
+@media only screen and (min-width: 873px) {
+    .responsive-container {
+        width: 800px;
+        margin: auto;
+    }
+
+    .responsive-form {
+        width: 70%;
+        float: left;
+    }
+
+    .sidebar {
+        position: fixed;
+        right: 1%;
+        border: none;
+        margin: 0px;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .responsive-container {
+        width: 900px;
+        margin: auto;
+    }
+
+    .responsive-form {
+        width: 70%;
+        float: left;
+    }
+
+    .sidebar {
+        position: fixed;
+        right: 1%;
+        width: 250px;
+        border: none;
+        margin: 0px;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .responsive-container {
+        width: 1100px;
+        margin: auto;
+    }
+
+    .responsive-form {
+        width: 70%;
+        float: left;
+    }
+
+    .sidebar {
+        position: fixed;
+        right: 1%;
+        width: 300px;
+        border: none;
+        margin: 0px;
+    }
+}
+
+@media only screen and (min-width: 1500px) {
+    .responsive-container {
+        width: 1200px;
+        margin: auto;
+    }
+
+    .responsive-form {
+        width: 70%;
+        float: left;
+    }
+
+    .sidebar {
+        position: fixed;
+        right: 10%;
+        width: 300px;
+        border: none;
+        margin: 0px;
+    }
+}
+
+@media only screen and (min-width: 1780px) {
+    .responsive-container {
+        width: 1200px;
+        margin: auto;
+    }
+
+    .responsive-form {
+        width: 70%;
+        float: left;
+    }
+
+    .sidebar {
+        position: fixed;
+        right: 15%;
+        width: 300px;
+        border: none;
+        margin: 0px;
     }
 }

@@ -21,8 +21,8 @@
         </div>
     </div>
     <a alt="PRODUKTER" asp-controller="Product" asp-action="Index">PRODUKTER</a>
-    @*<a asp-controller="Product" asp-action="Index">MØD OS</a>*@
-    <a asp-controller="Product" asp-action="Index">KONTAKT</a>
+    <a asp-controller="Product" asp-action="Index">OM OS</a>
+    <a asp-controller="Nykant" asp-action="Contact">KONTAKT</a>
 </div>
 
 <div id="navbar" class="navbar">
@@ -56,48 +56,48 @@
 
         <div id="desktop-row" class="my-row">
             <a id="product-link" asp-controller="Product" asp-action="Index">PRODUKTER</a>
-            <a asp-controller="Product" asp-action="Index">MØD OS</a>
-            <a asp-controller="Product" asp-action="Index">KONTAKT</a>
+            <a asp-controller="Nykant" asp-action="About">OM OS</a>
+            <a asp-controller="Nykant" asp-action="Contact">KONTAKT</a>
 
             @*@if (User.Identity.IsAuthenticated)
-                {
+        {
 
-                    <div class="dropdown">
-                        <button href="javascript:void(0);" class="dropbtn" id="userLogo">
-                            <img class="nav-svg" src="~/lib/svg/user.svg" />
-                        </button>
-                        <div class="dropdown-content">
-                            <a href="@baseUrl/identity/account/manage/email">
-                                Indstillinger
-                            </a>
-                            <a asp-controller="Order" asp-action="History">
-                                Ordre historik
-                            </a>
-                            <a asp-controller="Account" asp-action="Logout">
-                                Log ud
-                            </a>
-                        </div>
-                    </div>
+            <div class="dropdown">
+                <button href="javascript:void(0);" class="dropbtn" id="userLogo">
+                    <img class="nav-svg" src="~/lib/svg/user.svg" />
+                </button>
+                <div class="dropdown-content">
+                    <a href="@baseUrl/identity/account/manage/email">
+                        Indstillinger
+                    </a>
+                    <a asp-controller="Order" asp-action="History">
+                        Ordre historik
+                    </a>
+                    <a asp-controller="Account" asp-action="Logout">
+                        Log ud
+                    </a>
+                </div>
+            </div>
 
-                }
-                else
-                {
+        }
+        else
+        {
 
-                    <div class="dropdown">
-                        <button href="javascript:void(0);" class="dropbtn" id="userLogo">
-                            <img class="nav-svg" src="~/lib/svg/user.svg" />
-                        </button>
-                        <div class="dropdown-content">
-                            <a href="@baseUrl/account/login?redirectaction=@action&redirectcontroller=@controller">
-                                Log ind
-                            </a>
-                            <a href="@baseUrl/identity/account/register?redirectaction=@action&redirectcontroller=@controller">
-                                Registrer
-                            </a>
-                        </div>
-                    </div>
+            <div class="dropdown">
+                <button href="javascript:void(0);" class="dropbtn" id="userLogo">
+                    <img class="nav-svg" src="~/lib/svg/user.svg" />
+                </button>
+                <div class="dropdown-content">
+                    <a href="@baseUrl/account/login?redirectaction=@action&redirectcontroller=@controller">
+                        Log ind
+                    </a>
+                    <a href="@baseUrl/identity/account/register?redirectaction=@action&redirectcontroller=@controller">
+                        Registrer
+                    </a>
+                </div>
+            </div>
 
-                }*@
+        }*@
 
         </div>
 
