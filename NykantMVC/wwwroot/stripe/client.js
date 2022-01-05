@@ -5,6 +5,7 @@
 // See your keys here: https://dashboard.stripe.com/account/apikeys
 var stripe = Stripe('pk_test_51Hyy3eKS99T7pxPWSbrIYqKDcyKomhVp3hrXymvg8cPkupAmEcbeEoV26ckeJF9GZnfKdvTeQwyKdnwO6uNrIaih001cWPBSI2');
 var elements = stripe.elements();
+var url = document.getElementById('stage').dataset.url;
 
 var style = {
     base: {
@@ -152,7 +153,8 @@ var orderComplete = function (paymentIntentId) {
         })
     }).then(function (result) {
         if (result.ok) {
-            location.replace("https://nykant.dk/checkout/success")
+            var urlstring = url + "/checkout/success";
+            location.replace(urlstring);
         }
         else {
             showError(result.error);

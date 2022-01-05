@@ -396,6 +396,11 @@
     text-align: left;
 }
 
+.collapsible-content a {
+    text-align:center;
+    padding:20px;
+}
+
     .collapsible-content:last-child {
 
     }

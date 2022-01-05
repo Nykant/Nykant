@@ -21,6 +21,7 @@ namespace NykantAPI.Models
         public string ImageSource2 { get; set; }
         public string Path { get; set; }
         public string Note { get; set; }
+        public string AssemblyPath { get; set; }
         public string Materials { get; set; }
         public string Oil { get; set; }
         public string Alt { get; set; }

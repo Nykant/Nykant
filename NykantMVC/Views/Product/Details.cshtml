@@ -1,9 +1,12 @@
 ﻿@model Product
 @inject IViewLocalizer localizer
+@inject IConfiguration conf 
 
 @{
     ViewData["Title"] = Model.Title;
     ViewData["Description"] = localizer[Model.Description];
+
+    string url = @conf.GetSection("Urls")["Mvc"];
 }
 <script src="~/JS/swiped-events.min.js"></script>
 <script src="~/JS/product-details.js" defer></script>
@@ -111,11 +114,20 @@
             <div class="collapsible">
                 <button type="button" class="collapsible-button2 active">@localizer["Specifications"]</button>
                 <div class="collapsible-content">
-                       @localizer[Model.Size]
-                       @localizer[Model.Materials]
-                       @localizer[Model.Note]
+                    @localizer[Model.Size]
+                    @localizer[Model.Materials]
+                    @localizer[Model.Note]
                 </div>
             </div>
+            @if (Model.AssemblyPath != "none")
+            {
+                <div class="collapsible">
+                    <button type="button" class="collapsible-button2 active">Samlevejledning</button>
+                    <div class="collapsible-content">
+                        <a href="@url@Model.AssemblyPath">Download</a>
+                    </div>
+                </div>
+            }
         </div>
     </div>
 </div>

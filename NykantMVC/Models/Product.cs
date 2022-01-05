@@ -13,6 +13,7 @@ namespace NykantMVC.Models
         public double Price { get; set; }
         public string ImageSource { get; set; }
         public int Pieces { get; set; }
+        public string AssemblyPath { get; set; }
         public string ImageSource2 { get; set; }
         public string Path { get; set; }
         public string Materials { get; set; }
