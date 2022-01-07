@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NykantAPI.Data;
 
 namespace NykantAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220107105906_EColorAdded")]
+    partial class EColorAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -685,16 +687,10 @@ namespace NykantAPI.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("EColor")
-                        .HasColumnType("int");
-
                     b.Property<string>("ImageSource")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("ImageSource2")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Length")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Materials")
@@ -743,7 +739,6 @@ namespace NykantAPI.Migrations
                             AssemblyPath = "none",
                             CategoryId = 5,
                             Description = "Gertrud Description",
-                            EColor = 0,
                             ImageSource = "../images/Products/NYKANT_boejle_naturolie_01.png",
                             ImageSource2 = "../images/Products/NYKANT_boejle_naturolie_02.png",
                             Materials = "Gertrud Materials",
@@ -764,7 +759,6 @@ namespace NykantAPI.Migrations
                             AssemblyPath = "none",
                             CategoryId = 5,
                             Description = "Gertrud Description",
-                            EColor = 2,
                             ImageSource = "../images/Products/NYKANT_boejle_sortolie_01.png",
                             ImageSource2 = "../images/Products/NYKANT_boejle_sortolie_02.png",
                             Materials = "Gertrud Materials",
@@ -785,7 +779,6 @@ namespace NykantAPI.Migrations
                             AssemblyPath = "none",
                             CategoryId = 5,
                             Description = "Gertrud Description",
-                            EColor = 1,
                             ImageSource = "../images/Products/NYKANT_boejle_hvidolie_01.png",
                             ImageSource2 = "../images/Products/NYKANT_boejle_hvidolie_02.png",
                             Materials = "Gertrud Materials",
@@ -806,10 +799,8 @@ namespace NykantAPI.Migrations
                             AssemblyPath = "/word/Hylde_Vejledning.docx",
                             CategoryId = 3,
                             Description = "Ingeborg Description",
-                            EColor = 1,
                             ImageSource = "../images/Products/NYKANT_hylde_hvidolie_01.png",
                             ImageSource2 = "../images/Products/NYKANT_hylde_hvidolie_02.png",
-                            Length = "600 mm.",
                             Materials = "Ingeborg Materials",
                             Name = "Ingeborg Hylden",
                             Note = "Ingeborg Note",
@@ -828,10 +819,8 @@ namespace NykantAPI.Migrations
                             AssemblyPath = "/word/Hylde_Vejledning.docx",
                             CategoryId = 3,
                             Description = "Ingeborg Description",
-                            EColor = 2,
                             ImageSource = "../images/Products/NYKANT_hylde_sortolie_01.png",
                             ImageSource2 = "../images/Products/NYKANT_hylde_sortolie_02.png",
-                            Length = "600 mm.",
                             Materials = "Ingeborg Materials",
                             Name = "Ingeborg Hylden",
                             Note = "Ingeborg Note",
@@ -850,10 +839,8 @@ namespace NykantAPI.Migrations
                             AssemblyPath = "/word/Hylde_Vejledning.docx",
                             CategoryId = 3,
                             Description = "Ingeborg Description",
-                            EColor = 0,
                             ImageSource = "../images/Products/NYKANT_hylde_naturolie_01.png",
                             ImageSource2 = "../images/Products/NYKANT_hylde_naturolie_02.png",
-                            Length = "600 mm.",
                             Materials = "Ingeborg Materials",
                             Name = "Ingeborg Hylden",
                             Note = "Ingeborg Note",
@@ -872,7 +859,6 @@ namespace NykantAPI.Migrations
                             AssemblyPath = "/word/Bord.docx",
                             CategoryId = 2,
                             Description = "Dagmar Description",
-                            EColor = 0,
                             ImageSource = "../images/Products/NYKANT_bord_naturolie_01.png",
                             ImageSource2 = "../images/Products/NYKANT_bord_naturolie_02.png",
                             Materials = "Dagmar Materials",
@@ -893,12 +879,10 @@ namespace NykantAPI.Migrations
                             AssemblyPath = "/word/bænk.docx",
                             CategoryId = 4,
                             Description = "Thyra Description",
-                            EColor = 0,
                             ImageSource = "../images/Products/NYKANT_kortbaenk_naturolie_01.png",
                             ImageSource2 = "../images/Products/NYKANT_kortbaenk_naturolie_02.png",
-                            Length = "1150 mm.",
                             Materials = "Thyra Materials",
-                            Name = "Thyra Bænken",
+                            Name = "Thyra Kortbænken",
                             Note = "Thyra Note",
                             Number = "101",
                             Oil = "Naturolie",
@@ -915,12 +899,10 @@ namespace NykantAPI.Migrations
                             AssemblyPath = "/word/bænk.docx",
                             CategoryId = 4,
                             Description = "Thyra Description",
-                            EColor = 0,
                             ImageSource = "../images/Products/NYKANT_langbaenk_naturolie_01.png",
                             ImageSource2 = "../images/Products/NYKANT_langbaenk_naturolie_02.png",
-                            Length = "1700 mm.",
                             Materials = "Thyra Materials",
-                            Name = "Thyra Bænken",
+                            Name = "Thyra Langbænken",
                             Note = "Thyra Note",
                             Number = "101",
                             Oil = "Naturolie",
@@ -937,7 +919,6 @@ namespace NykantAPI.Migrations
                             AssemblyPath = "none",
                             CategoryId = 4,
                             Description = "Filippa Description",
-                            EColor = 0,
                             ImageSource = "../images/Products/NYKANT_opbevaringsbaenk_naturolie_01.png",
                             ImageSource2 = "../images/Products/NYKANT_opbevaringsbaenk_naturolie_02.png",
                             Materials = "Filippa Materials",
@@ -958,7 +939,6 @@ namespace NykantAPI.Migrations
                             AssemblyPath = "/word/Tøjstativ.docx",
                             CategoryId = 1,
                             Description = "Nora Description",
-                            EColor = 0,
                             ImageSource = "../images/Products/NYKANT_rack_naturolie_01.png",
                             ImageSource2 = "../images/Products/NYKANT_rack_naturolie_02.png",
                             Materials = "Nora Materials",
@@ -972,142 +952,6 @@ namespace NykantAPI.Migrations
                             Size = "Nora Size",
                             Title = "Tøjstativ i massivt egetræ - Behandlet med naturolie",
                             WeightInKg = 13.4
-                        });
-                });
-
-            modelBuilder.Entity("NykantAPI.Models.ProductLength", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("Length")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductReferenceId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ProductLength");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Length = "1150 mm.",
-                            ProductId = 8,
-                            ProductReferenceId = 8
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Length = "1700 mm.",
-                            ProductId = 8,
-                            ProductReferenceId = 9
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Length = "1150 mm.",
-                            ProductId = 9,
-                            ProductReferenceId = 8
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Length = "1700 mm.",
-                            ProductId = 9,
-                            ProductReferenceId = 9
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Length = "400 mm.",
-                            ProductId = 4,
-                            ProductReferenceId = 6
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Length = "600 mm.",
-                            ProductId = 4,
-                            ProductReferenceId = 6
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Length = "800 mm.",
-                            ProductId = 4,
-                            ProductReferenceId = 6
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Length = "1000 mm.",
-                            ProductId = 4,
-                            ProductReferenceId = 6
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Length = "400 mm.",
-                            ProductId = 5,
-                            ProductReferenceId = 6
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Length = "600 mm.",
-                            ProductId = 5,
-                            ProductReferenceId = 6
-                        },
-                        new
-                        {
-                            Id = 11,
-                            Length = "800 mm.",
-                            ProductId = 5,
-                            ProductReferenceId = 6
-                        },
-                        new
-                        {
-                            Id = 12,
-                            Length = "1000 mm.",
-                            ProductId = 5,
-                            ProductReferenceId = 6
-                        },
-                        new
-                        {
-                            Id = 13,
-                            Length = "400 mm.",
-                            ProductId = 6,
-                            ProductReferenceId = 6
-                        },
-                        new
-                        {
-                            Id = 14,
-                            Length = "600 mm.",
-                            ProductId = 6,
-                            ProductReferenceId = 6
-                        },
-                        new
-                        {
-                            Id = 15,
-                            Length = "800 mm.",
-                            ProductId = 6,
-                            ProductReferenceId = 6
-                        },
-                        new
-                        {
-                            Id = 16,
-                            Length = "1000 mm.",
-                            ProductId = 6,
-                            ProductReferenceId = 6
                         });
                 });
 
@@ -1323,15 +1167,6 @@ namespace NykantAPI.Migrations
                     b.HasOne("NykantAPI.Models.Category", "Category")
                         .WithMany("Products")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("NykantAPI.Models.ProductLength", b =>
-                {
-                    b.HasOne("NykantAPI.Models.Product", "Product")
-                        .WithMany("ProductLengths")
-                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

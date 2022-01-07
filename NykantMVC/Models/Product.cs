@@ -19,11 +19,14 @@ namespace NykantMVC.Models
         public string Materials { get; set; }
         public string Note { get; set; }
         public string Size { get; set; }
+        public EColor EColor { get; set; }
+        public string Length { get; set; }
         public string Oil { get; set; }
         public string Alt { get; set; }
         public double WeightInKg { get; set; }
         public IEnumerable<Image> Images { get; set; }
         public IEnumerable<Color> Colors { get; set; }
+        public IEnumerable<ProductLength> ProductLengths { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; }
     }

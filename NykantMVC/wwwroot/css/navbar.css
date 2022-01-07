@@ -201,6 +201,11 @@
     display:none;
 }
 
+#navbar-product-filter {
+    border-top:1px solid var(--black-fade);
+    display:none;
+}
+
 #nav-links {
     display:none;
     position:fixed;

@@ -66,10 +66,26 @@
         </div>
 
         <div id="details-right">
-            <div class="details-info-wrap fadein">
+            <div class="details-info-wrap">
 
                 <h1>@Model.Name</h1>
                 <p>@Model.Price.-</p>
+
+                <div class="fake-box">
+                    <h2 class="padding-10 right">@Model.Oil</h2>
+                    <h2 class="padding-10 left">@Model.Length</h2>
+                </div>
+
+                <form id="length-form" method="get" asp-controller="Product" asp-action="GetLength">
+                    <select id="length-select">
+                        <option>Vælg Længde</option>
+                        @foreach (var length in Model.ProductLengths)
+                        {
+                            <option data-product-id="@length.ProductReferenceId">@length.Length</option>
+                        }
+                    </select>
+                    <input id="length-input" name="lengthInput" type="hidden" />
+                </form>
 
                 <div id="color-select">
                     <h3>Farver</h3>

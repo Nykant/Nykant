@@ -66,7 +66,7 @@
         object-fit: cover;
         object-position: center;
         margin: auto;
-                cursor: zoom-in;
+        cursor: zoom-in;
         border-radius: 20px;
         filter: grayscale(0);
     }
@@ -186,6 +186,7 @@
     border-bottom: 1px solid black;*/
     padding-left:50px;
     text-align:left;
+
 }
 
 #addproduct-button {
@@ -197,6 +198,24 @@
         display: inline-block;
         font-size:24px;
     }
+
+.details-info-wrap h2 {
+
+}
+
+.details-info-wrap select {
+    margin-top:10px;
+    padding:8px;
+    border:none;
+    background:var(--color3);
+}
+
+
+
+.fake-box {
+    min-height:40px;
+    border-bottom:1px solid var(--black-fade);
+}
 
     .details-info-wrap p {
         display: inline-block;
@@ -230,6 +249,11 @@
         max-width: 80px;
         object-fit: cover;
         object-position: center;
+        transition:.3s ease all;
+    }
+
+    .color img:hover {
+        transform:scale(1.2);
     }
 
 .secondary-image-wrap {
@@ -737,6 +761,8 @@
     @media only screen and (max-width: 600px) {
         .details-info-wrap {
             padding: 20px;
+            float: left;
+            width: 100%;
         }
 
         .image-wrap {
@@ -746,11 +772,16 @@
         #bagitem-added {
             width:100%;
         }
+        #details-left {
+            margin-bottom:50px;
+        }
     }
 
     @media only screen and (min-width: 600px) {
         .details-info-wrap {
             padding: 20px;
+            float: left;
+            width:100%;
         }
 
         .image-wrap {
@@ -759,6 +790,9 @@
 
         #bagitem-added {
             width: 500px;
+        }
+        #details-left {
+            margin-bottom: 50px;
         }
     }
 
@@ -770,6 +804,7 @@
             position: fixed;
             right: 20px;
             width: 220px;
+            float: none;
         }
 
         #collapsible-wrapper {
@@ -782,7 +817,9 @@
         }
 
         #details-left {
+            margin-bottom: 0px;
         }
+
     }
 
     @media only screen and (min-width: 800px) {
@@ -898,7 +935,7 @@
             min-width: 1780px;
         }
 
-        #details-left {
+
         }
     }
 

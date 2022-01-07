@@ -24,7 +24,7 @@ namespace NykantAPI.Controllers
         [HttpGet]
         public async Task<ActionResult> GetProducts()
         {
-            var products = _context.Products.Include(x => x.Category);
+            var products = _context.Products.Include(x => x.Category).Include(x => x.Colors).Include(x => x.ProductLengths);
             var json = JsonConvert.SerializeObject(products, Extensions.JsonOptions.jsonSettings);
             return Ok(json);
         }
@@ -35,6 +35,7 @@ namespace NykantAPI.Controllers
             var product = await _context.Products
                 .Include(x => x.Images)
                 .Include(x => x.Colors)
+                .Include(x => x.ProductLengths)
                 .FirstOrDefaultAsync(x => x.Id == id);
 
             var json = JsonConvert.SerializeObject(product, Extensions.JsonOptions.jsonSettings);

@@ -14,26 +14,41 @@
 </div>
 @foreach (var item in Model)
 {
-    <div class="col-4 left top-padding product-col">
-        <a asp-controller="product" asp-action="details" asp-route-id="@item.Id">
-            <div class="product-item">
+    if (item.EColor == EColor.Nature)
+    {
+        <div class="col-4 left top-padding product-col">
+            <a asp-controller="product" asp-action="details" asp-route-id="@item.Id">
+                <div class="product-item">
+                    @if (item.Colors.Count() > 1)
+                    {
+                        <div class="product-item-colors">
+                            @foreach (var color in item.Colors)
+                            {
+                                if (color.EColor != EColor.Nature)
+                                {
+                                    <div class="product-item-color">
+                                        <img src="@color.ImgSrc" />
+                                    </div>
+                                }
+                            }
+                        </div>
+                    }
 
-                <div class="product-images">
-                    <div class="primary-img">
-                        <img src="@item.ImageSource" />
+                    <div class="product-images">
+                        <div class="primary-img">
+                            <img src="@item.ImageSource" />
+                        </div>
+                        <div class="secondary-img">
+                            <img src="@item.ImageSource2" />
+                        </div>
                     </div>
-                    <div class="secondary-img">
-                        <img src="@item.ImageSource2" />
+                    <div class="product-text">
+                        <h1>@item.Name</h1>
+                        <p>@item.Price kr,-</p>
                     </div>
+
                 </div>
-                <div class="product-text">
-                    <h1>@item.Name</h1>
-                    <p>@item.Price kr,-</p>
-                </div>
-
-            </div>
-        </a>
-    </div>
-
-
+            </a>
+        </div>
+    }
 }

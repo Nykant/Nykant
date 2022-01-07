@@ -29,3 +29,18 @@ for (i = 0; i < coll2.length; i++) {
         }
     });
 }
+
+var select = document.getElementById('length-select');
+select.addEventListener('change', function () {
+    var opt = select.options[select.selectedIndex];
+    var id = opt.getAttribute('data-product-id');
+    document.getElementById('length-input').value = parseInt(id);
+    document.getElementById('length-form').submit();
+});
+
+
+//$('#length-select').change(function () {
+
+//    var selected = select.options
+//    var productId = selectOption.
+//});

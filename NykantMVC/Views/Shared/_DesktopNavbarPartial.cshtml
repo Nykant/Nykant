@@ -20,10 +20,12 @@
             </form>
         </div>
     </div>
-    <a alt="PRODUKTER" asp-controller="Product" asp-action="Index">PRODUKTER</a>
-    <a asp-controller="Product" asp-action="Index">OM OS</a>
+    <a asp-controller="Product" asp-action="Index">PRODUKTER</a>
+    <a asp-controller="Nykant" asp-action="About">OM OS</a>
     <a asp-controller="Nykant" asp-action="Contact">KONTAKT</a>
 </div>
+
+
 
 <div id="navbar" class="navbar">
     <div class="desktop-navbar-wrap">
@@ -60,49 +62,55 @@
             <a asp-controller="Nykant" asp-action="Contact">KONTAKT</a>
 
             @*@if (User.Identity.IsAuthenticated)
-        {
+            {
 
-            <div class="dropdown">
-                <button href="javascript:void(0);" class="dropbtn" id="userLogo">
-                    <img class="nav-svg" src="~/lib/svg/user.svg" />
-                </button>
-                <div class="dropdown-content">
-                    <a href="@baseUrl/identity/account/manage/email">
-                        Indstillinger
-                    </a>
-                    <a asp-controller="Order" asp-action="History">
-                        Ordre historik
-                    </a>
-                    <a asp-controller="Account" asp-action="Logout">
-                        Log ud
-                    </a>
+                <div class="dropdown">
+                    <button href="javascript:void(0);" class="dropbtn" id="userLogo">
+                        <img class="nav-svg" src="~/lib/svg/user.svg" />
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="@baseUrl/identity/account/manage/email">
+                            Indstillinger
+                        </a>
+                        <a asp-controller="Order" asp-action="History">
+                            Ordre historik
+                        </a>
+                        <a asp-controller="Account" asp-action="Logout">
+                            Log ud
+                        </a>
+                    </div>
                 </div>
-            </div>
 
-        }
-        else
-        {
+            }
+            else
+            {
 
-            <div class="dropdown">
-                <button href="javascript:void(0);" class="dropbtn" id="userLogo">
-                    <img class="nav-svg" src="~/lib/svg/user.svg" />
-                </button>
-                <div class="dropdown-content">
-                    <a href="@baseUrl/account/login?redirectaction=@action&redirectcontroller=@controller">
-                        Log ind
-                    </a>
-                    <a href="@baseUrl/identity/account/register?redirectaction=@action&redirectcontroller=@controller">
-                        Registrer
-                    </a>
+                <div class="dropdown">
+                    <button href="javascript:void(0);" class="dropbtn" id="userLogo">
+                        <img class="nav-svg" src="~/lib/svg/user.svg" />
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="@baseUrl/account/login?redirectaction=@action&redirectcontroller=@controller">
+                            Log ind
+                        </a>
+                        <a href="@baseUrl/identity/account/register?redirectaction=@action&redirectcontroller=@controller">
+                            Registrer
+                        </a>
+                    </div>
                 </div>
-            </div>
 
-        }*@
+            }*@
 
         </div>
 
 
-
+        <div id="navbar-product-filter">
+            <a asp-controller="Product" asp-action="Index" asp-route-searchString="Tøjstativer">Tøjstativer</a>
+            <a asp-controller="Product" asp-action="Index" asp-route-searchString="Borde">Borde</a>
+            <a asp-controller="Product" asp-action="Index" asp-route-searchString="Hylder">Hylder</a>
+            <a asp-controller="Product" asp-action="Index" asp-route-searchString="Bænke">Bænke</a>
+            <a asp-controller="Product" asp-action="Index" asp-route-searchString="Bøjler">Bøjler</a>
+        </div>
 
     </div>
 </div>

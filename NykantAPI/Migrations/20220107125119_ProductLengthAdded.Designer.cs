@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NykantAPI.Data;
 
 namespace NykantAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220107125119_ProductLengthAdded")]
+    partial class ProductLengthAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -694,9 +696,6 @@ namespace NykantAPI.Migrations
                     b.Property<string>("ImageSource2")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("Length")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
                     b.Property<string>("Materials")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
@@ -809,7 +808,6 @@ namespace NykantAPI.Migrations
                             EColor = 1,
                             ImageSource = "../images/Products/NYKANT_hylde_hvidolie_01.png",
                             ImageSource2 = "../images/Products/NYKANT_hylde_hvidolie_02.png",
-                            Length = "600 mm.",
                             Materials = "Ingeborg Materials",
                             Name = "Ingeborg Hylden",
                             Note = "Ingeborg Note",
@@ -831,7 +829,6 @@ namespace NykantAPI.Migrations
                             EColor = 2,
                             ImageSource = "../images/Products/NYKANT_hylde_sortolie_01.png",
                             ImageSource2 = "../images/Products/NYKANT_hylde_sortolie_02.png",
-                            Length = "600 mm.",
                             Materials = "Ingeborg Materials",
                             Name = "Ingeborg Hylden",
                             Note = "Ingeborg Note",
@@ -853,7 +850,6 @@ namespace NykantAPI.Migrations
                             EColor = 0,
                             ImageSource = "../images/Products/NYKANT_hylde_naturolie_01.png",
                             ImageSource2 = "../images/Products/NYKANT_hylde_naturolie_02.png",
-                            Length = "600 mm.",
                             Materials = "Ingeborg Materials",
                             Name = "Ingeborg Hylden",
                             Note = "Ingeborg Note",
@@ -896,7 +892,6 @@ namespace NykantAPI.Migrations
                             EColor = 0,
                             ImageSource = "../images/Products/NYKANT_kortbaenk_naturolie_01.png",
                             ImageSource2 = "../images/Products/NYKANT_kortbaenk_naturolie_02.png",
-                            Length = "1150 mm.",
                             Materials = "Thyra Materials",
                             Name = "Thyra Bænken",
                             Note = "Thyra Note",
@@ -918,7 +913,6 @@ namespace NykantAPI.Migrations
                             EColor = 0,
                             ImageSource = "../images/Products/NYKANT_langbaenk_naturolie_01.png",
                             ImageSource2 = "../images/Products/NYKANT_langbaenk_naturolie_02.png",
-                            Length = "1700 mm.",
                             Materials = "Thyra Materials",
                             Name = "Thyra Bænken",
                             Note = "Thyra Note",

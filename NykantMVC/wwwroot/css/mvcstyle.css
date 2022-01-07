@@ -157,6 +157,10 @@ ol, ul {
 
     }
 
+    .bottom-border {
+        border-bottom:1px solid var(--black-fade);
+    }
+
 .top-footer h1 {
     color:var(--dark);
     font-size: 18px;

@@ -6,11 +6,19 @@ $('#nav-burger').on('click', function () {
     } else {
         x.style.display = "block";
     }
-}) 
+});
 
 $('#burger-close').on('click', function () {
     $('#nav-links').css('display', 'none');
-})
+});
+
+$('#product-link').hover(function () {
+    $('#navbar-product-filter').css('display', 'block');
+});
+
+$('#navbar').mouseleave(function () {
+    $('#navbar-product-filter').css('display', 'none');
+});
 
 var newsletter_checksign = document.getElementById('newsletter-check-sign');
 var newsletter_text = document.getElementById('newsletter-text');
@@ -51,3 +59,4 @@ var newssub_error = function (response) {
         newsletter_error.style.display = 'none';
     }, 3000)
 }
+

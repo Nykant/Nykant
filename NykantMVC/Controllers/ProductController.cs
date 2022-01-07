@@ -22,17 +22,17 @@ namespace NykantMVC.Controllers
         public async Task<IActionResult> Index(string searchString)
         {
             var json = await GetRequest("/Product/GetProducts");
+            var products = JsonConvert.DeserializeObject<List<Product>>(json);
             ViewBag.Categories = JsonConvert.DeserializeObject<List<Category>>(await GetRequest("/Category/GetCategories"));
 
             if (searchString == null)
             {
-                var products = JsonConvert.DeserializeObject<List<Product>>(json);
                 return View(products);
             }
             else
             {
                 var filteredList = new List<Product>();
-                foreach (var product in JsonConvert.DeserializeObject<List<Product>>(json))
+                foreach (var product in products)
                 {
                     if (product.Description.ToLower().Contains(searchString.ToLower()) || product.Category.Name.ToLower().Contains(searchString.ToLower()))
                     {
@@ -51,6 +51,14 @@ namespace NykantMVC.Controllers
             var json = await GetRequest($"/Product/GetProduct/{id}");
             Product product = JsonConvert.DeserializeObject<Product>(json);
             return View(product);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetLength(int lengthInput)
+        {
+            var json = await GetRequest($"/Product/GetProduct/{lengthInput}");
+            Product product = JsonConvert.DeserializeObject<Product>(json);
+            return View("Details", product);
         }
 
         [HttpPost]
