@@ -21,6 +21,8 @@ namespace NykantAPI.Models
         public string ImageSource2 { get; set; }
         public string Path { get; set; }
         public string Note { get; set; }
+        public DateTime ExpectedDelivery { get; set; }
+        public int Amount { get; set; }
         public string AssemblyPath { get; set; }
         public string Materials { get; set; }
         public EColor EColor { get; set; }

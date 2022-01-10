@@ -1,12 +1,20 @@
 ﻿@model Product
 @inject IViewLocalizer localizer
-@inject IConfiguration conf 
+@inject IConfiguration conf
 
 @{
     ViewData["Title"] = Model.Title;
     ViewData["Description"] = localizer[Model.Description];
 
     string url = @conf.GetSection("Urls")["Mvc"];
+
+    TimeSpan deliveryTimeSpan = new TimeSpan();
+
+    if (Model.ExpectedDelivery != new DateTime())
+    {
+        deliveryTimeSpan = Model.ExpectedDelivery.Subtract(DateTime.Now);
+    }
+
 }
 <script src="~/JS/swiped-events.min.js"></script>
 <script src="~/JS/product-details.js" defer></script>
@@ -52,16 +60,16 @@
             </div>
 
             <div class="my-row top-side-padding">
-                    <div class="product-slide-buttons" id="product-slide-buttons">
-                        @{
-                            @for (int i = 0; i < Model.Images.Count(); i++)
-                            {
-                                <div class="product-slide-button">
-                                    <img src="../@Model.Images.ToList()[i].Source" />
-                                </div>
-                            }
+                <div class="product-slide-buttons" id="product-slide-buttons">
+                    @{
+                        @for (int i = 0; i < Model.Images.Count(); i++)
+                        {
+                            <div class="product-slide-button">
+                                <img src="../@Model.Images.ToList()[i].Source" />
+                            </div>
                         }
-                    </div>
+                    }
+                </div>
             </div>
         </div>
 
@@ -76,16 +84,63 @@
                     <h2 class="padding-10 left">@Model.Length</h2>
                 </div>
 
-                <form id="length-form" method="get" asp-controller="Product" asp-action="GetLength">
-                    <select id="length-select">
-                        <option>Vælg Længde</option>
-                        @foreach (var length in Model.ProductLengths)
+                @if (Model.ProductLengths.Count() > 0)
+                {
+                    <form id="length-form" method="get" asp-controller="Product" asp-action="GetLength">
+                        <select id="length-select">
+                            <option>Vælg Længde</option>
+                            @foreach (var length in Model.ProductLengths)
+                            {
+                                <option data-product-id="@length.ProductReferenceId">@length.Length</option>
+                            }
+                        </select>
+                        <input id="length-input" name="lengthInput" type="hidden" />
+                    </form>
+                }
+
+                <div class="product-amount">
+                    @if (Model.Amount > 0)
+                    {
+                        @if (Model.Amount > 10)
                         {
-                            <option data-product-id="@length.ProductReferenceId">@length.Length</option>
+                            <p class="green-text">På Lager: 10+</p>
                         }
-                    </select>
-                    <input id="length-input" name="lengthInput" type="hidden" />
-                </form>
+                        else
+                        {
+                            if (Model.Amount < 5)
+                            {
+                                <p class="green-text">På Lager: @Model.Amount</p>
+                            }
+                            else
+                            {
+                                <p class="green-text">På Lager: @Model.Amount</p>
+                            }
+
+                        }
+                    }
+                    else
+                    {
+                        <p class="red-text">Ikke På Lager</p>
+                    }
+                </div>
+
+                <div class="expected-del">
+                    @if (Model.ExpectedDelivery == new DateTime())
+                    {
+                        @if (Model.Amount == 0)
+                        {
+                            <p>Forventet leveringstid: 10-12 uger</p>
+                        }
+                        else
+                        {
+                            <p>Forventet leveringstid: 1 - 3 hverdage</p>
+                        }
+                    }
+                    else
+                    {
+                        <p>Forventet leveringstid: @((int)deliveryTimeSpan.TotalDays) dage</p>
+                    }
+                </div>
 
                 <div id="color-select">
                     <h3>Farver</h3>

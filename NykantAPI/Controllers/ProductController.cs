@@ -42,5 +42,19 @@ namespace NykantAPI.Controllers
 
             return Ok(json);
         }
+
+        [HttpPatch]
+        public async Task<ActionResult> ReduceAmount(int id, int amount)
+        {
+            var product = await _context.Products.FirstOrDefaultAsync(x => x.Id == id);
+            if(product.Amount >= amount)
+            {
+                product.Amount = product.Amount - amount;
+                _context.Update(product);
+                await _context.SaveChangesAsync();
+                return Ok();
+            }
+            return BadRequest();
+        }
     }
 }

@@ -18,6 +18,8 @@ namespace NykantMVC.Models
         public string Path { get; set; }
         public string Materials { get; set; }
         public string Note { get; set; }
+        public DateTime ExpectedDelivery { get; set; }
+        public int Amount { get; set; }
         public string Size { get; set; }
         public EColor EColor { get; set; }
         public string Length { get; set; }

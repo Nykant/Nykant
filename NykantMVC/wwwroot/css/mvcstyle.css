@@ -521,6 +521,10 @@ ol, ul {
         padding-top: 5vh;
     }
 
+.top-padding-8vh {
+    padding-top: 8vh;
+}
+
     .right-side-padding {
         padding-right: 10px;
     }
