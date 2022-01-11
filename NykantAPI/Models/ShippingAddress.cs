@@ -13,9 +13,7 @@ namespace NykantAPI.Models
         public int CustomerId { get; set; }
         public Customer Customer { get; set; }
         [Required]
-        public string FirstName { get; set; }
-        [Required]
-        public string LastName { get; set; }
+        public string Name { get; set; }
         [Required]
         public string Address { get; set; }
         [Required]

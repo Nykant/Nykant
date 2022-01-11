@@ -30,15 +30,9 @@
                                 @localizer["Billing Address"]
                             </div>
                             <div class="inputstyle left">
-                                <input id="customer-firstname-input" required autocomplete="billing given-name" asp-for="@Model.Customer.BillingAddress.FirstName" />
-                                <label asp-for="@Model.Customer.BillingAddress.FirstName"></label>
-                                <span asp-validation-for="@Model.Customer.BillingAddress.FirstName"></span>
-                                <div class="underline"></div>
-                            </div>
-                            <div class="inputstyle left">
-                                <input id="customer-lastname-input" required autocomplete="billing family-name" asp-for="@Model.Customer.BillingAddress.LastName" />
-                                <label asp-for="@Model.Customer.BillingAddress.LastName"></label>
-                                <span asp-validation-for="@Model.Customer.BillingAddress.LastName"></span>
+                                <input id="customer-firstname-input" required autocomplete="billing given-name" asp-for="@Model.Customer.BillingAddress.Name" />
+                                <label asp-for="@Model.Customer.BillingAddress.Name"></label>
+                                <span asp-validation-for="@Model.Customer.BillingAddress.Name"></span>
                                 <div class="underline"></div>
                             </div>
 
@@ -87,15 +81,9 @@
                                 @localizer["Shipping Address"]
                             </div>
                             <div class="inputstyle left">
-                                <input id="shippingaddress-firstname" required autocomplete="shipping given-name" asp-for="@Model.Customer.ShippingAddress.FirstName" />
-                                <label asp-for="@Model.Customer.ShippingAddress.FirstName"></label>
-                                <span asp-validation-for="@Model.Customer.ShippingAddress.FirstName"></span>
-                                <div class="underline"></div>
-                            </div>
-                            <div class="inputstyle left">
-                                <input id="shippingaddress-lastname" required autocomplete="shipping family-name" asp-for="@Model.Customer.ShippingAddress.LastName" />
-                                <label asp-for="@Model.Customer.ShippingAddress.LastName"></label>
-                                <span asp-validation-for="@Model.Customer.ShippingAddress.LastName"></span>
+                                <input id="shippingaddress-firstname" required autocomplete="shipping given-name" asp-for="@Model.Customer.ShippingAddress.Name" />
+                                <label asp-for="@Model.Customer.ShippingAddress.Name"></label>
+                                <span asp-validation-for="@Model.Customer.ShippingAddress.Name"></span>
                                 <div class="underline"></div>
                             </div>
 

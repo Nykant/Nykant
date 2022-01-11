@@ -26,10 +26,8 @@ namespace NykantMVC.Friends
                 foreach (var headers in request.Headers.Values)
                     foreach (var header in headers)
                     {
-                        Console.WriteLine($"searching cookie... - {header}");
                         if (header.Contains($"{cookieName}="))
                         {
-                            Console.WriteLine($"cookie found");
                             return true;
                         }
                     }
@@ -40,7 +38,6 @@ namespace NykantMVC.Friends
                 Console.WriteLine(e.Message);
             }
 
-            Console.WriteLine($"cookie not found");
             return false;
         }
     }

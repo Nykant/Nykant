@@ -3,7 +3,7 @@
 @inject IProtectionService protectionService
 @{
     Layout = "_EmailOrderConfirmation";
-    ViewData["EmailTitle"] = "Ordre";
+    ViewData["EmailTitle"] = "Ordre Bekræftelse";
 }
 
 <div class="es-wrapper-color" style="background-color:#FFFF">
@@ -106,7 +106,7 @@
                                                                 <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:100%" class="cke_show_border" cellspacing="1" cellpadding="1" border="0" align="left" role="presentation">
                                                                     <tr style="border-collapse:collapse">
                                                                         @*<td style="padding:0;Margin:0;font-size:14px;line-height:21px">Name:</td>*@
-                                                                        <td style="padding:0;Margin:0"><p><span style="font-size: 14px; line-height: 21px; color: #777069;">@Model.Customer.ShippingAddress.FirstName @Model.Customer.ShippingAddress.LastName</span></p></td>
+                                                                        <td style="padding:0;Margin:0"><p><span style="font-size: 14px; line-height: 21px; color: #777069;">@Model.Customer.ShippingAddress.Name</span></p></td>
                                                                     </tr>
                                                                     <tr style="border-collapse:collapse">
                                                                         <td style="padding:0;Margin:0;font-size:14px;line-height:21px">&nbsp;</td>

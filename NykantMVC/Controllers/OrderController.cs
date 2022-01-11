@@ -100,7 +100,7 @@ namespace NykantMVC.Controllers
                     order = JsonConvert.DeserializeObject<Models.Order>(json);
                     order.Customer = customer;
 
-                    await mailService.SendOrderEmailAsync(customer, order);
+                    await mailService.SendOrderEmailAsync(order);
 
                     if (User.Identity.IsAuthenticated)
                     {

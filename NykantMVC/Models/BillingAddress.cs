@@ -14,12 +14,8 @@ namespace NykantMVC.Models
         public Customer Customer { get; set; }
         [Required]
         [StringLength(20)]
-        [Display(Name = "First Name")]
-        public string FirstName { get; set; }
-        [Required]
-        [StringLength(20)]
-        [Display(Name = "Last Name")]
-        public string LastName { get; set; }
+        [Display(Name = "Name")]
+        public string Name { get; set; }
         [Required]
         [StringLength(200)]
         [Display(Name = "Address")]

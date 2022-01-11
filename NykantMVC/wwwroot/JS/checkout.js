@@ -8,7 +8,6 @@ var customer_wrap = document.getElementById("customer-wrap");
 var customer_form = document.getElementById("customer-form");
 var customerinf_summary = document.getElementById("customerinf-summary");
 var firstname_summary = document.getElementById("customer-firstname-summary");
-var lastname_summary = document.getElementById("customer-lastname-summary");
 var email_summary = document.getElementById("customer-email-summary");
 var phone_summary = document.getElementById("customer-phone-summary");
 var country_summary = document.getElementById("customer-country-summary");
@@ -16,7 +15,6 @@ var city_summary = document.getElementById("customer-city-summary");
 var postal_summary = document.getElementById("customer-postal-summary");
 var address_summary = document.getElementById("customer-address-summary");
 var firstname_input = document.getElementById("customer-firstname-input");
-var lastname_input = document.getElementById("customer-lastname-input");
 var email_input = document.getElementById("customer-email-input");
 var phone_input = document.getElementById("customer-phone-input");
 var country_input = document.getElementById("customer-country-input");
@@ -34,13 +32,11 @@ var shipping_price_summary = document.getElementById("shipping-price-summary");
 var stage_value = document.getElementById("stage").value;
 var reuse_invoice = document.getElementById('reuse-invoice');
 var shippingaddress_firstname = document.getElementById('shippingaddress-firstname');
-var shippingaddress_lastname = document.getElementById('shippingaddress-lastname');
 var shippingaddress_city = document.getElementById('shippingaddress-city');
 var shippingaddress_country = document.getElementById('shippingaddress-country');
 var shippingaddress_postal = document.getElementById('shippingaddress-postal');
 var shippingaddress_address = document.getElementById('shippingaddress-address');
 var shippingaddress_firstname_summary = document.getElementById('shippingaddress-firstname-summary');
-var shippingaddress_lastname_summary = document.getElementById('shippingaddress-lastname-summary');
 var shippingaddress_city_summary = document.getElementById('shippingaddress-city-summary');
 var shippingaddress_country_summary = document.getElementById('shippingaddress-country-summary');
 var shippingaddress_postal_summary = document.getElementById('shippingaddress-postal-summary');
@@ -166,7 +162,6 @@ customer_begin = function () {
     customerloading(true);
     if (reuse_invoice) {
         shippingaddress_firstname.textContent = firstname_input.value;
-        shippingaddress_lastname.textContent = lastname_input.value;
         shippingaddress_city.textContent = city_input.value;
         shippingaddress_country.textContent = country_input.value;
         shippingaddress_postal.textContent = postal_input.value;
@@ -186,7 +181,6 @@ customer_completed = function (response) {
             shippingaddress_city_summary.textContent = shippingaddress_city.value;
             shippingaddress_country_summary.textContent = shippingaddress_country.value;
             shippingaddress_firstname_summary.textContent = shippingaddress_firstname.value;
-            shippingaddress_lastname_summary.textContent = shippingaddress_lastname.value;
             shippingaddress_postal_summary.textContent = shippingaddress_postal.value;
         }
 
@@ -201,7 +195,6 @@ customer_completed = function (response) {
 
         customer_edit_button.style.display = "block";
         firstname_summary.textContent = firstname_input.value;
-        lastname_summary.textContent = lastname_input.value;
         email_summary.textContent = email_input.value;
         phone_summary.textContent = phone_input.value;
         country_summary.textContent = country_input.value;

@@ -51,8 +51,7 @@ namespace NykantMVC.Controllers
                     customer.ShippingAddress.Address = htmlEncoder.Encode(customer.ShippingAddress.Address);
                     customer.ShippingAddress.City = htmlEncoder.Encode(customer.ShippingAddress.City);
                     customer.ShippingAddress.Country = htmlEncoder.Encode(customer.ShippingAddress.Country);
-                    customer.ShippingAddress.FirstName = htmlEncoder.Encode(customer.ShippingAddress.FirstName);
-                    customer.ShippingAddress.LastName = htmlEncoder.Encode(customer.ShippingAddress.LastName);
+                    customer.ShippingAddress.Name = htmlEncoder.Encode(customer.ShippingAddress.Name);
                     customer.ShippingAddress.Postal = htmlEncoder.Encode(customer.ShippingAddress.Postal);
                 }
 
@@ -62,8 +61,7 @@ namespace NykantMVC.Controllers
                     customer.BillingAddress.Address = htmlEncoder.Encode(customer.BillingAddress.Address);
                     customer.BillingAddress.City = htmlEncoder.Encode(customer.BillingAddress.City);
                     customer.BillingAddress.Country = htmlEncoder.Encode(customer.BillingAddress.Country);
-                    customer.BillingAddress.FirstName = htmlEncoder.Encode(customer.BillingAddress.FirstName);
-                    customer.BillingAddress.LastName = htmlEncoder.Encode(customer.BillingAddress.LastName);
+                    customer.BillingAddress.Name = htmlEncoder.Encode(customer.BillingAddress.Name);
                 }
             }
 

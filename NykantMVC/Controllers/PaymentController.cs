@@ -11,6 +11,7 @@ using Stripe;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Text.Encodings.Web;
+using System;
 
 namespace NykantMVC.Controllers
 {
@@ -20,10 +21,12 @@ namespace NykantMVC.Controllers
     {
         private IConfigurationRoot _configuration;
         private readonly IProtectionService _protectionService;
-        public PaymentController(ILogger<BaseController> logger, IConfiguration configuration, IProtectionService protectionService, IOptions<Urls> urls, HtmlEncoder htmlEncoder) : base(logger, urls, htmlEncoder)
+        private readonly IMailService mailService;
+        public PaymentController(ILogger<BaseController> logger, IConfiguration configuration, IMailService mailService, IProtectionService protectionService, IOptions<Urls> urls, HtmlEncoder htmlEncoder) : base(logger, urls, htmlEncoder)
         {
             _configuration = (IConfigurationRoot)configuration;
             _protectionService = protectionService;
+            this.mailService = mailService;
         }
 
         [HttpPost]
@@ -152,6 +155,12 @@ namespace NykantMVC.Controllers
 
             var json = await GetRequest($"/Order/GetOrder/{orderId}");
             var order = JsonConvert.DeserializeObject<Models.Order>(json);
+            order.Customer = _protectionService.UnprotectCustomer(order.Customer);
+            order.Customer.ShippingAddress = _protectionService.UnprotectShippingAddress(order.Customer.ShippingAddress);
+            if(order.Customer.BillingAddress != null)
+            {
+                order.Customer.BillingAddress = _protectionService.UnprotectBillingAddress(order.Customer.BillingAddress);
+            }
 
             var service = new PaymentIntentService();
             var paymentIntent = await service.CaptureAsync(order.PaymentIntent_Id);
@@ -159,7 +168,22 @@ namespace NykantMVC.Controllers
             if (paymentIntent.StripeResponse.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 order.Status = Status.Sent;
+
+                var now = DateTime.Now;
+                var deliveryDate = now.AddDays(2);
+                var dayOfWeek = deliveryDate.DayOfWeek;
+                order.EstimatedDelivery = deliveryDate;
+
                 await PatchRequest("/Order/UpdateOrder", order);
+
+                await mailService.SendInvoiceEmailAsync(order);
+
+                foreach(var item in order.OrderItems)
+                {
+                    var product = item.Product;
+                    product.Amount = product.Amount - item.Quantity;
+                    await PatchRequest("/Product/UpdateProduct", product);
+                }
 
                 var json2 = await GetRequest("/Order/GetOrders");
                 var orders = JsonConvert.DeserializeObject<List<Models.Order>>(json2);
@@ -167,7 +191,7 @@ namespace NykantMVC.Controllers
                 ViewData.Model = orders;
                 return new PartialViewResult
                 {
-                    ViewName = "_OrderListPartial",
+                    ViewName = "/Views/Order/_OrderListPartial.cshtml",
                     ViewData = this.ViewData
                 };
             }

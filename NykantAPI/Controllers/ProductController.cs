@@ -44,17 +44,18 @@ namespace NykantAPI.Controllers
         }
 
         [HttpPatch]
-        public async Task<ActionResult> ReduceAmount(int id, int amount)
+        public async Task<ActionResult<Product>> UpdateProduct(Product product)
         {
-            var product = await _context.Products.FirstOrDefaultAsync(x => x.Id == id);
-            if(product.Amount >= amount)
+            if (ModelState.IsValid)
             {
-                product.Amount = product.Amount - amount;
-                _context.Update(product);
+                _context.Products.Update(product);
                 await _context.SaveChangesAsync();
                 return Ok();
             }
-            return BadRequest();
+            else
+            {
+                return BadRequest();
+            }
         }
     }
 }

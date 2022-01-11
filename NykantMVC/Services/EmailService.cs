@@ -25,13 +25,13 @@ namespace NykantMVC.Services
             _protectionService = protectionService;
         }
 
-        public async Task SendOrderEmailAsync(Customer customerInf, Order order)
+        public async Task SendOrderEmailAsync(Order order)
         {
             var email = new MimeMessage();
             email.From.Add(MailboxAddress.Parse(_mailSettings.Mail));
             email.Sender = MailboxAddress.Parse(_mailSettings.Mail);
-            email.To.Add(MailboxAddress.Parse(customerInf.Email));
-            email.Subject = "Nykant Order";
+            email.To.Add(MailboxAddress.Parse(order.Customer.Email));
+            email.Subject = "Ordrebekræftelse";
 
             var bodyBuilder = new BodyBuilder();
             for (int i = 0; i < order.OrderItems.Count(); i++)
@@ -52,31 +52,50 @@ namespace NykantMVC.Services
             smtp.Disconnect(true);
         }
 
-        public async Task SendEmailAsync(SimpleMail simpleMail)
+        public async Task SendInvoiceEmailAsync(Order order)
         {
             var email = new MimeMessage();
             email.From.Add(MailboxAddress.Parse(_mailSettings.Mail));
             email.Sender = MailboxAddress.Parse(_mailSettings.Mail);
-            email.To.Add(MailboxAddress.Parse("Christian@svinding.dk"));
-            email.Subject = "Feedback";
-
+            email.To.Add(MailboxAddress.Parse(order.Customer.Email));
+            email.Subject = "Faktura";
             var bodyBuilder = new BodyBuilder();
-            string body = await _razorViewToStringRenderer.RenderViewToStringAsync("/Views/Shared/EmailViews/ContactEmail.cshtml", simpleMail);
-
+            string body = await _razorViewToStringRenderer.RenderViewToStringAsync("/Views/Shared/EmailViews/InvoiceEmail.cshtml", order);
             bodyBuilder.HtmlBody = body;
             email.Body = bodyBuilder.ToMessageBody();
-
             using var smtp = new SmtpClient();
             smtp.Connect(_mailSettings.Host, _mailSettings.Port, SecureSocketOptions.StartTls);
             smtp.Authenticate(_mailSettings.Username, _mailSettings.Password);
             await smtp.SendAsync(email);
             smtp.Disconnect(true);
         }
+
+        //public async Task SendEmailAsync(SimpleMail simpleMail)
+        //{
+        //    var email = new MimeMessage();
+        //    email.From.Add(MailboxAddress.Parse(_mailSettings.Mail));
+        //    email.Sender = MailboxAddress.Parse(_mailSettings.Mail);
+        //    email.To.Add(MailboxAddress.Parse("Christian@svinding.dk"));
+        //    email.Subject = "Feedback";
+
+        //    var bodyBuilder = new BodyBuilder();
+        //    string body = await _razorViewToStringRenderer.RenderViewToStringAsync("/Views/Shared/EmailViews/ContactEmail.cshtml", simpleMail);
+
+        //    bodyBuilder.HtmlBody = body;
+        //    email.Body = bodyBuilder.ToMessageBody();
+
+        //    using var smtp = new SmtpClient();
+        //    smtp.Connect(_mailSettings.Host, _mailSettings.Port, SecureSocketOptions.StartTls);
+        //    smtp.Authenticate(_mailSettings.Username, _mailSettings.Password);
+        //    await smtp.SendAsync(email);
+        //    smtp.Disconnect(true);
+        //}
     }
 
     public interface IMailService
     {
-        Task SendOrderEmailAsync(Customer customerInf, Order order);
-        Task SendEmailAsync(SimpleMail simpleMail);
+        Task SendOrderEmailAsync(Order order);
+        Task SendInvoiceEmailAsync(Order order);
+        //Task SendEmailAsync(SimpleMail simpleMail);
     }
 }

@@ -65,7 +65,7 @@ form.addEventListener("submit", function (event) {
                 type: 'card',
                 card: cardNumber,
                 billing_details: {
-                    name: document.getElementById('customer-firstname-summary').textContent + ' ' + document.getElementById('customer-lastname-summary').textContent
+                    name: document.getElementById('customer-firstname-summary').textContent
                     //email: document.getElementById('customer-email-summary').textContent,
                     //phone: document.getElementById('customer-phone-summary').textContent,
                     //address: {

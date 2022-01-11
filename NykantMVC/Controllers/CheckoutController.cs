@@ -193,8 +193,7 @@ namespace NykantMVC.Controllers
                 if (customer.ShippingAddress.SameAsBilling)
                 {
                     customer.ShippingAddress.Postal = customer.BillingAddress.Postal;
-                    customer.ShippingAddress.LastName = customer.BillingAddress.LastName;
-                    customer.ShippingAddress.FirstName = customer.BillingAddress.FirstName;
+                    customer.ShippingAddress.Name = customer.BillingAddress.Name;
                     customer.ShippingAddress.Address = customer.BillingAddress.Address;
                     customer.ShippingAddress.Country = customer.BillingAddress.Country;
                     customer.ShippingAddress.City = customer.BillingAddress.City;

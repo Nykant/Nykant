@@ -22,6 +22,7 @@ namespace NykantMVC.Models
         public string Currency { get; set; }
         [Required]
         public Status Status { get; set; }
+        public DateTime EstimatedDelivery { get; set; }
         [Required]
         public string PaymentIntent_Id { get; set; }
         public List<OrderItem> OrderItems { get; set; }

@@ -47,11 +47,10 @@ namespace NykantMVC.Services
 
         public ShippingAddress ProtectShippingAddress(ShippingAddress shippingAddress)
         {
-            shippingAddress.FirstName = _customerProtector.Protect(shippingAddress.FirstName);
+            shippingAddress.Name = _customerProtector.Protect(shippingAddress.Name);
             shippingAddress.Address = _customerProtector.Protect(shippingAddress.Address);
             shippingAddress.City = _customerProtector.Protect(shippingAddress.City);
             shippingAddress.Country = _customerProtector.Protect(shippingAddress.Country);
-            shippingAddress.LastName = _customerProtector.Protect(shippingAddress.LastName);
             shippingAddress.Postal = _customerProtector.Protect(shippingAddress.Postal);
 
             return shippingAddress;
@@ -59,11 +58,10 @@ namespace NykantMVC.Services
 
         public ShippingAddress UnprotectShippingAddress(ShippingAddress shippingAddress)
         {
-            shippingAddress.FirstName = _customerProtector.Unprotect(shippingAddress.FirstName);
+            shippingAddress.Name = _customerProtector.Unprotect(shippingAddress.Name);
             shippingAddress.Address = _customerProtector.Unprotect(shippingAddress.Address);
             shippingAddress.City = _customerProtector.Unprotect(shippingAddress.City);
             shippingAddress.Country = _customerProtector.Unprotect(shippingAddress.Country);
-            shippingAddress.LastName = _customerProtector.Unprotect(shippingAddress.LastName);
             shippingAddress.Postal = _customerProtector.Unprotect(shippingAddress.Postal);
 
             return shippingAddress;
@@ -75,8 +73,7 @@ namespace NykantMVC.Services
             billingAddress.City = _customerProtector.Unprotect(billingAddress.City);
             billingAddress.Country = _customerProtector.Unprotect(billingAddress.Country);
             billingAddress.Postal = _customerProtector.Unprotect(billingAddress.Postal);
-            billingAddress.FirstName = _customerProtector.Unprotect(billingAddress.FirstName);
-            billingAddress.LastName = _customerProtector.Unprotect(billingAddress.LastName);
+            billingAddress.Name = _customerProtector.Unprotect(billingAddress.Name);
 
             return billingAddress;
         }
@@ -87,8 +84,7 @@ namespace NykantMVC.Services
             billingAddress.City = _customerProtector.Protect(billingAddress.City);
             billingAddress.Country = _customerProtector.Protect(billingAddress.Country);
             billingAddress.Postal = _customerProtector.Protect(billingAddress.Postal);
-            billingAddress.FirstName = _customerProtector.Protect(billingAddress.FirstName);
-            billingAddress.LastName = _customerProtector.Protect(billingAddress.LastName);
+            billingAddress.Name = _customerProtector.Protect(billingAddress.Name);
 
             return billingAddress;
         }
