@@ -1,4 +1,8 @@
-﻿<h1 class="list-h1">Alle Ordre</h1>
+﻿@{ 
+    List<Order> list = ViewData.Model;
+    list.Reverse();
+}
+<h1 class="list-h1">Ordrer</h1>
 <table id="list">
     <tr>
         <th>Id</th>
@@ -7,7 +11,7 @@
         <th>Status</th>
         <th></th>
     </tr>
-    @foreach (var order in ViewData.Model)
+    @foreach (var order in list)
     {
         <tr>
             <td>@order.Id</td>

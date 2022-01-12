@@ -171,8 +171,17 @@ namespace NykantMVC.Controllers
 
                 var now = DateTime.Now;
                 var deliveryDate = now.AddDays(2);
-                var dayOfWeek = deliveryDate.DayOfWeek;
                 order.EstimatedDelivery = deliveryDate;
+
+                Models.Invoice invoice = new Models.Invoice
+                {
+                    CreatedAt = DateTime.Now,
+                    OrderId = order.Id
+                };
+                var response = await PostRequest("/Invoice/PostInvoice/", invoice);
+                var invoiceJson = await GetRequest(response.Headers.Location.AbsolutePath);
+                invoice = JsonConvert.DeserializeObject<Models.Invoice>(invoiceJson);
+                order.Invoice = invoice;
 
                 await PatchRequest("/Order/UpdateOrder", order);
 

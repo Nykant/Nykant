@@ -144,6 +144,17 @@ namespace NykantMVC.Controllers
             double.TryParse(subtotal, out double subtotalint);
             var total = subtotalint;
             var taxes = total / 5;
+            var taxlessPrice = total - taxes;
+
+            double weight = 0;
+            foreach(var item in checkout.BagItems)
+            {
+                weight += item.Product.WeightInKg * item.Quantity;
+            }
+
+            var now = DateTime.Now;
+            var deliveryDate = now.AddDays(3); // skal passes til i forhold til weekender
+            var dayOfWeek = deliveryDate.DayOfWeek;
 
             Models.Order order = new Models.Order
             {
@@ -153,7 +164,10 @@ namespace NykantMVC.Controllers
                 PaymentIntent_Id = paymentIntentId,
                 Status = Status.Pending,
                 TotalPrice = total.ToString(),
-                Taxes = taxes.ToString()
+                Taxes = taxes.ToString(),
+                WeightInKg = weight,
+                TaxLessPrice = taxlessPrice.ToString(),
+                EstimatedDelivery = deliveryDate
             };
 
             if (User.Identity.IsAuthenticated)

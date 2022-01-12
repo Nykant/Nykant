@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NykantAPI.Data;
 
 namespace NykantAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220112130523_InvoiceAdded")]
+    partial class InvoiceAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -603,13 +605,7 @@ namespace NykantAPI.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("OrderId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("OrderId")
-                        .IsUnique();
 
                     b.ToTable("Invoices");
                 });
@@ -643,6 +639,9 @@ namespace NykantAPI.Migrations
                     b.Property<DateTime>("EstimatedDelivery")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<int>("InvoiceId")
+                        .HasColumnType("int");
+
                     b.Property<string>("PaymentIntent_Id")
                         .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -651,9 +650,6 @@ namespace NykantAPI.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Subject")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("TaxLessPrice")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Taxes")
@@ -670,6 +666,8 @@ namespace NykantAPI.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
+
+                    b.HasIndex("InvoiceId");
 
                     b.ToTable("Orders");
                 });
@@ -1343,20 +1341,17 @@ namespace NykantAPI.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("NykantAPI.Models.Invoice", b =>
-                {
-                    b.HasOne("NykantAPI.Models.Order", "Order")
-                        .WithOne("Invoice")
-                        .HasForeignKey("NykantAPI.Models.Invoice", "OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("NykantAPI.Models.Order", b =>
                 {
                     b.HasOne("NykantAPI.Models.Customer", "Customer")
                         .WithMany()
                         .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("NykantAPI.Models.Invoice", "Invoice")
+                        .WithMany()
+                        .HasForeignKey("InvoiceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

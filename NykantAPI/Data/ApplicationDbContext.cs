@@ -28,9 +28,11 @@ namespace NykantAPI.Data
         public DbSet<ParcelshopData> ParcelshopData { get; set; }
         public DbSet<NewsSub> NewsSubs { get; set; }
         public DbSet<Color> Colors { get; set; }
+        public DbSet<Invoice> Invoices { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //modelBuilder.Entity<Order>().HasOne(x => x.Invoice);
             modelBuilder.Entity<BagItem>()
                 .HasKey(bi => new { bi.Subject, bi.ProductId });
             modelBuilder.Entity<OrderItem>()

@@ -12,6 +12,7 @@ namespace NykantMVC.Models
         [Required]
         public int CustomerId { get; set; }
         public Customer Customer { get; set; }
+        public Invoice Invoice { get; set; }
         [Required]
         public DateTime CreatedAt { get; set; }
         [Required]
@@ -19,9 +20,12 @@ namespace NykantMVC.Models
         [Required]
         public string Taxes { get; set; }
         [Required]
+        public string TaxLessPrice { get; set; }
+        [Required]
         public string Currency { get; set; }
         [Required]
         public Status Status { get; set; }
+        public double WeightInKg { get; set; }
         public DateTime EstimatedDelivery { get; set; }
         [Required]
         public string PaymentIntent_Id { get; set; }
