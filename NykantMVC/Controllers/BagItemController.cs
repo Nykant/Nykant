@@ -27,7 +27,7 @@ namespace NykantMVC.Controllers
         
 
         [HttpPost]
-        public async Task<IActionResult> PostBagItem(Product product)
+        public async Task<IActionResult> PostBagItem(Product product, int quantity)
         {
             bool isAuthenticated = User.Identity.IsAuthenticated;
             int bagItemQuantity = HttpContext.Session.Get<int>(BagItemAmountKey);
@@ -35,7 +35,7 @@ namespace NykantMVC.Controllers
             BagItem bagItem = new BagItem
             {
                 ProductId = product.Id,
-                Quantity = 1
+                Quantity = quantity
             };
 
             if (!isAuthenticated)
@@ -55,7 +55,7 @@ namespace NykantMVC.Controllers
                         if (item.ProductId == bagItem.ProductId)
                         {
                             bagItemExists = true;
-                            item.Quantity += 1;
+                            item.Quantity += bagItem.Quantity;
                         }
                     }
                     if (!bagItemExists)
@@ -66,7 +66,14 @@ namespace NykantMVC.Controllers
                     }
 
                     HttpContext.Session.Set<List<BagItem>>(BagSessionKey, bagItems);
-                    return NoContent();
+
+                    ViewBag.ProductQuantity = bagItem.Quantity;
+                    ViewData.Model = bagItem.Product;
+                    return new PartialViewResult
+                    {
+                        ViewName = "/Views/Product/_ItemAddedPartial.cshtml",
+                        ViewData = this.ViewData
+                    };
                 }
                 catch (Exception e)
                 {
@@ -82,7 +89,14 @@ namespace NykantMVC.Controllers
                 {
                     bagItemQuantity += 1;
                     HttpContext.Session.Set<int>(BagItemAmountKey, bagItemQuantity);
-                    return NoContent();
+
+                    ViewBag.ProductQuantity = bagItem.Quantity;
+                    ViewData.Model = bagItem.Product;
+                    return new PartialViewResult
+                    {
+                        ViewName = "/Views/Product/_ItemAddedPartial.cshtml",
+                        ViewData = this.ViewData
+                    };
                 }
                 else
                 {

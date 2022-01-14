@@ -1,19 +1,4 @@
-﻿item_added = function () {
-    $('#bagitem-added').css('display', 'block');
-    $('#item-added-modal').css('display', 'block');
-};
-
-$('#bagitem-added-close').on('click', function () {
-    $('#bagitem-added').css('display', 'none');
-    $('#item-added-modal').css('display', 'none');
-});
-
-$(document).mouseup(function (e) {
-    if ($(e.target).closest("#bagitem-added").length === 0) {
-        $('#bagitem-added').css('display', 'none');
-        $('#item-added-modal').css('display', 'none');
-    }
-});
+﻿
 
 var coll2 = document.getElementsByClassName("collapsible-button2");
 var i;
@@ -36,6 +21,22 @@ select.addEventListener('change', function () {
     var id = opt.getAttribute('data-product-id');
     document.getElementById('length-input').value = parseInt(id);
     document.getElementById('length-form').submit();
+});
+
+$("#product-counter-down").on('click', function () {
+    var productcount = $('#product-counter-input').val();
+    productcount = parseInt(productcount);
+    if (productcount > 1) {
+        productcount -= 1;
+        $('#product-counter-input').val(productcount);
+    }
+});
+
+$("#product-counter-up").on('click', function () {
+    var productcount = $('#product-counter-input').val();
+    productcount = parseInt(productcount);
+    productcount += 1;
+    $('#product-counter-input').val(productcount);
 });
 
 

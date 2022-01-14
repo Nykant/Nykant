@@ -1,14 +1,75 @@
-﻿@inject IViewLocalizer localizer
+﻿@model Order
+@inject IViewLocalizer localizer
 @{
     ViewData["Title"] = "Success";
     ViewData["Description"] = "";
 }
 
+<link rel="stylesheet" href="~/css/orderConfirmation.css" />
+
 <div class="my-row padding-50">
-    <div class="col-6 center">
-        <div class="header">
-            Betaling Gennemført
+    <div class="col-4 center">
+        <div class="order-confirmation">
+            <div class="header">
+                Ordrebekræftelse
+            </div>
+            <h2>Ordrebekræftelsen er et bevis på, og information for din bestilling.</h2>
+            <h2>Fakturaen vil blive sendt, og betalingen vil blive gennemført, når ordren bliver sendt fra lageret.</h2>
+            <div class="order-information">
+                <h1>Ordreoplysninger</h1>
+                <p>Ordrenummer:</p><span>@Model.Id</span>
+                <p>Ordrens vægt:</p><span>@Model.WeightInKg kg.</span>
+            </div>
+            <div class="order-item-list">
+                <div class="order-header">
+                    <p>Ordre #</p><span>@Model.Id</span>
+                </div>
+                @foreach (var item in Model.OrderItems)
+                {
+                    <div class="order-item">
+                        <a asp-controller="product" asp-action="details" asp-route-id="@item.Product.Id"><p>(@item.Quantity) @item.Product.Name / @item.Product.WeightInKg</p><span>kr. @item.Product.Price</span></a>
+                    </div>
+                }
+            </div>
+            <div class="order-price-summary">
+                <p class="border-top top-side-padding">Momsgrundlag:</p><span class="border-top top-side-padding">@Model.TaxLessPrice</span>
+                <p>Momsbeløb(25%):</p><span>@Model.Taxes</span>
+                <p>Totalbeløb:</p><span>@Model.TotalPrice</span>
+            </div>
+            <div class="order-information">
+                <h1>Kundeoplysninger</h1>
+                <p>Navn:</p><span>@Model.Customer.BillingAddress.Name</span>
+                <p>Telefon:</p><span>@Model.Customer.Phone</span>
+                <p>Addresse:</p><span>@Model.Customer.BillingAddress.Address</span>
+                <p>By:</p><span>@Model.Customer.BillingAddress.City</span>
+                <p>Postnummer:</p><span>@Model.Customer.BillingAddress.Postal</span>
+                <p>Land:</p><span>@Model.Customer.BillingAddress.Country</span>
+            </div>
+            <div class="order-information">
+                @if (Model.ShippingDelivery.Type != "Shop")
+                {
+                    <h1>Leveringsoplysninger</h1>
+                    <p>Leveres til:</p><span>Leveringsaddressen</span>
+                    <p>Addresse:</p><span>@Model.Customer.BillingAddress.Address</span>
+                    <p>By:</p><span>@Model.Customer.BillingAddress.City</span>
+                    <p>Postnummer:</p><span>@Model.Customer.BillingAddress.Postal</span>
+                    <p>Land:</p><span>@Model.Customer.BillingAddress.Country</span>
+                }
+                else
+                {
+                    <h1>Leveringsoplysninger</h1>
+                    <p>Leveres til:</p><span>Pakkeshop</span>
+                    <p>Firmanavn:</p><span>@Model.ShippingDelivery.ParcelshopData.CompanyName</span>
+                    <p>Addresse:</p><span>@Model.ShippingDelivery.ParcelshopData.Streetname, @Model.ShippingDelivery.ParcelshopData.Streetname2</span>
+                    <p>By:</p><span>@Model.ShippingDelivery.ParcelshopData.CityName</span>
+                    <p>Postnummer:</p><span>@Model.ShippingDelivery.ParcelshopData.ZipCode</span>
+                    <p>Land:</p><span>@Model.ShippingDelivery.ParcelshopData.CountryCodeISO3166A2</span>
+                }
+
+            </div>
+            <div class="order-information">
+                <p>Estimeret Leveringsdato:</p><span>@Model.EstimatedDelivery.DayOfWeek, @Model.EstimatedDelivery.Day / @Model.EstimatedDelivery.Month</span>
+            </div>
         </div>
-        @localizer["Info"]
     </div>
 </div>

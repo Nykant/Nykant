@@ -42,7 +42,7 @@ select:-webkit-autofill:focus {
         color: grey;
         pointer-events: none;
         transition: all 0.3s ease;
-        transform: translate(-200px, 0);
+        transform: translate(+270px, 0);
         white-space: nowrap;
     }
 
@@ -91,7 +91,7 @@ select:-webkit-autofill:focus {
     }
 
     .inputstyle input:focus ~ label, .inputstyle input:valid ~ label, .inputstyle input:hover ~ label {
-        transform: translate(-200px, -25px);
+        transform: translate(+270px, -60px);
         font-size: 12px;
         opacity: 0.5;
         color: black;

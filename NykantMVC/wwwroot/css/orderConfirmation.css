@@ -1,0 +1,87 @@
+﻿.order-confirmation {
+
+}
+
+.order-confirmation h2 {
+    padding:10px;
+}
+
+.order-information {
+    padding: 30px;
+    text-align: left;
+    background-color: white;
+    margin-top:20px;
+    width:100%;
+}
+
+.order-information h1 {
+    width:100%;
+    padding:10px;
+    margin-bottom:10px;
+    font-weight:bold;
+    border-bottom:1px solid var(--black-fade);
+
+}
+
+    .order-information p {
+        display:inline-block;
+        width:50%;
+    }
+
+    .order-information span {
+        display: inline-block;
+        width: 50%;
+    }
+
+.order-item-list {
+    margin-top: 20px;
+    text-align: left;
+    background-color:white;
+}
+
+    .order-header {
+        padding:20px;
+        margin-bottom:20px;
+        background-color:var(--color2);
+    }
+
+        .order-header p {
+            width: 80%;
+            display: inline-block;
+        }
+
+        .order-header span {
+            width: 20%;
+            display: inline-block;
+        }
+
+    .order-item {
+        padding:20px;
+    }
+
+        .order-item p {
+            width: 80%;
+            display: inline-block;
+        }
+
+        .order-item span {
+            width: 20%;
+            display: inline-block;
+        }
+
+        .order-price-summary {
+            
+            text-align:left;
+            background-color:white;
+            padding:30px;
+        }
+
+            .order-price-summary p {
+                width: 80%;
+                display: inline-block;
+            }
+
+            .order-price-summary span {
+                width: 20%;
+                display: inline-block;
+            }

@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Text.Encodings.Web;
+using Microsoft.AspNetCore.Authorization;
 
 namespace NykantMVC.Controllers
 {
@@ -24,6 +25,7 @@ namespace NykantMVC.Controllers
             _protectionService = protectionService;
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> AllOrders()
         {
@@ -32,6 +34,7 @@ namespace NykantMVC.Controllers
             return View(list);
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> History()
         {
@@ -40,6 +43,7 @@ namespace NykantMVC.Controllers
             return View(list);
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> Details(int id)
         {

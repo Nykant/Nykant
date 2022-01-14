@@ -22,26 +22,7 @@
 <script src="~/JS/product-slideshow.js" defer></script>
 
 <div class="modal" id="item-added-modal">
-    <div id="bagitem-added" class="centered">
-        <div id="bagitem-added-close">
-            <i class="fas fa-times"></i>
-        </div>
-        <p>Produkt tilføjet til din kurv</p>
-
-        <div class="bagitem-added-product">
-            <div class="bag-item-img">
-                <img src="../@Model.ImageSource" />
-            </div>
-            <p>@Model.Name</p>
-            <p class="abs-right">@Model.Price kr.</p>
-
-        </div>
-        <a asp-controller="Bag" asp-action="Details">
-            <div class="button">
-                Gå til kurven
-            </div>
-        </a>
-    </div>
+    <partial name="_ItemAddedPartial">
 </div>
 
 <div class="my-row top-padding bottom-padding">
@@ -73,15 +54,15 @@
             </div>
         </div>
 
-        <div id="details-right">
+        <div class="col-4 left" id="details-right">
             <div class="details-info-wrap">
 
                 <h1>@Model.Name</h1>
-                <p>@Model.Price.-</p>
+                <p >kr. @Model.Price</p>
 
                 <div class="fake-box">
-                    <h2 class="padding-10 right">@Model.Oil</h2>
-                    <h2 class="padding-10 left">@Model.Length</h2>
+                    <h2 >@Model.Oil</h2>
+                    <h3 >@Model.Length</h3>
                 </div>
 
                 @if (Model.ProductLengths.Count() > 0)
@@ -154,7 +135,7 @@
                     }
                 </div>
 
-                <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="item_added" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" asp-controller="BagItem" asp-action="PostBagItem">
+                <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#item-added-modal" data-ajax-success="item_added" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" asp-controller="BagItem" asp-action="PostBagItem">
                     @Html.HiddenFor(x => x.Id)
                     @Html.HiddenFor(x => x.Images)
                     @Html.HiddenFor(x => x.ImageSource)
@@ -168,6 +149,17 @@
                     @Html.HiddenFor(x => x.CategoryId)
                     @Html.HiddenFor(x => x.WeightInKg)
                     @Html.HiddenFor(x => x.Number)
+                    @Html.HiddenFor(x => x.Amount)
+                    @Html.HiddenFor(x => x.AssemblyPath)
+                    @Html.HiddenFor(x => x.EColor)
+                    @Html.HiddenFor(x => x.ExpectedDelivery)
+                    @Html.HiddenFor(x => x.Length)
+
+                    <div class="product-counter">
+                        <button id="product-counter-down" type="button"><i class="fas fa-minus"></i></button>
+                        <input id="product-counter-input" type="number" name="quantity" value="1" />
+                        <button id="product-counter-up" type="button"><i class="fas fa-plus"></i></button>
+                    </div>
 
                     <div class="top-side-padding bottom-side-padding fadein " id="addproduct-button">
                         <button class="button" type="submit">@localizer["Add To Bag"]</button> @*style=border-radius="0"????*@

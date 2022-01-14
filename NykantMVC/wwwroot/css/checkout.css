@@ -242,7 +242,12 @@
 
 .checkout-header p {
     display:block;
+    line-height:16px;
 }
+
+    .checkout-header span {
+        line-height: 22px;
+    }
 
 #shipping-form {
 /*    background-color: white;*/

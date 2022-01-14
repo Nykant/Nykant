@@ -253,12 +253,17 @@
 }
 
 .dropdown-content {
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px;
     display: none;
     position: absolute;
     background-color: transparent;
-    min-width: 250px;
+    min-width: 300px;
     z-index: 1;
     transition: none;
+    transform: translateX(-100px);
+    text-align: center;
 }
 
 .dropbtn {
@@ -281,6 +286,7 @@
     border: 2px solid black;
     display: block;
     transition: none;
+    float:none;
 }
 
     .dropdown-content a:hover {

@@ -20,7 +20,7 @@
                 @bagItem.Product.Name
             </a>
         </div>
-        <div id="bag-item-price"><label>@bagItem.Product.Price</label></div>
+        <div id="bag-item-price"><label>kr. @bagItem.Product.Price</label></div>
         <div id="remove-bagitem">
             <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#bagtable" data-ajax-success="bag_item_updated" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" asp-controller="Bag" asp-action="UpdateBagItem">
                 <input type="hidden" name="bagItem.Quantity" value="@bagItem.Quantity" />
@@ -45,6 +45,6 @@
         @{
             var total = bagItem.Quantity * bagItem.Product.Price;
         }
-        <div id="bag-item-total"><label>@total</label></div>
+        <div id="bag-item-total"><label>kr. @total</label></div>
     </div>
 }

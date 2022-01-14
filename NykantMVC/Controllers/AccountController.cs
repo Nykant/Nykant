@@ -21,7 +21,6 @@ namespace NykantMVC.Controllers
 
         }
 
-        [ValidateAntiForgeryToken]
         [HttpGet]
         public IActionResult Logout()
         {

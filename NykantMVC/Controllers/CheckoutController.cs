@@ -308,24 +308,30 @@ namespace NykantMVC.Controllers
         }
 
         [HttpGet]
-        public IActionResult Success()
+        public async Task<IActionResult> Success()
         {
             var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
-            if (checkout == null)
-            {
-                return Content("Something went wrong");
-            }
+            var json = await GetRequest($"/Order/GetOrder/{checkout.ShippingDelivery.OrderId}");
+            var order = JsonConvert.DeserializeObject<Order>(json);
+            order.Customer.BillingAddress = _protectionService.UnprotectBillingAddress(order.Customer.BillingAddress);
+            order.Customer.ShippingAddress = _protectionService.UnprotectShippingAddress(order.Customer.ShippingAddress);
+            order.Customer = _protectionService.UnprotectCustomer(order.Customer);
+            //if (checkout == null)
+            //{
+            //    return RedirectToAction("Details", "Bag");
+            //}
 
-            if (checkout.Stage == Stage.completed)
-            {
-                HttpContext.Session.Set<Checkout>(CheckoutSessionKey, null);
+            //if (checkout.Stage == Stage.completed)
+            //{
+            //    HttpContext.Session.Set<Checkout>(CheckoutSessionKey, null);
 
-                return View();
-            }
-            else
-            {
-                return Content("Something went wrong");
-            }
+            //    return View();
+            //}
+            //else
+            //{
+            //    return RedirectToAction("Details", "Bag");
+            //}
+            return View(order);
         }
 
         [HttpGet]

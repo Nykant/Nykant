@@ -1,0 +1,37 @@
+﻿@model Product 
+
+    <script src="~/JS/bagItemAdded.js" defer></script>
+
+    <div id="bagitem-added" class="centered">
+        <div id="bagitem-added-close">
+            <i class="fas fa-times"></i>
+        </div>
+
+        @if (ViewBag.ProductQuantity != null)
+        {
+            if (ViewBag.ProductQuantity > 1)
+            {
+                <p>Produkter tilføjet til din kurv</p>
+            }
+            else
+            {
+                <p>Produkt tilføjet til din kurv</p>
+            }
+            @for (int i = 0; i < ViewBag.ProductQuantity; i++)
+            {
+                <div class="bagitem-added-product">
+                    <div class="bag-item-img">
+                        <img src="../@Model.ImageSource" />
+                    </div>
+                    <p>@Model.Name</p>
+                    <p class="abs-right">@Model.Price kr.</p>
+                </div>
+            }
+        }
+
+        <a asp-controller="Bag" asp-action="Details">
+            <div class="button">
+                Gå til kurven
+            </div>
+        </a>
+    </div>
