@@ -26,7 +26,7 @@
 .sidebar {
     position:fixed;
     padding: 15px;
-    color: black;
+    color: var(--font1);
     height:auto;
     background-color:white;
 }
@@ -212,9 +212,15 @@
     margin-top: 30px;
 }
 
-.checkout-price p span {
-    display: inline-block;
-}
+    .checkout-price p {
+        display: inline-block;
+        width:70%;
+    }
+
+    .checkout-price span {
+        display: inline-block;
+        width: 30%;
+    }
 
 .checkout-header h1 {
     padding-top:30px;
@@ -343,14 +349,7 @@
 
 
 @media only screen and (max-width: 600px) {
-    .responsive-container {
-        width:100%;
-    }
 
-    .responsive-form {
-        width: 100%;
-        float: none;
-    }
     
     .sidebar {
         position: relative;
@@ -376,15 +375,7 @@
 }
 
 @media only screen and (min-width: 600px) {
-    .responsive-container {
-        width: 540px;
-        margin: auto;
-    }
 
-    .responsive-form {
-        width: 100%;
-        float: none;
-    }
 
     .sidebar {
         position: relative;
@@ -411,15 +402,7 @@
 }
 
 @media only screen and (min-width: 768px) {
-    .responsive-container {
-        width: 700px;
-        margin: auto;
-    }
 
-    .responsive-form {
-        width: 70%;
-        float: left;
-    }
 
     .sidebar {
         position: fixed;
@@ -431,15 +414,7 @@
 }
 
 @media only screen and (min-width: 873px) {
-    .responsive-container {
-        width: 800px;
-        margin: auto;
-    }
 
-    .responsive-form {
-        width: 70%;
-        float: left;
-    }
 
     .sidebar {
         position: fixed;
@@ -450,15 +425,7 @@
 }
 
 @media only screen and (min-width: 992px) {
-    .responsive-container {
-        width: 900px;
-        margin: auto;
-    }
 
-    .responsive-form {
-        width: 70%;
-        float: left;
-    }
 
     .sidebar {
         position: fixed;
@@ -470,15 +437,7 @@
 }
 
 @media only screen and (min-width: 1200px) {
-    .responsive-container {
-        width: 1100px;
-        margin: auto;
-    }
 
-    .responsive-form {
-        width: 70%;
-        float: left;
-    }
 
     .sidebar {
         position: fixed;
@@ -490,14 +449,7 @@
 }
 
 @media only screen and (min-width: 1500px) {
-    .responsive-container {
-        width: 1200px;
-        margin: auto;
-    }
-    .responsive-form {
-        width: 70%;
-        float: left;
-    }
+
 
     .sidebar {
         position: fixed;
@@ -509,15 +461,7 @@
 }
 
 @media only screen and (min-width: 1780px) {
-    .responsive-container {
-        width: 1200px;
-        margin: auto;
-    }
 
-    .responsive-form {
-        width: 70%;
-        float: left;
-    }
 
     .sidebar {
         position: fixed;

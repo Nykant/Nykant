@@ -11,6 +11,7 @@ namespace NykantMVC.Models
         public string TotalPrice { get; set; }
         public string SubTotalPrice { get; set; }
         public string Taxes { get; set; }
+        public string TaxlessPrice { get; set; }
         public Stage Stage { get; set; }
         public ParcelShopSearchResult ParcelShopSearchResult { get; set; }
     }

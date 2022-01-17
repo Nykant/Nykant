@@ -139,7 +139,7 @@
     <value>Levering</value>
   </data>
   <data name="Home" xml:space="preserve">
-    <value>Til Leveringsaddressen</value>
+    <value>Til Privat med GLS</value>
   </data>
   <data name="Shipping Method" xml:space="preserve">
     <value>Leveringsmetode</value>
@@ -148,7 +148,7 @@
     <value>Pris</value>
   </data>
   <data name="Shop" xml:space="preserve">
-    <value>Til Pakkeshop</value>
+    <value>Til Pakkeshop med GLS</value>
   </data>
   <data name="StreetName" xml:space="preserve">
     <value>Addresse</value>

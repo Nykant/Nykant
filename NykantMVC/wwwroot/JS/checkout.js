@@ -255,10 +255,10 @@ shipping_completed = function (response) {
             parcelshop_summary.style.display = "none";
         }
 
-        var totalelem = document.getElementById('checkout-total');
+        //var totalelem = document.getElementById('checkout-total');
 
-        var total = parseInt(totalelem.dataset.totalprice);
-        document.getElementById('checkout-taxes').textContent = total / 5;
+        //var total = parseInt(totalelem.dataset.totalprice);
+        //document.getElementById('checkout-taxes').textContent = total / 5;
 
         shipping_form.style.height = "0px";
         shipping_wrap.style.transform = "translateY(-100%)";

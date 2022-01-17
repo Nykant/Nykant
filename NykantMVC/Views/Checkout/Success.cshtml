@@ -6,9 +6,9 @@
 }
 
 <link rel="stylesheet" href="~/css/orderConfirmation.css" />
-
+<p class="top-padding text-center">Denne ordrebekræftelse er sendt til kundens email</p>
 <div class="my-row padding-50">
-    <div class="col-4 center">
+    <div class="responsive-container center">
         <div class="order-confirmation">
             <div class="header">
                 Ordrebekræftelse
@@ -17,12 +17,12 @@
             <h2>Fakturaen vil blive sendt, og betalingen vil blive gennemført, når ordren bliver sendt fra lageret.</h2>
             <div class="order-information">
                 <h1>Ordreoplysninger</h1>
-                <p>Ordrenummer:</p><span>@Model.Id</span>
+                <p>Ordrenummer:</p><span># @Model.Id</span>
                 <p>Ordrens vægt:</p><span>@Model.WeightInKg kg.</span>
             </div>
             <div class="order-item-list">
                 <div class="order-header">
-                    <p>Ordre #</p><span>@Model.Id</span>
+                    <p>Ordre</p><span># @Model.Id</span>
                 </div>
                 @foreach (var item in Model.OrderItems)
                 {
@@ -32,9 +32,9 @@
                 }
             </div>
             <div class="order-price-summary">
-                <p class="border-top top-side-padding">Momsgrundlag:</p><span class="border-top top-side-padding">@Model.TaxLessPrice</span>
-                <p>Momsbeløb(25%):</p><span>@Model.Taxes</span>
-                <p>Totalbeløb:</p><span>@Model.TotalPrice</span>
+                <p id="taxless-price-header">Momsgrundlag:</p><span id="taxless-price">kr. @Model.TaxLessPrice</span>
+                <p>Momsbeløb(25%):</p><span>kr. @Model.Taxes</span>
+                <p>Totalbeløb:</p><span>kr. @Model.TotalPrice</span>
             </div>
             <div class="order-information">
                 <h1>Kundeoplysninger</h1>

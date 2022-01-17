@@ -133,9 +133,12 @@
     <value>Subtotal</value>
   </data>
   <data name="Taxes" xml:space="preserve">
-    <value>Moms</value>
+    <value>Momsbeløb(25%)</value>
+  </data>
+  <data name="TaxlessPrice" xml:space="preserve">
+    <value>Momsgrundlag</value>
   </data>
   <data name="Total" xml:space="preserve">
-    <value>I Alt</value>
+    <value>Totalbeløb</value>
   </data>
 </root>

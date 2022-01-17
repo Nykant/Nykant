@@ -17,23 +17,24 @@
     if (item.EColor == EColor.Nature)
     {
         <div class="col-4 left product-col">
-
-            <div class="product-item">
-                @if (item.Colors.Count() > 1)
-                {
-                    <div class="product-item-colors">
-                        @foreach (var color in item.Colors)
+            @if (item.Colors.Count() > 1)
+            {
+                <div class="product-item-colors">
+                    @foreach (var color in item.Colors)
+                    {
+                        if (color.EColor != EColor.Nature)
                         {
-                            if (color.EColor != EColor.Nature)
-                            {
-                                <a class="product-item-color" asp-controller="product" asp-action="details" asp-route-id="@color.ProductSourceId">
-                                    <img src="@color.ImgSrc" />
-                                </a>
-                            }
+                            <a class="product-item-color" asp-controller="product" asp-action="details" asp-route-id="@color.ProductSourceId">
+                                <img src="@color.ImgSrc" />
+                            </a>
                         }
-                    </div>
-                }
-                <a asp-controller="product" asp-action="details" asp-route-id="@item.Id">
+                    }
+                </div>
+            }
+            
+        <div class="product-item">
+            <a asp-controller="product" asp-action="details" asp-route-id="@item.Id">
+                <div class="product-item-inside">
                     <div class="product-images">
                         <div class="primary-img">
                             <img src="@item.ImageSource" />
@@ -42,20 +43,21 @@
                             <img src="@item.ImageSource2" />
                         </div>
                     </div>
-                </a>
-                <div class="product-text">
-                    @if (item.Length != null)
-                    {
-                        <p>@item.Name / @item.Length</p>
-                    }
-                    else
-                    {
-                        <p>@item.Name</p>
-                    }
-                    <p>@item.Price kr,-</p>
-                </div>
 
-            </div>
+                    <div class="product-text">
+                        @if (item.Length != null)
+                        {
+                            <p>@item.Name / @item.Length</p>
+                        }
+                        else
+                        {
+                            <p>@item.Name</p>
+                        }
+                        <p>kr. @item.Price</p>
+                    </div>
+                </div>
+            </a>
+        </div>
 
         </div>
     }

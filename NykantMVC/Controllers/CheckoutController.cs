@@ -54,8 +54,9 @@ namespace NykantMVC.Controllers
                     }
                     else
                     {
-                        int.TryParse(CalculateAmount(bagItemsDb), out int total);
+                        double.TryParse(CalculateAmount(bagItemsDb), out double total);
                         var taxes = total / 5;
+                        var taxlessPrice = total - taxes;
                         checkout = new Checkout
                         {
                             BagItems = bagItemsDb,
@@ -63,7 +64,8 @@ namespace NykantMVC.Controllers
                             TotalPrice = total.ToString(),
                             ShippingDelivery = new ShippingDelivery { ParcelshopData = new ParcelshopData() },
                             Taxes = taxes.ToString(),
-                            SubTotalPrice = total.ToString()
+                            SubTotalPrice = total.ToString(),
+                            TaxlessPrice = taxlessPrice.ToString()
                         };
                         HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
 
@@ -93,8 +95,9 @@ namespace NykantMVC.Controllers
                     }
                     else
                     {
-                        int.TryParse(CalculateAmount(bagItemsSession), out int total);
+                        double.TryParse(CalculateAmount(bagItemsSession), out double total);
                         var taxes = total / 5;
+                        var taxlessPrice = total - taxes;
                         checkout = new Checkout
                         {
                             BagItems = bagItemsSession,
@@ -102,7 +105,8 @@ namespace NykantMVC.Controllers
                             TotalPrice = total.ToString(),
                             ShippingDelivery = new ShippingDelivery { ParcelshopData = new ParcelshopData() },
                             Taxes = taxes.ToString(),
-                            SubTotalPrice = total.ToString()
+                            SubTotalPrice = total.ToString(),
+                            TaxlessPrice = taxlessPrice.ToString()
                         };
                         HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
 
@@ -311,27 +315,26 @@ namespace NykantMVC.Controllers
         public async Task<IActionResult> Success()
         {
             var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
-            var json = await GetRequest($"/Order/GetOrder/{checkout.ShippingDelivery.OrderId}");
-            var order = JsonConvert.DeserializeObject<Order>(json);
-            order.Customer.BillingAddress = _protectionService.UnprotectBillingAddress(order.Customer.BillingAddress);
-            order.Customer.ShippingAddress = _protectionService.UnprotectShippingAddress(order.Customer.ShippingAddress);
-            order.Customer = _protectionService.UnprotectCustomer(order.Customer);
-            //if (checkout == null)
-            //{
-            //    return RedirectToAction("Details", "Bag");
-            //}
+            if (checkout == null)
+            {
+                return RedirectToAction("Details", "Bag");
+            }
 
-            //if (checkout.Stage == Stage.completed)
-            //{
-            //    HttpContext.Session.Set<Checkout>(CheckoutSessionKey, null);
+            if (checkout.Stage == Stage.completed)
+            {
+                var json = await GetRequest($"/Order/GetOrder/{checkout.ShippingDelivery.OrderId}");
+                var order = JsonConvert.DeserializeObject<Order>(json);
+                order.Customer.BillingAddress = _protectionService.UnprotectBillingAddress(order.Customer.BillingAddress);
+                order.Customer.ShippingAddress = _protectionService.UnprotectShippingAddress(order.Customer.ShippingAddress);
+                order.Customer = _protectionService.UnprotectCustomer(order.Customer);
+                HttpContext.Session.Set<Checkout>(CheckoutSessionKey, null);
 
-            //    return View();
-            //}
-            //else
-            //{
-            //    return RedirectToAction("Details", "Bag");
-            //}
-            return View(order);
+                return View(order);
+            }
+            else
+            {
+                return RedirectToAction("Details", "Bag");
+            }
         }
 
         [HttpGet]

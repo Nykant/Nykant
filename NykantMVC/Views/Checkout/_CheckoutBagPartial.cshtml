@@ -12,8 +12,9 @@
             </div>
         }
     <div class="checkout-price">
-        <p>@localizer["Taxes"]: <span id="checkout-taxes" data-taxes="@Model.Checkout.TotalPrice">@Model.Checkout.Taxes</span> kr.</p>
-        <p>@localizer["Total"]: <span id="checkout-total" data-totalPrice="@Model.Checkout.TotalPrice">@Model.Checkout.TotalPrice</span> kr.</p>
+        <p>@localizer["TaxlessPrice"]:</p><span>kr. @Model.Checkout.TaxlessPrice</span>
+        <p>@localizer["Taxes"]:</p><span>kr. @Model.Checkout.Taxes</span>
+        <p>@localizer["Total"]:</p><span>kr. @Model.Checkout.TotalPrice</span>
     </div>
         <a asp-controller="Checkout" asp-action="CancelCheckout">
             <div class="button">
