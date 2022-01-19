@@ -150,15 +150,75 @@ namespace NykantMVC.Controllers
             var taxes = total / 5;
             var taxlessPrice = total - taxes;
 
+            var deliveryDate = new DateTime();
+
             double weight = 0;
             foreach(var item in checkout.BagItems)
             {
                 weight += item.Product.WeightInKg * item.Quantity;
+                if(item.Product.ExpectedDelivery != new DateTime())
+                {
+                    if(deliveryDate != new DateTime())
+                    {
+                        if (DateTime.Compare(deliveryDate, item.Product.ExpectedDelivery) < 0)
+                        {
+                            deliveryDate = item.Product.ExpectedDelivery;
+                        } 
+                    }
+                    else
+                    {
+                        deliveryDate = item.Product.ExpectedDelivery;
+                    }
+                }
             }
-
-            var now = DateTime.Now;
-            var deliveryDate = now.AddDays(3); // skal passes til i forhold til weekender
-            var dayOfWeek = deliveryDate.DayOfWeek;
+            if(deliveryDate == new DateTime())
+            {
+                deliveryDate = DateTime.Now;
+                if (DateTime.Now.Hour < 12)
+                {
+                    deliveryDate = deliveryDate.AddDays(1);
+                    if(deliveryDate.DayOfWeek == DayOfWeek.Saturday)
+                    {
+                        deliveryDate = deliveryDate.AddDays(2);
+                    }
+                    else if (deliveryDate.DayOfWeek == DayOfWeek.Sunday)
+                    {
+                        deliveryDate = deliveryDate.AddDays(1);
+                    }
+                }
+                else
+                {
+                    deliveryDate = deliveryDate.AddDays(2);
+                    if (deliveryDate.DayOfWeek == DayOfWeek.Saturday)
+                    {
+                        deliveryDate = deliveryDate.AddDays(2);
+                    }
+                    else if (deliveryDate.DayOfWeek == DayOfWeek.Sunday)
+                    {
+                        deliveryDate = deliveryDate.AddDays(2);
+                    }
+                    else if (deliveryDate.DayOfWeek == DayOfWeek.Monday)
+                    {
+                        deliveryDate = deliveryDate.AddDays(1);
+                    }
+                }
+            }
+            else
+            { // DKI kan måske ikke modtage ordren før varerne er på lager
+                deliveryDate = deliveryDate.AddDays(2);
+                if (deliveryDate.DayOfWeek == DayOfWeek.Saturday)
+                {
+                    deliveryDate = deliveryDate.AddDays(2);
+                }
+                else if (deliveryDate.DayOfWeek == DayOfWeek.Sunday)
+                {
+                    deliveryDate = deliveryDate.AddDays(2);
+                }
+                else if (deliveryDate.DayOfWeek == DayOfWeek.Monday)
+                {
+                    deliveryDate = deliveryDate.AddDays(1);
+                }
+            }
 
             Models.Order order = new Models.Order
             {

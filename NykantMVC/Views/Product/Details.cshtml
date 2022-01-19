@@ -8,12 +8,7 @@
 
     string url = @conf.GetSection("Urls")["Mvc"];
 
-    TimeSpan deliveryTimeSpan = new TimeSpan();
 
-    if (Model.ExpectedDelivery != new DateTime())
-    {
-        deliveryTimeSpan = Model.ExpectedDelivery.Subtract(DateTime.Now);
-    }
 
 }
 <script src="~/JS/swiped-events.min.js"></script>
@@ -114,11 +109,28 @@
                         }
                         else
                         {
-                            <p>Forventet leveringstid: 1 - 3 hverdage</p>
+                            <p>Forventet leveringstid: 1 - 2 hverdage</p>
                         }
                     }
                     else
                     {
+                        TimeSpan deliveryTimeSpan = new TimeSpan();
+                        var deliveryDate = Model.ExpectedDelivery;
+                        deliveryDate = deliveryDate.AddDays(2);
+                        if (deliveryDate.DayOfWeek == DayOfWeek.Saturday)
+                        {
+                            deliveryDate = deliveryDate.AddDays(2);
+                        }
+                        else if (deliveryDate.DayOfWeek == DayOfWeek.Sunday)
+                        {
+                            deliveryDate = deliveryDate.AddDays(2);
+                        }
+                        else if (deliveryDate.DayOfWeek == DayOfWeek.Monday)
+                        {
+                            deliveryDate = deliveryDate.AddDays(1);
+                        }
+                        deliveryTimeSpan = deliveryDate.Subtract(DateTime.Now);
+
                         <p>Forventet leveringstid: @((int)deliveryTimeSpan.TotalDays) dage</p>
                     }
                 </div>
