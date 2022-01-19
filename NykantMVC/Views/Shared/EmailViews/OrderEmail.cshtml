@@ -72,24 +72,20 @@
                                                 <td valign="top" align="center" style="padding:0;Margin:0;width:530px">
                                                     <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;" width="100%" cellspacing="0" cellpadding="0" role="presentation">
                                                         <tr style="border-collapse:collapse">
+                                                            <td align="left" style="Margin:0;padding-bottom:10px;padding-top:20px;padding-right:20px"><h4 style="Margin: 0; line-height: 120%; mso-line-height-rule: exactly; font-family: arial, 'helvetica neue', helvetica, sans-serif; color: #000000; ">@localizer["Ordreoplysninger"]</h4></td>
+                                                        </tr>
+                                                        <tr style="border-collapse:collapse">
+
                                                             <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:15px;padding-bottom:15px">
-                                                                <table style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: separate; border-spacing: 0px; border-left: 1px solid transparent; border-top: 1px solid transparent; border-bottom: 1px solid transparent; background-color: #FFF; background-position: center top" width="100%" cellspacing="0" cellpadding="0" bgcolor="#FFF" role="presentation">
+                                                                <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:500px" class="cke_show_border" cellspacing="1" cellpadding="1" border="0" align="left" role="presentation">
+
                                                                     <tr style="border-collapse:collapse">
-                                                                        <td align="left" style="Margin:0;padding-bottom:10px;padding-top:20px;padding-right:20px"><h4 style="Margin: 0; line-height: 120%; mso-line-height-rule: exactly; font-family: arial, 'helvetica neue', helvetica, sans-serif; color: #000000; ">@localizer["Ordreoplysninger"]</h4></td>
+                                                                        <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Ordrenummer:</strong></td>
+                                                                        <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;"># @Model.Id</span></td>
                                                                     </tr>
                                                                     <tr style="border-collapse:collapse">
-                                                                        <td align="left" style="padding:0;Margin:0;padding-right:20px">
-                                                                            <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:100%" class="cke_show_border" cellspacing="1" cellpadding="1" border="0" align="left" role="presentation">
-                                                                                <tr style="border-collapse:collapse">
-                                                                                    <td style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Ordrenummer:</strong></td>
-                                                                                    <td style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;"># @Model.Id</span></td>
-                                                                                </tr>
-                                                                                <tr style="border-collapse:collapse">
-                                                                                    <td style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Ordrens vægt:</strong></td>
-                                                                                    <td style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.WeightInKg kg.</span></td>
-                                                                                </tr>
-                                                                            </table><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px"><br></p>
-                                                                        </td>
+                                                                        <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Ordrens vægt:</strong></td>
+                                                                        <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.WeightInKg kg.</span></td>
                                                                     </tr>
                                                                 </table>
                                                             </td>
@@ -100,6 +96,7 @@
                                         </table>
                                     </td>
                                 </tr>
+
                             </table>
                         </td>
                     </tr>
@@ -118,8 +115,8 @@
                                                             <td bgcolor="#eeeeee" align="left" style="Margin:0;padding-top:10px;padding-bottom:10px;padding-left:10px;padding-right:10px">
                                                                 <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:500px" class="cke_show_border" cellspacing="1" cellpadding="1" border="0" align="left" role="presentation">
                                                                     <tr style="border-collapse:collapse">
-                                                                        <td width="70%" style="padding:0;Margin:0"><h4 style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif">Ordre</h4></td>
-                                                                        <td width="30%" style="padding:0;Margin:0"><h4 style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif"># @Model.Id</h4></td>
+                                                                        <td width="80%" style="padding:0;Margin:0"><h4 style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif">Ordre</h4></td>
+                                                                        <td width="20%" style="padding:0;Margin:0"><h4 style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif"># @Model.Id</h4></td>
                                                                     </tr>
                                                                 </table>
                                                             </td>
@@ -142,13 +139,9 @@
                                                                 <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:500px" class="cke_show_border" cellspacing="1" cellpadding="1" border="0" align="left" role="presentation">
                                                                     @foreach (var item in Model.OrderItems)
                                                                     {
-                                                                        <tr style="border-collapse:collapse">
-                                                                            <td style="padding:5px 0;Margin:0" width="70%" align="left"><a href="https://nykant.dk/product/details/@item.Product.Id"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:16px;color:#333333;font-size:16px">(@item.Quantity) @item.Product.Name / @item.Product.WeightInKg kg.</p></a></td>
-                                                                            <td style="padding:5px 0;Margin:0" width="30%" align="left"><a href="https://nykant.dk/product/details/@item.Product.Id"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:16px;color:#333333;font-size:16px">kr. @(item.Product.Price * item.Quantity) </p></a></td>
-                                                                        </tr>
-                                                                        <tr style="border-collapse:collapse">
-                                                                            <td style="padding-bottom:10px 0;Margin:0" width="70%" align="left"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:16px;color:#333333;font-size:16px">Varenummer:</p></td>
-                                                                            <td style="padding:0px 0;Margin:0" width="30%" align="left"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:16px;color:#333333;font-size:16px">@item.Product.Number </p></td>
+                                                                        <tr style="border-collapse:collapse; padding-bottom:15px;">
+                                                                            <td style="padding:5px 0;Margin:0" width="80%" align="left"><a href="https://nykant.dk/product/details/@item.Product.Id"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:16px;color:#333333;font-size:16px">(@item.Quantity) @item.Product.Name / @item.Product.WeightInKg kg.</p></a></td>
+                                                                            <td style="padding:5px 0;Margin:0" width="20%" align="left"><a href="https://nykant.dk/product/details/@item.Product.Id"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:16px;color:#333333;font-size:16px">kr. @(item.Product.Price * item.Quantity) </p></a></td>
                                                                         </tr>
                                                                     }
 
@@ -198,40 +191,36 @@
                                                 <td valign="top" align="center" style="padding:0;Margin:0;width:530px">
                                                     <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;" width="100%" cellspacing="0" cellpadding="0" role="presentation">
                                                         <tr style="border-collapse:collapse">
+                                                            <td align="left" style="Margin:0;padding-bottom:10px;padding-top:20px;padding-right:20px"><h4 style="Margin: 0; line-height: 120%; mso-line-height-rule: exactly; font-family: arial, 'helvetica neue', helvetica, sans-serif; color: #000000; ">@localizer["Faktureringsoplysninger"]</h4></td>
+                                                        </tr>
+                                                        <tr style="border-collapse:collapse">
+
                                                             <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:15px;padding-bottom:15px">
-                                                                <table style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: separate; border-spacing: 0px; border-left: 1px solid transparent; border-top: 1px solid transparent; border-bottom: 1px solid transparent; background-color: #FFF; background-position: center top" width="100%" cellspacing="0" cellpadding="0" bgcolor="#FFF" role="presentation">
+                                                                <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:500px" class="cke_show_border" cellspacing="1" cellpadding="1" border="0" align="left" role="presentation">
+
                                                                     <tr style="border-collapse:collapse">
-                                                                        <td align="left" style="Margin:0;padding-bottom:10px;padding-top:20px;padding-right:20px"><h4 style="Margin: 0; line-height: 120%; mso-line-height-rule: exactly; font-family: arial, 'helvetica neue', helvetica, sans-serif; color: #000000; ">@localizer["Kundeoplysninger"]</h4></td>
+                                                                        <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Navn:</strong></td>
+                                                                        <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.Customer.BillingAddress.Name</span></td>
                                                                     </tr>
                                                                     <tr style="border-collapse:collapse">
-                                                                        <td align="left" style="padding:0;Margin:0;padding-right:20px">
-                                                                            <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:100%" class="cke_show_border" cellspacing="1" cellpadding="1" border="0" align="left" role="presentation">
-                                                                                <tr style="border-collapse:collapse">
-                                                                                    <td style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Navn:</strong></td>
-                                                                                    <td style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.Customer.BillingAddress.Name</span></td>
-                                                                                </tr>
-                                                                                <tr style="border-collapse:collapse">
-                                                                                    <td style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Telefon:</strong></td>
-                                                                                    <td style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.Customer.Phone</span></td>
-                                                                                </tr>
-                                                                                <tr style="border-collapse:collapse">
-                                                                                    <td style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Addresse:</strong></td>
-                                                                                    <td style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.Customer.BillingAddress.Address</span></td>
-                                                                                </tr>
-                                                                                <tr style="border-collapse:collapse">
-                                                                                    <td style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>By:</strong></td>
-                                                                                    <td style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.Customer.BillingAddress.City</span></td>
-                                                                                </tr>
-                                                                                <tr style="border-collapse:collapse">
-                                                                                    <td style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Postnummer:</strong></td>
-                                                                                    <td style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.Customer.BillingAddress.Postal</span></td>
-                                                                                </tr>
-                                                                                <tr style="border-collapse:collapse">
-                                                                                    <td style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Land:</strong></td>
-                                                                                    <td style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.Customer.BillingAddress.Country</span></td>
-                                                                                </tr>
-                                                                            </table><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px"><br></p>
-                                                                        </td>
+                                                                        <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Telefon:</strong></td>
+                                                                        <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.Customer.Phone</span></td>
+                                                                    </tr>
+                                                                    <tr style="border-collapse:collapse">
+                                                                        <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Addresse:</strong></td>
+                                                                        <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.Customer.BillingAddress.Address</span></td>
+                                                                    </tr>
+                                                                    <tr style="border-collapse:collapse">
+                                                                        <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>By:</strong></td>
+                                                                        <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.Customer.BillingAddress.City</span></td>
+                                                                    </tr>
+                                                                    <tr style="border-collapse:collapse">
+                                                                        <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Postnummer:</strong></td>
+                                                                        <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.Customer.BillingAddress.Postal</span></td>
+                                                                    </tr>
+                                                                    <tr style="border-collapse:collapse">
+                                                                        <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Land:</strong></td>
+                                                                        <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.Customer.BillingAddress.Country</span></td>
                                                                     </tr>
                                                                 </table>
                                                             </td>
@@ -242,6 +231,7 @@
                                         </table>
                                     </td>
                                 </tr>
+
                                 <tr style="border-collapse:collapse">
                                     <td align="left" style="padding:0;Margin:0;padding-top:10px;padding-left:35px;padding-right:35px">
                                         <table width="100%" cellspacing="0" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
@@ -249,72 +239,68 @@
                                                 <td valign="top" align="center" style="padding:0;Margin:0;width:530px">
                                                     <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;" width="100%" cellspacing="0" cellpadding="0" role="presentation">
                                                         <tr style="border-collapse:collapse">
-                                                            <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:15px;padding-bottom:15px">
-                                                                <table style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: separate; border-spacing: 0px; border-left: 1px solid transparent; border-top: 1px solid transparent; border-bottom: 1px solid transparent; background-color: #FFF; background-position: center top" width="100%" cellspacing="0" cellpadding="0" bgcolor="#FFF" role="presentation">
-                                                                    <tr style="border-collapse:collapse">
-                                                                        <td align="left" style="Margin:0;padding-bottom:10px;padding-top:20px;padding-right:20px"><h4 style="Margin: 0; line-height: 120%; mso-line-height-rule: exactly; font-family: arial, 'helvetica neue', helvetica, sans-serif; color: #000000; ">@localizer["Leveringsoplysninger"]</h4></td>
-                                                                    </tr>
-                                                                    <tr style="border-collapse:collapse">
-                                                                        <td align="left" style="padding:0;Margin:0;padding-right:20px">
-                                                                            <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:100%" class="cke_show_border" cellspacing="1" cellpadding="1" border="0" align="left" role="presentation">
-                                                                                @if (Model.ShippingDelivery.Type == "Shop")
-                                                                                {
-                                                                                    <tr style="border-collapse:collapse">
-                                                                                        <td style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Leveres til:</strong></td>
-                                                                                        <td style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">Pakkeshop med GLS</span></td>
-                                                                                    </tr>
+                                                            <td align="left" style="Margin:0;padding-bottom:10px;padding-top:20px;padding-right:20px"><h4 style="Margin: 0; line-height: 120%; mso-line-height-rule: exactly; font-family: arial, 'helvetica neue', helvetica, sans-serif; color: #000000; ">@localizer["Leveringsoplysninger"]</h4></td>
+                                                        </tr>
+                                                        <tr style="border-collapse:collapse">
 
-                                                                                    <tr style="border-collapse:collapse">
-                                                                                        <td style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Navn:</strong></td>
-                                                                                        <td style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.ShippingDelivery.ParcelshopData.CompanyName</span></td>
-                                                                                    </tr>
-                                                                                    <tr style="border-collapse:collapse">
-                                                                                        <td style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Addresse1:</strong></td>
-                                                                                        <td style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.ShippingDelivery.ParcelshopData.Streetname</span></td>
-                                                                                    </tr>
-                                                                                    <tr style="border-collapse:collapse">
-                                                                                        <td style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Addresse2:</strong></td>
-                                                                                        <td style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.ShippingDelivery.ParcelshopData.Streetname2</span></td>
-                                                                                    </tr>
-                                                                                    <tr style="border-collapse:collapse">
-                                                                                        <td style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>By:</strong></td>
-                                                                                        <td style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.ShippingDelivery.ParcelshopData.CityName</span></td>
-                                                                                    </tr>
-                                                                                    <tr style="border-collapse:collapse">
-                                                                                        <td style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Postnummer:</strong></td>
-                                                                                        <td style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.ShippingDelivery.ParcelshopData.ZipCode</span></td>
-                                                                                    </tr>
-                                                                                    <tr style="border-collapse:collapse">
-                                                                                        <td style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Land:</strong></td>
-                                                                                        <td style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.ShippingDelivery.ParcelshopData.CountryCodeISO3166A2</span></td>
-                                                                                    </tr>
-                                                                                }
-                                                                                else
-                                                                                {
-                                                                                    <tr style="border-collapse:collapse">
-                                                                                        <td style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Leveres til:</strong></td>
-                                                                                        <td style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">Privat med GLS</span></td>
-                                                                                    </tr>
-                                                                                    <tr style="border-collapse:collapse">
-                                                                                        <td style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Addresse:</strong></td>
-                                                                                        <td style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.Customer.ShippingAddress.Address</span></td>
-                                                                                    </tr>
-                                                                                    <tr style="border-collapse:collapse">
-                                                                                        <td style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>By:</strong></td>
-                                                                                        <td style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.Customer.ShippingAddress.City</span></td>
-                                                                                    </tr>
-                                                                                    <tr style="border-collapse:collapse">
-                                                                                        <td style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Postnummer:</strong></td>
-                                                                                        <td style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.Customer.ShippingAddress.Postal</span></td>
-                                                                                    </tr>
-                                                                                    <tr style="border-collapse:collapse">
-                                                                                        <td style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Land:</strong></td>
-                                                                                        <td style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.Customer.ShippingAddress.Country</span></td>
-                                                                                    </tr>
-                                                                                }
-                                                                            </table><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px"><br></p>
-                                                                        </td>
-                                                                    </tr>
+                                                            <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:15px;padding-bottom:15px">
+                                                                <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:500px" class="cke_show_border" cellspacing="1" cellpadding="1" border="0" align="left" role="presentation">
+
+                                                                    @if (Model.ShippingDelivery.Type == "Shop")
+                                                                    {
+                                                                        <tr style="border-collapse:collapse">
+                                                                            <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Leveres til:</strong></td>
+                                                                            <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">Pakkeshop med GLS</span></td>
+                                                                        </tr>
+
+                                                                        <tr style="border-collapse:collapse">
+                                                                            <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Navn:</strong></td>
+                                                                            <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.ShippingDelivery.ParcelshopData.CompanyName</span></td>
+                                                                        </tr>
+                                                                        <tr style="border-collapse:collapse">
+                                                                            <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Addresse1:</strong></td>
+                                                                            <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.ShippingDelivery.ParcelshopData.Streetname</span></td>
+                                                                        </tr>
+                                                                        <tr style="border-collapse:collapse">
+                                                                            <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Addresse2:</strong></td>
+                                                                            <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.ShippingDelivery.ParcelshopData.Streetname2</span></td>
+                                                                        </tr>
+                                                                        <tr style="border-collapse:collapse">
+                                                                            <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>By:</strong></td>
+                                                                            <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.ShippingDelivery.ParcelshopData.CityName</span></td>
+                                                                        </tr>
+                                                                        <tr style="border-collapse:collapse">
+                                                                            <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Postnummer:</strong></td>
+                                                                            <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.ShippingDelivery.ParcelshopData.ZipCode</span></td>
+                                                                        </tr>
+                                                                        <tr style="border-collapse:collapse">
+                                                                            <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Land:</strong></td>
+                                                                            <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.ShippingDelivery.ParcelshopData.CountryCodeISO3166A2</span></td>
+                                                                        </tr>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <tr style="border-collapse:collapse">
+                                                                            <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Leveres til:</strong></td>
+                                                                            <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">Privat med GLS</span></td>
+                                                                        </tr>
+                                                                        <tr style="border-collapse:collapse">
+                                                                            <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Addresse:</strong></td>
+                                                                            <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.Customer.ShippingAddress.Address</span></td>
+                                                                        </tr>
+                                                                        <tr style="border-collapse:collapse">
+                                                                            <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>By:</strong></td>
+                                                                            <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.Customer.ShippingAddress.City</span></td>
+                                                                        </tr>
+                                                                        <tr style="border-collapse:collapse">
+                                                                            <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Postnummer:</strong></td>
+                                                                            <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.Customer.ShippingAddress.Postal</span></td>
+                                                                        </tr>
+                                                                        <tr style="border-collapse:collapse">
+                                                                            <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Land:</strong></td>
+                                                                            <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.Customer.ShippingAddress.Country</span></td>
+                                                                        </tr>
+                                                                    }
                                                                 </table>
                                                             </td>
                                                         </tr>
@@ -324,6 +310,7 @@
                                         </table>
                                     </td>
                                 </tr>
+
                                 <tr style="border-collapse:collapse">
                                     <td align="left" style="padding:0;Margin:0;padding-top:10px;padding-left:35px;padding-right:35px">
                                         <table width="100%" cellspacing="0" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">

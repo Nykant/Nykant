@@ -13,7 +13,7 @@ namespace NykantMVC.Models
         public int CustomerId { get; set; }
         public Customer Customer { get; set; }
         [Required]
-        [StringLength(20)]
+        [StringLength(50)]
         [Display(Name = "Name")]
         public string Name { get; set; }
         [Required]
