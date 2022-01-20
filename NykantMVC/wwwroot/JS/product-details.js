@@ -1,9 +1,15 @@
 ﻿
+var contents = document.getElementsByClassName("collapsible-content");
+var i, j;
+
+for (j = 0; j < contents.length; j++) {
+    var content = contents[j];
+    content.style.maxHeight = content.scrollHeight + "px";
+}
 
 var coll2 = document.getElementsByClassName("collapsible-button2");
-var i;
 
-for (i = 0; i < coll2.length; i++) {
+for (var i = 0; i < coll2.length; i++) {
     coll2[i].addEventListener("click", function () {
         this.classList.toggle("active");
         var content = this.nextElementSibling;

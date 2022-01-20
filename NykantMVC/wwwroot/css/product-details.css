@@ -417,27 +417,6 @@
     
 }
 
-/* Style the button that is used to open and close the collapsible content */
-.collapsible-button {
-    background-color: transparent;
-    color: black;
-    cursor: pointer;
-    padding: 18px;
-    width: 100%;
-    border: 1px solid var(--black-fade);
-    text-align: left;
-    outline: none;
-    font-size: 16px;
-}
-
-    /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-    .active, .collapsible-button:hover {
-        background-color: var(--color2);
-    }
-
-.collapsible-button:focus {
-    outline: none;
-}
 
 /* Style the button that is used to open and close the collapsible content */
 .collapsible-button2 {
@@ -504,11 +483,57 @@
     display:block;
 }
 
-.collapsible-button:after {
-    font-size: 13px;
-    margin-right: 5px;
-    float:left;
+.cookie-collapsible {
 }
+
+
+/* Style the button that is used to open and close the collapsible content */
+.cookie-collapsible-button2 {
+    background-color: var(--color2);
+    color: black;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: 1px solid var(--black-fade);
+    text-align: left;
+    outline: none;
+    font-size: 16px;
+}
+
+    /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+    .active2, .cookie-collapsible-button2:hover {
+        background-color: var(--color3);
+    }
+
+    .cookie-collapsible-button2:focus {
+        outline: none;
+    }
+
+/* Style the collapsible content. Note: hidden by default */
+.cookie-collapsible-content {
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    text-align: left;
+}
+
+    .cookie-collapsible-content a {
+        text-align: center;
+        padding: 20px;
+    }
+
+    .cookie-collapsible-content:last-child {
+    }
+
+    .cookie-collapsible-content p {
+        display: inline;
+    }
+
+    .cookie-collapsible-content strong {
+        padding-right: 50px;
+        display: inline;
+    }
 
 .notification {
     background-color: var(--light-blue);

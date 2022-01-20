@@ -130,7 +130,7 @@
 }
 
 #open-privacy1 {
-    margin-bottom:30px;
+/*    margin-bottom:30px;*/
 }
 
 .cookie-help-links {
@@ -155,7 +155,8 @@
     height: 100%;
     position: fixed;
     left: 0px;
-    background-color: var(--color1);
+    background-color: var(--color2);
+    border-left:1px solid var(--black-fade);
     z-index:103;
     overflow-y:auto;
     animation: rollout .3s;

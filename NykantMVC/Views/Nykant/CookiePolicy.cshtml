@@ -7,12 +7,11 @@
 
 <script src="~/JS/consent.js" defer></script>
 
-<div class="my-row background-color2">
+<div class="my-row background-color2 bottom-padding">
     <div class="col-3 cookie-header center">
         @localizer["Cookie Policy Title"]
     </div>
-    <div class="col-5 center cookie-buttons">
-
+    <div class="responsive-container center cookie-buttons">
         <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#cookie-settings-partial" data-ajax-success="consent_updated" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" asp-controller="Nykant" asp-action="OnlyEssentialConsent" class="col-4 left padding-5">
             <button type="submit" class="button">
                 @localizer["Only Essential Cookies"]
@@ -28,12 +27,10 @@
                 @localizer["Accept All Cookies"]
             </button>
         </form>
-
     </div>
-
 </div>
 <div class="my-row">
-    <div class="col-6 center privacy-information">
+    <div class="responsive-container center privacy-information">
         <div>
             @localizer["Top Info"]
         </div>
@@ -69,10 +66,28 @@
         <div>
             @localizer["Questions?"]
         </div>
-        <div class="padding-50">
+        <div>
             @*------------------------- LISTE AF COOKIES ---------------------*@
-            <h1>::LISTE AF COOKIES ER PÅ VEJ::</h1>
-            <p class="red-text">denne sektion er under opbygning :)</p>
+            <h1>Liste over vores cookies</h1>
+            <div class="custom-table">
+                <div class="custom-table-headers">
+                    <div>Cookie</div>
+                    <div>Type</div>
+                    <div>Kategori</div>
+                    <div>Beskrivelse</div>
+                </div>
+                <div class="custom-table-rows">
+                    <div class="custom-table-row">
+                        @*@foreach (var cookie in cookies)
+                        {
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        }*@
+                    </div>
+                </div>
+            </div>
         </div>
         <div>
             @localizer["Consent valid for"]

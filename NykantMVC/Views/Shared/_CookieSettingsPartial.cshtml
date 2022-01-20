@@ -29,10 +29,10 @@
     <div class="settings">
         <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#cookie-settings-partial" data-ajax-success="consent_settings_updated" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" asp-controller="Nykant" asp-action="UpdateConsent">
             <h2>Cookie Preferencer</h2>
-            <div class="collapsible">
+            <div class="cookie-collapsible">
 
-                <button type="button" class="collapsible-button">Essentielle Cookies <span class="essential-cookies">altid aktive</span></button>
-                <div class="collapsible-content">
+                <button type="button" class="cookie-collapsible-button2">Essentielle Cookies <span class="essential-cookies">altid aktive</span></button>
+                <div class="cookie-collapsible-content">
                     <h3>
                         Essentielle cookies er essentielle for, at hjemmesiden kan fungere korrekt.
                     </h3>
@@ -55,7 +55,7 @@
                     </p>
                 </div>
             </div>
-            <div class="collapsible top-side-padding">
+            <div class="cookie-collapsible top-side-padding">
 
                 <label class="switch">
                     @{
@@ -71,8 +71,8 @@
                     <span class="slider round"></span>
                 </label>
 
-                <button type="button" class="collapsible-button">Funktionalitets Cookies</button>
-                <div class="collapsible-content">
+                <button type="button" class="cookie-collapsible-button2">Funktionalitets Cookies</button>
+                <div class="cookie-collapsible-content">
                     <p>
                         Har ingen.
                     </p>
