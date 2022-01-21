@@ -47,6 +47,16 @@ namespace NykantAPI.Data
                 );
 
             modelBuilder.Entity<Cookie>().HasData(
+                // First-Party
+                new Cookie { Name = ".AspNetCore.Culture", Type1 = CookieType1.Persistent, Type2 = CookieType2.FirstParty, Category = CookieCategory, Description = "" },
+                new Cookie { Name = "NykantAntiCSRFToken", Type1 = CookieType1.Session, Type2 = CookieType2.FirstParty, Category = CookieCategory, Description = "" },
+                new Cookie { Name = "SessionCookie", Type1 = CookieType1.Session, Type2 = CookieType2.FirstParty, Category = CookieCategory, Description = "" },
+                new Cookie { Name = "__stripe_mid", Type1 = CookieType1.Persistent, Type2 = CookieType2.FirstParty, Category = CookieCategory, Description = "" },
+                new Cookie { Name = "__stripe_sid", Type1 = CookieType1.Persistent, Type2 = CookieType2.FirstParty, Category = CookieCategory, Description = "" },
+                new Cookie { Name = "_ga", Type1 = CookieType1.Persistent, Type2 = CookieType2.FirstParty, Category = CookieCategory, Description = "" },
+                new Cookie { Name = "_ga_2LWYP6ZC27", Type1 = CookieType1.Persistent, Type2 = CookieType2.FirstParty, Category = CookieCategory, Description = "" },
+
+                // Third-Party
                 new Cookie { Name = ".AspNetCore.Culture", Type1 = CookieType1.Persistent, Category = CookieCategory, Description = "" },
                 new Cookie { Name = "NykantAntiCSRFToken", Type1 = CookieType1.Session, Category = CookieCategory, Description = "" },
                 new Cookie { Name = "SessionCookie", Type1 = CookieType1.Session, Category = CookieCategory, Description = "" },
