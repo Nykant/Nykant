@@ -46,6 +46,16 @@ namespace NykantAPI.Data
                 new Category { Id = 5, Name = "Bøjler", ImgSource = "../images/Products/NYKANT_boejle_naturolie_01.png" }
                 );
 
+            modelBuilder.Entity<Cookie>().HasData(
+                new Cookie { Name = ".AspNetCore.Culture", Type1 = CookieType1.Persistent, Category = CookieCategory, Description = "" },
+                new Cookie { Name = "NykantAntiCSRFToken", Type1 = CookieType1.Session, Category = CookieCategory, Description = "" },
+                new Cookie { Name = "SessionCookie", Type1 = CookieType1.Session, Category = CookieCategory, Description = "" },
+                new Cookie { Name = "__stripe_mid", Type1 = CookieType1.Persistent, Category = CookieCategory, Description = "" },
+                new Cookie { Name = "__stripe_sid", Type1 = CookieType1.Persistent, Category = CookieCategory, Description = "" },
+                new Cookie { Name = "_ga", Type1 = CookieType1.Persistent, Category = CookieCategory, Description = "" },
+                new Cookie { Name = "_ga_2LWYP6ZC27", Type1 = CookieType1.Persistent, Category = CookieCategory, Description = "" },
+             );
+
             modelBuilder.Entity<ProductLength>().HasData(
                 new ProductLength { Id = 1, ProductId = 8, ProductReferenceId = 8, Length = "1150 mm." },
                 new ProductLength { Id = 2, ProductId = 8, ProductReferenceId = 9, Length = "1700 mm." },

@@ -121,6 +121,8 @@ namespace NykantMVC
                     options.HeaderName = "NykantAntiCSRFToken";
                     options.FormFieldName = "NykantAntiCSRFToken";
                     options.Cookie.Domain = "localhost";
+                    options.Cookie.IsEssential = true;
+                    options.Cookie.HttpOnly = true;
                 });
             }
             else
@@ -130,6 +132,8 @@ namespace NykantMVC
                     options.HeaderName = "NykantAntiCSRFToken";
                     options.FormFieldName = "NykantAntiCSRFToken";
                     options.Cookie.Domain = ".nykant.dk";
+                    options.Cookie.IsEssential = true;
+                    options.Cookie.HttpOnly = true;
                 });
             }
 
