@@ -100,30 +100,44 @@ namespace NykantMVC.Controllers
         //}
 
         [HttpPost]
-        public async Task<IActionResult> UpdateConsent(int functionalCookies)
+        public async Task<IActionResult> UpdateConsent(int functionalCookies, int statisticsCookies)
         {
             Consent consent = new Consent();
+
             switch (functionalCookies)
             {
                 case 1:
                     consent.Functional = true;
-                    consent.OnlyEssential = false;
-                    consent.ShowBanner = false;
                     break;
 
                 case 0:
                     consent.Functional = false;
-                    consent.OnlyEssential = true;
-                    consent.ShowBanner = false;
                     break;
             }
+            switch (statisticsCookies)
+            {
+                case 1:
+                    consent.Statistics = true;
+                    break;
+
+                case 0:
+                    consent.Statistics = false;
+                    break;
+            }
+            if(functionalCookies == 1 || statisticsCookies == 1)
+            {
+                consent.OnlyEssential = false;
+            }
+            else
+            {
+                consent.OnlyEssential = true;
+            }
+            consent.ShowBanner = false;
             
             HttpContext.Session.Set<Consent>(ConsentCookieKey, consent);
 
-            ViewBag.ShowBanner = consent.OnlyEssential;
-            ViewBag.OnlyEssential = consent.ShowBanner;
             ViewBag.Functional = consent.Functional;
-
+            ViewBag.Statistics = consent.Statistics;
             return new PartialViewResult
             {
                 ViewName = "_CookieSettingsPartial",
@@ -138,14 +152,13 @@ namespace NykantMVC.Controllers
             {
                 OnlyEssential = false,
                 ShowBanner = false,
-                Functional = true
+                Functional = true,
+                Statistics = true
             };
             HttpContext.Session.Set<Consent>(ConsentCookieKey, consent);
 
-            ViewBag.ShowBanner = consent.ShowBanner;
-            ViewBag.OnlyEssential = consent.OnlyEssential;
             ViewBag.Functional = consent.Functional;
-
+            ViewBag.Statistics = consent.Statistics;
             return new PartialViewResult
             {
                 ViewName = "_CookieSettingsPartial",
@@ -165,14 +178,13 @@ namespace NykantMVC.Controllers
             {
                 OnlyEssential = true,
                 ShowBanner = false,
-                Functional = false
+                Functional = false,
+                Statistics = false
             };
             HttpContext.Session.Set<Consent>(ConsentCookieKey, consent);
 
-            ViewBag.ShowBanner = consent.ShowBanner;
-            ViewBag.OnlyEssential = consent.OnlyEssential;
             ViewBag.Functional = consent.Functional;
-
+            ViewBag.Statistics = consent.Statistics;
             return new PartialViewResult
             {
                 ViewName = "_CookieSettingsPartial",
@@ -232,7 +244,7 @@ namespace NykantMVC.Controllers
                 if (Environment.IsDevelopment())
                 {
                     Response.Cookies.Append(
-                        CookieRequestCultureProvider.DefaultCookieName,
+                        "Culture",
                         CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture, culture)),
                             new CookieOptions
                             {
@@ -247,9 +259,8 @@ namespace NykantMVC.Controllers
                 }
                 else
                 {
-                    _logger.LogInformation("environment is in production - trying to append culture cookie with domain name nykant.dk");
                     Response.Cookies.Append(
-                        CookieRequestCultureProvider.DefaultCookieName,
+                        "Culture",
                         CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture, culture)),
                             new CookieOptions
                             {
@@ -261,14 +272,12 @@ namespace NykantMVC.Controllers
                                 Domain = ".nykant.dk"
 
                             });
-
                 }
             }
             catch(Exception e)
             {
                 _logger.LogInformation(e.Message);
             }
-
 
             return RedirectToAction(redirectAction, redirectController);
         }

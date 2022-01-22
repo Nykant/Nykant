@@ -14,7 +14,6 @@ namespace NykantAPI.Models
         public CookieType2 Type2 { get; set; }
         public CookieCategory Category { get; set; }
         public string Description { get; set; }
-        public string Domain { get; set; }
     }
 
     public enum CookieCategory

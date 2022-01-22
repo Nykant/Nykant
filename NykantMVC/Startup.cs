@@ -39,7 +39,6 @@ namespace NykantMVC
         {
             string mykeyConnection = Configuration.GetConnectionString("MyKeysConnection");
 
-
             services.AddDbContext<MyKeysContext>(options =>
     options.UseMySql(
         mykeyConnection));
@@ -97,7 +96,7 @@ namespace NykantMVC
             services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromHours(10);
-                options.Cookie.Name = "SessionCookie";
+                options.Cookie.Name = "Session";
                 options.Cookie.IsEssential = true;
                 options.Cookie.SameSite = SameSiteMode.Lax;
             });
@@ -109,17 +108,16 @@ namespace NykantMVC
             services.AddScoped<IRazorViewToStringRenderer, RazorViewToStringRenderer>();
             services.AddScoped<IProtectionService, ProtectionService>();
 
-            services.AddLocalization(options => options.ResourcesPath = "Resources");
-
-            services.AddAntiforgery();
-
+            services.AddLocalization(options => {
+                options.ResourcesPath = "Resources";
+            });
 
             if (Environment.IsDevelopment())
             {
                 services.AddAntiforgery(options => {
-                    options.Cookie.Name = "NykantAntiCSRFToken";
-                    options.HeaderName = "NykantAntiCSRFToken";
-                    options.FormFieldName = "NykantAntiCSRFToken";
+                    options.Cookie.Name = "AntiforgeryToken";
+                    options.HeaderName = "AntiforgeryToken";
+                    options.FormFieldName = "AntiforgeryToken";
                     options.Cookie.Domain = "localhost";
                     options.Cookie.IsEssential = true;
                     options.Cookie.HttpOnly = true;
@@ -128,9 +126,9 @@ namespace NykantMVC
             else
             {
                 services.AddAntiforgery(options => {
-                    options.Cookie.Name = "NykantAntiCSRFToken";
-                    options.HeaderName = "NykantAntiCSRFToken";
-                    options.FormFieldName = "NykantAntiCSRFToken";
+                    options.Cookie.Name = "AntiforgeryToken";
+                    options.HeaderName = "AntiforgeryToken";
+                    options.FormFieldName = "AntiforgeryToken";
                     options.Cookie.Domain = ".nykant.dk";
                     options.Cookie.IsEssential = true;
                     options.Cookie.HttpOnly = true;
@@ -143,6 +141,8 @@ namespace NykantMVC
                                     .AddDataAnnotationsLocalization()
                                     .AddXmlSerializerFormatters();
 
+            services.AddHttpContextAccessor();
+
             services.Configure<ForwardedHeadersOptions>(options =>
             {
                 options.ForwardedHeaders =
@@ -151,8 +151,6 @@ namespace NykantMVC
                 options.KnownNetworks.Clear();
                 options.KnownProxies.Clear();
             });
-
-
 
             // Register the Google Analytics configuration
             services.Configure<GoogleAnalyticsOptions>(options => Configuration.GetSection("GoogleAnalytics").Bind(options));
@@ -193,7 +191,7 @@ namespace NykantMVC
 
             app.UseCertificateForwarding();
 
-            IdentityModelEventSource.ShowPII = true;
+            IdentityModelEventSource.ShowPII = false;
 
             app.UseHttpsRedirection();
 

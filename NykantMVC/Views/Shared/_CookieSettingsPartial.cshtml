@@ -1,14 +1,16 @@
 ﻿@using NykantMVC.Extensions;
+
 @{
-    ViewBag.ShowBanner = true;
-    ViewBag.OnlyEssential = true;
-    ViewBag.Functional = false;
     var consent = Context.Session.Get<Consent>("verysecretseriousconsentsessionkeyspecial");
     if (consent != null)
     {
-        ViewBag.ShowBanner = consent.ShowBanner;
-        ViewBag.OnlyEssential = consent.OnlyEssential;
         ViewBag.Functional = consent.Functional;
+        ViewBag.Statistics = consent.Statistics;
+    }
+    else
+    {
+        ViewBag.Functional = false;
+        ViewBag.Statistics = false;
     }
 }
 
@@ -31,7 +33,7 @@
             <h2>Cookie Preferencer</h2>
             <div class="cookie-collapsible">
 
-                <button type="button" class="cookie-collapsible-button2">Essentielle Cookies <span class="essential-cookies">altid aktive</span></button>
+                <button type="button" class="cookie-collapsible-button2">Nødvendige<span class="essential-cookies">altid aktive</span></button>
                 <div class="cookie-collapsible-content">
                     <h3>
                         Essentielle cookies er essentielle for, at hjemmesiden kan fungere korrekt.
@@ -61,22 +63,49 @@
                     @{
                         if (ViewBag.Functional)
                         {
-                            <input id="settings-input" name="functionalCookies" value="1" class="settings-input" type="checkbox" checked>
+                            <input name="functionalCookies" value="1" class="settings-input" type="checkbox" checked>
                         }
                         else
                         {
-                            <input id="settings-input" name="functionalCookies" value="0" class="settings-input" type="checkbox">
+                            <input name="functionalCookies" value="0" class="settings-input" type="checkbox">
                         }
                     }
                     <span class="slider round"></span>
                 </label>
 
-                <button type="button" class="cookie-collapsible-button2">Funktionalitets Cookies</button>
+                <button type="button" class="cookie-collapsible-button2">Funktionelle</button>
                 <div class="cookie-collapsible-content">
+                    <h3>
+                        Vores funktionelle cookies:
+                    </h3>
                     <p>
-                        Har ingen.
+                        gemmer din præference for sprog.
                     </p>
+                </div>
+            </div>
+            <div class="cookie-collapsible top-side-padding">
+
+                <label class="switch">
+                    @{
+                        if (ViewBag.Statistics)
+                        {
+                            <input name="statisticsCookies" value="1" class="settings-input" type="checkbox" checked>
+                        }
+                        else
+                        {
+                            <input name="statisticsCookies" value="0" class="settings-input" type="checkbox">
+                        }
+                    }
+                    <span class="slider round"></span>
+                </label>
+
+                <button type="button" class="cookie-collapsible-button2">Statistiske</button>
+                <div class="cookie-collapsible-content">
+                    <h3>
+                        Vores statistiske cookies:
+                    </h3>
                     <p>
+                        sender data til google analytics om hvor mange besøgende vi har på hjemmesiden, hvor længe de bliver, hvornår osv.
                     </p>
                 </div>
             </div>

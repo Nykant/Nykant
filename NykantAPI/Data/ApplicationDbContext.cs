@@ -23,6 +23,7 @@ namespace NykantAPI.Data
         public DbSet<ShippingDelivery> ShippingDeliveries { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Review> Reviews { get; set; }
+        public DbSet<Cookie> Cookies { get; set; }
         public DbSet<BillingAddress> BillingAddress { get; set; }
         public DbSet<ShippingAddress> ShippingAddress { get; set; }
         public DbSet<ParcelshopData> ParcelshopData { get; set; }
@@ -48,22 +49,15 @@ namespace NykantAPI.Data
 
             modelBuilder.Entity<Cookie>().HasData(
                 // First-Party
-                new Cookie { Name = ".AspNetCore.Culture", Type1 = CookieType1.Persistent, Type2 = CookieType2.FirstParty, Category = CookieCategory, Description = "" },
-                new Cookie { Name = "NykantAntiCSRFToken", Type1 = CookieType1.Session, Type2 = CookieType2.FirstParty, Category = CookieCategory, Description = "" },
-                new Cookie { Name = "SessionCookie", Type1 = CookieType1.Session, Type2 = CookieType2.FirstParty, Category = CookieCategory, Description = "" },
-                new Cookie { Name = "__stripe_mid", Type1 = CookieType1.Persistent, Type2 = CookieType2.FirstParty, Category = CookieCategory, Description = "" },
-                new Cookie { Name = "__stripe_sid", Type1 = CookieType1.Persistent, Type2 = CookieType2.FirstParty, Category = CookieCategory, Description = "" },
-                new Cookie { Name = "_ga", Type1 = CookieType1.Persistent, Type2 = CookieType2.FirstParty, Category = CookieCategory, Description = "" },
-                new Cookie { Name = "_ga_2LWYP6ZC27", Type1 = CookieType1.Persistent, Type2 = CookieType2.FirstParty, Category = CookieCategory, Description = "" },
+                new Cookie { Name = ".AspNetCore.Culture", Type1 = CookieType1.Persistent, Type2 = CookieType2.FirstParty, Category = CookieCategory.Functional, Description = "Denne cookie gemmer din præference for sprog." },
+                new Cookie { Name = "AntiforgeryToken", Type1 = CookieType1.Session, Type2 = CookieType2.FirstParty, Category = CookieCategory.Necessary, Description = "Denne cookie beskytter imod Cross-Site Request Forgery angreb" },
+                new Cookie { Name = "Session", Type1 = CookieType1.Session, Type2 = CookieType2.FirstParty, Category = CookieCategory.Necessary, Description = "Denne cookie husker/gemmer hvad du har lagt i din kurv, samt giver dig en bedre checkout oplevelse." },
 
                 // Third-Party
-                new Cookie { Name = ".AspNetCore.Culture", Type1 = CookieType1.Persistent, Category = CookieCategory, Description = "" },
-                new Cookie { Name = "NykantAntiCSRFToken", Type1 = CookieType1.Session, Category = CookieCategory, Description = "" },
-                new Cookie { Name = "SessionCookie", Type1 = CookieType1.Session, Category = CookieCategory, Description = "" },
-                new Cookie { Name = "__stripe_mid", Type1 = CookieType1.Persistent, Category = CookieCategory, Description = "" },
-                new Cookie { Name = "__stripe_sid", Type1 = CookieType1.Persistent, Category = CookieCategory, Description = "" },
-                new Cookie { Name = "_ga", Type1 = CookieType1.Persistent, Category = CookieCategory, Description = "" },
-                new Cookie { Name = "_ga_2LWYP6ZC27", Type1 = CookieType1.Persistent, Category = CookieCategory, Description = "" },
+                new Cookie { Name = "__stripe_mid", Type1 = CookieType1.Persistent, Type2 = CookieType2.ThirdParty, Category = CookieCategory.Necessary, Description = "Denne cookie bruges af Stripe og sørger for at vores betalingsservice virker, og er sikker." },
+                new Cookie { Name = "__stripe_sid", Type1 = CookieType1.Persistent, Type2 = CookieType2.ThirdParty, Category = CookieCategory.Necessary, Description = "Denne cookie bruges af Stripe og sørger for at vores betalingsservice virker, og er sikker." },
+                new Cookie { Name = "_ga", Type1 = CookieType1.Persistent, Type2 = CookieType2.ThirdParty, Category = CookieCategory.Statistics, Description = "Denne cookie bruges af Google Analytics og registrere et unikt ID, som bliver brugt til at generere statistiske data om hvordan besøgende bruger hjemmesiden." },
+                new Cookie { Name = "_ga_2LWYP6ZC27", Type1 = CookieType1.Persistent, Type2 = CookieType2.ThirdParty, Category = CookieCategory.Statistics, Description = "Denne cookie bruges af Google Analytics og indsamler data så som hvor mange gange en bruger har besøgt siden, datoen de har besøgt og det seneste besøg." }
              );
 
             modelBuilder.Entity<ProductLength>().HasData(

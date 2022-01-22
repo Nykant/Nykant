@@ -10,5 +10,6 @@ namespace NykantMVC.Models
         public bool OnlyEssential { get; set; } = true;
         public bool ShowBanner { get; set; } = true;
         public bool Functional { get; set; } = false;
+        public bool Statistics { get; set; } = false;
     }
 }

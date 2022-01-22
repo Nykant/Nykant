@@ -1,37 +1,45 @@
 ﻿@using Microsoft.Extensions.Configuration
 @using NykantMVC.Friends;
+@using NykantMVC.Extensions;
 @inject IConfiguration Configuration
 
 @{
+    var consent = Context.Session.Get<Consent>("verysecretseriousconsentsessionkeyspecial");
+
     var routevalues = Context.Request.RouteValues;
     var controller = routevalues["controller"];
     var action = routevalues["action"];
-
     bool cookieExists = false;
-    try
+    if (consent.Functional)
     {
-        cookieExists = HttpHelpers.CookieExists(Context.Request, ".AspNetCore.Culture");
+        try
+        {
+            cookieExists = HttpHelpers.CookieExists(Context.Request, "Culture");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
     }
-    catch(Exception e)
-    {
-        Console.WriteLine(e.Message);
-    }
-
 }
 
-@if (!cookieExists)
+@if (consent.Functional)
 {
-    <div class="culture-box">
-        <div class="culture-close">
-            <form method="post" asp-controller="Nykant" asp-action="UpdateCulture" asp-route-redirectController="@controller" asp-route-redirectAction="@action" asp-route-culture="Dansk">
-                <button type="submit"><i class="fas fa-times"></i></button>
-            </form>
+    @if (!cookieExists)
+    {
+        <div class="culture-box">
+            <div class="culture-close">
+                <form method="post" asp-controller="Nykant" asp-action="UpdateCulture" asp-route-redirectController="@controller" asp-route-redirectAction="@action" asp-route-culture="Dansk">
+                    <button type="submit"><i class="fas fa-times"></i></button>
+                </form>
+            </div>
+            <div class="culture-cover">
+                <form method="post" asp-controller="Nykant" asp-action="UpdateCulture" asp-route-redirectController="@controller" asp-route-redirectAction="@action">
+                    <input name="culture" value="English" type="submit" />
+                    <input name="culture" value="Dansk" type="submit" />
+                </form>
+            </div>
         </div>
-        <div class="culture-cover">
-            <form method="post" asp-controller="Nykant" asp-action="UpdateCulture" asp-route-redirectController="@controller" asp-route-redirectAction="@action">
-                <input name="culture" value="English" type="submit" />
-                <input name="culture" value="Dansk" type="submit" />
-            </form>
-        </div>
-    </div>
+    }
 }
+
