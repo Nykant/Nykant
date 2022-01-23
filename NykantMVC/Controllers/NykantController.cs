@@ -48,9 +48,11 @@ namespace NykantMVC.Controllers
             };
             return View(frontPageVM);
         }
-        public IActionResult CookiePolicy()
+        public async Task<IActionResult> CookiePolicy()
         {
-            return View();
+            var json = await GetRequest("/Cookie/GetCookies");
+            var cookies = JsonConvert.DeserializeObject<List<Cookie>>(json);
+            return View(cookies);
         }
         public IActionResult Contact()
         {
@@ -102,6 +104,8 @@ namespace NykantMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateConsent(int functionalCookies, int statisticsCookies)
         {
+            var json = await GetRequest("/Cookie/GetCookies");
+            var cookies = JsonConvert.DeserializeObject<List<Cookie>>(json);
             Consent consent = new Consent();
 
             switch (functionalCookies)
@@ -111,6 +115,13 @@ namespace NykantMVC.Controllers
                     break;
 
                 case 0:
+                    foreach(var cookie in cookies)
+                    {
+                        if(cookie.Category == CookieCategory.Functional)
+                        {
+                            Response.Cookies.Delete(cookie.Name);
+                        }
+                    }
                     consent.Functional = false;
                     break;
             }
@@ -121,6 +132,13 @@ namespace NykantMVC.Controllers
                     break;
 
                 case 0:
+                    foreach (var cookie in cookies)
+                    {
+                        if (cookie.Category == CookieCategory.Statistics)
+                        {
+                            Response.Cookies.Delete(cookie.Name);
+                        }
+                    }
                     consent.Statistics = false;
                     break;
             }
@@ -174,6 +192,16 @@ namespace NykantMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> OnlyEssentialConsent()
         {
+            var json = await GetRequest("/Cookie/GetCookies");
+            var cookies = JsonConvert.DeserializeObject<List<Cookie>>(json);
+            foreach (var cookie in cookies)
+            {
+                if (cookie.Category == CookieCategory.Functional || cookie.Category == CookieCategory.Statistics)
+                {
+                    Response.Cookies.Delete(cookie.Name);
+                }
+            }
+
             var consent = new Consent
             {
                 OnlyEssential = true,

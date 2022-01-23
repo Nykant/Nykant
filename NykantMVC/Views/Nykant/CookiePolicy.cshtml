@@ -1,4 +1,5 @@
-﻿@inject IViewLocalizer localizer
+﻿@model List<Cookie>
+@inject IViewLocalizer localizer
 @{ 
     ViewData["Title"] = "Nykants Cookie Politik";
     ViewData["Description"] = "Nykants politik om brug af cookies.";
@@ -68,7 +69,7 @@
         </div>
         <div>
             @*------------------------- LISTE AF COOKIES ---------------------*@
-            <h1>Liste over vores cookies</h1>
+            <h1>Liste over vores First-Party cookies</h1>
             <div class="custom-table">
                 <div class="custom-table-headers">
                     <div>Cookie</div>
@@ -77,15 +78,41 @@
                     <div>Beskrivelse</div>
                 </div>
                 <div class="custom-table-rows">
-                    <div class="custom-table-row">
-                        @*@foreach (var cookie in cookies)
+                    @foreach (var cookie in Model)
+                    {
+                        @if (cookie.Type2 == CookieType2.FirstParty)
                         {
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        }*@
-                    </div>
+                            <div class="custom-table-row">
+                                <div>@cookie.Name</div>
+                                <div>@cookie.Type1</div>
+                                <div>@cookie.Category</div>
+                                <div>@cookie.Description</div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            <h1>Liste over vores Third-Party cookies</h1>
+            <div class="custom-table">
+                <div class="custom-table-headers">
+                    <div>Cookie</div>
+                    <div>Type</div>
+                    <div>Kategori</div>
+                    <div>Beskrivelse</div>
+                </div>
+                <div class="custom-table-rows">
+                    @foreach (var cookie in Model)
+                    {
+                        @if (cookie.Type2 == CookieType2.ThirdParty)
+                        {
+                            <div class="custom-table-row">
+                                <div>@cookie.Name</div>
+                                <div>@cookie.Type1</div>
+                                <div>@cookie.Category</div>
+                                <div>@cookie.Description</div>
+                            </div>
+                        }
+                    }
                 </div>
             </div>
         </div>

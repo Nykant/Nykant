@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NykantAPI.Data;
 
 namespace NykantAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220123144457_CookiesUpdated")]
+    partial class CookiesUpdated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -824,9 +826,6 @@ namespace NykantAPI.Migrations
                     b.Property<string>("Oil")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<string>("Package")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
                     b.Property<string>("Path")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
@@ -868,7 +867,6 @@ namespace NykantAPI.Migrations
                             Note = "Gertrud Note",
                             Number = "101",
                             Oil = "Naturolie",
-                            Package = "Gertrud Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_boejle_naturolie_01.png",
                             Pieces = 3,
                             Price = 375.0,
@@ -892,7 +890,6 @@ namespace NykantAPI.Migrations
                             Note = "Gertrud Note",
                             Number = "101",
                             Oil = "Sortolie",
-                            Package = "Gertrud Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_boejle_sortolie_01.png",
                             Pieces = 3,
                             Price = 375.0,
@@ -916,7 +913,6 @@ namespace NykantAPI.Migrations
                             Note = "Gertrud Note",
                             Number = "101",
                             Oil = "Hvidolie",
-                            Package = "Gertrud Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_boejle_hvidolie_01.png",
                             Pieces = 3,
                             Price = 375.0,
@@ -941,7 +937,6 @@ namespace NykantAPI.Migrations
                             Note = "Ingeborg Note",
                             Number = "101",
                             Oil = "Hvidolie",
-                            Package = "Ingeborg Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_hvidolie_01.png",
                             Pieces = 1,
                             Price = 595.0,
@@ -966,7 +961,6 @@ namespace NykantAPI.Migrations
                             Note = "Ingeborg Note",
                             Number = "101",
                             Oil = "Sortolie",
-                            Package = "Ingeborg Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_sortolie_01.png",
                             Pieces = 1,
                             Price = 595.0,
@@ -991,7 +985,6 @@ namespace NykantAPI.Migrations
                             Note = "Ingeborg Note",
                             Number = "101",
                             Oil = "Naturolie",
-                            Package = "Ingeborg Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_naturolie_01.png",
                             Pieces = 1,
                             Price = 595.0,
@@ -1015,7 +1008,6 @@ namespace NykantAPI.Migrations
                             Note = "Dagmar Note",
                             Number = "16001",
                             Oil = "Naturolie",
-                            Package = "Dagmar Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_bord_naturolie_01.png",
                             Pieces = 1,
                             Price = 2995.0,
@@ -1040,7 +1032,6 @@ namespace NykantAPI.Migrations
                             Note = "Thyra Note",
                             Number = "12001",
                             Oil = "Naturolie",
-                            Package = "Thyra Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_kortbaenk_naturolie_01.png",
                             Pieces = 1,
                             Price = 2985.0,
@@ -1065,7 +1056,6 @@ namespace NykantAPI.Migrations
                             Note = "Thyra Note",
                             Number = "11001",
                             Oil = "Naturolie",
-                            Package = "Thyra Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_langbaenk_naturolie_01.png",
                             Pieces = 1,
                             Price = 3885.0,
@@ -1089,7 +1079,6 @@ namespace NykantAPI.Migrations
                             Note = "Filippa Note",
                             Number = "10001",
                             Oil = "Naturolie",
-                            Package = "Filippa Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_opbevaringsbaenk_naturolie_01.png",
                             Pieces = 1,
                             Price = 4395.0,
@@ -1113,7 +1102,6 @@ namespace NykantAPI.Migrations
                             Note = "Nora Note",
                             Number = "13001 + 13001A",
                             Oil = "Naturolie",
-                            Package = "Nora Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_rack_naturolie_01.png",
                             Pieces = 1,
                             Price = 2295.0,

@@ -16,16 +16,17 @@ namespace NykantMVC.Models
         public string AssemblyPath { get; set; }
         public string ImageSource2 { get; set; }
         public string Path { get; set; }
-        public string Materials { get; set; }
-        public string Note { get; set; }
         public DateTime ExpectedDelivery { get; set; }
         public int Amount { get; set; }
-        public string Size { get; set; }
         public EColor EColor { get; set; }
         public string Length { get; set; }
         public string Oil { get; set; }
         public string Alt { get; set; }
         public double WeightInKg { get; set; }
+        public string Size { get; set; }
+        public string Materials { get; set; }
+        public string Package { get; set; }
+        public string Note { get; set; }
         public IEnumerable<Image> Images { get; set; }
         public IEnumerable<Color> Colors { get; set; }
         public IEnumerable<ProductLength> ProductLengths { get; set; }

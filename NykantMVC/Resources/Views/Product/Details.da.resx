@@ -135,6 +135,9 @@ Høje snedkerkvalitet.</value>
 &lt;p&gt;Leveres knockdown:                1 stk. bordplade, 4 stk. ben m/limet skrue som nemt samles ( tjek samlevejledning)
 Størrelse og vægt:                     1 stk. karton 11 x 75 x 114 cm, 22 kg. &lt;/p&gt;&lt;/div&gt;</value>
   </data>
+  <data name="Dagmar Package" xml:space="preserve">
+    <value />
+  </data>
   <data name="Dagmar Size" xml:space="preserve">
     <value>&lt;div class="product-detail-text"&gt;&lt;strong&gt;Størrelse:&lt;/strong&gt;         &lt;p&gt;70 x 110 cm, højde 74 cm.&lt;/p&gt;&lt;/div&gt;</value>
     <comment>&lt;div class="product-detail-text"&gt;&lt;/div&gt;</comment>
@@ -150,17 +153,24 @@ Er enkel og virkelig pragtigst.</value>
   </data>
   <data name="Filippa Materials" xml:space="preserve">
     <value>
-&lt;div class="product-detail-text"&gt;&lt;strong&gt;Materialer:&lt;/strong&gt;&lt;p&gt; Bæredygtigt FSC certificeret egetræ, Olie, læderstrop, metalbeslag. &lt;/p&gt;&lt;/div&gt;</value>
+&lt;div class="product-detail-text"&gt;&lt;strong&gt;Materialer:&lt;/strong&gt;&lt;p&gt; Bæredygtigt FSC certificeret egetræ&lt;/p&gt;&lt;p&gt;Olie&lt;/p&gt;&lt;p&gt; Læderstrop&lt;/p&gt;&lt;p&gt;Beslag&lt;/p&gt;&lt;/div&gt;</value>
   </data>
   <data name="Filippa Note" xml:space="preserve">
     <value>
 &lt;div class="product-detail-text no-border"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
-&lt;p&gt;Indvendig mål opbevaring:                       30 x 30 x 85 cm
-Karton størrelse og vægt:             40 x 50 x 115 cm, 24 kg. &lt;/p&gt;&lt;/div&gt;</value>
+&lt;p&gt;Indvendige mål for opbevaring: 30 x 30 x 85 cm&lt;/p&gt;&lt;/div&gt;</value>
+  </data>
+  <data name="Filippa Package" xml:space="preserve">
+    <value>&lt;td class="width-30"&gt;&lt;strong&gt;Package:&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;
+&lt;p&gt;Vægt: 24 kg.&lt;/p&gt;
+&lt;p&gt;Størrelse: 40 x 50 x 115 cm.&lt;/p&gt;
+&lt;p&gt;Leveres samlet &lt;/p&gt;
+&lt;/td&gt;</value>
   </data>
   <data name="Filippa Size" xml:space="preserve">
     <value>
-&lt;div class="product-detail-text"&gt;&lt;strong&gt;Størrelse:&lt;/strong&gt;      &lt;p&gt;  Højde 45 x Længde 110 x Dybde 35 cm.&lt;/p&gt;  &lt;/div&gt;</value>
+&lt;div class="product-detail-text"&gt;&lt;strong&gt;Størrelse:&lt;/strong&gt;      &lt;p&gt;  Højde: 45 cm.&lt;/p&gt;&lt;p&gt;Længde: 110 cm.&lt;/p&gt;&lt;p&gt;Dybde: 35 cm. &lt;/p&gt;  &lt;/div&gt;</value>
   </data>
   <data name="Gertrud Description" xml:space="preserve">
     <value>Denne smukke bøjle med de klassiske fine linjer, afrunde hjørner og ender som giver tøjet støtte og mindst mulige
@@ -174,6 +184,9 @@ Massivt egetræ.</value>
   <data name="Gertrud Note" xml:space="preserve">
     <value>
 &lt;div class="product-detail-text no-border"&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;p&gt; Leveres samlet med 3 stk. pr. karton.&lt;/p&gt;&lt;/div&gt;</value>
+  </data>
+  <data name="Gertrud Package" xml:space="preserve">
+    <value />
   </data>
   <data name="Gertrud Size" xml:space="preserve">
     <value> &lt;div class="product-detail-text"&gt;&lt;strong&gt;Størrelse:&lt;/strong&gt;&lt;p&gt;Længde 45 cm x tykk. 2,0 cm &lt;/p&gt;&lt;/div&gt;</value>
@@ -194,6 +207,9 @@ Monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave a
 &lt;div class="product-detail-text no-border"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
 &lt;p&gt;Leveres knockdown:                1 stk. hylde, 2 stk. hyldeknægte, 4 stk. messingskruer, 2 stk. skruer til væg
                                                           Med Plugs.  (Bemærk tjek om disse Plugs passer præcist til jeres væg) &lt;/p&gt;&lt;/div&gt;</value>
+  </data>
+  <data name="Ingeborg Package" xml:space="preserve">
+    <value />
   </data>
   <data name="Ingeborg Size" xml:space="preserve">
     <value>
@@ -216,6 +232,9 @@ Passe perfekt i soveværelset, pigeværelset eller hvor tøj hænger synligt.</v
 &lt;div class="product-detail-text no-border"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
 &lt;p&gt; Leveres knockdown i 2 kartoner :  4 stk. sider, 1 stk. bøjlestang, 1 stk. bund (som er samlet), 6 skt. Kiler.
 Kartonstørrelse og vægt:                                                  1 stk. karton 7 x 12 x 186 cm, 5 kg. + 1 stk. karton 6 x 54 x 119 cm, 3 kg.&lt;/p&gt;&lt;/div&gt;</value>
+  </data>
+  <data name="Nora Package" xml:space="preserve">
+    <value />
   </data>
   <data name="Nora Size" xml:space="preserve">
     <value>
@@ -240,6 +259,9 @@ Passer perfekt ind på badeværelset, entreen, soveværelset, og ved spisebordet
 &lt;div class="product-detail-text no-border"&gt;&lt;strong&gt;Note:&lt;/strong&gt;
 &lt;p&gt;Karton størrelse og vægt:            11 x 47 x 175 cm, 20 kg.
 Karton størrelse og vægt:            11 x 47 x 120 cm, 14 kg. &lt;/p&gt;&lt;/div&gt;</value>
+  </data>
+  <data name="Thyra Package" xml:space="preserve">
+    <value />
   </data>
   <data name="Thyra Size" xml:space="preserve">
     <value>

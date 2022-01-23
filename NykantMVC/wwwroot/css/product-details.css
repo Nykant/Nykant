@@ -468,11 +468,28 @@
         display: inline;
     }
 
-.product-detail-text {
-    border-bottom: 1px solid var(--black-fade);
-    padding: 20px;
-    margin:20px;
+    .collapsible-table {
+
+    }
+
+        .collapsible-table tr {
+            padding: 20px;
+            border-bottom: 1px solid var(--black-fade);
+        }
+
+.collapsible-table td {
+    vertical-align: middle;
+    display:inline-block;
 }
+
+.collapsible-table strong {
+
+}
+
+.collapsible-table p {
+    display:block;
+}
+
 
 .no-border {
     border:none !important;

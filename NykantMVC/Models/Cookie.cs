@@ -8,7 +8,7 @@ namespace NykantMVC.Models
     public class Cookie
     {
         public string Name { get; set; }
-        public CookieType1 Type { get; set; }
+        public CookieType1 Type1 { get; set; }
         public CookieType2 Type2 { get; set; }
         public CookieCategory Category { get; set; }
         public string Description { get; set; }
@@ -16,10 +16,10 @@ namespace NykantMVC.Models
 
     public enum CookieCategory
     {
-        Essential,
+        Necessary,
         Functional,
         Performance,
-        Advertising
+        Statistics
     }
     public enum CookieType1
     {

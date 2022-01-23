@@ -226,7 +226,7 @@ namespace NykantIS
 
             app.UseHttpsRedirection();
 
-            IdentityModelEventSource.ShowPII = false;
+            IdentityModelEventSource.ShowPII = true;
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
