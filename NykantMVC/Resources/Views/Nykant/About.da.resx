@@ -118,12 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About Info" xml:space="preserve">
-    <value>&lt;h1&gt;INNOVATIVT DANSK DESIGN&lt;/h1&gt;
-&lt;p&gt;                Nykant er et nyt dansk brand, som med inspiration fra dansk design, udvikler moderne egetræsmøbler med
-                minimalistiske detaljer i høj kvalitet, produceret i bæredygtigt FSC certificeret, massivt,
-                Egetræ. &lt;br /&gt;Vi stræber efter at blive bedre til det vi gør, at finde nye kanter, som kan forskønne og give ro i vores hjem.
-                &lt;br /&gt;Vi står selv for produktionen af vores egetræsmøbler i Slovenien, og producerer af bæredygtigt FSC certificeret,
-                massivt egetræ, og vi har lager i Danmark.&lt;/p&gt;</value>
+    <value>&lt;h1&gt;MØBLER I DANSK DESIGN&lt;/h1&gt;
+&lt;p&gt;                                Nykant er et nyt dansk brand, som med inspiration fra dansk design, udvikler moderne egetræsmøbler med
+                minimalistiske detaljer i høj kvalitet, produceret i bæredygtigt massivt egetræ. &lt;br /&gt;Vi designer moderne møbler med kant, som forskønner og giver ro i vores hjem.
+                &lt;br /&gt;Vi står selv for produktionen af vores egetræsmøbler i Slovenien, og vi er lagerførende i Danmark.&lt;/p&gt;</value>
   </data>
   <data name="About Us" xml:space="preserve">
     <value>OM OS</value>

@@ -64,7 +64,6 @@ namespace NykantMVC.Controllers
                             TotalPrice = total.ToString(),
                             ShippingDelivery = new ShippingDelivery { ParcelshopData = new ParcelshopData() },
                             Taxes = taxes.ToString(),
-                            SubTotalPrice = total.ToString(),
                             TaxlessPrice = taxlessPrice.ToString()
                         };
                         HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
@@ -105,7 +104,6 @@ namespace NykantMVC.Controllers
                             TotalPrice = total.ToString(),
                             ShippingDelivery = new ShippingDelivery { ParcelshopData = new ParcelshopData() },
                             Taxes = taxes.ToString(),
-                            SubTotalPrice = total.ToString(),
                             TaxlessPrice = taxlessPrice.ToString()
                         };
                         HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
@@ -127,30 +125,28 @@ namespace NykantMVC.Controllers
             }
             else
             {
-                double taxes = 0;
-                double total = 0;
                 if (User.Identity.IsAuthenticated)
                 {
-                    double.TryParse(CalculateAmount(bagItemsDb), out double subtotal);
-                    total = subtotal;
-                    taxes = total / 5;
+                    double.TryParse(CalculateAmount(bagItemsDb), out double total);
+                    var taxes = total / 5;
+                    var taxlessPrice = total - taxes;
 
                     checkout.TotalPrice = total.ToString();
                     checkout.Taxes = taxes.ToString();
-                    checkout.SubTotalPrice = subtotal.ToString();
+                    checkout.TaxlessPrice = taxlessPrice.ToString();
 
                     checkout.BagItems = bagItemsDb;
                     HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
                 }
                 else
                 {
-                    double.TryParse(CalculateAmount(bagItemsSession), out double subtotal);
-                    total = subtotal;
-                    taxes = total / 5;
+                    double.TryParse(CalculateAmount(bagItemsSession), out double total);
+                    var taxes = total / 5;
+                    var taxlessPrice = total - taxes;
 
                     checkout.TotalPrice = total.ToString();
                     checkout.Taxes = taxes.ToString();
-                    checkout.SubTotalPrice = subtotal.ToString();
+                    checkout.TaxlessPrice = taxlessPrice.ToString();
 
                     checkout.BagItems = bagItemsSession;
                     HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);

@@ -147,14 +147,14 @@
   <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>
-  <data name="First Name" xml:space="preserve">
-    <value>Fornavn</value>
-  </data>
   <data name="Fix" xml:space="preserve">
     <value>Ret</value>
   </data>
   <data name="Last Name" xml:space="preserve">
     <value>Efternavn</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Fulde Navn</value>
   </data>
   <data name="Postal" xml:space="preserve">
     <value>Postnummer</value>

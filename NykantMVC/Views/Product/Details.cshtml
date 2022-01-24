@@ -189,12 +189,12 @@
                 <button type="button" class="collapsible-button2 active">@localizer["Specifications"]</button>
                 <div class="collapsible-content">
                     <table class="collapsible-table">
-                        <tr>@localizer[Model.Size]</tr>
-                        <tr>@localizer[Model.Materials]</tr>
-                        <tr>@localizer[Model.Package]</tr>
+                        @localizer[Model.Size]
+                        @localizer[Model.Materials]
+                        @localizer[Model.Package]
                         @if (localizer[Model.Note] != null)
                         {
-                            <tr>@localizer[Model.Note]</tr>
+                            @localizer[Model.Note]
                         }
                     </table>
                 </div>

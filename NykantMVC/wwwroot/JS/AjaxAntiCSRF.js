@@ -1,5 +1,5 @@
-﻿AddAntiCSRFToken = function (data) {
-    var token = $('#AntiCSRFTokenForm input[name=NykantAntiCSRFToken]').val();
-    data.NykantAntiCSRFToken = token;
+﻿AddAntiforgeryToken = function (data) {
+    var token = $('#AntiforgeryToken input[name=AntiforgeryToken]').val();
+    data.AntiforgeryToken = token;
     return data;
 };

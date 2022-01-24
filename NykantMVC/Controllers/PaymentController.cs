@@ -30,7 +30,7 @@ namespace NykantMVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Payment(string paymentMethodId)
+        public IActionResult Payment(string paymentMethodId)
         {
             var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
             if (checkout == null)

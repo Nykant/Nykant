@@ -52,7 +52,6 @@ var form = document.getElementById("payment-form");
 form.addEventListener("submit", function (event) {
     event.preventDefault();
     if (!backbuttonclicked) {
-        backbuttonclicked = false;
         loading(true);
         if (terms_and_conditions.checked == false) {
             showError("Du skal acceptere vores handelsbetingelser før du kan gennemføre betalingen.");
@@ -87,8 +86,8 @@ function stripePaymentMethodHandler(result) {
         // Otherwise send paymentMethod.id to your server (see Step 4)
         $.ajax({
             type: "POST",
-            url: '/payment/payment',
-            data: AddAntiCSRFToken ({
+            url: '/Payment/Payment',
+            data: AddAntiforgeryToken ({
                 paymentMethodId: result.paymentMethod.id
             })
         }).then(function (result) {
@@ -120,7 +119,7 @@ function handleStripeJsResult(result) {
         $.ajax({
             url: '/payment/confirmpayment',
             type: 'POST',
-            data: AddAntiCSRFToken({
+            data: AddAntiforgeryToken({
                 paymentIntentId: result.paymentIntent.id
             })
         }).then(handleServerResponse);
@@ -148,7 +147,7 @@ var orderComplete = function (paymentIntentId) {
     $.ajax({
         url: '/order/postorder',
         type: 'POST',
-        data: AddAntiCSRFToken({
+        data: AddAntiforgeryToken({
             paymentIntentId: paymentIntentId
         })
     }).then(function (result) {

@@ -52,8 +52,7 @@
                                 <input id="customer-country-input" class="hidden" autocomplete="billing country" asp-for="@Model.Customer.BillingAddress.Country" />
                                 <div class="country-label">@localizer["Country"]</div>
                                 <select required id="country-picker">
-                                    <option>@localizer["Choose Country"]</option>
-                                    <option>DK</option>
+                                    <option id="customer-country-option">DK</option>
                                 </select>
                                 <div class="country-error hidden" id="country-error">
                                     @localizer["Choose country to continue"]
@@ -103,8 +102,7 @@
                                 <input id="shippingaddress-country" class="hidden" autocomplete="shipping country" asp-for="@Model.Customer.ShippingAddress.Country" />
                                 <div class="country-label">@localizer["Country"]</div>
                                 <select required id="shippingaddress-country-picker">
-                                    <option>@localizer["Choose Country"]</option>
-                                    <option>DK</option>
+                                    <option id="shipping-country-option">DK</option>
                                 </select>
                                 <div class="country-error hidden" id="shippingaddress-country-error">
                                     @localizer["Choose country to continue"]
