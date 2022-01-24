@@ -188,13 +188,15 @@
             <div class="collapsible">
                 <button type="button" class="collapsible-button2 active">@localizer["Specifications"]</button>
                 <div class="collapsible-content">
-                    @localizer[Model.Size]
-                    @localizer[Model.Materials]
                     <table class="collapsible-table">
+                        <tr>@localizer[Model.Size]</tr>
+                        <tr>@localizer[Model.Materials]</tr>
                         <tr>@localizer[Model.Package]</tr>
+                        @if (localizer[Model.Note] != null)
+                        {
+                            <tr>@localizer[Model.Note]</tr>
+                        }
                     </table>
-                    
-                    @localizer[Model.Note]
                 </div>
             </div>
             @if (Model.AssemblyPath != "none")
