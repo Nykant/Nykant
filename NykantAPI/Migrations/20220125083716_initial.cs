@@ -1,5 +1,4 @@
 ﻿using System;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace NykantAPI.Migrations
@@ -13,7 +12,7 @@ namespace NykantAPI.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(nullable: true),
                     ImgSource = table.Column<string>(nullable: true)
                 },
@@ -23,11 +22,26 @@ namespace NykantAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Cookies",
+                columns: table => new
+                {
+                    Name = table.Column<string>(nullable: false),
+                    Type1 = table.Column<int>(nullable: false),
+                    Type2 = table.Column<int>(nullable: false),
+                    Category = table.Column<int>(nullable: false),
+                    Description = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Cookies", x => x.Name);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Customer",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Email = table.Column<string>(nullable: false),
                     Phone = table.Column<string>(nullable: false)
                 },
@@ -52,20 +66,28 @@ namespace NykantAPI.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(nullable: true),
+                    Title = table.Column<string>(nullable: true),
                     Number = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     Price = table.Column<double>(nullable: false),
                     ImageSource = table.Column<string>(nullable: true),
+                    Pieces = table.Column<int>(nullable: false),
                     ImageSource2 = table.Column<string>(nullable: true),
                     Path = table.Column<string>(nullable: true),
-                    Note = table.Column<string>(nullable: true),
-                    Materials = table.Column<string>(nullable: true),
+                    ExpectedDelivery = table.Column<DateTime>(nullable: false),
+                    Amount = table.Column<int>(nullable: false),
+                    AssemblyPath = table.Column<string>(nullable: true),
+                    EColor = table.Column<int>(nullable: false),
+                    Length = table.Column<string>(nullable: true),
                     Oil = table.Column<string>(nullable: true),
                     Alt = table.Column<string>(nullable: true),
                     WeightInKg = table.Column<double>(nullable: false),
                     Size = table.Column<string>(nullable: true),
+                    Materials = table.Column<string>(nullable: true),
+                    Package = table.Column<string>(nullable: true),
+                    Note = table.Column<string>(nullable: true),
                     CategoryId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -84,10 +106,9 @@ namespace NykantAPI.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     CustomerId = table.Column<int>(nullable: false),
-                    FirstName = table.Column<string>(nullable: false),
-                    LastName = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(nullable: false),
                     Address = table.Column<string>(nullable: false),
                     City = table.Column<string>(nullable: false),
                     Country = table.Column<string>(nullable: false),
@@ -109,14 +130,17 @@ namespace NykantAPI.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Subject = table.Column<string>(nullable: true),
                     CustomerId = table.Column<int>(nullable: false),
                     CreatedAt = table.Column<DateTime>(nullable: false),
                     TotalPrice = table.Column<string>(nullable: false),
                     Taxes = table.Column<string>(nullable: false),
+                    TaxLessPrice = table.Column<string>(nullable: false),
                     Currency = table.Column<string>(nullable: false),
                     Status = table.Column<int>(nullable: false),
+                    WeightInKg = table.Column<double>(nullable: false),
+                    EstimatedDelivery = table.Column<DateTime>(nullable: false),
                     PaymentIntent_Id = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
@@ -135,10 +159,9 @@ namespace NykantAPI.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     CustomerId = table.Column<int>(nullable: false),
-                    FirstName = table.Column<string>(nullable: false),
-                    LastName = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(nullable: false),
                     Address = table.Column<string>(nullable: false),
                     City = table.Column<string>(nullable: false),
                     Country = table.Column<string>(nullable: false),
@@ -180,10 +203,11 @@ namespace NykantAPI.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     ProductId = table.Column<int>(nullable: false),
                     ImgSrc = table.Column<string>(nullable: true),
-                    ProductSourceId = table.Column<int>(nullable: false)
+                    ProductSourceId = table.Column<int>(nullable: false),
+                    EColor = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -201,7 +225,7 @@ namespace NykantAPI.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Source = table.Column<string>(nullable: true),
                     ProductId = table.Column<int>(nullable: false)
                 },
@@ -217,11 +241,32 @@ namespace NykantAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ProductLength",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProductId = table.Column<int>(nullable: false),
+                    ProductReferenceId = table.Column<int>(nullable: false),
+                    Length = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductLength", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ProductLength_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Reviews",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     ProductId = table.Column<int>(nullable: false),
                     Subject = table.Column<string>(nullable: false),
                     Title = table.Column<string>(nullable: true),
@@ -235,6 +280,26 @@ namespace NykantAPI.Migrations
                         name: "FK_Reviews_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Invoices",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    OrderId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Invoices", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Invoices_Orders_OrderId",
+                        column: x => x.OrderId,
+                        principalTable: "Orders",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -269,7 +334,7 @@ namespace NykantAPI.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     OrderId = table.Column<int>(nullable: false),
                     Type = table.Column<string>(nullable: true)
                 },
@@ -289,7 +354,7 @@ namespace NykantAPI.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     ShippingDeliveryId = table.Column<int>(nullable: false),
                     Number = table.Column<string>(nullable: true),
                     CompanyName = table.Column<string>(nullable: true),
@@ -328,51 +393,65 @@ namespace NykantAPI.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Products",
-                columns: new[] { "Id", "Alt", "CategoryId", "Description", "ImageSource", "ImageSource2", "Materials", "Name", "Note", "Number", "Oil", "Path", "Price", "Size", "WeightInKg" },
+                table: "Cookies",
+                columns: new[] { "Name", "Category", "Description", "Type1", "Type2" },
                 values: new object[,]
                 {
-                    { 11, null, 1, "Nora Description", "../images/Products/NYKANT_rack_naturolie_01.png", "../images/Products/NYKANT_rack_naturolie_02.png", "Nora Materials", "Nora Tøjstativ", "Nora Note", "101", "Naturolie", "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_rack_naturolie_01.png", 2295.0, "Nora Size", 13.4 },
-                    { 7, null, 2, "Dagmar Description", "../images/Products/NYKANT_bord_naturolie_01.png", "../images/Products/NYKANT_bord_naturolie_02.png", "Dagmar Materials", "Dagmar Bordet", "Dagmar Note", "101", "Naturolie", "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_bord_naturolie_01.png", 2995.0, "Dagmar Size", 22.0 },
-                    { 4, null, 3, "Ingeborg Description", "../images/Products/NYKANT_hylde_hvidolie_01.png", "../images/Products/NYKANT_hylde_hvidolie_02.png", "Ingeborg Materials", "Ingeborg Hylden", "Ingeborg Note", "101", "Hvidolie", "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_hvidolie_01.png", 595.0, "Ingeborg Size", 11.6 },
-                    { 5, null, 3, "Ingeborg Description", "../images/Products/NYKANT_hylde_sortolie_01.png", "../images/Products/NYKANT_hylde_sortolie_02.png", "Ingeborg Materials", "Ingeborg Hylden", "Ingeborg Note", "101", "Sortolie", "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_sortolie_01.png", 595.0, "Ingeborg Size", 11.6 },
-                    { 6, null, 3, "Ingeborg Description", "../images/Products/NYKANT_hylde_naturolie_01.png", "../images/Products/NYKANT_hylde_naturolie_02.png", "Ingeborg Materials", "Ingeborg Hylden", "Ingeborg Note", "101", "Naturolie", "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_naturolie_01.png", 595.0, "Ingeborg Size", 11.6 },
-                    { 8, null, 4, "Thyra Description", "../images/Products/NYKANT_kortbaenk_naturolie_01.png", "../images/Products/NYKANT_kortbaenk_naturolie_02.png", "Thyra Materials", "Thyra Kortbænken", "Thyra Note", "101", "Naturolie", "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_kortbaenk_naturolie_01.png", 2985.0, "Thyra Size", 14.0 },
-                    { 9, null, 4, "Thyra Description", "../images/Products/NYKANT_langbaenk_naturolie_01.png", "../images/Products/NYKANT_langbaenk_naturolie_02.png", "Thyra Materials", "Thyra Langbænken", "Thyra Note", "101", "Naturolie", "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_langbaenk_naturolie_01.png", 3885.0, "Thyra Size", 20.0 },
-                    { 10, null, 4, "Filippa Description", "../images/Products/NYKANT_opbevaringsbaenk_naturolie_01.png", "../images/Products/NYKANT_opbevaringsbaenk_naturolie_02.png", "Filippa Materials", "Filippa Bænk", "Filippa Note", "101", "Naturolie", "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_opbevaringsbaenk_naturolie_01.png", 4395.0, "Filippa Size", 24.0 },
-                    { 1, null, 5, "Gertrud Description", "../images/Products/NYKANT_boejle_naturolie_01.png", "../images/Products/NYKANT_boejle_naturolie_02.png", "Gertrud Materials", "Bøjlen Gertrud", "Gertrud Note", "101", "Naturolie", "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_boejle_naturolie_01.png", 375.0, "Gertrud Size", 11.6 },
-                    { 2, null, 5, "Gertrud Description", "../images/Products/NYKANT_boejle_sortolie_01.png", "../images/Products/NYKANT_boejle_sortolie_02.png", "Gertrud Materials", "Bøjlen Gertrud", "Gertrud Note", "101", "Sortolie", "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_boejle_sortolie_01.png", 375.0, "Gertrud Size", 11.6 },
-                    { 3, null, 5, "Gertrud Description", "../images/Products/NYKANT_boejle_hvidolie_01.png", "../images/Products/NYKANT_boejle_hvidolie_02.png", "Gertrud Materials", "Bøjlen Gertrud", "Gertrud Note", "101", "Hvidolie", "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_boejle_hvidolie_01.png", 375.0, "Gertrud Size", 11.6 }
+                    { "Culture", 1, "Denne cookie gemmer din præference for sprog.", 1, 0 },
+                    { "AntiforgeryToken", 0, "Denne cookie beskytter imod Cross-Site Request Forgery angreb", 0, 0 },
+                    { "Session", 0, "Denne cookie husker/gemmer hvad du har lagt i din kurv, samt giver dig en bedre checkout oplevelse.", 0, 0 },
+                    { "__stripe_mid", 0, "Denne cookie bruges af Stripe og sørger for at vores betalingsservice virker, og er sikker.", 1, 1 },
+                    { "__stripe_sid", 0, "Denne cookie bruges af Stripe og sørger for at vores betalingsservice virker, og er sikker.", 1, 1 },
+                    { "_ga", 3, "Denne cookie bruges af Google Analytics og registrere et unikt ID, som bliver brugt til at generere statistiske data om hvordan besøgende bruger hjemmesiden.", 1, 1 },
+                    { "_ga_2LWYP6ZC27", 3, "Denne cookie bruges af Google Analytics og indsamler data så som hvor mange gange en bruger har besøgt siden, datoen de har besøgt og det seneste besøg.", 1, 1 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Products",
+                columns: new[] { "Id", "Alt", "Amount", "AssemblyPath", "CategoryId", "Description", "EColor", "ExpectedDelivery", "ImageSource", "ImageSource2", "Length", "Materials", "Name", "Note", "Number", "Oil", "Package", "Path", "Pieces", "Price", "Size", "Title", "WeightInKg" },
+                values: new object[,]
+                {
+                    { 11, null, 26, "/word/Tøjstativ.docx", 1, "Nora Description", 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "../images/Products/NYKANT_rack_naturolie_01.png", "../images/Products/NYKANT_rack_naturolie_02.png", null, "Nora Materials", "Nora Tøjstativ", "Nora Note", "13001 + 13001A", "Naturolie", "Nora Package", "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_rack_naturolie_01.png", 1, 2295.0, "Nora Size", "Tøjstativ i massivt egetræ - Behandlet med naturolie", 8.0 },
+                    { 7, null, 72, "/word/Bord.docx", 2, "Dagmar Description", 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "../images/Products/NYKANT_bord_naturolie_01.png", "../images/Products/NYKANT_bord_naturolie_02.png", null, "Dagmar Materials", "Dagmar Bordet", "Dagmar Note", "16001", "Naturolie", "Dagmar Package", "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_bord_naturolie_01.png", 1, 2995.0, "Dagmar Size", "Bord i massivt egetræ - Behandlet med naturolie", 22.0 },
+                    { 4, null, 0, "/word/Hylde_Vejledning.docx", 3, "Ingeborg Description", 1, new DateTime(2022, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), "../images/Products/NYKANT_hylde_hvidolie_01.png", "../images/Products/NYKANT_hylde_hvidolie_02.png", "600 mm.", "Ingeborg Materials", "Ingeborg Hylden", "Ingeborg Note", "101", "Hvidolie", "Ingeborg Package", "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_hvidolie_01.png", 1, 595.0, "Ingeborg Size", "Hylde i massivt egetræ - Behandlet med hvidolie", 11.6 },
+                    { 5, null, 0, "/word/Hylde_Vejledning.docx", 3, "Ingeborg Description", 2, new DateTime(2022, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), "../images/Products/NYKANT_hylde_sortolie_01.png", "../images/Products/NYKANT_hylde_sortolie_02.png", "600 mm.", "Ingeborg Materials", "Ingeborg Hylden", "Ingeborg Note", "101", "Sortolie", "Ingeborg Package", "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_sortolie_01.png", 1, 595.0, "Ingeborg Size", "Hylde i massivt egetræ - Behandlet med sortolie", 11.6 },
+                    { 6, null, 0, "/word/Hylde_Vejledning.docx", 3, "Ingeborg Description", 0, new DateTime(2022, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), "../images/Products/NYKANT_hylde_naturolie_01.png", "../images/Products/NYKANT_hylde_naturolie_02.png", "600 mm.", "Ingeborg Materials", "Ingeborg Hylden", "Ingeborg Note", "101", "Naturolie", "Ingeborg Package", "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_naturolie_01.png", 1, 595.0, "Ingeborg Size", "Hylde i massivt egetræ - Behandlet med naturolie", 11.6 },
+                    { 8, null, 42, "/word/bænk.docx", 4, "Thyra Short Description", 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "../images/Products/NYKANT_kortbaenk_naturolie_01.png", "../images/Products/NYKANT_kortbaenk_naturolie_02.png", "1150 mm.", "Thyra Short Materials", "Thyra Bænken", "Thyra Short Note", "12001", "Naturolie", "Thyra Short Package", "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_kortbaenk_naturolie_01.png", 1, 2985.0, "Thyra Short Size", "Bænk i massivt egetræ - Behandlet med naturolie", 14.0 },
+                    { 9, null, 17, "/word/bænk.docx", 4, "Thyra Description", 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "../images/Products/NYKANT_langbaenk_naturolie_01.png", "../images/Products/NYKANT_langbaenk_naturolie_02.png", "1700 mm.", "Thyra Materials", "Thyra Bænken", "Thyra Note", "11001", "Naturolie", "Thyra Package", "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_langbaenk_naturolie_01.png", 1, 3885.0, "Thyra Size", "Bænk i massivt egetræ - Behandlet med naturolie", 20.0 },
+                    { 10, null, 50, "none", 4, "Filippa Description", 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "../images/Products/NYKANT_opbevaringsbaenk_naturolie_01.png", "../images/Products/NYKANT_opbevaringsbaenk_naturolie_02.png", null, "Filippa Materials", "Filippa Bænk", "Filippa Note", "10001", "Naturolie", "Filippa Package", "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_opbevaringsbaenk_naturolie_01.png", 1, 4395.0, "Filippa Size", "Opbevaringsbænk i massivt egetræ - Behandlet med naturolie", 24.0 },
+                    { 1, null, 0, "none", 5, "Gertrud Description", 0, new DateTime(2022, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), "../images/Products/NYKANT_boejle_naturolie_01.png", "../images/Products/NYKANT_boejle_naturolie_02.png", null, "Gertrud Materials", "Bøjlen Gertrud / 3 stk.", "Gertrud Note", "101", "Naturolie", "Gertrud Package", "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_boejle_naturolie_01.png", 3, 375.0, "Gertrud Size", "Bøjle i massivt egetræ - Behandlet med naturolie", 11.6 },
+                    { 2, null, 0, "none", 5, "Gertrud Description", 2, new DateTime(2022, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), "../images/Products/NYKANT_boejle_sortolie_01.png", "../images/Products/NYKANT_boejle_sortolie_02.png", null, "Gertrud Materials", "Bøjlen Gertrud / 3 stk.", "Gertrud Note", "101", "Sortolie", "Gertrud Package", "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_boejle_sortolie_01.png", 3, 375.0, "Gertrud Size", "Bøjle i massivt egetræ - Behandlet med sortolie", 11.6 },
+                    { 3, null, 0, "none", 5, "Gertrud Description", 1, new DateTime(2022, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), "../images/Products/NYKANT_boejle_hvidolie_01.png", "../images/Products/NYKANT_boejle_hvidolie_02.png", null, "Gertrud Materials", "Bøjlen Gertrud / 3 stk.", "Gertrud Note", "101", "Hvidolie", "Gertrud Package", "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_boejle_hvidolie_01.png", 3, 375.0, "Gertrud Size", "Bøjle i massivt egetræ - Behandlet med hvidolie", 11.6 }
                 });
 
             migrationBuilder.InsertData(
                 table: "Colors",
-                columns: new[] { "Id", "ImgSrc", "ProductId", "ProductSourceId" },
+                columns: new[] { "Id", "EColor", "ImgSrc", "ProductId", "ProductSourceId" },
                 values: new object[,]
                 {
-                    { 23, "../images/Products/NYKANT_rack_naturolie_01.png", 11, 11 },
-                    { 16, "../images/Products/NYKANT_hylde_hvidolie_01.png", 6, 4 },
-                    { 17, "../images/Products/NYKANT_hylde_sortolie_01.png", 6, 5 },
-                    { 18, "../images/Products/NYKANT_hylde_naturolie_01.png", 6, 6 },
-                    { 21, "../images/Products/NYKANT_langbaenk_naturolie_01.png", 9, 9 },
-                    { 22, "../images/Products/NYKANT_opbevaringsbaenk_naturolie_01.png", 10, 10 },
-                    { 1, "../images/Products/NYKANT_boejle_naturolie_01.png", 1, 1 },
-                    { 15, "../images/Products/NYKANT_hylde_naturolie_01.png", 5, 6 },
-                    { 2, "../images/Products/NYKANT_boejle_sortolie_01.png", 1, 2 },
-                    { 4, "../images/Products/NYKANT_boejle_naturolie_01.png", 2, 1 },
-                    { 5, "../images/Products/NYKANT_boejle_sortolie_01.png", 2, 2 },
-                    { 6, "../images/Products/NYKANT_boejle_hvidolie_01.png", 2, 3 },
-                    { 7, "../images/Products/NYKANT_boejle_naturolie_01.png", 3, 1 },
-                    { 8, "../images/Products/NYKANT_boejle_sortolie_01.png", 3, 2 },
-                    { 9, "../images/Products/NYKANT_boejle_hvidolie_01.png", 3, 3 },
-                    { 3, "../images/Products/NYKANT_boejle_hvidolie_01.png", 1, 3 },
-                    { 14, "../images/Products/NYKANT_hylde_sortolie_01.png", 5, 5 },
-                    { 20, "../images/Products/NYKANT_kortbaenk_naturolie_01.png", 8, 8 },
-                    { 10, "../images/Products/NYKANT_hylde_hvidolie_01.png", 4, 4 },
-                    { 12, "../images/Products/NYKANT_hylde_naturolie_01.png", 4, 6 },
-                    { 11, "../images/Products/NYKANT_hylde_sortolie_01.png", 4, 5 },
-                    { 19, "../images/Products/NYKANT_bord_naturolie_01.png", 7, 7 },
-                    { 13, "../images/Products/NYKANT_hylde_hvidolie_01.png", 5, 4 }
+                    { 23, 0, "../images/Products/NYKANT_rack_naturolie_01.png", 11, 11 },
+                    { 21, 0, "../images/Products/NYKANT_langbaenk_naturolie_01.png", 9, 9 },
+                    { 18, 0, "../images/Products/NYKANT_hylde_naturolie_01.png", 6, 6 },
+                    { 17, 2, "../images/Products/NYKANT_hylde_sortolie_01.png", 6, 5 },
+                    { 16, 1, "../images/Products/NYKANT_hylde_hvidolie_01.png", 6, 4 },
+                    { 22, 0, "../images/Products/NYKANT_opbevaringsbaenk_naturolie_01.png", 10, 10 },
+                    { 15, 0, "../images/Products/NYKANT_hylde_naturolie_01.png", 5, 6 },
+                    { 14, 2, "../images/Products/NYKANT_hylde_sortolie_01.png", 5, 5 },
+                    { 13, 1, "../images/Products/NYKANT_hylde_hvidolie_01.png", 5, 4 },
+                    { 1, 0, "../images/Products/NYKANT_boejle_naturolie_01.png", 1, 1 },
+                    { 2, 2, "../images/Products/NYKANT_boejle_sortolie_01.png", 1, 2 },
+                    { 3, 1, "../images/Products/NYKANT_boejle_hvidolie_01.png", 1, 3 },
+                    { 12, 0, "../images/Products/NYKANT_hylde_naturolie_01.png", 4, 6 },
+                    { 20, 0, "../images/Products/NYKANT_kortbaenk_naturolie_01.png", 8, 8 },
+                    { 10, 1, "../images/Products/NYKANT_hylde_hvidolie_01.png", 4, 4 },
+                    { 4, 0, "../images/Products/NYKANT_boejle_naturolie_01.png", 2, 1 },
+                    { 9, 1, "../images/Products/NYKANT_boejle_hvidolie_01.png", 3, 3 },
+                    { 5, 2, "../images/Products/NYKANT_boejle_sortolie_01.png", 2, 2 },
+                    { 19, 0, "../images/Products/NYKANT_bord_naturolie_01.png", 7, 7 },
+                    { 6, 1, "../images/Products/NYKANT_boejle_hvidolie_01.png", 2, 3 },
+                    { 8, 2, "../images/Products/NYKANT_boejle_sortolie_01.png", 3, 2 },
+                    { 7, 0, "../images/Products/NYKANT_boejle_naturolie_01.png", 3, 1 },
+                    { 11, 2, "../images/Products/NYKANT_hylde_sortolie_01.png", 4, 5 }
                 });
 
             migrationBuilder.InsertData(
@@ -380,43 +459,66 @@ namespace NykantAPI.Migrations
                 columns: new[] { "Id", "ProductId", "Source" },
                 values: new object[,]
                 {
-                    { 12, 4, "../images/Products/NYKANT_hylde_hvidolie_03.png" },
-                    { 29, 10, "../images/Products/NYKANT_opbevaringsbaenk_naturolie_05.png" },
-                    { 30, 10, "../images/Products/NYKANT_opbevaringsbaenk_naturolie_06.png" },
-                    { 31, 10, "../images/Products/NYKANT_opbevaringsbaenk_naturolie_07.png" },
-                    { 8, 7, "../images/Products/NYKANT_bord_naturolie_02.png" },
-                    { 7, 7, "../images/Products/NYKANT_bord_naturolie_01.png" },
                     { 3, 1, "../images/Products/NYKANT_boejle_naturolie_01.png" },
-                    { 37, 11, "../images/Products/NYKANT_rack_naturolie_06.png" },
-                    { 36, 11, "../images/Products/NYKANT_rack_naturolie_05.png" },
-                    { 35, 11, "../images/Products/NYKANT_rack_naturolie_04.png" },
-                    { 5, 2, "../images/Products/NYKANT_boejle_sortolie_01.png" },
-                    { 6, 2, "../images/Products/NYKANT_boejle_sortolie_02.png" },
-                    { 34, 11, "../images/Products/NYKANT_rack_naturolie_03.png" },
-                    { 33, 11, "../images/Products/NYKANT_rack_naturolie_02.png" },
-                    { 32, 11, "../images/Products/NYKANT_rack_naturolie_01.png" },
-                    { 4, 1, "../images/Products/NYKANT_boejle_naturolie_02.png" },
-                    { 28, 10, "../images/Products/NYKANT_opbevaringsbaenk_naturolie_04.png" },
-                    { 25, 10, "../images/Products/NYKANT_opbevaringsbaenk_naturolie_01.png" },
-                    { 26, 10, "../images/Products/NYKANT_opbevaringsbaenk_naturolie_02.png" },
-                    { 11, 4, "../images/Products/NYKANT_hylde_hvidolie_02.png" },
-                    { 16, 5, "../images/Products/NYKANT_hylde_sortolie_01.png" },
-                    { 17, 5, "../images/Products/NYKANT_hylde_sortolie_02.png" },
-                    { 18, 5, "../images/Products/NYKANT_hylde_sortolie_03.png" },
-                    { 10, 4, "../images/Products/NYKANT_hylde_hvidolie_01.png" },
-                    { 13, 6, "../images/Products/NYKANT_hylde_naturolie_01.png" },
-                    { 14, 6, "../images/Products/NYKANT_hylde_naturolie_02.png" },
-                    { 27, 10, "../images/Products/NYKANT_opbevaringsbaenk_naturolie_03.png" },
-                    { 15, 6, "../images/Products/NYKANT_hylde_naturolie_03.png" },
-                    { 19, 8, "../images/Products/NYKANT_kortbaenk_naturolie_01.png" },
                     { 20, 8, "../images/Products/NYKANT_kortbaenk_naturolie_02.png" },
                     { 21, 8, "../images/Products/NYKANT_kortbaenk_naturolie_03.png" },
                     { 22, 9, "../images/Products/NYKANT_langbaenk_naturolie_01.png" },
+                    { 6, 2, "../images/Products/NYKANT_boejle_sortolie_02.png" },
                     { 23, 9, "../images/Products/NYKANT_langbaenk_naturolie_02.png" },
+                    { 26, 10, "../images/Products/NYKANT_opbevaringsbaenk_naturolie_02.png" },
+                    { 5, 2, "../images/Products/NYKANT_boejle_sortolie_01.png" },
+                    { 25, 10, "../images/Products/NYKANT_opbevaringsbaenk_naturolie_01.png" },
+                    { 27, 10, "../images/Products/NYKANT_opbevaringsbaenk_naturolie_03.png" },
+                    { 28, 10, "../images/Products/NYKANT_opbevaringsbaenk_naturolie_04.png" },
+                    { 29, 10, "../images/Products/NYKANT_opbevaringsbaenk_naturolie_05.png" },
+                    { 19, 8, "../images/Products/NYKANT_kortbaenk_naturolie_01.png" },
+                    { 31, 10, "../images/Products/NYKANT_opbevaringsbaenk_naturolie_07.png" },
+                    { 4, 1, "../images/Products/NYKANT_boejle_naturolie_02.png" },
                     { 24, 9, "../images/Products/NYKANT_langbaenk_naturolie_03.png" },
+                    { 30, 10, "../images/Products/NYKANT_opbevaringsbaenk_naturolie_06.png" },
+                    { 2, 3, "../images/Products/NYKANT_boejle_hvidolie_02.png" },
+                    { 36, 11, "../images/Products/NYKANT_rack_naturolie_05.png" },
+                    { 10, 4, "../images/Products/NYKANT_hylde_hvidolie_01.png" },
+                    { 16, 5, "../images/Products/NYKANT_hylde_sortolie_01.png" },
+                    { 17, 5, "../images/Products/NYKANT_hylde_sortolie_02.png" },
+                    { 18, 5, "../images/Products/NYKANT_hylde_sortolie_03.png" },
                     { 9, 7, "../images/Products/NYKANT_bord_naturolie_03.png" },
+                    { 8, 7, "../images/Products/NYKANT_bord_naturolie_02.png" },
+                    { 7, 7, "../images/Products/NYKANT_bord_naturolie_01.png" },
+                    { 37, 11, "../images/Products/NYKANT_rack_naturolie_06.png" },
+                    { 12, 4, "../images/Products/NYKANT_hylde_hvidolie_03.png" },
+                    { 35, 11, "../images/Products/NYKANT_rack_naturolie_04.png" },
+                    { 13, 6, "../images/Products/NYKANT_hylde_naturolie_01.png" },
+                    { 14, 6, "../images/Products/NYKANT_hylde_naturolie_02.png" },
+                    { 34, 11, "../images/Products/NYKANT_rack_naturolie_03.png" },
+                    { 33, 11, "../images/Products/NYKANT_rack_naturolie_02.png" },
+                    { 15, 6, "../images/Products/NYKANT_hylde_naturolie_03.png" },
                     { 1, 3, "../images/Products/NYKANT_boejle_hvidolie_01.png" },
-                    { 2, 3, "../images/Products/NYKANT_boejle_hvidolie_02.png" }
+                    { 32, 11, "../images/Products/NYKANT_rack_naturolie_01.png" },
+                    { 11, 4, "../images/Products/NYKANT_hylde_hvidolie_02.png" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "ProductLength",
+                columns: new[] { "Id", "Length", "ProductId", "ProductReferenceId" },
+                values: new object[,]
+                {
+                    { 15, "800 mm.", 6, 6 },
+                    { 8, "1000 mm.", 4, 6 },
+                    { 6, "600 mm.", 4, 6 },
+                    { 7, "800 mm.", 4, 6 },
+                    { 16, "1000 mm.", 6, 6 },
+                    { 9, "400 mm.", 5, 6 },
+                    { 10, "600 mm.", 5, 6 },
+                    { 4, "1700 mm.", 9, 9 },
+                    { 3, "1150 mm.", 9, 8 },
+                    { 11, "800 mm.", 5, 6 },
+                    { 12, "1000 mm.", 5, 6 },
+                    { 2, "1700 mm.", 8, 9 },
+                    { 1, "1150 mm.", 8, 8 },
+                    { 14, "600 mm.", 6, 6 },
+                    { 5, "400 mm.", 4, 6 },
+                    { 13, "400 mm.", 6, 6 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -441,6 +543,12 @@ namespace NykantAPI.Migrations
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Invoices_OrderId",
+                table: "Invoices",
+                column: "OrderId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_OrderItems_ProductId",
                 table: "OrderItems",
                 column: "ProductId");
@@ -455,6 +563,11 @@ namespace NykantAPI.Migrations
                 table: "ParcelshopData",
                 column: "ShippingDeliveryId",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductLength_ProductId",
+                table: "ProductLength",
+                column: "ProductId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_CategoryId",
@@ -491,7 +604,13 @@ namespace NykantAPI.Migrations
                 name: "Colors");
 
             migrationBuilder.DropTable(
+                name: "Cookies");
+
+            migrationBuilder.DropTable(
                 name: "Images");
+
+            migrationBuilder.DropTable(
+                name: "Invoices");
 
             migrationBuilder.DropTable(
                 name: "NewsSubs");
@@ -501,6 +620,9 @@ namespace NykantAPI.Migrations
 
             migrationBuilder.DropTable(
                 name: "ParcelshopData");
+
+            migrationBuilder.DropTable(
+                name: "ProductLength");
 
             migrationBuilder.DropTable(
                 name: "Reviews");

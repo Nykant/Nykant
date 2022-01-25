@@ -61,14 +61,14 @@ namespace NykantIS
             identityConnection = Configuration.GetConnectionString("Identity");
 
             services.AddDbContext<MyKeysContext>(options =>
-                options.UseMySql(mykeyConnection));
+                options.UseSqlServer(mykeyConnection));
 
             services.AddDataProtection()
                 .PersistKeysToDbContext<MyKeysContext>()
                 .SetApplicationName("Nykant");
 
             services.AddDbContext<IdentityContext>(options =>
-                options.UseMySql(identityConnection));
+                options.UseSqlServer(identityConnection));
 
 
             services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
@@ -96,19 +96,19 @@ namespace NykantIS
             })
             .AddConfigurationStore(options =>
             {
-                options.ConfigureDbContext = b => b
-    .UseMySql(identityserverConnection, mySqlOptionsAction: mySql =>
-    {
-        mySql.MigrationsAssembly(migrationsAssembly);
-    });
-                //if (Environment.IsDevelopment())
-                //{
-                //    options.ConfigureDbContext = b => b
-                //        .UseSqlServer(identityserverConnection, sqlServerOptionsAction: sql =>
-                //        {
-                //        sql.MigrationsAssembly(migrationsAssembly);
-                //        });
-                //}
+    //            options.ConfigureDbContext = b => b
+    //.UseMySql(identityserverConnection, mySqlOptionsAction: mySql =>
+    //{
+    //    mySql.MigrationsAssembly(migrationsAssembly);
+    //});
+                if (Environment.IsDevelopment())
+                {
+                    options.ConfigureDbContext = b => b
+                        .UseSqlServer(identityserverConnection, sqlServerOptionsAction: sql =>
+                        {
+                            sql.MigrationsAssembly(migrationsAssembly);
+                        });
+                }
                 //else
                 //{
                 //    options.ConfigureDbContext = b => b
@@ -121,19 +121,19 @@ namespace NykantIS
             })
             .AddOperationalStore(options =>
             {
-                options.ConfigureDbContext = b => b
-    .UseMySql(identityserverConnection, mySqlOptionsAction: mySql =>
-    {
-        mySql.MigrationsAssembly(migrationsAssembly);
-    });
-                //if (Environment.IsDevelopment())
+                //            options.ConfigureDbContext = b => b
+                //.UseMySql(identityserverConnection, mySqlOptionsAction: mySql =>
                 //{
-                //    options.ConfigureDbContext = b => b
-                //        .UseSqlServer(identityserverConnection, sqlServerOptionsAction: sql =>
-                //        {
-                //        sql.MigrationsAssembly(migrationsAssembly);
-                //        });
-                //}
+                //    mySql.MigrationsAssembly(migrationsAssembly);
+                //});
+                if (Environment.IsDevelopment())
+                {
+                    options.ConfigureDbContext = b => b
+                        .UseSqlServer(identityserverConnection, sqlServerOptionsAction: sql =>
+                        {
+                            sql.MigrationsAssembly(migrationsAssembly);
+                        });
+                }
                 //else
                 //{
                 //    options.ConfigureDbContext = b => b
