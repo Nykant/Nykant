@@ -139,7 +139,10 @@
     <value>Levering</value>
   </data>
   <data name="Home" xml:space="preserve">
-    <value>Til Privat med GLS</value>
+    <value>Til Leveringsaddressen med GLS</value>
+  </data>
+  <data name="HomeDKI" xml:space="preserve">
+    <value>Leveringsaddressen med DKI Pallegods (eneste mulighed for ordrer med en varer over 20kg)</value>
   </data>
   <data name="Shipping Method" xml:space="preserve">
     <value>Leveringsmetode</value>

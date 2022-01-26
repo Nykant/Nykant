@@ -96,6 +96,12 @@
     z-index: 101;
 }
 
+.notHome {
+    text-align:center;
+    height:100px;
+    display:none;
+}
+
 .shop {
     height:auto;
     width:100%;

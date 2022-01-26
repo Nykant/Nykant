@@ -179,6 +179,14 @@ ol, ul {
     font-weight:bold;
 }
 
+.simple-select {
+    margin-top: 10px;
+    padding: 8px;
+    border: none;
+    background: var(--color3);
+    outline:none;
+    cursor:pointer;
+}
 
 .sidepadding100 {
     padding-left: 100px;
@@ -581,6 +589,9 @@ ol, ul {
 }
 .red-text {
     color:red;
+}
+.normal-text {
+    color:#777069;
 }
 
 .margin-bottom-10 {

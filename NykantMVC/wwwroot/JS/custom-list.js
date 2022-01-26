@@ -15,6 +15,7 @@ var nearby_shops = document.getElementById("nearby-shops");
 var nearby_shops_modal = document.getElementById('nearby-shops-modal');
 var shipping_form = document.getElementById('shipping-form');
 var submit_button = document.getElementById('custom-list-button')
+var not_home = document.getElementById('not-home');
 submit_button.disabled = true;
 
 
@@ -53,15 +54,23 @@ for (i = 0; i < l; i++) {
                     }
                     this.setAttribute("class", "custom-list-option selected");
 
-                    if (select.options[i].dataset.type.includes("Home")) {
+                    if (select.options[i].dataset.type == "Home") {
                         shippingdelivery_type.value = 'Home';
+                        not_home.style.display = "block";
                         submit_button.disabled = false;
                         break;
                     }
-                    else {
+                    else if (select.options[i].dataset.type == "Shop") {
                         shippingloading(true);
                         shippingdelivery_type.value = 'Shop';
+                        not_home.style.display = "none";
                         submit_button.disabled = true;
+                    }
+                    else if (select.options[i].dataset.type == "HomeDKI") {
+                        shippingdelivery_type.value = 'HomeDKI';
+                        not_home.style.display = "block";
+                        submit_button.disabled = false;
+                        break;
                     }
 
                     if (select.options[i].dataset.type.includes('Shop')) {

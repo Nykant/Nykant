@@ -7,7 +7,7 @@
     bool tooHeavyForShop = false;
     foreach(var item in Model.Checkout.BagItems)
     {
-        if(item.Product.WeightInKg > 19.9)
+        if(item.Product.WeightInKg > 20)
         {
             tooHeavyForShop = true;
         }
@@ -16,7 +16,7 @@
     {
         shippingMethods = new List<ShippingMethod>
         {
-            new ShippingMethod { Type = "Home"}
+            new ShippingMethod { Type = "HomeDKI"}
         };
     }
     else
@@ -72,6 +72,19 @@
                             }
                         </select>
                     </div>
+                </div>
+                <div class="notHome" id="not-home">
+                    <select class="simple-select" name="shippingDelivery.NotHomeNote" asp-for="@Model.ShippingDelivery.NotHomeNote">
+                        <option value="">Hvis du ikke er hjemme? (frivilligt)</option>
+                        <option>Sæt pakken ved hoveddøren</option>
+                        <option>Sæt pakken ved lejlighedsdøren</option>
+                        <option>Sæt pakken ved havedøren</option>
+                        <option>Sæt pakken ved bagdøren/bryggersdøren</option>
+                        <option>Sæt pakken bag huset</option>
+                        <option>Sæt Pakken i kælderskakten</option>
+                        <option>Sæt pakken i garagen</option>
+                        <option>Sæt pakken i skuret</option>
+                    </select>
                 </div>
                 <div class="col-12 right">
                     <button id="custom-list-button" class="button" type="submit">

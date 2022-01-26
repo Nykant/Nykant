@@ -235,7 +235,33 @@
                                         </table>
                                     </td>
                                 </tr>
-
+                                @if (Model.ShippingDelivery.NotHomeNote != null)
+                                {
+                                    <tr style="border-collapse:collapse">
+                                        <td align="left" style="padding:0;Margin:0;padding-top:10px;padding-left:35px;padding-right:35px">
+                                            <table width="100%" cellspacing="0" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                                                <tr style="border-collapse:collapse">
+                                                    <td valign="top" align="center" style="padding:0;Margin:0;width:530px">
+                                                        <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;" width="100%" cellspacing="0" cellpadding="0" role="presentation">
+                                                            <tr style="border-collapse:collapse">
+                                                                <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:15px;padding-bottom:15px">
+                                                                    <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                                                                        <tr style="border-collapse:collapse">
+                                                                            <td align="left" style="padding:0;Margin:0;padding-bottom:15px"><h4 style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif; color:red;">!Vigtigt <span style="color:black">- Hvis kunden ikke er hjemme:</span></h4></td>
+                                                                        </tr>
+                                                                        <tr style="border-collapse:collapse">
+                                                                            <td align="left" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#333333;font-size:16px">@Model.ShippingDelivery.NotHomeNote</p></td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                }
                                 <tr style="border-collapse:collapse">
                                     <td align="left" style="padding:0;Margin:0;padding-top:10px;padding-left:35px;padding-right:35px">
                                         <table width="100%" cellspacing="0" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
@@ -282,11 +308,34 @@
                                                                             <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.ShippingDelivery.ParcelshopData.CountryCodeISO3166A2</span></td>
                                                                         </tr>
                                                                     }
-                                                                    else
+                                                                    else if (Model.ShippingDelivery.Type == "Home")
                                                                     {
                                                                         <tr style="border-collapse:collapse">
                                                                             <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Leveres til:</strong></td>
-                                                                            <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">Privat med GLS</span></td>
+                                                                            <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">Leveringsaddressen med GLS</span></td>
+                                                                        </tr>
+                                                                        <tr style="border-collapse:collapse">
+                                                                            <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Addresse:</strong></td>
+                                                                            <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.Customer.ShippingAddress.Address</span></td>
+                                                                        </tr>
+                                                                        <tr style="border-collapse:collapse">
+                                                                            <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>By:</strong></td>
+                                                                            <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.Customer.ShippingAddress.City</span></td>
+                                                                        </tr>
+                                                                        <tr style="border-collapse:collapse">
+                                                                            <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Postnummer:</strong></td>
+                                                                            <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.Customer.ShippingAddress.Postal</span></td>
+                                                                        </tr>
+                                                                        <tr style="border-collapse:collapse">
+                                                                            <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Land:</strong></td>
+                                                                            <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.Customer.ShippingAddress.Country</span></td>
+                                                                        </tr>
+                                                                    }
+                                                                    else if (Model.ShippingDelivery.Type == "HomeDKI")
+                                                                    {
+                                                                        <tr style="border-collapse:collapse">
+                                                                            <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Leveres til:</strong></td>
+                                                                            <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">Leveringsaddressen med DKI Pallegods</span></td>
                                                                         </tr>
                                                                         <tr style="border-collapse:collapse">
                                                                             <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Addresse:</strong></td>
