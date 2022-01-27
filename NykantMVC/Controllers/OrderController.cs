@@ -106,6 +106,16 @@ namespace NykantMVC.Controllers
 
                     await mailService.SendOrderEmailAsync(order);
 
+                    var isBackOrder = false;
+                    foreach(var item in order.OrderItems)
+                    {
+                        if(item.Product.Amount >= item.Quantity)
+                        {
+                            sada
+                        }
+                    }
+                    await mailService.SendDKIEmailAsync(order);
+
                     if (User.Identity.IsAuthenticated)
                     {
                         var url = $"/BagItem/DeleteBagItems/{User.Claims.FirstOrDefault(x => x.Type == "sub").Value}";

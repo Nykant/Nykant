@@ -52,6 +52,33 @@ namespace NykantMVC.Services
             smtp.Disconnect(true);
         }
 
+        public async Task SendDKIEmailAsync(Order order)
+        {
+            var email = new MimeMessage();
+            email.From.Add(MailboxAddress.Parse(_mailSettings.Mail));
+            email.Sender = MailboxAddress.Parse(_mailSettings.Mail);
+            email.To.Add(MailboxAddress.Parse(_mailSettings.MailDKI));
+            email.Subject = "Ordrebekræftelse";
+
+            var bodyBuilder = new BodyBuilder();
+            //for (int i = 0; i < order.OrderItems.Count(); i++)
+            //{
+            //    var image = bodyBuilder.LinkedResources.Add(order.OrderItems[i].Product.Path);
+            //    image.ContentId = MimeUtils.GenerateMessageId();
+            //    order.OrderItems[i].ContentId = image.ContentId;
+            //}
+            string body = await _razorViewToStringRenderer.RenderViewToStringAsync("/Views/Shared/EmailViews/OrderEmail.cshtml", order);
+
+            bodyBuilder.HtmlBody = body;
+            email.Body = bodyBuilder.ToMessageBody();
+
+            using var smtp = new SmtpClient();
+            smtp.Connect(_mailSettings.Host, _mailSettings.Port, SecureSocketOptions.StartTls);
+            smtp.Authenticate(_mailSettings.Username, _mailSettings.Password);
+            await smtp.SendAsync(email);
+            smtp.Disconnect(true);
+        }
+
         public async Task SendInvoiceEmailAsync(Order order)
         {
             var email = new MimeMessage();
@@ -95,6 +122,7 @@ namespace NykantMVC.Services
     public interface IMailService
     {
         Task SendOrderEmailAsync(Order order);
+        Task SendDKIEmailAsync(Order order);
         Task SendInvoiceEmailAsync(Order order);
         //Task SendEmailAsync(SimpleMail simpleMail);
     }
