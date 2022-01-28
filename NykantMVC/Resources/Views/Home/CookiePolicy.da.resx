@@ -127,10 +127,7 @@
     <value>iPhone, iPad og andet fra Apple</value>
   </data>
   <data name="Consent valid for" xml:space="preserve">
-    <value>&lt;h3&gt;Dit samtykke gælder for følgende domæner: nykant.dk&lt;/h3&gt;</value>
-  </data>
-  <data name="Contact Info" xml:space="preserve">
-    <value>&lt;h1&gt;Hjemmesidens ejer og kontaktoplysninger&lt;/h1&gt;</value>
+    <value>&lt;h3&gt;Dit cookie samtykke gælder for følgende domæner: nykant.dk&lt;/h3&gt;</value>
   </data>
   <data name="Cookie Policy Title" xml:space="preserve">
     <value>&lt;h1&gt;Cookie Politik&lt;/h1&gt;</value>
@@ -140,47 +137,32 @@
                 Cookies som du tidligere har accepteret, kan efterfølgende slettes nemt:
             &lt;/p&gt;
             &lt;p class="pushed-text"&gt;
-                Du kan gøre det ved at trykke (her) og vælg “Fravælg alle”.
-            &lt;/p&gt;
-            &lt;p class="pushed-text"&gt;
-                Eller hvis du benytter en PC /computer med en nyere Internet-browser, kan du slette dine cookies ved at bruge genvejstasterne:
-            &lt;/p&gt;
-            &lt;p class="pushed-text"&gt;
-                CTRL + SHIFT + Delete
-            &lt;/p&gt;
-            &lt;p&gt;
-                Virker genvejstasterne ikke, og/eller benytter du en MAC, skal du starte med at finde ud af, hvilken browser du bruger og herefter klikke på det relevante link:
-            &lt;/p&gt;
-            &lt;p&gt;
-                Husk: Bruger du flere Internet-browsere, skal du slette cookies i dem alle.
+                Du kan slette "ikke nødvendige cookies" fra vores hjemmeside ved at trykke på knappen "Kun Nødvendige Cookies" i topped af siden. Det vil kun slette cookies i den browser du bruge lige nu.
             &lt;/p&gt;</value>
   </data>
   <data name="Delete cookies sub header" xml:space="preserve">
     <value>&lt;h2&gt;Sletning af cookies:&lt;/h2&gt;</value>
   </data>
   <data name="Deny all cookies" xml:space="preserve">
-    <value>&lt;p class="pushed-text"&gt;Du kan altid afvise cookies på din computer ved at ændre indstillingerne i din Internet-browser. Hvor du finder indstillingerne afhænger af, hvilken browser du anvender. Du skal dog være opmærksom på, at hvis du gør det, er der mange funktioner og services, du ikke kan bruge, fordi disse funktioner og services forudsætter, at hjemmesiden kan huske de valg, du foretager.&lt;/p&gt;</value>
+    <value>&lt;p class="pushed-text"&gt;Du kan altid afvise alle fremtidige cookies på din computer ved at ændre indstillingerne i din Internet-browser. Hvor du finder indstillingerne afhænger af, hvilken browser du anvender. Du skal dog være opmærksom på, at hvis du gør det, er der mange funktioner og services, du ikke kan bruge, fordi disse funktioner og services forudsætter, at hjemmesiden fungerer korrekt.&lt;/p&gt;</value>
   </data>
   <data name="Deny all cookies sub header" xml:space="preserve">
     <value>&lt;h2&gt;Afvisning af alle cookies:&lt;/h2&gt;</value>
   </data>
   <data name="Deny cookies" xml:space="preserve">
-    <value>&lt;p class="pushed-text"&gt;Du kan afvise alle de cookies som ikke er essentielle for vores hjemmesides funktionalitet ved at klikke (her) eller på knappen(Instillinger) under titlen på nuværende side.&lt;/p&gt;</value>
+    <value>&lt;p class="pushed-text"&gt;Du kan afvise alle de cookies som ikke er nødvendige for vores hjemmesides funktionalitet eller nogle specifikke som du ikke vil tillade ved at klikke "Kun Nødvendige Cookies" eller på knappen "Instillinger" under titlen på nuværende side.&lt;/p&gt;</value>
   </data>
   <data name="Deny cookies sub header" xml:space="preserve">
     <value>&lt;h2&gt;Afvisning af nogle cookies:&lt;/h2&gt;</value>
   </data>
   <data name="Deny GA cookies" xml:space="preserve">
-    <value>&lt;p&gt;Du kan fravælge cookies fra Google Analytics &lt;a href="http://tools.google.com/dlpage/gaoptout"&gt;her&lt;/a&gt;.&lt;/p&gt;</value>
+    <value>&lt;p&gt;Du kan fravælge cookies fra Google Analytics &lt;a class="simple-link" href="https://tools.google.com/dlpage/gaoptout"&gt;her&lt;/a&gt;.&lt;/p&gt;</value>
   </data>
   <data name="Flash cookies" xml:space="preserve">
     <value>Flash cookies (alle browsere)</value>
   </data>
   <data name="How to deny or delete cookies main header" xml:space="preserve">
     <value>&lt;h1&gt;Sådan afviser eller sletter du dine cookies&lt;/h1&gt;</value>
-  </data>
-  <data name="Introduction" xml:space="preserve">
-    <value>&lt;span class="bold-text"&gt;Denne hjemmeside er drevet og ejet af:&lt;/span&gt;</value>
   </data>
   <data name="Only Essential Cookies" xml:space="preserve">
     <value>Kun Nødvendige Cookies</value>
@@ -190,19 +172,16 @@
   </data>
   <data name="Questions?" xml:space="preserve">
     <value>&lt;h1&gt;Har du spørgsmål?&lt;/h1&gt;
-            &lt;p&gt;Har du kommentarer eller spørgsmål i forbindelse med vores information og/eller behandling af personlige oplysninger, er du velkommen til at kontakte os. &lt;/p&gt;</value>
+            &lt;p&gt;Har du kommentarer eller spørgsmål i forbindelse med vores information og/eller behandling af personlige oplysninger, er du velkommen til at kontakte os &lt;a class="simple-link" href="https://nykant.dk/home/contact"&gt;her&lt;/a&gt;.&lt;/p&gt;</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Instillinger</value>
-  </data>
-  <data name="Telephone for customer service" xml:space="preserve">
-    <value>Telefonnr. til kundeservice</value>
   </data>
   <data name="Top Info" xml:space="preserve">
     <value>&lt;h3&gt;Med EUs nye regler for informationsindhentning og beskyttelse af persondata, undrer mange sig måske over hvad "cookies" i virkeligeheden er. Her finder du lidt information om disse informationskapsler og hvordan Nykant bruger dem.&lt;/h3&gt;</value>
   </data>
   <data name="Use of cookies" xml:space="preserve">
-    <value>&lt;p&gt;Cookies er nødvendige for at få hjemmesiden til at fungere. Cookies hjælper os desuden med at få overblik over dit besøg på hjemmesiden, så vi løbende kan optimere og målrette hjemmesiden til dine behov og interesser. Cookies husker f.eks., hvad du har lagt i en eventuel indkøbskurv, om du tidligere har besøgt siden, om du er logget ind, hvilket sprog og valuta, du gerne vil have vist på hjemmesiden og dine cookie preferencer. Helt overordnet anvendes cookies således som del af vores hjemmesides essentielle funktioner for at give dig en god oplevelse. Her er oversigten over hjemmesidens brug af cookies:&lt;/p&gt;</value>
+    <value>&lt;p&gt;Cookies er nødvendige for at få hjemmesiden til at fungere. Cookies hjælper os desuden med at få overblik over dit besøg på hjemmesiden, så vi løbende kan optimere og målrette hjemmesiden til dine behov og interesser. Cookies husker f.eks., hvad du har lagt i din indkøbskurv, om du tidligere har besøgt siden, hvilket sprog, du gerne vil have vist på hjemmesiden og dine cookie preferencer. Helt overordnet anvendes cookies således som del af vores hjemmesides nødvendige funktioner for at give dig en god oplevelse. Her er oversigten over hjemmesidens brug af cookies:&lt;/p&gt;</value>
   </data>
   <data name="Use of cookies header" xml:space="preserve">
     <value>&lt;h1&gt;Hjemmesidens brug af cookies&lt;/h1&gt;</value>

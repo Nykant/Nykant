@@ -30,6 +30,7 @@ namespace NykantAPI.Models
         public Status Status { get; set; }
         public double WeightInKg { get; set; }
         public DateTime EstimatedDelivery { get; set; }
+        public bool IsBackOrder { get; set; } = false;
         [Required]
         public string PaymentIntent_Id { get; set; }
         public List<OrderItem> OrderItems { get; set; }

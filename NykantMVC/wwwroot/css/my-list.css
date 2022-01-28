@@ -1,4 +1,4 @@
-﻿#list {
+﻿.my-list {
     font-family: Lato, sans-serif;
     border-collapse: collapse;
     width: 100%;
@@ -6,32 +6,32 @@
     border:1px solid var(--black-fade);
 }
 
-    #list td, #list th {
+    .my-list td, .my-list th {
         padding: 10px;
-        display:inline-block;
-        width:19%;
+        display: inline-block;
+        width: 19%;
     }
 
-    #list td {
-        cursor:pointer;
+    .my-list td {
+        cursor: pointer;
     }
 
-    #list tr {
-        background-color:white;
+    .my-list tr {
+        background-color: white;
     }
 
-    #list tr:nth-child(even) {
-        background-color: var(--color1);
-    }
+        .my-list tr:nth-child(even) {
+            background-color: var(--color1);
+        }
 
-        #list tr:hover {
+        .my-list tr:hover {
             background-color: var(--color2);
         }
 
-    #list th {
-        padding:25px;
+    .my-list th {
+        padding: 25px;
         text-align: center;
-/*        background-color: var(--blue);*/
+        /*        background-color: var(--blue);*/
         color: black;
     }
 

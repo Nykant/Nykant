@@ -1,0 +1,14 @@
+﻿@model List<Order>
+@{
+    ViewData["Title"] = "Rest Ordrer";
+    ViewData["Description"] = "";
+}
+
+<link rel="stylesheet" href="~/css/orders-list.css" />
+
+<div class="my-row top-padding bottom-padding">
+    <div class="responsive-container center" id="back-orders">
+        <partial name="_BackOrderListPartial" />
+    </div>
+</div>
+

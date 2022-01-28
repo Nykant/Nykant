@@ -141,7 +141,7 @@ a:hover {
     color: var(--dark);
     text-decoration:underline;
     cursor:pointer;
-    display:inline;
+    display:inline-block;
 }
 
     .simple-link:hover {

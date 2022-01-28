@@ -25,12 +25,12 @@ namespace NykantMVC.Controllers
 {
     [AutoValidateAntiforgeryToken]
     [AllowAnonymous]
-    public class NykantController : BaseController
+    public class HomeController : BaseController
     {
         private readonly IProtectionService _protectionService;
         private readonly IMailService mailService;
         private  IHostEnvironment Environment { get; set; }
-        public NykantController(ILogger<NykantController> logger, IHostEnvironment _environment, IMailService _mailService, IProtectionService protectionService, IOptions<Urls> urls, HtmlEncoder htmlEncoder) : base(logger, urls, htmlEncoder)
+        public HomeController(ILogger<HomeController> logger, IHostEnvironment _environment, IMailService _mailService, IProtectionService protectionService, IOptions<Urls> urls, HtmlEncoder htmlEncoder) : base(logger, urls, htmlEncoder)
         {
             _protectionService = protectionService;
             Environment = _environment;

@@ -138,12 +138,9 @@
   </data>
   <data name="Delivery and delay" xml:space="preserve">
     <value>&lt;div&gt;&lt;h1&gt;5. Levering&lt;/h1&gt;
-            &lt;p&gt;Vi har fri levering af alle vores produkter til Pakkeshop, eller hjemmeadressen med GLS. 
-                             Varer over 20 kg. kan kun tilbydes leveret på hjemmeadressen.
+            &lt;p&gt;Vi har gratis levering uanset mængden.        
 &lt;/p&gt;
-            &lt;p&gt;                             Hvis en vare eventuelt er forsinket ud over det lovede, kan ordren altid annulleres, og I vil
-                             Få pengene returneret.
-&lt;/p&gt;
+&lt;p&gt;Varer over 20 kg. kan kun tilbydes leveret på hjemmeadressen.&lt;/p&gt;
         &lt;/div&gt;</value>
   </data>
   <data name="Header" xml:space="preserve">
@@ -152,90 +149,84 @@
   <data name="Issues" xml:space="preserve">
     <value>&lt;div&gt;
             &lt;h1&gt;10. Tvister&lt;/h1&gt;
-            &lt;p&gt;Hvis du er utilfreds med Nykants håndtering af en reklamation eller andet, skal du først forsøge at løse tvisten direkte med os. Såfremt dette ikke lykkes, kan du indbringe sagen for Nævnenes Hus på www.naevneneshus.dk og herefter Forbrugerklagenævnet eller gøre brug af Europa-Kommissionens online klageportal ("ODR"). Alle tvister skal afgøres i henhold til dansk ret. Såfremt sagen indbringes for domstolene, skal den afgøres ved dit hjemting, dvs. i nærheden af, hvor du bor.&lt;/p&gt;
+            &lt;p&gt;Hvis du er utilfreds med Nykants håndtering af en reklamation eller andet, skal du først forsøge at løse tvisten direkte med os. Såfremt dette ikke lykkes, kan du indbringe sagen for Nævnenes Hus på &lt;a class="simple-link" href="https://www.naevneneshus.dk"&gt;www.naevneneshus.dk&lt;/a&gt; og herefter Forbrugerklagenævnet eller gøre brug af Europa-Kommissionens online klageportal ("ODR"). Alle tvister skal afgøres i henhold til dansk ret. Såfremt sagen indbringes for domstolene, skal den afgøres ved dit hjemting, dvs. i nærheden af, hvor du bor.&lt;/p&gt;
         &lt;/div&gt;</value>
   </data>
   <data name="Online sale" xml:space="preserve">
     <value>&lt;h1&gt;2. Online-handel&lt;/h1&gt;
             &lt;p&gt;
-                Nedenfor følger en beskrivelse af købsprocessen, så du altid kan føle dig tryg, når du handler på Websiden.
+                Nedenfor følger en beskrivelse af købsprocessen, så du altid kan føle dig tryg, når du handler på hjemmesiden.
             &lt;/p&gt;</value>
   </data>
   <data name="Payment" xml:space="preserve">
     <value>&lt;div&gt;
             &lt;h1&gt;4. Betaling&lt;/h1&gt;
-            &lt;p&gt;Nykant bruger Stripe(PCI service provider/betalingstjenesteudbyder) til at håndtere betalingen og kvitteringer. &lt;/p&gt;
+            &lt;p&gt;Nykant bruger Stripe(PCI service provider/betalingstjenesteudbyder) til at håndtere betalingen og betalingsoplysningerne. &lt;/p&gt;
             &lt;p&gt;Alle priser er i danske kroner og inkl. moms. Alle udgifter i relation til varen, herunder til porto, fragt, emballage mv., samt en samlet pris vil fremgå ved bestilling og af ordrebekræftelsen.&lt;/p&gt;
-            &lt;p&gt;Leveringsomkostninger vil variere afhængig af, hvilken vare og leveringsform du har valgt.&lt;/p&gt;
+            &lt;p&gt;Levering er gratis.&lt;/p&gt;
             &lt;p&gt;Du kan vælge mellem de betalingsmåder, som vi tilbyder i købsprocessen. &lt;/p&gt;
-            &lt;p&gt;Beløb hæves først på dit kort, når dine varer er blevet sendt. &lt;/p&gt;
+            &lt;p&gt;Beløb hæves først, når du modtager en faktura, hvilket du først vil gøre når dine varer er sendt fra lageret .&lt;/p&gt;
         &lt;/div&gt;</value>
   </data>
   <data name="Personal Info" xml:space="preserve">
     <value>&lt;div&gt;
             &lt;h1&gt;9. Personoplysninger&lt;/h1&gt;
-            &lt;p&gt;Nykants databeskyttelsespolitik kan læses &lt;a asp-controller="Nykant" asp-action="PrivacyPolicy"&gt;her&lt;/a&gt;.&lt;/p&gt;
+            &lt;p&gt;Nykants databeskyttelsespolitik kan læses &lt;a class="simple-link" asp-action="PrivacyPolicy"&gt;her&lt;/a&gt;.&lt;/p&gt;
         &lt;/div&gt;</value>
   </data>
   <data name="Regret" xml:space="preserve">
     <value>&lt;div&gt; 
-            &lt;h1&gt;6. Fortrydelsesret/Returret&lt;/h1&gt;&lt;p&gt;   Alle varer kan returneres, men skal være i original emballage og returneres igennem pakkeshop.  Returomkostninger vil være 65 kr. &lt;/p&gt;
+            &lt;h1&gt;6. Fortrydelsesret/Returret&lt;/h1&gt;&lt;p class=pushed-text&gt;Alle varer kan returneres, men skal være i original emballage og returneres igennem pakkeshop.  Returomkostninger vil være 65 kr. hvilket fraregnes beløbet som tilbagebetales.&lt;/p&gt;
                             
-
-&lt;p class=pushed-text&gt;- Ved returnering sendes en mail til os, hvor efter i vil modtage en returlabel, og varen 
-Afleveres i pakkeshop. &lt;/p&gt;
-&lt;p class=pushed-text&gt;- Omkostningerne fraregnes beløbet som tilbagebetales. &lt;/p&gt;
+&lt;p class=pushed-text&gt;Ved returnering sendes en mail til os, hvor efter i vil modtage en returlabel, og varen 
+afleveres i pakkeshop.&lt;/p&gt;
 
         &lt;/div&gt;</value>
   </data>
   <data name="Usage" xml:space="preserve">
     <value>&lt;h1&gt;1. Anvendelsesområde&lt;/h1&gt;
             &lt;p&gt;
-                Disse salgsbetingelser gælder altid, når du som forbruger handler på www.nykant.dk (herefter "Websiden").
-                Som en del af Websiden driver Nykant ApS (herefter "Nykant"), som er en handelsplatform, hvor du som forbruger kan købe varer direkte fra Nykant.
+                Disse salgsbetingelser gælder altid, når du som forbruger handler på nykant.dk.
+                Nykant.dk er en handelsplatform, hvor du som forbruger kan købe varer direkte fra Nykant.
             &lt;/p&gt;
             &lt;p&gt;
                 Disse salgsbetingelser og vilkår udgør sammen med ordrebekræftelsen, det samlede aftalegrundlag for dit køb.
             &lt;/p&gt;
-            &lt;p&gt;Den samlede aftale og de øvrige oplysninger på Websiden findes kun på dansk. &lt;/p&gt;
             &lt;p&gt;
-                Bemærk, at Nykants netbutik www.nykant.dk er alene for forbrugere. Dermed ikke for erhvervsdrivende.
+                Bemærk, at Nykants handelsplatform nykant.dk er alene for forbrugere. Dermed ikke for erhvervsdrivende.
             &lt;/p&gt;
             &lt;p&gt;
-                Ved bestilling af varer via Nykants netbutik (www.nykant.dk) bekræfter du, at du hverken køber varer som erhvervsdrivende eller med henblik på videresalg.
+                Ved bestilling af varer via Nykants handelsplatform bekræfter du, at du hverken køber varer som erhvervsdrivende eller med henblik på videresalg.
             &lt;/p&gt;</value>
   </data>
   <data name="Your orders" xml:space="preserve">
     <value>&lt;h1&gt;
                 3. Din bestilling
             &lt;/h1&gt;
-            &lt;h3&gt;Du skal være opmærksom på, at din afgivelse af bestilling ikke er en juridisk bindende aftale. Der er først indgået en bindende aftale mellem dig og Nykant, når du har modtaget en eller flere bindende ordrebekræftelser fra Nykant.&lt;/h3&gt;
+            &lt;h3&gt;Du skal være opmærksom på, at din afgivelse af bestilling ikke er en juridisk bindende aftale. Der er først indgået en bindende aftale mellem dig og Nykant, når du har modtaget en bindende ordrebekræftelse fra Nykant.&lt;/h3&gt;
             &lt;h2&gt;Afgivelse af bestilling&lt;/h2&gt;
             &lt;p&gt;
-                Afgivelse af bestilling via Websiden er ikke en juridisk bindende aftale for Sælger. Sælger er først bundet af aftalen, når du har modtaget en ordrebekræftelse. Det betyder, at Sælger har mulighed for at annullere din bestilling som følge af prisfejl, trykfejl, tekniske problemer, leveringssvigt, force majeure, hvis varen ikke er på lager og lignende situationer.
+                Afgivelse af bestilling via hjemmesiden er ikke en juridisk bindende aftale for Sælger. Sælger er først bundet af aftalen, når du har modtaget en ordrebekræftelse. Det betyder, at Sælger har mulighed for at annullere din bestilling som følge af prisfejl, trykfejl, tekniske problemer, leveringssvigt, force majeure, hvis varen ikke er på lager og lignende situationer.
             &lt;/p&gt;
             &lt;p&gt;
                 Force majeure foreligger, når korrekt opfyldelse af aftalevilkårene er umulig, og dette skyldes ekstraordinære omstændigheder, som leverandøren ikke kunne afbøde og ikke burde have forudset f.eks. krig, usædvanlige naturbegivenheder, brand, strejker, lockouts og pandemi.
 
             &lt;/p&gt;
             &lt;p&gt;
-                Når du har afgivet en bestilling via Websiden, vil Nykants system sende dig en ordre bekræftelse. Du bør læse ordrebekræftelsen nøje igennem og tjekke, at den stemmer overens med bestillingen. Hvis den ikke stemmer overens med din bestilling, så vil du have mulighed for at annullere ordren på hjemmesiden, her - https://localhost:5002/Order/History.
+                Når du har afgivet en bestilling via hjemmesiden, vil Nykants system sende dig en ordre bekræftelse. Du bør læse ordrebekræftelsen nøje igennem og tjekke, at den stemmer overens med bestillingen.
 
             &lt;/p&gt;
             &lt;p&gt;
                 Først når du har modtaget en ordrebekræftelse, er der indgået en juridisk bindende aftale mellem dig og Nyaknt.
 
             &lt;/p&gt;
-            &lt;p&gt;
-                Du kan læse mere om dine ordrer på Websiden. Hvis du har spørgsmål kan du altid kontakte os.
-            &lt;/p&gt;
             &lt;h2&gt;Ordre foretaget på nykant.dk er behandlet af:&lt;/h2&gt;
             &lt;p&gt;
-                Nykant ApS&lt;br /&gt;
-                CVR-nr.: 0000000&lt;br /&gt;
-                Kongensgade 31B 1&lt;br /&gt;
-                5000 Odense C, Danmark.&lt;br /&gt;
-                Telefonnr. til kundeservice: 27131499. E-mail: mail@nykant.dk
+                Nykant Aps&lt;br /&gt;
+                CVR-nr.: 42525995&lt;br /&gt;
+                Kongensgade 31B, 1&lt;br /&gt;
+                5000 Odense C, Danmark&lt;br /&gt;
+                &lt;a class="simple-link" asp-action="contact"&gt;Kontakt os&lt;/a&gt;
             &lt;/p&gt;</value>
   </data>
 </root>

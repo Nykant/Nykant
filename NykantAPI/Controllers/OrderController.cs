@@ -21,20 +21,19 @@ namespace NykantAPI.Controllers
             : base(logger, context)
         {
         }
+
         [HttpGet]
         public async Task<ActionResult<List<Order>>> GetOrders()
         {
             var orders = await _context.Orders.ToListAsync();
-
             return Ok(JsonConvert.SerializeObject(orders));
         }
 
-        [HttpGet("{subject}")]
-        public async Task<ActionResult<List<Order>>> GetOrders(string subject)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Order>> GetOrder(int id)
         {
-            var orders = _context.Orders.Where(x => x.Subject == subject);
-
-            return Ok(JsonConvert.SerializeObject(orders));
+            var order = await _context.Orders.Include(x => x.Customer).ThenInclude(x => x.ShippingAddress).Include(x => x.Customer).ThenInclude(x => x.BillingAddress).Include(x => x.OrderItems).ThenInclude(x => x.Product).Include(x => x.ShippingDelivery).ThenInclude(x => x.ParcelshopData).Include(x => x.Invoice).FirstOrDefaultAsync(x => x.Id == id);
+            return Ok(JsonConvert.SerializeObject(order, Extensions.JsonOptions.jsonSettings));
         }
 
         [HttpPatch]
@@ -88,13 +87,6 @@ namespace NykantAPI.Controllers
             {
                 return NotFound();
             }
-        }
-
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Order>> GetOrder(int id)
-        {
-            var order = await _context.Orders.Include(x => x.Customer).ThenInclude(x => x.ShippingAddress).Include(x => x.Customer).ThenInclude(x => x.BillingAddress).Include(x => x.OrderItems).ThenInclude(x => x.Product).Include(x => x.ShippingDelivery).ThenInclude(x => x.ParcelshopData).Include(x => x.Invoice).FirstOrDefaultAsync(x => x.Id == id);
-            return Ok(JsonConvert.SerializeObject(order, Extensions.JsonOptions.jsonSettings));
         }
 
         private bool OrderExists(int orderId)

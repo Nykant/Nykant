@@ -72,7 +72,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Resources\Views\Nykant\PrivacyPolicy.da.resx">
+    <EmbeddedResource Update="Resources\Views\Home\PrivacyPolicy.da.resx">
       <Generator></Generator>
     </EmbeddedResource>
   </ItemGroup>

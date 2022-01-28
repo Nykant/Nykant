@@ -94,27 +94,36 @@ namespace NykantMVC.Controllers
                         return Json(new { ok = false, error = "could not post order items" });
                     }
 
-                    var jsonCustomer = await GetRequest($"/Customer/GetCustomer/{checkout.CustomerInfId}");
-                    var customer = JsonConvert.DeserializeObject<Customer>(jsonCustomer);
-                    customer = _protectionService.UnprotectCustomer(customer);
-                    customer.BillingAddress = _protectionService.UnprotectBillingAddress(customer.BillingAddress);
-                    customer.ShippingAddress = _protectionService.UnprotectShippingAddress(customer.ShippingAddress);
-
                     json = await GetRequest($"/Order/GetOrder/{order.Id}");
                     order = JsonConvert.DeserializeObject<Models.Order>(json);
-                    order.Customer = customer;
+                    order.Customer = _protectionService.UnprotectWholeCustomer(order.Customer);
 
                     await mailService.SendOrderEmailAsync(order);
 
                     var isBackOrder = false;
-                    foreach(var item in order.OrderItems)
+                    foreach (var item in order.OrderItems)
                     {
-                        if(item.Product.Amount >= item.Quantity)
+                        if (item.Product.Amount <= item.Quantity)
                         {
-                            sada
+                            isBackOrder = true;
+                            break;
                         }
                     }
-                    await mailService.SendDKIEmailAsync(order);
+                    order.IsBackOrder = isBackOrder;
+
+                    if (!isBackOrder)
+                    {
+                        await mailService.SendDKIEmailAsync(order);
+                    }
+                    else
+                    {
+                        order.Customer = null;
+                        var updateOrder = await PatchRequest("/Order/UpdateOrder", order);
+                        if (!updateOrder.IsSuccessStatusCode)
+                        {
+                            return Json(new { ok = false, error = "error updating order" });
+                        }
+                    }
 
                     if (User.Identity.IsAuthenticated)
                     {
@@ -149,7 +158,42 @@ namespace NykantMVC.Controllers
             {
                 return Json(new { ok = false, error = e.Message });
             }
-            
+        }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> BackOrders()
+        {
+            var jsonResponse = await GetRequest("/Order/GetOrders");
+            var orders = JsonConvert.DeserializeObject<List<Order>>(jsonResponse);
+            return View(orders);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> OrderInStorage(int orderId)
+        {
+            var orderResponse = await GetRequest($"/Order/GetOrder/{orderId}");
+            var order = JsonConvert.DeserializeObject<Order>(orderResponse);
+            order.Customer = _protectionService.UnprotectWholeCustomer(order.Customer);
+            await mailService.SendDKIEmailAsync(order);
+
+            order.IsBackOrder = false;
+            order.Customer = null;
+            var updateOrder = await PatchRequest("/Order/UpdateOrder", order);
+            if (!updateOrder.IsSuccessStatusCode)
+            {
+                return Json(new { ok = false, error = "error updating order" });
+            }
+
+            var ordersResponse = await GetRequest("/Order/GetOrders");
+            var orders = JsonConvert.DeserializeObject<List<Order>>(ordersResponse);
+            ViewData.Model = orders;
+            return new PartialViewResult
+            {
+                ViewName = "/Views/Order/_BackOrderListPartial.cshtml",
+                ViewData = this.ViewData
+            };
         }
 
         private Models.Order BuildOrder(Checkout checkout, string paymentIntentId)

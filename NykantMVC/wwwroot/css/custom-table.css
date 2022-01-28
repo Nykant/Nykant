@@ -1,1 +1,51 @@
-﻿
+﻿.custom-table {
+    width:100%;
+    border: 1px solid var(--black-fade);
+    margin-top:30px;
+}
+
+.custom-table h1 {
+    padding:20px;
+    background:white;
+}
+
+.custom-table-headers {
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background:white;
+    text-align:center;
+}
+
+    .custom-table-headers div {
+        display: inline-block;
+        width: 24%;
+        vertical-align:middle;
+        font-weight:bold;
+    }
+
+.custom-table-rows {
+    width:100%;
+}
+
+    .custom-table-rows div:nth-child(even) {
+        background: var(--color2);
+    }
+
+.custom-table-row {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+
+    .custom-table-row div:nth-child(even) {
+        background: none;
+    }
+
+    .custom-table-row div {
+        display: inline-block;
+        width: 24%;
+        vertical-align: middle;
+    }

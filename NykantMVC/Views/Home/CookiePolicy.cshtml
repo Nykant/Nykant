@@ -7,13 +7,14 @@
 }
 
 <script src="~/JS/consent.js" defer></script>
+<link rel="stylesheet" type="text/css" href="~/css/custom-table.css" />
 
 <div class="my-row background-color2 bottom-padding">
     <div class="col-3 cookie-header center">
         @localizer["Cookie Policy Title"]
     </div>
     <div class="responsive-container center cookie-buttons">
-        <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#cookie-settings-partial" data-ajax-success="consent_updated" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" asp-controller="Nykant" asp-action="OnlyEssentialConsent" class="col-4 left padding-5">
+        <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#cookie-settings-partial" data-ajax-success="consent_updated" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" asp-action="OnlyEssentialConsent" class="col-4 left padding-5">
             <button type="submit" class="button">
                 @localizer["Only Essential Cookies"]
             </button>
@@ -23,7 +24,7 @@
                 @localizer["Settings"]
             </button>
         </div>
-        <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#cookie-settings-partial" data-ajax-success="consent_updated" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" asp-controller="Nykant" asp-action="AllowAllConsent" class="col-4 left padding-5">
+        <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#cookie-settings-partial" data-ajax-success="consent_updated" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" asp-action="AllowAllConsent" class="col-4 left padding-5">
             <button type="submit" class="green-button">
                 @localizer["Accept All Cookies"]
             </button>
@@ -51,26 +52,26 @@
             @localizer["Deny all cookies"]
             @localizer["Deny GA cookies"]
             @localizer["Delete cookies"]
-            <div class="cookie-help-links">
-                <a href="http://windows.microsoft.com/da-dk/internet-explorer/delete-manage-cookies#ie=ie-11">Internet Explorer</a>
-                <a href="https://support.mozilla.org/da/kb/slet-cookies-fjerne-oplysninger-som-websteder-har-">Mozilla Firefox</a>
-                <a href="https://support.google.com/chrome/answer/95647?hl=da">Google Chrome</a>
-                <a href="https://www.opera.com/help/tutorials/security/cookies">Opera</a>
-                <a href="https://support.apple.com/da-dk/HT1677">Safari</a>
-                <a href="http://www.macromedia.com/support/documentation/en/flashplayer/help/settings_manager07.html">@localizer["Flash cookies"]</a>
-                <a href="https://support.apple.com/da-dk/HT1677">@localizer["Apple cookies"]</a>
-                <a href="http://timeread.hubpages.com/hub/How-to-delete-internet-cookies-on-your-Droid-or-any-Android-device">@localizer["Android cookies"]</a>
-                <a href="http://www.windowsphone.com/da-dk/how-to/wp7/web/changing-privacy-and-other-browser-settings">@localizer["Phone Windows 7"]</a>
+            <h2>Her er en liste over guides til hvordan man håndtere cookies, for alle de forskellige browsers.</h2>
+            <div class="cookie-help-links pushed-text">
+
+                <a class="simple-link" href="http://windows.microsoft.com/da-dk/internet-explorer/delete-manage-cookies#ie=ie-11">Internet Explorer</a>
+                <a class="simple-link" href="https://support.mozilla.org/da/kb/slet-cookies-fjerne-oplysninger-som-websteder-har-">Mozilla Firefox</a>
+                <a class="simple-link" href="https://support.google.com/chrome/answer/95647?hl=da">Google Chrome</a>
+                <a class="simple-link" href="https://www.opera.com/help/tutorials/security/cookies">Opera</a>
+                <a class="simple-link" href="https://support.apple.com/da-dk/HT1677">Safari</a>
+                <a class="simple-link" href="http://www.macromedia.com/support/documentation/en/flashplayer/help/settings_manager07.html">@localizer["Flash cookies"]</a>
+                <a class="simple-link" href="https://support.apple.com/da-dk/HT1677">@localizer["Apple cookies"]</a>
+                <a class="simple-link" href="http://timeread.hubpages.com/hub/How-to-delete-internet-cookies-on-your-Droid-or-any-Android-device">@localizer["Android cookies"]</a>
+                <a class="simple-link" href="http://www.windowsphone.com/da-dk/how-to/wp7/web/changing-privacy-and-other-browser-settings">@localizer["Phone Windows 7"]</a>
             </div>
 
         </div>
         <div>
-            @localizer["Questions?"]
-        </div>
-        <div>
             @*------------------------- LISTE AF COOKIES ---------------------*@
-            <h1>Liste over vores First-Party cookies</h1>
+            
             <div class="custom-table">
+                <h1>Liste over vores First-Party cookies</h1>
                 <div class="custom-table-headers">
                     <div>Cookie</div>
                     <div>Type</div>
@@ -92,8 +93,9 @@
                     }
                 </div>
             </div>
-            <h1>Liste over vores Third-Party cookies</h1>
+            
             <div class="custom-table">
+                <h1>Liste over vores Third-Party cookies</h1>
                 <div class="custom-table-headers">
                     <div>Cookie</div>
                     <div>Type</div>

@@ -118,41 +118,36 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Changes" xml:space="preserve">
-    <value>&lt;h1&gt;7. Ændringer&lt;/h1&gt;
+    <value>&lt;h1&gt;6. Ændringer&lt;/h1&gt;
             &lt;p&gt;
-                Vi kan foretage ændringer af denne databeskyttelsespolitik, f.eks. som følge af ændringer i Websidens opbygning eller funktionalitet. Hvis der er tale om væsentlige ændringer, informerer vi herom på Websiden og/eller i et nyhedsbrev.
+                Vi kan foretage ændringer af denne databeskyttelsespolitik, f.eks. som følge af ændringer i hjemmesidens opbygning eller funktionalitet. Hvis der er tale om væsentlige ændringer, informerer vi herom på Websiden og/eller i et nyhedsbrev.
             &lt;/p&gt;</value>
   </data>
   <data name="Deletion" xml:space="preserve">
-    <value>&lt;h1&gt;5. Sletning&lt;/h1&gt;
+    <value>&lt;h1&gt;4. Sletning&lt;/h1&gt;
             &lt;p&gt;
-                De personoplysninger som er knyttet til dine køb vil normalt blive slettet, når der ikke længere er behov for dem for at kunne besvare dine henvendelser, og reklamationsfristen for produktet er udløbet (f.eks. efter 5 år for køleskab), medmindre vi har brug for at gemme oplysningerne i en længere periode for at opfylde andre legitime formål eller lovkrav, f.eks. i regnskabslovgivningen.
+                De personoplysninger som er knyttet til dine køb vil normalt blive slettet, når der ikke længere er behov for dem for at kunne besvare dine henvendelser, og reklamationsfristen for produktet er udløbet, medmindre vi har brug for at gemme oplysningerne i en længere periode for at opfylde andre legitime formål eller lovkrav, f.eks. i regnskabslovgivningen.
             &lt;/p&gt;
-            &lt;p&gt;Hvis du sletter din profil, vil alle profil oplysningerne blive slettet.&lt;/p&gt;
             &lt;p&gt;Personoplysninger, som vi behandler på grundlag af dit samtykke, slettes hvis du trækker dit samtykke tilbage.&lt;/p&gt;</value>
   </data>
   <data name="General" xml:space="preserve">
     <value>&lt;h1&gt;1. Generelt&lt;/h1&gt;
             &lt;p&gt;
-                Denne databeskyttelsespolitik gælder ved indsamling og brug af personoplysninger på nykant.dk ("Websiden"). Den indeholder bl.a. oplysninger om, hvilke personoplysninger, der indsamles, hvad de bruges til, og hvilke rettigheder du har. Nykant ApS, CVR-nr.: &lt;CVR NUMMER&gt;, (”Nykant” eller "vi") er ansvarlig(e) for behandlingen og kan kontaktes i tilfælde af spørgsmål. Den databeskyttelsesansvarlige hos Nykant kan kontaktes på: mail@nykant.dk
+                Denne databeskyttelsespolitik gælder ved indsamling og brug af personoplysninger på nykant.dk. Den indeholder bl.a. oplysninger om, hvilke personoplysninger, der indsamles, hvad de bruges til, og hvilke rettigheder du har. Nykant Aps, er ansvarlig for behandlingen og kan kontaktes i tilfælde af spørgsmål.
             &lt;/p&gt;</value>
-  </data>
-  <data name="Login through social media" xml:space="preserve">
-    <value>&lt;h1&gt;3. Adgang via sociale medier&lt;/h1&gt;
-            &lt;p&gt;For at gøre det så nemt som muligt at logge ind på vore sider tilbyder vi (foruden vores eget login) brugere med en Facebook-konto at logge ind via denne. Bemærk, at hvis du vælger at logge på fra en af disse konti, er det den enkelte tjenestes politik for indsamling af personoplysninger og brug af cookies, der gælder, mens du er logget på.&lt;/p&gt;</value>
   </data>
   <data name="Privacy Policy Title" xml:space="preserve">
     <value>Håndtering Af Persondata</value>
   </data>
   <data name="Use of cookies" xml:space="preserve">
-    <value>&lt;h1&gt;4. Brug af cookies mv.&lt;/h1&gt;
+    <value>&lt;h1&gt;3. Brug af cookies mv.&lt;/h1&gt;
             &lt;p&gt;
-                Vi gør brug af såkaldte cookies for at give vores brugere en bedre oplevelse på Websiden. En cookie er en tekstfil, der lagres i din browser, når du besøger eller bevæger dig rundt på en webside.
+                Vi gør brug af såkaldte cookies for at give vores brugere en bedre oplevelse på hjemmesiden. En cookie er en tekstfil, der lagres i din browser, når du besøger eller bevæger dig rundt på hjemmesiden.
             &lt;/p&gt;
             &lt;p&gt;
-                Du kan vælge, at vi ikke må lægge sådanne cookies i din browser. De fleste browsere (Google Chrome, Firefox, Internet Explorer, Safari, Opera, etc.) er sat op til automatisk at acceptere cookies, men du kan selv ændre indstillingerne, så cookies ikke accepteres. Ulempen ved at deaktivere cookies i browseren er, at Websiden så ikke vil fungere optimalt. Det skyldes, at formålet med de fleste af vores cookies er at sikre funktionaliteten på Websiden, f.eks. så den husker, hvad du har lagt i indkøbskurven.
+                Du kan vælge, at vi ikke må lægge sådanne cookies i din browser. De fleste browsere (Google Chrome, Firefox, Internet Explorer, Safari, Opera, etc.) er sat op til automatisk at acceptere cookies, men du kan selv ændre indstillingerne, så cookies ikke accepteres. Ulempen ved at deaktivere cookies i browseren er, at hjemmesiden så ikke vil fungere optimalt. Det skyldes, at formålet med de fleste af vores cookies er at sikre funktionaliteten, f.eks. sørger de for, hvad du har lagt i indkøbskurven, giver dig en god checkout oplevelse, husker din preference for sprog og dit cookie samtykke.
             &lt;/p&gt;
-            &lt;p&gt;En fuldstændig oversigt over cookies generelt og hvilke cookies vi bruger, findes &lt;a href="https://localhost/home/cookiepolicy/"&gt;her&lt;/a&gt;.&lt;/p&gt;</value>
+            &lt;p&gt;En fuldstændig oversigt over cookies generelt og hvilke cookies vi bruger, findes &lt;a class="simple-link" href="https://localhost:5002/home/cookiepolicy"&gt;her&lt;/a&gt;.&lt;/p&gt;</value>
   </data>
   <data name="What information do we collect and why?" xml:space="preserve">
     <value>&lt;h1&gt;2. Hvilke oplysninger indsamler vi og hvorfor&lt;/h1&gt;
@@ -162,31 +157,38 @@
             &lt;h2&gt;Ved køb af varer&lt;/h2&gt;
             &lt;p class="pushed-text"&gt;Ved køb af et af vores produkter registrerer vi dit navn, telefonnummer, email adresse, betalingsoplysninger, hvilke varer du køber og hvornår samt informationer om udlevering og leveringsadresse. Derudover vil vi også kunne behandle oplysninger om returneringer.&lt;/p&gt;
             &lt;p&gt;Formålet med at registrere oplysningerne er at opfylde og administrere vores aftale med dig samt følge op på salget internt i organisationen.&lt;/p&gt;
-            &lt;p&gt;
-                Grundlaget for vores behandling af oplysningerne er aftalen med dig, jf. EU databeskyttelsesforordningens (General Data Protection Regulation eller "GDPR") artikel 6, b). Derudover er en del af behandlingen baseret på vores legitime behov for at kunne administrere salget på en hensigtsmæssig måde, jf. GDPR artikel 6, f), og vi har vurderet, at denne interesse vejer tungere end ulempen for dig.
-            &lt;/p&gt;
+
             &lt;h2&gt;Reklamationer: &lt;/h2&gt;
             &lt;p class="pushed-text"&gt;Hvis du reklamerer over en vare, har vi brug for kontaktoplysninger for at kunne registrere reklamationen.&lt;/p&gt;
             &lt;p&gt;
                 Formålet med at registrere de ovenstående oplysninger om dig, er, at vi skal kunne opfylde og administrere vores aftale med dig, om det gælder levering, skader eller returneringer.
             &lt;/p&gt;
-            &lt;p&gt;Grundlaget for vores behandling af personoplysninger til de formål, der er nævnt ovenover, er købsaftalen med dig, og behandlingen anses for at være nødvendig for at opfylde vores forpligtelser af aftalen. I den grad at vi udfører en begrænset behandling af dine personoplysninger for at kunne følge op på salget internt i vores organisation og overfor dig, har vi vurderet, at vores interesse i at gøre dette, er større end ulempen for dig. For eventuelle krav som rettes mod os, vil vi også kunne indsamle dine personoplysninger i den grad, det er nødvendigt for at kunne opfylde eller forsvare vores retslige forpligtelser.&lt;/p&gt;
+
             &lt;h2&gt;
                 Kundeservice:
             &lt;/h2&gt;
-            &lt;p class="pushed-text"&gt;Afhængig af, hvad henvendelsen drejer sig om, og hvordan du kontakter os (via telefon eller email), skal vi vide, hvem du er, hvilket produkt du har købt og din adresse eller dit telefonnummer. Vi behandler de indhentede oplysninger om f.eks. navn, købshistorik og kontaktoplysninger (e-mail, telefonnummer), så vi kan hjælpe dig. &lt;/p&gt;
+            &lt;p class="pushed-text"&gt;Afhængig af, hvad henvendelsen drejer sig om, og hvordan du kontakter os (via telefon eller email), skal vi vide, hvem du er, hvilket produkt du har købt og din adresse eller dit telefonnummer.&lt;/p&gt;
+
+</value>
+    <comment>&lt;p&gt;
+                Grundlaget for vores behandling af oplysningerne er aftalen med dig, jf. EU databeskyttelsesforordningens (General Data Protection Regulation eller "GDPR") artikel 6, b). Derudover er en del af behandlingen baseret på vores legitime behov for at kunne administrere salget på en hensigtsmæssig måde, jf. GDPR artikel 6, f), og vi har vurderet, at denne interesse vejer tungere end ulempen for dig.
+            &lt;/p&gt;
+
+            &lt;p&gt;Grundlaget for vores behandling af personoplysninger til de formål, der er nævnt ovenover, er købsaftalen med dig, og behandlingen anses for at være nødvendig for at opfylde vores forpligtelser af aftalen. I den grad at vi udfører en begrænset behandling af dine personoplysninger for at kunne følge op på salget internt i vores organisation og overfor dig, har vi vurderet, at vores interesse i at gøre dette, er større end ulempen for dig. For eventuelle krav som rettes mod os, vil vi også kunne indsamle dine personoplysninger i den grad, det er nødvendigt for at kunne opfylde eller forsvare vores retslige forpligtelser.&lt;/p&gt;
+
             &lt;p&gt;
                 Afhængig af, hvad henvendelsen drejer sig om, er grundlaget for vores behandling af oplysningerne, aftalen med dig, jf. GDPR artikel 6, b) eller vores legitime interesse i at kunne håndtere din henvendelse på en hensigtsmæssig måde, jf. GDPR artikel 6, f). Såfremt grundlaget for behandlingen er begrundet i sidstnævnte, har vi vurderet, at vi har en legitim interesse i at behandle dine personoplysninger, så vi kan besvare dine spørgsmål bedst muligt, og at denne interesse vejer tungere end ulempen for dig, når du kontakter os og beder om denne service.
             &lt;/p&gt;
+
             &lt;h2&gt;Oprettelse af kundeprofil: &lt;/h2&gt;
             &lt;p class="pushed-text"&gt;
                 Når du opretter en profil registrerer vi din email adresse.
             &lt;/p&gt;
             &lt;p&gt;Formålet med at registrere email ved oprettelse er, at bekræfte det er din email som bliver taget i brug.&lt;/p&gt;
-            &lt;p&gt;Grundlaget for vores behandling af oplysningerne er baseret på vores legitime behov for at oprette en bruger profil til dig, således du kan følge dine ordre eller se din ordrehistorik via nykant.dk på en hensigtsmæssig måde. Vi har vurderet, grundet en meget begrænset indsamling af dine personoplysninger, at denne interesse vejer tungere end ulempen for dig.&lt;/p&gt;</value>
+            &lt;p&gt;Grundlaget for vores behandling af oplysningerne er baseret på vores legitime behov for at oprette en bruger profil til dig, således du kan følge dine ordre eller se din ordrehistorik via nykant.dk på en hensigtsmæssig måde. Vi har vurderet, grundet en meget begrænset indsamling af dine personoplysninger, at denne interesse vejer tungere end ulempen for dig.&lt;/p&gt;</comment>
   </data>
   <data name="Your rights" xml:space="preserve">
-    <value>&lt;h1&gt;6. Dine rettigheder&lt;/h1&gt;
+    <value>&lt;h1&gt;5. Dine rettigheder&lt;/h1&gt;
             &lt;p&gt;Her kan du se dine rettigheder, som du til enhver tid kan gøre gældende:&lt;/p&gt;
             &lt;h2&gt;Tilbagetrækning af samtykke:&lt;/h2&gt;
             &lt;p class="pushed-text"&gt;
@@ -197,18 +199,17 @@
                 Du har ret til at få indsigt i, hvilke personoplysninger vi har registreret om dig.
             &lt;/p&gt;
             &lt;h2&gt;Anmodning om berigtigelse eller sletning:&lt;/h2&gt;
-            &lt;p class="pushed-text"&gt;Du kan også bede os berigtige fejlagtige oplysninger om dig eller slette personoplysningerne helt. Vi vil så vidt muligt imødekomme en anmodning om sletning af personoplysninger, men vi kan ikke gøre dette, såfremt der er tungtvejende grunde til ikke at slette disse, f.eks. krav om, at vi skal opbevare oplysningerne til dokumentationsbrug. Mange oplysninger kan du selv slette. Du kan f.eks. når som helst slette din profil hos os.&lt;/p&gt;
+            &lt;p class="pushed-text"&gt;Du kan også bede os berigtige fejlagtige oplysninger om dig eller slette personoplysningerne helt. Vi vil så vidt muligt imødekomme en anmodning om sletning af personoplysninger, men vi kan ikke gøre dette, såfremt der er tungtvejende grunde til ikke at slette disse, f.eks. krav om, at vi skal opbevare oplysningerne til dokumentationsbrug.&lt;/p&gt;
             &lt;h2&gt;Dataportabilitet:&lt;/h2&gt;
             &lt;p class="pushed-text"&gt;
                 Du kan anmode om dataportabilitet, bl.a. for personoplysninger, som er afgivet med dit samtykke, eller som har været nødvendige for indgåelse af købsaftalen.
             &lt;/p&gt;
             &lt;h2&gt;For at udøve dine rettigheder:&lt;/h2&gt;
             &lt;p class="pushed-text"&gt;
-                kan du kontakte vores kundeservice(mail: mail@nykant.dk eller telefon: +4527131499). Din henvendelse vil blive besvaret hurtigst muligt og senest inden for 7 dage.
-
+                kan du kontakte vores kundeservice &lt;a class="simple-link" href="https://localhost:5002/contact"&gt;her&lt;/a&gt;. Din henvendelse vil blive besvaret hurtigst muligt og senest inden for 7 dage.
             &lt;/p&gt;
             &lt;p class="pushed-text"&gt;Vi beder dig bekræfte din identitet eller afgive yderligere oplysninger, før du kan håndhæve dine rettigheder over for os. Vi gør dette for at være sikre på, at vi kun giver adgang til personoplysningerne for dig - og ikke for én, som blot giver sig ud for at være dig.&lt;/p&gt;
             &lt;h2&gt;Klage til tilsynsmyndigheden:&lt;/h2&gt;
-            &lt;p class="pushed-text"&gt;Hvis du er uenig i måden, som vi behandler dine personoplysninger på, kan du indsende en klage til Datatilsynet. Du kan finde nærmere information om din klageadgang på Datatilsynets hjemmeside: www.datatilsynet.dk.&lt;/p&gt;</value>
+            &lt;p class="pushed-text"&gt;Hvis du er uenig i måden, som vi behandler dine personoplysninger på, kan du indsende en klage til Datatilsynet. Du kan finde nærmere information om din klageadgang på Datatilsynets hjemmeside: &lt;a class="simple-link" href="https://www.datatilsynet.dk"&gt;www.datatilsynet.dk&lt;/a&gt;.&lt;/p&gt;</value>
   </data>
 </root>

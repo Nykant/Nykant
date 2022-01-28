@@ -37,6 +37,46 @@ namespace NykantMVC.Services
             return customer;
         }
 
+        public Customer UnprotectWholeCustomer(Customer customer)
+        {
+            customer.Email = _customerProtector.Unprotect(customer.Email);
+            customer.Phone = _customerProtector.Unprotect(customer.Phone);
+
+            customer.ShippingAddress.Name = _customerProtector.Unprotect(customer.ShippingAddress.Name);
+            customer.ShippingAddress.Address = _customerProtector.Unprotect(customer.ShippingAddress.Address);
+            customer.ShippingAddress.City = _customerProtector.Unprotect(customer.ShippingAddress.City);
+            customer.ShippingAddress.Country = _customerProtector.Unprotect(customer.ShippingAddress.Country);
+            customer.ShippingAddress.Postal = _customerProtector.Unprotect(customer.ShippingAddress.Postal);
+
+            customer.BillingAddress.Address = _customerProtector.Unprotect(customer.BillingAddress.Address);
+            customer.BillingAddress.City = _customerProtector.Unprotect(customer.BillingAddress.City);
+            customer.BillingAddress.Country = _customerProtector.Unprotect(customer.BillingAddress.Country);
+            customer.BillingAddress.Postal = _customerProtector.Unprotect(customer.BillingAddress.Postal);
+            customer.BillingAddress.Name = _customerProtector.Unprotect(customer.BillingAddress.Name);
+
+            return customer;
+        }
+
+        public Customer ProtectWholeCustomer(Customer customer)
+        {
+            customer.Email = _customerProtector.Protect(customer.Email);
+            customer.Phone = _customerProtector.Protect(customer.Phone);
+
+            customer.ShippingAddress.Name = _customerProtector.Protect(customer.ShippingAddress.Name);
+            customer.ShippingAddress.Address = _customerProtector.Protect(customer.ShippingAddress.Address);
+            customer.ShippingAddress.City = _customerProtector.Protect(customer.ShippingAddress.City);
+            customer.ShippingAddress.Country = _customerProtector.Protect(customer.ShippingAddress.Country);
+            customer.ShippingAddress.Postal = _customerProtector.Protect(customer.ShippingAddress.Postal);
+
+            customer.BillingAddress.Address = _customerProtector.Protect(customer.BillingAddress.Address);
+            customer.BillingAddress.City = _customerProtector.Protect(customer.BillingAddress.City);
+            customer.BillingAddress.Country = _customerProtector.Protect(customer.BillingAddress.Country);
+            customer.BillingAddress.Postal = _customerProtector.Protect(customer.BillingAddress.Postal);
+            customer.BillingAddress.Name = _customerProtector.Protect(customer.BillingAddress.Name);
+
+            return customer;
+        }
+
         public Customer UnprotectCustomer(Customer customer)
         {
             customer.Email = _customerProtector.Unprotect(customer.Email);
@@ -112,6 +152,8 @@ namespace NykantMVC.Services
         public NewsSub UnprotectNewsSub(NewsSub newsSub);
         public Customer ProtectCustomer(Customer customer);
         public Customer UnprotectCustomer(Customer customer);
+        public Customer UnprotectWholeCustomer(Customer customer);
+            public Customer ProtectWholeCustomer(Customer customer);
 
         public ShippingAddress ProtectShippingAddress(ShippingAddress shippingAddress);
         public ShippingAddress UnprotectShippingAddress(ShippingAddress shippingAddress);
