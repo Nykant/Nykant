@@ -120,7 +120,7 @@
   <data name="Changes" xml:space="preserve">
     <value>&lt;h1&gt;6. Ændringer&lt;/h1&gt;
             &lt;p&gt;
-                Vi kan foretage ændringer af denne databeskyttelsespolitik, f.eks. som følge af ændringer i hjemmesidens opbygning eller funktionalitet. Hvis der er tale om væsentlige ændringer, informerer vi herom på Websiden og/eller i et nyhedsbrev.
+                Vi kan foretage ændringer af denne databeskyttelsespolitik, f.eks. som følge af ændringer i hjemmesidens opbygning eller funktionalitet. Hvis der er tale om væsentlige ændringer, informerer vi herom på hjemmesiden og/eller i et nyhedsbrev.
             &lt;/p&gt;</value>
   </data>
   <data name="Deletion" xml:space="preserve">
@@ -147,7 +147,7 @@
             &lt;p&gt;
                 Du kan vælge, at vi ikke må lægge sådanne cookies i din browser. De fleste browsere (Google Chrome, Firefox, Internet Explorer, Safari, Opera, etc.) er sat op til automatisk at acceptere cookies, men du kan selv ændre indstillingerne, så cookies ikke accepteres. Ulempen ved at deaktivere cookies i browseren er, at hjemmesiden så ikke vil fungere optimalt. Det skyldes, at formålet med de fleste af vores cookies er at sikre funktionaliteten, f.eks. sørger de for, hvad du har lagt i indkøbskurven, giver dig en god checkout oplevelse, husker din preference for sprog og dit cookie samtykke.
             &lt;/p&gt;
-            &lt;p&gt;En fuldstændig oversigt over cookies generelt og hvilke cookies vi bruger, findes &lt;a class="simple-link" href="https://localhost:5002/home/cookiepolicy"&gt;her&lt;/a&gt;.&lt;/p&gt;</value>
+            &lt;p&gt;En fuldstændig oversigt over cookies generelt og hvilke cookies vi bruger, findes &lt;a class="simple-link" href="https://nykant.dk/home/cookiepolicy"&gt;her&lt;/a&gt;.&lt;/p&gt;</value>
   </data>
   <data name="What information do we collect and why?" xml:space="preserve">
     <value>&lt;h1&gt;2. Hvilke oplysninger indsamler vi og hvorfor&lt;/h1&gt;
@@ -206,7 +206,7 @@
             &lt;/p&gt;
             &lt;h2&gt;For at udøve dine rettigheder:&lt;/h2&gt;
             &lt;p class="pushed-text"&gt;
-                kan du kontakte vores kundeservice &lt;a class="simple-link" href="https://localhost:5002/contact"&gt;her&lt;/a&gt;. Din henvendelse vil blive besvaret hurtigst muligt og senest inden for 7 dage.
+                kan du kontakte os &lt;a class="simple-link" href="https://nykant.dk/home/contact"&gt;her&lt;/a&gt;. Din henvendelse vil blive besvaret hurtigst muligt og senest inden for 7 dage.
             &lt;/p&gt;
             &lt;p class="pushed-text"&gt;Vi beder dig bekræfte din identitet eller afgive yderligere oplysninger, før du kan håndhæve dine rettigheder over for os. Vi gør dette for at være sikre på, at vi kun giver adgang til personoplysningerne for dig - og ikke for én, som blot giver sig ud for at være dig.&lt;/p&gt;
             &lt;h2&gt;Klage til tilsynsmyndigheden:&lt;/h2&gt;

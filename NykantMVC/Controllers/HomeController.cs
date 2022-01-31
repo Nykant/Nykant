@@ -48,6 +48,7 @@ namespace NykantMVC.Controllers
             };
             return View(frontPageVM);
         }
+
         public async Task<IActionResult> CookiePolicy()
         {
             var json = await GetRequest("/Cookie/GetCookies");

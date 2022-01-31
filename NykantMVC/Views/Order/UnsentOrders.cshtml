@@ -1,6 +1,6 @@
 ﻿@model List<Order>
 @{
-    ViewData["Title"] = "Alle Ordrer";
+    ViewData["Title"] = "Ikke Sendte Ordrer";
     ViewData["Description"] = "";
 }
 
@@ -14,7 +14,7 @@
 
 <div class="my-row top-padding bottom-padding">
     <div class="col-8 center" id="all-orders">
-        <partial name="_OrderListPartial" />
+        <partial name="_UnsentOrderListPartial" />
     </div>
 </div>
 

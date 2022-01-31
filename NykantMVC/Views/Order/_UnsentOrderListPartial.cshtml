@@ -1,0 +1,37 @@
+﻿@{ 
+    List<Order> list = ViewData.Model;
+    list.Reverse();
+}
+
+<h1 class="list-h1">Ikke Sendte Ordrer</h1>
+<table class="my-list">
+    <tr class="no-hover">
+        <th>Id</th>
+        <th>Lavet</th>
+        <th>Leveringsdato</th>
+        <th>Status</th>
+        <th></th>
+    </tr>
+    @foreach (var order in list)
+    {
+        if (order.Status == Status.Pending)
+        {
+            TimeSpan deliveryTimeSpan = order.EstimatedDelivery.Subtract(DateTime.Now);
+            <tr>
+                <td> @order.Id </td>
+                <td> @order.CreatedAt </td>
+                <td>@((int)deliveryTimeSpan.TotalDays) dage </td>
+                <td> @order.Status </td>
+                <td>
+                    @if (order.Status == Status.Pending)
+                    {
+                        <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#all-orders" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" data-ajax-success="noop" asp-controller="Payment" asp-action="CapturePaymentIntent" asp-route-orderId="@order.Id">
+                            <button type="submit"> Capture </button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+
+    }
+</table>

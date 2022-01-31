@@ -150,6 +150,10 @@ a:hover {
         color: var(--dark);
     }
 
+    .large-text {
+        font-size: var(--large);
+    }
+
 ol, ul {
     list-style: none;
 }
