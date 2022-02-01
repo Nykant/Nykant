@@ -444,7 +444,13 @@ namespace NykantAPI.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("ImageType")
+                        .HasColumnType("int");
+
                     b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Size")
                         .HasColumnType("int");
 
                     b.Property<string>("Source")
@@ -460,223 +466,297 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 1,
+                            ImageType = 0,
                             ProductId = 3,
+                            Size = 0,
                             Source = "../images/Products/NYKANT_boejle_hvidolie_01.png"
                         },
                         new
                         {
                             Id = 2,
+                            ImageType = 0,
                             ProductId = 3,
+                            Size = 0,
                             Source = "../images/Products/NYKANT_boejle_hvidolie_02.png"
                         },
                         new
                         {
                             Id = 3,
+                            ImageType = 0,
                             ProductId = 1,
+                            Size = 0,
                             Source = "../images/Products/NYKANT_boejle_naturolie_01.png"
                         },
                         new
                         {
                             Id = 4,
+                            ImageType = 0,
                             ProductId = 1,
+                            Size = 0,
                             Source = "../images/Products/NYKANT_boejle_naturolie_02.png"
                         },
                         new
                         {
                             Id = 5,
+                            ImageType = 0,
                             ProductId = 2,
+                            Size = 0,
                             Source = "../images/Products/NYKANT_boejle_sortolie_01.png"
                         },
                         new
                         {
                             Id = 6,
+                            ImageType = 0,
                             ProductId = 2,
+                            Size = 0,
                             Source = "../images/Products/NYKANT_boejle_sortolie_02.png"
                         },
                         new
                         {
                             Id = 7,
+                            ImageType = 0,
                             ProductId = 7,
+                            Size = 0,
                             Source = "../images/Products/NYKANT_bord_naturolie_01.png"
                         },
                         new
                         {
                             Id = 8,
+                            ImageType = 0,
                             ProductId = 7,
+                            Size = 0,
                             Source = "../images/Products/NYKANT_bord_naturolie_02.png"
                         },
                         new
                         {
                             Id = 9,
+                            ImageType = 0,
                             ProductId = 7,
+                            Size = 0,
                             Source = "../images/Products/NYKANT_bord_naturolie_03.png"
                         },
                         new
                         {
                             Id = 10,
+                            ImageType = 0,
                             ProductId = 4,
+                            Size = 0,
                             Source = "../images/Products/NYKANT_hylde_hvidolie_01.png"
                         },
                         new
                         {
                             Id = 11,
+                            ImageType = 0,
                             ProductId = 4,
+                            Size = 0,
                             Source = "../images/Products/NYKANT_hylde_hvidolie_02.png"
                         },
                         new
                         {
                             Id = 12,
+                            ImageType = 0,
                             ProductId = 4,
+                            Size = 0,
                             Source = "../images/Products/NYKANT_hylde_hvidolie_03.png"
                         },
                         new
                         {
                             Id = 13,
+                            ImageType = 0,
                             ProductId = 6,
+                            Size = 0,
                             Source = "../images/Products/NYKANT_hylde_naturolie_01.png"
                         },
                         new
                         {
                             Id = 14,
+                            ImageType = 0,
                             ProductId = 6,
+                            Size = 0,
                             Source = "../images/Products/NYKANT_hylde_naturolie_02.png"
                         },
                         new
                         {
                             Id = 15,
+                            ImageType = 0,
                             ProductId = 6,
+                            Size = 0,
                             Source = "../images/Products/NYKANT_hylde_naturolie_03.png"
                         },
                         new
                         {
                             Id = 16,
+                            ImageType = 0,
                             ProductId = 5,
+                            Size = 0,
                             Source = "../images/Products/NYKANT_hylde_sortolie_01.png"
                         },
                         new
                         {
                             Id = 17,
+                            ImageType = 0,
                             ProductId = 5,
+                            Size = 0,
                             Source = "../images/Products/NYKANT_hylde_sortolie_02.png"
                         },
                         new
                         {
                             Id = 18,
+                            ImageType = 0,
                             ProductId = 5,
+                            Size = 0,
                             Source = "../images/Products/NYKANT_hylde_sortolie_03.png"
                         },
                         new
                         {
                             Id = 19,
+                            ImageType = 0,
                             ProductId = 8,
+                            Size = 0,
                             Source = "../images/Products/NYKANT_kortbaenk_naturolie_01.png"
                         },
                         new
                         {
                             Id = 20,
+                            ImageType = 0,
                             ProductId = 8,
+                            Size = 0,
                             Source = "../images/Products/NYKANT_kortbaenk_naturolie_02.png"
                         },
                         new
                         {
                             Id = 21,
+                            ImageType = 0,
                             ProductId = 8,
+                            Size = 0,
                             Source = "../images/Products/NYKANT_kortbaenk_naturolie_03.png"
                         },
                         new
                         {
                             Id = 22,
+                            ImageType = 0,
                             ProductId = 9,
+                            Size = 0,
                             Source = "../images/Products/NYKANT_langbaenk_naturolie_01.png"
                         },
                         new
                         {
                             Id = 23,
+                            ImageType = 0,
                             ProductId = 9,
+                            Size = 0,
                             Source = "../images/Products/NYKANT_langbaenk_naturolie_02.png"
                         },
                         new
                         {
                             Id = 24,
+                            ImageType = 0,
                             ProductId = 9,
+                            Size = 0,
                             Source = "../images/Products/NYKANT_langbaenk_naturolie_03.png"
                         },
                         new
                         {
                             Id = 25,
+                            ImageType = 0,
                             ProductId = 10,
+                            Size = 0,
                             Source = "../images/Products/NYKANT_opbevaringsbaenk_naturolie_01.png"
                         },
                         new
                         {
                             Id = 26,
+                            ImageType = 0,
                             ProductId = 10,
+                            Size = 0,
                             Source = "../images/Products/NYKANT_opbevaringsbaenk_naturolie_02.png"
                         },
                         new
                         {
                             Id = 27,
+                            ImageType = 0,
                             ProductId = 10,
+                            Size = 0,
                             Source = "../images/Products/NYKANT_opbevaringsbaenk_naturolie_03.png"
                         },
                         new
                         {
                             Id = 28,
+                            ImageType = 0,
                             ProductId = 10,
+                            Size = 0,
                             Source = "../images/Products/NYKANT_opbevaringsbaenk_naturolie_04.png"
                         },
                         new
                         {
                             Id = 29,
+                            ImageType = 0,
                             ProductId = 10,
+                            Size = 0,
                             Source = "../images/Products/NYKANT_opbevaringsbaenk_naturolie_05.png"
                         },
                         new
                         {
                             Id = 30,
+                            ImageType = 0,
                             ProductId = 10,
+                            Size = 0,
                             Source = "../images/Products/NYKANT_opbevaringsbaenk_naturolie_06.png"
                         },
                         new
                         {
                             Id = 31,
+                            ImageType = 0,
                             ProductId = 10,
+                            Size = 0,
                             Source = "../images/Products/NYKANT_opbevaringsbaenk_naturolie_07.png"
                         },
                         new
                         {
                             Id = 32,
+                            ImageType = 0,
                             ProductId = 11,
+                            Size = 0,
                             Source = "../images/Products/NYKANT_rack_naturolie_01.png"
                         },
                         new
                         {
                             Id = 33,
+                            ImageType = 0,
                             ProductId = 11,
+                            Size = 0,
                             Source = "../images/Products/NYKANT_rack_naturolie_02.png"
                         },
                         new
                         {
                             Id = 34,
+                            ImageType = 0,
                             ProductId = 11,
+                            Size = 0,
                             Source = "../images/Products/NYKANT_rack_naturolie_03.png"
                         },
                         new
                         {
                             Id = 35,
+                            ImageType = 0,
                             ProductId = 11,
+                            Size = 0,
                             Source = "../images/Products/NYKANT_rack_naturolie_04.png"
                         },
                         new
                         {
                             Id = 36,
+                            ImageType = 0,
                             ProductId = 11,
+                            Size = 0,
                             Source = "../images/Products/NYKANT_rack_naturolie_05.png"
                         },
                         new
                         {
                             Id = 37,
+                            ImageType = 0,
                             ProductId = 11,
+                            Size = 0,
                             Source = "../images/Products/NYKANT_rack_naturolie_06.png"
                         });
                 });
@@ -813,10 +893,10 @@ namespace NykantAPI.Migrations
                     b.Property<DateTime>("ExpectedDelivery")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("ImageSource")
+                    b.Property<string>("GalleryImage1")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ImageSource2")
+                    b.Property<string>("GalleryImage2")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Length")
@@ -874,8 +954,8 @@ namespace NykantAPI.Migrations
                             Description = "Gertrud Description",
                             EColor = 0,
                             ExpectedDelivery = new DateTime(2022, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageSource = "../images/Products/NYKANT_boejle_naturolie_01.png",
-                            ImageSource2 = "../images/Products/NYKANT_boejle_naturolie_02.png",
+                            GalleryImage1 = "../images/Products/NYKANT_boejle_naturolie_01.png",
+                            GalleryImage2 = "../images/Products/NYKANT_boejle_naturolie_02.png",
                             Materials = "Gertrud Materials",
                             Name = "Bøjlen Gertrud / 3 stk.",
                             Note = "Gertrud Note",
@@ -898,8 +978,8 @@ namespace NykantAPI.Migrations
                             Description = "Gertrud Description",
                             EColor = 2,
                             ExpectedDelivery = new DateTime(2022, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageSource = "../images/Products/NYKANT_boejle_sortolie_01.png",
-                            ImageSource2 = "../images/Products/NYKANT_boejle_sortolie_02.png",
+                            GalleryImage1 = "../images/Products/NYKANT_boejle_sortolie_01.png",
+                            GalleryImage2 = "../images/Products/NYKANT_boejle_sortolie_02.png",
                             Materials = "Gertrud Materials",
                             Name = "Bøjlen Gertrud / 3 stk.",
                             Note = "Gertrud Note",
@@ -922,8 +1002,8 @@ namespace NykantAPI.Migrations
                             Description = "Gertrud Description",
                             EColor = 1,
                             ExpectedDelivery = new DateTime(2022, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageSource = "../images/Products/NYKANT_boejle_hvidolie_01.png",
-                            ImageSource2 = "../images/Products/NYKANT_boejle_hvidolie_02.png",
+                            GalleryImage1 = "../images/Products/NYKANT_boejle_hvidolie_01.png",
+                            GalleryImage2 = "../images/Products/NYKANT_boejle_hvidolie_02.png",
                             Materials = "Gertrud Materials",
                             Name = "Bøjlen Gertrud / 3 stk.",
                             Note = "Gertrud Note",
@@ -946,8 +1026,8 @@ namespace NykantAPI.Migrations
                             Description = "Ingeborg Description",
                             EColor = 1,
                             ExpectedDelivery = new DateTime(2022, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageSource = "../images/Products/NYKANT_hylde_hvidolie_01.png",
-                            ImageSource2 = "../images/Products/NYKANT_hylde_hvidolie_02.png",
+                            GalleryImage1 = "../images/Products/NYKANT_hylde_hvidolie_01.png",
+                            GalleryImage2 = "../images/Products/NYKANT_hylde_hvidolie_02.png",
                             Length = "600 mm.",
                             Materials = "Ingeborg Materials",
                             Name = "Ingeborg Hylden",
@@ -971,8 +1051,8 @@ namespace NykantAPI.Migrations
                             Description = "Ingeborg Description",
                             EColor = 2,
                             ExpectedDelivery = new DateTime(2022, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageSource = "../images/Products/NYKANT_hylde_sortolie_01.png",
-                            ImageSource2 = "../images/Products/NYKANT_hylde_sortolie_02.png",
+                            GalleryImage1 = "../images/Products/NYKANT_hylde_sortolie_01.png",
+                            GalleryImage2 = "../images/Products/NYKANT_hylde_sortolie_02.png",
                             Length = "600 mm.",
                             Materials = "Ingeborg Materials",
                             Name = "Ingeborg Hylden",
@@ -996,8 +1076,8 @@ namespace NykantAPI.Migrations
                             Description = "Ingeborg Description",
                             EColor = 0,
                             ExpectedDelivery = new DateTime(2022, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageSource = "../images/Products/NYKANT_hylde_naturolie_01.png",
-                            ImageSource2 = "../images/Products/NYKANT_hylde_naturolie_02.png",
+                            GalleryImage1 = "../images/Products/NYKANT_hylde_naturolie_01.png",
+                            GalleryImage2 = "../images/Products/NYKANT_hylde_naturolie_02.png",
                             Length = "600 mm.",
                             Materials = "Ingeborg Materials",
                             Name = "Ingeborg Hylden",
@@ -1021,8 +1101,8 @@ namespace NykantAPI.Migrations
                             Description = "Dagmar Description",
                             EColor = 0,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageSource = "../images/Products/NYKANT_bord_naturolie_01.png",
-                            ImageSource2 = "../images/Products/NYKANT_bord_naturolie_02.png",
+                            GalleryImage1 = "../images/Products/NYKANT_bord_naturolie_01.png",
+                            GalleryImage2 = "../images/Products/NYKANT_bord_naturolie_02.png",
                             Materials = "Dagmar Materials",
                             Name = "Dagmar Bordet",
                             Note = "Dagmar Note",
@@ -1045,8 +1125,8 @@ namespace NykantAPI.Migrations
                             Description = "Thyra Short Description",
                             EColor = 0,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageSource = "../images/Products/NYKANT_kortbaenk_naturolie_01.png",
-                            ImageSource2 = "../images/Products/NYKANT_kortbaenk_naturolie_02.png",
+                            GalleryImage1 = "../images/Products/NYKANT_kortbaenk_naturolie_01.png",
+                            GalleryImage2 = "../images/Products/NYKANT_kortbaenk_naturolie_02.png",
                             Length = "1150 mm.",
                             Materials = "Thyra Short Materials",
                             Name = "Thyra Bænken",
@@ -1070,8 +1150,8 @@ namespace NykantAPI.Migrations
                             Description = "Thyra Description",
                             EColor = 0,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageSource = "../images/Products/NYKANT_langbaenk_naturolie_01.png",
-                            ImageSource2 = "../images/Products/NYKANT_langbaenk_naturolie_02.png",
+                            GalleryImage1 = "../images/Products/NYKANT_langbaenk_naturolie_01.png",
+                            GalleryImage2 = "../images/Products/NYKANT_langbaenk_naturolie_02.png",
                             Length = "1700 mm.",
                             Materials = "Thyra Materials",
                             Name = "Thyra Bænken",
@@ -1095,8 +1175,8 @@ namespace NykantAPI.Migrations
                             Description = "Filippa Description",
                             EColor = 0,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageSource = "../images/Products/NYKANT_opbevaringsbaenk_naturolie_01.png",
-                            ImageSource2 = "../images/Products/NYKANT_opbevaringsbaenk_naturolie_02.png",
+                            GalleryImage1 = "../images/Products/NYKANT_opbevaringsbaenk_naturolie_01.png",
+                            GalleryImage2 = "../images/Products/NYKANT_opbevaringsbaenk_naturolie_02.png",
                             Materials = "Filippa Materials",
                             Name = "Filippa Bænk",
                             Note = "Filippa Note",
@@ -1119,8 +1199,8 @@ namespace NykantAPI.Migrations
                             Description = "Nora Description",
                             EColor = 0,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageSource = "../images/Products/NYKANT_rack_naturolie_01.png",
-                            ImageSource2 = "../images/Products/NYKANT_rack_naturolie_02.png",
+                            GalleryImage1 = "../images/Products/NYKANT_rack_naturolie_01.png",
+                            GalleryImage2 = "../images/Products/NYKANT_rack_naturolie_02.png",
                             Materials = "Nora Materials",
                             Name = "Nora Tøjstativ",
                             Note = "Nora Note",

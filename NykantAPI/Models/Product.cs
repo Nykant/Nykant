@@ -16,9 +16,9 @@ namespace NykantAPI.Models
         public string Number { get; set; }
         public string Description { get; set; }
         public double Price { get; set; }
-        public string ImageSource { get; set; }
+        public string GalleryImage1 { get; set; }
+        public string GalleryImage2 { get; set; }
         public int Pieces { get; set; }
-        public string ImageSource2 { get; set; }
         public string Path { get; set; }
 
         public DateTime ExpectedDelivery { get; set; }

@@ -52,11 +52,11 @@
             <div class="details-info-wrap">
 
                 <h1>@Model.Name</h1>
-                <p >kr. @Model.Price</p>
+                <p>kr. @Model.Price</p>
 
                 <div class="fake-box">
-                    <h2 >@Model.Oil</h2>
-                    <h3 >@Model.Length</h3>
+                    <h2>@Model.Oil</h2>
+                    <h3>@Model.Length</h3>
                 </div>
 
                 @if (Model.ProductLengths.Count() > 0)
@@ -149,10 +149,10 @@
                 <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#item-added-modal" data-ajax-success="item_added" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" asp-controller="BagItem" asp-action="PostBagItem">
                     @Html.HiddenFor(x => x.Id)
                     @Html.HiddenFor(x => x.Images)
-                    @Html.HiddenFor(x => x.ImageSource)
-                    @Html.HiddenFor(x => x.ImageSource2)
+                    @Html.HiddenFor(x => x.GalleryImage1)
+                    @Html.HiddenFor(x => x.GalleryImage2)
                     @Html.HiddenFor(x => x.Name)
-                    @Html.HiddenFor(x => x.Price)
+                    @Html.HiddenFor(x => x.Price)pris skal aldrig være et input
                     @Html.HiddenFor(x => x.Materials)
                     @Html.HiddenFor(x => x.Alt)
                     @Html.HiddenFor(x => x.Oil)
@@ -211,102 +211,6 @@
         </div>
     </div>
 </div>
-
-
-@*<div class="row top-side-padding border-bottom background-lightblue">
-        <div class="col-4 center">
-            <div class="reviews padding">
-                <h1>Reviews</h1>
-                @if (Model.Reviews.Count() == 0)
-                {
-                    <p>Der er ingen reviews for dette produkt endnu</p>
-                }
-                @foreach (var item in Model.Reviews)
-                {
-                    <div class="review">
-                        <h1>Brugernavn</h1>
-                        <div class="review-stars">
-                            @switch (item.Stars)
-                            {
-                                case 1:
-                                    <i class="fas fa-star checked"></i>
-                                    <i class="fas fa-star unchecked"></i>
-                                    <i class="fas fa-star unchecked"></i>
-                                    <i class="fas fa-star unchecked"></i>
-                                    <i class="fas fa-star unchecked"></i>
-                                    break;
-                                case 2:
-                                    <i class="fas fa-star checked"></i>
-                                    <i class="fas fa-star checked"></i>
-                                    <i class="fas fa-star unchecked"></i>
-                                    <i class="fas fa-star unchecked"></i>
-                                    <i class="fas fa-star unchecked"></i>
-                                    break;
-                                case 3:
-                                    <i class="fas fa-star checked"></i>
-                                    <i class="fas fa-star checked"></i>
-                                    <i class="fas fa-star checked"></i>
-                                    <i class="fas fa-star unchecked"></i>
-                                    <i class="fas fa-star unchecked"></i>
-                                    break;
-                                case 4:
-                                    <i class="fas fa-star checked"></i>
-                                    <i class="fas fa-star checked"></i>
-                                    <i class="fas fa-star checked"></i>
-                                    <i class="fas fa-star checked"></i>
-                                    <i class="fas fa-star unchecked"></i>
-                                    break;
-                                case 5:
-                                    <i class="fas fa-star checked"></i>
-                                    <i class="fas fa-star checked"></i>
-                                    <i class="fas fa-star checked"></i>
-                                    <i class="fas fa-star checked"></i>
-                                    <i class="fas fa-star checked"></i>
-                                    break;
-                            }
-                        </div>
-                        <div class="line"></div>
-                        <h2>@item.Title</h2>
-                        <p>@item.Body</p>
-                    </div>
-                }
-            </div>
-        </div>
-    </div>
-
-    <div class="row top-side-padding bottom-side-padding">
-        <div class="col-4 center">
-            <form class="review-form" method="post" asp-controller="Review" asp-action="PostReview">
-                <h1>Skriv et review</h1>
-                <div class="review-stars right right-side-padding">
-                    <i id="star1" class="fas fa-star unchecked"></i>
-                    <i id="star2" class="fas fa-star unchecked"></i>
-                    <i id="star3" class="fas fa-star unchecked"></i>
-                    <i id="star4" class="fas fa-star unchecked"></i>
-                    <i id="star5" class="fas fa-star unchecked"></i>
-                </div>
-                @if (User.Identity.IsAuthenticated)
-                {
-                    <input hidden asp-for="@Model.Review.Subject" value="@User.Claims.FirstOrDefault(x => x.Type == "sub").Value" />
-                }
-                <input hidden asp-for="@Model.Review.ProductId" value="@Model.Product.Id" />
-                <input hidden asp-for="@Model.Review.Stars" id="stars-input" />
-                <input id="review-title" class="title" asp-for="@Model.Review.Title" placeholder="Titel" />
-                <span class="title-val" asp-validation-for="@Model.Review.Title"></span>
-                <textarea id="review-body" class="body" asp-for="@Model.Review.Body" placeholder="Besked"></textarea>
-                <span class="body-val" asp-validation-for="@Model.Review.Body"></span>
-                @if (User.Identity.IsAuthenticated)
-                {
-                    <button id="review-button" class="button" type="submit">Vælg stjerner</button>
-                }
-                else
-                {
-                    <button class="button" type="submit" disabled>Log ind for at skrive review</button>
-                }
-
-            </form>
-        </div>
-    </div>*@
 
 
 
