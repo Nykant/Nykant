@@ -257,6 +257,94 @@ mærker i tøjet.</value>
 &lt;/tr&gt;
 </value>
   </data>
+  <data name="Ingeborg 1000 Package" xml:space="preserve">
+    <value>&lt;tr&gt;
+&lt;td class="width-30"&gt;&lt;strong&gt;Pakken&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;
+&lt;p&gt;Størelse: ?? &lt;/p&gt;
+&lt;p&gt;Vægt: ?? &lt;/p&gt;
+&lt;p&gt;Leveres usamlet - se samlevejledning&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+</value>
+  </data>
+  <data name="Ingeborg 1000 Size" xml:space="preserve">
+    <value>&lt;tr&gt;
+&lt;td class="width-30"&gt;&lt;strong&gt;Størrelse&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;
+&lt;p&gt;Tykkelse: 20 mm.&lt;/p&gt;
+&lt;p&gt;Længde: 100 cm.&lt;/p&gt;
+&lt;p&gt;Bredde/dybde: ?? cm.&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+</value>
+  </data>
+  <data name="Ingeborg 400 Package" xml:space="preserve">
+    <value>&lt;tr&gt;
+&lt;td class="width-30"&gt;&lt;strong&gt;Pakken&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;
+&lt;p&gt;Størelse: ?? &lt;/p&gt;
+&lt;p&gt;Vægt: ?? &lt;/p&gt;
+&lt;p&gt;Leveres usamlet - se samlevejledning&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+</value>
+  </data>
+  <data name="Ingeborg 400 Size" xml:space="preserve">
+    <value>&lt;tr&gt;
+&lt;td class="width-30"&gt;&lt;strong&gt;Størrelse&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;
+&lt;p&gt;Tykkelse: 20 mm.&lt;/p&gt;
+&lt;p&gt;Længde: 40 cm.&lt;/p&gt;
+&lt;p&gt;Bredde/dybde: ?? cm.&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+</value>
+  </data>
+  <data name="Ingeborg 600 Package" xml:space="preserve">
+    <value>&lt;tr&gt;
+&lt;td class="width-30"&gt;&lt;strong&gt;Pakken&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;
+&lt;p&gt;Størelse: ?? &lt;/p&gt;
+&lt;p&gt;Vægt: ?? &lt;/p&gt;
+&lt;p&gt;Leveres usamlet - se samlevejledning&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+</value>
+  </data>
+  <data name="Ingeborg 600 Size" xml:space="preserve">
+    <value>&lt;tr&gt;
+&lt;td class="width-30"&gt;&lt;strong&gt;Størrelse&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;
+&lt;p&gt;Tykkelse: 20 mm.&lt;/p&gt;
+&lt;p&gt;Længde: 60 cm.&lt;/p&gt;
+&lt;p&gt;Bredde/dybde: ?? cm.&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+</value>
+  </data>
+  <data name="Ingeborg 800 Package" xml:space="preserve">
+    <value>&lt;tr&gt;
+&lt;td class="width-30"&gt;&lt;strong&gt;Pakken&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;
+&lt;p&gt;Størelse: ?? &lt;/p&gt;
+&lt;p&gt;Vægt: ?? &lt;/p&gt;
+&lt;p&gt;Leveres usamlet - se samlevejledning&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+</value>
+  </data>
+  <data name="Ingeborg 800 Size" xml:space="preserve">
+    <value>&lt;tr&gt;
+&lt;td class="width-30"&gt;&lt;strong&gt;Størrelse&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;
+&lt;p&gt;Tykkelse: 20 mm.&lt;/p&gt;
+&lt;p&gt;Længde: 80 cm.&lt;/p&gt;
+&lt;p&gt;Bredde/dybde: ?? cm.&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+</value>
+  </data>
   <data name="Ingeborg Description" xml:space="preserve">
     <value>Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde 
 Monteres helt fladt til væggen, og uden synlig fastgørelse.
@@ -284,22 +372,43 @@ monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave a
 &lt;/tr&gt;
 </value>
   </data>
-  <data name="Ingeborg Package" xml:space="preserve">
+  <data name="Ingrid Description" xml:space="preserve">
+    <value>Tøjracken "Ingrid" er udviklet med samme grundige, samling med massive egetræskiler. Et væghængt system som hænges på væggen med lædersnore, og som passer ind rigtig mange steder hvor pladsen ikke er stor. Vores væghængte tøjrack er meget smuk og med fine detaljer, hvor trækilen fremtræder flot sammen med lædersnoren som fastholder tøjracken til væggen.</value>
+  </data>
+  <data name="Ingrid Materials" xml:space="preserve">
     <value>&lt;tr&gt;
-&lt;td class="width-30"&gt;&lt;strong&gt;Pakken&lt;/strong&gt;&lt;/td&gt;
+&lt;td class="width-30"&gt;&lt;strong&gt;Materialer&lt;/strong&gt;&lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;Leveres usamlet - se samlevejledning&lt;/p&gt;
+&lt;p&gt;Bæredygtigt FSC certificeret egetræ&lt;/p&gt;
+&lt;p&gt;Olie&lt;/p&gt;
+&lt;p&gt;Lædderstrop&lt;/p&gt;
+&lt;p&gt;Beslag&lt;/p&gt;
+&lt;p&gt;Skruer&lt;/p&gt;
 &lt;/td&gt;
 &lt;/tr&gt;
 </value>
   </data>
-  <data name="Ingeborg Size" xml:space="preserve">
+  <data name="Ingrid Note" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Ingrid Package" xml:space="preserve">
+    <value>&lt;tr class="no-border"&gt;
+&lt;td class="width-30"&gt;&lt;strong&gt;&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+
+
+</value>
+  </data>
+  <data name="Ingrid Size" xml:space="preserve">
     <value>&lt;tr&gt;
 &lt;td class="width-30"&gt;&lt;strong&gt;Størrelse&lt;/strong&gt;&lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;Den fås i 4 forskellige længder, som kan vælges i toppen af siden.&lt;/p&gt;
-&lt;p&gt;Tykkelse: 20 mm.&lt;/p&gt;
-&lt;p&gt;Længder: 40, 60, 80 og 100 cm.&lt;/p&gt;
+&lt;p&gt;Højde: 90 cm.&lt;/p&gt;
+&lt;p&gt;Fra væg/dybde: 40 cm.&lt;/p&gt;
+&lt;p&gt;Bredde: ?? cm.&lt;/p&gt;
 &lt;/td&gt;
 &lt;/tr&gt;
 </value>
@@ -314,9 +423,7 @@ Det massive egetræsmøbel står sikkert og dekorativt med det fine snedkerarbej
 &lt;td&gt;
 &lt;p&gt;Bæredygtigt FSC certificeret egetræ&lt;/p&gt;
 &lt;p&gt;Olie&lt;/p&gt;
-&lt;p&gt;Lædderstrop&lt;/p&gt;
-&lt;p&gt;Beslag&lt;/p&gt;
-&lt;p&gt;Skruer&lt;/p&gt;
+&lt;p&gt;Kiler&lt;/p&gt;
 &lt;/td&gt;
 &lt;/tr&gt;
 </value>
