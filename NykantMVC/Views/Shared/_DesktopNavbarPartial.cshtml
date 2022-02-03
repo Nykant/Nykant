@@ -15,12 +15,12 @@
     <div class="sb-example-3 sidepadding">
         <!-- partial:index.partial.html -->
         <div class="search__container">
-            <form method="get" asp-action="Index" asp-controller="Product">
+            <form method="get" asp-action="Gallery" asp-controller="Product">
                 <input class="search__input" type="text" name="searchString" placeholder="SØG">
             </form>
         </div>
     </div>
-    <a asp-controller="Product" asp-action="Index">PRODUKTER</a>
+    <a asp-controller="Product" asp-action="Gallery">PRODUKTER</a>
     <a asp-action="About">OM OS</a>
     <a asp-action="Contact">KONTAKT</a>
 </div>
@@ -29,7 +29,7 @@
     <div class="desktop-navbar-wrap">
         <div class="my-row">
             <div class="logo-link">
-                <a asp-action="Index">
+                <a asp-controller="Home" asp-action="Index">
                     <div id="logo">
 
                     </div>
@@ -39,7 +39,7 @@
             <div id="searchbox" class="sb-example-3 right">
                 <!-- partial:index.partial.html -->
                 <div class="search__container">
-                    <form method="get" asp-action="Index" asp-controller="Product">
+                    <form method="get" asp-action="Gallery" asp-controller="Product">
                         <input class="search__input" type="text" name="searchString" placeholder="SØG">
                     </form>
                 </div>
@@ -76,7 +76,7 @@
         </div>
 
         <div id="desktop-row" class="my-row">
-            <a id="product-link" asp-controller="Product" asp-action="Index">PRODUKTER</a>
+            <a id="product-link" asp-controller="Product" asp-action="Gallery">PRODUKTER</a>
             <a asp-action="About">OM OS</a>
             <a asp-action="Contact">KONTAKT</a>
 
@@ -84,11 +84,11 @@
 
 
         <div id="navbar-product-filter">
-            <a asp-controller="Product" asp-action="Index" asp-route-searchString="Tøjstativer">Tøjstativer</a>
-            <a asp-controller="Product" asp-action="Index" asp-route-searchString="Borde">Borde</a>
-            <a asp-controller="Product" asp-action="Index" asp-route-searchString="Hylder">Hylder</a>
-            <a asp-controller="Product" asp-action="Index" asp-route-searchString="Bænke">Bænke</a>
-            <a asp-controller="Product" asp-action="Index" asp-route-searchString="Bøjler">Bøjler</a>
+            <a asp-controller="Product" asp-action="Gallery" asp-route-searchString="Tøjstativer">Tøjstativer</a>
+            <a asp-controller="Product" asp-action="Gallery" asp-route-searchString="Borde">Borde</a>
+            <a asp-controller="Product" asp-action="Gallery" asp-route-searchString="Hylder">Hylder</a>
+            <a asp-controller="Product" asp-action="Gallery" asp-route-searchString="Bænke">Bænke</a>
+            <a asp-controller="Product" asp-action="Gallery" asp-route-searchString="Bøjler">Bøjler</a>
         </div>
 
     </div>

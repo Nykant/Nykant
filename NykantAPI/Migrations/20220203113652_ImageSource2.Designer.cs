@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NykantAPI.Data;
 
 namespace NykantAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220203113652_ImageSource2")]
+    partial class ImageSource2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -2063,7 +2065,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 229,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 1,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_boejle_naturolie_01.png"
@@ -2071,7 +2073,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 230,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 1,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_boejle_naturolie_02.png"
@@ -2079,7 +2081,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 231,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 2,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_boejle_sortolie_01.png"
@@ -2087,7 +2089,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 232,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 2,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_boejle_sortolie_02.png"
@@ -2095,7 +2097,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 233,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 3,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_boejle_hvidolie_01.png"
@@ -2103,7 +2105,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 234,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 3,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_boejle_hvidolie_02.png"
@@ -2111,7 +2113,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 235,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 4,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_hvidolie_01.png"
@@ -2119,7 +2121,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 236,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 4,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_hvidolie_02.png"
@@ -2127,7 +2129,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 237,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 4,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_hvidolie_03.png"
@@ -2135,7 +2137,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 238,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 5,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_sortolie_01.png"
@@ -2143,7 +2145,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 239,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 5,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_sortolie_02.png"
@@ -2151,7 +2153,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 240,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 5,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_sortolie_03.png"
@@ -2159,7 +2161,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 241,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 6,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_naturolie_01.png"
@@ -2167,7 +2169,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 242,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 6,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_naturolie_02.png"
@@ -2175,7 +2177,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 243,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 6,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_naturolie_03.png"
@@ -2183,7 +2185,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 244,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 7,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_hvidolie_01.png"
@@ -2191,7 +2193,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 245,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 7,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_hvidolie_02.png"
@@ -2199,7 +2201,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 246,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 7,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_hvidolie_03.png"
@@ -2207,7 +2209,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 247,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 8,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_sortolie_01.png"
@@ -2215,7 +2217,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 248,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 8,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_sortolie_02.png"
@@ -2223,7 +2225,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 249,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 8,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_sortolie_03.png"
@@ -2231,7 +2233,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 250,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 9,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_naturolie_01.png"
@@ -2239,7 +2241,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 251,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 9,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_naturolie_02.png"
@@ -2247,7 +2249,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 252,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 9,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_naturolie_03.png"
@@ -2255,7 +2257,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 253,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 10,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_hvidolie_01.png"
@@ -2263,7 +2265,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 254,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 10,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_hvidolie_02.png"
@@ -2271,7 +2273,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 255,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 10,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_hvidolie_03.png"
@@ -2279,7 +2281,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 256,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 11,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_sortolie_01.png"
@@ -2287,7 +2289,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 257,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 11,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_sortolie_02.png"
@@ -2295,7 +2297,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 258,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 11,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_sortolie_03.png"
@@ -2303,7 +2305,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 259,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 12,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_naturolie_01.png"
@@ -2311,7 +2313,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 260,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 12,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_naturolie_02.png"
@@ -2319,7 +2321,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 261,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 12,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_naturolie_03.png"
@@ -2327,7 +2329,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 262,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 13,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_hvidolie_01.png"
@@ -2335,7 +2337,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 263,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 13,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_hvidolie_02.png"
@@ -2343,7 +2345,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 264,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 13,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_hvidolie_03.png"
@@ -2351,7 +2353,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 265,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 14,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_sortolie_01.png"
@@ -2359,7 +2361,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 266,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 14,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_sortolie_02.png"
@@ -2367,7 +2369,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 267,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 14,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_sortolie_03.png"
@@ -2375,7 +2377,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 268,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 15,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_naturolie_01.png"
@@ -2383,7 +2385,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 269,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 15,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_naturolie_02.png"
@@ -2391,7 +2393,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 270,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 15,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_naturolie_03.png"
@@ -2399,7 +2401,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 271,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 16,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_bord_naturolie_01.png"
@@ -2407,7 +2409,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 272,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 16,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_bord_naturolie_02.png"
@@ -2415,7 +2417,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 273,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 16,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_bord_naturolie_03.png"
@@ -2423,7 +2425,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 274,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 17,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_bord_hvidolie_01.png"
@@ -2431,7 +2433,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 275,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 17,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_bord_hvidolie_02.png"
@@ -2439,7 +2441,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 276,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 17,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_bord_hvidolie_03.png"
@@ -2447,7 +2449,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 277,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 18,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_kortbaenk_naturolie_01.png"
@@ -2455,7 +2457,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 278,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 18,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_kortbaenk_naturolie_02.png"
@@ -2463,7 +2465,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 279,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 18,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_kortbaenk_naturolie_03.png"
@@ -2471,7 +2473,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 280,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 19,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_kortbaenk_hvidolie_01.png"
@@ -2479,7 +2481,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 281,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 19,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_kortbaenk_hvidolie_02.png"
@@ -2487,7 +2489,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 282,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 19,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_kortbaenk_hvidolie_03.png"
@@ -2495,7 +2497,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 283,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 20,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_kortbaenk_sortolie_01.png"
@@ -2503,7 +2505,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 284,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 20,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_kortbaenk_sortolie_02.png"
@@ -2511,7 +2513,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 285,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 20,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_kortbaenk_sortolie_03.png"
@@ -2519,7 +2521,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 286,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 21,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_langbaenk_naturolie_01.png"
@@ -2527,7 +2529,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 287,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 21,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_langbaenk_naturolie_02.png"
@@ -2535,7 +2537,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 288,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 21,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_langbaenk_naturolie_03.png"
@@ -2543,7 +2545,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 289,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 22,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_langbaenk_hvidolie_01.png"
@@ -2551,7 +2553,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 290,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 22,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_langbaenk_hvidolie_02.png"
@@ -2559,7 +2561,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 291,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 22,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_langbaenk_hvidolie_03.png"
@@ -2567,7 +2569,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 292,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 23,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_langbaenk_sortolie_01.png"
@@ -2575,7 +2577,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 293,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 23,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_langbaenk_sortolie_02.png"
@@ -2583,7 +2585,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 294,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 23,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_langbaenk_sortolie_03.png"
@@ -2591,7 +2593,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 295,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 24,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_opbevaringsbaenk_naturolie_01.png"
@@ -2599,7 +2601,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 296,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 24,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_opbevaringsbaenk_naturolie_02.png"
@@ -2607,7 +2609,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 297,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 24,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_opbevaringsbaenk_naturolie_03.png"
@@ -2615,7 +2617,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 298,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 24,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_opbevaringsbaenk_naturolie_04.png"
@@ -2623,7 +2625,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 299,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 24,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_opbevaringsbaenk_naturolie_05.png"
@@ -2631,7 +2633,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 300,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 24,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_opbevaringsbaenk_naturolie_06.png"
@@ -2639,7 +2641,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 301,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 24,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_opbevaringsbaenk_naturolie_07.png"
@@ -2647,7 +2649,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 302,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 25,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_opbevaringsbaenk_hvidolie_01.png"
@@ -2655,7 +2657,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 303,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 25,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_opbevaringsbaenk_hvidolie_02.png"
@@ -2663,7 +2665,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 304,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 25,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_opbevaringsbaenk_hvidolie_03.png"
@@ -2671,7 +2673,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 305,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 25,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_opbevaringsbaenk_hvidolie_04.png"
@@ -2679,7 +2681,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 306,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 25,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_opbevaringsbaenk_hvidolie_05.png"
@@ -2687,7 +2689,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 307,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 25,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_opbevaringsbaenk_hvidolie_06.png"
@@ -2695,7 +2697,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 308,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 25,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_opbevaringsbaenk_hvidolie_07.png"
@@ -2703,7 +2705,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 309,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 26,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_opbevaringsbaenk_sort_01.png"
@@ -2711,7 +2713,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 310,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 26,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_opbevaringsbaenk_sort_02.png"
@@ -2719,7 +2721,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 311,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 26,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_opbevaringsbaenk_sort_03.png"
@@ -2727,7 +2729,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 312,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 26,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_opbevaringsbaenk_sort_04.png"
@@ -2735,7 +2737,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 314,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 26,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_opbevaringsbaenk_sort_05.png"
@@ -2743,7 +2745,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 315,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 26,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_opbevaringsbaenk_sort_06.png"
@@ -2751,7 +2753,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 316,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 26,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_opbevaringsbaenk_sort_07.png"
@@ -2759,7 +2761,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 317,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 27,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_rack_naturolie_01.png"
@@ -2767,7 +2769,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 318,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 27,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_rack_naturolie_02.png"
@@ -2775,7 +2777,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 319,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 27,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_rack_naturolie_03.png"
@@ -2783,7 +2785,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 320,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 27,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_rack_naturolie_04.png"
@@ -2791,7 +2793,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 321,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 27,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_rack_naturolie_05.png"
@@ -2799,7 +2801,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 322,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 27,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_rack_naturolie_06.png"
@@ -2807,7 +2809,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 323,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 28,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_rack_hvidolie_01.png"
@@ -2815,7 +2817,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 324,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 28,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_rack_hvidolie_02.png"
@@ -2823,7 +2825,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 325,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 28,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_rack_hvidolie_03.png"
@@ -2831,7 +2833,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 326,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 28,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_rack_hvidolie_04.png"
@@ -2839,7 +2841,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 327,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 28,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_rack_hvidolie_05.png"
@@ -2847,7 +2849,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 328,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 28,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_rack_hvidolie_06.png"
@@ -2855,7 +2857,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 329,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 29,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_rack_sortolie_01.png"
@@ -2863,7 +2865,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 330,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 29,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_rack_sortolie_02.png"
@@ -2871,7 +2873,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 331,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 29,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_rack_sortolie_03.png"
@@ -2879,7 +2881,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 332,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 29,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_rack_sortolie_04.png"
@@ -2887,7 +2889,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 333,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 29,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_rack_sortolie_05.png"
@@ -2895,7 +2897,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 334,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 29,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_rack_sortolie_06.png"
@@ -2903,7 +2905,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 335,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 30,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/Ingrid_Naturolie_1.png"
@@ -2911,7 +2913,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 336,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 30,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/Ingrid_Naturolie_2.png"
@@ -2919,7 +2921,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 337,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 30,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/Ingrid_Naturolie_3.png"
@@ -2927,7 +2929,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 338,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 31,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/Ingrid_Hvidolie_1.png"
@@ -2935,7 +2937,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 339,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 31,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/Ingrid_Hvidolie_2.png"
@@ -2943,7 +2945,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 340,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 31,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/Ingrid_Hvidolie_3.png"
@@ -2951,7 +2953,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 341,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 32,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/Ingrid_Sortolie_1.png"
@@ -2959,7 +2961,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 342,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 32,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/Ingrid_Sortolie_2.png"
@@ -2967,7 +2969,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 343,
-                            ImageType = 1,
+                            ImageType = 0,
                             ProductId = 32,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/Ingrid_Sortolie_3.png"

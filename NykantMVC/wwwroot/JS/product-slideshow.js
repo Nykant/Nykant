@@ -88,7 +88,7 @@ window.addEventListener("load", function () {
         var children = product_slides[i].children;
         var img = children[0];
         img.addEventListener('click', function (event) {
-            bigImg.src = event.currentTarget.src;
+            bigImg.src = event.currentTarget.getAttribute("data-fullscreensrc");
             pop.style.display = 'flex';
         });
     }

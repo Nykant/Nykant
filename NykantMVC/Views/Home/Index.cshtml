@@ -30,22 +30,22 @@
         <div class="slide-container" id="slide-container">
             <div class="slide">
                 <picture>
-                    <source srcset="../images/Products/NYKANT_miljoe-1_varient.png" media="(min-width: 600px)">
-                    <img src="../images/Products/phone-size/miljoe-1-varient-phone-size.png" alt="Egetræsmøbler i miljø">
+                    <source srcset="../images/Products/Miljø/Desktop/Miljoe_1.2.png" media="(min-width: 600px)">
+                    <img src="../images/Products/Miljø/Desktop/Miljoe_1.2.png" alt="Egetræsmøbler i miljø">
                 </picture>
             </div>
             <div class="slide">
                 <picture>
-                    <source srcset="../images/Products/NYKANT_miljoe-4.png" media="(min-width: 600px)">
-                    <source srcset="../images/Products/widecropped/miljoe-4-widecropped.png" media="(min-width: 1000px)">
-                    <img src="../images/Products/phone-size/miljoe-4-phone-size.png" alt="Egetræsmøbler i miljø">c
+                    <source srcset="../images/Products/Miljø/Desktop/Miljoe_2.png" media="(min-width: 600px)">
+                    <source srcset="../images/Products/Miljø/Desktop/Miljoe_2.png" media="(min-width: 1000px)">
+                    <img src="../images/Products/Miljø/Desktop/Miljoe_2.png" alt="Egetræsmøbler i miljø">
                 </picture>
             </div>
             <div class="slide">
                 <picture>
-                    <source srcset="../images/Products/widecropped/miljoe-5-widecropped.png" media="(min-width: 1000px)">
-                    <source srcset="../images/Products/NYKANT_miljoe-5.png" media="(min-width: 600px)">
-                    <img src="../images/Products/phone-size/miljoe-5-phone-size.png" alt="Egetræsmøbler i miljø">
+                    <source srcset="../images/Products/Miljø/Desktop/Miljoe_3.png" media="(min-width: 1000px)">
+                    <source srcset="../images/Products/Miljø/Desktop/Miljoe_3.png" media="(min-width: 600px)">
+                    <img src="../images/Products/Miljø/Desktop/Miljoe_3.png" alt="Egetræsmøbler i miljø">
                 </picture>
             </div>
         </div>
@@ -69,8 +69,8 @@
                 @foreach (var category in Model.Categories)
                 {
                     <div class="product-card">
-                        @*<div class="product-badge text-danger">28% Off</div>*@<a class="product-thumb" href="/Product/Index?searchString=@category.Name" data-abc="true"><img src="@category.ImgSource" alt="Category"></a>
-                        <h3 class="product-title"><a href="/Product/Index?searchString=@category.Name" data-abc="true">@category.Name</a></h3>
+                        @*<div class="product-badge text-danger">28% Off</div>*@<a class="product-thumb" href="/Product/Gallery?searchString=@category.Name" data-abc="true"><img src="@category.ImgSource" alt="Category"></a>
+                        <h3 class="product-title"><a href="/Product/Gallery?searchString=@category.Name" data-abc="true">@category.Name</a></h3>
                         @*<h4 class="product-price"> <del>$844.99</del>@cat.Price kr.</h4>*@
                         @*<div class="product-buttons"> <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="" data-original-title="Whishlist"><i class="fa fa-heart"></i></button> <button class="button">Add to Cart</button> </div>*@
                     </div>

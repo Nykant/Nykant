@@ -1,4 +1,4 @@
-﻿var x, i, j, l, ll, selElmnt, img, img2, c, shopOption;
+﻿ var x, i, j, l, ll, selElmnt, img, img2, c, shopOption;
 x = document.getElementsByClassName("custom-list");
 l = x.length;
 

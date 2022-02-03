@@ -19,7 +19,7 @@ namespace NykantMVC.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index(string searchString)
+        public async Task<IActionResult> Gallery(string searchString)
         {
             var json = await GetRequest("/Product/GetProducts");
             var products = JsonConvert.DeserializeObject<List<Product>>(json);

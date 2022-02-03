@@ -1,4 +1,7 @@
 ﻿@model List<Product>
+@{
+    var products = Model;
+}
 
 <div class="col-12 left ">
     <div id="current-filter">
@@ -12,10 +15,17 @@
         </h1>
     </div>
 </div>
-@foreach (var item in Model)
+@foreach (var item in products)
 {
     if (item.EColor == EColor.Nature)
     {
+        //if (item.Category.Name == "Hylder")
+        //{
+        //    if (item.Length != "600 mm.")
+        //    {
+        //        goto skip;
+        //    }
+        //}
         <div class="col-4 left product-col">
             @if (item.Colors.Count() > 1)
             {
@@ -31,34 +41,35 @@
                     }
                 </div>
             }
-            
-        <div class="product-item">
-            <a asp-controller="product" asp-action="details" asp-route-id="@item.Id">
-                <div class="product-item-inside">
-                    <div class="product-images">
-                        <div class="primary-img">
-                            <img src="@item.GalleryImage1" />
-                        </div>
-                        <div class="secondary-img">
-                            <img src="@item.GalleryImage2" />
-                        </div>
-                    </div>
 
-                    <div class="product-text">
-                        @if (item.Length != null)
-                        {
-                            <p>@item.Name / @item.Length</p>
-                        }
-                        else
-                        {
-                            <p>@item.Name</p>
-                        }
-                        <p>kr. @item.Price</p>
+            <div class="product-item">
+                <a asp-controller="product" asp-action="details" asp-route-id="@item.Id">
+                    <div class="product-item-inside">
+                        <div class="product-images">
+                            <div class="primary-img">
+                                <img src="@item.GalleryImage1" />
+                            </div>
+                            <div class="secondary-img">
+                                <img src="@item.GalleryImage2" />
+                            </div>
+                        </div>
+
+                        <div class="product-text">
+                            @if (item.Length != null)
+                            {
+                                <p>@item.Name / @item.Length</p>
+                            }
+                            else
+                            {
+                                <p>@item.Name</p>
+                            }
+                            <p>kr. @item.Price</p>
+                        </div>
                     </div>
-                </div>
-            </a>
-        </div>
+                </a>
+            </div>
 
         </div>
     }
+    skip:;
 }

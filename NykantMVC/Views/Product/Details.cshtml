@@ -8,8 +8,8 @@
 
     string url = @conf.GetSection("Urls")["Mvc"];
 
-
-
+    var buttonImages = Model.Images.Where(x => x.ImageType == ImageType.DetailsButton);
+    var slideImages = Model.Images.Where(x => x.ImageType == ImageType.DetailsSlide);
 }
 <script src="~/JS/swiped-events.min.js"></script>
 <script src="~/JS/product-details.js" defer></script>
@@ -23,26 +23,23 @@
     <div class="col-10 center" id="details-wrapper">
         <div class="col-8 left" id="details-left">
             <div class="product-slideshow" id="product-slideshow">
-
                 <div class="product-slide-container" id="product-slide-container">
-                    @foreach (var image in Model.Images)
+                    @foreach (var image in slideImages)
                     {
-                        <div class="product-slide">
-                            <img align="middle" data-shortsrc="../@image.Source" src="../@image.Source" />
-                        </div>
+                            <div class="product-slide">
+                                <img align="middle" data-fullscreenSrc="../@image.Source2" src="../@image.Source" />
+                            </div>
                     }
                 </div>
             </div>
 
             <div class="my-row top-side-padding">
                 <div class="product-slide-buttons" id="product-slide-buttons">
-                    @{
-                        @for (int i = 0; i < Model.Images.Count(); i++)
-                        {
-                            <div class="product-slide-button">
-                                <img src="../@Model.Images.ToList()[i].Source" />
-                            </div>
-                        }
+                    @foreach (var image in buttonImages)
+                    {
+                        <div class="product-slide-button">
+                            <img src="../@image.Source" />
+                        </div>
                     }
                 </div>
             </div>
