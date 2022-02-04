@@ -17,7 +17,7 @@
 }
 
 .slide-container {
-    width: 300%;
+    width: 700%;
     height: 100%;
     clear: both;
     position: relative;
@@ -28,7 +28,7 @@
 }
 
 .slide {
-    width: 33.333%;
+    width: 14.285%;
     height: 100%;
     float: left;
     margin: 0px;

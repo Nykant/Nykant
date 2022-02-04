@@ -10,6 +10,8 @@
 
     var buttonImages = Model.Images.Where(x => x.ImageType == ImageType.DetailsButton);
     var slideImages = Model.Images.Where(x => x.ImageType == ImageType.DetailsSlide);
+
+    var count = 1;
 }
 <script src="~/JS/swiped-events.min.js"></script>
 <script src="~/JS/product-details.js" defer></script>
@@ -26,9 +28,19 @@
                 <div class="product-slide-container" id="product-slide-container">
                     @foreach (var image in slideImages)
                     {
+                        if (count > 1)
+                        {
+                            <div class="product-slide">
+                                <img loading="lazy" align="middle" data-fullscreenSrc="../@image.Source2" src="../@image.Source" />
+                            </div>
+                        }
+                        else
+                        {
                             <div class="product-slide">
                                 <img align="middle" data-fullscreenSrc="../@image.Source2" src="../@image.Source" />
                             </div>
+                        }
+                        count++;
                     }
                 </div>
             </div>
@@ -135,11 +147,23 @@
                     <h3>Farver</h3>
                     @foreach (var color in Model.Colors)
                     {
-                        <div class="color">
-                            <a asp-controller="Product" asp-action="details" asp-route-id="@color.ProductSourceId">
-                                <img src="../@color.ImgSrc" />
-                            </a>
-                        </div>
+                        if (color.EColor == Model.EColor)
+                        {
+                            <div class="color current-color">
+                                <a asp-controller="Product" asp-action="details" asp-route-id="@color.ProductSourceId">
+                                    <img src="../@color.ImgSrc" />
+                                </a>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="color">
+                                <a asp-controller="Product" asp-action="details" asp-route-id="@color.ProductSourceId">
+                                    <img src="../@color.ImgSrc" />
+                                </a>
+                            </div>
+                        }
+
                     }
                 </div>
 

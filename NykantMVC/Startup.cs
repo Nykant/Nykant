@@ -135,6 +135,7 @@ namespace NykantMVC
                 });
             }
 
+            services.AddLogging();
 
             services.AddControllersWithViews()
                                     .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)

@@ -95,10 +95,12 @@ window.addEventListener("load", function () {
 
     pop.addEventListener('click', function () {
         pop.style.display = 'none';
+        bigImg.src = undefined;
     });
 
     close.addEventListener('click', function () {
         pop.style.display = 'none';
+        bigImg.src = undefined;
     });
 });
 

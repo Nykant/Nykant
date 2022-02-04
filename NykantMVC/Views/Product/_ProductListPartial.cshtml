@@ -1,6 +1,8 @@
 ﻿@model List<Product>
 @{
     var products = Model;
+
+    var count = 1;
 }
 
 <div class="col-12 left ">
@@ -46,11 +48,21 @@
                 <a asp-controller="product" asp-action="details" asp-route-id="@item.Id">
                     <div class="product-item-inside">
                         <div class="product-images">
-                            <div class="primary-img">
-                                <img src="@item.GalleryImage1" />
-                            </div>
+                            @if (count > 5)
+                            {
+                                <div class="primary-img">
+                                    <img loading="lazy" src="@item.GalleryImage1" />
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="primary-img">
+                                    <img src="@item.GalleryImage1" />
+                                </div>
+                            }
+
                             <div class="secondary-img">
-                                <img src="@item.GalleryImage2" />
+                                <img loading="lazy" src="@item.GalleryImage2" />
                             </div>
                         </div>
 

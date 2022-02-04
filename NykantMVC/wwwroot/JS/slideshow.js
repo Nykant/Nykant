@@ -24,31 +24,30 @@ for (var i = 0; i < slidebuttons.length; i++) {
             slidenumber = 2;
         });
     }
+    else if (i == 3) {
+        slidebuttons[i].addEventListener('click', function () {
+            slidecontainer.style.left = '-300%';
+            slidenumber = 3;
+        });
+    }
 }
 
 $(document).ready(function () {
     theInterval = setInterval(function () {
         slidebuttons[slidenumber].click();
         slidenumber++;
-        if (slidenumber > 2) {
+        if (slidenumber > 3) {
             slidenumber = 0;
         }
-    }, 3000)
+    }, 5000)
 
     var slicknext = document.getElementsByClassName('slick-next');
     slicknext[0].textContent = "Næste";
     document.getElementsByClassName('slick-prev')[0].textContent = "Tilbage";
 });
 
-window.onbeforeunload = function (e) {
-    clearInterval(theInterval);
-}
-
-
-
-
 //window.onscroll = function () {
-//    if (elementInViewport(aboutus)) {
+//    if (elementInViewport($('#owl-carousel'))) {
 //        document.getElementById('about-us-text').style.opacity = '1';
 //    }
 //}
