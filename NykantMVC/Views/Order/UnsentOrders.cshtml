@@ -4,17 +4,10 @@
     ViewData["Description"] = "";
 }
 
-<script src="~/JS/capture.js" defer></script>
-<link rel="stylesheet" href="~/css/orders-list.css" />
-
-<div class="notification3" id="capture-notification">
-    <p id="capture-notification-text"></p>
-</div>
-
+<link rel="stylesheet" href="~/css/my-list.css" />
 
 <div class="my-row top-padding bottom-padding">
-    <div class="col-8 center" id="all-orders">
+    <div class="col-8 center" id="unsent-orders">
         <partial name="_UnsentOrderListPartial" />
     </div>
 </div>
-

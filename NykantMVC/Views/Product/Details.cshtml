@@ -13,9 +13,8 @@
 
     var count = 1;
 }
-<script src="~/JS/swiped-events.min.js"></script>
-<script src="~/JS/product-details.js" defer></script>
-<script src="~/JS/product-slideshow.js" defer></script>
+
+<link rel="stylesheet" href="~/css/product-details.css" />
 
 <div class="modal" id="item-added-modal">
     <partial name="_ItemAddedPartial">
@@ -167,26 +166,7 @@
                     }
                 </div>
 
-                <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#item-added-modal" data-ajax-success="item_added" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" asp-controller="BagItem" asp-action="PostBagItem">
-                    @Html.HiddenFor(x => x.Id)
-                    @Html.HiddenFor(x => x.Images)
-                    @Html.HiddenFor(x => x.GalleryImage1)
-                    @Html.HiddenFor(x => x.GalleryImage2)
-                    @Html.HiddenFor(x => x.Name)
-                    @Html.HiddenFor(x => x.Price)pris skal aldrig være et input
-                    @Html.HiddenFor(x => x.Materials)
-                    @Html.HiddenFor(x => x.Alt)
-                    @Html.HiddenFor(x => x.Oil)
-                    @Html.HiddenFor(x => x.Description)
-                    @Html.HiddenFor(x => x.CategoryId)
-                    @Html.HiddenFor(x => x.WeightInKg)
-                    @Html.HiddenFor(x => x.Number)
-                    @Html.HiddenFor(x => x.Amount)
-                    @Html.HiddenFor(x => x.AssemblyPath)
-                    @Html.HiddenFor(x => x.EColor)
-                    @Html.HiddenFor(x => x.ExpectedDelivery)
-                    @Html.HiddenFor(x => x.Length)
-
+                <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#item-added-modal" data-ajax-success="item_added" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" asp-controller="BagItem" asp-action="PostBagItem" asp-route-id="@Model.Id">
                     <div class="product-counter">
                         <button id="product-counter-down" type="button"><i class="fas fa-minus"></i></button>
                         <input id="product-counter-input" type="number" name="quantity" value="1" />
@@ -233,6 +213,7 @@
     </div>
 </div>
 
-
-
+<script async src="~/JS/product-details.js"></script>
+<script async src="~/JS/product-slideshow.js"></script>
+<script async src="~/JS/swiped-events.min.js"></script>
 

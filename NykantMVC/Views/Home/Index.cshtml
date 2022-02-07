@@ -5,24 +5,9 @@
     ViewData["Description"] = "Nykant er et nyt dansk brand, som med inspiration fra dansk design, udvikler moderne egetræsmøbler med minimalistiske detaljer i høj kvalitet, produceret i bæredygtigt FSC certificeret, massivt, Egetræ.";
 }
 
-<script src="~/JS/viewport.js"></script>
-<script src="~/JS/slideshow.js" defer></script>
+<link rel="stylesheet" href="~/css/front-page.css" />
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
 <link rel="stylesheet" type="text/css" href="~/css/carousel.css" />
-<script type="text/javascript" src="~/JS/carousel.js"></script>
-
-
-
-@*<script src="~/JS/tripple-slide.js" defer></script>*@
-@*<script src="~/JS/swiped-events.min.js" defer></script>*@
-
-@*<div class="my-row">
-        <div id="slideshow">
-        </div>
-    </div>*@
-
 
 <div id="lb-back">
     <div id="lb-img"></div>
@@ -39,21 +24,21 @@
                 </picture>
             </div>
             <div class="slide">
-                <picture >
+                <picture>
                     @*<source srcset="../images/Products/Miljø/Desktop/NYKANT_miljoe_1_varient.png" media="(min-width: 1000px)">*@
                     <source loading="lazy" srcset="../images/Products/Miljø/Desktop/NYKANT_miljoe_1_varient.png" media="(min-width: 600px)">
                     <img loading="lazy" src="../images/Products/Miljø/Phone/NYKANT_miljoe_1_varient.png" alt="Egetræsmøbler i miljø">
                 </picture>
             </div>
             <div class="slide">
-                <picture >
+                <picture>
                     @*<source srcset="../images/Products/Miljø/Desktop/Miljoe_3.png" media="(min-width: 1000px)">*@
                     <source loading="lazy" srcset="../images/Products/Miljø/Desktop/Miljoe_3.png" media="(min-width: 600px)">
                     <img loading="lazy" src="../images/Products/Miljø/Phone/Miljoe_3.png" alt="Egetræsmøbler i miljø">
                 </picture>
             </div>
             <div class="slide">
-                <picture >
+                <picture>
                     @*<source srcset="../images/Products/Miljø/Desktop/NYKANT_miljoe_4.png" media="(min-width: 1000px)">*@
                     <source loading="lazy" srcset="../images/Products/Miljø/Desktop/NYKANT_miljoe_4.png" media="(min-width: 600px)">
                     <img loading="lazy" src="../images/Products/Miljø/Phone/NYKANT_miljoe_5.png" alt="Egetræsmøbler i miljø">
@@ -159,62 +144,7 @@
     </div>
 </div>
 
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script async type="text/javascript" src="~/JS/carousel.js"></script>
+<script async src="~/JS/slideshow.js"></script>
 
-
-@*<div class="my-row background-base">
-        <div class="col-8 center ">
-            <div class="business-values">
-                <div class="col-6 left">
-                    <i class="fas fa-user-tie"></i>
-                    <p>Ingen mellem-mænd,<br /> ingen bullshit,<br /> direkte til kunden.</p>
-                </div>
-                <div class="col-6 left">
-                    <i class="fas fa-user-tie"></i>
-                    <p>test</p>
-                </div>
-                <div class="col-6 left">
-                    <i class="fas fa-user-tie"></i>
-                    <p>test</p>
-                </div>
-                <div class="col-6 left">
-                    <i class="fas fa-user-tie"></i>
-                    <p>test</p>
-                </div>
-            </div>
-        </div>
-    </div>*@
-
-@*<div class="row">
-        <div class="tripple-slider-container center">
-            <div id="tripple-slider" class="tripple-slider">
-                @foreach (var item in Model)
-                {
-                    <div class="col-4 hidden">
-                        <img src="@item.ImageSource" />
-                    </div>
-                }
-            </div>
-
-        </div>
-    </div>*@
-
-@*<div class="row">
-        <div class="col-4 center">
-            <div class="tripple-slider-controller">
-                <div class="slide-button left">
-                    <button id="back-button" type="button"><img class="small-svg" src="~/lib/svg/arrow-left.svg" /></button>
-                </div>
-                <div class="slide-button right">
-                    <button id="forward-button" type="button"><img class="small-svg" src="~/lib/svg/arrow-right.svg" /></button>
-                </div>
-                <div class="center">
-                    <form id="product-slides-radio">
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="fullscreen-row">
-
-    </div>*@

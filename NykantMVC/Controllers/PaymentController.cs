@@ -200,7 +200,7 @@ namespace NykantMVC.Controllers
                 ViewData.Model = orders;
                 return new PartialViewResult
                 {
-                    ViewName = "/Views/Order/_OrderListPartial.cshtml",
+                    ViewName = "/Views/Order/_UnsentOrderListPartial.cshtml",
                     ViewData = this.ViewData
                 };
             }

@@ -41,7 +41,6 @@ for (i = 0; i < l; i++) {
             var y, i, k, select, h, selectlength, yl;
             select = this.parentNode.parentNode.getElementsByTagName("select")[0];
             selectlength = select.length;
-            h = this.parentNode.previousSibling;
             for (i = 1; i < selectlength; i++) {
                 if (select.options[i].dataset.transtype === this.children[0].textContent) {
                     shipping_method_summary.textContent = select.options[i].dataset.transtype;
@@ -180,7 +179,6 @@ for (i = 0; i < l; i++) {
                     break;
                 }
             }
-            h.Click();
         });
         elem.appendChild(c);
     }

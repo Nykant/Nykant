@@ -1,13 +1,14 @@
 ﻿@model List<Cookie>
 @inject IViewLocalizer localizer
-@{ 
+@{
     ViewData["Title"] = "Nykants Cookie Politik";
     ViewData["Description"] = "Nykants politik om brug af cookies.";
 
 }
 
-<script src="~/JS/consent.js" defer></script>
+<link rel="stylesheet" href="~/css/privacy.css" />
 <link rel="stylesheet" type="text/css" href="~/css/custom-table.css" />
+
 
 <div class="my-row background-color2 bottom-padding">
     <div class="col-3 cookie-header center">
@@ -69,7 +70,7 @@
         </div>
         <div>
             @*------------------------- LISTE AF COOKIES ---------------------*@
-            
+
             <div class="custom-table">
                 <h1>Liste over vores First-Party cookies</h1>
                 <div class="custom-table-headers">
@@ -93,7 +94,7 @@
                     }
                 </div>
             </div>
-            
+
             <div class="custom-table">
                 <h1>Liste over vores Third-Party cookies</h1>
                 <div class="custom-table-headers">
@@ -124,3 +125,5 @@
     </div>
 
 </div>
+
+<script src="~/JS/consent.js"></script>

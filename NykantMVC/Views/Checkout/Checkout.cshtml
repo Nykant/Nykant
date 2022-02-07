@@ -22,15 +22,13 @@
     }
 }
 
-<input type="hidden" data-url="@url" id="stage" value="@stage" />
 <link rel="stylesheet" href="~/stripe/stripe.css" />
+<link rel="stylesheet" href="~/css/checkout.css" />
+<link rel="stylesheet" href="~/css/custom-input.css" />
+<link rel="stylesheet" href="~/css/custom-list.css" />
+<link rel="stylesheet" href="~/css/custom-checkbox.css" />
 
-<script src="~/JS/checkout.js" defer></script>
-<script src="~/JS/country-picker.js" defer></script>
-<script src="~/JS/custom-list.js" defer></script>
-<script src="~/stripe/client.js" defer></script>
-<script src="~/JS/AjaxAntiCSRF.js" defer></script>
-
+<input type="hidden" data-url="@url" id="stage" value="@stage" />
 <form id="AntiforgeryToken">@Html.AntiForgeryToken()</form>
 
 <div class="modal" id="checkout-modal">
@@ -52,3 +50,8 @@
     </div>
 </div>
 
+<script async src="~/JS/checkout.js"></script>
+<script async src="~/JS/country-picker.js"></script>
+<script async src="~/JS/custom-list.js"></script>
+<script async src="~/stripe/client.js"></script>
+<script async src="~/JS/AjaxAntiCSRF.js"></script>

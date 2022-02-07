@@ -29,6 +29,18 @@ namespace NykantAPI.Controllers
             return Ok(json);
         }
 
+        [HttpGet]
+        public async Task<ActionResult> GetBagItemProducts(List<BagItem> bagItems)
+        {
+            var products = new List<Product>();
+            foreach(var item in bagItems)
+            {
+                products.Add(await _context.Products.FindAsync(item.ProductId));
+            }
+            var json = JsonConvert.SerializeObject(products, Extensions.JsonOptions.jsonSettings);
+            return Ok(json);
+        }
+
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductDTO>> GetProduct(int id) 
         {

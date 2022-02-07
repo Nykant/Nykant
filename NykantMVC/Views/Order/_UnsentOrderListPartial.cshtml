@@ -14,7 +14,7 @@
     </tr>
     @foreach (var order in list)
     {
-        if (order.Status == Status.Pending)
+        if (order.Status == Status.Pending && order.IsBackOrder == false)
         {
             TimeSpan deliveryTimeSpan = order.EstimatedDelivery.Subtract(DateTime.Now);
             <tr>
@@ -25,7 +25,7 @@
                 <td>
                     @if (order.Status == Status.Pending)
                     {
-                        <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#all-orders" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" data-ajax-success="noop" asp-controller="Payment" asp-action="CapturePaymentIntent" asp-route-orderId="@order.Id">
+                        <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#unsent-orders" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" data-ajax-success="noop" asp-controller="Payment" asp-action="CapturePaymentIntent" asp-route-orderId="@order.Id">
                             <button type="submit"> Capture </button>
                         </form>
                     }

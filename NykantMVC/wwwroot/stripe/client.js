@@ -28,14 +28,14 @@ var style = {
         color: "orange",
         backgroundColor: "#F7F5F2",
         iconColor: "#fa755a"
-    },
+    }
     //complete: {
     //    backgroundColor: "#F7F5F2",
     //    color: "#8cffa4"
     //},
-    webkitAutoFill: {
-        backgroundColor: "#F7F5F2"
-    }
+    //webkitAutoFill: {
+    //    backgroundColor: "#F7F5F2"
+    //}
 };
 
 var cardNumber = elements.create("cardNumber", { style: style });

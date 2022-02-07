@@ -5,7 +5,7 @@
     ViewData["Description"] = "";
 }
 
-<script src="~/JS/bag.js" defer></script>
+<link rel="stylesheet" href="~/css/bag.css" />
 
 <div class="my-row top-padding bottom-side-padding">
     <div class="col-10 center" id="bag-wrapper">
@@ -20,7 +20,7 @@
         <div class="col-3 left" id="checkout-box">
             <div class="order-info">
                 @*<h1>@localizer["Order"]</h1>
-                <p class="left">@localizer["Delivery"]</p>*@
+                    <p class="left">@localizer["Delivery"]</p>*@
                 <p id="price-info" class="left">@localizer["Total"]</p>
             </div>
             <div class="checkout-price">
@@ -41,3 +41,5 @@
 <div class="bottom-padding">
 
 </div>
+
+<script async src="~/JS/bag.js"></script>

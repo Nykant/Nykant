@@ -27,6 +27,15 @@ namespace NykantMVC.Controllers
 
         [Authorize]
         [HttpGet]
+        public async Task<IActionResult> UnsentOrders()
+        {
+            var json = await GetRequest("/Order/GetOrders");
+            List<Models.Order> list = JsonConvert.DeserializeObject<List<Models.Order>>(json);
+            return View(list);
+        }
+
+        [Authorize]
+        [HttpGet]
         public async Task<IActionResult> AllOrders()
         {
             var json = await GetRequest("/Order/GetOrders");
@@ -65,6 +74,14 @@ namespace NykantMVC.Controllers
 
                 if (checkout.Stage == Stage.payment)
                 {
+                    // validate bagItems
+                    foreach (var item in checkout.BagItems)
+                    {
+                        var productjson = await GetRequest($"/Product/GetProduct/{item.ProductId}");
+                        Product product = JsonConvert.DeserializeObject<Product>(productjson);
+                        item.Product = product;
+                    }
+
                     var order = BuildOrder(checkout, paymentIntentId);
                     var response = await PostRequest("/Order/PostOrder", order);
                     if (!response.IsSuccessStatusCode)

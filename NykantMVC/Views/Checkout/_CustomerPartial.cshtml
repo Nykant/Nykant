@@ -43,7 +43,7 @@
                                 <div class="underline"></div>
                             </div>
                             <div class="inputstyle left">
-                                <input id="customer-city-input" required autocomplete="billing locality" asp-for="@Model.Customer.BillingAddress.City" />
+                                <input id="customer-city-input" required autocomplete="billing address-level2" asp-for="@Model.Customer.BillingAddress.City" />
                                 <label asp-for="@Model.Customer.BillingAddress.City"></label>
                                 <span asp-validation-for="@Model.Customer.BillingAddress.City"></span>
                                 <div class="underline"></div>
@@ -93,7 +93,7 @@
                                 <div class="underline"></div>
                             </div>
                             <div class="inputstyle left">
-                                <input id="shippingaddress-city" required autocomplete="shipping locality" asp-for="@Model.Customer.ShippingAddress.City" />
+                                <input id="shippingaddress-city" required autocomplete="shipping address-level2" asp-for="@Model.Customer.ShippingAddress.City" />
                                 <label asp-for="@Model.Customer.ShippingAddress.City"></label>
                                 <span asp-validation-for="@Model.Customer.ShippingAddress.City"></span>
                                 <div class="underline"></div>

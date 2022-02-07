@@ -27,14 +27,14 @@ namespace NykantMVC.Controllers
         
 
         [HttpPost]
-        public async Task<IActionResult> PostBagItem(Product product, int quantity)
+        public async Task<IActionResult> PostBagItem(int id, int quantity)
         {
             bool isAuthenticated = User.Identity.IsAuthenticated;
             int bagItemQuantity = HttpContext.Session.Get<int>(BagItemAmountKey);
 
             BagItem bagItem = new BagItem
             {
-                ProductId = product.Id,
+                ProductId = id,
                 Quantity = quantity
             };
 
@@ -42,7 +42,10 @@ namespace NykantMVC.Controllers
             {
                 try
                 {
+                    var json = await GetRequest($"/Product/GetProduct/{id}");
+                    Product product = JsonConvert.DeserializeObject<Product>(json);
                     bagItem.Product = product;
+
                     List<BagItem> bagItems = HttpContext.Session.Get<List<BagItem>>(BagSessionKey);
                     if (bagItems == default || bagItems == null)
                     {

@@ -1,0 +1,26 @@
+﻿@{ 
+    List<Order> list = ViewData.Model;
+    list.Reverse();
+}
+
+<h1 class="list-h1">Alle Ordrer</h1>
+<table class="my-list">
+    <tr class="no-hover">
+        <th>Id</th>
+        <th>Lavet</th>
+        <th>Leveringsdato</th>
+        <th>Status</th>
+    </tr>
+    @foreach (var order in list)
+    {
+            TimeSpan deliveryTimeSpan = order.EstimatedDelivery.Subtract(DateTime.Now);
+            <tr>
+                <td> @order.Id </td>
+                <td> @order.CreatedAt </td>
+                <td>@((int)deliveryTimeSpan.TotalDays) dage </td>
+                <td> @order.Status </td>
+            </tr>
+
+
+    }
+</table>
