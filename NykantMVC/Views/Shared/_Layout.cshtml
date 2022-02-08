@@ -21,6 +21,7 @@
     <link rel="preload" as="style" href="~/css/culture.css" />
     <link rel="preload" as="script" href="https://js.stripe.com/v3/">
     <link rel="preload" as="script" href="~/lib/jquery/dist/jquery.min.js">
+    @*<link rel="preload" as="script" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js">*@
     <link rel="preload" as="script" href="~/lib/jquery-validation/dist/jquery.validate.js">
     <link rel="preload" as="script" href="~/lib/ajax/jquery.unobtrusive-ajax.min.js">
     <link rel="preload" as="script" href="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js">
@@ -36,16 +37,12 @@
 
     <script type="text/javascript" src="https://js.stripe.com/v3/"></script>
     <partial name="_ValidationScriptsPartial" />
+
+    @*<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>*@
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js" integrity="sha512-DkPsH9LzNzZaZjCszwKrooKwgjArJDiEjA5tTgr3YX4E6TYv93ICS8T41yFHJnnSmGpnf0Mvb5NhScYbwvhn2w==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js" integrity="sha512-0xrMWUXzEAc+VY7k48pWd5YT6ig03p4KARKxs4Bqxb9atrcn2fV41fWs+YXTKb8lD2sbPAmZMjKENiyzM/Gagw==" crossorigin="anonymous"></script>*@
 </head>
 <body>
-    <div class="pop" id="pop">
-        <i id="close-pop" class="far fa-times-circle right"></i>
-        <img loading="lazy" class="bigImg" id="bigImg" />
-    </div>
-
-    <div id="search-container">
-        <partial name="_SearchPartial" />
-    </div>
 
     <div id="cookie-settings-partial">
         <partial name="_CookieSettingsPartial" />
@@ -53,7 +50,7 @@
 
     <partial name="_CookieConsentPartial" />
 
-    <partial name="_CultureCookiePartial" />
+    @*<partial name="_CultureCookiePartial" />*@
 
     <partial name="_DesktopNavbarPartial" />
 
@@ -67,15 +64,15 @@
         <div class="top-footer">
             <div class="nykant-info">
                 <h1>Info</h1>
-                <a asp-action="About">Om Os</a>
-                <a asp-action="Contact">Kontakt Os</a>
+                <a asp-controller="Home" asp-action="About">Om Os</a>
+                <a asp-controller="Home" asp-action="Contact">Kontakt Os</a>
             </div>
 
             <partial name="_NewsletterPartial" />
 
-            <div class="socialmedia">
+            @*<div class="socialmedia">
                 <a href="#"><img class="small-svg" src="~/lib/svg/facebook.svg" /></a>
-            </div>
+            </div>*@
 
             <partial name="_UtilityPartial" />
         </div>
@@ -85,9 +82,9 @@
                     <p>&copy; Nykant Aps 2022</p>
                 </div>
                 <div class="policy-links right">
-                    <a asp-action="PrivacyPolicy">Håndtering af persondata</a>
-                    <a asp-action="CookiePolicy">Cookie politik og instillinger</a>
-                    <a asp-action="TermsAndConditions">Vilkår og betingelser</a>
+                    <a asp-controller="Home" asp-action="PrivacyPolicy">Håndtering af persondata</a>
+                    <a asp-controller="Home" asp-action="CookiePolicy">Cookie politik og instillinger</a>
+                    <a asp-controller="Home" asp-action="TermsAndConditions">Vilkår og betingelser</a>
                 </div>
             </div>
         </div>
@@ -95,9 +92,6 @@
 
     @* ----------------------------------GLOBAL SCRIPTS-------------------------------------- *@
 
-    <script async src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-    <script async src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js" integrity="sha512-DkPsH9LzNzZaZjCszwKrooKwgjArJDiEjA5tTgr3YX4E6TYv93ICS8T41yFHJnnSmGpnf0Mvb5NhScYbwvhn2w==" crossorigin="anonymous"></script>
-    <script async src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js" integrity="sha512-0xrMWUXzEAc+VY7k48pWd5YT6ig03p4KARKxs4Bqxb9atrcn2fV41fWs+YXTKb8lD2sbPAmZMjKENiyzM/Gagw==" crossorigin="anonymous"></script>
     <script async src="~/JS/noop.js"></script>
     <script async src="~/JS/mobileNav.js"></script>
     <script async src="~/JS/search-button.js"></script>

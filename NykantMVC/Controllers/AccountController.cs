@@ -42,7 +42,7 @@ namespace NykantMVC.Controllers
 
             if(redirectaction == null || redirectcontroller == null)
             {
-                return RedirectToAction("Index", "Nykant");
+                return RedirectToAction("Index", "Home");
             }
 
             return RedirectToAction(redirectaction, redirectcontroller);

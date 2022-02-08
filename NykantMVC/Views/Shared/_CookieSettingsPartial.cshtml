@@ -26,10 +26,10 @@
     </div>
 
     <h3>Her kan du vælge specifikke cookies til og fra</h3>
-    <p>Hvis du vil vide nærmere hvad vi gemmer, og hvornår: </p> <a class="simple-link" asp-action="cookiepolicy">Tryk her</a>
+    <p>Hvis du vil vide nærmere hvad vi gemmer, og hvornår: </p> <a class="simple-link" asp-controller="Home" asp-action="cookiepolicy">Tryk her</a>
 
     <div class="settings">
-        <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#cookie-settings-partial" data-ajax-success="consent_settings_updated" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" asp-action="UpdateConsent">
+        <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#cookie-settings-partial" data-ajax-success="consent_settings_updated" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" asp-controller="Home" asp-action="UpdateConsent">
             <h2>Cookie Preferencer</h2>
             <div class="cookie-collapsible">
 

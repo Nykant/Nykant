@@ -46,26 +46,27 @@
 
             <div class="product-item">
                 <a asp-controller="product" asp-action="details" asp-route-id="@item.Id">
-                    <div class="product-item-inside">
-                        <div class="product-images">
-                            @if (count > 5)
-                            {
-                                <div class="primary-img">
-                                    <img loading="lazy" src="@item.GalleryImage1" />
-                                </div>
-                            }
-                            else
-                            {
-                                <div class="primary-img">
-                                    <img src="@item.GalleryImage1" />
-                                </div>
-                            }
-
-                            <div class="secondary-img">
-                                <img loading="lazy" src="@item.GalleryImage2" />
+                    <div class="product-images">
+                        @if (count > 5)
+                        {
+                            <div class="primary-img">
+                                <img loading="lazy" src="@item.GalleryImage1" />
                             </div>
-                        </div>
+                            count++;
+                        }
+                        else
+                        {
+                            <div class="primary-img">
+                                <img src="@item.GalleryImage1" />
+                            </div>
+                            count++;
+                        }
 
+                        <div class="secondary-img">
+                            <img loading="lazy" src="@item.GalleryImage2" />
+                        </div>
+                    </div>
+                    <div class="product-item-inside">
                         <div class="product-text">
                             @if (item.Length != null)
                             {

@@ -1,5 +1,4 @@
-﻿var product_theInterval = undefined;
-var product_slidebuttons = document.getElementById('product-slide-buttons').children;
+﻿var product_slidebuttons = document.getElementById('product-slide-buttons').children;
 var product_slidecontainer = document.getElementById('product-slide-container');
 var product_slideshow = document.getElementById('product-slideshow');
 var product_slides = document.getElementsByClassName('product-slide');
@@ -65,43 +64,40 @@ for (var i = 0; i < product_slidebuttons.length; i++) {
 }
 
 product_slideshow.addEventListener('swiped-right', function () {
-    if (product_slidenumber != 0) {
+    if (product_slidenumber > 0) {
         product_slidenumber--;
         product_slidebuttons[product_slidenumber].click();
     }
 });
 
 product_slideshow.addEventListener('swiped-left', function () {
-    if (product_slidenumber != 6) {
+    if (product_slidenumber < product_slidebuttons.length - 1) {
         product_slidenumber++;
         product_slidebuttons[product_slidenumber].click();
     }
 });
 
-window.addEventListener("load", function () {
-    var pop = document.getElementById('pop');
-    var bigImg = document.getElementById('bigImg');
-    var close = document.getElementById('close-pop');
+var pop = document.getElementById('pop');
+var bigImg = document.getElementById('bigImg');
+var close = document.getElementById('close-pop');
 
-    var product_slides = document.getElementsByClassName('product-slide');
-    for (var i = 0; i < product_slides.length; i++) {
-        var children = product_slides[i].children;
-        var img = children[0];
-        img.addEventListener('click', function (event) {
-            bigImg.src = event.currentTarget.getAttribute("data-fullscreensrc");
-            pop.style.display = 'flex';
-        });
-    }
-
-    pop.addEventListener('click', function () {
-        pop.style.display = 'none';
-        bigImg.src = undefined;
+var product_slides = document.getElementsByClassName('product-slide');
+for (var i = 0; i < product_slides.length; i++) {
+    var children = product_slides[i].children;
+    var img = children[0];
+    img.addEventListener('click', function (event) {
+        bigImg.src = event.currentTarget.getAttribute("data-fullscreensrc");
+        pop.style.display = 'block';
+        document.body.style.overflowY = 'hidden';
     });
+}
 
-    close.addEventListener('click', function () {
-        pop.style.display = 'none';
-        bigImg.src = undefined;
-    });
+pop.addEventListener('click', function (event) {
+    pop.style.display = 'none';
+    document.body.style.overflowY = 'visible';
 });
 
-
+close.addEventListener('click', function (event) {
+    pop.style.display = 'none';
+    document.body.style.overflowY = 'visible';
+});

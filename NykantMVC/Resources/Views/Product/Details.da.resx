@@ -274,7 +274,7 @@ mærker i tøjet.</value>
 &lt;td&gt;
 &lt;p&gt;Tykkelse: 20 mm.&lt;/p&gt;
 &lt;p&gt;Længde: 100 cm.&lt;/p&gt;
-&lt;p&gt;Bredde/dybde: ?? cm.&lt;/p&gt;
+&lt;p&gt;Bredde/dybde: 20 cm.&lt;/p&gt;
 &lt;/td&gt;
 &lt;/tr&gt;
 </value>
@@ -296,7 +296,7 @@ mærker i tøjet.</value>
 &lt;td&gt;
 &lt;p&gt;Tykkelse: 20 mm.&lt;/p&gt;
 &lt;p&gt;Længde: 40 cm.&lt;/p&gt;
-&lt;p&gt;Bredde/dybde: ?? cm.&lt;/p&gt;
+&lt;p&gt;Bredde/dybde: 20 cm.&lt;/p&gt;
 &lt;/td&gt;
 &lt;/tr&gt;
 </value>
@@ -318,7 +318,7 @@ mærker i tøjet.</value>
 &lt;td&gt;
 &lt;p&gt;Tykkelse: 20 mm.&lt;/p&gt;
 &lt;p&gt;Længde: 60 cm.&lt;/p&gt;
-&lt;p&gt;Bredde/dybde: ?? cm.&lt;/p&gt;
+&lt;p&gt;Bredde/dybde: 20 cm.&lt;/p&gt;
 &lt;/td&gt;
 &lt;/tr&gt;
 </value>
@@ -340,7 +340,7 @@ mærker i tøjet.</value>
 &lt;td&gt;
 &lt;p&gt;Tykkelse: 20 mm.&lt;/p&gt;
 &lt;p&gt;Længde: 80 cm.&lt;/p&gt;
-&lt;p&gt;Bredde/dybde: ?? cm.&lt;/p&gt;
+&lt;p&gt;Bredde/dybde: 20 cm.&lt;/p&gt;
 &lt;/td&gt;
 &lt;/tr&gt;
 </value>
@@ -373,7 +373,7 @@ monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave a
 </value>
   </data>
   <data name="Ingrid Description" xml:space="preserve">
-    <value>Tøjracken "Ingrid" er udviklet med samme grundige, samling med massive egetræskiler. Et væghængt system som hænges på væggen med lædersnore, og som passer ind rigtig mange steder hvor pladsen ikke er stor. Vores væghængte tøjrack er meget smuk og med fine detaljer, hvor trækilen fremtræder flot sammen med lædersnoren som fastholder tøjracken til væggen.</value>
+    <value>Vores unikke og smukke væghængte tøjrack i massivt egetræ, er udviklet således den samles med kiler og monteres hængende ud fra vægge, med en lædderstrop.</value>
   </data>
   <data name="Ingrid Materials" xml:space="preserve">
     <value>&lt;tr&gt;
@@ -393,9 +393,11 @@ monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave a
   </data>
   <data name="Ingrid Package" xml:space="preserve">
     <value>&lt;tr class="no-border"&gt;
-&lt;td class="width-30"&gt;&lt;strong&gt;&lt;/strong&gt;&lt;/td&gt;
+&lt;td class="width-30"&gt;&lt;strong&gt;Pakken&lt;/strong&gt;&lt;/td&gt;
 &lt;td&gt;
-&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;Vægt: 2kg.&lt;/p&gt;
+&lt;p&gt;Størrelse: 7 x 105 x 9,5 cm.&lt;/p&gt;
+&lt;p&gt;Leveres usamlet - se samlevejledning&lt;/p&gt;
 &lt;/td&gt;
 &lt;/tr&gt;
 
@@ -408,7 +410,7 @@ monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave a
 &lt;td&gt;
 &lt;p&gt;Højde: 90 cm.&lt;/p&gt;
 &lt;p&gt;Fra væg/dybde: 40 cm.&lt;/p&gt;
-&lt;p&gt;Bredde: ?? cm.&lt;/p&gt;
+&lt;p&gt;Bredde: 105 cm.&lt;/p&gt;
 &lt;/td&gt;
 &lt;/tr&gt;
 </value>

@@ -7,24 +7,14 @@
 
     @if (ViewBag.ProductQuantity != null)
     {
-        if (ViewBag.ProductQuantity > 1)
-        {
-            <p>Produkter tilføjet til din kurv</p>
-        }
-        else
-        {
-            <p>Produkt tilføjet til din kurv</p>
-        }
-        @for (int i = 0; i < ViewBag.ProductQuantity; i++)
-        {
-            <div class="bagitem-added-product">
-                <div class="bag-item-img">
-                    <img src="../@Model.GalleryImage1" />
-                </div>
-                <p>@Model.Name</p>
-                <p class="abs-right">kr. @Model.Price</p>
+        <p>Produkt tilføjet til din kurv</p>
+        <div class="bagitem-added-product">
+            <div class="bag-item-img">
+                <img src="../@Model.GalleryImage1" />
             </div>
-        }
+            <p class="width-70">(@ViewBag.ProductQuantity) @Model.Name</p>
+            <p class="width-20">kr. @(Model.Price * ViewBag.ProductQuantity)</p>
+        </div>
     }
 
     <a asp-controller="Bag" asp-action="Details">
@@ -34,4 +24,4 @@
     </a>
 </div>
 
-<script src="~/JS/bagItemAdded.js"></script>
+<script async src="~/JS/bagItemAdded.js"></script>

@@ -6,9 +6,11 @@
         @foreach (var item in Model.Checkout.BagItems)
         {
             <div class="sidebar-item">
-                <img src="@item.Product.GalleryImage1" />
-                <p>@item.Product.Name</p>
-                <p>@item.Quantity @localizer["Pieces"]</p>
+                <div class="width-30">
+                    <img src="@item.Product.GalleryImage1" />
+                </div>
+                <p class="width-50">@item.Product.Name</p>
+                <p class="width-20">@item.Quantity @localizer["Pieces"]</p>
             </div>
         }
     <div class="checkout-price">
