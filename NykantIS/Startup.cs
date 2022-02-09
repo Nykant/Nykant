@@ -61,14 +61,14 @@ namespace NykantIS
             identityConnection = Configuration.GetConnectionString("Identity");
 
             services.AddDbContext<MyKeysContext>(options =>
-                options.UseSqlServer(mykeyConnection));
+                options.UseMySql(mykeyConnection));
 
             services.AddDataProtection()
                 .PersistKeysToDbContext<MyKeysContext>()
                 .SetApplicationName("Nykant");
 
             services.AddDbContext<IdentityContext>(options =>
-                options.UseSqlServer(identityConnection));
+                options.UseMySql(identityConnection));
 
 
             services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
@@ -96,19 +96,19 @@ namespace NykantIS
             })
             .AddConfigurationStore(options =>
             {
-    //            options.ConfigureDbContext = b => b
-    //.UseMySql(identityserverConnection, mySqlOptionsAction: mySql =>
-    //{
-    //    mySql.MigrationsAssembly(migrationsAssembly);
-    //});
-                if (Environment.IsDevelopment())
+                            options.ConfigureDbContext = b => b
+                .UseMySql(identityserverConnection, mySqlOptionsAction: mySql =>
                 {
-                    options.ConfigureDbContext = b => b
-                        .UseSqlServer(identityserverConnection, sqlServerOptionsAction: sql =>
-                        {
-                            sql.MigrationsAssembly(migrationsAssembly);
-                        });
-                }
+                    mySql.MigrationsAssembly(migrationsAssembly);
+                });
+                //if (Environment.IsDevelopment())
+                //{
+                //    options.ConfigureDbContext = b => b
+                //        .UseSqlServer(identityserverConnection, sqlServerOptionsAction: sql =>
+                //        {
+                //            sql.MigrationsAssembly(migrationsAssembly);
+                //        });
+                //}
                 //else
                 //{
                 //    options.ConfigureDbContext = b => b
@@ -121,19 +121,19 @@ namespace NykantIS
             })
             .AddOperationalStore(options =>
             {
-                //            options.ConfigureDbContext = b => b
-                //.UseMySql(identityserverConnection, mySqlOptionsAction: mySql =>
-                //{
-                //    mySql.MigrationsAssembly(migrationsAssembly);
-                //});
-                if (Environment.IsDevelopment())
+                            options.ConfigureDbContext = b => b
+                .UseMySql(identityserverConnection, mySqlOptionsAction: mySql =>
                 {
-                    options.ConfigureDbContext = b => b
-                        .UseSqlServer(identityserverConnection, sqlServerOptionsAction: sql =>
-                        {
-                            sql.MigrationsAssembly(migrationsAssembly);
-                        });
-                }
+                    mySql.MigrationsAssembly(migrationsAssembly);
+                });
+                //if (Environment.IsDevelopment())
+                //{
+                //    options.ConfigureDbContext = b => b
+                //        .UseSqlServer(identityserverConnection, sqlServerOptionsAction: sql =>
+                //        {
+                //            sql.MigrationsAssembly(migrationsAssembly);
+                //        });
+                //}
                 //else
                 //{
                 //    options.ConfigureDbContext = b => b
@@ -150,17 +150,17 @@ namespace NykantIS
             // not recommended for production - you need to store your key material somewhere secure
             builder.AddDeveloperSigningCredential();
 
-            services.AddAuthentication()
-                .AddGoogle("Google", options =>
-                {
-                    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+            services.AddAuthentication();
+                //.AddGoogle("Google", options =>
+                //{
+                //    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
 
-                    // register your IdentityServer with Google at https://console.developers.google.com
-                    // enable the Google+ API
-                    // set the redirect URI to https://localhost:5001/signin-google
-                    options.ClientId = "413646567653-2set9f80eantuvbkj84d7mmb5vp6dfl8.apps.googleusercontent.com";
-                    options.ClientSecret = "dvfRC2hzoa-obrao6uScXHSB";
-                });
+                //    // register your IdentityServer with Google at https://console.developers.google.com
+                //    // enable the Google+ API
+                //    // set the redirect URI to https://localhost:5001/signin-google
+                //    options.ClientId = "413646567653-2set9f80eantuvbkj84d7mmb5vp6dfl8.apps.googleusercontent.com";
+                //    options.ClientSecret = "dvfRC2hzoa-obrao6uScXHSB";
+                //});
 
             services.Configure<EmailSettings>(Configuration.GetSection("MailSettings"));
             services.Configure<Urls>(Configuration.GetSection("Urls"));

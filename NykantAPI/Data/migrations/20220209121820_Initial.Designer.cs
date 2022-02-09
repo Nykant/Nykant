@@ -2,29 +2,27 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NykantAPI.Data;
 
-namespace NykantAPI.Migrations
+namespace NykantAPI.Data.migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220202134834_ImagesInserted")]
-    partial class ImagesInserted
+    [Migration("20220209121820_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.14")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("NykantAPI.Models.BagItem", b =>
                 {
                     b.Property<string>("Subject")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -43,31 +41,30 @@ namespace NykantAPI.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<string>("Address")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("City")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Country")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Postal")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -81,14 +78,13 @@ namespace NykantAPI.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<string>("ImgSource")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -131,14 +127,13 @@ namespace NykantAPI.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<int>("EColor")
                         .HasColumnType("int");
 
                     b.Property<string>("ImgSrc")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -189,7 +184,7 @@ namespace NykantAPI.Migrations
                         {
                             Id = 5,
                             EColor = 2,
-                            ImgSrc = "../images/Products/Color/Desktop/boejle_sort_01.png",
+                            ImgSrc = "../images/Products/Color/Desktop/boejle_sort_1.png",
                             ProductId = 2,
                             ProductSourceId = 2
                         },
@@ -693,7 +688,7 @@ namespace NykantAPI.Migrations
                         {
                             Id = 68,
                             EColor = 0,
-                            ImgSrc = "../images/Products/Color/Desktop/NYKANT_opbevaringsbaenk_naturolie_02.png",
+                            ImgSrc = "../images/Products/Color/Desktop/NYKANT_opbevaringsbaenk_naturolie_01.png",
                             ProductId = 24,
                             ProductSourceId = 24
                         },
@@ -701,7 +696,7 @@ namespace NykantAPI.Migrations
                         {
                             Id = 69,
                             EColor = 1,
-                            ImgSrc = "../images/Products/Color/Desktop/NYKANT_opbevaringsbaenk_hvidolie_02.png",
+                            ImgSrc = "../images/Products/Color/Desktop/NYKANT_opbevaringsbaenk_hvidolie_01.png",
                             ProductId = 24,
                             ProductSourceId = 25
                         },
@@ -709,7 +704,7 @@ namespace NykantAPI.Migrations
                         {
                             Id = 70,
                             EColor = 2,
-                            ImgSrc = "../images/Products/Color/Desktop/NYKANT_opbevaringsbaenk_sort_02.png",
+                            ImgSrc = "../images/Products/Color/Desktop/NYKANT_opbevaringsbaenk_sort_01.png",
                             ProductId = 24,
                             ProductSourceId = 26
                         },
@@ -717,7 +712,7 @@ namespace NykantAPI.Migrations
                         {
                             Id = 71,
                             EColor = 0,
-                            ImgSrc = "../images/Products/Color/Desktop/NYKANT_opbevaringsbaenk_naturolie_02.png",
+                            ImgSrc = "../images/Products/Color/Desktop/NYKANT_opbevaringsbaenk_naturolie_01.png",
                             ProductId = 25,
                             ProductSourceId = 24
                         },
@@ -725,7 +720,7 @@ namespace NykantAPI.Migrations
                         {
                             Id = 72,
                             EColor = 1,
-                            ImgSrc = "../images/Products/Color/Desktop/NYKANT_opbevaringsbaenk_hvidolie_02.png",
+                            ImgSrc = "../images/Products/Color/Desktop/NYKANT_opbevaringsbaenk_hvidolie_01.png",
                             ProductId = 25,
                             ProductSourceId = 25
                         },
@@ -733,7 +728,7 @@ namespace NykantAPI.Migrations
                         {
                             Id = 73,
                             EColor = 2,
-                            ImgSrc = "../images/Products/Color/Desktop/NYKANT_opbevaringsbaenk_sort_02.png",
+                            ImgSrc = "../images/Products/Color/Desktop/NYKANT_opbevaringsbaenk_sort_01.png",
                             ProductId = 25,
                             ProductSourceId = 26
                         },
@@ -741,7 +736,7 @@ namespace NykantAPI.Migrations
                         {
                             Id = 74,
                             EColor = 0,
-                            ImgSrc = "../images/Products/Color/Desktop/NYKANT_opbevaringsbaenk_naturolie_02.png",
+                            ImgSrc = "../images/Products/Color/Desktop/NYKANT_opbevaringsbaenk_naturolie_01.png",
                             ProductId = 26,
                             ProductSourceId = 24
                         },
@@ -749,7 +744,7 @@ namespace NykantAPI.Migrations
                         {
                             Id = 75,
                             EColor = 1,
-                            ImgSrc = "../images/Products/Color/Desktop/NYKANT_opbevaringsbaenk_hvidolie_02.png",
+                            ImgSrc = "../images/Products/Color/Desktop/NYKANT_opbevaringsbaenk_hvidolie_01.png",
                             ProductId = 26,
                             ProductSourceId = 25
                         },
@@ -757,7 +752,7 @@ namespace NykantAPI.Migrations
                         {
                             Id = 76,
                             EColor = 2,
-                            ImgSrc = "../images/Products/Color/Desktop/NYKANT_opbevaringsbaenk_sort_02.png",
+                            ImgSrc = "../images/Products/Color/Desktop/NYKANT_opbevaringsbaenk_sort_01.png",
                             ProductId = 26,
                             ProductSourceId = 26
                         },
@@ -773,7 +768,7 @@ namespace NykantAPI.Migrations
                         {
                             Id = 78,
                             EColor = 1,
-                            ImgSrc = "../images/Products/Color/Desktop/NYKANT_opbevaringsbaenk_hvidolie_02.png",
+                            ImgSrc = "../images/Products/Color/Desktop/NYKANT_rack_hvidolie_02.png",
                             ProductId = 27,
                             ProductSourceId = 28
                         },
@@ -781,7 +776,7 @@ namespace NykantAPI.Migrations
                         {
                             Id = 79,
                             EColor = 2,
-                            ImgSrc = "../images/Products/Color/Desktop/NYKANT_opbevaringsbaenk_sort_02.png",
+                            ImgSrc = "../images/Products/Color/Desktop/NYKANT_rack_sortolie_02.png",
                             ProductId = 27,
                             ProductSourceId = 29
                         },
@@ -797,7 +792,7 @@ namespace NykantAPI.Migrations
                         {
                             Id = 81,
                             EColor = 1,
-                            ImgSrc = "../images/Products/Color/Desktop/NYKANT_opbevaringsbaenk_hvidolie_02.png",
+                            ImgSrc = "../images/Products/Color/Desktop/NYKANT_rack_hvidolie_02.png",
                             ProductId = 28,
                             ProductSourceId = 28
                         },
@@ -805,7 +800,7 @@ namespace NykantAPI.Migrations
                         {
                             Id = 82,
                             EColor = 2,
-                            ImgSrc = "../images/Products/Color/Desktop/NYKANT_opbevaringsbaenk_sort_02.png",
+                            ImgSrc = "../images/Products/Color/Desktop/NYKANT_rack_sortolie_02.png",
                             ProductId = 28,
                             ProductSourceId = 29
                         },
@@ -821,7 +816,7 @@ namespace NykantAPI.Migrations
                         {
                             Id = 84,
                             EColor = 1,
-                            ImgSrc = "../images/Products/Color/Desktop/NYKANT_opbevaringsbaenk_hvidolie_02.png",
+                            ImgSrc = "../images/Products/Color/Desktop/NYKANT_rack_hvidolie_02.png",
                             ProductId = 29,
                             ProductSourceId = 28
                         },
@@ -829,7 +824,7 @@ namespace NykantAPI.Migrations
                         {
                             Id = 85,
                             EColor = 2,
-                            ImgSrc = "../images/Products/Color/Desktop/NYKANT_opbevaringsbaenk_sort_02.png",
+                            ImgSrc = "../images/Products/Color/Desktop/NYKANT_rack_sortolie_02.png",
                             ProductId = 29,
                             ProductSourceId = 29
                         },
@@ -910,13 +905,13 @@ namespace NykantAPI.Migrations
             modelBuilder.Entity("NykantAPI.Models.Cookie", b =>
                 {
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<int>("Category")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("Type1")
                         .HasColumnType("int");
@@ -991,16 +986,15 @@ namespace NykantAPI.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Phone")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -1011,8 +1005,7 @@ namespace NykantAPI.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<int>("ImageType")
                         .HasColumnType("int");
@@ -1024,7 +1017,10 @@ namespace NykantAPI.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Source")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Source2")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -1039,7 +1035,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 1,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_boejle_naturolie_01.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_boejle_naturolie_01.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_boejle_naturolie_01.png"
                         },
                         new
                         {
@@ -1047,7 +1044,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 1,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_boejle_naturolie_02.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_boejle_naturolie_02.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_boejle_naturolie_02.png"
                         },
                         new
                         {
@@ -1055,7 +1053,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 2,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_boejle_sortolie_01.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_boejle_sortolie_01.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_boejle_sortolie_01.png"
                         },
                         new
                         {
@@ -1063,7 +1062,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 2,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_boejle_sortolie_02.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_boejle_sortolie_02.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_boejle_sortolie_02.png"
                         },
                         new
                         {
@@ -1071,7 +1071,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 3,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_boejle_hvidolie_01.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_boejle_hvidolie_01.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_boejle_hvidolie_01.png"
                         },
                         new
                         {
@@ -1079,7 +1080,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 3,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_boejle_hvidolie_02.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_boejle_hvidolie_02.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_boejle_hvidolie_02.png"
                         },
                         new
                         {
@@ -1087,7 +1089,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 4,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_hvidolie_01.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_hvidolie_01.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_01.png"
                         },
                         new
                         {
@@ -1095,7 +1098,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 4,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_hvidolie_02.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_hvidolie_02.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_02.png"
                         },
                         new
                         {
@@ -1103,7 +1107,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 4,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_hvidolie_03.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_hvidolie_03.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_03.png"
                         },
                         new
                         {
@@ -1111,7 +1116,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 5,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_sortolie_01.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_sortolie_01.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_01.png"
                         },
                         new
                         {
@@ -1119,7 +1125,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 5,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_sortolie_02.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_sortolie_02.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_02.png"
                         },
                         new
                         {
@@ -1127,7 +1134,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 5,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_sortolie_03.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_sortolie_03.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_03.png"
                         },
                         new
                         {
@@ -1135,7 +1143,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 6,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_naturolie_01.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_naturolie_01.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_01.png"
                         },
                         new
                         {
@@ -1143,7 +1152,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 6,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_naturolie_02.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_naturolie_02.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_02.png"
                         },
                         new
                         {
@@ -1151,7 +1161,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 6,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_naturolie_03.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_naturolie_03.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_03.png"
                         },
                         new
                         {
@@ -1159,7 +1170,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 7,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_hvidolie_01.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_hvidolie_01.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_01.png"
                         },
                         new
                         {
@@ -1167,7 +1179,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 7,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_hvidolie_02.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_hvidolie_02.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_02.png"
                         },
                         new
                         {
@@ -1175,7 +1188,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 7,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_hvidolie_03.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_hvidolie_03.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_03.png"
                         },
                         new
                         {
@@ -1183,7 +1197,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 8,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_sortolie_01.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_sortolie_01.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_01.png"
                         },
                         new
                         {
@@ -1191,7 +1206,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 8,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_sortolie_02.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_sortolie_02.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_02.png"
                         },
                         new
                         {
@@ -1199,7 +1215,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 8,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_sortolie_03.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_sortolie_03.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_03.png"
                         },
                         new
                         {
@@ -1207,7 +1224,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 9,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_naturolie_01.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_naturolie_01.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_01.png"
                         },
                         new
                         {
@@ -1215,7 +1233,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 9,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_naturolie_02.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_naturolie_02.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_02.png"
                         },
                         new
                         {
@@ -1223,7 +1242,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 9,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_naturolie_03.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_naturolie_03.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_03.png"
                         },
                         new
                         {
@@ -1231,7 +1251,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 10,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_hvidolie_01.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_hvidolie_01.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_01.png"
                         },
                         new
                         {
@@ -1239,7 +1260,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 10,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_hvidolie_02.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_hvidolie_02.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_02.png"
                         },
                         new
                         {
@@ -1247,7 +1269,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 10,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_hvidolie_03.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_hvidolie_03.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_03.png"
                         },
                         new
                         {
@@ -1255,7 +1278,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 11,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_sortolie_01.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_sortolie_01.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_01.png"
                         },
                         new
                         {
@@ -1263,7 +1287,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 11,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_sortolie_02.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_sortolie_02.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_02.png"
                         },
                         new
                         {
@@ -1271,7 +1296,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 11,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_sortolie_03.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_sortolie_03.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_03.png"
                         },
                         new
                         {
@@ -1279,7 +1305,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 12,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_naturolie_01.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_naturolie_01.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_01.png"
                         },
                         new
                         {
@@ -1287,7 +1314,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 12,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_naturolie_02.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_naturolie_02.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_02.png"
                         },
                         new
                         {
@@ -1295,7 +1323,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 12,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_naturolie_03.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_naturolie_03.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_03.png"
                         },
                         new
                         {
@@ -1303,7 +1332,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 13,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_hvidolie_01.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_hvidolie_01.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_01.png"
                         },
                         new
                         {
@@ -1311,7 +1341,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 13,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_hvidolie_02.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_hvidolie_02.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_02.png"
                         },
                         new
                         {
@@ -1319,7 +1350,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 13,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_hvidolie_03.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_hvidolie_03.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_03.png"
                         },
                         new
                         {
@@ -1327,7 +1359,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 14,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_sortolie_01.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_sortolie_01.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_01.png"
                         },
                         new
                         {
@@ -1335,7 +1368,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 14,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_sortolie_02.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_sortolie_02.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_02.png"
                         },
                         new
                         {
@@ -1343,7 +1377,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 14,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_sortolie_03.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_sortolie_03.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_03.png"
                         },
                         new
                         {
@@ -1351,7 +1386,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 15,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_naturolie_01.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_naturolie_01.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_01.png"
                         },
                         new
                         {
@@ -1359,7 +1395,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 15,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_naturolie_02.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_naturolie_02.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_02.png"
                         },
                         new
                         {
@@ -1367,7 +1404,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 15,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_naturolie_03.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_naturolie_03.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_03.png"
                         },
                         new
                         {
@@ -1375,7 +1413,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 16,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_bord_naturolie_01.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_bord_naturolie_01.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_bord_naturolie_01.png"
                         },
                         new
                         {
@@ -1383,7 +1422,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 16,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_bord_naturolie_02.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_bord_naturolie_02.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_bord_naturolie_02.png"
                         },
                         new
                         {
@@ -1391,7 +1431,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 16,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_bord_naturolie_03.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_bord_naturolie_03.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_bord_naturolie_03.png"
                         },
                         new
                         {
@@ -1399,7 +1440,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 17,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_bord_hvidolie_01.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_bord_hvidolie_01.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_bord_hvidolie_01.png"
                         },
                         new
                         {
@@ -1407,7 +1449,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 17,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_bord_hvidolie_02.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_bord_hvidolie_02.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_bord_hvidolie_02.png"
                         },
                         new
                         {
@@ -1415,7 +1458,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 17,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_bord_hvidolie_03.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_bord_hvidolie_03.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_bord_hvidolie_03.png"
                         },
                         new
                         {
@@ -1423,7 +1467,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 18,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_kortbaenk_naturolie_01.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_kortbaenk_naturolie_01.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_kortbaenk_naturolie_01.png"
                         },
                         new
                         {
@@ -1431,7 +1476,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 18,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_kortbaenk_naturolie_02.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_kortbaenk_naturolie_02.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_kortbaenk_naturolie_02.png"
                         },
                         new
                         {
@@ -1439,7 +1485,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 18,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_kortbaenk_naturolie_03.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_kortbaenk_naturolie_03.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_kortbaenk_naturolie_03.png"
                         },
                         new
                         {
@@ -1447,7 +1494,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 19,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_kortbaenk_hvidolie_01.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_kortbaenk_hvidolie_01.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_kortbaenk_hvidolie_01.png"
                         },
                         new
                         {
@@ -1455,7 +1503,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 19,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_kortbaenk_hvidolie_02.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_kortbaenk_hvidolie_02.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_kortbaenk_hvidolie_02.png"
                         },
                         new
                         {
@@ -1463,7 +1512,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 19,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_kortbaenk_hvidolie_03.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_kortbaenk_hvidolie_03.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_kortbaenk_hvidolie_03.png"
                         },
                         new
                         {
@@ -1471,7 +1521,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 20,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_kortbaenk_sortolie_01.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_kortbaenk_sortolie_01.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_kortbaenk_sortolie_01.png"
                         },
                         new
                         {
@@ -1479,7 +1530,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 20,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_kortbaenk_sortolie_02.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_kortbaenk_sortolie_02.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_kortbaenk_sortolie_02.png"
                         },
                         new
                         {
@@ -1487,7 +1539,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 20,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_kortbaenk_sortolie_03.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_kortbaenk_sortolie_03.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_kortbaenk_sortolie_03.png"
                         },
                         new
                         {
@@ -1495,7 +1548,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 21,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_langbaenk_naturolie_01.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_langbaenk_naturolie_01.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_langbaenk_naturolie_01.png"
                         },
                         new
                         {
@@ -1503,7 +1557,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 21,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_langbaenk_naturolie_02.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_langbaenk_naturolie_02.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_langbaenk_naturolie_02.png"
                         },
                         new
                         {
@@ -1511,7 +1566,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 21,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_langbaenk_naturolie_03.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_langbaenk_naturolie_03.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_langbaenk_naturolie_03.png"
                         },
                         new
                         {
@@ -1519,7 +1575,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 22,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_langbaenk_hvidolie_01.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_langbaenk_hvidolie_01.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_langbaenk_hvidolie_01.png"
                         },
                         new
                         {
@@ -1527,7 +1584,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 22,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_langbaenk_hvidolie_02.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_langbaenk_hvidolie_02.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_langbaenk_hvidolie_02.png"
                         },
                         new
                         {
@@ -1535,7 +1593,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 22,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_langbaenk_hvidolie_03.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_langbaenk_hvidolie_03.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_langbaenk_hvidolie_03.png"
                         },
                         new
                         {
@@ -1543,7 +1602,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 23,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_langbaenk_sortolie_01.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_langbaenk_sortolie_01.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_langbaenk_sortolie_01.png"
                         },
                         new
                         {
@@ -1551,7 +1611,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 23,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_langbaenk_sortolie_02.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_langbaenk_sortolie_02.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_langbaenk_sortolie_02.png"
                         },
                         new
                         {
@@ -1559,7 +1620,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 23,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_langbaenk_sortolie_03.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_langbaenk_sortolie_03.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_langbaenk_sortolie_03.png"
                         },
                         new
                         {
@@ -1567,7 +1629,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 24,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_naturolie_01.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_naturolie_01.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_naturolie_01.png"
                         },
                         new
                         {
@@ -1575,7 +1638,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 24,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_naturolie_02.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_naturolie_02.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_naturolie_02.png"
                         },
                         new
                         {
@@ -1583,7 +1647,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 24,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_naturolie_03.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_naturolie_03.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_naturolie_03.png"
                         },
                         new
                         {
@@ -1591,7 +1656,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 24,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_naturolie_04.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_naturolie_04.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_naturolie_04.png"
                         },
                         new
                         {
@@ -1599,7 +1665,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 24,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_naturolie_05.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_naturolie_05.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_naturolie_05.png"
                         },
                         new
                         {
@@ -1607,7 +1674,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 24,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_naturolie_06.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_naturolie_06.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_naturolie_06.png"
                         },
                         new
                         {
@@ -1615,7 +1683,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 24,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_naturolie_07.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_naturolie_07.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_naturolie_07.png"
                         },
                         new
                         {
@@ -1623,7 +1692,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 25,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_hvidolie_01.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_hvidolie_01.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_hvidolie_01.png"
                         },
                         new
                         {
@@ -1631,7 +1701,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 25,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_hvidolie_02.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_hvidolie_02.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_hvidolie_02.png"
                         },
                         new
                         {
@@ -1639,7 +1710,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 25,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_hvidolie_03.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_hvidolie_03.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_hvidolie_03.png"
                         },
                         new
                         {
@@ -1647,7 +1719,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 25,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_hvidolie_04.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_hvidolie_04.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_hvidolie_04.png"
                         },
                         new
                         {
@@ -1655,7 +1728,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 25,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_hvidolie_05.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_hvidolie_05.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_hvidolie_05.png"
                         },
                         new
                         {
@@ -1663,7 +1737,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 25,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_hvidolie_06.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_hvidolie_06.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_hvidolie_06.png"
                         },
                         new
                         {
@@ -1671,7 +1746,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 25,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_hvidolie_07.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_hvidolie_07.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_hvidolie_07.png"
                         },
                         new
                         {
@@ -1679,7 +1755,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 26,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_sort_01.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_sort_01.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_sort_01.png"
                         },
                         new
                         {
@@ -1687,7 +1764,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 26,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_sort_02.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_sort_02.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_sort_02.png"
                         },
                         new
                         {
@@ -1695,7 +1773,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 26,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_sort_03.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_sort_03.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_sort_03.png"
                         },
                         new
                         {
@@ -1703,7 +1782,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 26,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_sort_04.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_sort_04.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_sort_04.png"
                         },
                         new
                         {
@@ -1711,7 +1791,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 26,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_sort_05.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_sort_05.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_sort_05.png"
                         },
                         new
                         {
@@ -1719,7 +1800,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 26,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_sort_06.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_sort_06.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_sort_06.png"
                         },
                         new
                         {
@@ -1727,7 +1809,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 26,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_sort_07.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_sort_07.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_sort_07.png"
                         },
                         new
                         {
@@ -1735,7 +1818,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 27,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_naturolie_01.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_naturolie_01.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_rack_naturolie_01.png"
                         },
                         new
                         {
@@ -1743,7 +1827,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 27,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_naturolie_02.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_naturolie_02.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_rack_naturolie_02.png"
                         },
                         new
                         {
@@ -1751,7 +1836,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 27,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_naturolie_03.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_naturolie_03.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_rack_naturolie_03.png"
                         },
                         new
                         {
@@ -1759,7 +1845,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 27,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_naturolie_04.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_naturolie_04.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_rack_naturolie_04.png"
                         },
                         new
                         {
@@ -1767,7 +1854,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 27,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_naturolie_05.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_naturolie_05.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_rack_naturolie_05.png"
                         },
                         new
                         {
@@ -1775,7 +1863,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 27,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_naturolie_06.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_naturolie_06.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_rack_naturolie_06.png"
                         },
                         new
                         {
@@ -1783,7 +1872,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 28,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_hvidolie_01.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_hvidolie_01.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_rack_hvidolie_01.png"
                         },
                         new
                         {
@@ -1791,7 +1881,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 28,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_hvidolie_02.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_hvidolie_01.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_rack_hvidolie_02.png"
                         },
                         new
                         {
@@ -1799,7 +1890,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 28,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_hvidolie_03.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_hvidolie_03.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_rack_hvidolie_03.png"
                         },
                         new
                         {
@@ -1807,7 +1899,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 28,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_hvidolie_04.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_hvidolie_04.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_rack_hvidolie_04.png"
                         },
                         new
                         {
@@ -1815,7 +1908,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 28,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_hvidolie_05.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_hvidolie_05.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_rack_hvidolie_05.png"
                         },
                         new
                         {
@@ -1823,7 +1917,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 28,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_hvidolie_06.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_hvidolie_06.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_rack_hvidolie_06.png"
                         },
                         new
                         {
@@ -1831,7 +1926,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 29,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_sortolie_01.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_sortolie_01.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_rack_sortolie_01.png"
                         },
                         new
                         {
@@ -1839,7 +1935,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 29,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_sortolie_02.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_sortolie_02.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_rack_sortolie_02.png"
                         },
                         new
                         {
@@ -1847,7 +1944,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 29,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_sortolie_03.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_sortolie_03.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_rack_sortolie_03.png"
                         },
                         new
                         {
@@ -1855,7 +1953,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 29,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_sortolie_04.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_sortolie_04.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_rack_sortolie_04.png"
                         },
                         new
                         {
@@ -1863,7 +1962,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 29,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_sortolie_05.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_sortolie_05.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_rack_sortolie_05.png"
                         },
                         new
                         {
@@ -1871,7 +1971,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 29,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_sortolie_06.png"
+                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_sortolie_06.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_rack_sortolie_06.png"
                         },
                         new
                         {
@@ -1879,7 +1980,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 30,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/Ingrid_Naturolie_1.png"
+                            Source = "../images/Products/Details_Slide/Desktop/Ingrid_Naturolie_1.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/Ingrid_Naturolie_1.png"
                         },
                         new
                         {
@@ -1887,7 +1989,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 30,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/Ingrid_Naturolie_2.png"
+                            Source = "../images/Products/Details_Slide/Desktop/Ingrid_Naturolie_2.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/Ingrid_Naturolie_2.png"
                         },
                         new
                         {
@@ -1895,7 +1998,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 30,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/Ingrid_Naturolie_3.png"
+                            Source = "../images/Products/Details_Slide/Desktop/Ingrid_Naturolie_3.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/Ingrid_Naturolie_3.png"
                         },
                         new
                         {
@@ -1903,7 +2007,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 31,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/Ingrid_Hvidolie_1.png"
+                            Source = "../images/Products/Details_Slide/Desktop/Ingrid_Hvidolie_1.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/Ingrid_Hvidolie_1.png"
                         },
                         new
                         {
@@ -1911,7 +2016,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 31,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/Ingrid_Hvidolie_2.png"
+                            Source = "../images/Products/Details_Slide/Desktop/Ingrid_Hvidolie_2.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/Ingrid_Hvidolie_2.png"
                         },
                         new
                         {
@@ -1919,7 +2025,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 31,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/Ingrid_Hvidolie_3.png"
+                            Source = "../images/Products/Details_Slide/Desktop/Ingrid_Hvidolie_3.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/Ingrid_Hvidolie_3.png"
                         },
                         new
                         {
@@ -1927,7 +2034,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 32,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/Ingrid_Sortolie_1.png"
+                            Source = "../images/Products/Details_Slide/Desktop/Ingrid_Sortolie_1.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/Ingrid_Sortolie_1.png"
                         },
                         new
                         {
@@ -1935,7 +2043,8 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 32,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/Ingrid_Sortolie_2.png"
+                            Source = "../images/Products/Details_Slide/Desktop/Ingrid_Sortolie_2.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/Ingrid_Sortolie_2.png"
                         },
                         new
                         {
@@ -1943,924 +2052,13 @@ namespace NykantAPI.Migrations
                             ImageType = 0,
                             ProductId = 32,
                             Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/Ingrid_Sortolie_3.png"
-                        },
-                        new
-                        {
-                            Id = 115,
-                            ImageType = 0,
-                            ProductId = 1,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_boejle_naturolie_01.png"
-                        },
-                        new
-                        {
-                            Id = 116,
-                            ImageType = 0,
-                            ProductId = 1,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_boejle_naturolie_02.png"
-                        },
-                        new
-                        {
-                            Id = 117,
-                            ImageType = 0,
-                            ProductId = 2,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_boejle_sortolie_01.png"
-                        },
-                        new
-                        {
-                            Id = 118,
-                            ImageType = 0,
-                            ProductId = 2,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_boejle_sortolie_02.png"
-                        },
-                        new
-                        {
-                            Id = 119,
-                            ImageType = 0,
-                            ProductId = 3,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_boejle_hvidolie_01.png"
-                        },
-                        new
-                        {
-                            Id = 120,
-                            ImageType = 0,
-                            ProductId = 3,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_boejle_hvidolie_02.png"
-                        },
-                        new
-                        {
-                            Id = 121,
-                            ImageType = 0,
-                            ProductId = 4,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_01.png"
-                        },
-                        new
-                        {
-                            Id = 122,
-                            ImageType = 0,
-                            ProductId = 4,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_02.png"
-                        },
-                        new
-                        {
-                            Id = 123,
-                            ImageType = 0,
-                            ProductId = 4,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_03.png"
-                        },
-                        new
-                        {
-                            Id = 124,
-                            ImageType = 0,
-                            ProductId = 5,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_01.png"
-                        },
-                        new
-                        {
-                            Id = 125,
-                            ImageType = 0,
-                            ProductId = 5,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_02.png"
-                        },
-                        new
-                        {
-                            Id = 126,
-                            ImageType = 0,
-                            ProductId = 5,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_03.png"
-                        },
-                        new
-                        {
-                            Id = 127,
-                            ImageType = 0,
-                            ProductId = 6,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_01.png"
-                        },
-                        new
-                        {
-                            Id = 128,
-                            ImageType = 0,
-                            ProductId = 6,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_02.png"
-                        },
-                        new
-                        {
-                            Id = 129,
-                            ImageType = 0,
-                            ProductId = 6,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_03.png"
-                        },
-                        new
-                        {
-                            Id = 130,
-                            ImageType = 0,
-                            ProductId = 7,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_01.png"
-                        },
-                        new
-                        {
-                            Id = 131,
-                            ImageType = 0,
-                            ProductId = 7,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_02.png"
-                        },
-                        new
-                        {
-                            Id = 132,
-                            ImageType = 0,
-                            ProductId = 7,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_03.png"
-                        },
-                        new
-                        {
-                            Id = 133,
-                            ImageType = 0,
-                            ProductId = 8,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_01.png"
-                        },
-                        new
-                        {
-                            Id = 134,
-                            ImageType = 0,
-                            ProductId = 8,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_02.png"
-                        },
-                        new
-                        {
-                            Id = 135,
-                            ImageType = 0,
-                            ProductId = 8,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_03.png"
-                        },
-                        new
-                        {
-                            Id = 136,
-                            ImageType = 0,
-                            ProductId = 9,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_01.png"
-                        },
-                        new
-                        {
-                            Id = 137,
-                            ImageType = 0,
-                            ProductId = 9,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_02.png"
-                        },
-                        new
-                        {
-                            Id = 138,
-                            ImageType = 0,
-                            ProductId = 9,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_03.png"
-                        },
-                        new
-                        {
-                            Id = 139,
-                            ImageType = 0,
-                            ProductId = 10,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_01.png"
-                        },
-                        new
-                        {
-                            Id = 140,
-                            ImageType = 0,
-                            ProductId = 10,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_02.png"
-                        },
-                        new
-                        {
-                            Id = 141,
-                            ImageType = 0,
-                            ProductId = 10,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_03.png"
-                        },
-                        new
-                        {
-                            Id = 142,
-                            ImageType = 0,
-                            ProductId = 11,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_01.png"
-                        },
-                        new
-                        {
-                            Id = 143,
-                            ImageType = 0,
-                            ProductId = 11,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_02.png"
-                        },
-                        new
-                        {
-                            Id = 144,
-                            ImageType = 0,
-                            ProductId = 11,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_03.png"
-                        },
-                        new
-                        {
-                            Id = 145,
-                            ImageType = 0,
-                            ProductId = 12,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_01.png"
-                        },
-                        new
-                        {
-                            Id = 146,
-                            ImageType = 0,
-                            ProductId = 12,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_02.png"
-                        },
-                        new
-                        {
-                            Id = 147,
-                            ImageType = 0,
-                            ProductId = 12,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_03.png"
-                        },
-                        new
-                        {
-                            Id = 148,
-                            ImageType = 0,
-                            ProductId = 13,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_01.png"
-                        },
-                        new
-                        {
-                            Id = 149,
-                            ImageType = 0,
-                            ProductId = 13,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_02.png"
-                        },
-                        new
-                        {
-                            Id = 150,
-                            ImageType = 0,
-                            ProductId = 13,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_03.png"
-                        },
-                        new
-                        {
-                            Id = 151,
-                            ImageType = 0,
-                            ProductId = 14,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_01.png"
-                        },
-                        new
-                        {
-                            Id = 152,
-                            ImageType = 0,
-                            ProductId = 14,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_02.png"
-                        },
-                        new
-                        {
-                            Id = 153,
-                            ImageType = 0,
-                            ProductId = 14,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_03.png"
-                        },
-                        new
-                        {
-                            Id = 154,
-                            ImageType = 0,
-                            ProductId = 15,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_01.png"
-                        },
-                        new
-                        {
-                            Id = 155,
-                            ImageType = 0,
-                            ProductId = 15,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_02.png"
-                        },
-                        new
-                        {
-                            Id = 156,
-                            ImageType = 0,
-                            ProductId = 15,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_03.png"
-                        },
-                        new
-                        {
-                            Id = 157,
-                            ImageType = 0,
-                            ProductId = 16,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_bord_naturolie_01.png"
-                        },
-                        new
-                        {
-                            Id = 158,
-                            ImageType = 0,
-                            ProductId = 16,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_bord_naturolie_02.png"
-                        },
-                        new
-                        {
-                            Id = 159,
-                            ImageType = 0,
-                            ProductId = 16,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_bord_naturolie_03.png"
-                        },
-                        new
-                        {
-                            Id = 160,
-                            ImageType = 0,
-                            ProductId = 17,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_bord_hvidolie_01.png"
-                        },
-                        new
-                        {
-                            Id = 161,
-                            ImageType = 0,
-                            ProductId = 17,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_bord_hvidolie_02.png"
-                        },
-                        new
-                        {
-                            Id = 162,
-                            ImageType = 0,
-                            ProductId = 17,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_bord_hvidolie_03.png"
-                        },
-                        new
-                        {
-                            Id = 163,
-                            ImageType = 0,
-                            ProductId = 18,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_kortbaenk_naturolie_01.png"
-                        },
-                        new
-                        {
-                            Id = 164,
-                            ImageType = 0,
-                            ProductId = 18,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_kortbaenk_naturolie_02.png"
-                        },
-                        new
-                        {
-                            Id = 165,
-                            ImageType = 0,
-                            ProductId = 18,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_kortbaenk_naturolie_03.png"
-                        },
-                        new
-                        {
-                            Id = 166,
-                            ImageType = 0,
-                            ProductId = 19,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_kortbaenk_hvidolie_01.png"
-                        },
-                        new
-                        {
-                            Id = 167,
-                            ImageType = 0,
-                            ProductId = 19,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_kortbaenk_hvidolie_02.png"
-                        },
-                        new
-                        {
-                            Id = 168,
-                            ImageType = 0,
-                            ProductId = 19,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_kortbaenk_hvidolie_03.png"
-                        },
-                        new
-                        {
-                            Id = 169,
-                            ImageType = 0,
-                            ProductId = 20,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_kortbaenk_sortolie_01.png"
-                        },
-                        new
-                        {
-                            Id = 170,
-                            ImageType = 0,
-                            ProductId = 20,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_kortbaenk_sortolie_02.png"
-                        },
-                        new
-                        {
-                            Id = 171,
-                            ImageType = 0,
-                            ProductId = 20,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_kortbaenk_sortolie_03.png"
-                        },
-                        new
-                        {
-                            Id = 172,
-                            ImageType = 0,
-                            ProductId = 21,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_langbaenk_naturolie_01.png"
-                        },
-                        new
-                        {
-                            Id = 173,
-                            ImageType = 0,
-                            ProductId = 21,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_langbaenk_naturolie_02.png"
-                        },
-                        new
-                        {
-                            Id = 174,
-                            ImageType = 0,
-                            ProductId = 21,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_langbaenk_naturolie_03.png"
-                        },
-                        new
-                        {
-                            Id = 175,
-                            ImageType = 0,
-                            ProductId = 22,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_langbaenk_hvidolie_01.png"
-                        },
-                        new
-                        {
-                            Id = 176,
-                            ImageType = 0,
-                            ProductId = 22,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_langbaenk_hvidolie_02.png"
-                        },
-                        new
-                        {
-                            Id = 177,
-                            ImageType = 0,
-                            ProductId = 22,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_langbaenk_hvidolie_03.png"
-                        },
-                        new
-                        {
-                            Id = 178,
-                            ImageType = 0,
-                            ProductId = 23,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_langbaenk_sortolie_01.png"
-                        },
-                        new
-                        {
-                            Id = 179,
-                            ImageType = 0,
-                            ProductId = 23,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_langbaenk_sortolie_02.png"
-                        },
-                        new
-                        {
-                            Id = 180,
-                            ImageType = 0,
-                            ProductId = 23,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_langbaenk_sortolie_03.png"
-                        },
-                        new
-                        {
-                            Id = 181,
-                            ImageType = 0,
-                            ProductId = 24,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_naturolie_01.png"
-                        },
-                        new
-                        {
-                            Id = 182,
-                            ImageType = 0,
-                            ProductId = 24,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_naturolie_02.png"
-                        },
-                        new
-                        {
-                            Id = 183,
-                            ImageType = 0,
-                            ProductId = 24,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_naturolie_03.png"
-                        },
-                        new
-                        {
-                            Id = 184,
-                            ImageType = 0,
-                            ProductId = 24,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_naturolie_04.png"
-                        },
-                        new
-                        {
-                            Id = 185,
-                            ImageType = 0,
-                            ProductId = 24,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_naturolie_05.png"
-                        },
-                        new
-                        {
-                            Id = 186,
-                            ImageType = 0,
-                            ProductId = 24,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_naturolie_06.png"
-                        },
-                        new
-                        {
-                            Id = 187,
-                            ImageType = 0,
-                            ProductId = 24,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_naturolie_07.png"
-                        },
-                        new
-                        {
-                            Id = 188,
-                            ImageType = 0,
-                            ProductId = 25,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_hvidolie_01.png"
-                        },
-                        new
-                        {
-                            Id = 189,
-                            ImageType = 0,
-                            ProductId = 25,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_hvidolie_02.png"
-                        },
-                        new
-                        {
-                            Id = 190,
-                            ImageType = 0,
-                            ProductId = 25,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_hvidolie_03.png"
-                        },
-                        new
-                        {
-                            Id = 191,
-                            ImageType = 0,
-                            ProductId = 25,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_hvidolie_04.png"
-                        },
-                        new
-                        {
-                            Id = 192,
-                            ImageType = 0,
-                            ProductId = 25,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_hvidolie_05.png"
-                        },
-                        new
-                        {
-                            Id = 193,
-                            ImageType = 0,
-                            ProductId = 25,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_hvidolie_06.png"
-                        },
-                        new
-                        {
-                            Id = 194,
-                            ImageType = 0,
-                            ProductId = 25,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_hvidolie_07.png"
-                        },
-                        new
-                        {
-                            Id = 195,
-                            ImageType = 0,
-                            ProductId = 26,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_sort_01.png"
-                        },
-                        new
-                        {
-                            Id = 196,
-                            ImageType = 0,
-                            ProductId = 26,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_sort_02.png"
-                        },
-                        new
-                        {
-                            Id = 197,
-                            ImageType = 0,
-                            ProductId = 26,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_sort_03.png"
-                        },
-                        new
-                        {
-                            Id = 198,
-                            ImageType = 0,
-                            ProductId = 26,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_sort_04.png"
-                        },
-                        new
-                        {
-                            Id = 199,
-                            ImageType = 0,
-                            ProductId = 26,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_sort_05.png"
-                        },
-                        new
-                        {
-                            Id = 200,
-                            ImageType = 0,
-                            ProductId = 26,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_sort_06.png"
-                        },
-                        new
-                        {
-                            Id = 201,
-                            ImageType = 0,
-                            ProductId = 26,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_sort_07.png"
-                        },
-                        new
-                        {
-                            Id = 202,
-                            ImageType = 0,
-                            ProductId = 27,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_rack_naturolie_01.png"
-                        },
-                        new
-                        {
-                            Id = 203,
-                            ImageType = 0,
-                            ProductId = 27,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_rack_naturolie_02.png"
-                        },
-                        new
-                        {
-                            Id = 204,
-                            ImageType = 0,
-                            ProductId = 27,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_rack_naturolie_03.png"
-                        },
-                        new
-                        {
-                            Id = 205,
-                            ImageType = 0,
-                            ProductId = 27,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_rack_naturolie_04.png"
-                        },
-                        new
-                        {
-                            Id = 206,
-                            ImageType = 0,
-                            ProductId = 27,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_rack_naturolie_05.png"
-                        },
-                        new
-                        {
-                            Id = 207,
-                            ImageType = 0,
-                            ProductId = 27,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_rack_naturolie_06.png"
-                        },
-                        new
-                        {
-                            Id = 208,
-                            ImageType = 0,
-                            ProductId = 28,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_rack_hvidolie_01.png"
-                        },
-                        new
-                        {
-                            Id = 209,
-                            ImageType = 0,
-                            ProductId = 28,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_rack_hvidolie_02.png"
-                        },
-                        new
-                        {
-                            Id = 210,
-                            ImageType = 0,
-                            ProductId = 28,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_rack_hvidolie_03.png"
-                        },
-                        new
-                        {
-                            Id = 211,
-                            ImageType = 0,
-                            ProductId = 28,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_rack_hvidolie_04.png"
-                        },
-                        new
-                        {
-                            Id = 212,
-                            ImageType = 0,
-                            ProductId = 28,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_rack_hvidolie_05.png"
-                        },
-                        new
-                        {
-                            Id = 213,
-                            ImageType = 0,
-                            ProductId = 28,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_rack_hvidolie_06.png"
-                        },
-                        new
-                        {
-                            Id = 214,
-                            ImageType = 0,
-                            ProductId = 29,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_rack_sortolie_01.png"
-                        },
-                        new
-                        {
-                            Id = 215,
-                            ImageType = 0,
-                            ProductId = 29,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_rack_sortolie_02.png"
-                        },
-                        new
-                        {
-                            Id = 216,
-                            ImageType = 0,
-                            ProductId = 29,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_rack_sortolie_03.png"
-                        },
-                        new
-                        {
-                            Id = 217,
-                            ImageType = 0,
-                            ProductId = 29,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_rack_sortolie_04.png"
-                        },
-                        new
-                        {
-                            Id = 218,
-                            ImageType = 0,
-                            ProductId = 29,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_rack_sortolie_05.png"
-                        },
-                        new
-                        {
-                            Id = 219,
-                            ImageType = 0,
-                            ProductId = 29,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/NYKANT_rack_sortolie_06.png"
-                        },
-                        new
-                        {
-                            Id = 220,
-                            ImageType = 0,
-                            ProductId = 30,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/Ingrid_Naturolie_1.png"
-                        },
-                        new
-                        {
-                            Id = 221,
-                            ImageType = 0,
-                            ProductId = 30,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/Ingrid_Naturolie_2.png"
-                        },
-                        new
-                        {
-                            Id = 222,
-                            ImageType = 0,
-                            ProductId = 30,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/Ingrid_Naturolie_3.png"
-                        },
-                        new
-                        {
-                            Id = 223,
-                            ImageType = 0,
-                            ProductId = 31,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/Ingrid_Hvidolie_1.png"
-                        },
-                        new
-                        {
-                            Id = 224,
-                            ImageType = 0,
-                            ProductId = 31,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/Ingrid_Hvidolie_2.png"
-                        },
-                        new
-                        {
-                            Id = 225,
-                            ImageType = 0,
-                            ProductId = 31,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/Ingrid_Hvidolie_3.png"
-                        },
-                        new
-                        {
-                            Id = 226,
-                            ImageType = 0,
-                            ProductId = 32,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/Ingrid_Sortolie_1.png"
-                        },
-                        new
-                        {
-                            Id = 227,
-                            ImageType = 0,
-                            ProductId = 32,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/Ingrid_Sortolie_2.png"
-                        },
-                        new
-                        {
-                            Id = 228,
-                            ImageType = 0,
-                            ProductId = 32,
-                            Size = 2,
-                            Source = "../images/Products/Details_Fullscreen/Desktop/Ingrid_Sortolie_3.png"
+                            Source = "../images/Products/Details_Slide/Desktop/Ingrid_Sortolie_3.png",
+                            Source2 = "../images/products/Details_Fullscreen/Desktop/Ingrid_Sortolie_3.png"
                         },
                         new
                         {
                             Id = 229,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 1,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_boejle_naturolie_01.png"
@@ -2868,7 +2066,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 230,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 1,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_boejle_naturolie_02.png"
@@ -2876,7 +2074,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 231,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 2,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_boejle_sortolie_01.png"
@@ -2884,7 +2082,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 232,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 2,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_boejle_sortolie_02.png"
@@ -2892,7 +2090,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 233,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 3,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_boejle_hvidolie_01.png"
@@ -2900,7 +2098,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 234,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 3,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_boejle_hvidolie_02.png"
@@ -2908,7 +2106,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 235,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 4,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_hvidolie_01.png"
@@ -2916,7 +2114,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 236,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 4,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_hvidolie_02.png"
@@ -2924,7 +2122,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 237,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 4,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_hvidolie_03.png"
@@ -2932,7 +2130,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 238,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 5,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_sortolie_01.png"
@@ -2940,7 +2138,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 239,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 5,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_sortolie_02.png"
@@ -2948,7 +2146,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 240,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 5,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_sortolie_03.png"
@@ -2956,7 +2154,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 241,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 6,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_naturolie_01.png"
@@ -2964,7 +2162,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 242,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 6,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_naturolie_02.png"
@@ -2972,7 +2170,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 243,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 6,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_naturolie_03.png"
@@ -2980,7 +2178,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 244,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 7,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_hvidolie_01.png"
@@ -2988,7 +2186,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 245,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 7,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_hvidolie_02.png"
@@ -2996,7 +2194,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 246,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 7,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_hvidolie_03.png"
@@ -3004,7 +2202,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 247,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 8,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_sortolie_01.png"
@@ -3012,7 +2210,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 248,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 8,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_sortolie_02.png"
@@ -3020,7 +2218,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 249,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 8,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_sortolie_03.png"
@@ -3028,7 +2226,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 250,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 9,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_naturolie_01.png"
@@ -3036,7 +2234,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 251,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 9,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_naturolie_02.png"
@@ -3044,7 +2242,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 252,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 9,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_naturolie_03.png"
@@ -3052,7 +2250,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 253,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 10,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_hvidolie_01.png"
@@ -3060,7 +2258,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 254,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 10,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_hvidolie_02.png"
@@ -3068,7 +2266,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 255,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 10,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_hvidolie_03.png"
@@ -3076,7 +2274,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 256,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 11,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_sortolie_01.png"
@@ -3084,7 +2282,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 257,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 11,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_sortolie_02.png"
@@ -3092,7 +2290,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 258,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 11,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_sortolie_03.png"
@@ -3100,7 +2298,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 259,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 12,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_naturolie_01.png"
@@ -3108,7 +2306,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 260,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 12,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_naturolie_02.png"
@@ -3116,7 +2314,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 261,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 12,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_naturolie_03.png"
@@ -3124,7 +2322,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 262,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 13,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_hvidolie_01.png"
@@ -3132,7 +2330,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 263,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 13,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_hvidolie_02.png"
@@ -3140,7 +2338,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 264,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 13,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_hvidolie_03.png"
@@ -3148,7 +2346,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 265,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 14,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_sortolie_01.png"
@@ -3156,7 +2354,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 266,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 14,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_sortolie_02.png"
@@ -3164,7 +2362,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 267,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 14,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_sortolie_03.png"
@@ -3172,7 +2370,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 268,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 15,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_naturolie_01.png"
@@ -3180,7 +2378,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 269,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 15,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_naturolie_02.png"
@@ -3188,7 +2386,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 270,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 15,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_hylde_naturolie_03.png"
@@ -3196,7 +2394,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 271,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 16,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_bord_naturolie_01.png"
@@ -3204,7 +2402,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 272,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 16,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_bord_naturolie_02.png"
@@ -3212,7 +2410,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 273,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 16,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_bord_naturolie_03.png"
@@ -3220,7 +2418,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 274,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 17,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_bord_hvidolie_01.png"
@@ -3228,7 +2426,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 275,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 17,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_bord_hvidolie_02.png"
@@ -3236,7 +2434,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 276,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 17,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_bord_hvidolie_03.png"
@@ -3244,7 +2442,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 277,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 18,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_kortbaenk_naturolie_01.png"
@@ -3252,7 +2450,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 278,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 18,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_kortbaenk_naturolie_02.png"
@@ -3260,7 +2458,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 279,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 18,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_kortbaenk_naturolie_03.png"
@@ -3268,7 +2466,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 280,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 19,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_kortbaenk_hvidolie_01.png"
@@ -3276,7 +2474,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 281,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 19,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_kortbaenk_hvidolie_02.png"
@@ -3284,7 +2482,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 282,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 19,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_kortbaenk_hvidolie_03.png"
@@ -3292,7 +2490,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 283,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 20,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_kortbaenk_sortolie_01.png"
@@ -3300,7 +2498,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 284,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 20,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_kortbaenk_sortolie_02.png"
@@ -3308,7 +2506,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 285,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 20,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_kortbaenk_sortolie_03.png"
@@ -3316,7 +2514,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 286,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 21,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_langbaenk_naturolie_01.png"
@@ -3324,7 +2522,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 287,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 21,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_langbaenk_naturolie_02.png"
@@ -3332,7 +2530,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 288,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 21,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_langbaenk_naturolie_03.png"
@@ -3340,7 +2538,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 289,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 22,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_langbaenk_hvidolie_01.png"
@@ -3348,7 +2546,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 290,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 22,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_langbaenk_hvidolie_02.png"
@@ -3356,7 +2554,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 291,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 22,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_langbaenk_hvidolie_03.png"
@@ -3364,7 +2562,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 292,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 23,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_langbaenk_sortolie_01.png"
@@ -3372,7 +2570,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 293,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 23,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_langbaenk_sortolie_02.png"
@@ -3380,7 +2578,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 294,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 23,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_langbaenk_sortolie_03.png"
@@ -3388,7 +2586,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 295,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 24,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_opbevaringsbaenk_naturolie_01.png"
@@ -3396,7 +2594,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 296,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 24,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_opbevaringsbaenk_naturolie_02.png"
@@ -3404,7 +2602,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 297,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 24,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_opbevaringsbaenk_naturolie_03.png"
@@ -3412,7 +2610,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 298,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 24,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_opbevaringsbaenk_naturolie_04.png"
@@ -3420,7 +2618,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 299,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 24,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_opbevaringsbaenk_naturolie_05.png"
@@ -3428,7 +2626,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 300,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 24,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_opbevaringsbaenk_naturolie_06.png"
@@ -3436,7 +2634,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 301,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 24,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_opbevaringsbaenk_naturolie_07.png"
@@ -3444,7 +2642,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 302,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 25,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_opbevaringsbaenk_hvidolie_01.png"
@@ -3452,7 +2650,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 303,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 25,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_opbevaringsbaenk_hvidolie_02.png"
@@ -3460,7 +2658,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 304,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 25,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_opbevaringsbaenk_hvidolie_03.png"
@@ -3468,7 +2666,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 305,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 25,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_opbevaringsbaenk_hvidolie_04.png"
@@ -3476,7 +2674,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 306,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 25,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_opbevaringsbaenk_hvidolie_05.png"
@@ -3484,7 +2682,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 307,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 25,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_opbevaringsbaenk_hvidolie_06.png"
@@ -3492,7 +2690,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 308,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 25,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_opbevaringsbaenk_hvidolie_07.png"
@@ -3500,7 +2698,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 309,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 26,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_opbevaringsbaenk_sort_01.png"
@@ -3508,7 +2706,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 310,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 26,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_opbevaringsbaenk_sort_02.png"
@@ -3516,7 +2714,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 311,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 26,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_opbevaringsbaenk_sort_03.png"
@@ -3524,7 +2722,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 312,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 26,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_opbevaringsbaenk_sort_04.png"
@@ -3532,7 +2730,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 314,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 26,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_opbevaringsbaenk_sort_05.png"
@@ -3540,7 +2738,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 315,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 26,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_opbevaringsbaenk_sort_06.png"
@@ -3548,7 +2746,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 316,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 26,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_opbevaringsbaenk_sort_07.png"
@@ -3556,7 +2754,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 317,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 27,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_rack_naturolie_01.png"
@@ -3564,7 +2762,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 318,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 27,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_rack_naturolie_02.png"
@@ -3572,7 +2770,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 319,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 27,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_rack_naturolie_03.png"
@@ -3580,7 +2778,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 320,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 27,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_rack_naturolie_04.png"
@@ -3588,7 +2786,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 321,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 27,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_rack_naturolie_05.png"
@@ -3596,7 +2794,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 322,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 27,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_rack_naturolie_06.png"
@@ -3604,7 +2802,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 323,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 28,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_rack_hvidolie_01.png"
@@ -3612,7 +2810,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 324,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 28,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_rack_hvidolie_02.png"
@@ -3620,7 +2818,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 325,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 28,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_rack_hvidolie_03.png"
@@ -3628,7 +2826,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 326,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 28,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_rack_hvidolie_04.png"
@@ -3636,7 +2834,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 327,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 28,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_rack_hvidolie_05.png"
@@ -3644,7 +2842,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 328,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 28,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_rack_hvidolie_06.png"
@@ -3652,7 +2850,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 329,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 29,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_rack_sortolie_01.png"
@@ -3660,7 +2858,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 330,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 29,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_rack_sortolie_02.png"
@@ -3668,7 +2866,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 331,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 29,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_rack_sortolie_03.png"
@@ -3676,7 +2874,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 332,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 29,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_rack_sortolie_04.png"
@@ -3684,7 +2882,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 333,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 29,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_rack_sortolie_05.png"
@@ -3692,7 +2890,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 334,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 29,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/NYKANT_rack_sortolie_06.png"
@@ -3700,7 +2898,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 335,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 30,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/Ingrid_Naturolie_1.png"
@@ -3708,7 +2906,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 336,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 30,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/Ingrid_Naturolie_2.png"
@@ -3716,7 +2914,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 337,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 30,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/Ingrid_Naturolie_3.png"
@@ -3724,7 +2922,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 338,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 31,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/Ingrid_Hvidolie_1.png"
@@ -3732,7 +2930,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 339,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 31,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/Ingrid_Hvidolie_2.png"
@@ -3740,7 +2938,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 340,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 31,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/Ingrid_Hvidolie_3.png"
@@ -3748,7 +2946,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 341,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 32,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/Ingrid_Sortolie_1.png"
@@ -3756,7 +2954,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 342,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 32,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/Ingrid_Sortolie_2.png"
@@ -3764,7 +2962,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 343,
-                            ImageType = 0,
+                            ImageType = 1,
                             ProductId = 32,
                             Size = 2,
                             Source = "../images/Products/Details_Button/Desktop/Ingrid_Sortolie_3.png"
@@ -3775,11 +2973,10 @@ namespace NykantAPI.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
@@ -3795,7 +2992,7 @@ namespace NykantAPI.Migrations
             modelBuilder.Entity("NykantAPI.Models.NewsSub", b =>
                 {
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.HasKey("Email");
 
@@ -3806,49 +3003,48 @@ namespace NykantAPI.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Currency")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("EstimatedDelivery")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<bool>("IsBackOrder")
-                        .HasColumnType("bit");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("PaymentIntent_Id")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
                     b.Property<string>("Subject")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("TaxLessPrice")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Taxes")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("TotalPrice")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<double>("WeightInKg")
-                        .HasColumnType("float");
+                        .HasColumnType("double");
 
                     b.HasKey("Id");
 
@@ -3879,74 +3075,73 @@ namespace NykantAPI.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<string>("Alt")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("Amount")
                         .HasColumnType("int");
 
                     b.Property<string>("AssemblyPath")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("EColor")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("ExpectedDelivery")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("GalleryImage1")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("GalleryImage2")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Length")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Materials")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Note")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Number")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Oil")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Package")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Path")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("Pieces")
                         .HasColumnType("int");
 
                     b.Property<double>("Price")
-                        .HasColumnType("float");
+                        .HasColumnType("double");
 
                     b.Property<string>("Size")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<double>("WeightInKg")
-                        .HasColumnType("float");
+                        .HasColumnType("double");
 
                     b.HasKey("Id");
 
@@ -3963,7 +3158,7 @@ namespace NykantAPI.Migrations
                             CategoryId = 5,
                             Description = "Gertrud Description",
                             EColor = 0,
-                            ExpectedDelivery = new DateTime(2022, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_boejle_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_boejle_naturolie_02.png",
                             Materials = "Gertrud Materials",
@@ -3974,7 +3169,7 @@ namespace NykantAPI.Migrations
                             Package = "Gertrud Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_boejle_naturolie_01.png",
                             Pieces = 3,
-                            Price = 375.0,
+                            Price = 420.0,
                             Size = "Gertrud Size",
                             Title = "Bøjle i massivt egetræ - Behandlet med naturolie",
                             WeightInKg = 11.6
@@ -3987,7 +3182,7 @@ namespace NykantAPI.Migrations
                             CategoryId = 5,
                             Description = "Gertrud Description",
                             EColor = 2,
-                            ExpectedDelivery = new DateTime(2022, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_boejle_sortolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_boejle_sortolie_02.png",
                             Materials = "Gertrud Materials",
@@ -3998,7 +3193,7 @@ namespace NykantAPI.Migrations
                             Package = "Gertrud Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_boejle_sortolie_01.png",
                             Pieces = 3,
-                            Price = 375.0,
+                            Price = 420.0,
                             Size = "Gertrud Size",
                             Title = "Bøjle i massivt egetræ - Behandlet med sortolie",
                             WeightInKg = 11.6
@@ -4011,7 +3206,7 @@ namespace NykantAPI.Migrations
                             CategoryId = 5,
                             Description = "Gertrud Description",
                             EColor = 1,
-                            ExpectedDelivery = new DateTime(2022, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_boejle_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_boejle_hvidolie_02.png",
                             Materials = "Gertrud Materials",
@@ -4022,7 +3217,7 @@ namespace NykantAPI.Migrations
                             Package = "Gertrud Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_boejle_hvidolie_01.png",
                             Pieces = 3,
-                            Price = 375.0,
+                            Price = 420.0,
                             Size = "Gertrud Size",
                             Title = "Bøjle i massivt egetræ - Behandlet med hvidolie",
                             WeightInKg = 11.6
@@ -4035,7 +3230,7 @@ namespace NykantAPI.Migrations
                             CategoryId = 3,
                             Description = "Ingebor Description",
                             EColor = 1,
-                            ExpectedDelivery = new DateTime(2022, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_02.png",
                             Length = "400 mm.",
@@ -4047,7 +3242,7 @@ namespace NykantAPI.Migrations
                             Package = "Ingeborg 400 Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_hvidolie_01.png",
                             Pieces = 1,
-                            Price = 595.0,
+                            Price = 685.0,
                             Size = "Ingeborg 400 Size",
                             Title = "Hylde i massivt egetræ - Behandlet med hvidolie",
                             WeightInKg = 11.6
@@ -4060,7 +3255,7 @@ namespace NykantAPI.Migrations
                             CategoryId = 3,
                             Description = "Ingeborg Description",
                             EColor = 2,
-                            ExpectedDelivery = new DateTime(2022, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_02.png",
                             Length = "400 mm.",
@@ -4072,7 +3267,7 @@ namespace NykantAPI.Migrations
                             Package = "Ingeborg 400 Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_sortolie_01.png",
                             Pieces = 1,
-                            Price = 595.0,
+                            Price = 685.0,
                             Size = "Ingeborg 400 Size",
                             Title = "Hylde i massivt egetræ - Behandlet med sortolie",
                             WeightInKg = 11.6
@@ -4085,7 +3280,7 @@ namespace NykantAPI.Migrations
                             CategoryId = 3,
                             Description = "Ingeborg Description",
                             EColor = 0,
-                            ExpectedDelivery = new DateTime(2022, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_02.png",
                             Length = "400 mm.",
@@ -4097,7 +3292,7 @@ namespace NykantAPI.Migrations
                             Package = "Ingeborg 400 Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_naturolie_01.png",
                             Pieces = 1,
-                            Price = 595.0,
+                            Price = 685.0,
                             Size = "Ingeborg 400 Size",
                             Title = "Hylde i massivt egetræ - Behandlet med naturolie",
                             WeightInKg = 11.6
@@ -4110,7 +3305,7 @@ namespace NykantAPI.Migrations
                             CategoryId = 3,
                             Description = "Ingeborg Description",
                             EColor = 1,
-                            ExpectedDelivery = new DateTime(2022, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_02.png",
                             Length = "600 mm.",
@@ -4122,7 +3317,7 @@ namespace NykantAPI.Migrations
                             Package = "Ingeborg 600 Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_hvidolie_01.png",
                             Pieces = 1,
-                            Price = 595.0,
+                            Price = 785.0,
                             Size = "Ingeborg 600 Size",
                             Title = "Hylde i massivt egetræ - Behandlet med hvidolie",
                             WeightInKg = 11.6
@@ -4135,7 +3330,7 @@ namespace NykantAPI.Migrations
                             CategoryId = 3,
                             Description = "Ingeborg Description",
                             EColor = 2,
-                            ExpectedDelivery = new DateTime(2022, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_02.png",
                             Length = "600 mm.",
@@ -4147,7 +3342,7 @@ namespace NykantAPI.Migrations
                             Package = "Ingeborg 600 Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_sortolie_01.png",
                             Pieces = 1,
-                            Price = 595.0,
+                            Price = 785.0,
                             Size = "Ingeborg 600 Size",
                             Title = "Hylde i massivt egetræ - Behandlet med sortolie",
                             WeightInKg = 11.6
@@ -4160,7 +3355,7 @@ namespace NykantAPI.Migrations
                             CategoryId = 3,
                             Description = "Ingeborg Description",
                             EColor = 0,
-                            ExpectedDelivery = new DateTime(2022, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_02.png",
                             Length = "600 mm.",
@@ -4172,7 +3367,7 @@ namespace NykantAPI.Migrations
                             Package = "Ingeborg 600 Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_naturolie_01.png",
                             Pieces = 1,
-                            Price = 595.0,
+                            Price = 785.0,
                             Size = "Ingeborg 600 Size",
                             Title = "Hylde i massivt egetræ - Behandlet med naturolie",
                             WeightInKg = 11.6
@@ -4185,7 +3380,7 @@ namespace NykantAPI.Migrations
                             CategoryId = 3,
                             Description = "Ingeborg Description",
                             EColor = 1,
-                            ExpectedDelivery = new DateTime(2022, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_02.png",
                             Length = "800 mm.",
@@ -4197,7 +3392,7 @@ namespace NykantAPI.Migrations
                             Package = "Ingeborg 800 Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_hvidolie_01.png",
                             Pieces = 1,
-                            Price = 595.0,
+                            Price = 885.0,
                             Size = "Ingeborg 800 Size",
                             Title = "Hylde i massivt egetræ - Behandlet med hvidolie",
                             WeightInKg = 11.6
@@ -4210,7 +3405,7 @@ namespace NykantAPI.Migrations
                             CategoryId = 3,
                             Description = "Ingeborg Description",
                             EColor = 2,
-                            ExpectedDelivery = new DateTime(2022, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_02.png",
                             Length = "800 mm.",
@@ -4222,7 +3417,7 @@ namespace NykantAPI.Migrations
                             Package = "Ingeborg 800 Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_sortolie_01.png",
                             Pieces = 1,
-                            Price = 595.0,
+                            Price = 885.0,
                             Size = "Ingeborg 800 Size",
                             Title = "Hylde i massivt egetræ - Behandlet med sortolie",
                             WeightInKg = 11.6
@@ -4235,7 +3430,7 @@ namespace NykantAPI.Migrations
                             CategoryId = 3,
                             Description = "Ingeborg Description",
                             EColor = 0,
-                            ExpectedDelivery = new DateTime(2022, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_02.png",
                             Length = "800 mm.",
@@ -4247,7 +3442,7 @@ namespace NykantAPI.Migrations
                             Package = "Ingeborg 800 Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_naturolie_01.png",
                             Pieces = 1,
-                            Price = 595.0,
+                            Price = 885.0,
                             Size = "Ingeborg 800 Size",
                             Title = "Hylde i massivt egetræ - Behandlet med naturolie",
                             WeightInKg = 11.6
@@ -4260,7 +3455,7 @@ namespace NykantAPI.Migrations
                             CategoryId = 3,
                             Description = "Ingeborg Description",
                             EColor = 1,
-                            ExpectedDelivery = new DateTime(2022, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_02.png",
                             Length = "1000 mm.",
@@ -4272,7 +3467,7 @@ namespace NykantAPI.Migrations
                             Package = "Ingeborg 1000 Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_hvidolie_01.png",
                             Pieces = 1,
-                            Price = 595.0,
+                            Price = 985.0,
                             Size = "Ingeborg 1000 Size",
                             Title = "Hylde i massivt egetræ - Behandlet med hvidolie",
                             WeightInKg = 11.6
@@ -4285,7 +3480,7 @@ namespace NykantAPI.Migrations
                             CategoryId = 3,
                             Description = "Ingeborg Description",
                             EColor = 2,
-                            ExpectedDelivery = new DateTime(2022, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_02.png",
                             Length = "1000 mm.",
@@ -4297,7 +3492,7 @@ namespace NykantAPI.Migrations
                             Package = "Ingeborg 1000 Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_sortolie_01.png",
                             Pieces = 1,
-                            Price = 595.0,
+                            Price = 985.0,
                             Size = "Ingeborg 1000 Size",
                             Title = "Hylde i massivt egetræ - Behandlet med sortolie",
                             WeightInKg = 11.6
@@ -4310,7 +3505,7 @@ namespace NykantAPI.Migrations
                             CategoryId = 3,
                             Description = "Ingeborg Description",
                             EColor = 0,
-                            ExpectedDelivery = new DateTime(2022, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_02.png",
                             Length = "1000 mm.",
@@ -4322,7 +3517,7 @@ namespace NykantAPI.Migrations
                             Package = "Ingeborg 1000 Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_naturolie_01.png",
                             Pieces = 1,
-                            Price = 595.0,
+                            Price = 985.0,
                             Size = "Ingeborg 1000 Size",
                             Title = "Hylde i massivt egetræ - Behandlet med naturolie",
                             WeightInKg = 11.6
@@ -4346,7 +3541,7 @@ namespace NykantAPI.Migrations
                             Package = "Dagmar Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_bord_naturolie_01.png",
                             Pieces = 1,
-                            Price = 2995.0,
+                            Price = 3585.0,
                             Size = "Dagmar Size",
                             Title = "Bord i massivt egetræ - Behandlet med naturolie",
                             WeightInKg = 22.0
@@ -4354,7 +3549,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 17,
-                            Amount = 72,
+                            Amount = 30,
                             AssemblyPath = "/word/Bord.docx",
                             CategoryId = 2,
                             Description = "Dagmar Description",
@@ -4370,7 +3565,7 @@ namespace NykantAPI.Migrations
                             Package = "Dagmar Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_bord_hvidolie_01.png",
                             Pieces = 1,
-                            Price = 2995.0,
+                            Price = 3585.0,
                             Size = "Dagmar Size",
                             Title = "Bord i massivt egetræ - Behandlet med hvidolie",
                             WeightInKg = 22.0
@@ -4395,7 +3590,7 @@ namespace NykantAPI.Migrations
                             Package = "Thyra Short Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_kortbaenk_naturolie_01.png",
                             Pieces = 1,
-                            Price = 2985.0,
+                            Price = 3665.0,
                             Size = "Thyra Short Size",
                             Title = "Bænk i massivt egetræ - Behandlet med naturolie",
                             WeightInKg = 14.0
@@ -4403,7 +3598,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 19,
-                            Amount = 42,
+                            Amount = 20,
                             AssemblyPath = "/word/bænk.docx",
                             CategoryId = 4,
                             Description = "Thyra Short Description",
@@ -4420,7 +3615,7 @@ namespace NykantAPI.Migrations
                             Package = "Thyra Short Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_kortbaenk_naturolie_01.png",
                             Pieces = 1,
-                            Price = 2985.0,
+                            Price = 3665.0,
                             Size = "Thyra Short Size",
                             Title = "Bænk i massivt egetræ - Behandlet med hvidolie",
                             WeightInKg = 14.0
@@ -4428,7 +3623,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 20,
-                            Amount = 42,
+                            Amount = 10,
                             AssemblyPath = "/word/bænk.docx",
                             CategoryId = 4,
                             Description = "Thyra Short Description",
@@ -4445,7 +3640,7 @@ namespace NykantAPI.Migrations
                             Package = "Thyra Short Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_kortbaenk_naturolie_01.png",
                             Pieces = 1,
-                            Price = 2985.0,
+                            Price = 3665.0,
                             Size = "Thyra Short Size",
                             Title = "Bænk i massivt egetræ - Behandlet med sortolie",
                             WeightInKg = 14.0
@@ -4470,7 +3665,7 @@ namespace NykantAPI.Migrations
                             Package = "Thyra Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_langbaenk_naturolie_01.png",
                             Pieces = 1,
-                            Price = 3885.0,
+                            Price = 4395.0,
                             Size = "Thyra Size",
                             Title = "Bænk i massivt egetræ - Behandlet med naturolie",
                             WeightInKg = 20.0
@@ -4478,7 +3673,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 22,
-                            Amount = 17,
+                            Amount = 10,
                             AssemblyPath = "/word/bænk.docx",
                             CategoryId = 4,
                             Description = "Thyra Description",
@@ -4495,7 +3690,7 @@ namespace NykantAPI.Migrations
                             Package = "Thyra Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_langbaenk_naturolie_01.png",
                             Pieces = 1,
-                            Price = 3885.0,
+                            Price = 4395.0,
                             Size = "Thyra Size",
                             Title = "Bænk i massivt egetræ - Behandlet med hvidolie",
                             WeightInKg = 20.0
@@ -4503,7 +3698,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 23,
-                            Amount = 17,
+                            Amount = 5,
                             AssemblyPath = "/word/bænk.docx",
                             CategoryId = 4,
                             Description = "Thyra Description",
@@ -4520,7 +3715,7 @@ namespace NykantAPI.Migrations
                             Package = "Thyra Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_langbaenk_naturolie_01.png",
                             Pieces = 1,
-                            Price = 3885.0,
+                            Price = 4395.0,
                             Size = "Thyra Size",
                             Title = "Bænk i massivt egetræ - Behandlet med sortolie",
                             WeightInKg = 20.0
@@ -4544,7 +3739,7 @@ namespace NykantAPI.Migrations
                             Package = "Filippa Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_opbevaringsbaenk_naturolie_01.png",
                             Pieces = 1,
-                            Price = 4395.0,
+                            Price = 4985.0,
                             Size = "Filippa Size",
                             Title = "Opbevaringsbænk i massivt egetræ - Behandlet med naturolie",
                             WeightInKg = 24.0
@@ -4552,7 +3747,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 25,
-                            Amount = 50,
+                            Amount = 30,
                             AssemblyPath = "none",
                             CategoryId = 4,
                             Description = "Filippa Description",
@@ -4568,7 +3763,7 @@ namespace NykantAPI.Migrations
                             Package = "Filippa Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_opbevaringsbaenk_naturolie_01.png",
                             Pieces = 1,
-                            Price = 4395.0,
+                            Price = 4985.0,
                             Size = "Filippa Size",
                             Title = "Opbevaringsbænk i massivt egetræ - Behandlet med hvidolie",
                             WeightInKg = 24.0
@@ -4576,7 +3771,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 26,
-                            Amount = 50,
+                            Amount = 20,
                             AssemblyPath = "none",
                             CategoryId = 4,
                             Description = "Filippa Description",
@@ -4592,7 +3787,7 @@ namespace NykantAPI.Migrations
                             Package = "Filippa Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_opbevaringsbaenk_naturolie_01.png",
                             Pieces = 1,
-                            Price = 4395.0,
+                            Price = 4985.0,
                             Size = "Filippa Size",
                             Title = "Opbevaringsbænk i massivt egetræ - Behandlet med sortolie",
                             WeightInKg = 24.0
@@ -4616,7 +3811,7 @@ namespace NykantAPI.Migrations
                             Package = "Nora Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_rack_naturolie_01.png",
                             Pieces = 1,
-                            Price = 2295.0,
+                            Price = 2595.0,
                             Size = "Nora Size",
                             Title = "Tøjstativ i massivt egetræ - Behandlet med naturolie",
                             WeightInKg = 8.0
@@ -4624,7 +3819,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 28,
-                            Amount = 26,
+                            Amount = 16,
                             AssemblyPath = "/word/Tøjstativ.docx",
                             CategoryId = 1,
                             Description = "Nora Description",
@@ -4640,7 +3835,7 @@ namespace NykantAPI.Migrations
                             Package = "Nora Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_rack_naturolie_01.png",
                             Pieces = 1,
-                            Price = 2295.0,
+                            Price = 2595.0,
                             Size = "Nora Size",
                             Title = "Tøjstativ i massivt egetræ - Behandlet med hvidolie",
                             WeightInKg = 8.0
@@ -4648,7 +3843,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 29,
-                            Amount = 26,
+                            Amount = 10,
                             AssemblyPath = "/word/Tøjstativ.docx",
                             CategoryId = 1,
                             Description = "Nora Description",
@@ -4664,7 +3859,7 @@ namespace NykantAPI.Migrations
                             Package = "Nora Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_rack_naturolie_01.png",
                             Pieces = 1,
-                            Price = 2295.0,
+                            Price = 2595.0,
                             Size = "Nora Size",
                             Title = "Tøjstativ i massivt egetræ - Behandlet med sortolie",
                             WeightInKg = 8.0
@@ -4672,7 +3867,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 30,
-                            Amount = 26,
+                            Amount = 25,
                             AssemblyPath = "/word/hænge_tøjrack.docx",
                             CategoryId = 1,
                             Description = "Ingrid Description",
@@ -4688,7 +3883,7 @@ namespace NykantAPI.Migrations
                             Package = "Ingrid Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_rack_naturolie_01.png",
                             Pieces = 1,
-                            Price = 2295.0,
+                            Price = 1995.0,
                             Size = "Ingrid Size",
                             Title = "Hængende tøjstativ i massivt egetræ - Behandlet med naturolie",
                             WeightInKg = 2.0
@@ -4696,7 +3891,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 31,
-                            Amount = 26,
+                            Amount = 15,
                             AssemblyPath = "/word/hænge_tøjrack.docx",
                             CategoryId = 1,
                             Description = "Ingrid Description",
@@ -4712,7 +3907,7 @@ namespace NykantAPI.Migrations
                             Package = "Ingrid Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_rack_naturolie_01.png",
                             Pieces = 1,
-                            Price = 2295.0,
+                            Price = 1995.0,
                             Size = "Ingrid Size",
                             Title = "Hængende tøjstativ i massivt egetræ - Behandlet med hvidolie",
                             WeightInKg = 2.0
@@ -4720,7 +3915,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 32,
-                            Amount = 26,
+                            Amount = 10,
                             AssemblyPath = "/word/hænge_tøjrack.docx",
                             CategoryId = 1,
                             Description = "Ingrid Description",
@@ -4736,7 +3931,7 @@ namespace NykantAPI.Migrations
                             Package = "Ingrid Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_rack_naturolie_01.png",
                             Pieces = 1,
-                            Price = 2295.0,
+                            Price = 1995.0,
                             Size = "Ingrid Size",
                             Title = "Hængende tøjstativ i massivt egetræ - Behandlet med sortolie",
                             WeightInKg = 2.0
@@ -4747,11 +3942,10 @@ namespace NykantAPI.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<string>("Length")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -5192,12 +4386,11 @@ namespace NykantAPI.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<string>("Body")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -5207,10 +4400,10 @@ namespace NykantAPI.Migrations
 
                     b.Property<string>("Subject")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -5223,34 +4416,33 @@ namespace NykantAPI.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<string>("Address")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("City")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Country")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Postal")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<bool>("SameAsBilling")
-                        .HasColumnType("bit");
+                        .HasColumnType("tinyint(1)");
 
                     b.HasKey("Id");
 
@@ -5264,17 +4456,16 @@ namespace NykantAPI.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<string>("NotHomeNote")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
 
                     b.Property<string>("Type")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -5288,47 +4479,46 @@ namespace NykantAPI.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<string>("CityName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("CompanyName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("CountryCode")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("CountryCodeISO3166A2")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("DistanceMetersAsTheCrowFlies")
                         .HasColumnType("int");
 
                     b.Property<string>("Latitude")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Longitude")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Number")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("ShippingDeliveryId")
                         .HasColumnType("int");
 
                     b.Property<string>("Streetname")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Streetname2")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Telephone")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("ZipCode")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 

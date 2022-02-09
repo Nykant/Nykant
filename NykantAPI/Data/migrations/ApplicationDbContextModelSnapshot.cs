@@ -2,11 +2,10 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NykantAPI.Data;
 
-namespace NykantAPI.Migrations
+namespace NykantAPI.Data.migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -16,13 +15,12 @@ namespace NykantAPI.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.14")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("NykantAPI.Models.BagItem", b =>
                 {
                     b.Property<string>("Subject")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -41,31 +39,30 @@ namespace NykantAPI.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<string>("Address")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("City")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Country")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Postal")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -79,14 +76,13 @@ namespace NykantAPI.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<string>("ImgSource")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -129,14 +125,13 @@ namespace NykantAPI.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<int>("EColor")
                         .HasColumnType("int");
 
                     b.Property<string>("ImgSrc")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -187,7 +182,7 @@ namespace NykantAPI.Migrations
                         {
                             Id = 5,
                             EColor = 2,
-                            ImgSrc = "../images/Products/Color/Desktop/boejle_sort_01.png",
+                            ImgSrc = "../images/Products/Color/Desktop/boejle_sort_1.png",
                             ProductId = 2,
                             ProductSourceId = 2
                         },
@@ -908,13 +903,13 @@ namespace NykantAPI.Migrations
             modelBuilder.Entity("NykantAPI.Models.Cookie", b =>
                 {
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<int>("Category")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("Type1")
                         .HasColumnType("int");
@@ -989,16 +984,15 @@ namespace NykantAPI.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Phone")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -1009,8 +1003,7 @@ namespace NykantAPI.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<int>("ImageType")
                         .HasColumnType("int");
@@ -1022,10 +1015,10 @@ namespace NykantAPI.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Source")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Source2")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -2978,11 +2971,10 @@ namespace NykantAPI.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
@@ -2998,7 +2990,7 @@ namespace NykantAPI.Migrations
             modelBuilder.Entity("NykantAPI.Models.NewsSub", b =>
                 {
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.HasKey("Email");
 
@@ -3009,49 +3001,48 @@ namespace NykantAPI.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Currency")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("EstimatedDelivery")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<bool>("IsBackOrder")
-                        .HasColumnType("bit");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("PaymentIntent_Id")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
                     b.Property<string>("Subject")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("TaxLessPrice")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Taxes")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("TotalPrice")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<double>("WeightInKg")
-                        .HasColumnType("float");
+                        .HasColumnType("double");
 
                     b.HasKey("Id");
 
@@ -3082,74 +3073,73 @@ namespace NykantAPI.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<string>("Alt")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("Amount")
                         .HasColumnType("int");
 
                     b.Property<string>("AssemblyPath")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("EColor")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("ExpectedDelivery")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("GalleryImage1")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("GalleryImage2")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Length")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Materials")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Note")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Number")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Oil")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Package")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Path")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("Pieces")
                         .HasColumnType("int");
 
                     b.Property<double>("Price")
-                        .HasColumnType("float");
+                        .HasColumnType("double");
 
                     b.Property<string>("Size")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<double>("WeightInKg")
-                        .HasColumnType("float");
+                        .HasColumnType("double");
 
                     b.HasKey("Id");
 
@@ -3166,7 +3156,7 @@ namespace NykantAPI.Migrations
                             CategoryId = 5,
                             Description = "Gertrud Description",
                             EColor = 0,
-                            ExpectedDelivery = new DateTime(2022, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_boejle_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_boejle_naturolie_02.png",
                             Materials = "Gertrud Materials",
@@ -3177,7 +3167,7 @@ namespace NykantAPI.Migrations
                             Package = "Gertrud Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_boejle_naturolie_01.png",
                             Pieces = 3,
-                            Price = 375.0,
+                            Price = 420.0,
                             Size = "Gertrud Size",
                             Title = "Bøjle i massivt egetræ - Behandlet med naturolie",
                             WeightInKg = 11.6
@@ -3190,7 +3180,7 @@ namespace NykantAPI.Migrations
                             CategoryId = 5,
                             Description = "Gertrud Description",
                             EColor = 2,
-                            ExpectedDelivery = new DateTime(2022, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_boejle_sortolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_boejle_sortolie_02.png",
                             Materials = "Gertrud Materials",
@@ -3201,7 +3191,7 @@ namespace NykantAPI.Migrations
                             Package = "Gertrud Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_boejle_sortolie_01.png",
                             Pieces = 3,
-                            Price = 375.0,
+                            Price = 420.0,
                             Size = "Gertrud Size",
                             Title = "Bøjle i massivt egetræ - Behandlet med sortolie",
                             WeightInKg = 11.6
@@ -3214,7 +3204,7 @@ namespace NykantAPI.Migrations
                             CategoryId = 5,
                             Description = "Gertrud Description",
                             EColor = 1,
-                            ExpectedDelivery = new DateTime(2022, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_boejle_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_boejle_hvidolie_02.png",
                             Materials = "Gertrud Materials",
@@ -3225,7 +3215,7 @@ namespace NykantAPI.Migrations
                             Package = "Gertrud Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_boejle_hvidolie_01.png",
                             Pieces = 3,
-                            Price = 375.0,
+                            Price = 420.0,
                             Size = "Gertrud Size",
                             Title = "Bøjle i massivt egetræ - Behandlet med hvidolie",
                             WeightInKg = 11.6
@@ -3238,7 +3228,7 @@ namespace NykantAPI.Migrations
                             CategoryId = 3,
                             Description = "Ingebor Description",
                             EColor = 1,
-                            ExpectedDelivery = new DateTime(2022, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_02.png",
                             Length = "400 mm.",
@@ -3250,7 +3240,7 @@ namespace NykantAPI.Migrations
                             Package = "Ingeborg 400 Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_hvidolie_01.png",
                             Pieces = 1,
-                            Price = 595.0,
+                            Price = 685.0,
                             Size = "Ingeborg 400 Size",
                             Title = "Hylde i massivt egetræ - Behandlet med hvidolie",
                             WeightInKg = 11.6
@@ -3263,7 +3253,7 @@ namespace NykantAPI.Migrations
                             CategoryId = 3,
                             Description = "Ingeborg Description",
                             EColor = 2,
-                            ExpectedDelivery = new DateTime(2022, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_02.png",
                             Length = "400 mm.",
@@ -3275,7 +3265,7 @@ namespace NykantAPI.Migrations
                             Package = "Ingeborg 400 Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_sortolie_01.png",
                             Pieces = 1,
-                            Price = 595.0,
+                            Price = 685.0,
                             Size = "Ingeborg 400 Size",
                             Title = "Hylde i massivt egetræ - Behandlet med sortolie",
                             WeightInKg = 11.6
@@ -3288,7 +3278,7 @@ namespace NykantAPI.Migrations
                             CategoryId = 3,
                             Description = "Ingeborg Description",
                             EColor = 0,
-                            ExpectedDelivery = new DateTime(2022, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_02.png",
                             Length = "400 mm.",
@@ -3300,7 +3290,7 @@ namespace NykantAPI.Migrations
                             Package = "Ingeborg 400 Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_naturolie_01.png",
                             Pieces = 1,
-                            Price = 595.0,
+                            Price = 685.0,
                             Size = "Ingeborg 400 Size",
                             Title = "Hylde i massivt egetræ - Behandlet med naturolie",
                             WeightInKg = 11.6
@@ -3313,7 +3303,7 @@ namespace NykantAPI.Migrations
                             CategoryId = 3,
                             Description = "Ingeborg Description",
                             EColor = 1,
-                            ExpectedDelivery = new DateTime(2022, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_02.png",
                             Length = "600 mm.",
@@ -3325,7 +3315,7 @@ namespace NykantAPI.Migrations
                             Package = "Ingeborg 600 Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_hvidolie_01.png",
                             Pieces = 1,
-                            Price = 595.0,
+                            Price = 785.0,
                             Size = "Ingeborg 600 Size",
                             Title = "Hylde i massivt egetræ - Behandlet med hvidolie",
                             WeightInKg = 11.6
@@ -3338,7 +3328,7 @@ namespace NykantAPI.Migrations
                             CategoryId = 3,
                             Description = "Ingeborg Description",
                             EColor = 2,
-                            ExpectedDelivery = new DateTime(2022, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_02.png",
                             Length = "600 mm.",
@@ -3350,7 +3340,7 @@ namespace NykantAPI.Migrations
                             Package = "Ingeborg 600 Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_sortolie_01.png",
                             Pieces = 1,
-                            Price = 595.0,
+                            Price = 785.0,
                             Size = "Ingeborg 600 Size",
                             Title = "Hylde i massivt egetræ - Behandlet med sortolie",
                             WeightInKg = 11.6
@@ -3363,7 +3353,7 @@ namespace NykantAPI.Migrations
                             CategoryId = 3,
                             Description = "Ingeborg Description",
                             EColor = 0,
-                            ExpectedDelivery = new DateTime(2022, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_02.png",
                             Length = "600 mm.",
@@ -3375,7 +3365,7 @@ namespace NykantAPI.Migrations
                             Package = "Ingeborg 600 Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_naturolie_01.png",
                             Pieces = 1,
-                            Price = 595.0,
+                            Price = 785.0,
                             Size = "Ingeborg 600 Size",
                             Title = "Hylde i massivt egetræ - Behandlet med naturolie",
                             WeightInKg = 11.6
@@ -3388,7 +3378,7 @@ namespace NykantAPI.Migrations
                             CategoryId = 3,
                             Description = "Ingeborg Description",
                             EColor = 1,
-                            ExpectedDelivery = new DateTime(2022, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_02.png",
                             Length = "800 mm.",
@@ -3400,7 +3390,7 @@ namespace NykantAPI.Migrations
                             Package = "Ingeborg 800 Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_hvidolie_01.png",
                             Pieces = 1,
-                            Price = 595.0,
+                            Price = 885.0,
                             Size = "Ingeborg 800 Size",
                             Title = "Hylde i massivt egetræ - Behandlet med hvidolie",
                             WeightInKg = 11.6
@@ -3413,7 +3403,7 @@ namespace NykantAPI.Migrations
                             CategoryId = 3,
                             Description = "Ingeborg Description",
                             EColor = 2,
-                            ExpectedDelivery = new DateTime(2022, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_02.png",
                             Length = "800 mm.",
@@ -3425,7 +3415,7 @@ namespace NykantAPI.Migrations
                             Package = "Ingeborg 800 Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_sortolie_01.png",
                             Pieces = 1,
-                            Price = 595.0,
+                            Price = 885.0,
                             Size = "Ingeborg 800 Size",
                             Title = "Hylde i massivt egetræ - Behandlet med sortolie",
                             WeightInKg = 11.6
@@ -3438,7 +3428,7 @@ namespace NykantAPI.Migrations
                             CategoryId = 3,
                             Description = "Ingeborg Description",
                             EColor = 0,
-                            ExpectedDelivery = new DateTime(2022, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_02.png",
                             Length = "800 mm.",
@@ -3450,7 +3440,7 @@ namespace NykantAPI.Migrations
                             Package = "Ingeborg 800 Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_naturolie_01.png",
                             Pieces = 1,
-                            Price = 595.0,
+                            Price = 885.0,
                             Size = "Ingeborg 800 Size",
                             Title = "Hylde i massivt egetræ - Behandlet med naturolie",
                             WeightInKg = 11.6
@@ -3463,7 +3453,7 @@ namespace NykantAPI.Migrations
                             CategoryId = 3,
                             Description = "Ingeborg Description",
                             EColor = 1,
-                            ExpectedDelivery = new DateTime(2022, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_02.png",
                             Length = "1000 mm.",
@@ -3475,7 +3465,7 @@ namespace NykantAPI.Migrations
                             Package = "Ingeborg 1000 Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_hvidolie_01.png",
                             Pieces = 1,
-                            Price = 595.0,
+                            Price = 985.0,
                             Size = "Ingeborg 1000 Size",
                             Title = "Hylde i massivt egetræ - Behandlet med hvidolie",
                             WeightInKg = 11.6
@@ -3488,7 +3478,7 @@ namespace NykantAPI.Migrations
                             CategoryId = 3,
                             Description = "Ingeborg Description",
                             EColor = 2,
-                            ExpectedDelivery = new DateTime(2022, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_02.png",
                             Length = "1000 mm.",
@@ -3500,7 +3490,7 @@ namespace NykantAPI.Migrations
                             Package = "Ingeborg 1000 Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_sortolie_01.png",
                             Pieces = 1,
-                            Price = 595.0,
+                            Price = 985.0,
                             Size = "Ingeborg 1000 Size",
                             Title = "Hylde i massivt egetræ - Behandlet med sortolie",
                             WeightInKg = 11.6
@@ -3513,7 +3503,7 @@ namespace NykantAPI.Migrations
                             CategoryId = 3,
                             Description = "Ingeborg Description",
                             EColor = 0,
-                            ExpectedDelivery = new DateTime(2022, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_02.png",
                             Length = "1000 mm.",
@@ -3525,7 +3515,7 @@ namespace NykantAPI.Migrations
                             Package = "Ingeborg 1000 Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_naturolie_01.png",
                             Pieces = 1,
-                            Price = 595.0,
+                            Price = 985.0,
                             Size = "Ingeborg 1000 Size",
                             Title = "Hylde i massivt egetræ - Behandlet med naturolie",
                             WeightInKg = 11.6
@@ -3549,7 +3539,7 @@ namespace NykantAPI.Migrations
                             Package = "Dagmar Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_bord_naturolie_01.png",
                             Pieces = 1,
-                            Price = 2995.0,
+                            Price = 3585.0,
                             Size = "Dagmar Size",
                             Title = "Bord i massivt egetræ - Behandlet med naturolie",
                             WeightInKg = 22.0
@@ -3557,7 +3547,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 17,
-                            Amount = 72,
+                            Amount = 30,
                             AssemblyPath = "/word/Bord.docx",
                             CategoryId = 2,
                             Description = "Dagmar Description",
@@ -3573,7 +3563,7 @@ namespace NykantAPI.Migrations
                             Package = "Dagmar Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_bord_hvidolie_01.png",
                             Pieces = 1,
-                            Price = 2995.0,
+                            Price = 3585.0,
                             Size = "Dagmar Size",
                             Title = "Bord i massivt egetræ - Behandlet med hvidolie",
                             WeightInKg = 22.0
@@ -3598,7 +3588,7 @@ namespace NykantAPI.Migrations
                             Package = "Thyra Short Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_kortbaenk_naturolie_01.png",
                             Pieces = 1,
-                            Price = 2985.0,
+                            Price = 3665.0,
                             Size = "Thyra Short Size",
                             Title = "Bænk i massivt egetræ - Behandlet med naturolie",
                             WeightInKg = 14.0
@@ -3606,7 +3596,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 19,
-                            Amount = 42,
+                            Amount = 20,
                             AssemblyPath = "/word/bænk.docx",
                             CategoryId = 4,
                             Description = "Thyra Short Description",
@@ -3623,7 +3613,7 @@ namespace NykantAPI.Migrations
                             Package = "Thyra Short Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_kortbaenk_naturolie_01.png",
                             Pieces = 1,
-                            Price = 2985.0,
+                            Price = 3665.0,
                             Size = "Thyra Short Size",
                             Title = "Bænk i massivt egetræ - Behandlet med hvidolie",
                             WeightInKg = 14.0
@@ -3631,7 +3621,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 20,
-                            Amount = 42,
+                            Amount = 10,
                             AssemblyPath = "/word/bænk.docx",
                             CategoryId = 4,
                             Description = "Thyra Short Description",
@@ -3648,7 +3638,7 @@ namespace NykantAPI.Migrations
                             Package = "Thyra Short Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_kortbaenk_naturolie_01.png",
                             Pieces = 1,
-                            Price = 2985.0,
+                            Price = 3665.0,
                             Size = "Thyra Short Size",
                             Title = "Bænk i massivt egetræ - Behandlet med sortolie",
                             WeightInKg = 14.0
@@ -3673,7 +3663,7 @@ namespace NykantAPI.Migrations
                             Package = "Thyra Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_langbaenk_naturolie_01.png",
                             Pieces = 1,
-                            Price = 3885.0,
+                            Price = 4395.0,
                             Size = "Thyra Size",
                             Title = "Bænk i massivt egetræ - Behandlet med naturolie",
                             WeightInKg = 20.0
@@ -3681,7 +3671,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 22,
-                            Amount = 17,
+                            Amount = 10,
                             AssemblyPath = "/word/bænk.docx",
                             CategoryId = 4,
                             Description = "Thyra Description",
@@ -3698,7 +3688,7 @@ namespace NykantAPI.Migrations
                             Package = "Thyra Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_langbaenk_naturolie_01.png",
                             Pieces = 1,
-                            Price = 3885.0,
+                            Price = 4395.0,
                             Size = "Thyra Size",
                             Title = "Bænk i massivt egetræ - Behandlet med hvidolie",
                             WeightInKg = 20.0
@@ -3706,7 +3696,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 23,
-                            Amount = 17,
+                            Amount = 5,
                             AssemblyPath = "/word/bænk.docx",
                             CategoryId = 4,
                             Description = "Thyra Description",
@@ -3723,7 +3713,7 @@ namespace NykantAPI.Migrations
                             Package = "Thyra Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_langbaenk_naturolie_01.png",
                             Pieces = 1,
-                            Price = 3885.0,
+                            Price = 4395.0,
                             Size = "Thyra Size",
                             Title = "Bænk i massivt egetræ - Behandlet med sortolie",
                             WeightInKg = 20.0
@@ -3747,7 +3737,7 @@ namespace NykantAPI.Migrations
                             Package = "Filippa Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_opbevaringsbaenk_naturolie_01.png",
                             Pieces = 1,
-                            Price = 4395.0,
+                            Price = 4985.0,
                             Size = "Filippa Size",
                             Title = "Opbevaringsbænk i massivt egetræ - Behandlet med naturolie",
                             WeightInKg = 24.0
@@ -3755,7 +3745,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 25,
-                            Amount = 50,
+                            Amount = 30,
                             AssemblyPath = "none",
                             CategoryId = 4,
                             Description = "Filippa Description",
@@ -3771,7 +3761,7 @@ namespace NykantAPI.Migrations
                             Package = "Filippa Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_opbevaringsbaenk_naturolie_01.png",
                             Pieces = 1,
-                            Price = 4395.0,
+                            Price = 4985.0,
                             Size = "Filippa Size",
                             Title = "Opbevaringsbænk i massivt egetræ - Behandlet med hvidolie",
                             WeightInKg = 24.0
@@ -3779,7 +3769,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 26,
-                            Amount = 50,
+                            Amount = 20,
                             AssemblyPath = "none",
                             CategoryId = 4,
                             Description = "Filippa Description",
@@ -3795,7 +3785,7 @@ namespace NykantAPI.Migrations
                             Package = "Filippa Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_opbevaringsbaenk_naturolie_01.png",
                             Pieces = 1,
-                            Price = 4395.0,
+                            Price = 4985.0,
                             Size = "Filippa Size",
                             Title = "Opbevaringsbænk i massivt egetræ - Behandlet med sortolie",
                             WeightInKg = 24.0
@@ -3819,7 +3809,7 @@ namespace NykantAPI.Migrations
                             Package = "Nora Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_rack_naturolie_01.png",
                             Pieces = 1,
-                            Price = 2295.0,
+                            Price = 2595.0,
                             Size = "Nora Size",
                             Title = "Tøjstativ i massivt egetræ - Behandlet med naturolie",
                             WeightInKg = 8.0
@@ -3827,7 +3817,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 28,
-                            Amount = 26,
+                            Amount = 16,
                             AssemblyPath = "/word/Tøjstativ.docx",
                             CategoryId = 1,
                             Description = "Nora Description",
@@ -3843,7 +3833,7 @@ namespace NykantAPI.Migrations
                             Package = "Nora Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_rack_naturolie_01.png",
                             Pieces = 1,
-                            Price = 2295.0,
+                            Price = 2595.0,
                             Size = "Nora Size",
                             Title = "Tøjstativ i massivt egetræ - Behandlet med hvidolie",
                             WeightInKg = 8.0
@@ -3851,7 +3841,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 29,
-                            Amount = 26,
+                            Amount = 10,
                             AssemblyPath = "/word/Tøjstativ.docx",
                             CategoryId = 1,
                             Description = "Nora Description",
@@ -3867,7 +3857,7 @@ namespace NykantAPI.Migrations
                             Package = "Nora Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_rack_naturolie_01.png",
                             Pieces = 1,
-                            Price = 2295.0,
+                            Price = 2595.0,
                             Size = "Nora Size",
                             Title = "Tøjstativ i massivt egetræ - Behandlet med sortolie",
                             WeightInKg = 8.0
@@ -3875,7 +3865,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 30,
-                            Amount = 26,
+                            Amount = 25,
                             AssemblyPath = "/word/hænge_tøjrack.docx",
                             CategoryId = 1,
                             Description = "Ingrid Description",
@@ -3891,7 +3881,7 @@ namespace NykantAPI.Migrations
                             Package = "Ingrid Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_rack_naturolie_01.png",
                             Pieces = 1,
-                            Price = 2295.0,
+                            Price = 1995.0,
                             Size = "Ingrid Size",
                             Title = "Hængende tøjstativ i massivt egetræ - Behandlet med naturolie",
                             WeightInKg = 2.0
@@ -3899,7 +3889,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 31,
-                            Amount = 26,
+                            Amount = 15,
                             AssemblyPath = "/word/hænge_tøjrack.docx",
                             CategoryId = 1,
                             Description = "Ingrid Description",
@@ -3915,7 +3905,7 @@ namespace NykantAPI.Migrations
                             Package = "Ingrid Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_rack_naturolie_01.png",
                             Pieces = 1,
-                            Price = 2295.0,
+                            Price = 1995.0,
                             Size = "Ingrid Size",
                             Title = "Hængende tøjstativ i massivt egetræ - Behandlet med hvidolie",
                             WeightInKg = 2.0
@@ -3923,7 +3913,7 @@ namespace NykantAPI.Migrations
                         new
                         {
                             Id = 32,
-                            Amount = 26,
+                            Amount = 10,
                             AssemblyPath = "/word/hænge_tøjrack.docx",
                             CategoryId = 1,
                             Description = "Ingrid Description",
@@ -3939,7 +3929,7 @@ namespace NykantAPI.Migrations
                             Package = "Ingrid Package",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_rack_naturolie_01.png",
                             Pieces = 1,
-                            Price = 2295.0,
+                            Price = 1995.0,
                             Size = "Ingrid Size",
                             Title = "Hængende tøjstativ i massivt egetræ - Behandlet med sortolie",
                             WeightInKg = 2.0
@@ -3950,11 +3940,10 @@ namespace NykantAPI.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<string>("Length")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -4395,12 +4384,11 @@ namespace NykantAPI.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<string>("Body")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -4410,10 +4398,10 @@ namespace NykantAPI.Migrations
 
                     b.Property<string>("Subject")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -4426,34 +4414,33 @@ namespace NykantAPI.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<string>("Address")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("City")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Country")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Postal")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<bool>("SameAsBilling")
-                        .HasColumnType("bit");
+                        .HasColumnType("tinyint(1)");
 
                     b.HasKey("Id");
 
@@ -4467,17 +4454,16 @@ namespace NykantAPI.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<string>("NotHomeNote")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
 
                     b.Property<string>("Type")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -4491,47 +4477,46 @@ namespace NykantAPI.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<string>("CityName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("CompanyName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("CountryCode")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("CountryCodeISO3166A2")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("DistanceMetersAsTheCrowFlies")
                         .HasColumnType("int");
 
                     b.Property<string>("Latitude")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Longitude")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Number")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("ShippingDeliveryId")
                         .HasColumnType("int");
 
                     b.Property<string>("Streetname")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Streetname2")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Telephone")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("ZipCode")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 

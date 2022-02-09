@@ -21,7 +21,7 @@ namespace NykantIS.Data.Seed
             var services = new ServiceCollection();
             services.AddLogging();
             services.AddDbContext<IdentityContext>(options =>
-               options.UseSqlServer(connectionString));
+               options.UseMySql(connectionString));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<IdentityContext>()

@@ -39,15 +39,15 @@ namespace NykantMVC
         {
             string mykeyConnection = Configuration.GetConnectionString("MyKeysConnection");
 
-            //        services.AddDbContext<MyKeysContext>(options =>
-            //options.UseMySql(
-            //    mykeyConnection));
-            if (Environment.IsDevelopment())
-            {
-                services.AddDbContext<MyKeysContext>(options =>
-                    options.UseSqlServer(
-                        mykeyConnection));
-            }
+            services.AddDbContext<MyKeysContext>(options =>
+                options.UseMySql(
+                    mykeyConnection));
+            //if (Environment.IsDevelopment())
+            //{
+            //    services.AddDbContext<MyKeysContext>(options =>
+            //        options.UseSqlServer(
+            //            mykeyConnection));
+            //}
             //else
             //{
             //    services.AddDbContext<MyKeysContext>(options =>
@@ -135,8 +135,6 @@ namespace NykantMVC
                 });
             }
 
-            services.AddLogging();
-
             services.AddControllersWithViews()
                                     .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
                                     .AddDataAnnotationsLocalization()
@@ -192,7 +190,7 @@ namespace NykantMVC
 
             app.UseCertificateForwarding();
 
-            IdentityModelEventSource.ShowPII = false;
+            IdentityModelEventSource.ShowPII = true;
 
             app.UseHttpsRedirection();
 
