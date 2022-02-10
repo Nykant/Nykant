@@ -27,7 +27,7 @@
     <None Remove="wwwroot\ajax\**" />
     <None Remove="wwwroot\jQuery\**" />
     <None Remove="wwwroot\Templates\**" />
-  </ItemGroup>
+  </ItemGroup> 
 
   <ItemGroup>
     <PackageReference Include="AWSSDK.SimpleEmail" Version="3.7.0.13" />

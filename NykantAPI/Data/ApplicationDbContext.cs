@@ -40,11 +40,11 @@ namespace NykantAPI.Data
                 .HasKey(bi => new { bi.OrderId, bi.ProductId });
 
             modelBuilder.Entity<Category>().HasData(
-                new Category { Id = 1, Name = "Tøjstativer", ImgSource = "../Images/Products/Category/Desktop/ingrid_natur_2.png" },
-                new Category { Id = 2, Name = "Borde", ImgSource = "../Images/Products/Category/Desktop/bord_natur_2.png" },
-                new Category { Id = 3, Name = "Hylder", ImgSource = "../Images/Products/Category/Desktop/hylde_natur_1.png" },
-                new Category { Id = 4, Name = "Bænke", ImgSource = "../Images/Products/Category/Desktop/opbevaringsbaenk_natur_3.png" },
-                new Category { Id = 5, Name = "Bøjler", ImgSource = "../Images/Products/Category/Desktop/boejle_natur_1.png" }
+                new Category { Id = 1, Name = "Tøjstativer", ImgSource = "../images/Products/Category/Desktop/ingrid_natur_2.png" },
+                new Category { Id = 2, Name = "Borde", ImgSource = "../images/Products/Category/Desktop/bord_natur_2.png" },
+                new Category { Id = 3, Name = "Hylder", ImgSource = "../images/Products/Category/Desktop/hylde_natur_1.png" },
+                new Category { Id = 4, Name = "Bænke", ImgSource = "../images/Products/Category/Desktop/opbevaringsbaenk_natur_3.png" },
+                new Category { Id = 5, Name = "Bøjler", ImgSource = "../images/Products/Category/Desktop/boejle_natur_1.png" }
                 );
 
             modelBuilder.Entity<Cookie>().HasData(

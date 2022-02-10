@@ -42,8 +42,10 @@ $(document).ready(function () {
     }, 5000)
 
     var slicknext = document.getElementsByClassName('slick-next');
-    slicknext[0].innerHTML = "<i class='fas fa-arrow-right'></i>";
-    document.getElementsByClassName('slick-prev')[0].innerHTML = "<i class='fas fa-arrow-left'></i>";
+    if (slicknext != undefined) {
+        slicknext[0].innerHTML = "<i class='fas fa-arrow-right'></i>";
+        document.getElementsByClassName('slick-prev')[0].innerHTML = "<i class='fas fa-arrow-left'></i>";
+    }
 });
 
 //window.onscroll = function () {
