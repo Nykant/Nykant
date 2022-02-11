@@ -42,17 +42,25 @@ namespace NykantMVC.Services
             customer.Email = _customerProtector.Unprotect(customer.Email);
             customer.Phone = _customerProtector.Unprotect(customer.Phone);
 
-            customer.ShippingAddress.Name = _customerProtector.Unprotect(customer.ShippingAddress.Name);
-            customer.ShippingAddress.Address = _customerProtector.Unprotect(customer.ShippingAddress.Address);
-            customer.ShippingAddress.City = _customerProtector.Unprotect(customer.ShippingAddress.City);
-            customer.ShippingAddress.Country = _customerProtector.Unprotect(customer.ShippingAddress.Country);
-            customer.ShippingAddress.Postal = _customerProtector.Unprotect(customer.ShippingAddress.Postal);
+            if (customer.ShippingAddress != null)
+            {
+                customer.ShippingAddress.Name = _customerProtector.Unprotect(customer.ShippingAddress.Name);
+                customer.ShippingAddress.Address = _customerProtector.Unprotect(customer.ShippingAddress.Address);
+                customer.ShippingAddress.City = _customerProtector.Unprotect(customer.ShippingAddress.City);
+                customer.ShippingAddress.Country = _customerProtector.Unprotect(customer.ShippingAddress.Country);
+                customer.ShippingAddress.Postal = _customerProtector.Unprotect(customer.ShippingAddress.Postal);
+            }
 
-            customer.BillingAddress.Address = _customerProtector.Unprotect(customer.BillingAddress.Address);
-            customer.BillingAddress.City = _customerProtector.Unprotect(customer.BillingAddress.City);
-            customer.BillingAddress.Country = _customerProtector.Unprotect(customer.BillingAddress.Country);
-            customer.BillingAddress.Postal = _customerProtector.Unprotect(customer.BillingAddress.Postal);
-            customer.BillingAddress.Name = _customerProtector.Unprotect(customer.BillingAddress.Name);
+
+            if (customer.BillingAddress != null)
+            {
+                customer.BillingAddress.Address = _customerProtector.Unprotect(customer.BillingAddress.Address);
+                customer.BillingAddress.City = _customerProtector.Unprotect(customer.BillingAddress.City);
+                customer.BillingAddress.Country = _customerProtector.Unprotect(customer.BillingAddress.Country);
+                customer.BillingAddress.Postal = _customerProtector.Unprotect(customer.BillingAddress.Postal);
+                customer.BillingAddress.Name = _customerProtector.Unprotect(customer.BillingAddress.Name);
+            }
+
 
             return customer;
         }
@@ -62,19 +70,93 @@ namespace NykantMVC.Services
             customer.Email = _customerProtector.Protect(customer.Email);
             customer.Phone = _customerProtector.Protect(customer.Phone);
 
-            customer.ShippingAddress.Name = _customerProtector.Protect(customer.ShippingAddress.Name);
-            customer.ShippingAddress.Address = _customerProtector.Protect(customer.ShippingAddress.Address);
-            customer.ShippingAddress.City = _customerProtector.Protect(customer.ShippingAddress.City);
-            customer.ShippingAddress.Country = _customerProtector.Protect(customer.ShippingAddress.Country);
-            customer.ShippingAddress.Postal = _customerProtector.Protect(customer.ShippingAddress.Postal);
+            if (customer.ShippingAddress != null)
+            {
+                customer.ShippingAddress.Name = _customerProtector.Protect(customer.ShippingAddress.Name);
+                customer.ShippingAddress.Address = _customerProtector.Protect(customer.ShippingAddress.Address);
+                customer.ShippingAddress.City = _customerProtector.Protect(customer.ShippingAddress.City);
+                customer.ShippingAddress.Country = _customerProtector.Protect(customer.ShippingAddress.Country);
+                customer.ShippingAddress.Postal = _customerProtector.Protect(customer.ShippingAddress.Postal);
+            }
 
-            customer.BillingAddress.Address = _customerProtector.Protect(customer.BillingAddress.Address);
-            customer.BillingAddress.City = _customerProtector.Protect(customer.BillingAddress.City);
-            customer.BillingAddress.Country = _customerProtector.Protect(customer.BillingAddress.Country);
-            customer.BillingAddress.Postal = _customerProtector.Protect(customer.BillingAddress.Postal);
-            customer.BillingAddress.Name = _customerProtector.Protect(customer.BillingAddress.Name);
+
+            if(customer.BillingAddress != null)
+            {
+                customer.BillingAddress.Address = _customerProtector.Protect(customer.BillingAddress.Address);
+                customer.BillingAddress.City = _customerProtector.Protect(customer.BillingAddress.City);
+                customer.BillingAddress.Country = _customerProtector.Protect(customer.BillingAddress.Country);
+                customer.BillingAddress.Postal = _customerProtector.Protect(customer.BillingAddress.Postal);
+                customer.BillingAddress.Name = _customerProtector.Protect(customer.BillingAddress.Name);
+            }
+
 
             return customer;
+        }
+
+        public Order ProtectWholeOrder(Order order)
+        {
+            order.Currency = _orderProtector.Protect(order.Currency);
+            order.PaymentIntent_Id = _orderProtector.Protect(order.PaymentIntent_Id);
+            order.TotalPrice = _orderProtector.Protect(order.TotalPrice);
+            order.Taxes = _orderProtector.Protect(order.Taxes);
+            order.TaxLessPrice = _orderProtector.Protect(order.TaxLessPrice);
+
+            order.Customer.Email = _customerProtector.Protect(order.Customer.Email);
+            order.Customer.Phone = _customerProtector.Protect(order.Customer.Phone);
+
+            if(order.Customer.ShippingAddress != null)
+            {
+                order.Customer.ShippingAddress.Name = _customerProtector.Protect(order.Customer.ShippingAddress.Name);
+                order.Customer.ShippingAddress.Address = _customerProtector.Protect(order.Customer.ShippingAddress.Address);
+                order.Customer.ShippingAddress.City = _customerProtector.Protect(order.Customer.ShippingAddress.City);
+                order.Customer.ShippingAddress.Country = _customerProtector.Protect(order.Customer.ShippingAddress.Country);
+                order.Customer.ShippingAddress.Postal = _customerProtector.Protect(order.Customer.ShippingAddress.Postal);
+            } 
+
+            if(order.Customer.BillingAddress != null)
+            {
+                order.Customer.BillingAddress.Address = _customerProtector.Protect(order.Customer.BillingAddress.Address);
+                order.Customer.BillingAddress.City = _customerProtector.Protect(order.Customer.BillingAddress.City);
+                order.Customer.BillingAddress.Country = _customerProtector.Protect(order.Customer.BillingAddress.Country);
+                order.Customer.BillingAddress.Postal = _customerProtector.Protect(order.Customer.BillingAddress.Postal);
+                order.Customer.BillingAddress.Name = _customerProtector.Protect(order.Customer.BillingAddress.Name);
+            }
+
+            return order;
+        }
+
+        public Order UnprotectWholeOrder(Order order)
+        {
+            order.Currency = _orderProtector.Unprotect(order.Currency);
+            order.PaymentIntent_Id = _orderProtector.Unprotect(order.PaymentIntent_Id);
+            order.TotalPrice = _orderProtector.Unprotect(order.TotalPrice);
+            order.Taxes = _orderProtector.Unprotect(order.Taxes);
+            order.TaxLessPrice = _orderProtector.Unprotect(order.TaxLessPrice);
+
+            order.Customer.Email = _customerProtector.Unprotect(order.Customer.Email);
+            order.Customer.Phone = _customerProtector.Unprotect(order.Customer.Phone);
+
+            if (order.Customer.ShippingAddress != null)
+            {
+                order.Customer.ShippingAddress.Name = _customerProtector.Unprotect(order.Customer.ShippingAddress.Name);
+                order.Customer.ShippingAddress.Address = _customerProtector.Unprotect(order.Customer.ShippingAddress.Address);
+                order.Customer.ShippingAddress.City = _customerProtector.Unprotect(order.Customer.ShippingAddress.City);
+                order.Customer.ShippingAddress.Country = _customerProtector.Unprotect(order.Customer.ShippingAddress.Country);
+                order.Customer.ShippingAddress.Postal = _customerProtector.Unprotect(order.Customer.ShippingAddress.Postal);
+            }
+
+
+            if(order.Customer.BillingAddress != null)
+            {
+                order.Customer.BillingAddress.Address = _customerProtector.Unprotect(order.Customer.BillingAddress.Address);
+                order.Customer.BillingAddress.City = _customerProtector.Unprotect(order.Customer.BillingAddress.City);
+                order.Customer.BillingAddress.Country = _customerProtector.Unprotect(order.Customer.BillingAddress.Country);
+                order.Customer.BillingAddress.Postal = _customerProtector.Unprotect(order.Customer.BillingAddress.Postal);
+                order.Customer.BillingAddress.Name = _customerProtector.Unprotect(order.Customer.BillingAddress.Name);
+            }
+
+
+            return order;
         }
 
         public Customer UnprotectCustomer(Customer customer)
@@ -134,6 +216,8 @@ namespace NykantMVC.Services
             order.Currency = _orderProtector.Unprotect(order.Currency);
             order.PaymentIntent_Id = _orderProtector.Unprotect(order.PaymentIntent_Id);
             order.TotalPrice = _orderProtector.Unprotect(order.TotalPrice);
+            order.Taxes = _orderProtector.Protect(order.Taxes);
+            order.TaxLessPrice = _orderProtector.Protect(order.TaxLessPrice);
             return order;
         }
 
@@ -142,6 +226,8 @@ namespace NykantMVC.Services
             order.Currency = _orderProtector.Protect(order.Currency);
             order.PaymentIntent_Id = _orderProtector.Protect(order.PaymentIntent_Id);
             order.TotalPrice = _orderProtector.Protect(order.TotalPrice);
+            order.Taxes = _orderProtector.Protect(order.Taxes);
+            order.TaxLessPrice = _orderProtector.Protect(order.TaxLessPrice);
             return order;
         }
     }
@@ -154,6 +240,8 @@ namespace NykantMVC.Services
         public Customer UnprotectCustomer(Customer customer);
         public Customer UnprotectWholeCustomer(Customer customer);
             public Customer ProtectWholeCustomer(Customer customer);
+        public Order UnprotectWholeOrder(Order order);
+        public Order ProtectWholeOrder(Order order);
 
         public ShippingAddress ProtectShippingAddress(ShippingAddress shippingAddress);
         public ShippingAddress UnprotectShippingAddress(ShippingAddress shippingAddress);

@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using NykantAPI.Data;
 using NykantAPI.Models;
 using NykantAPI.Models.DTO;
+using NykantAPI.Services;
 
 namespace NykantAPI.Controllers
 {
@@ -17,9 +18,11 @@ namespace NykantAPI.Controllers
     [Route("[controller]/[action]/")]
     public class OrderController : BaseController
     {
-        public OrderController(ILogger<BaseController> logger, ApplicationDbContext context)
+        private readonly IProtectionService _protectionService;
+        public OrderController(ILogger<BaseController> logger, ApplicationDbContext context, IProtectionService protectionService)
             : base(logger, context)
         {
+            _protectionService = protectionService;
         }
 
         [HttpGet]
@@ -39,8 +42,10 @@ namespace NykantAPI.Controllers
         [HttpPatch]
         public async Task<ActionResult<Order>> UpdateOrder(Order order)
         {
+            _protectionService.UnprotectOrder(order);
             if (ModelState.IsValid)
             {
+                _protectionService.ProtectOrder(order);
                 if (OrderExists(order.Id))
                 {
                     _context.Orders.Update(order);
@@ -61,8 +66,10 @@ namespace NykantAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Order>> PostOrder(Order order)
         {
+            _protectionService.UnprotectOrder(order);
             if (ModelState.IsValid)
             {
+                _protectionService.ProtectOrder(order);
                 if (OrderExists(order.Id))
                 {
                     _context.Orders.Update(order);

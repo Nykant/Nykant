@@ -31,6 +31,10 @@ namespace NykantMVC.Controllers
         {
             var json = await GetRequest("/Order/GetOrders");
             List<Models.Order> list = JsonConvert.DeserializeObject<List<Models.Order>>(json);
+            for(int i = 0; i < list.Count; i++)
+            {
+                list[i] = _protectionService.UnprotectOrder(list[i]);
+            }
             return View(list);
         }
 
@@ -40,6 +44,10 @@ namespace NykantMVC.Controllers
         {
             var json = await GetRequest("/Order/GetOrders");
             List<Models.Order> list = JsonConvert.DeserializeObject<List<Models.Order>>(json);
+            for (int i = 0; i < list.Count; i++)
+            {
+                list[i] = _protectionService.UnprotectOrder(list[i]);
+            }
             return View(list);
         }
 
@@ -88,6 +96,7 @@ namespace NykantMVC.Controllers
                     }
 
                     var order = BuildOrder(checkout, paymentIntentId);
+                    order = _protectionService.ProtectOrder(order);
                     var response = await PostRequest("/Order/PostOrder", order);
                     if (!response.IsSuccessStatusCode)
                     {
@@ -118,7 +127,7 @@ namespace NykantMVC.Controllers
 
                     json = await GetRequest($"/Order/GetOrder/{order.Id}");
                     order = JsonConvert.DeserializeObject<Models.Order>(json);
-                    order.Customer = _protectionService.UnprotectWholeCustomer(order.Customer);
+                    order = _protectionService.UnprotectWholeOrder(order);
 
                     await mailService.SendOrderEmailAsync(order);
 
@@ -140,6 +149,7 @@ namespace NykantMVC.Controllers
                     else
                     {
                         order.Customer = null;
+                        order = _protectionService.ProtectOrder(order);
                         var updateOrder = await PatchRequest("/Order/UpdateOrder", order);
                         if (!updateOrder.IsSuccessStatusCode)
                         {
@@ -187,8 +197,12 @@ namespace NykantMVC.Controllers
         public async Task<IActionResult> BackOrders()
         {
             var jsonResponse = await GetRequest("/Order/GetOrders");
-            var orders = JsonConvert.DeserializeObject<List<Order>>(jsonResponse);
-            return View(orders);
+            var list = JsonConvert.DeserializeObject<List<Order>>(jsonResponse);
+            for (int i = 0; i < list.Count; i++)
+            {
+                list[i] = _protectionService.UnprotectOrder(list[i]);
+            }
+            return View(list);
         }
 
         [Authorize]
@@ -197,11 +211,12 @@ namespace NykantMVC.Controllers
         {
             var orderResponse = await GetRequest($"/Order/GetOrder/{orderId}");
             var order = JsonConvert.DeserializeObject<Order>(orderResponse);
-            order.Customer = _protectionService.UnprotectWholeCustomer(order.Customer);
+            order = _protectionService.UnprotectWholeOrder(order);
             await mailService.SendDKIEmailAsync(order);
 
             order.IsBackOrder = false;
             order.Customer = null;
+            order = _protectionService.ProtectOrder(order);
             var updateOrder = await PatchRequest("/Order/UpdateOrder", order);
             if (!updateOrder.IsSuccessStatusCode)
             {
@@ -210,6 +225,10 @@ namespace NykantMVC.Controllers
 
             var ordersResponse = await GetRequest("/Order/GetOrders");
             var orders = JsonConvert.DeserializeObject<List<Order>>(ordersResponse);
+            for (int i = 0; i < orders.Count; i++)
+            {
+                orders[i] = _protectionService.UnprotectOrder(orders[i]);
+            }
             ViewData.Model = orders;
             return new PartialViewResult
             {

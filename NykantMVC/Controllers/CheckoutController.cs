@@ -203,7 +203,7 @@ namespace NykantMVC.Controllers
                 Customer old;
                 if (editCustomer)
                 {
-                    old = await GetCustomer(checkout.CustomerInfId);
+                    old = await GetCustomerNoUnprotect(checkout.CustomerInfId);
                     customer.ShippingAddress.Id = old.ShippingAddress.Id;
                     customer.BillingAddress.Id = old.BillingAddress.Id;
                     customer.Id = old.Id;
@@ -320,9 +320,7 @@ namespace NykantMVC.Controllers
             {
                 var json = await GetRequest($"/Order/GetOrder/{checkout.ShippingDelivery.OrderId}");
                 var order = JsonConvert.DeserializeObject<Order>(json);
-                order.Customer.BillingAddress = _protectionService.UnprotectBillingAddress(order.Customer.BillingAddress);
-                order.Customer.ShippingAddress = _protectionService.UnprotectShippingAddress(order.Customer.ShippingAddress);
-                order.Customer = _protectionService.UnprotectCustomer(order.Customer);
+                order = _protectionService.UnprotectWholeOrder(order);
                 HttpContext.Session.Set<Checkout>(CheckoutSessionKey, null);
 
                 return View(order);
@@ -371,12 +369,11 @@ namespace NykantMVC.Controllers
             return price.ToString();
         }
 
-        private async Task<Customer> GetCustomer(int id)
+        private async Task<Customer> GetCustomerNoUnprotect(int id)
         {
             Customer customer;
             var jsonCustomer = await GetRequest($"/Customer/GetCustomer/{id}");
             customer = JsonConvert.DeserializeObject<Customer>(jsonCustomer);
-            customer = _protectionService.UnprotectCustomer(customer);
             return customer;
         }
 

@@ -160,12 +160,7 @@ namespace NykantMVC.Controllers
 
             var json = await GetRequest($"/Order/GetOrder/{orderId}");
             var order = JsonConvert.DeserializeObject<Models.Order>(json);
-            order.Customer = _protectionService.UnprotectCustomer(order.Customer);
-            order.Customer.ShippingAddress = _protectionService.UnprotectShippingAddress(order.Customer.ShippingAddress);
-            if(order.Customer.BillingAddress != null)
-            {
-                order.Customer.BillingAddress = _protectionService.UnprotectBillingAddress(order.Customer.BillingAddress);
-            }
+            order = _protectionService.UnprotectWholeOrder(order);
 
             var service = new PaymentIntentService();
             var paymentIntent = await service.CaptureAsync(order.PaymentIntent_Id);
@@ -181,19 +176,26 @@ namespace NykantMVC.Controllers
                 Models.Invoice invoice = new Models.Invoice
                 {
                     CreatedAt = DateTime.Now,
-                    OrderId = order.Id
+                    OrderId = order.Id,
+                    Order = null
                 };
                 var response = await PostRequest("/Invoice/PostInvoice/", invoice);
                 var invoiceJson = await GetRequest(response.Headers.Location.AbsolutePath);
                 invoice = JsonConvert.DeserializeObject<Models.Invoice>(invoiceJson);
                 order.Invoice = invoice;
 
-                await PatchRequest("/Order/UpdateOrder", order);
-
                 await mailService.SendInvoiceEmailAsync(order);
+
+                order.Customer = null;
+                order = _protectionService.ProtectOrder(order);
+                await PatchRequest("/Order/UpdateOrder", order);
 
                 var json2 = await GetRequest("/Order/GetOrders");
                 var orders = JsonConvert.DeserializeObject<List<Models.Order>>(json2);
+                for (int i = 0; i < orders.Count; i++)
+                {
+                    orders[i] = _protectionService.UnprotectOrder(orders[i]);
+                }
 
                 ViewData.Model = orders;
                 return new PartialViewResult

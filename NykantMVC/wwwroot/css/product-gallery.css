@@ -141,6 +141,7 @@
 }
 
 .category {
+    color:var(--font1);
     display: inline-block;
     float: left;
     width: 20%;
