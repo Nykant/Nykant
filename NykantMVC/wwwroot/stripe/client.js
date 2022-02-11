@@ -3,7 +3,7 @@
 /*const { ajax } = require("jquery");*/
 
 // See your keys here: https://dashboard.stripe.com/account/apikeys
-var stripe = Stripe('pk_test_51Hyy3eKS99T7pxPWSbrIYqKDcyKomhVp3hrXymvg8cPkupAmEcbeEoV26ckeJF9GZnfKdvTeQwyKdnwO6uNrIaih001cWPBSI2');
+var stripe = Stripe('pk_live_51Hyy3eKS99T7pxPWeT35BJfAsYelHyBxqA3SqiH5lxMSDLpkMtTCLZgXORkXaI5Gv712AmdRyQaxgmSDOZ0sWF9q00xVcAlnbG');
 var elements = stripe.elements();
 var url = document.getElementById('stage').dataset.url;
 

@@ -12,6 +12,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Text.Encodings.Web;
 using System;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
 
 namespace NykantMVC.Controllers
 {
@@ -22,11 +24,13 @@ namespace NykantMVC.Controllers
         private IConfigurationRoot _configuration;
         private readonly IProtectionService _protectionService;
         private readonly IMailService mailService;
-        public PaymentController(ILogger<BaseController> logger, IConfiguration configuration, IMailService mailService, IProtectionService protectionService, IOptions<Urls> urls, HtmlEncoder htmlEncoder) : base(logger, urls, htmlEncoder)
+        private readonly IHostEnvironment env;
+        public PaymentController(ILogger<BaseController> logger, IHostEnvironment _env, IConfiguration configuration, IMailService mailService, IProtectionService protectionService, IOptions<Urls> urls, HtmlEncoder htmlEncoder) : base(logger, urls, htmlEncoder)
         {
             _configuration = (IConfigurationRoot)configuration;
             _protectionService = protectionService;
             this.mailService = mailService;
+            env = _env;
         }
 
         [HttpPost]
@@ -40,7 +44,7 @@ namespace NykantMVC.Controllers
 
             if (checkout.Stage == Stage.payment)
             {
-                StripeConfiguration.ApiKey = _configuration["StripeTESTKey"];
+                StripeConfiguration.ApiKey = _configuration["StripeLIVEKey"];
                 //var json = await GetRequest($"/Customer/GetCustomer/{checkout.CustomerInfId}");
                 //var customerInf = JsonConvert.DeserializeObject<CustomerInf>(json);
                 //customerInf = _protectionService.UnProtectCustomerInf(customerInf);
@@ -67,6 +71,7 @@ namespace NykantMVC.Controllers
                     if (paymentMethodId != null)
                     {
                         int.TryParse(checkout.TotalPrice, out int amount);
+                        amount = amount * 100;
                         var PIoptions = new PaymentIntentCreateOptions
                         {
                             PaymentMethod = paymentMethodId,
@@ -98,7 +103,7 @@ namespace NykantMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> ConfirmPayment(string paymentIntentId)
         {
-            StripeConfiguration.ApiKey = _configuration["StripeTESTKey"];
+            StripeConfiguration.ApiKey = _configuration["StripeLIVEKey"];
 
             PaymentIntentService paymentIntentService = new PaymentIntentService();
             PaymentIntent paymentIntent = null;
@@ -151,7 +156,7 @@ namespace NykantMVC.Controllers
 
         public async Task<IActionResult> CapturePaymentIntent(int orderId)
         {
-            StripeConfiguration.ApiKey = _configuration["StripeTESTKey"];
+            StripeConfiguration.ApiKey = _configuration["StripeLIVEKey"];
 
             var json = await GetRequest($"/Order/GetOrder/{orderId}");
             var order = JsonConvert.DeserializeObject<Models.Order>(json);

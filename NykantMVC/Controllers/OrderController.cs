@@ -275,7 +275,7 @@ namespace NykantMVC.Controllers
                 }
             }
             else
-            { // DKI kan måske ikke modtage ordren før varerne er på lager
+            { 
                 deliveryDate = deliveryDate.AddDays(2);
                 if (deliveryDate.DayOfWeek == DayOfWeek.Saturday)
                 {

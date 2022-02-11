@@ -39,10 +39,10 @@
         margin: 0;
     }
 
-.utility .dropbtn {
-    color:black;
-    font-size:16px;
-}
+    .utility .dropbtn {
+        color: var(--font1);
+        font-size: 16px;
+    }
 
     .utility .dropdown-content{
         background:none;

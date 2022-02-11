@@ -166,7 +166,7 @@ ol, ul {
 
 .top-footer {
     position: relative;
-    color: var(--color1);
+    color: var(--font1);
     padding: 30px;
     padding-left: 70px;
     font-family: 'Lato', sans-serif;
@@ -184,7 +184,6 @@ ol, ul {
     }
 
 .top-footer h1 {
-    color:var(--dark);
     font-size: 18px;
     font-weight:bold;
 }
@@ -255,6 +254,7 @@ ol, ul {
 }
 
     .nykant-info {
+        color:var(--font1);
         padding-bottom:20px;
         display: inline-block;
         padding-right: 100px;

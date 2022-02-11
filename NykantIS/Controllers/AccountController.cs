@@ -154,7 +154,7 @@ namespace NykantIS.Controllers
                     }
                     else if (result.RequiresTwoFactor)
                     {
-                        return Redirect($"{model.BasePath}/identity/account/loginwith2fa?rememberMe={model.RememberLogin}");
+                        return Redirect($"{model.ISPath}/identity/account/loginwith2fa?rememberMe={model.RememberLogin}");
                     }
                     else if (result.IsLockedOut)
                     {
@@ -249,7 +249,8 @@ namespace NykantIS.Controllers
                     Email = context?.LoginHint,
                     RedirectAction = redirectAction,
                     RedirectController = redirectController,
-                    BasePath = $"{configuration.GetSection("Urls")["mvc"]}"
+                    BasePath = $"{configuration.GetSection("Urls")["mvc"]}",
+                    ISPath = $"{configuration.GetSection("Urls")["is"]}"
                 };
 
                 if (!local)

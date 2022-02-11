@@ -20,5 +20,6 @@ namespace NykantIS.Models
         public string RedirectAction { get; set; }
         public string RedirectController { get; set; }
         public string BasePath { get; set; }
+        public string ISPath { get; set; }
     }
 }
