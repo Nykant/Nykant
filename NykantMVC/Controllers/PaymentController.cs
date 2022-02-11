@@ -192,13 +192,6 @@ namespace NykantMVC.Controllers
 
                 await mailService.SendInvoiceEmailAsync(order);
 
-                foreach(var item in order.OrderItems)
-                {
-                    var product = item.Product;
-                    product.Amount = product.Amount - item.Quantity;
-                    await PatchRequest("/Product/UpdateProduct", product);
-                }
-
                 var json2 = await GetRequest("/Order/GetOrders");
                 var orders = JsonConvert.DeserializeObject<List<Models.Order>>(json2);
 

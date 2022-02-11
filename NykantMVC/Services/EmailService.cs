@@ -57,7 +57,7 @@ namespace NykantMVC.Services
             var email = new MimeMessage();
             email.From.Add(MailboxAddress.Parse(_mailSettings.Mail));
             email.Sender = MailboxAddress.Parse(_mailSettings.Mail);
-            email.To.Add(MailboxAddress.Parse(order.Customer.Email));
+            email.To.Add(MailboxAddress.Parse(_mailSettings.MailDKI));
             email.Subject = "DKI Ordrebekræftelse";
 
             var bodyBuilder = new BodyBuilder();

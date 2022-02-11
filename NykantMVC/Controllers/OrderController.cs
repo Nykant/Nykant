@@ -75,11 +75,16 @@ namespace NykantMVC.Controllers
                 if (checkout.Stage == Stage.payment)
                 {
                     // validate bagItems
-                    foreach (var item in checkout.BagItems)
+                    for (int i = 0; i < checkout.BagItems.Count; i++)
                     {
-                        var productjson = await GetRequest($"/Product/GetProduct/{item.ProductId}");
+                        var productjson = await GetRequest($"/Product/GetProduct/{checkout.BagItems[i].ProductId}");
                         Product product = JsonConvert.DeserializeObject<Product>(productjson);
-                        item.Product = product;
+                        checkout.BagItems[i].Product = product;
+                        if(product.Amount >= checkout.BagItems[i].Quantity)
+                        {
+                            product.Amount = product.Amount - checkout.BagItems[i].Quantity;
+                            await PatchRequest("/Product/UpdateProduct", product);
+                        }
                     }
 
                     var order = BuildOrder(checkout, paymentIntentId);
