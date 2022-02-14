@@ -142,9 +142,6 @@
 &lt;p&gt;Varer over 20 kg. kan kun tilbydes leveret på hjemmeadressen via DKI Pallegods. Varer under 20 kg. leveres med GLS&lt;/p&gt;
         &lt;/div&gt;</value>
   </data>
-  <data name="Header" xml:space="preserve">
-    <value>&lt;h1&gt;Salgs- og leveringsbetingelser&lt;/h1&gt;</value>
-  </data>
   <data name="Issues" xml:space="preserve">
     <value>&lt;div&gt;
             &lt;h1&gt;8. Tvister&lt;/h1&gt;
@@ -186,6 +183,86 @@ afleveres i pakkeshop.&lt;/p&gt;
                             
 
 
+        &lt;/div&gt;</value>
+  </data>
+  <data name="Terms And Conditions" xml:space="preserve">
+    <value>&lt;h1&gt;Salgs- og leveringsbetingelser&lt;/h1&gt;</value>
+  </data>
+  <data name="TermsAndConditions" xml:space="preserve">
+    <value>&lt;div&gt;
+&lt;h1&gt;1. Anvendelse&lt;/h1&gt;
+            &lt;p&gt;
+                Disse salgsbetingelser gælder altid, når du som forbruger handler på nykant.dk.
+                Nykant.dk er en handelsplatform, hvor du som forbruger kan købe varer direkte fra Nykant.
+            &lt;/p&gt;
+            &lt;p&gt;
+                Alle produkter som sælges på nykant.dk, er originale produkter, designet og produceret af Nykant Aps.
+            &lt;/p&gt;
+            &lt;p&gt;
+                Disse vilkår og betingelser udgør sammen med ordrebekræftelsen, det samlede aftalegrundlag for dit køb.
+            &lt;/p&gt;
+            &lt;p&gt;
+                Ved bestilling af varer via Nykants handelsplatform bekræfter du, at du ikke køber varer med henblik på videresalg.
+            &lt;/p&gt;
+&lt;/div&gt;
+&lt;div&gt;
+&lt;h1&gt;
+                2. Din bestilling
+            &lt;/h1&gt;
+            &lt;p&gt;
+                Nykant forbeholder sig retten til at kunne annulere ordren, indtil du har modtaget en faktura og varerne er sendt fra lageret. Den ret forbeholder Nykant sig i tilfælde af prisfejl, trykfejl, tekniske problemer, leveringssvigt, force majeure, hvis varen ikke kan komme på lager og lignende situationer.
+            &lt;/p&gt;
+            &lt;p&gt;
+                Force majeure foreligger, når korrekt opfyldelse af aftalevilkårene er umulig, og dette skyldes ekstraordinære omstændigheder, som leverandøren ikke kunne afbøde og ikke burde have forudset f.eks. krig, usædvanlige naturbegivenheder, brand, strejker, lockouts og pandemi.
+
+            &lt;/p&gt;
+            &lt;p&gt;
+                Når du har afgivet en bestilling via hjemmesiden, vil Nykants system sende dig en ordre bekræftelse. Du bør læse ordrebekræftelsen nøje igennem og tjekke, at den stemmer overens med bestillingen.
+            &lt;/p&gt;
+&lt;/div&gt;
+&lt;div&gt;
+            &lt;h1&gt;3. Betaling&lt;/h1&gt;
+            &lt;p&gt;Nykant bruger Stripe(PCI service provider/betalingstjenesteudbyder) til at håndtere betalingen og betalingsoplysningerne. &lt;/p&gt;
+            &lt;p&gt;Alle priser er i danske kroner og inkl. moms.&lt;/p&gt;
+
+&lt;p&gt;En samlet pris vil fremgå ved bestilling og af ordrebekræftelsen.&lt;/p&gt;
+            &lt;p&gt;Levering er gratis.&lt;/p&gt;
+            &lt;p&gt;Du kan vælge mellem de betalingsmåder, som vi tilbyder i købsprocessen. &lt;/p&gt;
+            &lt;p&gt;Beløb hæves først når du modtager en faktura, hvilket du først vil gøre når dine varer er sendt fra lageret .&lt;/p&gt;
+        &lt;/div&gt;
+&lt;div&gt;&lt;h1&gt;4. Levering&lt;/h1&gt;
+            &lt;p&gt;Vi har gratis levering uanset mængden.&lt;/p&gt;
+&lt;p&gt;Varer over 20 kg. kan kun tilbydes leveret på hjemmeadressen via DKI Pallegods. Varer under 20 kg. leveres med GLS&lt;/p&gt;
+        &lt;/div&gt;
+&lt;div&gt; 
+            &lt;h1&gt;5. Fortrydelsesret/Returret&lt;/h1&gt;
+&lt;p &gt;Ved returnering sendes en mail til os, hvor efter i vil modtage en returlabel, og varen 
+afleveres i pakkeshop.&lt;/p&gt;
+&lt;p &gt;Alle varer kan returneres, men skal være i original emballage og returneres igennem pakkeshop.&lt;/p&gt;
+&lt;p &gt;Nykant vil tilbagebetale prisen for produktet som returneres, som prisen er i fakturaen. Kunden skal selv betale fragtomkostningerne.&lt;/p&gt;
+        &lt;/div&gt;
+&lt;div&gt;
+            &lt;h1&gt;6. Reklamationer&lt;/h1&gt;
+&lt;p&gt; Hvis der mod forventning skulle være problemer med et produkt, så ordner vi det uden
+                             omkostninger for jer.&lt;/p&gt;
+                            
+&lt;p class=pushed-text&gt;- Send en email med ordre nummer.&lt;/p&gt;
+&lt;p class=pushed-text&gt;- Beskrivelse af reklamationen.&lt;/p&gt;
+&lt;p class=pushed-text&gt;- Billeder af problemet.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+        &lt;/div&gt;
+&lt;div&gt;
+            &lt;h1&gt;7. Personoplysninger&lt;/h1&gt;
+            &lt;p&gt;Nykants databeskyttelsespolitik kan læses &lt;a class="simple-link" href="https://nykant.dk/home/privacypolicy"&gt;her&lt;/a&gt;.&lt;/p&gt;
+        &lt;/div&gt;
+&lt;div&gt;
+            &lt;h1&gt;8. Tvister&lt;/h1&gt;
+            &lt;p&gt;Hvis du er utilfreds med Nykants håndtering af en reklamation eller andet, skal du først forsøge at løse tvisten direkte med os. Såfremt dette ikke lykkes, kan du indbringe sagen for Nævnenes Hus på &lt;a class="simple-link" href="https://www.naevneneshus.dk"&gt;www.naevneneshus.dk&lt;/a&gt; og herefter Forbrugerklagenævnet eller gøre brug af Europa-Kommissionens online klageportal ("ODR"). Alle tvister skal afgøres i henhold til dansk ret. Såfremt sagen indbringes for domstolene, skal den afgøres ved dit hjemting, dvs. i nærheden af, hvor du bor.&lt;/p&gt;
+        &lt;/div&gt;
+&lt;div&gt;
+            &lt;h1&gt;9. Ændring af vilkår&lt;/h1&gt;
+            &lt;p&gt;Ændrer vi vores vilkår, samtykker og politikker, og har det væsentlig betydning for dig og dine købte ydelser, orienterer vi dig via e-mail. Du kan altid se de gældende vilkår på vores hjemmeside.&lt;/p&gt;
         &lt;/div&gt;</value>
   </data>
   <data name="Usage" xml:space="preserve">

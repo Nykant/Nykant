@@ -6,31 +6,100 @@
 
 <div class="my-row background-color2">
     <div class="privacy-header center">
-        @localizer["Header"]
+        <h1>Salgs- og leveringsbetingelser</h1>
+        @*@localizer["Terms And Conditions"]*@
     </div>
 </div>
 <div class="my-row ">
     <div class="privacy-information col-6 center">
-
         <div>
-           @localizer["Usage"]
+            <h1>1. Anvendelse</h1>
+            <p>
+                Disse salgsbetingelser gælder altid, når du som forbruger handler på nykant.dk.
+                Nykant.dk er en handelsplatform, hvor du som forbruger kan købe varer direkte fra Nykant.
+            </p>
+            <p>
+                Alle produkter som sælges på nykant.dk, er originale produkter, designet og produceret af Nykant Aps.
+            </p>
+            <p>
+                Disse vilkår og betingelser udgør sammen med ordrebekræftelsen, det samlede aftalegrundlag for dit køb.
+            </p>
+            <p>
+                Ved bestilling af varer via Nykants handelsplatform bekræfter du, at du ikke køber varer med henblik på videresalg.
+            </p>
         </div>
         <div>
-            @localizer["Your orders"]
+            <h1>
+                2. Din bestilling
+            </h1>
+            <p>
+                Nykant forbeholder sig retten til at kunne annulere ordren, indtil du har modtaget en faktura og varerne er sendt fra lageret. Den ret forbeholder Nykant sig i tilfælde af prisfejl, trykfejl, tekniske problemer, leveringssvigt, force majeure, hvis varen ikke kan komme på lager og lignende situationer.
+            </p>
+            <p>
+                Force majeure foreligger, når korrekt opfyldelse af aftalevilkårene er umulig, og dette skyldes ekstraordinære omstændigheder, som leverandøren ikke kunne afbøde og ikke burde have forudset f.eks. krig, usædvanlige naturbegivenheder, brand, strejker, lockouts og pandemi.
+
+            </p>
+            <p>
+                Når du har afgivet en bestilling via hjemmesiden, vil Nykants system sende dig en ordre bekræftelse. Du bør læse ordrebekræftelsen nøje igennem og tjekke, at den stemmer overens med bestillingen.
+            </p>
         </div>
-        
-        @localizer["Payment"]
+        <div>
+            <h1>3. Betaling</h1>
+            <p>Nykant bruger Stripe(PCI service provider/betalingstjenesteudbyder) til at håndtere betalingen og betalingsoplysningerne. </p>
+            <p>Alle priser er i danske kroner og inkl. moms.</p>
 
-        @localizer["Delivery"]
+            <p>En samlet pris vil fremgå ved bestilling og af ordrebekræftelsen.</p>
+            <p>Levering er gratis.</p>
+            <p>Du kan vælge mellem de betalingsmåder, som vi tilbyder i købsprocessen. </p>
+            <p>Beløb hæves først når du modtager en faktura, hvilket du først vil gøre når dine varer er sendt fra lageret .</p>
+        </div>
+        <div>
+            <h1>4. Levering</h1>
+            <p>Vi har gratis levering uanset mængden.</p>
+            <p>Varer over 20 kg. kan kun tilbydes leveret på hjemmeadressen via DKI Pallegods. Varer under 20 kg. leveres med GLS</p>
+        </div>
+        <div>
+            <h1>5. Fortrydelsesret/Returret</h1>
+            <p>
+                Ved returnering sendes en mail til os, hvor efter i vil modtage en returlabel, og varen
+                afleveres i pakkeshop.
+            </p>
+            <p>Alle varer kan returneres, men skal være i original emballage og returneres igennem pakkeshop.</p>
+            <p>Nykant vil tilbagebetale prisen for produktet som returneres, som prisen er i fakturaen. Kunden skal selv betale fragtomkostningerne.</p>
+        </div>
+        <div>
+            <h1>6. Reklamationer</h1>
+            <p>
+                Hvis der mod forventning skulle være problemer med et produkt, så ordner vi det uden
+                omkostninger for jer.
+            </p>
 
-        @localizer["Regret"]
+            <p class=pushed-text>- Send en email med ordre nummer.</p>
+            <p class=pushed-text>- Beskrivelse af reklamationen.</p>
+            <p class=pushed-text>- Billeder af problemet.</p>
 
-        @localizer["Complaints"]
+            <p></p>
+        </div>
+        <div>
+            <h1>7. Personoplysninger</h1>
+            <p>Nykants databeskyttelsespolitik kan læses <a class="simple-link" href="https://nykant.dk/home/privacypolicy">her</a>.</p>
+        </div>
+        <div>
+            <h1>8. Tvister</h1>
+            <p>Hvis du er utilfreds med Nykants håndtering af en reklamation eller andet, skal du først forsøge at løse tvisten direkte med os. Såfremt dette ikke lykkes, kan du indbringe sagen for Nævnenes Hus på <a class="simple-link" href="https://www.naevneneshus.dk">www.naevneneshus.dk</a> og herefter Forbrugerklagenævnet eller gøre brug af Europa-Kommissionens online klageportal ("ODR"). Alle tvister skal afgøres i henhold til dansk ret. Såfremt sagen indbringes for domstolene, skal den afgøres ved dit hjemting, dvs. i nærheden af, hvor du bor.</p>
+        </div>
+        <div>
+            <h1>9. Ændring af vilkår</h1>
+            <p>Ændrer vi vores vilkår, samtykker og politikker, og har det væsentlig betydning for dig og dine købte ydelser, orienterer vi dig via e-mail. Du kan altid se de gældende vilkår på vores hjemmeside.</p>
+        </div>
+        @*@if (localizer["TermsAndConditions"] == null)
+        {
 
-        @localizer["Personal Info"]
+        }
+        else
+        {
+            @localizer["TermsAndConditions"]
+        }*@
 
-        @localizer["Issues"]
-
-        @localizer["Changes"]
     </div>
 </div>

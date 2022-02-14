@@ -126,11 +126,57 @@
   <data name="Apple cookies" xml:space="preserve">
     <value>iPhone, iPad og andet fra Apple</value>
   </data>
-  <data name="Consent valid for" xml:space="preserve">
+  <data name="Consent valid for: nykant.dk" xml:space="preserve">
     <value>&lt;h3&gt;Dit cookie samtykke gælder for følgende domæner: nykant.dk&lt;/h3&gt;</value>
   </data>
-  <data name="Cookie Policy Title" xml:space="preserve">
+  <data name="Cookie Policy" xml:space="preserve">
     <value>&lt;h1&gt;Cookie Politik&lt;/h1&gt;</value>
+  </data>
+  <data name="CookiePolicy" xml:space="preserve">
+    <value>&lt;div&gt;
+&lt;h3&gt;Med EUs nye regler for informationsindhentning og beskyttelse af persondata, undrer mange sig måske over hvad "cookies" i virkeligeheden er. Her finder du lidt information om disse informationskapsler og hvordan Nykant bruger dem.&lt;/h3&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+&lt;h1&gt;Hvad er en cookie?&lt;/h1&gt;
+&lt;p&gt;En cookie er en lille tekst-fil, som vi gemmer på din computer for at kunne holde styr på, hvad der sker under dit besøg og for at kunne genkende computeren. En cookie indeholder kun tekst, er ikke et program og indeholder ikke virus.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+&lt;h1&gt;Hjemmesidens brug af cookies&lt;/h1&gt;
+&lt;p&gt;Cookies er nødvendige for at få hjemmesiden til at fungere. Cookies hjælper os desuden med at få overblik over dit besøg på hjemmesiden, så vi løbende kan optimere og målrette hjemmesiden til dine behov og interesser. Cookies husker f.eks., hvad du har lagt i din indkøbskurv, om du tidligere har besøgt siden, hvilket sprog, du gerne vil have vist på hjemmesiden og dine cookie preferencer. Helt overordnet anvendes cookies således som del af vores hjemmesides nødvendige funktioner for at give dig en god oplevelse. Her er oversigten over hjemmesidens brug af cookies:&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+&lt;h1&gt;Sådan afviser eller sletter du dine cookies&lt;/h1&gt;
+&lt;h2&gt;Afvisning af nogle cookies:&lt;/h2&gt;
+&lt;p class="pushed-text"&gt;Du kan afvise alle de cookies som ikke er nødvendige for vores hjemmesides funktionalitet eller nogle specifikke som du ikke vil tillade ved at klikke "Kun Nødvendige Cookies" eller på knappen "Instillinger" under titlen på nuværende side.&lt;/p&gt;
+
+&lt;h2&gt;Afvisning af alle cookies:&lt;/h2&gt;
+&lt;p class="pushed-text"&gt;Du kan altid afvise alle fremtidige cookies på din computer ved at ændre indstillingerne i din Internet-browser. Hvor du finder indstillingerne afhænger af, hvilken browser du anvender. Du skal dog være opmærksom på, at hvis du gør det, er der mange funktioner og services, du ikke kan bruge, fordi disse funktioner og services forudsætter, at hjemmesiden fungerer korrekt.&lt;/p&gt;
+
+&lt;p&gt;Du kan fravælge cookies fra Google Analytics &lt;a class="simple-link" href="https://tools.google.com/dlpage/gaoptout"&gt;her&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;Sletning af cookies:&lt;/h2&gt;
+&lt;p&gt;
+                Cookies som du tidligere har accepteret, kan efterfølgende slettes nemt:
+            &lt;/p&gt;
+            &lt;p class="pushed-text"&gt;
+                Du kan slette "ikke nødvendige cookies" fra vores hjemmeside ved at trykke på knappen "Kun Nødvendige Cookies" i topped af siden. Det vil kun slette cookies i den browser du bruge lige nu.
+            &lt;/p&gt;
+            &lt;h2&gt;Her er en liste over guides til hvordan man håndtere cookies, for alle de forskellige browsers.&lt;/h2&gt;
+            &lt;div class="cookie-help-links pushed-text"&gt;
+
+                &lt;a class="simple-link" href="http://windows.microsoft.com/da-dk/internet-explorer/delete-manage-cookies#ie=ie-11"&gt;Internet Explorer&lt;/a&gt;
+                &lt;a class="simple-link" href="https://support.mozilla.org/da/kb/slet-cookies-fjerne-oplysninger-som-websteder-har-"&gt;Mozilla Firefox&lt;/a&gt;
+                &lt;a class="simple-link" href="https://support.google.com/chrome/answer/95647?hl=da"&gt;Google Chrome&lt;/a&gt;
+                &lt;a class="simple-link" href="https://www.opera.com/help/tutorials/security/cookies"&gt;Opera&lt;/a&gt;
+                &lt;a class="simple-link" href="https://support.apple.com/da-dk/HT1677"&gt;Safari&lt;/a&gt;
+                &lt;a class="simple-link" href="http://www.macromedia.com/support/documentation/en/flashplayer/help/settings_manager07.html"&gt;Flash cookies&lt;/a&gt;
+                &lt;a class="simple-link" href="https://support.apple.com/da-dk/HT1677"&gt;Apple cookies&lt;/a&gt;
+                &lt;a class="simple-link" href="http://timeread.hubpages.com/hub/How-to-delete-internet-cookies-on-your-Droid-or-any-Android-device"&gt;Android cookies&lt;/a&gt;
+                &lt;a class="simple-link" href="http://www.windowsphone.com/da-dk/how-to/wp7/web/changing-privacy-and-other-browser-settings"&gt;Phone Windows 7&lt;/a&gt;
+            &lt;/div&gt;
+&lt;/div&gt;</value>
   </data>
   <data name="Delete cookies" xml:space="preserve">
     <value>&lt;p&gt;

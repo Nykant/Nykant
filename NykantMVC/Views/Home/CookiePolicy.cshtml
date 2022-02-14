@@ -12,22 +12,26 @@
 
 <div class="my-row background-color2 bottom-padding">
     <div class="col-3 cookie-header center">
-        @localizer["Cookie Policy Title"]
+        <h1>Cookie Politik</h1>
+        @*@localizer["Cookie Policy"]*@
     </div>
     <div class="responsive-container center cookie-buttons">
         <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#cookie-settings-partial" data-ajax-success="consent_updated" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" asp-action="OnlyEssentialConsent" class="col-4 left padding-5">
             <button type="submit" class="button">
-                @localizer["Only Essential Cookies"]
+                Kun Nødvendige Cookies
+                @*@localizer["Only Essential Cookies"]*@
             </button>
         </form>
         <div class="col-4 left cookie-button">
             <button type="button" class="button" id="open-privacy1">
-                @localizer["Settings"]
+                Instillinger
+                @*@localizer["Settings"]*@
             </button>
         </div>
         <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#cookie-settings-partial" data-ajax-success="consent_updated" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" asp-action="AllowAllConsent" class="col-4 left padding-5">
             <button type="submit" class="green-button">
-                @localizer["Accept All Cookies"]
+                Accepter Alle Cookies
+                @*@localizer["Accept All Cookies"]*@
             </button>
         </form>
     </div>
@@ -35,24 +39,35 @@
 <div class="my-row">
     <div class="responsive-container center privacy-information">
         <div>
-            @localizer["Top Info"]
+            <h3>Med EUs nye regler for informationsindhentning og beskyttelse af persondata, undrer mange sig måske over hvad "cookies" i virkeligeheden er. Her finder du lidt information om disse informationskapsler og hvordan Nykant bruger dem.</h3>
         </div>
+
         <div>
-            @localizer["What is a cookie?"]
-            @localizer["What a cookie is"]
+            <h1>Hvad er en cookie?</h1>
+            <p>En cookie er en lille tekst-fil, som vi gemmer på din computer for at kunne holde styr på, hvad der sker under dit besøg og for at kunne genkende computeren. En cookie indeholder kun tekst, er ikke et program og indeholder ikke virus.</p>
         </div>
+
         <div>
-            @localizer["Use of cookies header"]
-            @localizer["Use of cookies"]
+            <h1>Hjemmesidens brug af cookies</h1>
+            <p>Cookies er nødvendige for at få hjemmesiden til at fungere. Cookies hjælper os desuden med at få overblik over dit besøg på hjemmesiden, så vi løbende kan optimere og målrette hjemmesiden til dine behov og interesser. Cookies husker f.eks., hvad du har lagt i din indkøbskurv, om du tidligere har besøgt siden, hvilket sprog, du gerne vil have vist på hjemmesiden og dine cookie preferencer. Helt overordnet anvendes cookies således som del af vores hjemmesides nødvendige funktioner for at give dig en god oplevelse. Her er oversigten over hjemmesidens brug af cookies:</p>
         </div>
+
         <div>
-            @localizer["How to deny or delete cookies main header"]
-            @localizer["Deny cookies sub header"]
-            @localizer["Deny cookies"]
-            @localizer["Deny all cookies sub header"]
-            @localizer["Deny all cookies"]
-            @localizer["Deny GA cookies"]
-            @localizer["Delete cookies"]
+            <h1>Sådan afviser eller sletter du dine cookies</h1>
+            <h2>Afvisning af nogle cookies:</h2>
+            <p class="pushed-text">Du kan afvise alle de cookies som ikke er nødvendige for vores hjemmesides funktionalitet eller nogle specifikke som du ikke vil tillade ved at klikke "Kun Nødvendige Cookies" eller på knappen "Instillinger" under titlen på nuværende side.</p>
+
+            <h2>Afvisning af alle cookies:</h2>
+            <p class="pushed-text">Du kan altid afvise alle fremtidige cookies på din computer ved at ændre indstillingerne i din Internet-browser. Hvor du finder indstillingerne afhænger af, hvilken browser du anvender. Du skal dog være opmærksom på, at hvis du gør det, er der mange funktioner og services, du ikke kan bruge, fordi disse funktioner og services forudsætter, at hjemmesiden fungerer korrekt.</p>
+
+            <p>Du kan fravælge cookies fra Google Analytics <a class="simple-link" href="https://tools.google.com/dlpage/gaoptout">her</a>.</p>
+            <h2>Sletning af cookies:</h2>
+            <p>
+                Cookies som du tidligere har accepteret, kan efterfølgende slettes nemt:
+            </p>
+            <p class="pushed-text">
+                Du kan slette "ikke nødvendige cookies" fra vores hjemmeside ved at trykke på knappen "Kun Nødvendige Cookies" i topped af siden. Det vil kun slette cookies i den browser du bruge lige nu.
+            </p>
             <h2>Her er en liste over guides til hvordan man håndtere cookies, for alle de forskellige browsers.</h2>
             <div class="cookie-help-links pushed-text">
 
@@ -61,13 +76,21 @@
                 <a class="simple-link" href="https://support.google.com/chrome/answer/95647?hl=da">Google Chrome</a>
                 <a class="simple-link" href="https://www.opera.com/help/tutorials/security/cookies">Opera</a>
                 <a class="simple-link" href="https://support.apple.com/da-dk/HT1677">Safari</a>
-                <a class="simple-link" href="http://www.macromedia.com/support/documentation/en/flashplayer/help/settings_manager07.html">@localizer["Flash cookies"]</a>
-                <a class="simple-link" href="https://support.apple.com/da-dk/HT1677">@localizer["Apple cookies"]</a>
-                <a class="simple-link" href="http://timeread.hubpages.com/hub/How-to-delete-internet-cookies-on-your-Droid-or-any-Android-device">@localizer["Android cookies"]</a>
-                <a class="simple-link" href="http://www.windowsphone.com/da-dk/how-to/wp7/web/changing-privacy-and-other-browser-settings">@localizer["Phone Windows 7"]</a>
+                <a class="simple-link" href="http://www.macromedia.com/support/documentation/en/flashplayer/help/settings_manager07.html">Flash cookies</a>
+                <a class="simple-link" href="https://support.apple.com/da-dk/HT1677">Apple cookies</a>
+                <a class="simple-link" href="http://timeread.hubpages.com/hub/How-to-delete-internet-cookies-on-your-Droid-or-any-Android-device">Android cookies</a>
+                <a class="simple-link" href="http://www.windowsphone.com/da-dk/how-to/wp7/web/changing-privacy-and-other-browser-settings">Phone Windows 7</a>
             </div>
-
         </div>
+        @*@if (localizer["CookiePolicy"] == null)
+        {
+
+        }
+        else
+        {
+            @localizer["CookiePolicy"]
+        }*@
+
         <div>
             @*------------------------- LISTE AF COOKIES ---------------------*@
 
@@ -120,7 +143,7 @@
             </div>
         </div>
         <div>
-            @localizer["Consent valid for"]
+            @localizer["Consent valid for: nykant.dk"]
         </div>
     </div>
 

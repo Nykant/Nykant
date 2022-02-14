@@ -7,14 +7,28 @@
 
 <div class="my-row background-color2">
     <div class="privacy-header center">
-        <h1>@localizer["About Us"]</h1>
+        <h1>OM OS</h1>
+        @*<h1>@localizer["About Us"]</h1>*@
     </div>
 </div>
 
 <div class="my-row">
     <div class="responsive-container center">
         <div class="simple-info">
-            @localizer["About Info"]
+            <h1>MØBLER I DANSK DESIGN</h1>
+            <p>
+                Nykant er et nyt dansk brand, som med inspiration fra dansk design, udvikler moderne egetræsmøbler med
+                minimalistiske detaljer i høj kvalitet, produceret i bæredygtigt massivt egetræ. Vi designer moderne møbler med kant, som forskønner og giver ro i vores hjem.
+                Vi står selv for produktionen af vores egetræsmøbler i Slovenien, og vi er lagerførende i Danmark.
+            </p>
+            @*@if (localizer["About Info"] == null)
+            {
+
+            }
+            else
+            {
+                @localizer["About Info"]
+            }*@
         </div>
     </div>
 </div>

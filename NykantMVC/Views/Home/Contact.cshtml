@@ -8,14 +8,27 @@
 
 <div class="my-row background-color2">
     <div class="privacy-header center">
-        <h1>@localizer["Contact Us"]</h1>
+        <h1>KONTAKT</h1>
+        @*<h1>@localizer["Contact Us"]</h1>*@
     </div>
 </div>
 
 <div class="my-row">
     <div class="responsive-container center">
         <div class="simple-info">
-            @localizer["Contact info"]
+            <h1>Kontakt info</h1>
+            <bold>Nykant Aps</bold>
+            <p><bold>Email: </bold><a href="mailto:mail@nykant.dk">mail@nykant.dk</a></p>
+            <p><bold>Telefon: </bold>+4527131499</p>
+            @*@if (localizer["Contact info"] == null)
+            {
+
+            }
+            else
+            {
+                @localizer["Contact info"]
+            }*@
+
         </div>
     </div>
 </div>

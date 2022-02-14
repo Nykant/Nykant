@@ -78,6 +78,10 @@
         object-position: center;
     }
 
+    .bag-item button {
+        padding: 0px;
+    }
+
 #bag-item-name {
     margin-top:auto;
     margin-bottom:auto;
@@ -193,19 +197,19 @@
         
     }
     #bag-item-name {
-        font-size: 10px;
+        font-size: 14px;
     }
 
     #bag-item-price {
-        font-size: 10px;
+        font-size: 14px;
     }
 
     #bag-item-total {
-        font-size: 10px;
+        font-size: 14px;
     }
 
     #bag-item-quantity {
-        font-size: 10px;
+        font-size: 14px;
     }
 
     #add-bagitem {
@@ -216,9 +220,7 @@
     .bagtable-headers {
         font-size:14px;
     }
-    .bag-item .button{
-        padding:0px;
-    }
+
 
 /*    #add-bagitem button {
         width: 5px;
