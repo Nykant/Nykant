@@ -4,13 +4,13 @@
 @inject IConfiguration Configuration
 
 @{
-    var consent = Context.Session.Get<Consent>("verysecretseriousconsentsessionkeyspecial");
+    var consent = Context.Session.Get<CookieConsent>("verysecretseriousconsentsessionkeyspecial");
 
     var routevalues = Context.Request.RouteValues;
     var controller = routevalues["controller"];
     var action = routevalues["action"];
     bool cookieExists = false;
-    if (consent.Functional)
+    if (consent.NonEssential)
     {
         try
         {
@@ -23,7 +23,7 @@
     }
 }
 
-@if (consent.Functional)
+@if (consent.NonEssential)
 {
     @if (!cookieExists)
     {

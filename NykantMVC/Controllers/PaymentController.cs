@@ -34,6 +34,31 @@ namespace NykantMVC.Controllers
         }
 
         [HttpPost]
+        public async Task<IActionResult> PostConsent(string name, string email)
+        {
+            Consent consent = new Consent
+            {
+                Name = name,
+                Email = email,
+                Date = DateTime.Now,
+                ButtonText = "Gem",
+                ConsentText = "For at færdiggøre ordren, skal du skrive under på at du har læst og accepterer vores (link (Salgs- og leveringsbetingelser)) ved at klikke i checkboksen.",
+                How = ConsentHow.Checkbox,
+                Type = ConsentType.TermsAndConditions,
+                Status = ConsentStatus.Given
+            };
+            consent = _protectionService.ProtectConsent(consent);
+            var consentResponse = await PostRequest("/Consent/Post", consent).ConfigureAwait(false);
+            //if (!consentResponse.IsSuccessStatusCode)
+            //{
+            //    _logger.LogInformation($"{consentResponse.ReasonPhrase} - {consentResponse.StatusCode}");
+            //    return Json(new { error = "Could not post consent" });
+            //}
+
+            return NoContent();
+        }
+
+        [HttpPost]
         public IActionResult Payment(string paymentMethodId)
         {
             var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);

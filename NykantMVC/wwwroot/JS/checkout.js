@@ -86,6 +86,7 @@ else {
 }
 
 if (stage_value == 1) {
+    gtag('event', 'begin_checkout');
     customer_wrap.style.transition = "all 1s";
     customer_form.style.transition = "all 1s";
     customer_form.style.height = "auto";

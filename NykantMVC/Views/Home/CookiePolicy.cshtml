@@ -9,28 +9,27 @@
 <link rel="stylesheet" href="~/css/privacy.css" />
 <link rel="stylesheet" type="text/css" href="~/css/custom-table.css" />
 
-
 <div class="my-row background-color2 bottom-padding">
     <div class="col-3 cookie-header center">
         <h1>Cookie Politik</h1>
         @*@localizer["Cookie Policy"]*@
     </div>
     <div class="responsive-container center cookie-buttons">
-        <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#cookie-settings-partial" data-ajax-success="consent_updated" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" asp-action="OnlyEssentialConsent" class="col-4 left padding-5">
+        <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#cookie-settings-partial" data-ajax-success="consent_updated" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" asp-action="OnlyEssentialConsent" class="col-6 left padding-5">
             <button type="submit" class="button">
-                Kun Nødvendige Cookies
+                Kun Nødvendige
                 @*@localizer["Only Essential Cookies"]*@
             </button>
         </form>
-        <div class="col-4 left cookie-button">
+        <!--<div class="col-4 left cookie-button">
             <button type="button" class="button" id="open-privacy1">
-                Instillinger
+                Instillinger-->
                 @*@localizer["Settings"]*@
-            </button>
-        </div>
-        <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#cookie-settings-partial" data-ajax-success="consent_updated" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" asp-action="AllowAllConsent" class="col-4 left padding-5">
+            <!--</button>
+        </div>-->
+        <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#cookie-settings-partial" data-ajax-success="consent_updated" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" asp-action="AllowAllConsent" class="col-6 left padding-5">
             <button type="submit" class="green-button">
-                Accepter Alle Cookies
+                Accepter Alle
                 @*@localizer["Accept All Cookies"]*@
             </button>
         </form>

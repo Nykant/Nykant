@@ -190,6 +190,28 @@ namespace NykantMVC.Controllers
         {
             try
             {
+                if (customer.PrivacyPolicyConsent == "true")
+                {
+                    Consent consent = new Consent
+                    {
+                        Name = customer.BillingAddress.Name,
+                        Email = customer.Email,
+                        Date = DateTime.Now,
+                        ButtonText = "Gem",
+                        ConsentText = "For at fortsætte skal du skrive under på at du har læst og accepterer vores (link (håndtering af persondata)) ved at klikke i checkboksen.",
+                        How = ConsentHow.Checkbox,
+                        Type = ConsentType.PrivacyPolicy,
+                        Status = ConsentStatus.Given
+                    };
+                    consent = _protectionService.ProtectConsent(consent);
+                    var consentResponse = await PostRequest("/Consent/Post", consent).ConfigureAwait(false);
+                    //if (!consentResponse.IsSuccessStatusCode)
+                    //{
+                    //    _logger.LogInformation($"{consentResponse.ReasonPhrase} - {consentResponse.StatusCode}");
+                    //    return Json(new { error = "Could not post consent" });
+                    //}
+                }
+
                 if (customer.ShippingAddress.SameAsBilling)
                 {
                     customer.ShippingAddress.Postal = customer.BillingAddress.Postal;

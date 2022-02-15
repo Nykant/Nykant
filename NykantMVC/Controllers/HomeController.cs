@@ -19,6 +19,7 @@ using NykantMVC.Services;
 using System.Net.Mail;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Hosting;
 
 namespace NykantMVC.Controllers
@@ -102,87 +103,101 @@ namespace NykantMVC.Controllers
         //    return Json("Error");
         //}
 
-        [HttpPost]
-        public async Task<IActionResult> UpdateConsent(int functionalCookies, int statisticsCookies)
-        {
-            var json = await GetRequest("/Cookie/GetCookies");
-            var cookies = JsonConvert.DeserializeObject<List<Cookie>>(json);
-            Consent consent = new Consent();
+        //[HttpPost]
+        //public async Task<IActionResult> UpdateConsent(int functionalCookies, int statisticsCookies)
+        //{
+        //    var json = await GetRequest("/Cookie/GetCookies");
+        //    var cookies = JsonConvert.DeserializeObject<List<Cookie>>(json);
+        //    CookieConsent consent = new CookieConsent();
 
-            switch (functionalCookies)
-            {
-                case 1:
-                    consent.Functional = true;
-                    break;
+        //    switch (functionalCookies)
+        //    {
+        //        case 1:
+        //            consent.Functional = true;
+        //            break;
 
-                case 0:
-                    foreach(var cookie in cookies)
-                    {
-                        if(cookie.Category == CookieCategory.Functional)
-                        {
-                            Response.Cookies.Delete(cookie.Name);
-                        }
-                    }
-                    consent.Functional = false;
-                    break;
-            }
-            switch (statisticsCookies)
-            {
-                case 1:
-                    consent.Statistics = true;
-                    break;
+        //        case 0:
+        //            foreach(var cookie in cookies)
+        //            {
+        //                if(cookie.Category == CookieCategory.Functional)
+        //                {
+        //                    Response.Cookies.Delete(cookie.Name);
+        //                }
+        //            }
+        //            consent.Functional = false;
+        //            break;
+        //    }
+        //    switch (statisticsCookies)
+        //    {
+        //        case 1:
+        //            consent.Statistics = true;
+        //            break;
 
-                case 0:
-                    foreach (var cookie in cookies)
-                    {
-                        if (cookie.Category == CookieCategory.Statistics)
-                        {
-                            Response.Cookies.Delete(cookie.Name);
-                        }
-                    }
-                    consent.Statistics = false;
-                    break;
-            }
-            if(functionalCookies == 1 || statisticsCookies == 1)
-            {
-                consent.OnlyEssential = false;
-            }
-            else
-            {
-                consent.OnlyEssential = true;
-            }
-            consent.ShowBanner = false;
+        //        case 0:
+        //            foreach (var cookie in cookies)
+        //            {
+        //                if (cookie.Category == CookieCategory.Statistics)
+        //                {
+        //                    Response.Cookies.Delete(cookie.Name);
+        //                }
+        //            }
+        //            consent.Statistics = false;
+        //            break;
+        //    }
+        //    if(functionalCookies == 1 || statisticsCookies == 1)
+        //    {
+        //        consent.OnlyEssential = false;
+        //    }
+        //    else
+        //    {
+        //        consent.OnlyEssential = true;
+        //    }
+        //    consent.ShowBanner = false;
             
-            HttpContext.Session.Set<Consent>(ConsentCookieKey, consent);
+        //    HttpContext.Session.Set<CookieConsent>(ConsentCookieKey, consent);
 
-            ViewBag.Functional = consent.Functional;
-            ViewBag.Statistics = consent.Statistics;
-            return new PartialViewResult
-            {
-                ViewName = "_CookieSettingsPartial",
-                ViewData = this.ViewData
-            };
-        }
+        //    ViewBag.Functional = consent.Functional;
+        //    ViewBag.Statistics = consent.Statistics;
+        //    return new PartialViewResult
+        //    {
+        //        ViewName = "_CookieSettingsPartial",
+        //        ViewData = this.ViewData
+        //    };
+        //}
 
         [HttpPost]
-        public IActionResult AllowAllConsent()
+        public async Task<IActionResult> AllowAllConsent()
         {
-            var consent = new Consent
+            var clientIP = Request.HttpContext.Connection.RemoteIpAddress;
+            Consent consent = new Consent
+            {
+                IPAddress = clientIP.ToString(),
+                Date = DateTime.Now,
+                ButtonText = "Accepter Alle",
+                ConsentText = "Vi bruger cookies til forbedring af din oplevelse, og essentielle funktioner, samt sender statistiske data til google analytics om hvad vores brugere foretager sig på hjemmesiden, i den hensigt at kunne forbedre den. Trykker du Accepter Alle, giver du dit samtykke til vores brug af disse. (link(her kan du læse mere om vores cookies))",
+                How = ConsentHow.Button,
+                Type = ConsentType.Cookie,
+                Status = ConsentStatus.Given
+            };
+            consent = _protectionService.ProtectConsent(consent);
+            var consentResponse = await PostRequest("/Consent/Post", consent).ConfigureAwait(false);
+
+            var cookieConsent = new CookieConsent
             {
                 OnlyEssential = false,
                 ShowBanner = false,
-                Functional = true,
-                Statistics = true
+                NonEssential = true
             };
-            HttpContext.Session.Set<Consent>(ConsentCookieKey, consent);
+            HttpContext.Session.Set<CookieConsent>(ConsentCookieKey, cookieConsent);
 
-            ViewBag.Functional = consent.Functional;
-            ViewBag.Statistics = consent.Statistics;
-            return new PartialViewResult
-            {
-                ViewName = "_CookieSettingsPartial",
-                ViewData = this.ViewData
-            };
+            //ViewBag.NonEssential = cookieConsent.NonEssential;
+            //return new PartialViewResult
+            //{
+            //    ViewName = "_CookieSettingsPartial",
+            //    ViewData = this.ViewData
+            //};
+
+            return NoContent();
         }
 
         public void Log(string message)
@@ -193,8 +208,22 @@ namespace NykantMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> OnlyEssentialConsent()
         {
-            var json = await GetRequest("/Cookie/GetCookies");
-            var cookies = JsonConvert.DeserializeObject<List<Cookie>>(json);
+            var clientIP = Request.HttpContext.Connection.RemoteIpAddress;
+            Consent consent = new Consent
+            {
+                IPAddress = clientIP.ToString(),
+                Date = DateTime.Now,
+                ButtonText = "Kun Nødvendige",
+                ConsentText = "Vi bruger cookies til forbedring af din oplevelse, og essentielle funktioner, samt sender statistiske data til google analytics om hvad vores brugere foretager sig på hjemmesiden, i den hensigt at kunne forbedre den. Trykker du Accepter Alle, giver du dit samtykke til vores brug af disse. (link(her kan du læse mere om vores cookies))",
+                How = ConsentHow.Button,
+                Type = ConsentType.Cookie,
+                Status = ConsentStatus.Retrieved
+            };
+            consent = _protectionService.ProtectConsent(consent);
+            var consentResponse = await PostRequest("/Consent/Post", consent).ConfigureAwait(false);
+
+            var jsonCookies = await GetRequest("/Cookie/GetCookies");
+            var cookies = JsonConvert.DeserializeObject<List<Cookie>>(jsonCookies);
             foreach (var cookie in cookies)
             {
                 if (cookie.Category == CookieCategory.Functional || cookie.Category == CookieCategory.Statistics)
@@ -203,22 +232,21 @@ namespace NykantMVC.Controllers
                 }
             }
 
-            var consent = new Consent
+            var cookieConsent = new CookieConsent
             {
                 OnlyEssential = true,
                 ShowBanner = false,
-                Functional = false,
-                Statistics = false
+                NonEssential = false
             };
-            HttpContext.Session.Set<Consent>(ConsentCookieKey, consent);
+            HttpContext.Session.Set<CookieConsent>(ConsentCookieKey, cookieConsent);
 
-            ViewBag.Functional = consent.Functional;
-            ViewBag.Statistics = consent.Statistics;
-            return new PartialViewResult
-            {
-                ViewName = "_CookieSettingsPartial",
-                ViewData = this.ViewData
-            };
+            //ViewBag.NonEssential = cookieConsent.NonEssential;
+            //return new PartialViewResult
+            //{
+            //    ViewName = "_CookieSettingsPartial",
+            //    ViewData = this.ViewData
+            //};
+            return NoContent();
         }
 
         [HttpPost]
@@ -314,29 +342,42 @@ namespace NykantMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> AddNewsSub(string email)
         {
-            NewsSub newsSub = new NewsSub { Email = email };
             try
             {
-                var test = new MailAddress(email);
-                newsSub = _protectionService.ProtectNewsSub(newsSub);
-                var response = await PostRequest("/NewsSub/Post", newsSub);
+                NewsSub newsSub = new NewsSub { Email = email };
+                Consent consent = new Consent
+                {
+                    Email = email,
+                    Date = DateTime.Now,
+                    ButtonText = "Tilmeld",
+                    ConsentText = "Ved at trykke tilmeld, har du abonneret på at modtage nykants nyhedsbreve. Du kan til hver en tid afmelde igen, ved at trykke afmeld abonnent, i en nyhedsemail.",
+                    How = ConsentHow.Button,
+                    Type = ConsentType.Newsletter,
+                    Status = ConsentStatus.Given
+                };
+                consent = _protectionService.ProtectConsent(consent);
+                var consentResponse = await PostRequest("/Consent/Post", consent).ConfigureAwait(false);
+                //if (!consentResponse.IsSuccessStatusCode)
+                //{
+                //    _logger.LogInformation($"{consentResponse.ReasonPhrase} - {consentResponse.StatusCode}");
+                //    return Json("Error");
+                //}
 
-                if (response.IsSuccessStatusCode)
+                newsSub = _protectionService.ProtectNewsSub(newsSub);
+                var newsResponse = await PostRequest("/NewsSub/Post", newsSub);
+                if (!newsResponse.IsSuccessStatusCode)
                 {
-                    return Json("Success");
-                }
-                else
-                {
-                    _logger.LogInformation($"{response.ReasonPhrase} - {response.StatusCode}");
+                    _logger.LogInformation($"{newsResponse.ReasonPhrase} - {newsResponse.StatusCode}");
                     return Json("Error");
                 }
+
+                return Json("Success");
             }
             catch(Exception e)
             {
                 _logger.LogInformation(e.Message);
                 return Json("Error");
             }
-
         }
     }
 }

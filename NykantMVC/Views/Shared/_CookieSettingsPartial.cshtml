@@ -1,17 +1,17 @@
-﻿@using NykantMVC.Extensions;
+﻿<!--@using NykantMVC.Extensions;
 
 @{
-    var consent = Context.Session.Get<Consent>("verysecretseriousconsentsessionkeyspecial");
-    if (consent != null)
-    {
-        ViewBag.Functional = consent.Functional;
-        ViewBag.Statistics = consent.Statistics;
-    }
-    else
-    {
-        ViewBag.Functional = false;
-        ViewBag.Statistics = false;
-    }
+//var consent = Context.Session.Get<CookieConsent>("verysecretseriousconsentsessionkeyspecial");
+//if (consent != null)
+//{
+//    ViewBag.Functional = consent.Functional;
+//    ViewBag.Statistics = consent.Statistics;
+//}
+//else
+//{
+//    ViewBag.Functional = false;
+//    ViewBag.Statistics = false;
+//}
 }
 
 <link rel="stylesheet" href="~/css/custom-switch.css" />
@@ -52,11 +52,11 @@
                         giver en god og sikker checkout oplevelse,
                     </p>
                     <p>
-                        gemmer dit samtykke på cookie preferencer.
+                        gemmer dit samtykke for cookie og sprog preferencer.
                     </p>
                 </div>
-            </div>
-            <div class="cookie-collapsible top-side-padding">
+            </div>-->
+            @*<div class="cookie-collapsible top-side-padding">
 
                 <label class="switch">
                     @{
@@ -81,8 +81,8 @@
                         gemmer din preference for sprog.
                     </p>
                 </div>
-            </div>
-            <div class="cookie-collapsible top-side-padding">
+            </div>*@
+            <!--<div class="cookie-collapsible top-side-padding">
 
                 <label class="switch">
                     @{
@@ -104,7 +104,7 @@
                         Vores statistiske cookies:
                     </h3>
                     <p>
-                        sender data til google analytics om hvor mange besøgende vi har på hjemmesiden, hvor længe de bliver, hvornår osv.
+                        sender data til google analytics om vores besøgende: hvad de laver, hvor mange osv.
                     </p>
                 </div>
             </div>
@@ -114,4 +114,4 @@
 </div>
 
 <script async src="~/JS/consent-settings.js"></script>
-<script async src="~/JS/collapsible.js"></script>
+<script async src="~/JS/collapsible.js"></script>-->

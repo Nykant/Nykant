@@ -7,10 +7,10 @@
     display:block;
     padding:15px;
     position: fixed;
-    width: 600px;
+    width: 100%;
+    bottom:0;
     background-color: var(--color1);
     z-index: 101;
-    border:2px solid black;
 /*    animation-name:rollup;
     animation-duration:1s;*/
 }
@@ -37,6 +37,17 @@
         display: inline;
     }
 
+    .consent-button {
+        width:150px;
+        padding-left:10px;
+        height:40px;
+        display:inline-block;
+    }
+
+.consent-button button {
+    height:40px;
+
+}
 
     .cookie-consent button:hover {
         background-color:white;
@@ -44,14 +55,6 @@
         color:black;
     }
 
-    .cookie-consent a {
-        display:block;
-        text-decoration:underline;
-    }
-        .cookie-consent a:hover {
-            text-decoration: none;
-            color:black;
-        }
 
 .privacy-header {
     height: auto;
@@ -282,13 +285,12 @@
     }
 }
 
-@media only screen and (max-width: 600px) {
+/*@media only screen and (max-width: 600px) {
     .cookie-consent {
         top: 0;
         height: 100%;
         width: 100%;
         line-height:normal;
-
     }
 }
 
@@ -298,4 +300,4 @@
         height: auto;
         width: 600px;
     }
-}
+}*/

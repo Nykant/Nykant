@@ -12,12 +12,57 @@ namespace NykantAPI.Services
         IDataProtector _customerProtector;
         IDataProtector _orderProtector;
         IDataProtector _newsSubProtector;
-
+        IDataProtector _consentProtector;
         public ProtectionService(IDataProtectionProvider provider)
         {
             _newsSubProtector = provider.CreateProtector("Nykant.NewsSub.Protect.v1");
             _customerProtector = provider.CreateProtector("Nykant.Customer.Protect.v1");
             _orderProtector = provider.CreateProtector("Nykant.Order.Protect.v1");
+            _consentProtector = provider.CreateProtector("Nykant.Consent.Protect.v1");
+        }
+
+        public Consent ProtectConsent(Consent consent)
+        {
+            if (consent.Email != null)
+            {
+                consent.Email = _consentProtector.Protect(consent.Email);
+            }
+            if (consent.IPAddress != null)
+            {
+                consent.IPAddress = _consentProtector.Protect(consent.IPAddress);
+            }
+            if (consent.Name != null)
+            {
+                consent.Name = _consentProtector.Protect(consent.Name);
+            }
+            if (consent.UserId != null)
+            {
+                consent.UserId = _consentProtector.Protect(consent.UserId);
+            }
+
+            return consent;
+        }
+
+        public Consent UnprotectConsent(Consent consent)
+        {
+            if (consent.Email != null)
+            {
+                consent.Email = _consentProtector.Unprotect(consent.Email);
+            }
+            if (consent.IPAddress != null)
+            {
+                consent.IPAddress = _consentProtector.Unprotect(consent.IPAddress);
+            }
+            if (consent.Name != null)
+            {
+                consent.Name = _consentProtector.Unprotect(consent.Name);
+            }
+            if (consent.UserId != null)
+            {
+                consent.UserId = _consentProtector.Unprotect(consent.UserId);
+            }
+
+            return consent;
         }
 
         public NewsSub ProtectNewsSub(NewsSub newsSub)
@@ -159,6 +204,8 @@ namespace NykantAPI.Services
 
     public interface IProtectionService
     {
+        public Consent ProtectConsent(Consent consent);
+        public Consent UnprotectConsent(Consent consent);
         public NewsSub ProtectNewsSub(NewsSub newsSub);
         public NewsSub UnprotectNewsSub(NewsSub newsSub);
         public Customer ProtectCustomer(Customer customerInf);
