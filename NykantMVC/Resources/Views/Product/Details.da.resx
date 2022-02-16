@@ -121,7 +121,7 @@
     <value>Tilføj til kurven</value>
   </data>
   <data name="Dagmar Description" xml:space="preserve">
-    <value>Massivt egetræsbord fremstår smukt og elegant med de affasede kanter, 
+    <value>Dette massive egetræsbord fremstår smukt og elegant med de affasede kanter, og 
 drejede koniske ben, som skråner ud mod hjørnerne. Bordpladen er med gennemgående lameller.</value>
   </data>
   <data name="Dagmar Materials" xml:space="preserve">
@@ -167,7 +167,7 @@ drejede koniske ben, som skråner ud mod hjørnerne. Bordpladen er med gennemgå
     <comment>&lt;p&gt; &lt;/p&gt;</comment>
   </data>
   <data name="Filippa Description" xml:space="preserve">
-    <value>Vores smukke robuste opbevaringsbænk i massivt egetræ, med drejede ben som er synlige i top.  De fine detaljer omkring ben, og åbningen til opmagasineringen er enkel og praktisk.</value>
+    <value>Denne elegante og robuste opbevaringsbænk er lavet i massivt egetræ, med drejede ben som er synlige i top. Opmagasineringen er enkel og nem at åbne. Det er en praktisk men samtidig en elegant bænk med fine detaljer, som vil føle sig hjemme hvor som helst.</value>
   </data>
   <data name="Filippa Materials" xml:space="preserve">
     <value>&lt;tr&gt;
@@ -220,7 +220,7 @@ drejede koniske ben, som skråner ud mod hjørnerne. Bordpladen er med gennemgå
 </value>
   </data>
   <data name="Gertrud Description" xml:space="preserve">
-    <value>Denne smukke bøjle med klassiske fine linjer, afrundede kanter og ender, giver perfekt støtte og mindst muligemærker i tøjet.</value>
+    <value>Denne smukke bøjle med klassiske fine linjer, afrundede kanter og ender, giver perfekt støtte og mindst mulige mærker i tøjet.</value>
   </data>
   <data name="Gertrud Materials" xml:space="preserve">
     <value>&lt;tr&gt;
@@ -347,10 +347,8 @@ drejede koniske ben, som skråner ud mod hjørnerne. Bordpladen er med gennemgå
 </value>
   </data>
   <data name="Ingeborg Description" xml:space="preserve">
-    <value>Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde 
-Monteres helt fladt til væggen, og uden synlig fastgørelse.
-Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er
-monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.</value>
+    <value>Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse.
+Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.</value>
   </data>
   <data name="Ingeborg Materials" xml:space="preserve">
     <value>&lt;tr&gt;
@@ -374,7 +372,7 @@ monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave a
 </value>
   </data>
   <data name="Ingrid Description" xml:space="preserve">
-    <value>Vores unikke og smukke væghængte tøjrack i massivt egetræ, er udviklet således den samles med kiler og monteres hængende ud fra vægge, med en lædderstrop.</value>
+    <value>Vores unikke og smukke væghængte tøjstativ i massivt egetræ, er udviklet således den samles med kiler og monteres hængende ud fra væggen, med en lædderstrop.</value>
   </data>
   <data name="Ingrid Materials" xml:space="preserve">
     <value>&lt;tr&gt;
@@ -417,7 +415,7 @@ monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave a
 </value>
   </data>
   <data name="Nora Description" xml:space="preserve">
-    <value>Vores elegante tøjstativ i massivt egetræ, er designet således at det samles med trækiler. Bøjlestangen er en drejet rundstok, som er fræset i enderne således at kilerne passer igennem.
+    <value>Vores elegante tøjstativ i massivt egetræ, er designet således at det samles udelukkende med trækiler. Bøjlestangen er en drejet rundstok, som er fræset i enderne så kilerne passer igennem.
 Det massive egetræsmøbel står sikkert og dekorativt med det fine snedkerarbejde, og lækre detaljer.</value>
   </data>
   <data name="Nora Materials" xml:space="preserve">
@@ -474,8 +472,8 @@ Det massive egetræsmøbel står sikkert og dekorativt med det fine snedkerarbej
     <value>Specifikationer</value>
   </data>
   <data name="Thyra Description" xml:space="preserve">
-    <value>Den elegante og praktiske bænk i massivt egetræ, med afrundede hjørner og synlige drejede ben
-er fantastisk stabile og robuste.</value>
+    <value>Den elegante og praktiske bænk i massivt egetræ, med afrundede hjørner og synlige drejede ben,
+er fantastisk stabil og robust.</value>
   </data>
   <data name="Thyra Materials" xml:space="preserve">
     <value>&lt;tr&gt;
@@ -503,8 +501,8 @@ er fantastisk stabile og robuste.</value>
 </value>
   </data>
   <data name="Thyra Short Description" xml:space="preserve">
-    <value>Den elegante og praktiske bænk i massivt egetræ, med afrundede hjørner og synlige drejede ben
-er fantastisk stabile og robuste.</value>
+    <value>Den elegante og praktiske bænk i massivt egetræ, med afrundede hjørner og synlige drejede ben,
+er fantastisk stabil og robust.</value>
   </data>
   <data name="Thyra Short Materials" xml:space="preserve">
     <value>&lt;tr&gt;
