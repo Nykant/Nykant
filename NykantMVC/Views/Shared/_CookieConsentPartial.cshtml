@@ -15,20 +15,21 @@
     <div id="cookie-consent" class="cookie-consent centered" role="alert">
         <div class="col-12 left">
 
-            <p>Vi bruger cookies til forbedring af din oplevelse, og essentielle funktioner, samt sender statistiske data til google analytics om hvad vores brugere foretager sig på hjemmesiden mm., i den hensigt at kunne forbedre den. Trykker du Accepter Alle, giver du dit samtykke til vores brug af disse.</p>
-            <a class="simple-link" asp-controller="home" asp-action="cookiepolicy">her kan du læse mere om vores cookies og brugen heraf</a>
+            <p>Vi bruger cookies til forbedring af din oplevelse og essentielle funktioner, samt sender statistiske data til google analytics om hvad vores brugere foretager sig på hjemmesiden <a class="simple-link" asp-controller="home" asp-action="cookiepolicy">mm.</a>, i den hensigt at kunne forbedre den. Trykker du Accepter Alle, giver du dit samtykke til vores brug af disse.</p>
+            <a class="simple-link" asp-controller="home" asp-action="cookiepolicy">her kan du læse videre</a>
 
-            <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="consent_updated" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" asp-action="AllowAllConsent" class="consent-button">
-                <button type="submit" class="green-button">
-                    Accepter Alle
-                </button>
-            </form>
 
             <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="consent_updated" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" asp-action="OnlyEssentialConsent" class="consent-button">
                 <button type="submit" class="green-button background-dark">
                     Kun Nødvendige
                 </button>
             </form>
+            <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="consent_updated" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" asp-action="AllowAllConsent" class="consent-button">
+                <button type="submit" class="green-button">
+                    Accepter Alle
+                </button>
+            </form>
+
         </div>
 
         <!--<div class="col-12 right top-padding">-->

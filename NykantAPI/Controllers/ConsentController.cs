@@ -29,6 +29,7 @@ namespace NykantAPI.Controllers
                 consent = _protectionService.UnprotectConsent(consent);
                 if (ModelState.IsValid)
                 {
+                    consent = _protectionService.ProtectConsent(consent);
                     _context.Consents.Add(consent);
                     await _context.SaveChangesAsync();
                     return Ok();

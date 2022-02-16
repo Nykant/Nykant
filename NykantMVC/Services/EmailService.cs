@@ -57,7 +57,7 @@ namespace NykantMVC.Services
             var email = new MimeMessage();
             email.From.Add(MailboxAddress.Parse(_mailSettings.Mail));
             email.Sender = MailboxAddress.Parse(_mailSettings.Mail);
-            email.To.Add(MailboxAddress.Parse(_mailSettings.Mail));
+            email.To.Add(MailboxAddress.Parse(_mailSettings.MailDKI));
             email.Subject = "DKI Ordrebekræftelse";
 
             var bodyBuilder = new BodyBuilder();
@@ -84,8 +84,8 @@ namespace NykantMVC.Services
             var email = new MimeMessage();
             email.From.Add(MailboxAddress.Parse(_mailSettings.Mail));
             email.Sender = MailboxAddress.Parse(_mailSettings.Mail);
-            email.To.Add(MailboxAddress.Parse(_mailSettings.Mail));
-            email.Subject = "Ordrebekræftelse";
+            email.To.Add(MailboxAddress.Parse(_mailSettings.Me));
+            email.Subject = "Nykant Ordrebekræftelse";
 
             var bodyBuilder = new BodyBuilder();
             //for (int i = 0; i < order.OrderItems.Count(); i++)

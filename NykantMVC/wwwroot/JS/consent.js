@@ -1,14 +1,9 @@
-﻿/*/*var privacy_settings = document.getElementById("privacy-settings");*/*/
+﻿/*/*var privacy_settings = document.getElementById("privacy-settings");*/
 var cookie_consent = document.getElementById("cookie-consent");
-var cookie_consent_modal = document.getElementById("cookie-consent-modal");
-if (cookie_consent_modal !== null) {
-    cookie_consent_modal.style.display = "block";
-}
 
 var consent_updated = function (xhr) {
     if (cookie_consent !== null) {
         cookie_consent.style.display = "none";
-        cookie_consent_modal.style.display = "none";
     };
 }
 

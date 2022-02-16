@@ -129,8 +129,8 @@ namespace NykantMVC.Controllers
                     order = JsonConvert.DeserializeObject<Models.Order>(json);
                     order = _protectionService.UnprotectWholeOrder(order);
 
-                    await mailService.SendOrderEmailAsync(order).ConfigureAwait(false);
-                    await mailService.SendNykantEmailAsync(order).ConfigureAwait(false);
+                    mailService.SendOrderEmailAsync(order).ConfigureAwait(false);
+                    mailService.SendNykantEmailAsync(order).ConfigureAwait(false);
 
                     var isBackOrder = false;
                     foreach (var item in order.OrderItems)
@@ -145,7 +145,7 @@ namespace NykantMVC.Controllers
 
                     if (!isBackOrder)
                     {
-                        await mailService.SendDKIEmailAsync(order).ConfigureAwait(false);
+                        mailService.SendDKIEmailAsync(order).ConfigureAwait(false);
                     }
                     else
                     {

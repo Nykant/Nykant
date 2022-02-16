@@ -32,14 +32,16 @@
     }
 
 .product-text {
-/*    display:none;*/
-    padding:10px;
-    background-color: var(--color3);
+    /*    display:none;*/
+    padding: 10px;
+    background-color: white;
     position: absolute;
     bottom: 10px;
-    text-align: center;
+    text-align: left;
     color: var(--dark);
-/*    animation:fadetextin .7s ease;*/
+    border: 1px solid var(--black-fade);
+    /*    animation:fadetextin .7s ease;*/
+/*    box-shadow: 0px 0px 3px black;*/
 }
 
 .product-item-colors {
@@ -104,8 +106,9 @@
 
 
 .product-images {
-    margin:20px;
-    margin-top:40px;
+    margin:35px;
+    margin-top:90px;
+    margin-bottom:70px;
     top: 0px;
     left: 0px;
     right: 0px;
@@ -210,6 +213,12 @@
     .product-item-colors {
         top: 25px;
     }
+
+    .product-images {
+        margin:5px;
+        margin-top:90px;
+        margin-bottom:60px;
+    }
 }
 
 @media only screen and (min-width: 600px) {
@@ -244,6 +253,12 @@
     .product-item-colors {
         top: 25px;
     }
+
+    .product-images {
+        margin: 75px;
+        margin-top: 90px;
+        margin-bottom: 60px;
+    }
 }
 
 @media only screen and (min-width: 768px) {
@@ -277,6 +292,12 @@
     .product-item-colors {
         top: +25px;
     }
+
+    .product-images {
+        margin: 5px;
+        margin-top: 90px;
+        margin-bottom: 70px;
+    }
 }
 
 @media only screen and (min-width: 992px) {
@@ -307,6 +328,12 @@
 
     .product-item img {
     }*/
+
+    .product-images {
+        margin: 5px;
+        margin-top: 90px;
+        margin-bottom: 70px;
+    }
 }
 
 @media only screen and (min-width: 1200px) {
@@ -334,6 +361,12 @@
 
     .product-item img {
     }*/
+
+    .product-images {
+        margin: 5px;
+        margin-top: 90px;
+        margin-bottom: 70px;
+    }
 }
 
 @media only screen and (min-width: 1500px) {
@@ -361,6 +394,22 @@
 
     .product-item img {
     }*/
+
+    .product-images {
+        margin: 35px;
+        margin-top: 90px;
+        margin-bottom: 70px;
+    }
+}
+
+@media only screen and (min-width: 1500px) {
+    
+
+    .product-images {
+        margin: 80px;
+        margin-top: 90px;
+        margin-bottom: 70px;
+    }
 }
 
 

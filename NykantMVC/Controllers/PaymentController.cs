@@ -48,7 +48,7 @@ namespace NykantMVC.Controllers
                 Status = ConsentStatus.Given
             };
             consent = _protectionService.ProtectConsent(consent);
-            var consentResponse = await PostRequest("/Consent/Post", consent).ConfigureAwait(false);
+            PostRequest("/Consent/Post", consent).ConfigureAwait(false);
             //if (!consentResponse.IsSuccessStatusCode)
             //{
             //    _logger.LogInformation($"{consentResponse.ReasonPhrase} - {consentResponse.StatusCode}");

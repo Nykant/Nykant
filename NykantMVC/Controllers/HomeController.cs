@@ -180,7 +180,7 @@ namespace NykantMVC.Controllers
                 Status = ConsentStatus.Given
             };
             consent = _protectionService.ProtectConsent(consent);
-            var consentResponse = await PostRequest("/Consent/Post", consent).ConfigureAwait(false);
+            PostRequest("/Consent/Post", consent).ConfigureAwait(false);
 
             var cookieConsent = new CookieConsent
             {
@@ -220,7 +220,7 @@ namespace NykantMVC.Controllers
                 Status = ConsentStatus.Retrieved
             };
             consent = _protectionService.ProtectConsent(consent);
-            var consentResponse = await PostRequest("/Consent/Post", consent).ConfigureAwait(false);
+            PostRequest("/Consent/Post", consent).ConfigureAwait(false);
 
             var jsonCookies = await GetRequest("/Cookie/GetCookies");
             var cookies = JsonConvert.DeserializeObject<List<Cookie>>(jsonCookies);
@@ -350,13 +350,13 @@ namespace NykantMVC.Controllers
                     Email = email,
                     Date = DateTime.Now,
                     ButtonText = "Tilmeld",
-                    ConsentText = "Ved at trykke tilmeld, har du abonneret på at modtage nykants nyhedsbreve. Du kan til hver en tid afmelde igen, ved at trykke afmeld abonnent, i en nyhedsemail.",
+                    ConsentText = "Når du trykke tilmeld, abonnerer du på nykants nyhedsbreve. For at afmelde igen, tryk afmeld, i en nyhedsemail.",
                     How = ConsentHow.Button,
                     Type = ConsentType.Newsletter,
                     Status = ConsentStatus.Given
                 };
                 consent = _protectionService.ProtectConsent(consent);
-                var consentResponse = await PostRequest("/Consent/Post", consent).ConfigureAwait(false);
+                PostRequest("/Consent/Post", consent).ConfigureAwait(false);
                 //if (!consentResponse.IsSuccessStatusCode)
                 //{
                 //    _logger.LogInformation($"{consentResponse.ReasonPhrase} - {consentResponse.StatusCode}");
