@@ -27,6 +27,7 @@ namespace NykantMVC.Controllers
             _protectionService = protectionService;
         }
 
+        [Route("Tjek-Ud")]
         [HttpGet]
         public async Task<IActionResult> Checkout()
         {
@@ -329,6 +330,7 @@ namespace NykantMVC.Controllers
             }
         }
 
+        [Route("Tjek-Ud/Gennemført")]
         [HttpGet]
         public async Task<IActionResult> Success()
         {

@@ -206,9 +206,16 @@ namespace NykantMVC
 
             app.UseEndpoints(endpoints =>
             {
+                //endpoints.MapControllerRoute(
+                //    name: "products",
+                //    pattern: "Produkter/{*searchString}",
+                //    defaults: new { controller = "Product", action = "Gallery" });
+
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}");
+
+
             });
         }
     }

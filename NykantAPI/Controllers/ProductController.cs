@@ -55,6 +55,20 @@ namespace NykantAPI.Controllers
             return Ok(json);
         }
 
+        [HttpGet("{urlname}")]
+        public async Task<ActionResult<ProductDTO>> GetProductWithUrlName(string urlname)
+        {
+            var product = await _context.Products
+                .Include(x => x.Images)
+                .Include(x => x.Colors)
+                .Include(x => x.ProductLengths)
+                .FirstOrDefaultAsync(x => x.UrlName == urlname);
+
+            var json = JsonConvert.SerializeObject(product, Extensions.JsonOptions.jsonSettings);
+
+            return Ok(json);
+        }
+
         [HttpPatch]
         public async Task<ActionResult<Product>> UpdateProduct(Product product)
         {

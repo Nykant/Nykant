@@ -357,14 +357,15 @@ ol, ul {
         padding-bottom:10px;
     }
 
-.newsletter-check-sign {
+.loading-check-sign {
     position: relative;
     font-size: 40px;
     color: #8cffa4;
     display: none;
+    transform:translateY(-5px);
 }
 
-.newsletter-error {
+.loading-error {
     position: relative;
     font-size: 40px;
     color: var(--red);

@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NykantAPI.Data;
 
-namespace NykantAPI.Data.migrations
+namespace NykantAPI.data.migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220217110222_UrlName")]
+    partial class UrlName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -139,9 +141,6 @@ namespace NykantAPI.Data.migrations
                     b.Property<int>("ProductSourceId")
                         .HasColumnType("int");
 
-                    b.Property<string>("ProductSourceUrlName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ProductId");
@@ -155,8 +154,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 0,
                             ImgSrc = "../images/Products/Color/Desktop/boejle_natur_1.png",
                             ProductId = 1,
-                            ProductSourceId = 1,
-                            ProductSourceUrlName = "Bøjle-Egetræ-Naturolie"
+                            ProductSourceId = 1
                         },
                         new
                         {
@@ -164,8 +162,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 2,
                             ImgSrc = "../images/Products/Color/Desktop/boejle_sort_1.png",
                             ProductId = 1,
-                            ProductSourceId = 2,
-                            ProductSourceUrlName = "Bøjle-Egetræ-Sortolie"
+                            ProductSourceId = 2
                         },
                         new
                         {
@@ -173,8 +170,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 1,
                             ImgSrc = "../images/Products/Color/Desktop/boejle_hvid_1.png",
                             ProductId = 1,
-                            ProductSourceId = 3,
-                            ProductSourceUrlName = "Bøjle-Egetræ-Hvidolie"
+                            ProductSourceId = 3
                         },
                         new
                         {
@@ -182,8 +178,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 0,
                             ImgSrc = "../images/Products/Color/Desktop/boejle_natur_1.png",
                             ProductId = 2,
-                            ProductSourceId = 1,
-                            ProductSourceUrlName = "Bøjle-Egetræ-Naturolie"
+                            ProductSourceId = 1
                         },
                         new
                         {
@@ -191,8 +186,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 2,
                             ImgSrc = "../images/Products/Color/Desktop/boejle_sort_1.png",
                             ProductId = 2,
-                            ProductSourceId = 2,
-                            ProductSourceUrlName = "Bøjle-Egetræ-Sortolie"
+                            ProductSourceId = 2
                         },
                         new
                         {
@@ -200,8 +194,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 1,
                             ImgSrc = "../images/Products/Color/Desktop/boejle_hvid_1.png",
                             ProductId = 2,
-                            ProductSourceId = 3,
-                            ProductSourceUrlName = "Bøjle-Egetræ-Hvidolie"
+                            ProductSourceId = 3
                         },
                         new
                         {
@@ -209,8 +202,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 0,
                             ImgSrc = "../images/Products/Color/Desktop/boejle_natur_1.png",
                             ProductId = 3,
-                            ProductSourceId = 1,
-                            ProductSourceUrlName = "Bøjle-Egetræ-Naturolie"
+                            ProductSourceId = 1
                         },
                         new
                         {
@@ -218,8 +210,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 2,
                             ImgSrc = "../images/Products/Color/Desktop/boejle_sort_1.png",
                             ProductId = 3,
-                            ProductSourceId = 2,
-                            ProductSourceUrlName = "Bøjle-Egetræ-Sortolie"
+                            ProductSourceId = 2
                         },
                         new
                         {
@@ -227,8 +218,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 1,
                             ImgSrc = "../images/Products/Color/Desktop/boejle_hvid_1.png",
                             ProductId = 3,
-                            ProductSourceId = 3,
-                            ProductSourceUrlName = "Bøjle-Egetræ-Hvidolie"
+                            ProductSourceId = 3
                         },
                         new
                         {
@@ -236,8 +226,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 1,
                             ImgSrc = "../images/Products/Color/Desktop/hylde_hvid_1.png",
                             ProductId = 4,
-                            ProductSourceId = 4,
-                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-400mm"
+                            ProductSourceId = 4
                         },
                         new
                         {
@@ -245,8 +234,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 2,
                             ImgSrc = "../images/Products/Color/Desktop/hylde_sort_1.png",
                             ProductId = 4,
-                            ProductSourceId = 5,
-                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-400mm"
+                            ProductSourceId = 5
                         },
                         new
                         {
@@ -254,8 +242,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 0,
                             ImgSrc = "../images/Products/Color/Desktop/hylde_natur_1.png",
                             ProductId = 4,
-                            ProductSourceId = 6,
-                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-400mm"
+                            ProductSourceId = 6
                         },
                         new
                         {
@@ -263,8 +250,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 1,
                             ImgSrc = "../images/Products/Color/Desktop/hylde_hvid_1.png",
                             ProductId = 5,
-                            ProductSourceId = 4,
-                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-400mm"
+                            ProductSourceId = 4
                         },
                         new
                         {
@@ -272,8 +258,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 2,
                             ImgSrc = "../images/Products/Color/Desktop/hylde_sort_1.png",
                             ProductId = 5,
-                            ProductSourceId = 5,
-                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-400mm"
+                            ProductSourceId = 5
                         },
                         new
                         {
@@ -281,8 +266,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 0,
                             ImgSrc = "../images/Products/Color/Desktop/hylde_natur_1.png",
                             ProductId = 5,
-                            ProductSourceId = 6,
-                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-400mm"
+                            ProductSourceId = 6
                         },
                         new
                         {
@@ -290,8 +274,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 1,
                             ImgSrc = "../images/Products/Color/Desktop/hylde_hvid_1.png",
                             ProductId = 6,
-                            ProductSourceId = 4,
-                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-400mm"
+                            ProductSourceId = 4
                         },
                         new
                         {
@@ -299,8 +282,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 2,
                             ImgSrc = "../images/Products/Color/Desktop/hylde_sort_1.png",
                             ProductId = 6,
-                            ProductSourceId = 5,
-                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-400mm"
+                            ProductSourceId = 5
                         },
                         new
                         {
@@ -308,8 +290,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 0,
                             ImgSrc = "../images/Products/Color/Desktop/hylde_natur_1.png",
                             ProductId = 6,
-                            ProductSourceId = 6,
-                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-400mm"
+                            ProductSourceId = 6
                         },
                         new
                         {
@@ -317,8 +298,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 1,
                             ImgSrc = "../images/Products/Color/Desktop/hylde_hvid_1.png",
                             ProductId = 7,
-                            ProductSourceId = 7,
-                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-600mm"
+                            ProductSourceId = 7
                         },
                         new
                         {
@@ -326,8 +306,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 2,
                             ImgSrc = "../images/Products/Color/Desktop/hylde_sort_1.png",
                             ProductId = 7,
-                            ProductSourceId = 8,
-                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-600mm"
+                            ProductSourceId = 8
                         },
                         new
                         {
@@ -335,8 +314,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 0,
                             ImgSrc = "../images/Products/Color/Desktop/hylde_natur_1.png",
                             ProductId = 7,
-                            ProductSourceId = 9,
-                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-600mm"
+                            ProductSourceId = 9
                         },
                         new
                         {
@@ -344,8 +322,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 1,
                             ImgSrc = "../images/Products/Color/Desktop/hylde_hvid_1.png",
                             ProductId = 8,
-                            ProductSourceId = 7,
-                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-600mm"
+                            ProductSourceId = 7
                         },
                         new
                         {
@@ -353,8 +330,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 2,
                             ImgSrc = "../images/Products/Color/Desktop/hylde_sort_1.png",
                             ProductId = 8,
-                            ProductSourceId = 8,
-                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-600mm"
+                            ProductSourceId = 8
                         },
                         new
                         {
@@ -362,8 +338,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 0,
                             ImgSrc = "../images/Products/Color/Desktop/hylde_natur_1.png",
                             ProductId = 8,
-                            ProductSourceId = 9,
-                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-600mm"
+                            ProductSourceId = 9
                         },
                         new
                         {
@@ -371,8 +346,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 1,
                             ImgSrc = "../images/Products/Color/Desktop/hylde_hvid_1.png",
                             ProductId = 9,
-                            ProductSourceId = 7,
-                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-600mm"
+                            ProductSourceId = 7
                         },
                         new
                         {
@@ -380,8 +354,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 2,
                             ImgSrc = "../images/Products/Color/Desktop/hylde_sort_1.png",
                             ProductId = 9,
-                            ProductSourceId = 8,
-                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-600mm"
+                            ProductSourceId = 8
                         },
                         new
                         {
@@ -389,8 +362,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 0,
                             ImgSrc = "../images/Products/Color/Desktop/hylde_natur_1.png",
                             ProductId = 9,
-                            ProductSourceId = 9,
-                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-600mm"
+                            ProductSourceId = 9
                         },
                         new
                         {
@@ -398,8 +370,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 1,
                             ImgSrc = "../images/Products/Color/Desktop/hylde_hvid_1.png",
                             ProductId = 10,
-                            ProductSourceId = 10,
-                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-800mm"
+                            ProductSourceId = 10
                         },
                         new
                         {
@@ -407,8 +378,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 2,
                             ImgSrc = "../images/Products/Color/Desktop/hylde_sort_1.png",
                             ProductId = 10,
-                            ProductSourceId = 11,
-                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-800mm"
+                            ProductSourceId = 11
                         },
                         new
                         {
@@ -416,8 +386,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 0,
                             ImgSrc = "../images/Products/Color/Desktop/hylde_natur_1.png",
                             ProductId = 10,
-                            ProductSourceId = 12,
-                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-800mm"
+                            ProductSourceId = 12
                         },
                         new
                         {
@@ -425,8 +394,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 1,
                             ImgSrc = "../images/Products/Color/Desktop/hylde_hvid_1.png",
                             ProductId = 11,
-                            ProductSourceId = 10,
-                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-800mm"
+                            ProductSourceId = 10
                         },
                         new
                         {
@@ -434,8 +402,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 2,
                             ImgSrc = "../images/Products/Color/Desktop/hylde_sort_1.png",
                             ProductId = 11,
-                            ProductSourceId = 11,
-                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-800mm"
+                            ProductSourceId = 11
                         },
                         new
                         {
@@ -443,8 +410,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 0,
                             ImgSrc = "../images/Products/Color/Desktop/hylde_natur_1.png",
                             ProductId = 11,
-                            ProductSourceId = 12,
-                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-800mm"
+                            ProductSourceId = 12
                         },
                         new
                         {
@@ -452,8 +418,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 1,
                             ImgSrc = "../images/Products/Color/Desktop/hylde_hvid_1.png",
                             ProductId = 12,
-                            ProductSourceId = 10,
-                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-800mm"
+                            ProductSourceId = 10
                         },
                         new
                         {
@@ -461,8 +426,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 2,
                             ImgSrc = "../images/Products/Color/Desktop/hylde_sort_1.png",
                             ProductId = 12,
-                            ProductSourceId = 11,
-                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-800mm"
+                            ProductSourceId = 11
                         },
                         new
                         {
@@ -470,8 +434,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 0,
                             ImgSrc = "../images/Products/Color/Desktop/hylde_natur_1.png",
                             ProductId = 12,
-                            ProductSourceId = 12,
-                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-800mm"
+                            ProductSourceId = 12
                         },
                         new
                         {
@@ -479,8 +442,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 1,
                             ImgSrc = "../images/Products/Color/Desktop/hylde_hvid_1.png",
                             ProductId = 13,
-                            ProductSourceId = 13,
-                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-1000mm"
+                            ProductSourceId = 13
                         },
                         new
                         {
@@ -488,8 +450,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 2,
                             ImgSrc = "../images/Products/Color/Desktop/hylde_sort_1.png",
                             ProductId = 13,
-                            ProductSourceId = 14,
-                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-1000mm"
+                            ProductSourceId = 14
                         },
                         new
                         {
@@ -497,8 +458,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 0,
                             ImgSrc = "../images/Products/Color/Desktop/hylde_natur_1.png",
                             ProductId = 13,
-                            ProductSourceId = 15,
-                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-1000mm"
+                            ProductSourceId = 15
                         },
                         new
                         {
@@ -506,8 +466,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 1,
                             ImgSrc = "../images/Products/Color/Desktop/hylde_hvid_1.png",
                             ProductId = 14,
-                            ProductSourceId = 13,
-                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-1000mm"
+                            ProductSourceId = 13
                         },
                         new
                         {
@@ -515,8 +474,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 2,
                             ImgSrc = "../images/Products/Color/Desktop/hylde_sort_1.png",
                             ProductId = 14,
-                            ProductSourceId = 14,
-                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-1000mm"
+                            ProductSourceId = 14
                         },
                         new
                         {
@@ -524,8 +482,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 0,
                             ImgSrc = "../images/Products/Color/Desktop/hylde_natur_1.png",
                             ProductId = 14,
-                            ProductSourceId = 15,
-                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-1000mm"
+                            ProductSourceId = 15
                         },
                         new
                         {
@@ -533,8 +490,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 1,
                             ImgSrc = "../images/Products/Color/Desktop/hylde_hvid_1.png",
                             ProductId = 15,
-                            ProductSourceId = 13,
-                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-1000mm"
+                            ProductSourceId = 13
                         },
                         new
                         {
@@ -542,8 +498,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 2,
                             ImgSrc = "../images/Products/Color/Desktop/hylde_sort_1.png",
                             ProductId = 15,
-                            ProductSourceId = 14,
-                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-1000mm"
+                            ProductSourceId = 14
                         },
                         new
                         {
@@ -551,8 +506,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 0,
                             ImgSrc = "../images/Products/Color/Desktop/hylde_natur_1.png",
                             ProductId = 15,
-                            ProductSourceId = 15,
-                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-1000mm"
+                            ProductSourceId = 15
                         },
                         new
                         {
@@ -560,8 +514,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 0,
                             ImgSrc = "../images/Products/Color/Desktop/bord_natur_2.png",
                             ProductId = 16,
-                            ProductSourceId = 16,
-                            ProductSourceUrlName = "Bord-Egetræ-Naturolie"
+                            ProductSourceId = 16
                         },
                         new
                         {
@@ -569,8 +522,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 1,
                             ImgSrc = "../images/Products/Color/Desktop/bord_hvid_2.png",
                             ProductId = 16,
-                            ProductSourceId = 17,
-                            ProductSourceUrlName = "Bord-Egetræ-Hvidolie"
+                            ProductSourceId = 17
                         },
                         new
                         {
@@ -578,8 +530,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 0,
                             ImgSrc = "../images/Products/Color/Desktop/bord_natur_2.png",
                             ProductId = 17,
-                            ProductSourceId = 16,
-                            ProductSourceUrlName = "Bord-Egetræ-Naturolie"
+                            ProductSourceId = 16
                         },
                         new
                         {
@@ -587,8 +538,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 1,
                             ImgSrc = "../images/Products/Color/Desktop/bord_hvid_2.png",
                             ProductId = 17,
-                            ProductSourceId = 17,
-                            ProductSourceUrlName = "Bord-Egetræ-Hvidolie"
+                            ProductSourceId = 17
                         },
                         new
                         {
@@ -596,8 +546,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 0,
                             ImgSrc = "../images/Products/Color/Desktop/kortbaenk_natur_2.png",
                             ProductId = 18,
-                            ProductSourceId = 18,
-                            ProductSourceUrlName = "Bænk-Egetræ-Naturolie-1150mm"
+                            ProductSourceId = 18
                         },
                         new
                         {
@@ -605,8 +554,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 1,
                             ImgSrc = "../images/Products/Color/Desktop/kortbaenk_hvid_2.png",
                             ProductId = 18,
-                            ProductSourceId = 19,
-                            ProductSourceUrlName = "Bænk-Egetræ-Hvidolie-1150mm"
+                            ProductSourceId = 19
                         },
                         new
                         {
@@ -614,8 +562,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 2,
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_kortbaenk_sortolie_02.png",
                             ProductId = 18,
-                            ProductSourceId = 20,
-                            ProductSourceUrlName = "Bænk-Egetræ-Sortolie-1150mm"
+                            ProductSourceId = 20
                         },
                         new
                         {
@@ -623,8 +570,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 0,
                             ImgSrc = "../images/Products/Color/Desktop/kortbaenk_natur_2.png",
                             ProductId = 19,
-                            ProductSourceId = 18,
-                            ProductSourceUrlName = "Bænk-Egetræ-Naturolie-1150mm"
+                            ProductSourceId = 18
                         },
                         new
                         {
@@ -632,8 +578,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 1,
                             ImgSrc = "../images/Products/Color/Desktop/kortbaenk_hvid_2.png",
                             ProductId = 19,
-                            ProductSourceId = 19,
-                            ProductSourceUrlName = "Bænk-Egetræ-Hvidolie-1150mm"
+                            ProductSourceId = 19
                         },
                         new
                         {
@@ -641,8 +586,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 2,
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_kortbaenk_sortolie_02.png",
                             ProductId = 19,
-                            ProductSourceId = 20,
-                            ProductSourceUrlName = "Bænk-Egetræ-Sortolie-1150mm"
+                            ProductSourceId = 20
                         },
                         new
                         {
@@ -650,8 +594,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 0,
                             ImgSrc = "../images/Products/Color/Desktop/kortbaenk_natur_2.png",
                             ProductId = 20,
-                            ProductSourceId = 18,
-                            ProductSourceUrlName = "Bænk-Egetræ-Naturolie-1150mm"
+                            ProductSourceId = 18
                         },
                         new
                         {
@@ -659,8 +602,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 1,
                             ImgSrc = "../images/Products/Color/Desktop/kortbaenk_hvid_2.png",
                             ProductId = 20,
-                            ProductSourceId = 19,
-                            ProductSourceUrlName = "Bænk-Egetræ-Hvidolie-1150mm"
+                            ProductSourceId = 19
                         },
                         new
                         {
@@ -668,8 +610,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 2,
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_kortbaenk_sortolie_02.png",
                             ProductId = 20,
-                            ProductSourceId = 20,
-                            ProductSourceUrlName = "Bænk-Egetræ-Sortolie-1150mm"
+                            ProductSourceId = 20
                         },
                         new
                         {
@@ -677,8 +618,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 0,
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_langbaenk_naturolie_02.png",
                             ProductId = 21,
-                            ProductSourceId = 21,
-                            ProductSourceUrlName = "Bænk-Egetræ-Naturolie-1700mm"
+                            ProductSourceId = 21
                         },
                         new
                         {
@@ -686,8 +626,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 1,
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_langbaenk_hvidolie_02.png",
                             ProductId = 21,
-                            ProductSourceId = 22,
-                            ProductSourceUrlName = "Bænk-Egetræ-Hvidolie-1700mm"
+                            ProductSourceId = 22
                         },
                         new
                         {
@@ -695,8 +634,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 2,
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_langbaenk_sortolie_02.png",
                             ProductId = 21,
-                            ProductSourceId = 23,
-                            ProductSourceUrlName = "Bænk-Egetræ-Sortolie-1700mm"
+                            ProductSourceId = 23
                         },
                         new
                         {
@@ -704,8 +642,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 0,
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_langbaenk_naturolie_02.png",
                             ProductId = 22,
-                            ProductSourceId = 21,
-                            ProductSourceUrlName = "Bænk-Egetræ-Naturolie-1700mm"
+                            ProductSourceId = 21
                         },
                         new
                         {
@@ -713,8 +650,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 1,
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_langbaenk_hvidolie_02.png",
                             ProductId = 22,
-                            ProductSourceId = 22,
-                            ProductSourceUrlName = "Bænk-Egetræ-Hvidolie-1700mm"
+                            ProductSourceId = 22
                         },
                         new
                         {
@@ -722,8 +658,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 2,
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_langbaenk_sortolie_02.png",
                             ProductId = 22,
-                            ProductSourceId = 23,
-                            ProductSourceUrlName = "Bænk-Egetræ-Sortolie-1700mm"
+                            ProductSourceId = 23
                         },
                         new
                         {
@@ -731,8 +666,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 0,
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_langbaenk_naturolie_02.png",
                             ProductId = 23,
-                            ProductSourceId = 21,
-                            ProductSourceUrlName = "Bænk-Egetræ-Naturolie-1700mm"
+                            ProductSourceId = 21
                         },
                         new
                         {
@@ -740,8 +674,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 1,
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_langbaenk_hvidolie_02.png",
                             ProductId = 23,
-                            ProductSourceId = 22,
-                            ProductSourceUrlName = "Bænk-Egetræ-Hvidolie-1700mm"
+                            ProductSourceId = 22
                         },
                         new
                         {
@@ -749,8 +682,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 2,
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_langbaenk_sortolie_02.png",
                             ProductId = 23,
-                            ProductSourceId = 23,
-                            ProductSourceUrlName = "Bænk-Egetræ-Sortolie-1700mm"
+                            ProductSourceId = 23
                         },
                         new
                         {
@@ -758,8 +690,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 0,
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_opbevaringsbaenk_naturolie_01.png",
                             ProductId = 24,
-                            ProductSourceId = 24,
-                            ProductSourceUrlName = "Opbevaringsbænk-Egetræ-Naturolie"
+                            ProductSourceId = 24
                         },
                         new
                         {
@@ -767,8 +698,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 1,
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_opbevaringsbaenk_hvidolie_01.png",
                             ProductId = 24,
-                            ProductSourceId = 25,
-                            ProductSourceUrlName = "Opbevaringsbænk-Egetræ-Hvidolie"
+                            ProductSourceId = 25
                         },
                         new
                         {
@@ -776,8 +706,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 2,
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_opbevaringsbaenk_sort_01.png",
                             ProductId = 24,
-                            ProductSourceId = 26,
-                            ProductSourceUrlName = "Opbevaringsbænk-Egetræ-Sortolie"
+                            ProductSourceId = 26
                         },
                         new
                         {
@@ -785,8 +714,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 0,
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_opbevaringsbaenk_naturolie_01.png",
                             ProductId = 25,
-                            ProductSourceId = 24,
-                            ProductSourceUrlName = "Opbevaringsbænk-Egetræ-Naturolie"
+                            ProductSourceId = 24
                         },
                         new
                         {
@@ -794,8 +722,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 1,
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_opbevaringsbaenk_hvidolie_01.png",
                             ProductId = 25,
-                            ProductSourceId = 25,
-                            ProductSourceUrlName = "Opbevaringsbænk-Egetræ-Hvidolie"
+                            ProductSourceId = 25
                         },
                         new
                         {
@@ -803,8 +730,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 2,
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_opbevaringsbaenk_sort_01.png",
                             ProductId = 25,
-                            ProductSourceId = 26,
-                            ProductSourceUrlName = "Opbevaringsbænk-Egetræ-Sortolie"
+                            ProductSourceId = 26
                         },
                         new
                         {
@@ -812,8 +738,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 0,
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_opbevaringsbaenk_naturolie_01.png",
                             ProductId = 26,
-                            ProductSourceId = 24,
-                            ProductSourceUrlName = "Opbevaringsbænk-Egetræ-Naturolie"
+                            ProductSourceId = 24
                         },
                         new
                         {
@@ -821,8 +746,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 1,
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_opbevaringsbaenk_hvidolie_01.png",
                             ProductId = 26,
-                            ProductSourceId = 25,
-                            ProductSourceUrlName = "Opbevaringsbænk-Egetræ-Hvidolie"
+                            ProductSourceId = 25
                         },
                         new
                         {
@@ -830,8 +754,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 2,
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_opbevaringsbaenk_sort_01.png",
                             ProductId = 26,
-                            ProductSourceId = 26,
-                            ProductSourceUrlName = "Opbevaringsbænk-Egetræ-Sortolie"
+                            ProductSourceId = 26
                         },
                         new
                         {
@@ -839,8 +762,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 0,
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_rack_naturolie_02.png",
                             ProductId = 27,
-                            ProductSourceId = 27,
-                            ProductSourceUrlName = "Tøjstativ-Egetræ-Naturolie"
+                            ProductSourceId = 27
                         },
                         new
                         {
@@ -848,8 +770,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 1,
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_rack_hvidolie_02.png",
                             ProductId = 27,
-                            ProductSourceId = 28,
-                            ProductSourceUrlName = "Tøjstativ-Egetræ-Hvidolie"
+                            ProductSourceId = 28
                         },
                         new
                         {
@@ -857,8 +778,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 2,
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_rack_sortolie_02.png",
                             ProductId = 27,
-                            ProductSourceId = 29,
-                            ProductSourceUrlName = "Tøjstativ-Egetræ-Sortolie"
+                            ProductSourceId = 29
                         },
                         new
                         {
@@ -866,8 +786,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 0,
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_rack_naturolie_02.png",
                             ProductId = 28,
-                            ProductSourceId = 27,
-                            ProductSourceUrlName = "Tøjstativ-Egetræ-Naturolie"
+                            ProductSourceId = 27
                         },
                         new
                         {
@@ -875,8 +794,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 1,
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_rack_hvidolie_02.png",
                             ProductId = 28,
-                            ProductSourceId = 28,
-                            ProductSourceUrlName = "Tøjstativ-Egetræ-Hvidolie"
+                            ProductSourceId = 28
                         },
                         new
                         {
@@ -884,8 +802,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 2,
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_rack_sortolie_02.png",
                             ProductId = 28,
-                            ProductSourceId = 29,
-                            ProductSourceUrlName = "Tøjstativ-Egetræ-Sortolie"
+                            ProductSourceId = 29
                         },
                         new
                         {
@@ -893,8 +810,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 0,
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_rack_naturolie_02.png",
                             ProductId = 29,
-                            ProductSourceId = 27,
-                            ProductSourceUrlName = "Tøjstativ-Egetræ-Naturolie"
+                            ProductSourceId = 27
                         },
                         new
                         {
@@ -902,8 +818,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 1,
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_rack_hvidolie_02.png",
                             ProductId = 29,
-                            ProductSourceId = 28,
-                            ProductSourceUrlName = "Tøjstativ-Egetræ-Hvidolie"
+                            ProductSourceId = 28
                         },
                         new
                         {
@@ -911,8 +826,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 2,
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_rack_sortolie_02.png",
                             ProductId = 29,
-                            ProductSourceId = 29,
-                            ProductSourceUrlName = "Tøjstativ-Egetræ-Sortolie"
+                            ProductSourceId = 29
                         },
                         new
                         {
@@ -920,8 +834,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 0,
                             ImgSrc = "../images/Products/Color/Desktop/Ingrid_natur_2.png",
                             ProductId = 30,
-                            ProductSourceId = 30,
-                            ProductSourceUrlName = "Ophængt-Tøjstativ-Egetræ-Naturolie"
+                            ProductSourceId = 30
                         },
                         new
                         {
@@ -929,8 +842,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 1,
                             ImgSrc = "../images/Products/Color/Desktop/Ingrid_hvid_2.png",
                             ProductId = 30,
-                            ProductSourceId = 31,
-                            ProductSourceUrlName = "Ophængt-Tøjstativ-Egetræ-Hvidolie"
+                            ProductSourceId = 31
                         },
                         new
                         {
@@ -938,8 +850,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 2,
                             ImgSrc = "../images/Products/Color/Desktop/Ingrid_sort_2.png",
                             ProductId = 30,
-                            ProductSourceId = 32,
-                            ProductSourceUrlName = "Ophængt-Tøjstativ-Egetræ-Sortolie"
+                            ProductSourceId = 32
                         },
                         new
                         {
@@ -947,8 +858,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 0,
                             ImgSrc = "../images/Products/Color/Desktop/Ingrid_natur_2.png",
                             ProductId = 31,
-                            ProductSourceId = 30,
-                            ProductSourceUrlName = "Ophængt-Tøjstativ-Egetræ-Naturolie"
+                            ProductSourceId = 30
                         },
                         new
                         {
@@ -956,8 +866,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 1,
                             ImgSrc = "../images/Products/Color/Desktop/Ingrid_hvid_2.png",
                             ProductId = 31,
-                            ProductSourceId = 31,
-                            ProductSourceUrlName = "Ophængt-Tøjstativ-Egetræ-Hvidolie"
+                            ProductSourceId = 31
                         },
                         new
                         {
@@ -965,8 +874,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 2,
                             ImgSrc = "../images/Products/Color/Desktop/Ingrid_sort_2.png",
                             ProductId = 31,
-                            ProductSourceId = 32,
-                            ProductSourceUrlName = "Ophængt-Tøjstativ-Egetræ-Sortolie"
+                            ProductSourceId = 32
                         },
                         new
                         {
@@ -974,8 +882,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 0,
                             ImgSrc = "../images/Products/Color/Desktop/Ingrid_natur_2.png",
                             ProductId = 32,
-                            ProductSourceId = 30,
-                            ProductSourceUrlName = "Ophængt-Tøjstativ-Egetræ-Naturolie"
+                            ProductSourceId = 30
                         },
                         new
                         {
@@ -983,8 +890,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 1,
                             ImgSrc = "../images/Products/Color/Desktop/Ingrid_hvid_2.png",
                             ProductId = 32,
-                            ProductSourceId = 31,
-                            ProductSourceUrlName = "Ophængt-Tøjstativ-Egetræ-Hvidolie"
+                            ProductSourceId = 31
                         },
                         new
                         {
@@ -992,8 +898,7 @@ namespace NykantAPI.Data.migrations
                             EColor = 2,
                             ImgSrc = "../images/Products/Color/Desktop/Ingrid_sort_2.png",
                             ProductId = 32,
-                            ProductSourceId = 32,
-                            ProductSourceUrlName = "Ophængt-Tøjstativ-Egetræ-Sortolie"
+                            ProductSourceId = 32
                         });
                 });
 

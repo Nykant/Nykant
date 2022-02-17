@@ -10,14 +10,24 @@
 <link rel="stylesheet" type="text/css" href="~/css/custom-table.css" />
 
 <div class="my-row background-color2 bottom-padding">
-    <div class="col-3 cookie-header center">
+    <div class="responsive-container cookie-header center">
         <h1>Cookie Politik</h1>
         @*@localizer["Cookie Policy"]*@
+        <p class="margin-bottom-10">Vi bruger google analytics cookies til at indsamle anonymiseret data, til at se hvad du foretager dig på hjemmesiden, for at forbedre hjemmesidens funktioner, samt forbedre vores annonceringsstrategier. Trykker du Accepter, giver du dit samtykke til vores brug af disse cookies.</p>
     </div>
     <div class="responsive-container center cookie-buttons">
-        <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#cookie-settings-partial" data-ajax-success="consent_updated" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" asp-action="OnlyEssentialConsent" class="col-6 left padding-5">
+        <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="onlyEssential_succeed" data-ajax-complete="consent_updated" data-ajax-begin="onlyEssential_begin" data-ajax-failure="onlyEssential_failure" asp-action="OnlyEssentialConsent" class="col-6 left padding-5">
             <button type="submit" class="button">
-                Kun Nødvendige
+                <div id="onlyEssential-error" class="loading-error">
+                    <i class="fas fa-times"></i>
+                </div>
+                <div id="onlyEssential-spinner" class="hidden">
+                    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                </div>
+                <div class="loading-check-sign" id="onlyEssential-check-sign">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                </div>
+                <div id="onlyEssential-text">Afvis</div>
                 @*@localizer["Only Essential Cookies"]*@
             </button>
         </form>
@@ -27,9 +37,18 @@
                 @*@localizer["Settings"]*@
             <!--</button>
         </div>-->
-        <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#cookie-settings-partial" data-ajax-success="consent_updated" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" asp-action="AllowAllConsent" class="col-6 left padding-5">
+        <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="allowAll_succeed" data-ajax-complete="consent_updated" data-ajax-begin="allowAll_begin" data-ajax-failure="allowAll_failure" asp-action="AllowAllConsent" class="col-6 left padding-5">
             <button type="submit" class="green-button">
-                Accepter Alle
+                <div id="allowAll-error" class="loading-error">
+                    <i class="fas fa-times"></i>
+                </div>
+                <div id="allowAll-spinner" class="hidden">
+                    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                </div>
+                <div class="loading-check-sign" id="allowAll-check-sign">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                </div>
+                <div id="allowAll-text">Accepter</div>
                 @*@localizer["Accept All Cookies"]*@
             </button>
         </form>
@@ -38,26 +57,32 @@
 <div class="my-row">
     <div class="responsive-container center privacy-information">
         <div>
-            <h3>Med EUs nye regler for informationsindhentning og beskyttelse af persondata, undrer mange sig måske over hvad "cookies" i virkeligeheden er. Her finder du lidt information om disse informationskapsler og hvordan Nykant bruger dem.</h3>
+            <h3>Med EUs nye regler for informationsindhentning og beskyttelse af persondata, undrer mange sig måske over hvad "cookies" i virkeligeheden er. 
+            Her finder du lidt information om disse informationskapsler og hvordan Nykant bruger dem.</h3>
         </div>
 
         <div>
             <h1>Hvad er en cookie?</h1>
-            <p>En cookie er en lille tekst-fil, som vi gemmer på din computer for at kunne holde styr på, hvad der sker under dit besøg og for at kunne genkende computeren. En cookie indeholder kun tekst, er ikke et program og indeholder ikke virus.</p>
+            <p>En cookie er en lille tekst-fil, som vi gemmer på din computer for at kunne holde styr på, hvad der sker under dit besøg og for at kunne genkende computeren. 
+            En cookie indeholder kun tekst, er ikke et program og indeholder ikke virus.</p>
         </div>
 
         <div>
             <h1>Hjemmesidens brug af cookies</h1>
-            <p>Cookies er nødvendige for at få hjemmesiden til at fungere. Cookies hjælper os desuden med at få overblik over dit besøg på hjemmesiden, så vi løbende kan optimere og målrette hjemmesiden til dine behov og interesser. Cookies husker f.eks., hvad du har lagt i din indkøbskurv, om du tidligere har besøgt siden, hvilket sprog, du gerne vil have vist på hjemmesiden og dine cookie preferencer. Helt overordnet anvendes cookies således som del af vores hjemmesides nødvendige funktioner for at give dig en god oplevelse. Her er oversigten over hjemmesidens brug af cookies:</p>
+            <p>Cookies er nødvendige for at få hjemmesiden til at fungere. Cookies hjælper os desuden med at få overblik over dit besøg på hjemmesiden, så vi løbende kan optimere og målrette hjemmesiden, samt annoncering til dine behov og interesser. 
+            Cookies husker f.eks., hvad du har lagt i din indkøbskurv, om du tidligere har besøgt siden, hvilket sprog, du gerne vil have vist på hjemmesiden og dine cookie preferencer. 
+            Helt overordnet anvendes cookies således som del af vores hjemmesides nødvendige funktioner for at give dig en god oplevelse. Her er oversigten over hjemmesidens brug af cookies:</p>
         </div>
 
         <div>
             <h1>Sådan afviser eller sletter du dine cookies</h1>
             <h2>Afvisning af nogle cookies:</h2>
-            <p class="pushed-text">Du kan afvise alle de cookies som ikke er nødvendige for vores hjemmesides funktionalitet eller nogle specifikke som du ikke vil tillade ved at klikke "Kun Nødvendige Cookies" eller på knappen "Instillinger" under titlen på nuværende side.</p>
+            <p class="pushed-text">Du kan afvise alle de cookies som ikke er nødvendige for vores hjemmesides funktionalitet eller nogle specifikke som du ikke vil tillade ved at klikke "Afvis" under titlen på nuværende side.</p>
 
             <h2>Afvisning af alle cookies:</h2>
-            <p class="pushed-text">Du kan altid afvise alle fremtidige cookies på din computer ved at ændre indstillingerne i din Internet-browser. Hvor du finder indstillingerne afhænger af, hvilken browser du anvender. Du skal dog være opmærksom på, at hvis du gør det, er der mange funktioner og services, du ikke kan bruge, fordi disse funktioner og services forudsætter, at hjemmesiden fungerer korrekt.</p>
+            <p class="pushed-text">Du kan altid afvise alle fremtidige cookies på din computer ved at ændre indstillingerne i din Internet-browser. 
+            Hvor du finder indstillingerne afhænger af, hvilken browser du anvender. Du skal dog være opmærksom på, at hvis du gør det, er der mange funktioner og services, du ikke kan bruge, 
+            fordi disse funktioner og services forudsætter, at hjemmesiden fungerer korrekt.</p>
 
             <p>Du kan fravælge cookies fra Google Analytics <a class="simple-link" href="https://tools.google.com/dlpage/gaoptout">her</a>.</p>
             <h2>Sletning af cookies:</h2>
@@ -65,7 +90,7 @@
                 Cookies som du tidligere har accepteret, kan efterfølgende slettes nemt:
             </p>
             <p class="pushed-text">
-                Du kan slette "ikke nødvendige cookies" fra vores hjemmeside ved at trykke på knappen "Kun Nødvendige Cookies" i topped af siden. Det vil kun slette cookies i den browser du bruge lige nu.
+                Du kan slette "ikke nødvendige cookies" fra vores hjemmeside ved at trykke på knappen "Afvis" i topped af siden. Det vil kun slette cookies i den browser du bruge lige nu.
             </p>
             <h2>Her er en liste over guides til hvordan man håndtere cookies, for alle de forskellige browsers.</h2>
             <div class="cookie-help-links pushed-text">
@@ -149,3 +174,4 @@
 </div>
 
 <script src="~/JS/consent.js"></script>
+<script src="~/JS/cookie-policy-spinner.js"></script>

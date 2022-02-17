@@ -15,7 +15,7 @@
     <div class="sb-example-3 sidepadding">
         <!-- partial:index.partial.html -->
         <div class="search__container">
-            <form method="get" asp-action="Gallery" asp-controller="Product">
+            <form method="post" asp-action="Search" asp-controller="Product">
                 <input class="search__input" type="text" name="searchString" placeholder="SØG">
             </form>
         </div>
@@ -39,7 +39,7 @@
             <div id="searchbox" class="sb-example-3 right">
                 <!-- partial:index.partial.html -->
                 <div class="search__container">
-                    <form method="get" asp-action="Gallery" asp-controller="Product">
+                    <form method="post" asp-action="Search" asp-controller="Product">
                         <input class="search__input" type="text" name="searchString" placeholder="SØG">
                     </form>
                 </div>

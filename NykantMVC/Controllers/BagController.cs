@@ -20,6 +20,7 @@ namespace NykantMVC.Controllers
         {
         }
 
+        [Route("Kurv")]
         [HttpGet]
         public async Task<IActionResult> Details()
         {

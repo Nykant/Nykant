@@ -36,7 +36,7 @@
                     {
                         if (color.EColor != EColor.Nature)
                         {
-                            <a class="product-item-color" asp-controller="product" asp-action="details" asp-route-id="@color.ProductSourceId">
+                            <a class="product-item-color" asp-controller="product" asp-action="details" asp-route-urlname="@color.ProductSourceUrlName">
                                 <img src="@color.ImgSrc" />
                             </a>
                         }
@@ -45,7 +45,7 @@
             }
 
             <div class="product-item">
-                <a asp-controller="product" asp-action="details" asp-route-id="@item.Id">
+                <a asp-controller="product" asp-action="details" asp-route-urlname="@item.UrlName">
                     <div class="product-images">
                         @if (count > 5)
                         {

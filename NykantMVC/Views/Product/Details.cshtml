@@ -172,7 +172,7 @@
                     }
                 </div>
 
-                <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#item-added-modal" data-ajax-success="item_added" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" asp-controller="BagItem" asp-action="PostBagItem" asp-route-id="@Model.Id">
+                <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#item-added-modal" data-ajax-success="item_added" data-ajax-complete="noop" data-ajax-begin="addToBag_begin" data-ajax-failure="addToBag_failure" asp-controller="BagItem" asp-action="PostBagItem" asp-route-id="@Model.Id">
                     <div class="product-counter">
                         <button id="product-counter-down" type="button"><i class="fas fa-minus"></i></button>
                         <input id="product-counter-input" type="number" name="quantity" value="1" />
@@ -180,7 +180,18 @@
                     </div>
 
                     <div class="top-side-padding bottom-side-padding fadein " id="addproduct-button">
-                        <button class="button" type="submit">@localizer["Add To Bag"]</button> @*style=border-radius="0"????*@
+                        <button class="button" type="submit">
+                            <div id="addToBag-error" class="loading-error">
+                                <i class="fas fa-times"></i>
+                            </div>
+                            <div id="addToBag-spinner" class="hidden">
+                                <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                            </div>
+                            <div class="loading-check-sign" id="addToBag-check-sign">
+                                <i class="fa fa-check" aria-hidden="true"></i>
+                            </div>
+                            <div id="addToBag-text">@localizer["Add To Bag"]</div>
+                        </button> @*style=border-radius="0"????*@
                     </div>
                 </form>
             </div>

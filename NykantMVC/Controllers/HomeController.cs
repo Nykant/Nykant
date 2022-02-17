@@ -38,6 +38,7 @@ namespace NykantMVC.Controllers
             mailService = _mailService;
         }
 
+        //[Route("Hjem")]
         public async Task<IActionResult> Index()
         {
             var jsonResponse = await GetRequest("/Category/GetCategories");
@@ -50,16 +51,21 @@ namespace NykantMVC.Controllers
             return View(frontPageVM);
         }
 
+        [Route("Cookie-Politik")]
         public async Task<IActionResult> CookiePolicy()
         {
             var json = await GetRequest("/Cookie/GetCookies");
             var cookies = JsonConvert.DeserializeObject<List<Cookie>>(json);
             return View(cookies);
         }
+
+        [Route("Kontakt")]
         public IActionResult Contact()
         {
             return View();
         }
+
+        [Route("Om")]
         public IActionResult About()
         {
             return View();
@@ -68,10 +74,14 @@ namespace NykantMVC.Controllers
         //{
         //    return View();
         //}
+
+        [Route("Privatlivs-Politik")]
         public IActionResult PrivacyPolicy()
         {
             return View();
         }
+
+        [Route("Salgs-Og-Leveringsbetingelser")]
         public IActionResult TermsAndConditions()
         {
             return View();
@@ -173,8 +183,8 @@ namespace NykantMVC.Controllers
             {
                 IPAddress = clientIP.ToString(),
                 Date = DateTime.Now,
-                ButtonText = "Accepter Alle",
-                ConsentText = "Vi bruger cookies til forbedring af din oplevelse, og essentielle funktioner, samt sender statistiske data til google analytics om hvad vores brugere foretager sig på hjemmesiden, i den hensigt at kunne forbedre den. Trykker du Accepter Alle, giver du dit samtykke til vores brug af disse. (link(her kan du læse mere om vores cookies))",
+                ButtonText = "Accepter",
+                ConsentText = "Vi bruger google analytics cookies til at indsamle personlig data, til at se hvad du foretager dig på hjemmesiden, for at forbedre hjemmesidens funktioner, samt forbedre vores annonceringsstrategier. (link(her kan du læse mere om vores cookies)). Trykker du Accepter, giver du dit samtykke til vores brug af disse cookies.",
                 How = ConsentHow.Button,
                 Type = ConsentType.Cookie,
                 Status = ConsentStatus.Given
@@ -213,8 +223,8 @@ namespace NykantMVC.Controllers
             {
                 IPAddress = clientIP.ToString(),
                 Date = DateTime.Now,
-                ButtonText = "Kun Nødvendige",
-                ConsentText = "Vi bruger cookies til forbedring af din oplevelse, og essentielle funktioner, samt sender statistiske data til google analytics om hvad vores brugere foretager sig på hjemmesiden, i den hensigt at kunne forbedre den. Trykker du Accepter Alle, giver du dit samtykke til vores brug af disse. (link(her kan du læse mere om vores cookies))",
+                ButtonText = "Afvis",
+                ConsentText = "Vi bruger google analytics cookies til at indsamle anonymiseret data, til at se hvad du foretager dig på hjemmesiden, for at forbedre hjemmesidens funktioner, samt forbedre vores annonceringsstrategier. (link(her kan du læse mere om vores cookies)). Trykker du Accepter, giver du dit samtykke til vores brug af disse cookies.",
                 How = ConsentHow.Button,
                 Type = ConsentType.Cookie,
                 Status = ConsentStatus.Retrieved
@@ -247,41 +257,6 @@ namespace NykantMVC.Controllers
             //    ViewData = this.ViewData
             //};
             return NoContent();
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Search(string searchString)
-        {
-            if (ModelState.IsValid)
-            {
-                if (searchString != null)
-                {
-                    var json = await GetRequest("/Product/GetProducts");
-                    var searchList = new List<Product>();
-                    foreach (var product in JsonConvert.DeserializeObject<List<Product>>(json))
-                    {
-                        if (product.Description.ToLower().Contains(searchString.ToLower()) || product.Category.Name.ToLower().Contains(searchString.ToLower()))
-                        {
-                            searchList.Add(product);
-                        }
-                    }
-                    ViewBag.SearchProductList = searchList;
-                }
-                else
-                {
-                    ViewBag.SearchProductList = new List<Product>();
-                }
-
-                return new PartialViewResult
-                {
-                    ViewName = "_SearchPartial",
-                    ViewData = this.ViewData
-                };
-            }
-            else
-            {
-                return null;
-            }
         }
 
         [HttpPost]

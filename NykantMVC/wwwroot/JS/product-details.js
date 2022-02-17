@@ -1,4 +1,5 @@
 ﻿
+
 var contents = document.getElementsByClassName("collapsible-content");
 var i, j;
 
@@ -46,6 +47,7 @@ $("#product-counter-up").on('click', function () {
     productcount += 1;
     $('#product-counter-input').val(productcount);
 });
+
 
 
 //$('#length-select').change(function () {

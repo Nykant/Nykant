@@ -18,37 +18,40 @@ namespace NykantMVC.Controllers
         {
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Gallery(string searchString)
+        [HttpGet("Produkter")]
+        public async Task<IActionResult> Gallery()
+        {
+            var json = await GetRequest("/Product/GetProducts");
+            var products = JsonConvert.DeserializeObject<List<Product>>(json);
+            ViewBag.Categories = JsonConvert.DeserializeObject<List<Category>>(await GetRequest("/Category/GetCategories"));
+            return View(products);
+        }
+
+        [HttpPost("Produkter")]
+        public async Task<IActionResult> Search(string searchString)
         {
             var json = await GetRequest("/Product/GetProducts");
             var products = JsonConvert.DeserializeObject<List<Product>>(json);
             ViewBag.Categories = JsonConvert.DeserializeObject<List<Category>>(await GetRequest("/Category/GetCategories"));
 
-            if (searchString == null)
+            var filteredList = new List<Product>();
+            foreach (var product in products)
             {
-                return View(products);
-            }
-            else
-            {
-                var filteredList = new List<Product>();
-                foreach (var product in products)
+                if (product.Description.ToLower().Contains(searchString.ToLower()) || product.Category.Name.ToLower().Contains(searchString.ToLower()))
                 {
-                    if (product.Description.ToLower().Contains(searchString.ToLower()) || product.Category.Name.ToLower().Contains(searchString.ToLower()))
-                    {
-                        filteredList.Add(product);
-                    }
+                    filteredList.Add(product);
                 }
-
-                ViewBag.CurrentFilter = searchString;
-                return View(filteredList);
             }
+
+            ViewBag.CurrentFilter = searchString;
+            return View("Gallery", filteredList);
         }
 
+        [Route("Produkt/{urlname}")]
         [HttpGet]
-        public async Task<IActionResult> Details(int id)
+        public async Task<IActionResult> Details(string urlname)
         {
-            var json = await GetRequest($"/Product/GetProduct/{id}");
+            var json = await GetRequest($"/Product/GetProductWithUrlName/{urlname}");
             Product product = JsonConvert.DeserializeObject<Product>(json);
             return View(product);
         }
