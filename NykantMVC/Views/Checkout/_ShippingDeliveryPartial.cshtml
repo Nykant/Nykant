@@ -49,15 +49,16 @@
             </div>
             <button class="button edit-button" id="shipping-edit-button">@localizer["Change"]</button>
         </div>
-        <form id="shipping-form" method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="noop" data-ajax-complete="shipping_completed" data-ajax-begin="noop" data-ajax-failure="noop"  asp-controller="Checkout" asp-action="PostShipping">
+        <form id="shipping-form" method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="noop" data-ajax-complete="shipping_completed" data-ajax-begin="noop" data-ajax-failure="noop" asp-controller="Checkout" asp-action="PostShipping">
+            @Html.AntiForgeryToken()
             <input type="hidden" id="edit-shipping" name="editShipping" />
             <input required type="hidden" id="shipping-delivery-type" name="shippingDelivery.Type" asp-for="@Model.Checkout.ShippingDelivery.Type" />
-            <input required type="hidden" id="parcelshop-CompanyName" name="shippingDelivery.ParcelshopData.CompanyName" asp-for="@Model.Checkout.ShippingDelivery.ParcelshopData.CompanyName" />
-            <input required type="hidden" id="parcelshop-StreetName" name="shippingDelivery.ParcelshopData.Streetname" asp-for="@Model.Checkout.ShippingDelivery.ParcelshopData.Streetname" />
-            <input required type="hidden" id="parcelshop-StreetName2" name="shippingDelivery.ParcelshopData.Streetname2" asp-for="@Model.Checkout.ShippingDelivery.ParcelshopData.Streetname2" />
-            <input required type="hidden" id="parcelshop-ZipCode" name="shippingDelivery.ParcelshopData.ZipCode" asp-for="@Model.Checkout.ShippingDelivery.ParcelshopData.ZipCode" />
-            <input required type="hidden" id="parcelshop-CityName" name="shippingDelivery.ParcelshopData.CityName" asp-for="@Model.Checkout.ShippingDelivery.ParcelshopData.CityName" />
-            <input required type="hidden" id="parcelshop-CountryCodeISO3166A2" name="shippingDelivery.ParcelshopData.CountryCodeISO3166A2" asp-for="@Model.Checkout.ShippingDelivery.ParcelshopData.CountryCodeISO3166A2" />
+            <input required type="hidden" id="parcelshop-CompanyName" name="shippingDelivery.ParcelshopData.CompanyName" asp-for="@Model.Checkout.ShippingDelivery.ParcelshopData.CompanyName" data-value="@Model.Checkout.ShippingDelivery.ParcelshopData.CompanyName" />
+            <input required type="hidden" id="parcelshop-StreetName" name="shippingDelivery.ParcelshopData.Streetname" asp-for="@Model.Checkout.ShippingDelivery.ParcelshopData.Streetname" data-value="@Model.Checkout.ShippingDelivery.ParcelshopData.Streetname" />
+            <input required type="hidden" id="parcelshop-StreetName2" name="shippingDelivery.ParcelshopData.Streetname2" asp-for="@Model.Checkout.ShippingDelivery.ParcelshopData.Streetname2" data-value="@Model.Checkout.ShippingDelivery.ParcelshopData.Streetname2" />
+            <input required type="hidden" id="parcelshop-ZipCode" name="shippingDelivery.ParcelshopData.ZipCode" asp-for="@Model.Checkout.ShippingDelivery.ParcelshopData.ZipCode" data-value="@Model.Checkout.ShippingDelivery.ParcelshopData.ZipCode" />
+            <input required type="hidden" id="parcelshop-CityName" name="shippingDelivery.ParcelshopData.CityName" asp-for="@Model.Checkout.ShippingDelivery.ParcelshopData.CityName" data-value="@Model.Checkout.ShippingDelivery.ParcelshopData.CityName" />
+            <input required type="hidden" id="parcelshop-CountryCodeISO3166A2" name="shippingDelivery.ParcelshopData.CountryCodeISO3166A2" asp-for="@Model.Checkout.ShippingDelivery.ParcelshopData.CountryCodeISO3166A2" data-value="@Model.Checkout.ShippingDelivery.ParcelshopData.CountryCodeISO3166A2" />
             <div class="checkout-wrap" id="shipping-wrap">
                 <div class="custom-list">
                     <div class="custom-list-options" id="custom-list-options">

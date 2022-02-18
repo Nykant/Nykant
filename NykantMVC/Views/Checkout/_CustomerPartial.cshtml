@@ -5,6 +5,7 @@
         <div class="hide-overflow responsive-form" id="customerinf-wrapper">
             <partial name="_CustomerSummaryPartial" />
             <form class="z50" id="customer-form" method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="noop" data-ajax-complete="customer_completed" data-ajax-begin="customer_begin" data-ajax-failure="noop" asp-controller="Checkout" asp-action="PostCustomerInf">
+                @Html.AntiForgeryToken()
                 <input type="hidden" id="edit-customer" name="editCustomer" value="false" />
                 <input type="hidden" asp-for="@Model.Customer.Id" />
                 <div class="checkout-wrap" id="customer-wrap">
@@ -12,13 +13,13 @@
 
                         <div class="customer-box">
                             <div class="inputstyle left">
-                                <input id="customer-email-input" required autocomplete="email" asp-for="@Model.Customer.Email" />
+                                <input id="customer-email-input" required autocomplete="email" asp-for="@Model.Customer.Email" data-value="@Model.Customer.Email" />
                                 <label asp-for="@Model.Customer.Email"></label>
                                 <span asp-validation-for="@Model.Customer.Email"></span>
                                 <div class="underline"></div>
                             </div>
                             <div class="inputstyle left">
-                                <input id="customer-phone-input" required autocomplete="tel" asp-for="@Model.Customer.Phone" />
+                                <input id="customer-phone-input" required autocomplete="tel" asp-for="@Model.Customer.Phone" data-value="@Model.Customer.Phone" />
                                 <label asp-for="@Model.Customer.Phone"></label>
                                 <span asp-validation-for="@Model.Customer.Phone"></span>
                                 <div class="underline"></div>
@@ -30,26 +31,26 @@
                                 @localizer["Billing Address"]
                             </div>
                             <div class="inputstyle left">
-                                <input id="customer-firstname-input" required autocomplete="billing given-name" asp-for="@Model.Customer.BillingAddress.Name" />
+                                <input id="customer-firstname-input" required autocomplete="billing given-name" asp-for="@Model.Customer.BillingAddress.Name" data-value="@Model.Customer.BillingAddress.Name" />
                                 <label asp-for="@Model.Customer.BillingAddress.Name"></label>
                                 <span asp-validation-for="@Model.Customer.BillingAddress.Name"></span>
                                 <div class="underline"></div>
                             </div>
 
                             <div class="inputstyle left">
-                                <input id="customer-address-input" required autocomplete="billing street-address" asp-for="@Model.Customer.BillingAddress.Address" />
+                                <input id="customer-address-input" required autocomplete="billing street-address" asp-for="@Model.Customer.BillingAddress.Address" data-value="@Model.Customer.BillingAddress.Address" />
                                 <label asp-for="@Model.Customer.BillingAddress.Address"></label>
                                 <span asp-validation-for="@Model.Customer.BillingAddress.Address"></span>
                                 <div class="underline"></div>
                             </div>
                             <div class="inputstyle left">
-                                <input id="customer-city-input" required autocomplete="billing address-level2" asp-for="@Model.Customer.BillingAddress.City" />
+                                <input id="customer-city-input" required autocomplete="billing address-level2" asp-for="@Model.Customer.BillingAddress.City" data-value="@Model.Customer.BillingAddress.City" />
                                 <label asp-for="@Model.Customer.BillingAddress.City"></label>
                                 <span asp-validation-for="@Model.Customer.BillingAddress.City"></span>
                                 <div class="underline"></div>
                             </div>
                             <div class="inputstyle left">
-                                <input id="customer-country-input" class="hidden" autocomplete="billing country" asp-for="@Model.Customer.BillingAddress.Country" />
+                                <input id="customer-country-input" class="hidden" autocomplete="billing country" asp-for="@Model.Customer.BillingAddress.Country" data-value="@Model.Customer.BillingAddress.Country" />
                                 <div class="country-label">@localizer["Country"]</div>
                                 <select required id="country-picker">
                                     <option id="customer-country-option">DK</option>
@@ -59,7 +60,7 @@
                                 </div>
                             </div>
                             <div class="inputstyle left">
-                                <input id="customer-postal-input" required autocomplete="billing postal-code" asp-for="@Model.Customer.BillingAddress.Postal" />
+                                <input id="customer-postal-input" required autocomplete="billing postal-code" asp-for="@Model.Customer.BillingAddress.Postal" data-value="@Model.Customer.BillingAddress.Postal" />
                                 <label asp-for="@Model.Customer.BillingAddress.Postal"></label>
                                 <span asp-validation-for="@Model.Customer.BillingAddress.Postal"></span>
                                 <div class="underline"></div>
@@ -80,26 +81,26 @@
                                 @localizer["Shipping Address"]
                             </div>
                             <div class="inputstyle left">
-                                <input id="shippingaddress-firstname" required autocomplete="shipping given-name" asp-for="@Model.Customer.ShippingAddress.Name" />
+                                <input id="shippingaddress-firstname" required autocomplete="shipping given-name" asp-for="@Model.Customer.ShippingAddress.Name" data-value="@Model.Customer.ShippingAddress.Name" />
                                 <label asp-for="@Model.Customer.ShippingAddress.Name"></label>
                                 <span asp-validation-for="@Model.Customer.ShippingAddress.Name"></span>
                                 <div class="underline"></div>
                             </div>
 
                             <div class="inputstyle left">
-                                <input id="shippingaddress-address" required autocomplete="shipping street-address" asp-for="@Model.Customer.ShippingAddress.Address" />
+                                <input id="shippingaddress-address" required autocomplete="shipping street-address" asp-for="@Model.Customer.ShippingAddress.Address" data-value="@Model.Customer.ShippingAddress.Address" />
                                 <label asp-for="@Model.Customer.ShippingAddress.Address"></label>
                                 <span asp-validation-for="@Model.Customer.ShippingAddress.Address"></span>
                                 <div class="underline"></div>
                             </div>
                             <div class="inputstyle left">
-                                <input id="shippingaddress-city" required autocomplete="shipping address-level2" asp-for="@Model.Customer.ShippingAddress.City" />
+                                <input id="shippingaddress-city" required autocomplete="shipping address-level2" asp-for="@Model.Customer.ShippingAddress.City" data-value="@Model.Customer.ShippingAddress.City" />
                                 <label asp-for="@Model.Customer.ShippingAddress.City"></label>
                                 <span asp-validation-for="@Model.Customer.ShippingAddress.City"></span>
                                 <div class="underline"></div>
                             </div>
                             <div class="inputstyle left">
-                                <input id="shippingaddress-country" class="hidden" autocomplete="shipping country" asp-for="@Model.Customer.ShippingAddress.Country" />
+                                <input id="shippingaddress-country" class="hidden" autocomplete="shipping country" asp-for="@Model.Customer.ShippingAddress.Country" data-value="@Model.Customer.ShippingAddress.Country" />
                                 <div class="country-label">@localizer["Country"]</div>
                                 <select required id="shippingaddress-country-picker">
                                     <option id="shipping-country-option">DK</option>
@@ -109,7 +110,7 @@
                                 </div>
                             </div>
                             <div class="inputstyle left">
-                                <input id="shippingaddress-postal" required autocomplete="shipping postal-code" asp-for="@Model.Customer.ShippingAddress.Postal" />
+                                <input id="shippingaddress-postal" required autocomplete="shipping postal-code" asp-for="@Model.Customer.ShippingAddress.Postal" data-value="@Model.Customer.ShippingAddress.Postal" />
                                 <label asp-for="@Model.Customer.ShippingAddress.Postal"></label>
                                 <span asp-validation-for="@Model.Customer.ShippingAddress.Postal"></span>
                                 <div class="underline"></div>

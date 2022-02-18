@@ -29,7 +29,7 @@ var shipping_summary = document.getElementById("shipping-summary");
 var shipping_edit_button = document.getElementById("shipping-edit-button");
 var shipping_delivery_type = document.getElementById("shipping-delivery-type");
 var shipping_price_summary = document.getElementById("shipping-price-summary");
-var stage_value = document.getElementById("stage").value;
+var stage = document.getElementById("stage").dataset.stage;
 var reuse_invoice = document.getElementById('reuse-invoice');
 var shippingaddress_firstname = document.getElementById('shippingaddress-firstname');
 var shippingaddress_city = document.getElementById('shippingaddress-city');
@@ -68,24 +68,37 @@ history.scrollRestoration = "manual";
 
 if (parcelshop_CityName.value != '') {
     parcelshop_summary.style.display = "block";
-    parcelshop_companyname_summary.textContent = parcelshop_CompanyName.value;
-    parcelshop_cityname_summary.textContent = parcelshop_CityName.value;
-    parcelshop_countrycode_summary.textContent = parcelshop_CountryCodeISO3166A2.value;
-    parcelshop_streetname_summary.textContent = parcelshop_StreetName.value;
-    parcelshop_streetname2_summary.textContent = parcelshop_StreetName2.value;
-    parcelshop_zipcode_summary.textContent = parcelshop_ZipCode.value;
+    parcelshop_companyname_summary.textContent = parcelshop_CompanyName.dataset.value;
+    parcelshop_cityname_summary.textContent = parcelshop_CityName.dataset.value;
+    parcelshop_countrycode_summary.textContent = parcelshop_CountryCodeISO3166A2.dataset.value;
+    parcelshop_streetname_summary.textContent = parcelshop_StreetName.dataset.value;
+    parcelshop_streetname2_summary.textContent = parcelshop_StreetName2.dataset.value;
+    parcelshop_zipcode_summary.textContent = parcelshop_ZipCode.dataset.value;
 }
 
-if (reuse_invoice.checked) {
-    document.getElementById('shipping-address-box').style.display = "none";
-    shippingaddress_summary.style.display = "none";
+if (shipping_delivery_type.value == 'Shop' || shipping_delivery_type.value == 'Butik') {
+    parcelshop_summary.style.display = "block";
+    parcelshop_companyname_summary.textContent = parcelshop_CompanyName.dataset.value;
+    parcelshop_cityname_summary.textContent = parcelshop_CityName.dataset.value;
+    parcelshop_countrycode_summary.textContent = parcelshop_CountryCodeISO3166A2.dataset.value;
+    parcelshop_streetname_summary.textContent = parcelshop_StreetName.dataset.value;
+    parcelshop_streetname2_summary.textContent = parcelshop_StreetName2.dataset.value;
+    parcelshop_zipcode_summary.textContent = parcelshop_ZipCode.dataset.value;
 }
 else {
-    document.getElementById('shipping-address-box').style.display = "block";
-    shippingaddress_summary.style.display = "block";
+    parcelshop_summary.style.display = "none";
 }
 
-if (stage_value == 1) {
+//if (reuse_invoice.checked) {
+//    document.getElementById('shipping-address-box').style.display = "none";
+//    shippingaddress_summary.style.display = "none";
+//}
+//else {
+//    document.getElementById('shipping-address-box').style.display = "block";
+//    shippingaddress_summary.style.display = "block";
+//}
+
+if (stage == 1) {
     gtag('event', 'begin_checkout');
     customer_wrap.style.transition = "all 1s";
     customer_form.style.transition = "all 1s";
@@ -96,7 +109,7 @@ if (stage_value == 1) {
         scrollTop: $("#customerInf-header").offset().top
     }, 'slow');
 }
-else if (stage_value == 2) {
+else if (stage == 2) {
     shipping_wrap.style.transition = "all 1s";
     shipping_form.style.transition = "all 1s";
     shipping_form.style.height = "auto";
@@ -111,7 +124,7 @@ else if (stage_value == 2) {
         scrollTop: $("#shipping-headerr").offset().top
     }, 'slow');
 }
-else if (stage_value == 3) {
+else if (stage == 3) {
 
     payment_wrap.style.transition = "all 1s";
     payment_form.style.transition = "all 1s";
@@ -161,28 +174,57 @@ back_button.addEventListener('click', function () {
 
 customer_begin = function () {
     customerloading(true);
-    if (reuse_invoice) {
-        shippingaddress_firstname.textContent = firstname_input.value;
-        shippingaddress_city.textContent = city_input.value;
-        shippingaddress_country.textContent = country_input.value;
-        shippingaddress_postal.textContent = postal_input.value;
-        shippingaddress_address.textContent = address_input.value;
-    }
+
+    //if (reuse_invoice) {
+    //    shippingaddress_firstname.textContent = firstname_input.dataset.value;
+    //    shippingaddress_city.textContent = city_input.dataset.value;
+    //    shippingaddress_country.textContent = country_input.dataset.value;
+    //    shippingaddress_postal.textContent = postal_input.dataset.value;
+    //    shippingaddress_address.textContent = address_input.dataset.value;
+    //}
+
 }
 
 customer_completed = function (response) {
     customerloading(false);
     if (response.responseJSON == undefined) {
+        firstname_input.dataset.value = firstname_input.value;
+        email_input.dataset.value = email_input.value;
+        phone_input.dataset.value = phone_input.value;
+        country_input.dataset.value = country_input.value;
+        city_input.dataset.value = city_input.value;
+        postal_input.dataset.value = postal_input.value;
+        address_input.dataset.value = address_input.value;
+
+
         if (reuse_invoice.checked) {
-            shippingaddress_summary.style.display = "none";
+            shippingaddress_summary.style.display = "block";
+            shippingaddress_address.dataset.value = address_input.dataset.value;
+            shippingaddress_city.dataset.value = city_input.dataset.value;
+            shippingaddress_country.dataset.value = country_input.dataset.value;
+            shippingaddress_firstname.dataset.value = firstname_input.dataset.value;
+            shippingaddress_postal.dataset.value = postal_input.dataset.value;
+
+            shippingaddress_address_summary.textContent = address_input.dataset.value;
+            shippingaddress_city_summary.textContent = city_input.dataset.value;
+            shippingaddress_country_summary.textContent = country_input.dataset.value;
+            shippingaddress_firstname_summary.textContent = firstname_input.dataset.value;
+            shippingaddress_postal_summary.textContent = postal_input.dataset.value;
+           /* shippingaddress_summary.style.display = "none";*/
         }
         else {
             shippingaddress_summary.style.display = "block";
-            shippingaddress_address_summary.textContent = shippingaddress_address.value;
-            shippingaddress_city_summary.textContent = shippingaddress_city.value;
-            shippingaddress_country_summary.textContent = shippingaddress_country.value;
-            shippingaddress_firstname_summary.textContent = shippingaddress_firstname.value;
-            shippingaddress_postal_summary.textContent = shippingaddress_postal.value;
+            shippingaddress_address.dataset.value = shippingaddress_address.value;
+            shippingaddress_city.dataset.value = shippingaddress_city.value;
+            shippingaddress_country.dataset.value = shippingaddress_country.value;
+            shippingaddress_firstname.dataset.value = shippingaddress_firstname.value;
+            shippingaddress_postal.dataset.value = shippingaddress_postal.value;
+
+            shippingaddress_address_summary.textContent = shippingaddress_address.dataset.value;
+            shippingaddress_city_summary.textContent = shippingaddress_city.dataset.value;
+            shippingaddress_country_summary.textContent = shippingaddress_country.dataset.value;
+            shippingaddress_firstname_summary.textContent = shippingaddress_firstname.dataset.value;
+            shippingaddress_postal_summary.textContent = shippingaddress_postal.dataset.value;
         }
 
         document.getElementById("edit-customer").value = false;
@@ -195,13 +237,13 @@ customer_completed = function (response) {
         customer_form.style.transition = "all 1s";
 
         customer_edit_button.style.display = "block";
-        firstname_summary.textContent = firstname_input.value;
-        email_summary.textContent = email_input.value;
-        phone_summary.textContent = phone_input.value;
-        country_summary.textContent = country_input.value;
-        city_summary.textContent = city_input.value;
-        postal_summary.textContent = postal_input.value;
-        address_summary.textContent = address_input.value;
+        firstname_summary.textContent = firstname_input.dataset.value;
+        email_summary.textContent = email_input.dataset.value;
+        phone_summary.textContent = phone_input.dataset.value;
+        country_summary.textContent = country_input.dataset.value;
+        city_summary.textContent = city_input.dataset.value;
+        postal_summary.textContent = postal_input.dataset.value;
+        address_summary.textContent = address_input.dataset.value;
 
         customer_wrap.style.transform = "translateY(-100%)";
         customer_form.style.height = "0px";
@@ -245,12 +287,12 @@ shipping_completed = function (response) {
 
         if (shipping_delivery_type.value == 'Shop' || shipping_delivery_type.value == 'Butik') {
             parcelshop_summary.style.display = "block";
-            parcelshop_companyname_summary.textContent = parcelshop_CompanyName.value;
-            parcelshop_cityname_summary.textContent = parcelshop_CityName.value;
-            parcelshop_countrycode_summary.textContent = parcelshop_CountryCodeISO3166A2.value;
-            parcelshop_streetname_summary.textContent = parcelshop_StreetName.value;
-            parcelshop_streetname2_summary.textContent = parcelshop_StreetName2.value;
-            parcelshop_zipcode_summary.textContent = parcelshop_ZipCode.value;
+            parcelshop_companyname_summary.textContent = parcelshop_CompanyName.dataset.value;
+            parcelshop_cityname_summary.textContent = parcelshop_CityName.dataset.value;
+            parcelshop_countrycode_summary.textContent = parcelshop_CountryCodeISO3166A2.dataset.value;
+            parcelshop_streetname_summary.textContent = parcelshop_StreetName.dataset.value;
+            parcelshop_streetname2_summary.textContent = parcelshop_StreetName2.dataset.value;
+            parcelshop_zipcode_summary.textContent = parcelshop_ZipCode.dataset.value;
         }
         else {
             parcelshop_summary.style.display = "none";

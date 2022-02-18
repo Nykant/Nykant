@@ -74,22 +74,18 @@ for (i = 0; i < l; i++) {
 
                     if (select.options[i].dataset.type.includes('Shop')) {
                         var address, postal;
-                        if (shippingaddress_address.value != '') {
-                            address = shippingaddress_address.value;
-                        }
-                        else if (shippingaddress_address.textContent != '') {
-                            address = shippingaddress_address.textContent;
-                        }
-                        if (shippingaddress_postal.value != '') {
-                            postal = shippingaddress_postal.value;
-                        }
-                        else if (shippingaddress_postal.textContent != '') {
-                            postal = shippingaddress_postal.textContent;
-                        }
-                        /* fetch('/checkout/GetNearbyShopsJson?Street=' + address + '&ZipCode=' + postal + '&CountryIso=DK&Amount=5'*/
+                        address = shippingaddress_address.dataset.value;
+                        postal = shippingaddress_postal.dataset.value;
+
                         $.ajax({
-                            type: "GET",
-                            url: '/checkout/GetNearbyShopsJson?Street=' + address + '&ZipCode=' + postal + '&CountryIso=DK&Amount=5'
+                            type: "POST",
+                            url: '/checkout/GetNearbyShopsJson',
+                            data: AddAntiforgeryToken({
+                                Street: address,
+                                ZipCode: postal,
+                                CountryIso: 'DK',
+                                Amount: 5
+                            })
                         }).then(function (result) {
                             for (var t = 0; t < result.parcelshops.length; t++) {
                                 if (nearby_shops.children.length < 6) {
@@ -144,22 +140,28 @@ for (i = 0; i < l; i++) {
                                         for (var i = 0; i < props.length; i++) {
                                             var prop_type = props[i].getAttribute("data-type");
                                             if (prop_type == "companyName") {
+                                                parcelshop_CompanyName.dataset.value = props[i].textContent;
                                                 parcelshop_CompanyName.value = props[i].textContent;
                                                 y[0].children[1].textContent = props[i].textContent;
                                             }
                                             else if (prop_type == "streetname") {
+                                                parcelshop_StreetName.dataset.value = props[i].textContent;
                                                 parcelshop_StreetName.value = props[i].textContent;
                                             }
                                             else if (prop_type == "streetname2") {
+                                                parcelshop_StreetName2.dataset.value = props[i].textContent;
                                                 parcelshop_StreetName2.value = props[i].textContent;
                                             }
                                             else if (prop_type == "zipCode") {
+                                                parcelshop_ZipCode.dataset.value = props[i].textContent;
                                                 parcelshop_ZipCode.value = props[i].textContent;
                                             }
                                             else if (prop_type == "cityName") {
+                                                parcelshop_CityName.dataset.value = props[i].textContent;
                                                 parcelshop_CityName.value = props[i].textContent;
                                             }
                                             else if (prop_type == "countryCodeISO3166A2") {
+                                                parcelshop_CountryCodeISO3166A2.dataset.value = props[i].textContent;
                                                 parcelshop_CountryCodeISO3166A2.value = props[i].textContent;
                                             }
                                         }

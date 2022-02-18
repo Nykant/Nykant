@@ -126,6 +126,17 @@ namespace NykantMVC.Controllers
             }
             else
             {
+                if (checkout.Stage == Stage.completed)
+                {
+                    return RedirectToAction("Success");
+                }
+
+                if (bagItemsSession.Count() == 0 && bagItemsDb.Count() == 0)
+                {
+                    HttpContext.Session.Set<Checkout>(CheckoutSessionKey, null);
+                    return RedirectToAction("Details", "Bag");
+                }
+
                 if (User.Identity.IsAuthenticated)
                 {
                     double.TryParse(CalculateAmount(bagItemsDb), out double total);
@@ -151,12 +162,6 @@ namespace NykantMVC.Controllers
 
                     checkout.BagItems = bagItemsSession;
                     HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
-                }
-
-                if (bagItemsSession.Count() == 0 && bagItemsDb.Count() == 0)
-                {
-                    HttpContext.Session.Set<Checkout>(CheckoutSessionKey, null);
-                    return RedirectToAction("Details", "Bag");
                 }
 
                 Customer customer = null;
@@ -401,7 +406,7 @@ namespace NykantMVC.Controllers
             return customer;
         }
 
-        [HttpGet]
+        [HttpPost]
         public async Task<ParcelShopSearchResult> GetNearbyShopsJson(GlsAddress glsAddress)
         {
             var shops = await GetNearbyShops(glsAddress);
