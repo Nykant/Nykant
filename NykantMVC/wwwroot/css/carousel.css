@@ -36,6 +36,14 @@
         left: 18px
     }
 
+    .product-card button {
+        background:none;
+        border:none;
+        margin:auto;
+        width:100%;
+        color:var(--dark);
+    }
+
 .product-badge {
     position: absolute;
     font-size: 14px;
