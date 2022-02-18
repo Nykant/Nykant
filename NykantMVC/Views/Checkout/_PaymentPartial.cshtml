@@ -42,7 +42,10 @@
                                 <input id="terms-and-conditions-consent" value="false" type="checkbox">
                                 <span class="checkmark"></span>
                             </label>
-                            @localizer["Signature required"]
+                            <span class="checkbox-validation" id="terms-and-conditions-validation">Du skal skrive under før du må fortsætte.</span>
+                            <p>for at færdiggøre ordren, skal du skrive under på at du har læst og accepterer vores 
+                            <a class="simple-link" asp-controller="Home" asp-action="TermsAndConditions">Salgs- og leveringsbetingelser</a> ved at klikke i tjek-boksen.</p>
+                            @*@localizer["Signature required"]*@
                         </div>
                     </div>
                 </div>
