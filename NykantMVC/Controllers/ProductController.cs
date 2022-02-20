@@ -56,12 +56,12 @@ namespace NykantMVC.Controllers
             return View(product);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetLength(int lengthInput)
+        [HttpPost]
+        public async Task<IActionResult> PostLength(string urlname)
         {
-            var json = await GetRequest($"/Product/GetProduct/{lengthInput}");
+            var json = await GetRequest($"/Product/GetProductWithUrlName/{urlname}");
             Product product = JsonConvert.DeserializeObject<Product>(json);
-            return View("Details", product);
+            return RedirectToAction("Details", new { urlname = urlname });
         }
 
         [HttpPost]

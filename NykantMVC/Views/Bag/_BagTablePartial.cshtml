@@ -2,22 +2,29 @@
 @inject IViewLocalizer localizer
 
 <div class="bagtable-headers">
-    <div>@localizer["Total"]</div>
-    <div>@localizer["Amount"]</div>
-    <div>@localizer["Price"]</div>
-    <div>@localizer["Product"]</div>
+    <div>@localizer["I Alt"]</div>
+    <div>@localizer["Antal"]</div>
+    <div>@localizer["Pris pr. stk."]</div>
+    <div>@localizer["Produkt"]</div>
 </div>
 @foreach (var bagItem in Model)
 {
     <div class="bag-item">
         <div id="bag-item-image">
-            <a asp-action="Details" asp-controller="Product" asp-route-id="@bagItem.Product.Id">
+            <a asp-action="Details" asp-controller="Product" asp-route-urlname="@bagItem.Product.UrlName">
                 <img src="@bagItem.Product.GalleryImage1" />
             </a>
         </div>
         <div id="bag-item-name">
-            <a asp-action="Details" asp-controller="Product" asp-route-id="@bagItem.Product.Id">
-                @bagItem.Product.Name
+            <a asp-action="Details" asp-controller="Product" asp-route-urlname="@bagItem.Product.UrlName">
+                @if (bagItem.Product.Length != null)
+                {
+                <p>@bagItem.Product.Name <br /> @bagItem.Product.Length <br /> @bagItem.Product.Oil</p>
+                }
+                else
+                {
+            <p>@bagItem.Product.Name <br /> @bagItem.Product.Oil</p>
+                }
             </a>
         </div>
         <div id="bag-item-price"><label>kr. @bagItem.Product.Price</label></div>

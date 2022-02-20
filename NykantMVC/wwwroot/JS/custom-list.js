@@ -18,6 +18,15 @@ var submit_button = document.getElementById('custom-list-button')
 var not_home = document.getElementById('not-home');
 submit_button.disabled = true;
 
+if (shipping_method_summary.textContent == 'Home') {
+    shipping_method_summary.textContent = 'Til Leveringsaddressen med GLS';
+}
+else if (shipping_method_summary.textContent == 'Shop') {
+    shipping_method_summary.textContent = 'Til Pakkeshop med GLS';
+}
+else if (shipping_method_summary.textContent == 'HomeDKI') {
+    shipping_method_summary.textContent = 'Leveringsaddressen med DKI Pallegods';
+}
 
 
 for (i = 0; i < l; i++) {
@@ -27,7 +36,18 @@ for (i = 0; i < l; i++) {
         c = document.createElement("div");
         var type = document.createElement("div");
         type.setAttribute("class", "delivery-type");
-        type.textContent = selElmnt.options[j].dataset.transtype;
+        if (selElmnt.options[j].dataset.type == 'Home') {
+            selElmnt.options[j].dataset.transtype = 'Til Leveringsaddressen med GLS';
+            type.textContent = 'Til Leveringsaddressen med GLS';
+        }
+        else if (selElmnt.options[j].dataset.type == 'HomeDKI') {
+            selElmnt.options[j].dataset.transtype = 'Leveringsaddressen med DKI Pallegods';
+            type.textContent = 'Leveringsaddressen med DKI Pallegods';
+        }
+        else if (selElmnt.options[j].dataset.type == 'Shop') {
+            selElmnt.options[j].dataset.transtype = 'Til Pakkeshop med GLS';
+            type.textContent = 'Til Pakkeshop med GLS';
+        }
         var shop = document.createElement("div");
         shop.setAttribute("class", "delivery-shop");
         c.appendChild(type);
@@ -43,7 +63,16 @@ for (i = 0; i < l; i++) {
             selectlength = select.length;
             for (i = 1; i < selectlength; i++) {
                 if (select.options[i].dataset.transtype === this.children[0].textContent) {
-                    shipping_method_summary.textContent = select.options[i].dataset.transtype;
+                    if (select.options[i].dataset.type == 'Home') {
+                        shipping_method_summary.textContent = 'Til Leveringsaddressen med GLS';
+                    }
+                    else if (select.options[i].dataset.type == 'HomeDKI') {
+                        shipping_method_summary.textContent = 'Leveringsaddressen med DKI Pallegods';
+                    }
+                    else if (select.options[i].dataset.type == 'Shop') {
+                        shipping_method_summary.textContent = 'Til Pakkeshop med GLS';
+                    }
+
                     select.selectedIndex = i;
 
                     y = this.parentNode.getElementsByClassName("custom-list-option selected");

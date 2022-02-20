@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NykantAPI.Data;
 
-namespace NykantAPI.Data.migrations
+namespace NykantAPI.data.migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -1172,7 +1172,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 1,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_boejle_naturolie_01.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_boejle_naturolie_01.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_boejle_naturolie_01.png"
                         },
                         new
                         {
@@ -1181,7 +1181,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 1,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_boejle_naturolie_02.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_boejle_naturolie_02.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_boejle_naturolie_02.png"
                         },
                         new
                         {
@@ -1190,7 +1190,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 2,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_boejle_sortolie_01.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_boejle_sortolie_01.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_boejle_sortolie_01.png"
                         },
                         new
                         {
@@ -1199,7 +1199,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 2,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_boejle_sortolie_02.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_boejle_sortolie_02.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_boejle_sortolie_02.png"
                         },
                         new
                         {
@@ -1208,7 +1208,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 3,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_boejle_hvidolie_01.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_boejle_hvidolie_01.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_boejle_hvidolie_01.png"
                         },
                         new
                         {
@@ -1217,7 +1217,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 3,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_boejle_hvidolie_02.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_boejle_hvidolie_02.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_boejle_hvidolie_02.png"
                         },
                         new
                         {
@@ -1226,7 +1226,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 4,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_hvidolie_01.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_01.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_01.png"
                         },
                         new
                         {
@@ -1235,7 +1235,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 4,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_hvidolie_02.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_02.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_02.png"
                         },
                         new
                         {
@@ -1244,7 +1244,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 4,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_hvidolie_03.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_03.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_03.png"
                         },
                         new
                         {
@@ -1253,7 +1253,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 5,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_sortolie_01.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_01.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_01.png"
                         },
                         new
                         {
@@ -1262,7 +1262,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 5,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_sortolie_02.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_02.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_02.png"
                         },
                         new
                         {
@@ -1271,7 +1271,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 5,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_sortolie_03.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_03.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_03.png"
                         },
                         new
                         {
@@ -1280,7 +1280,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 6,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_naturolie_01.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_01.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_01.png"
                         },
                         new
                         {
@@ -1289,7 +1289,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 6,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_naturolie_02.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_02.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_02.png"
                         },
                         new
                         {
@@ -1298,7 +1298,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 6,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_naturolie_03.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_03.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_03.png"
                         },
                         new
                         {
@@ -1307,7 +1307,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 7,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_hvidolie_01.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_01.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_01.png"
                         },
                         new
                         {
@@ -1316,7 +1316,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 7,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_hvidolie_02.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_02.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_02.png"
                         },
                         new
                         {
@@ -1325,7 +1325,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 7,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_hvidolie_03.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_03.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_03.png"
                         },
                         new
                         {
@@ -1334,7 +1334,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 8,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_sortolie_01.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_01.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_01.png"
                         },
                         new
                         {
@@ -1343,7 +1343,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 8,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_sortolie_02.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_02.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_02.png"
                         },
                         new
                         {
@@ -1352,7 +1352,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 8,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_sortolie_03.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_03.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_03.png"
                         },
                         new
                         {
@@ -1361,7 +1361,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 9,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_naturolie_01.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_01.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_01.png"
                         },
                         new
                         {
@@ -1370,7 +1370,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 9,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_naturolie_02.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_02.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_02.png"
                         },
                         new
                         {
@@ -1379,7 +1379,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 9,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_naturolie_03.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_03.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_03.png"
                         },
                         new
                         {
@@ -1388,7 +1388,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 10,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_hvidolie_01.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_01.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_01.png"
                         },
                         new
                         {
@@ -1397,7 +1397,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 10,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_hvidolie_02.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_02.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_02.png"
                         },
                         new
                         {
@@ -1406,7 +1406,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 10,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_hvidolie_03.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_03.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_03.png"
                         },
                         new
                         {
@@ -1415,7 +1415,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 11,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_sortolie_01.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_01.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_01.png"
                         },
                         new
                         {
@@ -1424,7 +1424,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 11,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_sortolie_02.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_02.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_02.png"
                         },
                         new
                         {
@@ -1433,7 +1433,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 11,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_sortolie_03.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_03.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_03.png"
                         },
                         new
                         {
@@ -1442,7 +1442,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 12,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_naturolie_01.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_01.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_01.png"
                         },
                         new
                         {
@@ -1451,7 +1451,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 12,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_naturolie_02.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_02.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_02.png"
                         },
                         new
                         {
@@ -1460,7 +1460,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 12,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_naturolie_03.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_03.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_03.png"
                         },
                         new
                         {
@@ -1469,7 +1469,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 13,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_hvidolie_01.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_01.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_01.png"
                         },
                         new
                         {
@@ -1478,7 +1478,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 13,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_hvidolie_02.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_02.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_02.png"
                         },
                         new
                         {
@@ -1487,7 +1487,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 13,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_hvidolie_03.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_03.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_hvidolie_03.png"
                         },
                         new
                         {
@@ -1496,7 +1496,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 14,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_sortolie_01.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_01.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_01.png"
                         },
                         new
                         {
@@ -1505,7 +1505,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 14,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_sortolie_02.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_02.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_02.png"
                         },
                         new
                         {
@@ -1514,7 +1514,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 14,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_sortolie_03.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_03.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_sortolie_03.png"
                         },
                         new
                         {
@@ -1523,7 +1523,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 15,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_naturolie_01.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_01.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_01.png"
                         },
                         new
                         {
@@ -1532,7 +1532,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 15,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_naturolie_02.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_02.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_02.png"
                         },
                         new
                         {
@@ -1541,7 +1541,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 15,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_hylde_naturolie_03.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_03.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_hylde_naturolie_03.png"
                         },
                         new
                         {
@@ -1550,7 +1550,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 16,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_bord_naturolie_01.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_bord_naturolie_01.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_bord_naturolie_01.png"
                         },
                         new
                         {
@@ -1559,7 +1559,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 16,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_bord_naturolie_02.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_bord_naturolie_02.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_bord_naturolie_02.png"
                         },
                         new
                         {
@@ -1568,7 +1568,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 16,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_bord_naturolie_03.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_bord_naturolie_03.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_bord_naturolie_03.png"
                         },
                         new
                         {
@@ -1577,7 +1577,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 17,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_bord_hvidolie_01.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_bord_hvidolie_01.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_bord_hvidolie_01.png"
                         },
                         new
                         {
@@ -1586,7 +1586,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 17,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_bord_hvidolie_02.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_bord_hvidolie_02.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_bord_hvidolie_02.png"
                         },
                         new
                         {
@@ -1595,7 +1595,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 17,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_bord_hvidolie_03.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_bord_hvidolie_03.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_bord_hvidolie_03.png"
                         },
                         new
                         {
@@ -1604,7 +1604,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 18,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_kortbaenk_naturolie_01.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_kortbaenk_naturolie_01.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_kortbaenk_naturolie_01.png"
                         },
                         new
                         {
@@ -1613,7 +1613,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 18,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_kortbaenk_naturolie_02.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_kortbaenk_naturolie_02.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_kortbaenk_naturolie_02.png"
                         },
                         new
                         {
@@ -1622,7 +1622,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 18,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_kortbaenk_naturolie_03.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_kortbaenk_naturolie_03.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_kortbaenk_naturolie_03.png"
                         },
                         new
                         {
@@ -1631,7 +1631,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 19,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_kortbaenk_hvidolie_01.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_kortbaenk_hvidolie_01.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_kortbaenk_hvidolie_01.png"
                         },
                         new
                         {
@@ -1640,7 +1640,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 19,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_kortbaenk_hvidolie_02.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_kortbaenk_hvidolie_02.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_kortbaenk_hvidolie_02.png"
                         },
                         new
                         {
@@ -1649,7 +1649,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 19,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_kortbaenk_hvidolie_03.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_kortbaenk_hvidolie_03.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_kortbaenk_hvidolie_03.png"
                         },
                         new
                         {
@@ -1658,7 +1658,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 20,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_kortbaenk_sortolie_01.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_kortbaenk_sortolie_01.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_kortbaenk_sortolie_01.png"
                         },
                         new
                         {
@@ -1667,7 +1667,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 20,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_kortbaenk_sortolie_02.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_kortbaenk_sortolie_02.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_kortbaenk_sortolie_02.png"
                         },
                         new
                         {
@@ -1676,7 +1676,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 20,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_kortbaenk_sortolie_03.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_kortbaenk_sortolie_03.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_kortbaenk_sortolie_03.png"
                         },
                         new
                         {
@@ -1685,7 +1685,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 21,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_langbaenk_naturolie_01.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_langbaenk_naturolie_01.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_langbaenk_naturolie_01.png"
                         },
                         new
                         {
@@ -1694,7 +1694,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 21,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_langbaenk_naturolie_02.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_langbaenk_naturolie_02.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_langbaenk_naturolie_02.png"
                         },
                         new
                         {
@@ -1703,7 +1703,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 21,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_langbaenk_naturolie_03.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_langbaenk_naturolie_03.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_langbaenk_naturolie_03.png"
                         },
                         new
                         {
@@ -1712,7 +1712,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 22,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_langbaenk_hvidolie_01.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_langbaenk_hvidolie_01.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_langbaenk_hvidolie_01.png"
                         },
                         new
                         {
@@ -1721,7 +1721,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 22,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_langbaenk_hvidolie_02.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_langbaenk_hvidolie_02.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_langbaenk_hvidolie_02.png"
                         },
                         new
                         {
@@ -1730,7 +1730,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 22,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_langbaenk_hvidolie_03.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_langbaenk_hvidolie_03.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_langbaenk_hvidolie_03.png"
                         },
                         new
                         {
@@ -1739,7 +1739,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 23,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_langbaenk_sortolie_01.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_langbaenk_sortolie_01.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_langbaenk_sortolie_01.png"
                         },
                         new
                         {
@@ -1748,7 +1748,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 23,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_langbaenk_sortolie_02.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_langbaenk_sortolie_02.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_langbaenk_sortolie_02.png"
                         },
                         new
                         {
@@ -1757,7 +1757,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 23,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_langbaenk_sortolie_03.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_langbaenk_sortolie_03.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_langbaenk_sortolie_03.png"
                         },
                         new
                         {
@@ -1766,7 +1766,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 24,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_naturolie_01.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_naturolie_01.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_naturolie_01.png"
                         },
                         new
                         {
@@ -1775,7 +1775,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 24,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_naturolie_02.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_naturolie_02.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_naturolie_02.png"
                         },
                         new
                         {
@@ -1784,7 +1784,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 24,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_naturolie_03.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_naturolie_03.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_naturolie_03.png"
                         },
                         new
                         {
@@ -1793,7 +1793,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 24,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_naturolie_04.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_naturolie_04.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_naturolie_04.png"
                         },
                         new
                         {
@@ -1802,7 +1802,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 24,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_naturolie_05.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_naturolie_05.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_naturolie_05.png"
                         },
                         new
                         {
@@ -1811,7 +1811,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 24,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_naturolie_06.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_naturolie_06.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_naturolie_06.png"
                         },
                         new
                         {
@@ -1820,7 +1820,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 24,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_naturolie_07.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_naturolie_07.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_naturolie_07.png"
                         },
                         new
                         {
@@ -1829,7 +1829,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 25,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_hvidolie_01.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_hvidolie_01.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_hvidolie_01.png"
                         },
                         new
                         {
@@ -1838,7 +1838,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 25,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_hvidolie_02.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_hvidolie_02.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_hvidolie_02.png"
                         },
                         new
                         {
@@ -1847,7 +1847,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 25,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_hvidolie_03.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_hvidolie_03.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_hvidolie_03.png"
                         },
                         new
                         {
@@ -1856,7 +1856,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 25,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_hvidolie_04.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_hvidolie_04.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_hvidolie_04.png"
                         },
                         new
                         {
@@ -1865,7 +1865,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 25,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_hvidolie_05.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_hvidolie_05.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_hvidolie_05.png"
                         },
                         new
                         {
@@ -1874,7 +1874,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 25,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_hvidolie_06.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_hvidolie_06.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_hvidolie_06.png"
                         },
                         new
                         {
@@ -1883,7 +1883,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 25,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_hvidolie_07.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_hvidolie_07.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_hvidolie_07.png"
                         },
                         new
                         {
@@ -1892,7 +1892,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 26,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_sort_01.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_sort_01.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_sort_01.png"
                         },
                         new
                         {
@@ -1901,7 +1901,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 26,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_sort_02.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_sort_02.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_sort_02.png"
                         },
                         new
                         {
@@ -1910,7 +1910,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 26,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_sort_03.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_sort_03.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_sort_03.png"
                         },
                         new
                         {
@@ -1919,7 +1919,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 26,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_sort_04.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_sort_04.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_sort_04.png"
                         },
                         new
                         {
@@ -1928,7 +1928,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 26,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_sort_05.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_sort_05.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_sort_05.png"
                         },
                         new
                         {
@@ -1937,7 +1937,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 26,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_sort_06.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_sort_06.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_sort_06.png"
                         },
                         new
                         {
@@ -1946,7 +1946,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 26,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_opbevaringsbaenk_sort_07.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_sort_07.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_sort_07.png"
                         },
                         new
                         {
@@ -1955,7 +1955,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 27,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_naturolie_01.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_rack_naturolie_01.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_rack_naturolie_01.png"
                         },
                         new
                         {
@@ -1964,7 +1964,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 27,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_naturolie_02.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_rack_naturolie_02.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_rack_naturolie_02.png"
                         },
                         new
                         {
@@ -1973,7 +1973,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 27,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_naturolie_03.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_rack_naturolie_03.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_rack_naturolie_03.png"
                         },
                         new
                         {
@@ -1982,7 +1982,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 27,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_naturolie_04.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_rack_naturolie_04.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_rack_naturolie_04.png"
                         },
                         new
                         {
@@ -1991,7 +1991,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 27,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_naturolie_05.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_rack_naturolie_05.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_rack_naturolie_05.png"
                         },
                         new
                         {
@@ -2000,7 +2000,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 27,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_naturolie_06.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_rack_naturolie_06.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_rack_naturolie_06.png"
                         },
                         new
                         {
@@ -2009,7 +2009,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 28,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_hvidolie_01.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_rack_hvidolie_01.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_rack_hvidolie_01.png"
                         },
                         new
                         {
@@ -2018,7 +2018,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 28,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_hvidolie_01.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_rack_hvidolie_02.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_rack_hvidolie_02.png"
                         },
                         new
                         {
@@ -2027,7 +2027,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 28,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_hvidolie_03.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_rack_hvidolie_03.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_rack_hvidolie_03.png"
                         },
                         new
                         {
@@ -2036,7 +2036,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 28,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_hvidolie_04.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_rack_hvidolie_04.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_rack_hvidolie_04.png"
                         },
                         new
                         {
@@ -2045,7 +2045,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 28,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_hvidolie_05.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_rack_hvidolie_05.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_rack_hvidolie_05.png"
                         },
                         new
                         {
@@ -2054,7 +2054,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 28,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_hvidolie_06.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_rack_hvidolie_06.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_rack_hvidolie_06.png"
                         },
                         new
                         {
@@ -2063,7 +2063,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 29,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_sortolie_01.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_rack_sortolie_01.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_rack_sortolie_01.png"
                         },
                         new
                         {
@@ -2072,7 +2072,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 29,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_sortolie_02.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_rack_sortolie_02.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_rack_sortolie_02.png"
                         },
                         new
                         {
@@ -2081,7 +2081,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 29,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_sortolie_03.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_rack_sortolie_03.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_rack_sortolie_03.png"
                         },
                         new
                         {
@@ -2090,7 +2090,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 29,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_sortolie_04.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_rack_sortolie_04.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_rack_sortolie_04.png"
                         },
                         new
                         {
@@ -2099,7 +2099,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 29,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_sortolie_05.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_rack_sortolie_05.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_rack_sortolie_05.png"
                         },
                         new
                         {
@@ -2108,7 +2108,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 29,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/NYKANT_rack_sortolie_06.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/NYKANT_rack_sortolie_06.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_rack_sortolie_06.png"
                         },
                         new
                         {
@@ -2117,7 +2117,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 30,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/Ingrid_Naturolie_1.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/Ingrid_Naturolie_1.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/Ingrid_Naturolie_1.png"
                         },
                         new
                         {
@@ -2126,7 +2126,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 30,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/Ingrid_Naturolie_2.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/Ingrid_Naturolie_2.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/Ingrid_Naturolie_2.png"
                         },
                         new
                         {
@@ -2135,7 +2135,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 30,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/Ingrid_Naturolie_3.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/Ingrid_Naturolie_3.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/Ingrid_Naturolie_3.png"
                         },
                         new
                         {
@@ -2144,7 +2144,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 31,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/Ingrid_Hvidolie_1.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/Ingrid_Hvidolie_1.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/Ingrid_Hvidolie_1.png"
                         },
                         new
                         {
@@ -2153,7 +2153,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 31,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/Ingrid_Hvidolie_2.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/Ingrid_Hvidolie_2.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/Ingrid_Hvidolie_2.png"
                         },
                         new
                         {
@@ -2162,7 +2162,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 31,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/Ingrid_Hvidolie_3.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/Ingrid_Hvidolie_3.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/Ingrid_Hvidolie_3.png"
                         },
                         new
                         {
@@ -2171,7 +2171,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 32,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/Ingrid_Sortolie_1.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/Ingrid_Sortolie_1.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/Ingrid_Sortolie_1.png"
                         },
                         new
                         {
@@ -2180,7 +2180,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 32,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/Ingrid_Sortolie_2.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/Ingrid_Sortolie_2.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/Ingrid_Sortolie_2.png"
                         },
                         new
                         {
@@ -2189,7 +2189,7 @@ namespace NykantAPI.Data.migrations
                             ProductId = 32,
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/Ingrid_Sortolie_3.png",
-                            Source2 = "../images/products/Details_Fullscreen/Desktop/Ingrid_Sortolie_3.png"
+                            Source2 = "../images/Products/Details_Fullscreen/Desktop/Ingrid_Sortolie_3.png"
                         },
                         new
                         {
@@ -3295,21 +3295,20 @@ namespace NykantAPI.Data.migrations
                             Amount = 0,
                             AssemblyPath = "none",
                             CategoryId = 5,
-                            Description = "Gertrud Description",
+                            Description = "Denne smukke bøjle med klassiske fine linjer, afrundede kanter og ender, giver perfekt støtte og mindst mulige mærker i tøjet.",
                             EColor = 0,
                             ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_boejle_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_boejle_naturolie_02.png",
-                            Materials = "Gertrud Materials",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Sort bøjlekrog</p></td></tr>",
                             Name = "Bøjlen Gertrud / 3 stk.",
-                            Note = "Gertrud Note",
                             Number = "15001",
                             Oil = "Naturolie",
-                            Package = "Gertrud Package",
+                            Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Størrelse: 470x170x60 mm.</p><p>Vægt: 0.6 kg.</p><p>Leveres samlet med 3 stk. pr. karton</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_boejle_naturolie_01.png",
                             Pieces = 3,
                             Price = 420.0,
-                            Size = "Gertrud Size",
+                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 20 mm.</p><p>Længde: 45 cm.</p></td></tr>",
                             Title = "Bøjle i massivt egetræ - Behandlet med naturolie",
                             UrlName = "Bøjle-Egetræ-Naturolie",
                             WeightInKg = 11.6
@@ -3320,21 +3319,20 @@ namespace NykantAPI.Data.migrations
                             Amount = 0,
                             AssemblyPath = "none",
                             CategoryId = 5,
-                            Description = "Gertrud Description",
+                            Description = "Denne smukke bøjle med klassiske fine linjer, afrundede kanter og ender, giver perfekt støtte og mindst mulige mærker i tøjet.",
                             EColor = 2,
                             ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_boejle_sortolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_boejle_sortolie_02.png",
-                            Materials = "Gertrud Materials",
+                            Materials = "<tr><td class='width-30'<strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Sort bøjlekrog</p></td></tr>",
                             Name = "Bøjlen Gertrud / 3 stk.",
-                            Note = "Gertrud Note",
                             Number = "15003",
                             Oil = "Sortolie",
-                            Package = "Gertrud Package",
+                            Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Størrelse: 470x170x60 mm.</p><p>Vægt: 0.6 kg.</p><p>Leveres samlet med 3 stk. pr. karton</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_boejle_sortolie_01.png",
                             Pieces = 3,
                             Price = 420.0,
-                            Size = "Gertrud Size",
+                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 20 mm.</p><p>Længde: 45 cm.</p></td></tr>",
                             Title = "Bøjle i massivt egetræ - Behandlet med sortolie",
                             UrlName = "Bøjle-Egetræ-Sortolie",
                             WeightInKg = 11.6
@@ -3345,21 +3343,20 @@ namespace NykantAPI.Data.migrations
                             Amount = 0,
                             AssemblyPath = "none",
                             CategoryId = 5,
-                            Description = "Gertrud Description",
+                            Description = "Denne smukke bøjle med klassiske fine linjer, afrundede kanter og ender, giver perfekt støtte og mindst mulige mærker i tøjet.",
                             EColor = 1,
                             ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_boejle_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_boejle_hvidolie_02.png",
-                            Materials = "Gertrud Materials",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Sort bøjlekrog</p></td></tr>",
                             Name = "Bøjlen Gertrud / 3 stk.",
-                            Note = "Gertrud Note",
                             Number = "15002",
                             Oil = "Hvidolie",
-                            Package = "Gertrud Package",
+                            Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Størrelse: 470x170x60 mm.</p><p>Vægt: 0.6 kg.</p><p>Leveres samlet med 3 stk. pr. karton</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_boejle_hvidolie_01.png",
                             Pieces = 3,
                             Price = 420.0,
-                            Size = "Gertrud Size",
+                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 20 mm.</p><p>Længde: 45 cm.</p></td></tr>",
                             Title = "Bøjle i massivt egetræ - Behandlet med hvidolie",
                             UrlName = "Bøjle-Egetræ-Hvidolie",
                             WeightInKg = 11.6
@@ -3370,22 +3367,22 @@ namespace NykantAPI.Data.migrations
                             Amount = 0,
                             AssemblyPath = "/word/Hylde_Vejledning.docx",
                             CategoryId = 3,
-                            Description = "Ingebor Description",
+                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse.Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
                             EColor = 1,
                             ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_02.png",
                             Length = "400 mm.",
-                            Materials = "Ingeborg Materials",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
                             Name = "Ingeborg Hylden",
-                            Note = "Ingeborg Note",
+                            Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17032",
                             Oil = "Hvidolie",
-                            Package = "Ingeborg 400 Package",
+                            Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse: 430x220x45 mm. </p><p>Vægt: 1.4 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_hvidolie_01.png",
                             Pieces = 1,
                             Price = 685.0,
-                            Size = "Ingeborg 400 Size",
+                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 20 mm.</p><p>Længde: 40 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med hvidolie",
                             UrlName = "Hylde-Egetræ-Hvidolie-400mm",
                             WeightInKg = 11.6
@@ -3396,22 +3393,22 @@ namespace NykantAPI.Data.migrations
                             Amount = 0,
                             AssemblyPath = "/word/Hylde_Vejledning.docx",
                             CategoryId = 3,
-                            Description = "Ingeborg Description",
+                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse.Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
                             EColor = 2,
                             ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_02.png",
                             Length = "400 mm.",
-                            Materials = "Ingeborg Materials",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
                             Name = "Ingeborg Hylden",
-                            Note = "Ingeborg Note",
+                            Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17033",
                             Oil = "Sortolie",
-                            Package = "Ingeborg 400 Package",
+                            Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse: 430x220x45 mm. </p><p>Vægt: 1.4 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_sortolie_01.png",
                             Pieces = 1,
                             Price = 685.0,
-                            Size = "Ingeborg 400 Size",
+                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 20 mm.</p><p>Længde: 40 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med sortolie",
                             UrlName = "Hylde-Egetræ-Sortolie-400mm",
                             WeightInKg = 11.6
@@ -3422,22 +3419,22 @@ namespace NykantAPI.Data.migrations
                             Amount = 0,
                             AssemblyPath = "/word/Hylde_Vejledning.docx",
                             CategoryId = 3,
-                            Description = "Ingeborg Description",
+                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse.Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
                             EColor = 0,
                             ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_02.png",
                             Length = "400 mm.",
-                            Materials = "Ingeborg Materials",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
                             Name = "Ingeborg Hylden",
-                            Note = "Ingeborg Note",
+                            Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17031",
                             Oil = "Naturolie",
-                            Package = "Ingeborg 400 Package",
+                            Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse: 430x220x45 mm. </p><p>Vægt: 1.4 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_naturolie_01.png",
                             Pieces = 1,
                             Price = 685.0,
-                            Size = "Ingeborg 400 Size",
+                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 20 mm.</p><p>Længde: 40 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med naturolie",
                             UrlName = "Hylde-Egetræ-Naturolie-400mm",
                             WeightInKg = 11.6
@@ -3448,22 +3445,22 @@ namespace NykantAPI.Data.migrations
                             Amount = 0,
                             AssemblyPath = "/word/Hylde_Vejledning.docx",
                             CategoryId = 3,
-                            Description = "Ingeborg Description",
+                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse.Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
                             EColor = 1,
                             ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_02.png",
                             Length = "600 mm.",
-                            Materials = "Ingeborg Materials",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
                             Name = "Ingeborg Hylden",
-                            Note = "Ingeborg Note",
+                            Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17022",
                             Oil = "Hvidolie",
-                            Package = "Ingeborg 600 Package",
+                            Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse: 630x220x45 mm. </p><p>Vægt: 2 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_hvidolie_01.png",
                             Pieces = 1,
                             Price = 785.0,
-                            Size = "Ingeborg 600 Size",
+                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 20 mm.</p><p>Længde: 60 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med hvidolie",
                             UrlName = "Hylde-Egetræ-Hvidolie-600mm",
                             WeightInKg = 11.6
@@ -3474,22 +3471,22 @@ namespace NykantAPI.Data.migrations
                             Amount = 0,
                             AssemblyPath = "/word/Hylde_Vejledning.docx",
                             CategoryId = 3,
-                            Description = "Ingeborg Description",
+                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse.Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
                             EColor = 2,
                             ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_02.png",
                             Length = "600 mm.",
-                            Materials = "Ingeborg Materials",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
                             Name = "Ingeborg Hylden",
-                            Note = "Ingeborg Note",
+                            Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17023",
                             Oil = "Sortolie",
-                            Package = "Ingeborg 600 Package",
+                            Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse: 630x220x45 mm. </p><p>Vægt: 2 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_sortolie_01.png",
                             Pieces = 1,
                             Price = 785.0,
-                            Size = "Ingeborg 600 Size",
+                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 20 mm.</p><p>Længde: 60 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med sortolie",
                             UrlName = "Hylde-Egetræ-Sortolie-600mm",
                             WeightInKg = 11.6
@@ -3500,22 +3497,22 @@ namespace NykantAPI.Data.migrations
                             Amount = 0,
                             AssemblyPath = "/word/Hylde_Vejledning.docx",
                             CategoryId = 3,
-                            Description = "Ingeborg Description",
+                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse.Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
                             EColor = 0,
                             ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_02.png",
                             Length = "600 mm.",
-                            Materials = "Ingeborg Materials",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
                             Name = "Ingeborg Hylden",
-                            Note = "Ingeborg Note",
+                            Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17021",
                             Oil = "Naturolie",
-                            Package = "Ingeborg 600 Package",
+                            Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse: 630x220x45 mm. </p><p>Vægt: 2 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_naturolie_01.png",
                             Pieces = 1,
                             Price = 785.0,
-                            Size = "Ingeborg 600 Size",
+                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 20 mm.</p><p>Længde: 60 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med naturolie",
                             UrlName = "Hylde-Egetræ-Naturolie-600mm",
                             WeightInKg = 11.6
@@ -3526,22 +3523,22 @@ namespace NykantAPI.Data.migrations
                             Amount = 0,
                             AssemblyPath = "/word/Hylde_Vejledning.docx",
                             CategoryId = 3,
-                            Description = "Ingeborg Description",
+                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse.Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
                             EColor = 1,
                             ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_02.png",
                             Length = "800 mm.",
-                            Materials = "Ingeborg Materials",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
                             Name = "Ingeborg Hylden",
-                            Note = "Ingeborg Note",
+                            Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17012",
                             Oil = "Hvidolie",
-                            Package = "Ingeborg 800 Package",
+                            Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse: 830x220x45 mm. </p><p>Vægt: 2.6 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_hvidolie_01.png",
                             Pieces = 1,
                             Price = 885.0,
-                            Size = "Ingeborg 800 Size",
+                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 20 mm.</p><p>Længde: 80 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med hvidolie",
                             UrlName = "Hylde-Egetræ-Hvidolie-800mm",
                             WeightInKg = 11.6
@@ -3552,22 +3549,22 @@ namespace NykantAPI.Data.migrations
                             Amount = 0,
                             AssemblyPath = "/word/Hylde_Vejledning.docx",
                             CategoryId = 3,
-                            Description = "Ingeborg Description",
+                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse.Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
                             EColor = 2,
                             ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_02.png",
                             Length = "800 mm.",
-                            Materials = "Ingeborg Materials",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
                             Name = "Ingeborg Hylden",
-                            Note = "Ingeborg Note",
+                            Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17013",
                             Oil = "Sortolie",
-                            Package = "Ingeborg 800 Package",
+                            Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse: 830x220x45 mm. </p><p>Vægt: 2.6 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_sortolie_01.png",
                             Pieces = 1,
                             Price = 885.0,
-                            Size = "Ingeborg 800 Size",
+                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 20 mm.</p><p>Længde: 80 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med sortolie",
                             UrlName = "Hylde-Egetræ-Sortolie-800mm",
                             WeightInKg = 11.6
@@ -3578,22 +3575,22 @@ namespace NykantAPI.Data.migrations
                             Amount = 0,
                             AssemblyPath = "/word/Hylde_Vejledning.docx",
                             CategoryId = 3,
-                            Description = "Ingeborg Description",
+                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse.Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
                             EColor = 0,
                             ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_02.png",
                             Length = "800 mm.",
-                            Materials = "Ingeborg Materials",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
                             Name = "Ingeborg Hylden",
-                            Note = "Ingeborg Note",
+                            Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17011",
                             Oil = "Naturolie",
-                            Package = "Ingeborg 800 Package",
+                            Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse: 830x220x45 mm. </p><p>Vægt: 2.6 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_naturolie_01.png",
                             Pieces = 1,
                             Price = 885.0,
-                            Size = "Ingeborg 800 Size",
+                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 20 mm.</p><p>Længde: 80 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med naturolie",
                             UrlName = "Hylde-Egetræ-Naturolie-800mm",
                             WeightInKg = 11.6
@@ -3604,22 +3601,22 @@ namespace NykantAPI.Data.migrations
                             Amount = 0,
                             AssemblyPath = "/word/Hylde_Vejledning.docx",
                             CategoryId = 3,
-                            Description = "Ingeborg Description",
+                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse.Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
                             EColor = 1,
                             ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_02.png",
                             Length = "1000 mm.",
-                            Materials = "Ingeborg Materials",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
                             Name = "Ingeborg Hylden",
-                            Note = "Ingeborg Note",
+                            Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17002",
                             Oil = "Hvidolie",
-                            Package = "Ingeborg 1000 Package",
+                            Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse:  1030x220x45 mm.</p><p>Vægt: 3.2 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_hvidolie_01.png",
                             Pieces = 1,
                             Price = 985.0,
-                            Size = "Ingeborg 1000 Size",
+                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 20 mm.</p><p>Længde: 100 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med hvidolie",
                             UrlName = "Hylde-Egetræ-Hvidolie-1000mm",
                             WeightInKg = 11.6
@@ -3630,22 +3627,22 @@ namespace NykantAPI.Data.migrations
                             Amount = 0,
                             AssemblyPath = "/word/Hylde_Vejledning.docx",
                             CategoryId = 3,
-                            Description = "Ingeborg Description",
+                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse.Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
                             EColor = 2,
                             ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_02.png",
                             Length = "1000 mm.",
-                            Materials = "Ingeborg Materials",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
                             Name = "Ingeborg Hylden",
-                            Note = "Ingeborg Note",
+                            Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17003",
                             Oil = "Sortolie",
-                            Package = "Ingeborg 1000 Package",
+                            Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse:  1030x220x45 mm.</p><p>Vægt: 3.2 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_sortolie_01.png",
                             Pieces = 1,
                             Price = 985.0,
-                            Size = "Ingeborg 1000 Size",
+                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 20 mm.</p><p>Længde: 100 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med sortolie",
                             UrlName = "Hylde-Egetræ-Sortolie-1000mm",
                             WeightInKg = 11.6
@@ -3656,22 +3653,22 @@ namespace NykantAPI.Data.migrations
                             Amount = 0,
                             AssemblyPath = "/word/Hylde_Vejledning.docx",
                             CategoryId = 3,
-                            Description = "Ingeborg Description",
+                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse.Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
                             EColor = 0,
                             ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_02.png",
                             Length = "1000 mm.",
-                            Materials = "Ingeborg Materials",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
                             Name = "Ingeborg Hylden",
-                            Note = "Ingeborg Note",
+                            Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17001",
                             Oil = "Naturolie",
-                            Package = "Ingeborg 1000 Package",
+                            Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse:  1030x220x45 mm.</p><p>Vægt: 3.2 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_naturolie_01.png",
                             Pieces = 1,
                             Price = 985.0,
-                            Size = "Ingeborg 1000 Size",
+                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 20 mm.</p><p>Længde: 100 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med naturolie",
                             UrlName = "Hylde-Egetræ-Naturolie-1000mm",
                             WeightInKg = 11.6
@@ -3682,21 +3679,20 @@ namespace NykantAPI.Data.migrations
                             Amount = 72,
                             AssemblyPath = "/word/Bord.docx",
                             CategoryId = 2,
-                            Description = "Dagmar Description",
+                            Description = "Dette massive egetræsbord fremstår smukt og elegant med de affasede kanter, og drejede koniske ben, som skråner ud mod hjørnerne.Bordpladen er med gennemgående lameller.",
                             EColor = 0,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_bord_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_bord_naturolie_02.png",
-                            Materials = "Dagmar Materials",
+                            Materials = "<tr><td class='width-30'><strong>Materialer:</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Metal fittings</p></td></tr>",
                             Name = "Dagmar Bordet",
-                            Note = "Dagmar Note",
                             Number = "16001",
                             Oil = "Naturolie",
-                            Package = "Dagmar Package",
+                            Package = "<tr class='no-border'><td class='width-30'><strong>Pakken:</strong></td><td><p>Vægt: 22 kg.</p><p>Størrelse: 11 x 75 x 114 cm.</p><p> Leveres usamlet - se samlevejledning </p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_bord_naturolie_01.png",
                             Pieces = 1,
                             Price = 3585.0,
-                            Size = "Dagmar Size",
+                            Size = "<tr><td class='width-30'><strong>Størrelse:</strong></td><td><p>Bordplade tykkelse: 25 mm.</p><p>Højde: 74 cm.</p><p>Længde: 110 cm.</p><p>Bredde: 70 cm.</p></td></tr>",
                             Title = "Bord i massivt egetræ - Behandlet med naturolie",
                             UrlName = "Bord-Egetræ-Naturolie",
                             WeightInKg = 22.0
@@ -3707,21 +3703,20 @@ namespace NykantAPI.Data.migrations
                             Amount = 30,
                             AssemblyPath = "/word/Bord.docx",
                             CategoryId = 2,
-                            Description = "Dagmar Description",
+                            Description = "Dette massive egetræsbord fremstår smukt og elegant med de affasede kanter, og drejede koniske ben, som skråner ud mod hjørnerne.Bordpladen er med gennemgående lameller.",
                             EColor = 1,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_bord_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_bord_hvidolie_02.png",
-                            Materials = "Dagmar Materials",
+                            Materials = "<tr><td class='width-30'><strong>Materialer:</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Metal fittings</p></td></tr>",
                             Name = "Dagmar Bordet",
-                            Note = "Dagmar Note",
                             Number = "16002",
                             Oil = "Hvidolie",
-                            Package = "Dagmar Package",
+                            Package = "<tr class='no-border'><td class='width-30'><strong>Pakken:</strong></td><td><p>Vægt: 22 kg.</p><p>Størrelse: 11 x 75 x 114 cm.</p><p> Leveres usamlet - se samlevejledning </p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_bord_hvidolie_01.png",
                             Pieces = 1,
                             Price = 3585.0,
-                            Size = "Dagmar Size",
+                            Size = "<tr><td class='width-30'><strong>Størrelse:</strong></td><td><p>Bordplade tykkelse: 25 mm.</p><p>Højde: 74 cm.</p><p>Længde: 110 cm.</p><p>Bredde: 70 cm.</p></td></tr>",
                             Title = "Bord i massivt egetræ - Behandlet med hvidolie",
                             UrlName = "Bord-Egetræ-Hvidolie",
                             WeightInKg = 22.0
@@ -3732,22 +3727,21 @@ namespace NykantAPI.Data.migrations
                             Amount = 42,
                             AssemblyPath = "/word/bænk.docx",
                             CategoryId = 4,
-                            Description = "Thyra Short Description",
+                            Description = "Den elegante og praktiske bænk i massivt egetræ, med afrundede hjørner og synlige drejede ben, er fantastisk stabil og robust.",
                             EColor = 0,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_kortbaenk_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_kortbaenk_naturolie_02.png",
                             Length = "1150 mm.",
-                            Materials = "Thyra Short Materials",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p></td></tr>",
                             Name = "Thyra Bænken",
-                            Note = "Thyra Short Note",
                             Number = "12001",
                             Oil = "Naturolie",
-                            Package = "Thyra Short Package",
+                            Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Størrelse: 11 x 47 x 120 cm.</p><p>Vægt: 14 kg.</p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_kortbaenk_naturolie_01.png",
                             Pieces = 1,
                             Price = 3665.0,
-                            Size = "Thyra Short Size",
+                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Højde: 47 cm.</p><p>Længde: 115 cm.</p><p>Bredde: 40 cm.</p></td></tr>",
                             Title = "Bænk i massivt egetræ - Behandlet med naturolie",
                             UrlName = "Bænk-Egetræ-Naturolie-1150mm",
                             WeightInKg = 14.0
@@ -3758,22 +3752,21 @@ namespace NykantAPI.Data.migrations
                             Amount = 20,
                             AssemblyPath = "/word/bænk.docx",
                             CategoryId = 4,
-                            Description = "Thyra Short Description",
+                            Description = "Den elegante og praktiske bænk i massivt egetræ, med afrundede hjørner og synlige drejede ben, er fantastisk stabil og robust.",
                             EColor = 1,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_kortbaenk_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_kortbaenk_hvidolie_02.png",
                             Length = "1150 mm.",
-                            Materials = "Thyra Short Materials",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p></td></tr>",
                             Name = "Thyra Bænken",
-                            Note = "Thyra Short Note",
                             Number = "12002",
                             Oil = "Hvidolie",
-                            Package = "Thyra Short Package",
+                            Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Størrelse: 11 x 47 x 120 cm.</p><p>Vægt: 14 kg.</p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_kortbaenk_naturolie_01.png",
                             Pieces = 1,
                             Price = 3665.0,
-                            Size = "Thyra Short Size",
+                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Højde: 47 cm.</p><p>Længde: 115 cm.</p><p>Bredde: 40 cm.</p></td></tr>",
                             Title = "Bænk i massivt egetræ - Behandlet med hvidolie",
                             UrlName = "Bænk-Egetræ-Hvidolie-1150mm",
                             WeightInKg = 14.0
@@ -3784,22 +3777,21 @@ namespace NykantAPI.Data.migrations
                             Amount = 10,
                             AssemblyPath = "/word/bænk.docx",
                             CategoryId = 4,
-                            Description = "Thyra Short Description",
+                            Description = "Den elegante og praktiske bænk i massivt egetræ, med afrundede hjørner og synlige drejede ben, er fantastisk stabil og robust.",
                             EColor = 2,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_kortbaenk_sortolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_kortbaenk_sortolie_02.png",
                             Length = "1150 mm.",
-                            Materials = "Thyra Short Materials",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p></td></tr>",
                             Name = "Thyra Bænken",
-                            Note = "Thyra Short Note",
                             Number = "12003",
                             Oil = "Sortolie",
-                            Package = "Thyra Short Package",
+                            Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Størrelse: 11 x 47 x 120 cm.</p><p>Vægt: 14 kg.</p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_kortbaenk_naturolie_01.png",
                             Pieces = 1,
                             Price = 3665.0,
-                            Size = "Thyra Short Size",
+                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Højde: 47 cm.</p><p>Længde: 115 cm.</p><p>Bredde: 40 cm.</p></td></tr>",
                             Title = "Bænk i massivt egetræ - Behandlet med sortolie",
                             UrlName = "Bænk-Egetræ-Sortolie-1150mm",
                             WeightInKg = 14.0
@@ -3810,22 +3802,21 @@ namespace NykantAPI.Data.migrations
                             Amount = 17,
                             AssemblyPath = "/word/bænk.docx",
                             CategoryId = 4,
-                            Description = "Thyra Description",
+                            Description = "Den elegante og praktiske bænk i massivt egetræ, med afrundede hjørner og synlige drejede ben, er fantastisk stabil og robust.",
                             EColor = 0,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_langbaenk_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_langbaenk_naturolie_02.png",
                             Length = "1700 mm.",
-                            Materials = "Thyra Materials",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p></td></tr>",
                             Name = "Thyra Bænken",
-                            Note = "Thyra Note",
                             Number = "11001",
                             Oil = "Naturolie",
-                            Package = "Thyra Package",
+                            Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Størrelse: 11 x 47 x 175 cm.</p><p>Vægt: 20 kg.</p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_langbaenk_naturolie_01.png",
                             Pieces = 1,
                             Price = 4395.0,
-                            Size = "Thyra Size",
+                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Højde: 47 cm.</p><p>Længde: 170 cm.</p><p>Bredde: 40 cm.</p></td></tr>",
                             Title = "Bænk i massivt egetræ - Behandlet med naturolie",
                             UrlName = "Bænk-Egetræ-Naturolie-1700mm",
                             WeightInKg = 20.0
@@ -3836,22 +3827,21 @@ namespace NykantAPI.Data.migrations
                             Amount = 10,
                             AssemblyPath = "/word/bænk.docx",
                             CategoryId = 4,
-                            Description = "Thyra Description",
+                            Description = "Den elegante og praktiske bænk i massivt egetræ, med afrundede hjørner og synlige drejede ben, er fantastisk stabil og robust.",
                             EColor = 1,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_langbaenk_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_langbaenk_hvidolie_02.png",
                             Length = "1700 mm.",
-                            Materials = "Thyra Materials",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p></td></tr>",
                             Name = "Thyra Bænken",
-                            Note = "Thyra Note",
                             Number = "11002",
                             Oil = "Hvidolie",
-                            Package = "Thyra Package",
+                            Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Størrelse: 11 x 47 x 175 cm.</p><p>Vægt: 20 kg.</p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_langbaenk_naturolie_01.png",
                             Pieces = 1,
                             Price = 4395.0,
-                            Size = "Thyra Size",
+                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Højde: 47 cm.</p><p>Længde: 170 cm.</p><p>Bredde: 40 cm.</p></td></tr>",
                             Title = "Bænk i massivt egetræ - Behandlet med hvidolie",
                             UrlName = "Bænk-Egetræ-Hvidolie-1700mm",
                             WeightInKg = 20.0
@@ -3862,22 +3852,21 @@ namespace NykantAPI.Data.migrations
                             Amount = 5,
                             AssemblyPath = "/word/bænk.docx",
                             CategoryId = 4,
-                            Description = "Thyra Description",
+                            Description = "Den elegante og praktiske bænk i massivt egetræ, med afrundede hjørner og synlige drejede ben, er fantastisk stabil og robust.",
                             EColor = 2,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_langbaenk_sortolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_langbaenk_sortolie_02.png",
                             Length = "1700 mm.",
-                            Materials = "Thyra Materials",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p></td></tr>",
                             Name = "Thyra Bænken",
-                            Note = "Thyra Note",
                             Number = "11003",
                             Oil = "Sortolie",
-                            Package = "Thyra Package",
+                            Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Størrelse: 11 x 47 x 175 cm.</p><p>Vægt: 20 kg.</p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_langbaenk_naturolie_01.png",
                             Pieces = 1,
                             Price = 4395.0,
-                            Size = "Thyra Size",
+                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Højde: 47 cm.</p><p>Længde: 170 cm.</p><p>Bredde: 40 cm.</p></td></tr>",
                             Title = "Bænk i massivt egetræ - Behandlet med sortolie",
                             UrlName = "Bænk-Egetræ-Sortolie-1700mm",
                             WeightInKg = 20.0
@@ -3888,21 +3877,21 @@ namespace NykantAPI.Data.migrations
                             Amount = 50,
                             AssemblyPath = "none",
                             CategoryId = 4,
-                            Description = "Filippa Description",
+                            Description = "Denne elegante og robuste opbevaringsbænk er lavet i massivt egetræ, med drejede ben som er synlige i top. Opmagasineringen er enkel og nem at åbne. Det er en praktisk men samtidig en elegant bænk med fine detaljer, som vil føle sig hjemme hvor som helst.",
                             EColor = 0,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_opbevaringsbaenk_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_opbevaringsbaenk_naturolie_02.png",
-                            Materials = "Filippa Materials",
+                            Materials = "<tr><td class='width-30'><strong>Materialer:</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Læderstrop</p><p>Beslag </p></td></tr>",
                             Name = "Filippa Bænk",
-                            Note = "Filippa Note",
+                            Note = "<tr class='no-border'><td class='width-30'><strong>Note:</strong></td><td><p>Indvendige mål for opbevaring: 30 x 30 x 85 cm</p></td></tr>",
                             Number = "10001",
                             Oil = "Naturolie",
-                            Package = "Filippa Package",
+                            Package = "<tr><td class='width-30'><strong>Pakken:</strong></td><td><p>Vægt: 24 kg.</p><p>Størrelse: 40 x 50 x 115 cm.</p><p>Leveres samlet </p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_opbevaringsbaenk_naturolie_01.png",
                             Pieces = 1,
                             Price = 4985.0,
-                            Size = "Filippa Size",
+                            Size = "<tr><td class='width-30'><strong>Størrelse:</strong></td><td><p>Højde: 45 cm.</p><p>Længde: 110 cm.</p><p>Dybde: 35 cm. </p></td></tr>",
                             Title = "Opbevaringsbænk i massivt egetræ - Behandlet med naturolie",
                             UrlName = "Opbevaringsbænk-Egetræ-Naturolie",
                             WeightInKg = 24.0
@@ -3913,21 +3902,21 @@ namespace NykantAPI.Data.migrations
                             Amount = 30,
                             AssemblyPath = "none",
                             CategoryId = 4,
-                            Description = "Filippa Description",
+                            Description = "Denne elegante og robuste opbevaringsbænk er lavet i massivt egetræ, med drejede ben som er synlige i top. Opmagasineringen er enkel og nem at åbne. Det er en praktisk men samtidig en elegant bænk med fine detaljer, som vil føle sig hjemme hvor som helst.",
                             EColor = 1,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_opbevaringsbaenk_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_opbevaringsbaenk_hvidolie_02.png",
-                            Materials = "Filippa Materials",
+                            Materials = "<tr><td class='width-30'><strong>Materialer:</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Læderstrop</p><p>Beslag </p></td></tr>",
                             Name = "Filippa Bænk",
-                            Note = "Filippa Note",
+                            Note = "<tr class='no-border'><td class='width-30'><strong>Note:</strong></td><td><p>Indvendige mål for opbevaring: 30 x 30 x 85 cm</p></td></tr>",
                             Number = "10002",
                             Oil = "Hvidolie",
-                            Package = "Filippa Package",
+                            Package = "<tr><td class='width-30'><strong>Pakken:</strong></td><td><p>Vægt: 24 kg.</p><p>Størrelse: 40 x 50 x 115 cm.</p><p>Leveres samlet </p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_opbevaringsbaenk_naturolie_01.png",
                             Pieces = 1,
                             Price = 4985.0,
-                            Size = "Filippa Size",
+                            Size = "<tr><td class='width-30'><strong>Størrelse:</strong></td><td><p>Højde: 45 cm.</p><p>Længde: 110 cm.</p><p>Dybde: 35 cm. </p></td></tr>",
                             Title = "Opbevaringsbænk i massivt egetræ - Behandlet med hvidolie",
                             UrlName = "Opbevaringsbænk-Egetræ-Hvidolie",
                             WeightInKg = 24.0
@@ -3938,21 +3927,21 @@ namespace NykantAPI.Data.migrations
                             Amount = 20,
                             AssemblyPath = "none",
                             CategoryId = 4,
-                            Description = "Filippa Description",
+                            Description = "Denne elegante og robuste opbevaringsbænk er lavet i massivt egetræ, med drejede ben som er synlige i top. Opmagasineringen er enkel og nem at åbne. Det er en praktisk men samtidig en elegant bænk med fine detaljer, som vil føle sig hjemme hvor som helst.",
                             EColor = 2,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_opbevaringsbaenk_sort_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_opbevaringsbaenk_sort_02.png",
-                            Materials = "Filippa Materials",
+                            Materials = "<tr><td class='width-30'><strong>Materialer:</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Læderstrop</p><p>Beslag </p></td></tr>",
                             Name = "Filippa Bænk",
-                            Note = "Filippa Note",
+                            Note = "<tr class='no-border'><td class='width-30'><strong>Note:</strong></td><td><p>Indvendige mål for opbevaring: 30 x 30 x 85 cm</p></td></tr>",
                             Number = "10003",
                             Oil = "Sortolie",
-                            Package = "Filippa Package",
+                            Package = "<tr><td class='width-30'><strong>Pakken:</strong></td><td><p>Vægt: 24 kg.</p><p>Størrelse: 40 x 50 x 115 cm.</p><p>Leveres samlet </p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_opbevaringsbaenk_naturolie_01.png",
                             Pieces = 1,
                             Price = 4985.0,
-                            Size = "Filippa Size",
+                            Size = "<tr><td class='width-30'><strong>Størrelse:</strong></td><td><p>Højde: 45 cm.</p><p>Længde: 110 cm.</p><p>Dybde: 35 cm. </p></td></tr>",
                             Title = "Opbevaringsbænk i massivt egetræ - Behandlet med sortolie",
                             UrlName = "Opbevaringsbænk-Egetræ-Sortolie",
                             WeightInKg = 24.0
@@ -3963,21 +3952,20 @@ namespace NykantAPI.Data.migrations
                             Amount = 26,
                             AssemblyPath = "/word/Tøjstativ.docx",
                             CategoryId = 1,
-                            Description = "Nora Description",
+                            Description = "Vores elegante tøjstativ i massivt egetræ, er designet således at det samles udelukkende med trækiler. Bøjlestangen er en drejet rundstok, som er fræset i enderne så kilerne passer igennem. Det massive egetræsmøbel står sikkert og dekorativt med det fine snedkerarbejde, og lækre detaljer.",
                             EColor = 0,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_rack_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_rack_naturolie_02.png",
-                            Materials = "Nora Materials",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Kiler</p></td></tr>",
                             Name = "Nora Tøjstativ",
-                            Note = "Nora Note",
                             Number = "13001 + 13001A",
                             Oil = "Naturolie",
-                            Package = "Nora Package",
+                            Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Leveres usamlet i 2 kartoner - se samlevejledning</p></td></tr><tr class='no-border'><td class='width-30'><strong>Karton 1</strong></td><td> <p>Vægt: 5 kg.</p><p> Størrelse: 6,5 x 11,5 x 186 cm.</p></td></tr><tr><td class='width-30'><strong>Karton 2</strong></td><td> <p>Vægt: 3 kg.</p><p>Størrelse: 5,5 x 54 x 119 cm.</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_rack_naturolie_01.png",
                             Pieces = 1,
                             Price = 2595.0,
-                            Size = "Nora Size",
+                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Højde: 180 cm.</p><p>Længde: 100 cm.</p><p>Bredde: 55 cm.</p></td></tr>",
                             Title = "Tøjstativ i massivt egetræ - Behandlet med naturolie",
                             UrlName = "Tøjstativ-Egetræ-Naturolie",
                             WeightInKg = 8.0
@@ -3988,21 +3976,20 @@ namespace NykantAPI.Data.migrations
                             Amount = 16,
                             AssemblyPath = "/word/Tøjstativ.docx",
                             CategoryId = 1,
-                            Description = "Nora Description",
+                            Description = "Vores elegante tøjstativ i massivt egetræ, er designet således at det samles udelukkende med trækiler. Bøjlestangen er en drejet rundstok, som er fræset i enderne så kilerne passer igennem. Det massive egetræsmøbel står sikkert og dekorativt med det fine snedkerarbejde, og lækre detaljer.",
                             EColor = 1,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_rack_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_rack_hvidolie_02.png",
-                            Materials = "Nora Materials",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Kiler</p></td></tr>",
                             Name = "Nora Tøjstativ",
-                            Note = "Nora Note",
                             Number = "13002 + 13002A",
                             Oil = "Hvidolie",
-                            Package = "Nora Package",
+                            Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Leveres usamlet i 2 kartoner - se samlevejledning</p></td></tr><tr class='no-border'><td class='width-30'><strong>Karton 1</strong></td><td> <p>Vægt: 5 kg.</p><p> Størrelse: 6,5 x 11,5 x 186 cm.</p></td></tr><tr><td class='width-30'><strong>Karton 2</strong></td><td> <p>Vægt: 3 kg.</p><p>Størrelse: 5,5 x 54 x 119 cm.</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_rack_naturolie_01.png",
                             Pieces = 1,
                             Price = 2595.0,
-                            Size = "Nora Size",
+                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Højde: 180 cm.</p><p>Længde: 100 cm.</p><p>Bredde: 55 cm.</p></td></tr>",
                             Title = "Tøjstativ i massivt egetræ - Behandlet med hvidolie",
                             UrlName = "Tøjstativ-Egetræ-Hvidolie",
                             WeightInKg = 8.0
@@ -4013,21 +4000,20 @@ namespace NykantAPI.Data.migrations
                             Amount = 10,
                             AssemblyPath = "/word/Tøjstativ.docx",
                             CategoryId = 1,
-                            Description = "Nora Description",
+                            Description = "Vores elegante tøjstativ i massivt egetræ, er designet således at det samles udelukkende med trækiler. Bøjlestangen er en drejet rundstok, som er fræset i enderne så kilerne passer igennem. Det massive egetræsmøbel står sikkert og dekorativt med det fine snedkerarbejde, og lækre detaljer.",
                             EColor = 2,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_rack_sortolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_rack_sortolie_02.png",
-                            Materials = "Nora Materials",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Kiler</p></td></tr>",
                             Name = "Nora Tøjstativ",
-                            Note = "Nora Note",
                             Number = "13003 + 13003A",
                             Oil = "Sortolie",
-                            Package = "Nora Package",
+                            Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Leveres usamlet i 2 kartoner - se samlevejledning</p></td></tr><tr class='no-border'><td class='width-30'><strong>Karton 1</strong></td><td> <p>Vægt: 5 kg.</p><p> Størrelse: 6,5 x 11,5 x 186 cm.</p></td></tr><tr><td class='width-30'><strong>Karton 2</strong></td><td> <p>Vægt: 3 kg.</p><p>Størrelse: 5,5 x 54 x 119 cm.</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_rack_naturolie_01.png",
                             Pieces = 1,
                             Price = 2595.0,
-                            Size = "Nora Size",
+                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Højde: 180 cm.</p><p>Længde: 100 cm.</p><p>Bredde: 55 cm.</p></td></tr>",
                             Title = "Tøjstativ i massivt egetræ - Behandlet med sortolie",
                             UrlName = "Tøjstativ-Egetræ-Sortolie",
                             WeightInKg = 8.0
@@ -4038,21 +4024,20 @@ namespace NykantAPI.Data.migrations
                             Amount = 25,
                             AssemblyPath = "/word/hænge_tøjrack.docx",
                             CategoryId = 1,
-                            Description = "Ingrid Description",
+                            Description = "Vores unikke og smukke væghængte tøjstativ i massivt egetræ, er udviklet således den samles med kiler og monteres hængende ud fra væggen, med en lædderstrop.",
                             EColor = 0,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/Ingrid_Naturolie_1.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/Ingrid_Naturolie_2.png",
-                            Materials = "Ingrid Materials",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Lædderstrop</p><p>Beslag</p><p>Skruer</p></td></tr>",
                             Name = "Ingrid Tøjstativ",
-                            Note = "Ingrid Note",
                             Number = "14001",
                             Oil = "Naturolie",
-                            Package = "Ingrid Package",
+                            Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Vægt: 2kg.</p><p>Størrelse: 7 x 105 x 9,5 cm.</p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_rack_naturolie_01.png",
                             Pieces = 1,
                             Price = 1995.0,
-                            Size = "Ingrid Size",
+                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Højde: 90 cm.</p><p>Fra væg/dybde: 40 cm.</p><p>Bredde: 105 cm.</p></td></tr>",
                             Title = "Hængende tøjstativ i massivt egetræ - Behandlet med naturolie",
                             UrlName = "Ophængt-Tøjstativ-Egetræ-Naturolie",
                             WeightInKg = 2.0
@@ -4063,21 +4048,20 @@ namespace NykantAPI.Data.migrations
                             Amount = 15,
                             AssemblyPath = "/word/hænge_tøjrack.docx",
                             CategoryId = 1,
-                            Description = "Ingrid Description",
+                            Description = "Vores unikke og smukke væghængte tøjstativ i massivt egetræ, er udviklet således den samles med kiler og monteres hængende ud fra væggen, med en lædderstrop.",
                             EColor = 1,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/Ingrid_Hvidolie_1.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/Ingrid_Hvidolie_2.png",
-                            Materials = "Ingrid Materials",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Lædderstrop</p><p>Beslag</p><p>Skruer</p></td></tr>",
                             Name = "Ingrid Tøjstativ",
-                            Note = "Ingrid Note",
                             Number = "14002",
                             Oil = "Hvidolie",
-                            Package = "Ingrid Package",
+                            Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Vægt: 2kg.</p><p>Størrelse: 7 x 105 x 9,5 cm.</p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_rack_naturolie_01.png",
                             Pieces = 1,
                             Price = 1995.0,
-                            Size = "Ingrid Size",
+                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Højde: 90 cm.</p><p>Fra væg/dybde: 40 cm.</p><p>Bredde: 105 cm.</p></td></tr>",
                             Title = "Hængende tøjstativ i massivt egetræ - Behandlet med hvidolie",
                             UrlName = "Ophængt-Tøjstativ-Egetræ-Hvidolie",
                             WeightInKg = 2.0
@@ -4088,21 +4072,20 @@ namespace NykantAPI.Data.migrations
                             Amount = 10,
                             AssemblyPath = "/word/hænge_tøjrack.docx",
                             CategoryId = 1,
-                            Description = "Ingrid Description",
+                            Description = "Vores unikke og smukke væghængte tøjstativ i massivt egetræ, er udviklet således den samles med kiler og monteres hængende ud fra væggen, med en lædderstrop.",
                             EColor = 2,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/Ingrid_Sortolie_1.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/Ingrid_Sortolie_2.png",
-                            Materials = "Ingrid Materials",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Lædderstrop</p><p>Beslag</p><p>Skruer</p></td></tr>",
                             Name = "Ingrid Tøjstativ",
-                            Note = "Ingrid Note",
                             Number = "14003",
                             Oil = "Sortolie",
-                            Package = "Ingrid Package",
+                            Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Vægt: 2kg.</p><p>Størrelse: 7 x 105 x 9,5 cm.</p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_rack_naturolie_01.png",
                             Pieces = 1,
                             Price = 1995.0,
-                            Size = "Ingrid Size",
+                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Højde: 90 cm.</p><p>Fra væg/dybde: 40 cm.</p><p>Bredde: 105 cm.</p></td></tr>",
                             Title = "Hængende tøjstativ i massivt egetræ - Behandlet med sortolie",
                             UrlName = "Ophængt-Tøjstativ-Egetræ-Sortolie",
                             WeightInKg = 2.0
@@ -4124,6 +4107,9 @@ namespace NykantAPI.Data.migrations
                     b.Property<int>("ProductReferenceId")
                         .HasColumnType("int");
 
+                    b.Property<string>("ProductReferenceUrlName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ProductId");
@@ -4136,420 +4122,480 @@ namespace NykantAPI.Data.migrations
                             Id = 1,
                             Length = "1150 mm.",
                             ProductId = 18,
-                            ProductReferenceId = 18
+                            ProductReferenceId = 18,
+                            ProductReferenceUrlName = "Bænk-Egetræ-Naturolie-1150mm"
                         },
                         new
                         {
                             Id = 2,
                             Length = "1700 mm.",
                             ProductId = 18,
-                            ProductReferenceId = 21
+                            ProductReferenceId = 21,
+                            ProductReferenceUrlName = "Bænk-Egetræ-Naturolie-1700mm"
                         },
                         new
                         {
                             Id = 3,
                             Length = "1150 mm.",
                             ProductId = 19,
-                            ProductReferenceId = 18
+                            ProductReferenceId = 18,
+                            ProductReferenceUrlName = "Bænk-Egetræ-Naturolie-1150mm"
                         },
                         new
                         {
                             Id = 4,
                             Length = "1700 mm.",
                             ProductId = 19,
-                            ProductReferenceId = 21
+                            ProductReferenceId = 21,
+                            ProductReferenceUrlName = "Bænk-Egetræ-Naturolie-1700mm"
                         },
                         new
                         {
                             Id = 5,
                             Length = "1150 mm.",
                             ProductId = 20,
-                            ProductReferenceId = 18
+                            ProductReferenceId = 18,
+                            ProductReferenceUrlName = "Bænk-Egetræ-Naturolie-1150mm"
                         },
                         new
                         {
                             Id = 6,
                             Length = "1700 mm.",
                             ProductId = 20,
-                            ProductReferenceId = 21
+                            ProductReferenceId = 21,
+                            ProductReferenceUrlName = "Bænk-Egetræ-Naturolie-1700mm"
                         },
                         new
                         {
                             Id = 7,
                             Length = "1150 mm.",
                             ProductId = 21,
-                            ProductReferenceId = 18
+                            ProductReferenceId = 18,
+                            ProductReferenceUrlName = "Bænk-Egetræ-Naturolie-1150mm"
                         },
                         new
                         {
                             Id = 8,
                             Length = "1700 mm.",
                             ProductId = 21,
-                            ProductReferenceId = 21
+                            ProductReferenceId = 21,
+                            ProductReferenceUrlName = "Bænk-Egetræ-Naturolie-1700mm"
                         },
                         new
                         {
                             Id = 9,
                             Length = "1150 mm.",
                             ProductId = 22,
-                            ProductReferenceId = 18
+                            ProductReferenceId = 18,
+                            ProductReferenceUrlName = "Bænk-Egetræ-Naturolie-1150mm"
                         },
                         new
                         {
                             Id = 10,
                             Length = "1700 mm.",
                             ProductId = 22,
-                            ProductReferenceId = 21
+                            ProductReferenceId = 21,
+                            ProductReferenceUrlName = "Bænk-Egetræ-Naturolie-1700mm"
                         },
                         new
                         {
                             Id = 11,
                             Length = "1150 mm.",
                             ProductId = 23,
-                            ProductReferenceId = 18
+                            ProductReferenceId = 18,
+                            ProductReferenceUrlName = "Bænk-Egetræ-Naturolie-1150mm"
                         },
                         new
                         {
                             Id = 12,
                             Length = "1700 mm.",
                             ProductId = 23,
-                            ProductReferenceId = 21
+                            ProductReferenceId = 21,
+                            ProductReferenceUrlName = "Bænk-Egetræ-Naturolie-1700mm"
                         },
                         new
                         {
                             Id = 13,
                             Length = "400 mm.",
                             ProductId = 4,
-                            ProductReferenceId = 6
+                            ProductReferenceId = 6,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-400mm"
                         },
                         new
                         {
                             Id = 14,
                             Length = "600 mm.",
                             ProductId = 4,
-                            ProductReferenceId = 9
+                            ProductReferenceId = 9,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-600mm"
                         },
                         new
                         {
                             Id = 15,
                             Length = "800 mm.",
                             ProductId = 4,
-                            ProductReferenceId = 12
+                            ProductReferenceId = 12,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-800mm"
                         },
                         new
                         {
                             Id = 16,
                             Length = "1000 mm.",
                             ProductId = 4,
-                            ProductReferenceId = 15
+                            ProductReferenceId = 15,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-1000mm"
                         },
                         new
                         {
                             Id = 17,
                             Length = "400 mm.",
                             ProductId = 5,
-                            ProductReferenceId = 6
+                            ProductReferenceId = 6,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-400mm"
                         },
                         new
                         {
                             Id = 18,
                             Length = "600 mm.",
                             ProductId = 5,
-                            ProductReferenceId = 9
+                            ProductReferenceId = 9,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-600mm"
                         },
                         new
                         {
                             Id = 19,
                             Length = "800 mm.",
                             ProductId = 5,
-                            ProductReferenceId = 12
+                            ProductReferenceId = 12,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-800mm"
                         },
                         new
                         {
                             Id = 20,
                             Length = "1000 mm.",
                             ProductId = 5,
-                            ProductReferenceId = 15
+                            ProductReferenceId = 15,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-1000mm"
                         },
                         new
                         {
                             Id = 21,
                             Length = "400 mm.",
                             ProductId = 6,
-                            ProductReferenceId = 6
+                            ProductReferenceId = 6,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-400mm"
                         },
                         new
                         {
                             Id = 22,
                             Length = "600 mm.",
                             ProductId = 6,
-                            ProductReferenceId = 9
+                            ProductReferenceId = 9,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-600mm"
                         },
                         new
                         {
                             Id = 23,
                             Length = "800 mm.",
                             ProductId = 6,
-                            ProductReferenceId = 12
+                            ProductReferenceId = 12,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-800mm"
                         },
                         new
                         {
                             Id = 24,
                             Length = "1000 mm.",
                             ProductId = 6,
-                            ProductReferenceId = 15
+                            ProductReferenceId = 15,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-1000mm"
                         },
                         new
                         {
                             Id = 25,
                             Length = "400 mm.",
                             ProductId = 7,
-                            ProductReferenceId = 6
+                            ProductReferenceId = 6,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-400mm"
                         },
                         new
                         {
                             Id = 26,
                             Length = "600 mm.",
                             ProductId = 7,
-                            ProductReferenceId = 9
+                            ProductReferenceId = 9,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-600mm"
                         },
                         new
                         {
                             Id = 27,
                             Length = "800 mm.",
                             ProductId = 7,
-                            ProductReferenceId = 12
+                            ProductReferenceId = 12,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-800mm"
                         },
                         new
                         {
                             Id = 28,
                             Length = "1000 mm.",
                             ProductId = 7,
-                            ProductReferenceId = 15
+                            ProductReferenceId = 15,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-1000mm"
                         },
                         new
                         {
                             Id = 29,
                             Length = "400 mm.",
                             ProductId = 8,
-                            ProductReferenceId = 6
+                            ProductReferenceId = 6,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-400mm"
                         },
                         new
                         {
                             Id = 30,
                             Length = "600 mm.",
                             ProductId = 8,
-                            ProductReferenceId = 9
+                            ProductReferenceId = 9,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-600mm"
                         },
                         new
                         {
                             Id = 31,
                             Length = "800 mm.",
                             ProductId = 8,
-                            ProductReferenceId = 12
+                            ProductReferenceId = 12,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-800mm"
                         },
                         new
                         {
                             Id = 32,
                             Length = "1000 mm.",
                             ProductId = 8,
-                            ProductReferenceId = 15
+                            ProductReferenceId = 15,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-1000mm"
                         },
                         new
                         {
                             Id = 33,
                             Length = "400 mm.",
                             ProductId = 9,
-                            ProductReferenceId = 6
+                            ProductReferenceId = 6,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-400mm"
                         },
                         new
                         {
                             Id = 34,
                             Length = "600 mm.",
                             ProductId = 9,
-                            ProductReferenceId = 9
+                            ProductReferenceId = 9,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-600mm"
                         },
                         new
                         {
                             Id = 35,
                             Length = "800 mm.",
                             ProductId = 9,
-                            ProductReferenceId = 12
+                            ProductReferenceId = 12,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-800mm"
                         },
                         new
                         {
                             Id = 36,
                             Length = "1000 mm.",
                             ProductId = 9,
-                            ProductReferenceId = 16
+                            ProductReferenceId = 16,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-1000mm"
                         },
                         new
                         {
                             Id = 37,
                             Length = "400 mm.",
                             ProductId = 10,
-                            ProductReferenceId = 6
+                            ProductReferenceId = 6,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-400mm"
                         },
                         new
                         {
                             Id = 38,
                             Length = "600 mm.",
                             ProductId = 10,
-                            ProductReferenceId = 9
+                            ProductReferenceId = 9,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-600mm"
                         },
                         new
                         {
                             Id = 39,
                             Length = "800 mm.",
                             ProductId = 10,
-                            ProductReferenceId = 12
+                            ProductReferenceId = 12,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-800mm"
                         },
                         new
                         {
                             Id = 40,
                             Length = "1000 mm.",
                             ProductId = 10,
-                            ProductReferenceId = 15
+                            ProductReferenceId = 15,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-1000mm"
                         },
                         new
                         {
                             Id = 41,
                             Length = "400 mm.",
                             ProductId = 11,
-                            ProductReferenceId = 6
+                            ProductReferenceId = 6,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-400mm"
                         },
                         new
                         {
                             Id = 42,
                             Length = "600 mm.",
                             ProductId = 11,
-                            ProductReferenceId = 9
+                            ProductReferenceId = 9,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-600mm"
                         },
                         new
                         {
                             Id = 43,
                             Length = "800 mm.",
                             ProductId = 11,
-                            ProductReferenceId = 12
+                            ProductReferenceId = 12,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-800mm"
                         },
                         new
                         {
                             Id = 44,
                             Length = "1000 mm.",
                             ProductId = 11,
-                            ProductReferenceId = 15
+                            ProductReferenceId = 15,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-1000mm"
                         },
                         new
                         {
                             Id = 45,
                             Length = "400 mm.",
                             ProductId = 12,
-                            ProductReferenceId = 6
+                            ProductReferenceId = 6,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-400mm"
                         },
                         new
                         {
                             Id = 46,
                             Length = "600 mm.",
                             ProductId = 12,
-                            ProductReferenceId = 9
+                            ProductReferenceId = 9,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-600mm"
                         },
                         new
                         {
                             Id = 47,
                             Length = "800 mm.",
                             ProductId = 12,
-                            ProductReferenceId = 12
+                            ProductReferenceId = 12,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-800mm"
                         },
                         new
                         {
                             Id = 48,
                             Length = "1000 mm.",
                             ProductId = 12,
-                            ProductReferenceId = 15
+                            ProductReferenceId = 15,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-1000mm"
                         },
                         new
                         {
                             Id = 49,
                             Length = "400 mm.",
                             ProductId = 13,
-                            ProductReferenceId = 6
+                            ProductReferenceId = 6,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-400mm"
                         },
                         new
                         {
                             Id = 50,
                             Length = "600 mm.",
                             ProductId = 13,
-                            ProductReferenceId = 9
+                            ProductReferenceId = 9,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-600mm"
                         },
                         new
                         {
                             Id = 51,
                             Length = "800 mm.",
                             ProductId = 13,
-                            ProductReferenceId = 12
+                            ProductReferenceId = 12,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-800mm"
                         },
                         new
                         {
                             Id = 52,
                             Length = "1000 mm.",
                             ProductId = 13,
-                            ProductReferenceId = 15
+                            ProductReferenceId = 15,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-1000mm"
                         },
                         new
                         {
                             Id = 53,
                             Length = "400 mm.",
                             ProductId = 14,
-                            ProductReferenceId = 6
+                            ProductReferenceId = 6,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-400mm"
                         },
                         new
                         {
                             Id = 54,
                             Length = "600 mm.",
                             ProductId = 14,
-                            ProductReferenceId = 9
+                            ProductReferenceId = 9,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-600mm"
                         },
                         new
                         {
                             Id = 55,
                             Length = "800 mm.",
                             ProductId = 14,
-                            ProductReferenceId = 12
+                            ProductReferenceId = 12,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-800mm"
                         },
                         new
                         {
                             Id = 56,
                             Length = "1000 mm.",
                             ProductId = 14,
-                            ProductReferenceId = 15
+                            ProductReferenceId = 15,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-1000mm"
                         },
                         new
                         {
                             Id = 57,
                             Length = "400 mm.",
                             ProductId = 15,
-                            ProductReferenceId = 6
+                            ProductReferenceId = 6,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-400mm"
                         },
                         new
                         {
                             Id = 58,
                             Length = "600 mm.",
                             ProductId = 15,
-                            ProductReferenceId = 9
+                            ProductReferenceId = 9,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-600mm"
                         },
                         new
                         {
                             Id = 59,
                             Length = "800 mm.",
                             ProductId = 15,
-                            ProductReferenceId = 12
+                            ProductReferenceId = 12,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-800mm"
                         },
                         new
                         {
                             Id = 60,
                             Length = "1000 mm.",
                             ProductId = 15,
-                            ProductReferenceId = 15
+                            ProductReferenceId = 15,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-1000mm"
                         });
                 });
 

@@ -12,7 +12,15 @@
             <div class="bag-item-img">
                 <img src="../@Model.GalleryImage1" />
             </div>
-            <p class="width-70">(@ViewBag.ProductQuantity) @Model.Name</p>
+            @if (Model.Length != null)
+            {
+                <p class="width-70">(@ViewBag.ProductQuantity) @Model.Name <br /> @Model.Length <br /> @Model.Oil</p>
+            }
+            else
+            {
+                <p class="width-70">(@ViewBag.ProductQuantity) @Model.Name <br /> @Model.Oil</p>
+            }
+
             <p class="width-20">kr. @(Model.Price * ViewBag.ProductQuantity)</p>
         </div>
     }

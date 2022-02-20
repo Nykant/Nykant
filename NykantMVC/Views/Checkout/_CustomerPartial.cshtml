@@ -28,7 +28,7 @@
 
                         <div class="invoice-address-box">
                             <div class="checkout-header">
-                                @localizer["Billing Address"]
+                                @localizer["Faktureringsaddresse"]
                             </div>
                             <div class="inputstyle left">
                                 <input id="customer-firstname-input" required autocomplete="billing given-name" asp-for="@Model.Customer.BillingAddress.Name" data-value="@Model.Customer.BillingAddress.Name" />
@@ -51,12 +51,12 @@
                             </div>
                             <div class="inputstyle left">
                                 <input id="customer-country-input" class="hidden" autocomplete="billing country" asp-for="@Model.Customer.BillingAddress.Country" data-value="@Model.Customer.BillingAddress.Country" />
-                                <div class="country-label">@localizer["Country"]</div>
+                                <div class="country-label">@localizer["Land"]</div>
                                 <select required id="country-picker">
-                                    <option id="customer-country-option">DK</option>
+                                    <option id="customer-country-option">Danmark</option>
                                 </select>
                                 <div class="country-error hidden" id="country-error">
-                                    @localizer["Choose country to continue"]
+                                    @localizer["Vælg et land før du kan fortsætte"]
                                 </div>
                             </div>
                             <div class="inputstyle left">
@@ -71,14 +71,14 @@
                                     <span class="checkmark"></span>
                                 </label>
                                 <p>
-                                    @localizer["UseInvoice"]
+                                    @localizer["Brug faktureringsaddressen som leveringsaddresse"]
                                 </p>
                             </div>
                         </div>
 
                         <div class="shipping-address-box" id="shipping-address-box">
                             <div class="checkout-header" id="shipping-header">
-                                @localizer["Shipping Address"]
+                                @localizer["Leveringsaddresse"]
                             </div>
                             <div class="inputstyle left">
                                 <input id="shippingaddress-firstname" required autocomplete="shipping given-name" asp-for="@Model.Customer.ShippingAddress.Name" data-value="@Model.Customer.ShippingAddress.Name" />
@@ -101,12 +101,12 @@
                             </div>
                             <div class="inputstyle left">
                                 <input id="shippingaddress-country" class="hidden" autocomplete="shipping country" asp-for="@Model.Customer.ShippingAddress.Country" data-value="@Model.Customer.ShippingAddress.Country" />
-                                <div class="country-label">@localizer["Country"]</div>
+                                <div class="country-label">@localizer["Land"]</div>
                                 <select required id="shippingaddress-country-picker">
-                                    <option id="shipping-country-option">DK</option>
+                                    <option id="shipping-country-option">Danmark</option>
                                 </select>
                                 <div class="country-error hidden" id="shippingaddress-country-error">
-                                    @localizer["Choose country to continue"]
+                                    @localizer["Vælg et land før du kan fortsætte"]
                                 </div>
                             </div>
                             <div class="inputstyle left">
@@ -129,8 +129,6 @@
                             @*@localizer["Signature required"]*@
                         </div>
 
-
-
                         <div class="padding-10">
 
                         </div>
@@ -141,7 +139,7 @@
                             <div id="customerspinner" class="hidden">
                                 <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
                             </div>
-                            <span id="customer-button-text">@localizer["Continue"]</span>
+                            <span id="customer-button-text">@localizer["Videre"]</span>
                         </button> @*------------- SUBMIT FORM --------------*@
                     </div>
                 </div>

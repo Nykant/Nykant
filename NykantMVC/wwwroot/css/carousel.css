@@ -159,11 +159,11 @@ figure {
     }
 
     .slick-next {
-        display:none;
+        display:none !important;
     }
 
     .slick-prev {
-        display:none;
+        display: none !important;
     }
 }
 
@@ -174,12 +174,12 @@ figure {
     }
 
     .slick-next {
-        display: block;
+        display: block !important;
         right: 10px;
     }
 
     .slick-prev {
-        display: block;
+        display: block !important;
     }
 
 }

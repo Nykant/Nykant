@@ -162,7 +162,7 @@ var orderComplete = function (paymentIntentId) {
         })
     }).then(function (result) {
         if (result.ok) {
-            var urlstring = url + "/Tjek-Ud/Gennemført";
+            var urlstring = url + "/Ordren-Gennemført";
             location.replace(urlstring);
         }
         else {

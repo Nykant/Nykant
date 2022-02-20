@@ -16,7 +16,7 @@ namespace NykantMVC.Models
         public string Email { get; set; }
         [Required]
         [Phone]
-        [Display(Name = "Phone")]
+        [Display(Name = "Telefon")]
         public string Phone { get; set; }
         public BillingAddress BillingAddress { get; set; }
         public ShippingAddress ShippingAddress { get; set; }

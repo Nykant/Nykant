@@ -11,7 +11,7 @@
     <div class="col-10 center" id="bag-wrapper">
         <div class="col-8 left fadein" id="bagtable-container">
             <div class="bagtitle">
-                @localizer["Bag"]
+                @localizer["Kurv"]
             </div>
             <div class="bagtable" id="bagtable">
                 <partial name="_BagTablePartial" />
@@ -19,12 +19,12 @@
         </div>
         <div class="col-3 left" id="checkout-box">
             <div class="order-info">
-                <p id="price-info" class="width-50">@localizer["Total"]</p>
+                <p id="price-info" class="width-50">@localizer["I Alt"]</p>
                 <p id="total-price-text" class="width-30 align-right">kr. @ViewBag.PriceSum</p>
             </div>
             <a asp-controller="Checkout" asp-action="Checkout">
                 <div class="button">
-                    @localizer["Go to checkout"]
+                    @localizer["Gå Til Kassen"]
                 </div>
             </a>
         </div>

@@ -66,6 +66,7 @@
             <div class="details-info-wrap">
 
                 <h1>@Model.Name</h1>
+
                 <p>kr. @Model.Price</p>
 
                 <div class="fake-box">
@@ -75,15 +76,16 @@
 
                 @if (Model.ProductLengths.Count() > 0)
                 {
-                    <form id="length-form" method="get" asp-controller="Product" asp-action="GetLength">
+                    <form id="length-form" method="post" asp-controller="Product" asp-action="PostLength">
+                        @Html.AntiForgeryToken()
                         <select id="length-select">
-                            <option>Vælg Længde</option>
+                            <option>Længder</option>
                             @foreach (var length in Model.ProductLengths)
                             {
-                                <option data-product-id="@length.ProductReferenceId">@length.Length</option>
+                                <option data-product-urlname="@length.ProductReferenceUrlName">@length.Length</option>
                             }
                         </select>
-                        <input id="length-input" name="lengthInput" type="hidden" />
+                        <input id="length-input" name="urlname" type="hidden" />
                     </form>
                 }
 
@@ -155,7 +157,7 @@
                         if (color.EColor == Model.EColor)
                         {
                             <div class="color current-color">
-                                <a asp-controller="Product" asp-action="details" asp-route-id="@color.ProductSourceId">
+                                <a asp-controller="Product" asp-action="details" asp-route-urlname="@color.ProductSourceUrlName">
                                     <img src="../@color.ImgSrc" />
                                 </a>
                             </div>
@@ -163,7 +165,7 @@
                         else
                         {
                             <div class="color">
-                                <a asp-controller="Product" asp-action="details" asp-route-id="@color.ProductSourceId">
+                                <a asp-controller="Product" asp-action="details" asp-route-urlname="@color.ProductSourceUrlName">
                                     <img src="../@color.ImgSrc" />
                                 </a>
                             </div>
@@ -191,7 +193,7 @@
                             <div class="loading-check-sign" id="addToBag-check-sign">
                                 <i class="fa fa-check" aria-hidden="true"></i>
                             </div>
-                            <div id="addToBag-text">@localizer["Add To Bag"]</div>
+                            <div id="addToBag-text">@localizer["Tilføj Til Kurv"]</div>
                         </button> @*style=border-radius="0"????*@
                     </div>
                 </form>
@@ -199,21 +201,21 @@
         </div>
         <div id="collapsible-wrapper" class="col-8 left">
             <div class="collapsible">
-                <button type="button" class="collapsible-button2 active">@localizer["Description"]</button>
+                <button type="button" class="collapsible-button2 active">@localizer["Beskrivelse"]</button>
                 <div class="collapsible-content">
-                    <p id="product-description">@localizer[Model.Description]</p>
+                    <p id="product-description">@Model.Description</p>
                 </div>
             </div>
             <div class="collapsible">
-                <button type="button" class="collapsible-button2 active">@localizer["Specifications"]</button>
+                <button type="button" class="collapsible-button2 active">@localizer["Specifikationer"]</button>
                 <div class="collapsible-content">
                     <table class="collapsible-table">
-                        @localizer[Model.Size]
-                        @localizer[Model.Materials]
-                        @localizer[Model.Package]
-                        @if (localizer[Model.Note] != null)
+                        @Html.Raw(Model.Size)
+                        @Html.Raw(Model.Materials)
+                        @Html.Raw(Model.Package)
+                        @if (Model.Note != null)
                         {
-                            @localizer[Model.Note]
+                            @Html.Raw(Model.Note)
                         }
                     </table>
                 </div>

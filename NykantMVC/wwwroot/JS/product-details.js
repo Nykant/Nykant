@@ -26,8 +26,8 @@ var select = document.getElementById('length-select');
 if (select != undefined) {
     select.addEventListener('change', function () {
         var opt = select.options[select.selectedIndex];
-        var id = opt.getAttribute('data-product-id');
-        document.getElementById('length-input').value = parseInt(id);
+        var urlname = opt.getAttribute('data-product-urlname');
+        document.getElementById('length-input').value = urlname;
         document.getElementById('length-form').submit();
     });
 }

@@ -27,7 +27,7 @@ namespace NykantMVC.Controllers
             _protectionService = protectionService;
         }
 
-        [Route("Tjek-Ud")]
+        [Route("Kassen")]
         [HttpGet]
         public async Task<IActionResult> Checkout()
         {
@@ -128,7 +128,7 @@ namespace NykantMVC.Controllers
             {
                 if (checkout.Stage == Stage.completed)
                 {
-                    return RedirectToAction("Success");
+                    return RedirectToAction("Success", "Checkout");
                 }
 
                 if (bagItemsSession.Count() == 0 && bagItemsDb.Count() == 0)
@@ -196,6 +196,11 @@ namespace NykantMVC.Controllers
         {
             try
             {
+                if (customer.BillingAddress.Country == "Danmark")
+                {
+                    customer.BillingAddress.Country = "DK";
+                }
+
                 if (customer.PrivacyPolicyConsent == "true")
                 {
                     Consent consent = new Consent
@@ -216,6 +221,10 @@ namespace NykantMVC.Controllers
                     //    _logger.LogInformation($"{consentResponse.ReasonPhrase} - {consentResponse.StatusCode}");
                     //    return Json(new { error = "Could not post consent" });
                     //}
+                }
+                else
+                {
+                    return Json(new { error = "User has not consented - an error has occured" });
                 }
 
                 if (customer.ShippingAddress.SameAsBilling)
@@ -335,7 +344,7 @@ namespace NykantMVC.Controllers
             }
         }
 
-        [Route("Tjek-Ud/Gennemført")]
+        [Route("Ordren-Gennemført")]
         [HttpGet]
         public async Task<IActionResult> Success()
         {
