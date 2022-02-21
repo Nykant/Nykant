@@ -204,7 +204,7 @@
 #navbar-product-filter {
     border-top:1px solid var(--black-fade);
     display:none;
-    margin-left:30px;
+/*    margin-left:30px;*/
 }
 
 #navbar-product-filter input {
@@ -384,7 +384,7 @@ a.icon {
 }
 
 #product-link {
-    margin-left:30px;
+/*    margin-left:30px;*/
 }
 
 /* navbar-mobile */
@@ -670,8 +670,8 @@ a.icon {
 
 #logo {
     position: relative;
-    width: 200px;
-    height: 120px;
+    width: 180px;
+    height: 110px;
     float: left;
     transition: all 0.2s;
 }
