@@ -16,13 +16,14 @@
         <!-- partial:index.partial.html -->
         <div class="search__container">
             <form method="post" asp-action="Search" asp-controller="Product">
+                @Html.AntiForgeryToken()
                 <input class="search__input" type="text" name="searchString" placeholder="SØG">
             </form>
         </div>
     </div>
     <a asp-controller="Product" asp-action="Gallery">PRODUKTER</a>
-    <a asp-controller="Home" asp-action="About">OM OS</a>
-    <a asp-controller="Home" asp-action="Contact">KONTAKT</a>
+    @*<a asp-controller="Home" asp-action="About">OM OS</a>
+    <a asp-controller="Home" asp-action="Contact">KONTAKT</a>*@
 </div>
 
 <div id="navbar" class="navbar">
@@ -40,6 +41,7 @@
                 <!-- partial:index.partial.html -->
                 <div class="search__container">
                     <form method="post" asp-action="Search" asp-controller="Product">
+                        @Html.AntiForgeryToken()
                         <input class="search__input" type="text" name="searchString" placeholder="SØG">
                     </form>
                 </div>
@@ -80,18 +82,33 @@
 
         <div id="desktop-row" class="my-row">
             <a id="product-link" asp-controller="Product" asp-action="Gallery">PRODUKTER</a>
-            <a asp-controller="Home" asp-action="About">OM OS</a>
-            <a asp-controller="Home" asp-action="Contact">KONTAKT</a>
+            @*<a asp-controller="Home" asp-action="About">OM OS</a>
+            <a asp-controller="Home" asp-action="Contact">KONTAKT</a>*@
 
         </div>
 
 
         <div id="navbar-product-filter">
-            <a asp-controller="Product" asp-action="Gallery" asp-route-searchString="Tøjstativer">Tøjstativer</a>
-            <a asp-controller="Product" asp-action="Gallery" asp-route-searchString="Borde">Borde</a>
-            <a asp-controller="Product" asp-action="Gallery" asp-route-searchString="Hylder">Hylder</a>
-            <a asp-controller="Product" asp-action="Gallery" asp-route-searchString="Bænke">Bænke</a>
-            <a asp-controller="Product" asp-action="Gallery" asp-route-searchString="Bøjler">Bøjler</a>
+            <form method="post" asp-action="Search" asp-controller="Product">
+                @Html.AntiForgeryToken()
+                <input class="search__input" type="submit" name="searchString" value="Tøjstativer">
+            </form>
+            <form method="post" asp-action="Search" asp-controller="Product">
+                @Html.AntiForgeryToken()
+                <input class="search__input" type="submit" name="searchString" value="Borde">
+            </form>
+            <form method="post" asp-action="Search" asp-controller="Product">
+                @Html.AntiForgeryToken()
+                <input class="search__input" type="submit" name="searchString" value="Hylder">
+            </form>
+            <form method="post" asp-action="Search" asp-controller="Product">
+                @Html.AntiForgeryToken()
+                <input class="search__input" type="submit" name="searchString" value="Bænke">
+            </form>
+            <form method="post" asp-action="Search" asp-controller="Product">
+                @Html.AntiForgeryToken()
+                <input class="search__input" type="submit" name="searchString" value="Bøjler">
+            </form>
         </div>
 
     </div>

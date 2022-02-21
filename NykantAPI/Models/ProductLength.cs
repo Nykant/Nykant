@@ -13,6 +13,7 @@ namespace NykantAPI.Models
         public int ProductId { get; set; }
         public Product Product { get; set; }
         public int ProductReferenceId { get; set; }
+        public string ProductReferenceUrlName { get; set; }
         public string Length { get; set; }
     }
 }

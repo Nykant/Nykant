@@ -96,6 +96,10 @@ input[type='radio'] {
     line-height: 22px;
 }
 
+input[type="radio" i] {
+    visibility:hidden;
+}
+
     input[type='radio']:after {
         transition: all ease .4s;
         width: 15px;

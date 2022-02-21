@@ -139,26 +139,12 @@ drejede koniske ben, som skråner ud mod hjørnerne. Bordpladen er med gennemgå
     <value />
   </data>
   <data name="Dagmar Package" xml:space="preserve">
-    <value>&lt;tr class="no-border"&gt;
-&lt;td class="width-30"&gt;&lt;strong&gt;Pakken:&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;
-&lt;p&gt;Vægt: 22 kg.&lt;/p&gt;
-&lt;p&gt;Størrelse: 11 x 75 x 114 cm.&lt;/p&gt;
-&lt;p&gt;Leveres usamlet - se samlevejledning&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
+    <value>&lt;tr class='no-border'&gt;&lt;td class='width-30'&gt;&lt;strong&gt;Pakken:&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Vægt: 22 kg.&lt;/p&gt;&lt;p&gt;Størrelse: 11 x 75 x 114 cm.&lt;/p&gt;
+&lt;p&gt;Leveres usamlet - se samlevejledning&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
 </value>
   </data>
   <data name="Dagmar Size" xml:space="preserve">
-    <value>&lt;tr&gt;
-&lt;td class="width-30"&gt;&lt;strong&gt;Størrelse:&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;
-&lt;p&gt;Bordplade tykkelse: 25 mm.&lt;/p&gt;
-&lt;p&gt;Højde: 74 cm.&lt;/p&gt;
-&lt;p&gt;Længde: 110 cm.&lt;/p&gt;
-&lt;p&gt;Bredde: 70 cm.&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
+    <value>&lt;tr&gt;&lt;td class='width-30'&gt;&lt;strong&gt;Størrelse:&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Bordplade tykkelse: 25 mm.&lt;/p&gt;&lt;p&gt;Højde: 74 cm.&lt;/p&gt;&lt;p&gt;Længde: 110 cm.&lt;/p&gt;&lt;p&gt;Bredde: 70 cm.&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
 </value>
     <comment>&lt;div class="product-detail-text"&gt;&lt;/div&gt;</comment>
   </data>
@@ -170,36 +156,15 @@ drejede koniske ben, som skråner ud mod hjørnerne. Bordpladen er med gennemgå
     <value>Denne elegante og robuste opbevaringsbænk er lavet i massivt egetræ, med drejede ben som er synlige i top. Opmagasineringen er enkel og nem at åbne. Det er en praktisk men samtidig en elegant bænk med fine detaljer, som vil føle sig hjemme hvor som helst.</value>
   </data>
   <data name="Filippa Materials" xml:space="preserve">
-    <value>&lt;tr&gt;
-&lt;td class="width-30"&gt;&lt;strong&gt;Materialer:&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;
-&lt;p&gt;Bæredygtigt FSC certificeret egetræ&lt;/p&gt;
-&lt;p&gt;Olie&lt;/p&gt;
-&lt;p&gt;Læderstrop&lt;/p&gt;
-&lt;p&gt;Beslag &lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
+    <value>&lt;tr&gt;&lt;td class='width-30'&gt;&lt;strong&gt;Materialer:&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Bæredygtigt FSC certificeret egetræ&lt;/p&gt;&lt;p&gt;Olie&lt;/p&gt;&lt;p&gt;Læderstrop&lt;/p&gt;&lt;p&gt;Beslag &lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
 </value>
   </data>
   <data name="Filippa Note" xml:space="preserve">
-    <value>&lt;tr class="no-border"&gt;
-&lt;td class="width-30"&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;
-&lt;p&gt;Indvendige mål for opbevaring: 30 x 30 x 85 cm&lt;/p&gt;
-&lt;/td&gt;
-
-&lt;/tr&gt;
+    <value>&lt;tr class='no-border'&gt;&lt;td class='width-30'&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Indvendige mål for opbevaring: 30 x 30 x 85 cm&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
 </value>
   </data>
   <data name="Filippa Package" xml:space="preserve">
-    <value>&lt;tr&gt;
-&lt;td class="width-30"&gt;&lt;strong&gt;Pakken:&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;
-&lt;p&gt;Vægt: 24 kg.&lt;/p&gt;
-&lt;p&gt;Størrelse: 40 x 50 x 115 cm.&lt;/p&gt;
-&lt;p&gt;Leveres samlet &lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
+    <value>&lt;tr&gt;&lt;td class='width-30'&gt;&lt;strong&gt;Pakken:&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Vægt: 24 kg.&lt;/p&gt;&lt;p&gt;Størrelse: 40 x 50 x 115 cm.&lt;/p&gt;&lt;p&gt;Leveres samlet &lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
 </value>
     <comment>&lt;td class="width-30"&gt;&lt;strong&gt;&lt;/strong&gt;&lt;/td&gt;
 &lt;td&gt;
@@ -209,14 +174,7 @@ drejede koniske ben, som skråner ud mod hjørnerne. Bordpladen er med gennemgå
 &lt;/td&gt;</comment>
   </data>
   <data name="Filippa Size" xml:space="preserve">
-    <value>&lt;tr&gt;
-&lt;td class="width-30"&gt;&lt;strong&gt;Størrelse:&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;
-&lt;p&gt;Højde: 45 cm.&lt;/p&gt;
-&lt;p&gt;Længde: 110 cm.&lt;/p&gt;
-&lt;p&gt;Dybde: 35 cm. &lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
+    <value>&lt;tr&gt;&lt;td class='width-30'&gt;&lt;strong&gt;Størrelse:&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Højde: 45 cm.&lt;/p&gt;&lt;p&gt;Længde: 110 cm.&lt;/p&gt;&lt;p&gt;Dybde: 35 cm. &lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
 </value>
   </data>
   <data name="Gertrud Description" xml:space="preserve">
@@ -238,112 +196,43 @@ drejede koniske ben, som skråner ud mod hjørnerne. Bordpladen er med gennemgå
     <value />
   </data>
   <data name="Gertrud Package" xml:space="preserve">
-    <value>&lt;tr class="no-border"&gt;
-&lt;td class="width-30"&gt;&lt;strong&gt;Pakken&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;
-&lt;p&gt;Størrelse: 470x170x60 mm.&lt;/p&gt;
-&lt;p&gt;Vægt: 0.6 kg.&lt;/p&gt;
-&lt;p&gt;Leveres samlet med 3 stk. pr. karton&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
+    <value>&lt;tr class='no-border'&gt;&lt;td class='width-30'&gt;&lt;strong&gt;Pakken&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Størrelse: 470x170x60 mm.&lt;/p&gt;&lt;p&gt;Vægt: 0.6 kg.&lt;/p&gt;&lt;p&gt;Leveres samlet med 3 stk. pr. karton&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
 </value>
   </data>
   <data name="Gertrud Size" xml:space="preserve">
-    <value>&lt;tr&gt;
-&lt;td class="width-30"&gt;&lt;strong&gt;Størrelse&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;
-&lt;p&gt;Tykkelse: 20 mm.&lt;/p&gt;
-&lt;p&gt;Længde: 45 cm.&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
+    <value>&lt;tr&gt;&lt;td class='width-30'&gt;&lt;strong&gt;Størrelse&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Tykkelse: 20 mm.&lt;/p&gt;&lt;p&gt;Længde: 45 cm.&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
 </value>
   </data>
   <data name="Ingeborg 1000 Package" xml:space="preserve">
-    <value>&lt;tr&gt;
-&lt;td class="width-30"&gt;&lt;strong&gt;Pakken&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;
-&lt;p&gt;Størelse:  1030x220x45 mm.&lt;/p&gt;
-&lt;p&gt;Vægt: 3.2 kg. &lt;/p&gt;
-&lt;p&gt;Leveres usamlet - se samlevejledning&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
+    <value>&lt;tr&gt;&lt;td class='width-30'&gt;&lt;strong&gt;Pakken&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Størelse:  1030x220x45 mm.&lt;/p&gt;&lt;p&gt;Vægt: 3.2 kg. &lt;/p&gt;&lt;p&gt;Leveres usamlet - se samlevejledning&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
 </value>
   </data>
   <data name="Ingeborg 1000 Size" xml:space="preserve">
-    <value>&lt;tr&gt;
-&lt;td class="width-30"&gt;&lt;strong&gt;Størrelse&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;
-&lt;p&gt;Tykkelse: 20 mm.&lt;/p&gt;
-&lt;p&gt;Længde: 100 cm.&lt;/p&gt;
-&lt;p&gt;Bredde/dybde: 20 cm.&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
+    <value>&lt;tr&gt;&lt;td class='width-30'&gt;&lt;strong&gt;Størrelse&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Tykkelse: 20 mm.&lt;/p&gt;&lt;p&gt;Længde: 100 cm.&lt;/p&gt;&lt;p&gt;Bredde/dybde: 20 cm.&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
 </value>
   </data>
   <data name="Ingeborg 400 Package" xml:space="preserve">
-    <value>&lt;tr&gt;
-&lt;td class="width-30"&gt;&lt;strong&gt;Pakken&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;
-&lt;p&gt;Størelse: 430x220x45 mm. &lt;/p&gt;
-&lt;p&gt;Vægt: 1.4 kg. &lt;/p&gt;
-&lt;p&gt;Leveres usamlet - se samlevejledning&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
+    <value>&lt;tr&gt;&lt;td class='width-30'&gt;&lt;strong&gt;Pakken&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Størelse: 430x220x45 mm. &lt;/p&gt;&lt;p&gt;Vægt: 1.4 kg. &lt;/p&gt;&lt;p&gt;Leveres usamlet - se samlevejledning&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
 </value>
   </data>
   <data name="Ingeborg 400 Size" xml:space="preserve">
-    <value>&lt;tr&gt;
-&lt;td class="width-30"&gt;&lt;strong&gt;Størrelse&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;
-&lt;p&gt;Tykkelse: 20 mm.&lt;/p&gt;
-&lt;p&gt;Længde: 40 cm.&lt;/p&gt;
-&lt;p&gt;Bredde/dybde: 20 cm.&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
+    <value>&lt;tr&gt;&lt;td class='width-30'&gt;&lt;strong&gt;Størrelse&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Tykkelse: 20 mm.&lt;/p&gt;&lt;p&gt;Længde: 40 cm.&lt;/p&gt;&lt;p&gt;Bredde/dybde: 20 cm.&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
 </value>
   </data>
   <data name="Ingeborg 600 Package" xml:space="preserve">
-    <value>&lt;tr&gt;
-&lt;td class="width-30"&gt;&lt;strong&gt;Pakken&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;
-&lt;p&gt;Størelse: 630x220x45 mm. &lt;/p&gt;
-&lt;p&gt;Vægt: 2 kg. &lt;/p&gt;
-&lt;p&gt;Leveres usamlet - se samlevejledning&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
+    <value>&lt;tr&gt;&lt;td class='width-30'&gt;&lt;strong&gt;Pakken&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Størelse: 630x220x45 mm. &lt;/p&gt;&lt;p&gt;Vægt: 2 kg. &lt;/p&gt;&lt;p&gt;Leveres usamlet - se samlevejledning&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
 </value>
   </data>
   <data name="Ingeborg 600 Size" xml:space="preserve">
-    <value>&lt;tr&gt;
-&lt;td class="width-30"&gt;&lt;strong&gt;Størrelse&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;
-&lt;p&gt;Tykkelse: 20 mm.&lt;/p&gt;
-&lt;p&gt;Længde: 60 cm.&lt;/p&gt;
-&lt;p&gt;Bredde/dybde: 20 cm.&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
+    <value>&lt;tr&gt;&lt;td class='width-30'&gt;&lt;strong&gt;Størrelse&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Tykkelse: 20 mm.&lt;/p&gt;&lt;p&gt;Længde: 60 cm.&lt;/p&gt;&lt;p&gt;Bredde/dybde: 20 cm.&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
 </value>
   </data>
   <data name="Ingeborg 800 Package" xml:space="preserve">
-    <value>&lt;tr&gt;
-&lt;td class="width-30"&gt;&lt;strong&gt;Pakken&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;
-&lt;p&gt;Størelse: 830x220x45 mm. &lt;/p&gt;
-&lt;p&gt;Vægt: 2.6 kg. &lt;/p&gt;
-&lt;p&gt;Leveres usamlet - se samlevejledning&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
+    <value>&lt;tr&gt;&lt;td class='width-30'&gt;&lt;strong&gt;Pakken&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Størelse: 830x220x45 mm. &lt;/p&gt;&lt;p&gt;Vægt: 2.6 kg. &lt;/p&gt;&lt;p&gt;Leveres usamlet - se samlevejledning&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
 </value>
   </data>
   <data name="Ingeborg 800 Size" xml:space="preserve">
-    <value>&lt;tr&gt;
-&lt;td class="width-30"&gt;&lt;strong&gt;Størrelse&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;
-&lt;p&gt;Tykkelse: 20 mm.&lt;/p&gt;
-&lt;p&gt;Længde: 80 cm.&lt;/p&gt;
-&lt;p&gt;Bredde/dybde: 20 cm.&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
+    <value>&lt;tr&gt;&lt;td class='width-30'&gt;&lt;strong&gt;Størrelse&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Tykkelse: 20 mm.&lt;/p&gt;&lt;p&gt;Længde: 80 cm.&lt;/p&gt;&lt;p&gt;Bredde/dybde: 20 cm.&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
 </value>
   </data>
   <data name="Ingeborg Description" xml:space="preserve">
@@ -363,55 +252,27 @@ Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænge
 </value>
   </data>
   <data name="Ingeborg Note" xml:space="preserve">
-    <value>&lt;tr class="no-border"&gt;
-&lt;td class="width-30"&gt;&lt;strong&gt;Note&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;
-&lt;p&gt;Tjek om plugs passer præcist til jeres væg&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
+    <value>&lt;tr class='no-border'&gt;&lt;td class='width-30'&gt;&lt;strong&gt;Note&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Tjek om plugs passer præcist til jeres væg&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
 </value>
   </data>
   <data name="Ingrid Description" xml:space="preserve">
     <value>Vores unikke og smukke væghængte tøjstativ i massivt egetræ, er udviklet således den samles med kiler og monteres hængende ud fra væggen, med en lædderstrop.</value>
   </data>
   <data name="Ingrid Materials" xml:space="preserve">
-    <value>&lt;tr&gt;
-&lt;td class="width-30"&gt;&lt;strong&gt;Materialer&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;
-&lt;p&gt;Bæredygtigt FSC certificeret egetræ&lt;/p&gt;
-&lt;p&gt;Olie&lt;/p&gt;
-&lt;p&gt;Lædderstrop&lt;/p&gt;
-&lt;p&gt;Beslag&lt;/p&gt;
-&lt;p&gt;Skruer&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
+    <value>&lt;tr&gt;&lt;td class='width-30'&gt;&lt;strong&gt;Materialer&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Bæredygtigt FSC certificeret egetræ&lt;/p&gt;&lt;p&gt;Olie&lt;/p&gt;&lt;p&gt;Lædderstrop&lt;/p&gt;&lt;p&gt;Beslag&lt;/p&gt;&lt;p&gt;Skruer&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
 </value>
   </data>
   <data name="Ingrid Note" xml:space="preserve">
     <value />
   </data>
   <data name="Ingrid Package" xml:space="preserve">
-    <value>&lt;tr class="no-border"&gt;
-&lt;td class="width-30"&gt;&lt;strong&gt;Pakken&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;
-&lt;p&gt;Vægt: 2kg.&lt;/p&gt;
-&lt;p&gt;Størrelse: 7 x 105 x 9,5 cm.&lt;/p&gt;
-&lt;p&gt;Leveres usamlet - se samlevejledning&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
+    <value>&lt;tr class='no-border'&gt;&lt;td class='width-30'&gt;&lt;strong&gt;Pakken&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Vægt: 2kg.&lt;/p&gt;&lt;p&gt;Størrelse: 7 x 105 x 9,5 cm.&lt;/p&gt;&lt;p&gt;Leveres usamlet - se samlevejledning&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
 
 
 </value>
   </data>
   <data name="Ingrid Size" xml:space="preserve">
-    <value>&lt;tr&gt;
-&lt;td class="width-30"&gt;&lt;strong&gt;Størrelse&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;
-&lt;p&gt;Højde: 90 cm.&lt;/p&gt;
-&lt;p&gt;Fra væg/dybde: 40 cm.&lt;/p&gt;
-&lt;p&gt;Bredde: 105 cm.&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
+    <value>&lt;tr&gt;&lt;td class='width-30'&gt;&lt;strong&gt;Størrelse&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Højde: 90 cm.&lt;/p&gt;&lt;p&gt;Fra væg/dybde: 40 cm.&lt;/p&gt;&lt;p&gt;Bredde: 105 cm.&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
 </value>
   </data>
   <data name="Nora Description" xml:space="preserve">
@@ -419,53 +280,21 @@ Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænge
 Det massive egetræsmøbel står sikkert og dekorativt med det fine snedkerarbejde, og lækre detaljer.</value>
   </data>
   <data name="Nora Materials" xml:space="preserve">
-    <value>&lt;tr&gt;
-&lt;td class="width-30"&gt;&lt;strong&gt;Materialer&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;
-&lt;p&gt;Bæredygtigt FSC certificeret egetræ&lt;/p&gt;
-&lt;p&gt;Olie&lt;/p&gt;
-&lt;p&gt;Kiler&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
+    <value>&lt;tr&gt;&lt;td class='width-30'&gt;&lt;strong&gt;Materialer&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Bæredygtigt FSC certificeret egetræ&lt;/p&gt;&lt;p&gt;Olie&lt;/p&gt;&lt;p&gt;Kiler&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
 </value>
   </data>
   <data name="Nora Note" xml:space="preserve">
     <value />
   </data>
   <data name="Nora Package" xml:space="preserve">
-    <value>&lt;tr class="no-border"&gt;
-&lt;td class="width-30"&gt;&lt;strong&gt;Pakken&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;
-&lt;p&gt;Leveres usamlet i 2 kartoner - se samlevejledning&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class="no-border"&gt;
-&lt;td class="width-30"&gt;&lt;strong&gt;Karton 1&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt; 
-&lt;p&gt;Vægt: 5 kg.&lt;/p&gt;
-&lt;p&gt;Størrelse: 6,5 x 11,5 x 186 cm.&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td class="width-30"&gt;&lt;strong&gt;Karton 2&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt; 
-&lt;p&gt;Vægt: 3 kg.&lt;/p&gt;
-&lt;p&gt;Størrelse: 5,5 x 54 x 119 cm.&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
+    <value>&lt;tr class='no-border'&gt;&lt;td class='width-30'&gt;&lt;strong&gt;Pakken&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Leveres usamlet i 2 kartoner - se samlevejledning&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr class='no-border'&gt;&lt;td class='width-30'&gt;&lt;strong&gt;Karton 1&lt;/strong&gt;&lt;/td&gt;&lt;td&gt; &lt;p&gt;Vægt: 5 kg.&lt;/p&gt;
+&lt;p&gt;Størrelse: 6,5 x 11,5 x 186 cm.&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='width-30'&gt;&lt;strong&gt;Karton 2&lt;/strong&gt;&lt;/td&gt;&lt;td&gt; &lt;p&gt;Vægt: 3 kg.&lt;/p&gt;&lt;p&gt;Størrelse: 5,5 x 54 x 119 cm.&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
 
 
 </value>
   </data>
   <data name="Nora Size" xml:space="preserve">
-    <value>&lt;tr&gt;
-&lt;td class="width-30"&gt;&lt;strong&gt;Størrelse&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;
-&lt;p&gt;Højde: 180 cm.&lt;/p&gt;
-&lt;p&gt;Længde: 100 cm.&lt;/p&gt;
-&lt;p&gt;Bredde: 55 cm.&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
+    <value>&lt;tr&gt;&lt;td class='width-30'&gt;&lt;strong&gt;Størrelse&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Højde: 180 cm.&lt;/p&gt;&lt;p&gt;Længde: 100 cm.&lt;/p&gt;&lt;p&gt;Bredde: 55 cm.&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
 </value>
   </data>
   <data name="Specifications" xml:space="preserve">
@@ -476,28 +305,14 @@ Det massive egetræsmøbel står sikkert og dekorativt med det fine snedkerarbej
 er fantastisk stabil og robust.</value>
   </data>
   <data name="Thyra Materials" xml:space="preserve">
-    <value>&lt;tr&gt;
-&lt;td class="width-30"&gt;&lt;strong&gt;Materialer&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;
-&lt;p&gt;Bæredygtigt FSC certificeret egetræ&lt;/p&gt;
-&lt;p&gt;Olie&lt;/p&gt;
-&lt;p&gt;Skruer&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
+    <value>&lt;tr&gt;&lt;td class="width-30"&gt;&lt;strong&gt;Materialer&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Bæredygtigt FSC certificeret egetræ&lt;/p&gt;&lt;p&gt;Olie&lt;/p&gt;&lt;p&gt;Skruer&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
 </value>
   </data>
   <data name="Thyra Note" xml:space="preserve">
     <value />
   </data>
   <data name="Thyra Package" xml:space="preserve">
-    <value>&lt;tr class="no-border"&gt;
-&lt;td class="width-30"&gt;&lt;strong&gt;Pakken&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;
-&lt;p&gt;Størrelse: 11 x 47 x 175 cm.&lt;/p&gt;
-&lt;p&gt;Vægt: 20 kg.&lt;/p&gt;
-&lt;p&gt;Leveres usamlet - se samlevejledning&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
+    <value>&lt;tr class='no-border'&gt;&lt;td class='width-30'&gt;&lt;strong&gt;Pakken&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Størrelse: 11 x 47 x 175 cm.&lt;/p&gt;&lt;p&gt;Vægt: 20 kg.&lt;/p&gt;&lt;p&gt;Leveres usamlet - se samlevejledning&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
 </value>
   </data>
   <data name="Thyra Short Description" xml:space="preserve">
@@ -519,39 +334,18 @@ er fantastisk stabil og robust.</value>
     <value />
   </data>
   <data name="Thyra Short Package" xml:space="preserve">
-    <value>&lt;tr class="no-border"&gt;
-&lt;td class="width-30"&gt;&lt;strong&gt;Pakken&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;
-&lt;p&gt;Størrelse: 11 x 47 x 120 cm.&lt;/p&gt;
-&lt;p&gt;Vægt: 14 kg.&lt;/p&gt;
-&lt;p&gt;Leveres usamlet - se samlevejledning&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
+    <value>&lt;tr class='no-border'&gt;&lt;td class='width-30'&gt;&lt;strong&gt;Pakken&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Størrelse: 11 x 47 x 120 cm.&lt;/p&gt;&lt;p&gt;Vægt: 14 kg.&lt;/p&gt;&lt;p&gt;Leveres usamlet - se samlevejledning&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
 
 </value>
   </data>
   <data name="Thyra Short Size" xml:space="preserve">
-    <value>&lt;tr&gt;
-&lt;td class="width-30"&gt;&lt;strong&gt;Størrelse&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;
-&lt;p&gt;Højde: 47 cm.&lt;/p&gt;
-&lt;p&gt;Længde: 115 cm.&lt;/p&gt;
-&lt;p&gt;Bredde: 40 cm.&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
+    <value>&lt;tr&gt;&lt;td class='width-30'&gt;&lt;strong&gt;Størrelse&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Højde: 47 cm.&lt;/p&gt;&lt;p&gt;Længde: 115 cm.&lt;/p&gt;&lt;p&gt;Bredde: 40 cm.&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
 </value>
     <comment>&lt;tr class="no-border"&gt;
 &lt;/tr&gt;</comment>
   </data>
   <data name="Thyra Size" xml:space="preserve">
-    <value>&lt;tr&gt;
-&lt;td class="width-30"&gt;&lt;strong&gt;Størrelse&lt;/strong&gt;&lt;/td&gt;
-&lt;td&gt;
-&lt;p&gt;Højde: 47 cm.&lt;/p&gt;
-&lt;p&gt;Længde: 170 cm.&lt;/p&gt;
-&lt;p&gt;Bredde: 40 cm.&lt;/p&gt;
-&lt;/td&gt;
-&lt;/tr&gt;
+    <value>&lt;tr&gt;&lt;td class='width-30'&gt;&lt;strong&gt;Størrelse&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;Højde: 47 cm.&lt;/p&gt;&lt;p&gt;Længde: 170 cm.&lt;/p&gt;&lt;p&gt;Bredde: 40 cm.&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
 </value>
     <comment>&lt;tr&gt;
 &lt;/tr&gt;</comment>

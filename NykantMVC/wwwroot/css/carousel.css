@@ -36,6 +36,14 @@
         left: 18px
     }
 
+    .product-card button {
+        background:none;
+        border:none;
+        margin:auto;
+        width:100%;
+        color:var(--dark);
+    }
+
 .product-badge {
     position: absolute;
     font-size: 14px;
@@ -151,11 +159,11 @@ figure {
     }
 
     .slick-next {
-        display:none;
+        display:none !important;
     }
 
     .slick-prev {
-        display:none;
+        display: none !important;
     }
 }
 
@@ -166,12 +174,12 @@ figure {
     }
 
     .slick-next {
-        display: block;
+        display: block !important;
         right: 10px;
     }
 
     .slick-prev {
-        display: block;
+        display: block !important;
     }
 
 }

@@ -65,12 +65,21 @@
             <div class="owl-carousel">
                 @foreach (var category in Model.Categories)
                 {
+                <form method="post" asp-action="Search" asp-controller="Product">
                     <div class="product-card">
-                        @*<div class="product-badge text-danger">28% Off</div>*@<a class="product-thumb" href="/Product/Gallery?searchString=@category.Name" data-abc="true"><img loading="lazy" src="@category.ImgSource" alt="Category"></a>
-                        <h3 class="product-title"><a href="/Product/Gallery?searchString=@category.Name" data-abc="true">@category.Name</a></h3>
+
+                        @Html.AntiForgeryToken()
+                        <input class="search__input" type="hidden" name="searchString" value="@category.Name">
+                        <button type="submit">
+                            @*<div class="product-badge text-danger">28% Off</div>*@<img loading="lazy" src="@category.ImgSource" alt="Category">
+                            <h3 class="product-title">@category.Name</h3>
+                        </button>
+
+
                         @*<h4 class="product-price"> <del>$844.99</del>@cat.Price kr.</h4>*@
                         @*<div class="product-buttons"> <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="" data-original-title="Whishlist"><i class="fa fa-heart"></i></button> <button class="button">Add to Cart</button> </div>*@
                     </div>
+                </form>
                 }
             </div>
         </div>

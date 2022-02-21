@@ -3,30 +3,33 @@
 
 <div class="checkout-header z200" id="customerInf-header">
     <h1>
-        @localizer["Contact Information"]
+        @localizer["Kundeoplysninger"]
     </h1>
     <div class="check-sign" id="customer-check-sign">
         <i class="fa fa-check" aria-hidden="true"></i>
     </div>
     <div id="customerinf-summary" class="summary">
-        <p>@localizer["Email"]: <span id="customer-email-summary">@Model.Customer.Email</span></p>
-        <p>@localizer["Telephone"]: <span id="customer-phone-summary">@Model.Customer.Phone</span></p>
         <div class="margin-top-10">
-            <p class="summary-header">@localizer["Billing Address"]</p>
-            <p>@localizer["Name"]: <span id="customer-firstname-summary">@Model.Customer.BillingAddress.Name</span></p>
-            <p>@localizer["Address"]: <span id="customer-address-summary">@Model.Customer.BillingAddress.Address</span></p>
-            <p>@localizer["City"]: <span id="customer-city-summary">@Model.Customer.BillingAddress.City</span></p>
-            <p>@localizer["Country"]: <span id="customer-country-summary">@Model.Customer.BillingAddress.Country</span></p>
-            <p>@localizer["Postal"]: <span id="customer-postal-summary">@Model.Customer.BillingAddress.Postal</span></p>
+            <p class="summary-header">@localizer["Kontakt Oplysninger"]</p>
+            <p>@localizer["Email"]: <span id="customer-email-summary">@Model.Customer.Email</span></p>
+            <p>@localizer["Telefon"]: <span id="customer-phone-summary">@Model.Customer.Phone</span></p>
+        </div>
+        <div class="margin-top-10">
+            <p class="summary-header">@localizer["Faktureringsaddresse"]</p>
+            <p>@localizer["Fulde Navn eller Firma"]: <span id="customer-firstname-summary">@Model.Customer.BillingAddress.Name</span></p>
+            <p>@localizer["Addresse"]: <span id="customer-address-summary">@Model.Customer.BillingAddress.Address</span></p>
+            <p>@localizer["By"]: <span id="customer-city-summary">@Model.Customer.BillingAddress.City</span></p>
+            <p>@localizer["Land"]: <span id="customer-country-summary">@Model.Customer.BillingAddress.Country</span></p>
+            <p>@localizer["Postnummer"]: <span id="customer-postal-summary">@Model.Customer.BillingAddress.Postal</span></p>
         </div>
         <div id="shippingaddress-summary" class="margin-top-10">
-            <p class="summary-header">Shipping Address</p>
-            <p>@localizer["Name"]: <span id="shippingaddress-firstname-summary">@Model.Customer.ShippingAddress.Name</span></p>
-            <p>@localizer["Address"]: <span id="shippingaddress-address-summary">@Model.Customer.ShippingAddress.Address</span></p>
-            <p>@localizer["City"]: <span id="shippingaddress-city-summary">@Model.Customer.ShippingAddress.City</span></p>
-            <p>@localizer["Country"]: <span id="shippingaddress-country-summary">@Model.Customer.ShippingAddress.Country</span></p>
-            <p>@localizer["Postal"]: <span id="shippingaddress-postal-summary">@Model.Customer.ShippingAddress.Postal</span></p>
+            <p class="summary-header">@localizer["Leveringsaddresse"]</p>
+            <p>@localizer["Fulde Navn eller Firma"]: <span id="shippingaddress-firstname-summary">@Model.Customer.ShippingAddress.Name</span></p>
+            <p>@localizer["Addresse"]: <span id="shippingaddress-address-summary">@Model.Customer.ShippingAddress.Address</span></p>
+            <p>@localizer["By"]: <span id="shippingaddress-city-summary">@Model.Customer.ShippingAddress.City</span></p>
+            <p>@localizer["Land"]: <span id="shippingaddress-country-summary">@Model.Customer.ShippingAddress.Country</span></p>
+            <p>@localizer["Postnummer"]: <span id="shippingaddress-postal-summary">@Model.Customer.ShippingAddress.Postal</span></p>
         </div>
     </div>
-    <button class="button edit-button" id="customer-edit-button">@localizer["Fix"]</button>
+    <button class="button edit-button" id="customer-edit-button">@localizer["Ret"]</button>
 </div>

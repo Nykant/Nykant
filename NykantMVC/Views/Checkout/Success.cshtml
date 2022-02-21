@@ -1,7 +1,7 @@
 ﻿@model Order
 @inject IViewLocalizer localizer
 @{
-    ViewData["Title"] = "Success";
+    ViewData["Title"] = "Ordren Gennemført";
     ViewData["Description"] = "";
 }
 
@@ -25,9 +25,17 @@
                 </div>
                 @foreach (var item in Model.OrderItems)
                 {
-                    <div class="order-item">
-                        <a asp-controller="product" asp-action="details" asp-route-id="@item.Product.Id"><p>(@item.Quantity) @item.Product.Name / @item.Product.WeightInKg kg.</p><span>kr. @(item.Product.Price*item.Quantity)</span></a>
-                    </div>
+            <div class="order-item">
+                @if (item.Product.Length != null)
+                {
+                    <a asp-controller="product" asp-action="details" asp-route-urlname="@item.Product.UrlName"><p>(@item.Quantity) @item.Product.Name / @item.Product.Length / @item.Product.Oil / @item.Product.WeightInKg kg.</p><span>kr. @(item.Product.Price*item.Quantity)</span></a>
+                }
+                else
+                {
+                    <a asp-controller="product" asp-action="details" asp-route-urlname="@item.Product.UrlName"><p>(@item.Quantity) @item.Product.Name / @item.Product.Oil / @item.Product.WeightInKg kg.</p><span>kr. @(item.Product.Price*item.Quantity)</span></a>
+                }
+
+            </div>
                 }
             </div>
             <div class="order-price-summary">

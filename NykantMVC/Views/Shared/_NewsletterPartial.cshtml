@@ -6,6 +6,7 @@
     </h1>
     <p>Når du trykke tilmeld, abonnerer du på nykants nyhedsbreve. For at afmelde igen, tryk afmeld, i en nyhedsemail.</p>
     <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="newssub_succeed" data-ajax-complete="noop" data-ajax-begin="newssub_begin" data-ajax-failure="newssub_error" asp-controller="Home" asp-action="AddNewsSub">
+        @Html.AntiForgeryToken()
         <input placeholder="Skriv din email..." name="email" />
         <button type="submit" id="newsletter-button">
             <div id="newsletter-error" class="loading-error">

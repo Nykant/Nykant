@@ -32,42 +32,43 @@
 <div class="my-row bottom-side-padding">
     <div class="responsive-form">
         <div class="checkout-header" id="shipping-headerr">
-            <h1>@localizer["Delivery Method"]</h1>
+            <h1>@localizer["Leveringsmetode"]</h1>
             <div class="check-sign" id="shipping-check-sign">
                 <i class="fa fa-check" aria-hidden="true"></i>
             </div>
             <div class="summary" id="shipping-summary">
-                <p>@localizer["Shipping Method"]: <span id="shipping-method-summary">@localizer[$"{Model.Checkout.ShippingDelivery.Type}"]</span></p>
+                <p>@localizer["Leveringsmetode"]: <span id="shipping-method-summary">@Model.Checkout.ShippingDelivery.Type</span></p>
                 <div class="margin-top-10" id="parcelshop-summary">
-                    <p>@localizer["Company Name"]: <span id="parcelshop-companyname-summary">@Model.Checkout.ShippingDelivery.ParcelshopData.CompanyName</span></p>
-                    <p>@localizer["StreetName"]: <span id="parcelshop-streetname-summary">@Model.Checkout.ShippingDelivery.ParcelshopData.Streetname</span></p>
-                    <p>@localizer["StreetName2"]: <span id="parcelshop-streetname2-summary">@Model.Checkout.ShippingDelivery.ParcelshopData.Streetname2</span></p>
-                    <p>@localizer["CityName"]: <span id="parcelshop-cityname-summary">@Model.Checkout.ShippingDelivery.ParcelshopData.CityName</span></p>
-                    <p>@localizer["ZipCode"]: <span id="parcelshop-zipcode-summary">@Model.Checkout.ShippingDelivery.ParcelshopData.ZipCode</span></p>
-                    <p>@localizer["CountryCode"]: <span id="parcelshop-countrycode-summary">@Model.Checkout.ShippingDelivery.ParcelshopData.CountryCodeISO3166A2</span></p>
+                    <p>@localizer["Butiksnavn"]: <span id="parcelshop-companyname-summary">@Model.Checkout.ShippingDelivery.ParcelshopData.CompanyName</span></p>
+                    <p>@localizer["Addresse linje 1"]: <span id="parcelshop-streetname-summary">@Model.Checkout.ShippingDelivery.ParcelshopData.Streetname</span></p>
+                    <p>@localizer["Pakkeshop Id"]: <span id="parcelshop-streetname2-summary">@Model.Checkout.ShippingDelivery.ParcelshopData.Streetname2</span></p>
+                    <p>@localizer["By"]: <span id="parcelshop-cityname-summary">@Model.Checkout.ShippingDelivery.ParcelshopData.CityName</span></p>
+                    <p>@localizer["Postnummer"]: <span id="parcelshop-zipcode-summary">@Model.Checkout.ShippingDelivery.ParcelshopData.ZipCode</span></p>
+                    <p>@localizer["Land"]: <span id="parcelshop-countrycode-summary">@Model.Checkout.ShippingDelivery.ParcelshopData.CountryCodeISO3166A2</span></p>
                 </div>
             </div>
-            <button class="button edit-button" id="shipping-edit-button">@localizer["Change"]</button>
+            <button class="button edit-button" id="shipping-edit-button">@localizer["Ret"]</button>
         </div>
-        <form id="shipping-form" method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="noop" data-ajax-complete="shipping_completed" data-ajax-begin="noop" data-ajax-failure="noop"  asp-controller="Checkout" asp-action="PostShipping">
+        <form id="shipping-form" method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="noop" data-ajax-complete="shipping_completed" data-ajax-begin="noop" data-ajax-failure="noop" asp-controller="Checkout" asp-action="PostShipping">
+            @Html.AntiForgeryToken()
             <input type="hidden" id="edit-shipping" name="editShipping" />
             <input required type="hidden" id="shipping-delivery-type" name="shippingDelivery.Type" asp-for="@Model.Checkout.ShippingDelivery.Type" />
-            <input required type="hidden" id="parcelshop-CompanyName" name="shippingDelivery.ParcelshopData.CompanyName" asp-for="@Model.Checkout.ShippingDelivery.ParcelshopData.CompanyName" />
-            <input required type="hidden" id="parcelshop-StreetName" name="shippingDelivery.ParcelshopData.Streetname" asp-for="@Model.Checkout.ShippingDelivery.ParcelshopData.Streetname" />
-            <input required type="hidden" id="parcelshop-StreetName2" name="shippingDelivery.ParcelshopData.Streetname2" asp-for="@Model.Checkout.ShippingDelivery.ParcelshopData.Streetname2" />
-            <input required type="hidden" id="parcelshop-ZipCode" name="shippingDelivery.ParcelshopData.ZipCode" asp-for="@Model.Checkout.ShippingDelivery.ParcelshopData.ZipCode" />
-            <input required type="hidden" id="parcelshop-CityName" name="shippingDelivery.ParcelshopData.CityName" asp-for="@Model.Checkout.ShippingDelivery.ParcelshopData.CityName" />
-            <input required type="hidden" id="parcelshop-CountryCodeISO3166A2" name="shippingDelivery.ParcelshopData.CountryCodeISO3166A2" asp-for="@Model.Checkout.ShippingDelivery.ParcelshopData.CountryCodeISO3166A2" />
+            <input required type="hidden" id="parcelshop-CompanyName" name="shippingDelivery.ParcelshopData.CompanyName" asp-for="@Model.Checkout.ShippingDelivery.ParcelshopData.CompanyName" data-value="@Model.Checkout.ShippingDelivery.ParcelshopData.CompanyName" />
+            <input required type="hidden" id="parcelshop-StreetName" name="shippingDelivery.ParcelshopData.Streetname" asp-for="@Model.Checkout.ShippingDelivery.ParcelshopData.Streetname" data-value="@Model.Checkout.ShippingDelivery.ParcelshopData.Streetname" />
+            <input required type="hidden" id="parcelshop-StreetName2" name="shippingDelivery.ParcelshopData.Streetname2" asp-for="@Model.Checkout.ShippingDelivery.ParcelshopData.Streetname2" data-value="@Model.Checkout.ShippingDelivery.ParcelshopData.Streetname2" />
+            <input required type="hidden" id="parcelshop-ZipCode" name="shippingDelivery.ParcelshopData.ZipCode" asp-for="@Model.Checkout.ShippingDelivery.ParcelshopData.ZipCode" data-value="@Model.Checkout.ShippingDelivery.ParcelshopData.ZipCode" />
+            <input required type="hidden" id="parcelshop-CityName" name="shippingDelivery.ParcelshopData.CityName" asp-for="@Model.Checkout.ShippingDelivery.ParcelshopData.CityName" data-value="@Model.Checkout.ShippingDelivery.ParcelshopData.CityName" />
+            <input required type="hidden" id="parcelshop-CountryCodeISO3166A2" name="shippingDelivery.ParcelshopData.CountryCodeISO3166A2" asp-for="@Model.Checkout.ShippingDelivery.ParcelshopData.CountryCodeISO3166A2" data-value="@Model.Checkout.ShippingDelivery.ParcelshopData.CountryCodeISO3166A2" />
             <div class="checkout-wrap" id="shipping-wrap">
                 <div class="custom-list">
                     <div class="custom-list-options" id="custom-list-options">
                         <select>
                             <option value="0">
-                                @localizer["Choose Shipping"]
+                                @localizer["Vælg Levering"]
                             </option>
                             @foreach (var item in shippingMethods)
                             {
-                                <option value="@optionValue" data-transtype="@localizer[$"{item.Type}"]" data-type="@item.Type"></option>
+                                <option value="@optionValue" data-transtype="@item.Type" data-type="@item.Type"></option>
                                 optionValue += 1;
                             }
                         </select>
@@ -76,8 +77,7 @@
                 <div class="notHome" id="not-home">
                     <select class="simple-select" name="shippingDelivery.NotHomeNote" asp-for="@Model.ShippingDelivery.NotHomeNote">
                         <option value="">Hvis du ikke er hjemme? (frivilligt)</option>
-                        <option>Sæt pakken ved hoveddøren</option>
-                        <option>Sæt pakken ved lejlighedsdøren</option>
+                        <option>Sæt pakken ved hoveddøren/lejlighedsdøren</option>
                         <option>Sæt pakken ved havedøren</option>
                         <option>Sæt pakken ved bagdøren/bryggersdøren</option>
                         <option>Sæt pakken bag huset</option>
@@ -91,7 +91,7 @@
                         <div id="shippingspinner" class="hidden">
                             <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
                         </div>
-                        <span id="shipping-button-text">@localizer["Continue"]</span>
+                        <span id="shipping-button-text">@localizer["Videre"]</span>
                     </button>
                 </div>
             </div>
@@ -102,7 +102,7 @@
 <div class="modal" id="nearby-shops-modal">
     <div id="nearby-shops">
         <div class="header no-margin">
-            @localizer["Choose Parcelshop"]
+            @localizer["Vælg Pakkeshop"]
         </div>
     </div>
 </div>

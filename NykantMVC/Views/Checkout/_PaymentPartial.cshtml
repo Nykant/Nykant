@@ -6,18 +6,19 @@
 <div class="my-row bottom-side-padding">
     <div class="responsive-form">
         <div class="checkout-header" id="payment-header">
-            <h1>@localizer["Payment Method"]</h1>
+            <h1>@localizer["Betalingsmetode"]</h1>
         </div>
 
     
 
         <form id="payment-form">
+            @Html.AntiForgeryToken()
             <div class="checkout-wrap" id="payment-wrap">
 
                 <div class="payment-options" id="payment-options">
                     <ul id="payment-options-list">
                         <li data-paymentoption="card">
-                            <p>@localizer["Card"]</p>  <div class="credit-card-logos vertical-center"><img class="center" alt="Credit Card Logos" title="Credit Card Logos" src="https://www.credit-card-logos.com/images/multiple_credit-card-logos-1/credit_card_logos_17.gif" width="235" height="35" border="0" /></div>
+                            <p>@localizer["Kort"]</p>  <div class="credit-card-logos vertical-center"><img class="center" alt="Credit Card Logos" title="Credit Card Logos" src="https://www.credit-card-logos.com/images/multiple_credit-card-logos-1/credit_card_logos_17.gif" width="235" height="35" border="0" /></div>
                         </li>
                     </ul>
                 </div>
@@ -41,7 +42,10 @@
                                 <input id="terms-and-conditions-consent" value="false" type="checkbox">
                                 <span class="checkmark"></span>
                             </label>
-                            @localizer["Signature required"]
+                            <span class="checkbox-validation" id="terms-and-conditions-validation">Du skal skrive under før du må fortsætte.</span>
+                            <p>for at færdiggøre ordren, skal du skrive under på at du har læst og accepterer vores 
+                            <a class="simple-link" asp-controller="Home" asp-action="TermsAndConditions">Salgs- og leveringsbetingelser</a> ved at klikke i tjek-boksen.</p>
+                            @*@localizer["Signature required"]*@
                         </div>
                     </div>
                 </div>
@@ -61,7 +65,7 @@
                         <div id="paymentspinner" class="hidden">
                             <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
                         </div>
-                        <span id="button-text">@localizer["Pay"]</span>
+                        <span id="button-text">@localizer["Betal"]</span>
                     </button>
                 </div>
 

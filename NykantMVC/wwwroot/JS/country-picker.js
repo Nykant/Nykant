@@ -12,12 +12,12 @@ var shippingaddress_country_error = document.getElementById("shippingaddress-cou
 country_picker.selectedIndex = 0;
 country_picker.style.color = "black";
 country_picker.style.border = "2px solid black";
-country_input.value = country_option.value;
+country_input.value = country_option.textContent;
 
 shippingaddress_country_picker.selectedIndex = 0;
 shippingaddress_country_picker.style.color = "black";
 shippingaddress_country_picker.style.border = "2px solid black";
-shippingaddress_country.value = shipping_country_option.value;
+shippingaddress_country.value = shipping_country_option.textContent;
 
 
 //if (country_input.value != null) {

@@ -162,7 +162,7 @@ var orderComplete = function (paymentIntentId) {
         })
     }).then(function (result) {
         if (result.ok) {
-            var urlstring = url + "/checkout/success";
+            var urlstring = url + "/Ordren-Gennemført";
             location.replace(urlstring);
         }
         else {

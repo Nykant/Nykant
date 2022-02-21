@@ -14,23 +14,23 @@ namespace NykantMVC.Models
         public Customer Customer { get; set; }
         [Required]
         [StringLength(50)]
-        [Display(Name = "Name")]
+        [Display(Name = "Fulde Navn eller Firma")]
         public string Name { get; set; }
         [Required]
         [StringLength(200)]
-        [Display(Name = "Address")]
+        [Display(Name = "Addresse")]
         public string Address { get; set; }
         [Required]
         [StringLength(20)]
-        [Display(Name = "City")]
+        [Display(Name = "By")]
         public string City { get; set; }
         [Required]
         [StringLength(20)]
-        [Display(Name = "Country")]
+        [Display(Name = "Land")]
         public string Country { get; set; }
         [Required]
         [StringLength(20)]
-        [Display(Name = "Postal")]
+        [Display(Name = "Postnummer")]
         public string Postal { get; set; }
         public bool SameAsBilling { get; set; } = true;
     }
