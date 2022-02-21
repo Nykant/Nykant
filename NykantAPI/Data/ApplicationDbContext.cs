@@ -50,7 +50,7 @@ namespace NykantAPI.Data
 
             modelBuilder.Entity<Cookie>().HasData(
                 // First-Party
-                new Cookie { Name = "Culture", Type1 = CookieType1.Persistent, Type2 = CookieType2.FirstParty, Category = CookieCategory.Functional, Domain = "nykant.dk", Description = "Denne cookie gemmer din præference for sprog." },
+                new Cookie { Name = "Culture", Type1 = CookieType1.Persistent, Type2 = CookieType2.FirstParty, Category = CookieCategory.Functional, Domain = ".nykant.dk", Description = "Denne cookie gemmer din præference for sprog." },
                 new Cookie { Name = "AntiforgeryToken", Type1 = CookieType1.Session, Type2 = CookieType2.FirstParty, Category = CookieCategory.Necessary, Domain = ".nykant.dk", Description = "Denne cookie beskytter imod Cross-Site Request Forgery angreb" },
                 new Cookie { Name = "Session", Type1 = CookieType1.Session, Type2 = CookieType2.FirstParty, Category = CookieCategory.Necessary, Domain = "nykant.dk", Description = "Denne cookie husker/gemmer hvad du har lagt i din kurv, samt giver dig en bedre checkout oplevelse." },
                 new Cookie { Name = "_ga", Type1 = CookieType1.Persistent, Type2 = CookieType2.FirstParty, Category = CookieCategory.Statistics, Domain = ".nykant.dk", Description = "Denne cookie bruges af Google Analytics og registrere et unikt ID, som bliver brugt til at generere statistiske data om hvordan besøgende bruger hjemmesiden." },
