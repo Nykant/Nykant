@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NykantAPI.Data;
 
 namespace NykantAPI.data.migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220221073003_HyldeDocx")]
+    partial class HyldeDocx
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -4138,32 +4140,32 @@ namespace NykantAPI.data.migrations
                             Id = 3,
                             Length = "1150 mm.",
                             ProductId = 19,
-                            ProductReferenceId = 19,
-                            ProductReferenceUrlName = "Bænk-Egetræ-Hvidolie-1150mm"
+                            ProductReferenceId = 18,
+                            ProductReferenceUrlName = "Bænk-Egetræ-Naturolie-1150mm"
                         },
                         new
                         {
                             Id = 4,
                             Length = "1700 mm.",
                             ProductId = 19,
-                            ProductReferenceId = 22,
-                            ProductReferenceUrlName = "Bænk-Egetræ-Hvidolie-1700mm"
+                            ProductReferenceId = 21,
+                            ProductReferenceUrlName = "Bænk-Egetræ-Naturolie-1700mm"
                         },
                         new
                         {
                             Id = 5,
                             Length = "1150 mm.",
                             ProductId = 20,
-                            ProductReferenceId = 20,
-                            ProductReferenceUrlName = "Bænk-Egetræ-Sortolie-1150mm"
+                            ProductReferenceId = 18,
+                            ProductReferenceUrlName = "Bænk-Egetræ-Naturolie-1150mm"
                         },
                         new
                         {
                             Id = 6,
                             Length = "1700 mm.",
                             ProductId = 20,
-                            ProductReferenceId = 23,
-                            ProductReferenceUrlName = "Bænk-Egetræ-Sortolie-1700mm"
+                            ProductReferenceId = 21,
+                            ProductReferenceUrlName = "Bænk-Egetræ-Naturolie-1700mm"
                         },
                         new
                         {
@@ -4186,88 +4188,88 @@ namespace NykantAPI.data.migrations
                             Id = 9,
                             Length = "1150 mm.",
                             ProductId = 22,
-                            ProductReferenceId = 19,
-                            ProductReferenceUrlName = "Bænk-Egetræ-Hvidolie-1150mm"
+                            ProductReferenceId = 18,
+                            ProductReferenceUrlName = "Bænk-Egetræ-Naturolie-1150mm"
                         },
                         new
                         {
                             Id = 10,
                             Length = "1700 mm.",
                             ProductId = 22,
-                            ProductReferenceId = 22,
-                            ProductReferenceUrlName = "Bænk-Egetræ-Hvidolie-1700mm"
+                            ProductReferenceId = 21,
+                            ProductReferenceUrlName = "Bænk-Egetræ-Naturolie-1700mm"
                         },
                         new
                         {
                             Id = 11,
                             Length = "1150 mm.",
                             ProductId = 23,
-                            ProductReferenceId = 20,
-                            ProductReferenceUrlName = "Bænk-Egetræ-Sortolie-1150mm"
+                            ProductReferenceId = 18,
+                            ProductReferenceUrlName = "Bænk-Egetræ-Naturolie-1150mm"
                         },
                         new
                         {
                             Id = 12,
                             Length = "1700 mm.",
                             ProductId = 23,
-                            ProductReferenceId = 23,
-                            ProductReferenceUrlName = "Bænk-Egetræ-Sortolie-1700mm"
+                            ProductReferenceId = 21,
+                            ProductReferenceUrlName = "Bænk-Egetræ-Naturolie-1700mm"
                         },
                         new
                         {
                             Id = 13,
                             Length = "400 mm.",
                             ProductId = 4,
-                            ProductReferenceId = 4,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-400mm"
+                            ProductReferenceId = 6,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-400mm"
                         },
                         new
                         {
                             Id = 14,
                             Length = "600 mm.",
                             ProductId = 4,
-                            ProductReferenceId = 7,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-600mm"
+                            ProductReferenceId = 9,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-600mm"
                         },
                         new
                         {
                             Id = 15,
                             Length = "800 mm.",
                             ProductId = 4,
-                            ProductReferenceId = 10,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-800mm"
+                            ProductReferenceId = 12,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-800mm"
                         },
                         new
                         {
                             Id = 16,
                             Length = "1000 mm.",
                             ProductId = 4,
-                            ProductReferenceId = 13,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-1000mm"
+                            ProductReferenceId = 15,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-1000mm"
                         },
                         new
                         {
                             Id = 17,
                             Length = "400 mm.",
                             ProductId = 5,
-                            ProductReferenceId = 5,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-400mm"
+                            ProductReferenceId = 6,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-400mm"
                         },
                         new
                         {
                             Id = 18,
                             Length = "600 mm.",
                             ProductId = 5,
-                            ProductReferenceId = 8,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-600mm"
+                            ProductReferenceId = 9,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-600mm"
                         },
                         new
                         {
                             Id = 19,
                             Length = "800 mm.",
                             ProductId = 5,
-                            ProductReferenceId = 11,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-800mm"
+                            ProductReferenceId = 12,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-800mm"
                         },
                         new
                         {
@@ -4275,7 +4277,7 @@ namespace NykantAPI.data.migrations
                             Length = "1000 mm.",
                             ProductId = 5,
                             ProductReferenceId = 15,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-1000mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-1000mm"
                         },
                         new
                         {
@@ -4314,64 +4316,64 @@ namespace NykantAPI.data.migrations
                             Id = 25,
                             Length = "400 mm.",
                             ProductId = 7,
-                            ProductReferenceId = 4,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-400mm"
+                            ProductReferenceId = 6,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-400mm"
                         },
                         new
                         {
                             Id = 26,
                             Length = "600 mm.",
                             ProductId = 7,
-                            ProductReferenceId = 7,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-600mm"
+                            ProductReferenceId = 9,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-600mm"
                         },
                         new
                         {
                             Id = 27,
                             Length = "800 mm.",
                             ProductId = 7,
-                            ProductReferenceId = 10,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-800mm"
+                            ProductReferenceId = 12,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-800mm"
                         },
                         new
                         {
                             Id = 28,
                             Length = "1000 mm.",
                             ProductId = 7,
-                            ProductReferenceId = 13,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-1000mm"
+                            ProductReferenceId = 15,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-1000mm"
                         },
                         new
                         {
                             Id = 29,
                             Length = "400 mm.",
                             ProductId = 8,
-                            ProductReferenceId = 5,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-400mm"
+                            ProductReferenceId = 6,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-400mm"
                         },
                         new
                         {
                             Id = 30,
                             Length = "600 mm.",
                             ProductId = 8,
-                            ProductReferenceId = 8,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-600mm"
+                            ProductReferenceId = 9,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-600mm"
                         },
                         new
                         {
                             Id = 31,
                             Length = "800 mm.",
                             ProductId = 8,
-                            ProductReferenceId = 11,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-800mm"
+                            ProductReferenceId = 12,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-800mm"
                         },
                         new
                         {
                             Id = 32,
                             Length = "1000 mm.",
                             ProductId = 8,
-                            ProductReferenceId = 14,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-1000mm"
+                            ProductReferenceId = 15,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-1000mm"
                         },
                         new
                         {
@@ -4410,64 +4412,64 @@ namespace NykantAPI.data.migrations
                             Id = 37,
                             Length = "400 mm.",
                             ProductId = 10,
-                            ProductReferenceId = 4,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-400mm"
+                            ProductReferenceId = 6,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-400mm"
                         },
                         new
                         {
                             Id = 38,
                             Length = "600 mm.",
                             ProductId = 10,
-                            ProductReferenceId = 7,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-600mm"
+                            ProductReferenceId = 9,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-600mm"
                         },
                         new
                         {
                             Id = 39,
                             Length = "800 mm.",
                             ProductId = 10,
-                            ProductReferenceId = 10,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-800mm"
+                            ProductReferenceId = 12,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-800mm"
                         },
                         new
                         {
                             Id = 40,
                             Length = "1000 mm.",
                             ProductId = 10,
-                            ProductReferenceId = 13,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-1000mm"
+                            ProductReferenceId = 15,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-1000mm"
                         },
                         new
                         {
                             Id = 41,
                             Length = "400 mm.",
                             ProductId = 11,
-                            ProductReferenceId = 5,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-400mm"
+                            ProductReferenceId = 6,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-400mm"
                         },
                         new
                         {
                             Id = 42,
                             Length = "600 mm.",
                             ProductId = 11,
-                            ProductReferenceId = 8,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-600mm"
+                            ProductReferenceId = 9,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-600mm"
                         },
                         new
                         {
                             Id = 43,
                             Length = "800 mm.",
                             ProductId = 11,
-                            ProductReferenceId = 11,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-800mm"
+                            ProductReferenceId = 12,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-800mm"
                         },
                         new
                         {
                             Id = 44,
                             Length = "1000 mm.",
                             ProductId = 11,
-                            ProductReferenceId = 14,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-1000mm"
+                            ProductReferenceId = 15,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-1000mm"
                         },
                         new
                         {
@@ -4506,64 +4508,64 @@ namespace NykantAPI.data.migrations
                             Id = 49,
                             Length = "400 mm.",
                             ProductId = 13,
-                            ProductReferenceId = 4,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-400mm"
+                            ProductReferenceId = 6,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-400mm"
                         },
                         new
                         {
                             Id = 50,
                             Length = "600 mm.",
                             ProductId = 13,
-                            ProductReferenceId = 7,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-600mm"
+                            ProductReferenceId = 9,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-600mm"
                         },
                         new
                         {
                             Id = 51,
                             Length = "800 mm.",
                             ProductId = 13,
-                            ProductReferenceId = 10,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-800mm"
+                            ProductReferenceId = 12,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-800mm"
                         },
                         new
                         {
                             Id = 52,
                             Length = "1000 mm.",
                             ProductId = 13,
-                            ProductReferenceId = 13,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-1000mm"
+                            ProductReferenceId = 15,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-1000mm"
                         },
                         new
                         {
                             Id = 53,
                             Length = "400 mm.",
                             ProductId = 14,
-                            ProductReferenceId = 5,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-400mm"
+                            ProductReferenceId = 6,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-400mm"
                         },
                         new
                         {
                             Id = 54,
                             Length = "600 mm.",
                             ProductId = 14,
-                            ProductReferenceId = 8,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-600mm"
+                            ProductReferenceId = 9,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-600mm"
                         },
                         new
                         {
                             Id = 55,
                             Length = "800 mm.",
                             ProductId = 14,
-                            ProductReferenceId = 11,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-800mm"
+                            ProductReferenceId = 12,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-800mm"
                         },
                         new
                         {
                             Id = 56,
                             Length = "1000 mm.",
                             ProductId = 14,
-                            ProductReferenceId = 14,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-1000mm"
+                            ProductReferenceId = 15,
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-1000mm"
                         },
                         new
                         {
