@@ -153,22 +153,26 @@ var showError = function (errorMsgText) {
 };
 
 var orderComplete = function (paymentIntentId) {
-    gtag('event', 'purchase');
-    $.ajax({
-        url: '/order/postorder',
-        type: 'POST',
-        data: AddAntiforgeryToken({
-            paymentIntentId: paymentIntentId
+    try {
+        gtag('event', 'purchase');
+    }
+    finally {
+        $.ajax({
+            url: '/order/postorder',
+            type: 'POST',
+            data: AddAntiforgeryToken({
+                paymentIntentId: paymentIntentId
+            })
+        }).then(function (result) {
+            if (result.ok) {
+                var urlstring = url + "/Ordren-Gennemført";
+                location.replace(urlstring);
+            }
+            else {
+                showError(result.error);
+            }
         })
-    }).then(function (result) {
-        if (result.ok) {
-            var urlstring = url + "/Ordren-Gennemført";
-            location.replace(urlstring);
-        }
-        else {
-            showError(result.error);
-        }
-    })
+    }
 };
 
 var loading = function (isLoading) {

@@ -16,7 +16,7 @@
 }
 
 .bagtable-headers {
-    font-size: 18px;
+    font-size: 16px;
     padding: 10px;
     display: inline-table;
     width: 100%;
@@ -164,6 +164,7 @@
 #checkout-box {
     padding-top:20px;
     z-index:240;
+    font-size:16px;
 }
 
 #checkout-box a {
@@ -171,7 +172,6 @@
 }
 
 #price-info {
-    font-size: 14px;
     color: grey;
 }
 

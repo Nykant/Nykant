@@ -2,44 +2,73 @@
 var slidebuttons = document.getElementById('slide-buttons').children;
 var slidecontainer = document.getElementById('slide-container');
 var aboutus = document.getElementById('about-us');
-var slidenumber = 1;
+var slideshow = document.getElementById('slideshow');
+var slidenumber = 0;
 slidecontainer.style.left = '-0%';
 
-for (var i = 0; i < slidebuttons.length; i++) {
-    if (i == 0) {
-        slidebuttons[i].addEventListener('click', function () {
-            slidecontainer.style.left = '-0%';
-            slidenumber = 0;
-        });
-    }
-    else if (i == 1) {
-        slidebuttons[i].addEventListener('click', function () {
-            slidecontainer.style.left = '-100%';
-            slidenumber = 1;
-        });
-    }
-    else if (i == 2) {
-        slidebuttons[i].addEventListener('click', function () {
-            slidecontainer.style.left = '-200%';
-            slidenumber = 2;
-        });
-    }
-    else if (i == 3) {
-        slidebuttons[i].addEventListener('click', function () {
-            slidecontainer.style.left = '-300%';
-            slidenumber = 3;
-        });
-    }
-}
-
-$(document).ready(function () {
+var startInterval = function () {
     theInterval = setInterval(function () {
-        slidebuttons[slidenumber].click();
         slidenumber++;
         if (slidenumber > 3) {
             slidenumber = 0;
         }
+        slidebuttons[slidenumber].click();
     }, 5000)
+}
+
+$(document).ready(function () {
+    startInterval();
+
+    for (var i = 0; i < slidebuttons.length; i++) {
+        if (i == 0) {
+            slidebuttons[i].addEventListener('click', function () {
+                clearInterval(theInterval);
+                slidecontainer.style.left = '-0%';
+                slidenumber = 0;
+                startInterval();
+            });
+        }
+        else if (i == 1) {
+            slidebuttons[i].addEventListener('click', function () {
+                clearInterval(theInterval);
+                slidecontainer.style.left = '-100%';
+                slidenumber = 1;
+                startInterval();
+            });
+        }
+        else if (i == 2) {
+            slidebuttons[i].addEventListener('click', function () {
+                clearInterval(theInterval);
+                slidecontainer.style.left = '-200%';
+                slidenumber = 2;
+                startInterval();
+            });
+        }
+        else if (i == 3) {
+            slidebuttons[i].addEventListener('click', function () {
+                clearInterval(theInterval);
+                slidecontainer.style.left = '-300%';
+                slidenumber = 3;
+                startInterval();
+            });
+        }
+    }
+
+    slideshow.addEventListener('swiped-right', function () {
+        if (slidenumber > 0) {
+            slidenumber--;
+            slidebuttons[slidenumber].click();
+        }
+    });
+
+    slideshow.addEventListener('swiped-left', function () {
+        if (slidenumber < slidebuttons.length - 1) {
+            slidenumber++;
+            slidebuttons[slidenumber].click();
+        }
+    });
+
+
 
     var slicknext = document.getElementsByClassName('slick-next');
     if (slicknext != undefined) {
@@ -48,109 +77,4 @@ $(document).ready(function () {
     }
 });
 
-//window.onscroll = function () {
-//    if (elementInViewport($('#owl-carousel'))) {
-//        document.getElementById('about-us-text').style.opacity = '1';
-//    }
-//}
 
-
-
-
-////var slideshow = document.getElementById('slideshow');
-////var img, img2, infobox, header, info, productlink1, productlink2, productlink3, i, shelf, hanger, productlink1text, productlink1header, productlink1p, productlink2text, productlink2header, productlink2p, productlink3text, productlink3header, productlink3p;
-////i = 1;
-
-/////*document.getElementById('navbar').setAttribute("class", "navbar-transparent");*/
-
-////var updateSrc = function (number) {
-////    if (number == 1) {
-////        return '../images/Products/NYKANT_miljoe 1.png';
-////    }
-////    else if (number == 2) {
-////        return '../images/Products/NYKANT_miljoe 4.png';
-////    }
-////    else if (number == 3) {
-////        return '../images/Products/NYKANT_miljoe 5.png';
-////    }
-////}
-
-////infobox = document.createElement('div');
-////infobox.setAttribute('class', 'infobox');
-////header = document.createElement('h1');
-////header.textContent = 'Debut Kollektionen';
-////info = document.createElement('p');
-////info.textContent = 'Hermed udgiver vi vores første kollektion af møbler, lavet af egetræ, nordisk design og godt håndværk.';
-
-////var infobutton = document.createElement('a');
-////infobutton.setAttribute('href', '/Product/Index?searchString=Debut Kollektion')
-////var infobuttondiv = document.createElement('div');
-////infobuttondiv.setAttribute('class', 'button infobutton');
-////infobuttondiv.textContent = 'Se Alle';
-////infobutton.appendChild(infobuttondiv);
-
-////img = document.createElement('img');
-////img.setAttribute('src', updateSrc(i));
-////i++;
-////if (i > 3) { i = 1 }
-////img.setAttribute("class", "first-slide");
-
-////slideshow.appendChild(img);
-////slideshow.appendChild(infobox);
-////infobox.appendChild(header);
-////infobox.appendChild(info);
-////infobox.appendChild(infobutton);
-
-////setTimeout(function () {
-////    img.classList.add('img-grow');
-////}, 500);
-
-////img2 = document.createElement('img');
-////img2.setAttribute('src', updateSrc(i));
-////i++;
-////if (i > 3) { i = 1 }
-////img2.setAttribute("class", "second-slide");
-
-////slideshow.appendChild(img2);
-
-
-////setTimeout(function () {
-////    img.classList.remove('img-grow');
-////    img.setAttribute("class", "waiting-slide");
-////    img2.setAttribute('src', updateSrc(i));
-////    i++;
-////    if (i > 3) { i = 1 }
-////    img2.setAttribute("class", "current-slide");
-
-////    setTimeout(function () {
-////        img2.classList.add('img-grow');
-////    }, 500);
-
-////}, 10000);
-
-////var theInterval = setInterval(function () {
-////    img2.classList.remove('img-grow');
-////    img2.setAttribute("class", "waiting-slide");
-////    img.setAttribute('src', updateSrc(i));
-////    i++;
-////    if (i > 3) { i = 1 }
-////    img.setAttribute("class", "current-slide");
-
-////    setTimeout(function () {
-////        img.classList.add('img-grow');
-////    }, 500);
-
-////    setTimeout(function () {
-////        img.classList.remove('img-grow');
-////        img.setAttribute("class", "waiting-slide");
-////        img2.setAttribute('src', updateSrc(i));
-////        i++;
-////        if (i > 3) { i = 1 }
-////        img2.setAttribute("class", "current-slide");
-
-////        setTimeout(function () {
-////            img2.classList.add('img-grow');
-////        }, 500);
-
-////    }, 10000)
-////}, 20000);

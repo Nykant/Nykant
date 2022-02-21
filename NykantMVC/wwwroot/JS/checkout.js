@@ -99,15 +99,19 @@ else {
 //}
 
 if (stage == 1) {
-    gtag('event', 'begin_checkout');
-    customer_wrap.style.transition = "all 1s";
-    customer_form.style.transition = "all 1s";
-    customer_form.style.height = "auto";
-    customer_wrap.style.transform = "translateY(0%)";
+    try {
+        gtag('event', 'begin_checkout');
+    }
+    finally {
+        customer_wrap.style.transition = "all 1s";
+        customer_form.style.transition = "all 1s";
+        customer_form.style.height = "auto";
+        customer_wrap.style.transform = "translateY(0%)";
 
-    $('html,body').animate({
-        scrollTop: $("#customerInf-header").offset().top
-    }, 'slow');
+        $('html,body').animate({
+            scrollTop: $("#customerInf-header").offset().top
+        }, 'slow');
+    }
 }
 else if (stage == 2) {
     shipping_wrap.style.transition = "all 1s";

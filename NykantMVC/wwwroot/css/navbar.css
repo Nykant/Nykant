@@ -222,6 +222,23 @@
         transform:scale(1.2);
     }
 
+#nav-links-product-filter {
+    border-top: 1px solid var(--black-fade);
+}
+
+    #nav-links-product-filter input {
+        border: none;
+        background: none;
+        font-size: 25px;
+        text-align:center;
+        color: var(--dark);
+        transition: all .2s;
+    }
+
+        #nav-links-product-filter input:hover {
+            transform: scale(1.2);
+        }
+
 #nav-links {
     display:none;
     position:fixed;
@@ -439,6 +456,7 @@ a.icon {
 
     #product-link {
         display: inline-block;
+        font-size:25px;
     }
 
     #nav-burger {

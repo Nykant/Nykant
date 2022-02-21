@@ -13,6 +13,7 @@ namespace NykantAPI.Models
         public CookieType1 Type1 { get; set; }
         public CookieType2 Type2 { get; set; }
         public CookieCategory Category { get; set; }
+        public string Domain { get; set; }
         public string Description { get; set; }
     }
 
