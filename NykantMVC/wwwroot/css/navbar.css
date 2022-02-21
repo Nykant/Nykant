@@ -204,6 +204,7 @@
 #navbar-product-filter {
     border-top:1px solid var(--black-fade);
     display:none;
+    margin-left:30px;
 }
 
 #navbar-product-filter input {
@@ -383,6 +384,7 @@ a.icon {
 }
 
 #product-link {
+    margin-left:30px;
 }
 
 /* navbar-mobile */
@@ -667,13 +669,23 @@ a.icon {
 }
 
 #logo {
-    background-image: url('../images/Nykant Logo Finish-grey.png');
-    background-size: contain;
-    display: block;
-    width: 120px;
-    height: 80px;
-    transition: all 0.3s;
+    position: relative;
+    width: 200px;
+    height: 120px;
+    float: left;
+    transition: all 0.2s;
 }
+
+    #logo img {
+        max-height: 100%;
+        max-width: 100%;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
 
 .nav-svg-link {
     float: right;
