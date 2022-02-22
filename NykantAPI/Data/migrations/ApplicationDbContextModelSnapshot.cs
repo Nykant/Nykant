@@ -237,7 +237,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_hvid_1.png",
                             ProductId = 4,
                             ProductSourceId = 4,
-                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-400mm"
+                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-40cm"
                         },
                         new
                         {
@@ -246,7 +246,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_sort_1.png",
                             ProductId = 4,
                             ProductSourceId = 5,
-                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-400mm"
+                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-40cm"
                         },
                         new
                         {
@@ -255,7 +255,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_natur_1.png",
                             ProductId = 4,
                             ProductSourceId = 6,
-                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-400mm"
+                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-40cm"
                         },
                         new
                         {
@@ -264,7 +264,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_hvid_1.png",
                             ProductId = 5,
                             ProductSourceId = 4,
-                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-400mm"
+                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-40cm"
                         },
                         new
                         {
@@ -273,7 +273,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_sort_1.png",
                             ProductId = 5,
                             ProductSourceId = 5,
-                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-400mm"
+                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-40cm"
                         },
                         new
                         {
@@ -282,7 +282,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_natur_1.png",
                             ProductId = 5,
                             ProductSourceId = 6,
-                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-400mm"
+                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-40cm"
                         },
                         new
                         {
@@ -291,7 +291,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_hvid_1.png",
                             ProductId = 6,
                             ProductSourceId = 4,
-                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-400mm"
+                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-40cm"
                         },
                         new
                         {
@@ -309,7 +309,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_natur_1.png",
                             ProductId = 6,
                             ProductSourceId = 6,
-                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-400mm"
+                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-40cm"
                         },
                         new
                         {
@@ -318,7 +318,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_hvid_1.png",
                             ProductId = 7,
                             ProductSourceId = 7,
-                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-600mm"
+                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-60cm"
                         },
                         new
                         {
@@ -327,7 +327,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_sort_1.png",
                             ProductId = 7,
                             ProductSourceId = 8,
-                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-600mm"
+                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-60cm"
                         },
                         new
                         {
@@ -336,7 +336,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_natur_1.png",
                             ProductId = 7,
                             ProductSourceId = 9,
-                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-600mm"
+                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-60cm"
                         },
                         new
                         {
@@ -345,7 +345,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_hvid_1.png",
                             ProductId = 8,
                             ProductSourceId = 7,
-                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-600mm"
+                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-60cm"
                         },
                         new
                         {
@@ -354,7 +354,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_sort_1.png",
                             ProductId = 8,
                             ProductSourceId = 8,
-                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-600mm"
+                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-60cm"
                         },
                         new
                         {
@@ -363,7 +363,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_natur_1.png",
                             ProductId = 8,
                             ProductSourceId = 9,
-                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-600mm"
+                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-60cm"
                         },
                         new
                         {
@@ -372,7 +372,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_hvid_1.png",
                             ProductId = 9,
                             ProductSourceId = 7,
-                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-600mm"
+                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-60cm"
                         },
                         new
                         {
@@ -381,7 +381,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_sort_1.png",
                             ProductId = 9,
                             ProductSourceId = 8,
-                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-600mm"
+                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-60cm"
                         },
                         new
                         {
@@ -390,7 +390,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_natur_1.png",
                             ProductId = 9,
                             ProductSourceId = 9,
-                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-600mm"
+                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-60cm"
                         },
                         new
                         {
@@ -399,7 +399,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_hvid_1.png",
                             ProductId = 10,
                             ProductSourceId = 10,
-                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-800mm"
+                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-80cm"
                         },
                         new
                         {
@@ -408,7 +408,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_sort_1.png",
                             ProductId = 10,
                             ProductSourceId = 11,
-                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-800mm"
+                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-80cm"
                         },
                         new
                         {
@@ -417,7 +417,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_natur_1.png",
                             ProductId = 10,
                             ProductSourceId = 12,
-                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-800mm"
+                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-80cm"
                         },
                         new
                         {
@@ -426,7 +426,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_hvid_1.png",
                             ProductId = 11,
                             ProductSourceId = 10,
-                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-800mm"
+                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-80cm"
                         },
                         new
                         {
@@ -435,7 +435,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_sort_1.png",
                             ProductId = 11,
                             ProductSourceId = 11,
-                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-800mm"
+                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-80cm"
                         },
                         new
                         {
@@ -444,7 +444,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_natur_1.png",
                             ProductId = 11,
                             ProductSourceId = 12,
-                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-800mm"
+                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-80cm"
                         },
                         new
                         {
@@ -453,7 +453,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_hvid_1.png",
                             ProductId = 12,
                             ProductSourceId = 10,
-                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-800mm"
+                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-80cm"
                         },
                         new
                         {
@@ -462,7 +462,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_sort_1.png",
                             ProductId = 12,
                             ProductSourceId = 11,
-                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-800mm"
+                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-80cm"
                         },
                         new
                         {
@@ -471,7 +471,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_natur_1.png",
                             ProductId = 12,
                             ProductSourceId = 12,
-                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-800mm"
+                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-80cm"
                         },
                         new
                         {
@@ -480,7 +480,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_hvid_1.png",
                             ProductId = 13,
                             ProductSourceId = 13,
-                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-1000mm"
+                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-100cm"
                         },
                         new
                         {
@@ -489,7 +489,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_sort_1.png",
                             ProductId = 13,
                             ProductSourceId = 14,
-                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-1000mm"
+                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-100cm"
                         },
                         new
                         {
@@ -498,7 +498,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_natur_1.png",
                             ProductId = 13,
                             ProductSourceId = 15,
-                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-1000mm"
+                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-100cm"
                         },
                         new
                         {
@@ -507,7 +507,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_hvid_1.png",
                             ProductId = 14,
                             ProductSourceId = 13,
-                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-1000mm"
+                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-100cm"
                         },
                         new
                         {
@@ -516,7 +516,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_sort_1.png",
                             ProductId = 14,
                             ProductSourceId = 14,
-                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-1000mm"
+                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-100cm"
                         },
                         new
                         {
@@ -525,7 +525,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_natur_1.png",
                             ProductId = 14,
                             ProductSourceId = 15,
-                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-1000mm"
+                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-100cm"
                         },
                         new
                         {
@@ -534,7 +534,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_hvid_1.png",
                             ProductId = 15,
                             ProductSourceId = 13,
-                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-1000mm"
+                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-100cm"
                         },
                         new
                         {
@@ -543,7 +543,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_sort_1.png",
                             ProductId = 15,
                             ProductSourceId = 14,
-                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-1000mm"
+                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-100cm"
                         },
                         new
                         {
@@ -552,7 +552,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_natur_1.png",
                             ProductId = 15,
                             ProductSourceId = 15,
-                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-1000mm"
+                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-100cm"
                         },
                         new
                         {
@@ -597,7 +597,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/kortbaenk_natur_2.png",
                             ProductId = 18,
                             ProductSourceId = 18,
-                            ProductSourceUrlName = "Bænk-Egetræ-Naturolie-1150mm"
+                            ProductSourceUrlName = "Bænk-Egetræ-Naturolie-115cm"
                         },
                         new
                         {
@@ -606,7 +606,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/kortbaenk_hvid_2.png",
                             ProductId = 18,
                             ProductSourceId = 19,
-                            ProductSourceUrlName = "Bænk-Egetræ-Hvidolie-1150mm"
+                            ProductSourceUrlName = "Bænk-Egetræ-Hvidolie-115cm"
                         },
                         new
                         {
@@ -615,7 +615,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_kortbaenk_sortolie_02.png",
                             ProductId = 18,
                             ProductSourceId = 20,
-                            ProductSourceUrlName = "Bænk-Egetræ-Sortolie-1150mm"
+                            ProductSourceUrlName = "Bænk-Egetræ-Sortolie-115cm"
                         },
                         new
                         {
@@ -624,7 +624,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/kortbaenk_natur_2.png",
                             ProductId = 19,
                             ProductSourceId = 18,
-                            ProductSourceUrlName = "Bænk-Egetræ-Naturolie-1150mm"
+                            ProductSourceUrlName = "Bænk-Egetræ-Naturolie-115cm"
                         },
                         new
                         {
@@ -633,7 +633,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/kortbaenk_hvid_2.png",
                             ProductId = 19,
                             ProductSourceId = 19,
-                            ProductSourceUrlName = "Bænk-Egetræ-Hvidolie-1150mm"
+                            ProductSourceUrlName = "Bænk-Egetræ-Hvidolie-115cm"
                         },
                         new
                         {
@@ -642,7 +642,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_kortbaenk_sortolie_02.png",
                             ProductId = 19,
                             ProductSourceId = 20,
-                            ProductSourceUrlName = "Bænk-Egetræ-Sortolie-1150mm"
+                            ProductSourceUrlName = "Bænk-Egetræ-Sortolie-115cm"
                         },
                         new
                         {
@@ -651,7 +651,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/kortbaenk_natur_2.png",
                             ProductId = 20,
                             ProductSourceId = 18,
-                            ProductSourceUrlName = "Bænk-Egetræ-Naturolie-1150mm"
+                            ProductSourceUrlName = "Bænk-Egetræ-Naturolie-115cm"
                         },
                         new
                         {
@@ -660,7 +660,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/kortbaenk_hvid_2.png",
                             ProductId = 20,
                             ProductSourceId = 19,
-                            ProductSourceUrlName = "Bænk-Egetræ-Hvidolie-1150mm"
+                            ProductSourceUrlName = "Bænk-Egetræ-Hvidolie-115cm"
                         },
                         new
                         {
@@ -669,7 +669,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_kortbaenk_sortolie_02.png",
                             ProductId = 20,
                             ProductSourceId = 20,
-                            ProductSourceUrlName = "Bænk-Egetræ-Sortolie-1150mm"
+                            ProductSourceUrlName = "Bænk-Egetræ-Sortolie-115cm"
                         },
                         new
                         {
@@ -678,7 +678,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_langbaenk_naturolie_02.png",
                             ProductId = 21,
                             ProductSourceId = 21,
-                            ProductSourceUrlName = "Bænk-Egetræ-Naturolie-1700mm"
+                            ProductSourceUrlName = "Bænk-Egetræ-Naturolie-170cm"
                         },
                         new
                         {
@@ -687,7 +687,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_langbaenk_hvidolie_02.png",
                             ProductId = 21,
                             ProductSourceId = 22,
-                            ProductSourceUrlName = "Bænk-Egetræ-Hvidolie-1700mm"
+                            ProductSourceUrlName = "Bænk-Egetræ-Hvidolie-170cm"
                         },
                         new
                         {
@@ -696,7 +696,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_langbaenk_sortolie_02.png",
                             ProductId = 21,
                             ProductSourceId = 23,
-                            ProductSourceUrlName = "Bænk-Egetræ-Sortolie-1700mm"
+                            ProductSourceUrlName = "Bænk-Egetræ-Sortolie-170cm"
                         },
                         new
                         {
@@ -705,7 +705,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_langbaenk_naturolie_02.png",
                             ProductId = 22,
                             ProductSourceId = 21,
-                            ProductSourceUrlName = "Bænk-Egetræ-Naturolie-1700mm"
+                            ProductSourceUrlName = "Bænk-Egetræ-Naturolie-170cm"
                         },
                         new
                         {
@@ -714,7 +714,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_langbaenk_hvidolie_02.png",
                             ProductId = 22,
                             ProductSourceId = 22,
-                            ProductSourceUrlName = "Bænk-Egetræ-Hvidolie-1700mm"
+                            ProductSourceUrlName = "Bænk-Egetræ-Hvidolie-170cm"
                         },
                         new
                         {
@@ -723,7 +723,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_langbaenk_sortolie_02.png",
                             ProductId = 22,
                             ProductSourceId = 23,
-                            ProductSourceUrlName = "Bænk-Egetræ-Sortolie-1700mm"
+                            ProductSourceUrlName = "Bænk-Egetræ-Sortolie-170cm"
                         },
                         new
                         {
@@ -732,7 +732,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_langbaenk_naturolie_02.png",
                             ProductId = 23,
                             ProductSourceId = 21,
-                            ProductSourceUrlName = "Bænk-Egetræ-Naturolie-1700mm"
+                            ProductSourceUrlName = "Bænk-Egetræ-Naturolie-170cm"
                         },
                         new
                         {
@@ -741,7 +741,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_langbaenk_hvidolie_02.png",
                             ProductId = 23,
                             ProductSourceId = 22,
-                            ProductSourceUrlName = "Bænk-Egetræ-Hvidolie-1700mm"
+                            ProductSourceUrlName = "Bænk-Egetræ-Hvidolie-170cm"
                         },
                         new
                         {
@@ -750,7 +750,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_langbaenk_sortolie_02.png",
                             ProductId = 23,
                             ProductSourceId = 23,
-                            ProductSourceUrlName = "Bænk-Egetræ-Sortolie-1700mm"
+                            ProductSourceUrlName = "Bænk-Egetræ-Sortolie-170cm"
                         },
                         new
                         {
@@ -3332,11 +3332,11 @@ namespace NykantAPI.data.migrations
                             Name = "Bøjlen Gertrud / 3 stk.",
                             Number = "15001",
                             Oil = "Naturolie",
-                            Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Størrelse: 470x170x60 mm.</p><p>Vægt: 0.6 kg.</p><p>Leveres samlet med 3 stk. pr. karton</p></td></tr>",
+                            Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Størrelse: 47x17x6 cm.</p><p>Vægt: 0.6 kg.</p><p>Leveres samlet med 3 stk. pr. karton</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_boejle_naturolie_01.png",
                             Pieces = 3,
                             Price = 420.0,
-                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 20 mm.</p><p>Længde: 45 cm.</p></td></tr>",
+                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 45 cm.</p></td></tr>",
                             Title = "Bøjle i massivt egetræ - Behandlet med naturolie",
                             UrlName = "Bøjle-Egetræ-Naturolie",
                             WeightInKg = 11.6
@@ -3356,11 +3356,11 @@ namespace NykantAPI.data.migrations
                             Name = "Bøjlen Gertrud / 3 stk.",
                             Number = "15003",
                             Oil = "Sortolie",
-                            Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Størrelse: 470x170x60 mm.</p><p>Vægt: 0.6 kg.</p><p>Leveres samlet med 3 stk. pr. karton</p></td></tr>",
+                            Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Størrelse: 47x17x6 cm.</p><p>Vægt: 0.6 kg.</p><p>Leveres samlet med 3 stk. pr. karton</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_boejle_sortolie_01.png",
                             Pieces = 3,
                             Price = 420.0,
-                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 20 mm.</p><p>Længde: 45 cm.</p></td></tr>",
+                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 45 cm.</p></td></tr>",
                             Title = "Bøjle i massivt egetræ - Behandlet med sortolie",
                             UrlName = "Bøjle-Egetræ-Sortolie",
                             WeightInKg = 11.6
@@ -3380,11 +3380,11 @@ namespace NykantAPI.data.migrations
                             Name = "Bøjlen Gertrud / 3 stk.",
                             Number = "15002",
                             Oil = "Hvidolie",
-                            Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Størrelse: 470x170x60 mm.</p><p>Vægt: 0.6 kg.</p><p>Leveres samlet med 3 stk. pr. karton</p></td></tr>",
+                            Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Størrelse: 47x17x6 cm.</p><p>Vægt: 0.6 kg.</p><p>Leveres samlet med 3 stk. pr. karton</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_boejle_hvidolie_01.png",
                             Pieces = 3,
                             Price = 420.0,
-                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 20 mm.</p><p>Længde: 45 cm.</p></td></tr>",
+                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 45 cm.</p></td></tr>",
                             Title = "Bøjle i massivt egetræ - Behandlet med hvidolie",
                             UrlName = "Bøjle-Egetræ-Hvidolie",
                             WeightInKg = 11.6
@@ -3400,19 +3400,19 @@ namespace NykantAPI.data.migrations
                             ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_02.png",
-                            Length = "400 mm.",
+                            Length = "40 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
                             Name = "Ingeborg Hylden",
                             Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17032",
                             Oil = "Hvidolie",
-                            Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse: 430x220x45 mm. </p><p>Vægt: 1.4 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
+                            Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse: 43x22x4.5 cm. </p><p>Vægt: 1.4 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_hvidolie_01.png",
                             Pieces = 1,
                             Price = 685.0,
-                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 20 mm.</p><p>Længde: 40 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
+                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 40 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med hvidolie",
-                            UrlName = "Hylde-Egetræ-Hvidolie-400mm",
+                            UrlName = "Hylde-Egetræ-Hvidolie-40cm",
                             WeightInKg = 11.6
                         },
                         new
@@ -3426,19 +3426,19 @@ namespace NykantAPI.data.migrations
                             ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_02.png",
-                            Length = "400 mm.",
+                            Length = "40 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
                             Name = "Ingeborg Hylden",
                             Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17033",
                             Oil = "Sortolie",
-                            Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse: 430x220x45 mm. </p><p>Vægt: 1.4 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
+                            Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse: 43x22x4.5 cm. </p><p>Vægt: 1.4 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_sortolie_01.png",
                             Pieces = 1,
                             Price = 685.0,
-                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 20 mm.</p><p>Længde: 40 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
+                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 40 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med sortolie",
-                            UrlName = "Hylde-Egetræ-Sortolie-400mm",
+                            UrlName = "Hylde-Egetræ-Sortolie-40cm",
                             WeightInKg = 11.6
                         },
                         new
@@ -3452,19 +3452,19 @@ namespace NykantAPI.data.migrations
                             ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_02.png",
-                            Length = "400 mm.",
+                            Length = "40 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
                             Name = "Ingeborg Hylden",
                             Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17031",
                             Oil = "Naturolie",
-                            Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse: 430x220x45 mm. </p><p>Vægt: 1.4 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
+                            Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse: 43x22x4.5 cm. </p><p>Vægt: 1.4 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_naturolie_01.png",
                             Pieces = 1,
                             Price = 685.0,
-                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 20 mm.</p><p>Længde: 40 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
+                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 40 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med naturolie",
-                            UrlName = "Hylde-Egetræ-Naturolie-400mm",
+                            UrlName = "Hylde-Egetræ-Naturolie-40cm",
                             WeightInKg = 11.6
                         },
                         new
@@ -3478,19 +3478,19 @@ namespace NykantAPI.data.migrations
                             ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_02.png",
-                            Length = "600 mm.",
+                            Length = "60 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
                             Name = "Ingeborg Hylden",
                             Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17022",
                             Oil = "Hvidolie",
-                            Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse: 630x220x45 mm. </p><p>Vægt: 2 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
+                            Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse: 63x22x4.5 cm. </p><p>Vægt: 2 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_hvidolie_01.png",
                             Pieces = 1,
                             Price = 785.0,
-                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 20 mm.</p><p>Længde: 60 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
+                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 60 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med hvidolie",
-                            UrlName = "Hylde-Egetræ-Hvidolie-600mm",
+                            UrlName = "Hylde-Egetræ-Hvidolie-60cm",
                             WeightInKg = 11.6
                         },
                         new
@@ -3504,19 +3504,19 @@ namespace NykantAPI.data.migrations
                             ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_02.png",
-                            Length = "600 mm.",
+                            Length = "60 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
                             Name = "Ingeborg Hylden",
                             Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17023",
                             Oil = "Sortolie",
-                            Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse: 630x220x45 mm. </p><p>Vægt: 2 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
+                            Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse: 63x22x4.5 cm. </p><p>Vægt: 2 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_sortolie_01.png",
                             Pieces = 1,
                             Price = 785.0,
-                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 20 mm.</p><p>Længde: 60 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
+                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 60 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med sortolie",
-                            UrlName = "Hylde-Egetræ-Sortolie-600mm",
+                            UrlName = "Hylde-Egetræ-Sortolie-60cm",
                             WeightInKg = 11.6
                         },
                         new
@@ -3530,19 +3530,19 @@ namespace NykantAPI.data.migrations
                             ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_02.png",
-                            Length = "600 mm.",
+                            Length = "60 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
                             Name = "Ingeborg Hylden",
                             Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17021",
                             Oil = "Naturolie",
-                            Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse: 630x220x45 mm. </p><p>Vægt: 2 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
+                            Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse: 63x22x4.5 cm. </p><p>Vægt: 2 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_naturolie_01.png",
                             Pieces = 1,
                             Price = 785.0,
-                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 20 mm.</p><p>Længde: 60 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
+                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 60 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med naturolie",
-                            UrlName = "Hylde-Egetræ-Naturolie-600mm",
+                            UrlName = "Hylde-Egetræ-Naturolie-60cm",
                             WeightInKg = 11.6
                         },
                         new
@@ -3556,19 +3556,19 @@ namespace NykantAPI.data.migrations
                             ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_02.png",
-                            Length = "800 mm.",
+                            Length = "80 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
                             Name = "Ingeborg Hylden",
                             Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17012",
                             Oil = "Hvidolie",
-                            Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse: 830x220x45 mm. </p><p>Vægt: 2.6 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
+                            Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse: 83x22x4.5 cm. </p><p>Vægt: 2.6 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_hvidolie_01.png",
                             Pieces = 1,
                             Price = 885.0,
-                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 20 mm.</p><p>Længde: 80 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
+                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 80 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med hvidolie",
-                            UrlName = "Hylde-Egetræ-Hvidolie-800mm",
+                            UrlName = "Hylde-Egetræ-Hvidolie-80cm",
                             WeightInKg = 11.6
                         },
                         new
@@ -3582,19 +3582,19 @@ namespace NykantAPI.data.migrations
                             ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_02.png",
-                            Length = "800 mm.",
+                            Length = "80 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
                             Name = "Ingeborg Hylden",
                             Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17013",
                             Oil = "Sortolie",
-                            Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse: 830x220x45 mm. </p><p>Vægt: 2.6 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
+                            Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse: 83x22x4.5 cm. </p><p>Vægt: 2.6 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_sortolie_01.png",
                             Pieces = 1,
                             Price = 885.0,
-                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 20 mm.</p><p>Længde: 80 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
+                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 80 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med sortolie",
-                            UrlName = "Hylde-Egetræ-Sortolie-800mm",
+                            UrlName = "Hylde-Egetræ-Sortolie-80cm",
                             WeightInKg = 11.6
                         },
                         new
@@ -3608,19 +3608,19 @@ namespace NykantAPI.data.migrations
                             ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_02.png",
-                            Length = "800 mm.",
+                            Length = "80 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
                             Name = "Ingeborg Hylden",
                             Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17011",
                             Oil = "Naturolie",
-                            Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse: 830x220x45 mm. </p><p>Vægt: 2.6 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
+                            Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse: 83x22x4.5 cm. </p><p>Vægt: 2.6 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_naturolie_01.png",
                             Pieces = 1,
                             Price = 885.0,
-                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 20 mm.</p><p>Længde: 80 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
+                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 80 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med naturolie",
-                            UrlName = "Hylde-Egetræ-Naturolie-800mm",
+                            UrlName = "Hylde-Egetræ-Naturolie-80cm",
                             WeightInKg = 11.6
                         },
                         new
@@ -3634,19 +3634,19 @@ namespace NykantAPI.data.migrations
                             ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_02.png",
-                            Length = "1000 mm.",
+                            Length = "100 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
                             Name = "Ingeborg Hylden",
                             Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17002",
                             Oil = "Hvidolie",
-                            Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse:  1030x220x45 mm.</p><p>Vægt: 3.2 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
+                            Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse:  103x22x4.5 cm.</p><p>Vægt: 3.2 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_hvidolie_01.png",
                             Pieces = 1,
                             Price = 985.0,
-                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 20 mm.</p><p>Længde: 100 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
+                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 100 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med hvidolie",
-                            UrlName = "Hylde-Egetræ-Hvidolie-1000mm",
+                            UrlName = "Hylde-Egetræ-Hvidolie-100cm",
                             WeightInKg = 11.6
                         },
                         new
@@ -3660,19 +3660,19 @@ namespace NykantAPI.data.migrations
                             ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_02.png",
-                            Length = "1000 mm.",
+                            Length = "100 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
                             Name = "Ingeborg Hylden",
                             Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17003",
                             Oil = "Sortolie",
-                            Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse:  1030x220x45 mm.</p><p>Vægt: 3.2 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
+                            Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse:  103x22x4.5 cm.</p><p>Vægt: 3.2 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_sortolie_01.png",
                             Pieces = 1,
                             Price = 985.0,
-                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 20 mm.</p><p>Længde: 100 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
+                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 100 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med sortolie",
-                            UrlName = "Hylde-Egetræ-Sortolie-1000mm",
+                            UrlName = "Hylde-Egetræ-Sortolie-100cm",
                             WeightInKg = 11.6
                         },
                         new
@@ -3686,19 +3686,19 @@ namespace NykantAPI.data.migrations
                             ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_02.png",
-                            Length = "1000 mm.",
+                            Length = "100 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
                             Name = "Ingeborg Hylden",
                             Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17001",
                             Oil = "Naturolie",
-                            Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse:  1030x220x45 mm.</p><p>Vægt: 3.2 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
+                            Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse:  103x22x4.5 cm.</p><p>Vægt: 3.2 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_naturolie_01.png",
                             Pieces = 1,
                             Price = 985.0,
-                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 20 mm.</p><p>Længde: 100 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
+                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 100 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med naturolie",
-                            UrlName = "Hylde-Egetræ-Naturolie-1000mm",
+                            UrlName = "Hylde-Egetræ-Naturolie-100cm",
                             WeightInKg = 11.6
                         },
                         new
@@ -3720,7 +3720,7 @@ namespace NykantAPI.data.migrations
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_bord_naturolie_01.png",
                             Pieces = 1,
                             Price = 3585.0,
-                            Size = "<tr><td class='width-30'><strong>Størrelse:</strong></td><td><p>Bordplade tykkelse: 25 mm.</p><p>Højde: 74 cm.</p><p>Længde: 110 cm.</p><p>Bredde: 70 cm.</p></td></tr>",
+                            Size = "<tr><td class='width-30'><strong>Størrelse:</strong></td><td><p>Bordplade tykkelse: 2.5 cm.</p><p>Højde: 74 cm.</p><p>Længde: 110 cm.</p><p>Bredde: 70 cm.</p></td></tr>",
                             Title = "Bord i massivt egetræ - Behandlet med naturolie",
                             UrlName = "Bord-Egetræ-Naturolie",
                             WeightInKg = 22.0
@@ -3744,7 +3744,7 @@ namespace NykantAPI.data.migrations
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_bord_hvidolie_01.png",
                             Pieces = 1,
                             Price = 3585.0,
-                            Size = "<tr><td class='width-30'><strong>Størrelse:</strong></td><td><p>Bordplade tykkelse: 25 mm.</p><p>Højde: 74 cm.</p><p>Længde: 110 cm.</p><p>Bredde: 70 cm.</p></td></tr>",
+                            Size = "<tr><td class='width-30'><strong>Størrelse:</strong></td><td><p>Bordplade tykkelse: 2.5 cm.</p><p>Højde: 74 cm.</p><p>Længde: 110 cm.</p><p>Bredde: 70 cm.</p></td></tr>",
                             Title = "Bord i massivt egetræ - Behandlet med hvidolie",
                             UrlName = "Bord-Egetræ-Hvidolie",
                             WeightInKg = 22.0
@@ -3760,7 +3760,7 @@ namespace NykantAPI.data.migrations
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_kortbaenk_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_kortbaenk_naturolie_02.png",
-                            Length = "1150 mm.",
+                            Length = "115 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p></td></tr>",
                             Name = "Thyra Bænken",
                             Number = "12001",
@@ -3771,7 +3771,7 @@ namespace NykantAPI.data.migrations
                             Price = 3665.0,
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Højde: 47 cm.</p><p>Længde: 115 cm.</p><p>Bredde: 40 cm.</p></td></tr>",
                             Title = "Bænk i massivt egetræ - Behandlet med naturolie",
-                            UrlName = "Bænk-Egetræ-Naturolie-1150mm",
+                            UrlName = "Bænk-Egetræ-Naturolie-115cm",
                             WeightInKg = 14.0
                         },
                         new
@@ -3785,7 +3785,7 @@ namespace NykantAPI.data.migrations
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_kortbaenk_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_kortbaenk_hvidolie_02.png",
-                            Length = "1150 mm.",
+                            Length = "115 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p></td></tr>",
                             Name = "Thyra Bænken",
                             Number = "12002",
@@ -3796,7 +3796,7 @@ namespace NykantAPI.data.migrations
                             Price = 3665.0,
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Højde: 47 cm.</p><p>Længde: 115 cm.</p><p>Bredde: 40 cm.</p></td></tr>",
                             Title = "Bænk i massivt egetræ - Behandlet med hvidolie",
-                            UrlName = "Bænk-Egetræ-Hvidolie-1150mm",
+                            UrlName = "Bænk-Egetræ-Hvidolie-115cm",
                             WeightInKg = 14.0
                         },
                         new
@@ -3810,7 +3810,7 @@ namespace NykantAPI.data.migrations
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_kortbaenk_sortolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_kortbaenk_sortolie_02.png",
-                            Length = "1150 mm.",
+                            Length = "115 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p></td></tr>",
                             Name = "Thyra Bænken",
                             Number = "12003",
@@ -3821,7 +3821,7 @@ namespace NykantAPI.data.migrations
                             Price = 3665.0,
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Højde: 47 cm.</p><p>Længde: 115 cm.</p><p>Bredde: 40 cm.</p></td></tr>",
                             Title = "Bænk i massivt egetræ - Behandlet med sortolie",
-                            UrlName = "Bænk-Egetræ-Sortolie-1150mm",
+                            UrlName = "Bænk-Egetræ-Sortolie-115cm",
                             WeightInKg = 14.0
                         },
                         new
@@ -3835,7 +3835,7 @@ namespace NykantAPI.data.migrations
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_langbaenk_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_langbaenk_naturolie_02.png",
-                            Length = "1700 mm.",
+                            Length = "170 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p></td></tr>",
                             Name = "Thyra Bænken",
                             Number = "11001",
@@ -3846,7 +3846,7 @@ namespace NykantAPI.data.migrations
                             Price = 4395.0,
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Højde: 47 cm.</p><p>Længde: 170 cm.</p><p>Bredde: 40 cm.</p></td></tr>",
                             Title = "Bænk i massivt egetræ - Behandlet med naturolie",
-                            UrlName = "Bænk-Egetræ-Naturolie-1700mm",
+                            UrlName = "Bænk-Egetræ-Naturolie-170cm",
                             WeightInKg = 20.0
                         },
                         new
@@ -3860,7 +3860,7 @@ namespace NykantAPI.data.migrations
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_langbaenk_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_langbaenk_hvidolie_02.png",
-                            Length = "1700 mm.",
+                            Length = "170 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p></td></tr>",
                             Name = "Thyra Bænken",
                             Number = "11002",
@@ -3871,7 +3871,7 @@ namespace NykantAPI.data.migrations
                             Price = 4395.0,
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Højde: 47 cm.</p><p>Længde: 170 cm.</p><p>Bredde: 40 cm.</p></td></tr>",
                             Title = "Bænk i massivt egetræ - Behandlet med hvidolie",
-                            UrlName = "Bænk-Egetræ-Hvidolie-1700mm",
+                            UrlName = "Bænk-Egetræ-Hvidolie-170cm",
                             WeightInKg = 20.0
                         },
                         new
@@ -3885,7 +3885,7 @@ namespace NykantAPI.data.migrations
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_langbaenk_sortolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_langbaenk_sortolie_02.png",
-                            Length = "1700 mm.",
+                            Length = "170 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p></td></tr>",
                             Name = "Thyra Bænken",
                             Number = "11003",
@@ -3896,7 +3896,7 @@ namespace NykantAPI.data.migrations
                             Price = 4395.0,
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Højde: 47 cm.</p><p>Længde: 170 cm.</p><p>Bredde: 40 cm.</p></td></tr>",
                             Title = "Bænk i massivt egetræ - Behandlet med sortolie",
-                            UrlName = "Bænk-Egetræ-Sortolie-1700mm",
+                            UrlName = "Bænk-Egetræ-Sortolie-170cm",
                             WeightInKg = 20.0
                         },
                         new
@@ -3989,7 +3989,7 @@ namespace NykantAPI.data.migrations
                             Name = "Nora Tøjstativ",
                             Number = "13001 + 13001A",
                             Oil = "Naturolie",
-                            Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Leveres usamlet i 2 kartoner - se samlevejledning</p></td></tr><tr class='no-border'><td class='width-30'><strong>Karton 1</strong></td><td> <p>Vægt: 5 kg.</p><p> Størrelse: 6,5 x 11,5 x 186 cm.</p></td></tr><tr><td class='width-30'><strong>Karton 2</strong></td><td> <p>Vægt: 3 kg.</p><p>Størrelse: 5,5 x 54 x 119 cm.</p></td></tr>",
+                            Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Leveres usamlet i 2 kartoner - se samlevejledning</p></td></tr><tr class='no-border'><td class='width-30'><strong>Karton 1</strong></td><td> <p>Vægt: 5 kg.</p><p> Størrelse: 6.5 x 11.5 x 186 cm.</p></td></tr><tr><td class='width-30'><strong>Karton 2</strong></td><td> <p>Vægt: 3 kg.</p><p>Størrelse: 5.5 x 54 x 119 cm.</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_rack_naturolie_01.png",
                             Pieces = 1,
                             Price = 2595.0,
@@ -4013,7 +4013,7 @@ namespace NykantAPI.data.migrations
                             Name = "Nora Tøjstativ",
                             Number = "13002 + 13002A",
                             Oil = "Hvidolie",
-                            Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Leveres usamlet i 2 kartoner - se samlevejledning</p></td></tr><tr class='no-border'><td class='width-30'><strong>Karton 1</strong></td><td> <p>Vægt: 5 kg.</p><p> Størrelse: 6,5 x 11,5 x 186 cm.</p></td></tr><tr><td class='width-30'><strong>Karton 2</strong></td><td> <p>Vægt: 3 kg.</p><p>Størrelse: 5,5 x 54 x 119 cm.</p></td></tr>",
+                            Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Leveres usamlet i 2 kartoner - se samlevejledning</p></td></tr><tr class='no-border'><td class='width-30'><strong>Karton 1</strong></td><td> <p>Vægt: 5 kg.</p><p> Størrelse: 6.5 x 11.5 x 186 cm.</p></td></tr><tr><td class='width-30'><strong>Karton 2</strong></td><td> <p>Vægt: 3 kg.</p><p>Størrelse: 5.5 x 54 x 119 cm.</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_rack_naturolie_01.png",
                             Pieces = 1,
                             Price = 2595.0,
@@ -4037,7 +4037,7 @@ namespace NykantAPI.data.migrations
                             Name = "Nora Tøjstativ",
                             Number = "13003 + 13003A",
                             Oil = "Sortolie",
-                            Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Leveres usamlet i 2 kartoner - se samlevejledning</p></td></tr><tr class='no-border'><td class='width-30'><strong>Karton 1</strong></td><td> <p>Vægt: 5 kg.</p><p> Størrelse: 6,5 x 11,5 x 186 cm.</p></td></tr><tr><td class='width-30'><strong>Karton 2</strong></td><td> <p>Vægt: 3 kg.</p><p>Størrelse: 5,5 x 54 x 119 cm.</p></td></tr>",
+                            Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Leveres usamlet i 2 kartoner - se samlevejledning</p></td></tr><tr class='no-border'><td class='width-30'><strong>Karton 1</strong></td><td> <p>Vægt: 5 kg.</p><p> Størrelse: 6.5 x 11.5 x 186 cm.</p></td></tr><tr><td class='width-30'><strong>Karton 2</strong></td><td> <p>Vægt: 3 kg.</p><p>Størrelse: 5.5 x 54 x 119 cm.</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_rack_naturolie_01.png",
                             Pieces = 1,
                             Price = 2595.0,
@@ -4061,7 +4061,7 @@ namespace NykantAPI.data.migrations
                             Name = "Ingrid Tøjstativ",
                             Number = "14001",
                             Oil = "Naturolie",
-                            Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Vægt: 2kg.</p><p>Størrelse: 7 x 105 x 9,5 cm.</p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
+                            Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Vægt: 2kg.</p><p>Størrelse: 7 x 105 x 9.5 cm.</p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_rack_naturolie_01.png",
                             Pieces = 1,
                             Price = 1995.0,
@@ -4085,7 +4085,7 @@ namespace NykantAPI.data.migrations
                             Name = "Ingrid Tøjstativ",
                             Number = "14002",
                             Oil = "Hvidolie",
-                            Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Vægt: 2kg.</p><p>Størrelse: 7 x 105 x 9,5 cm.</p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
+                            Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Vægt: 2kg.</p><p>Størrelse: 7 x 105 x 9.5 cm.</p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_rack_naturolie_01.png",
                             Pieces = 1,
                             Price = 1995.0,
@@ -4109,7 +4109,7 @@ namespace NykantAPI.data.migrations
                             Name = "Ingrid Tøjstativ",
                             Number = "14003",
                             Oil = "Sortolie",
-                            Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Vægt: 2kg.</p><p>Størrelse: 7 x 105 x 9,5 cm.</p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
+                            Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Vægt: 2kg.</p><p>Størrelse: 7 x 105 x 9.5 cm.</p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_rack_naturolie_01.png",
                             Pieces = 1,
                             Price = 1995.0,
@@ -4148,482 +4148,482 @@ namespace NykantAPI.data.migrations
                         new
                         {
                             Id = 1,
-                            Length = "1150 mm.",
+                            Length = "115 cm.",
                             ProductId = 18,
                             ProductReferenceId = 18,
-                            ProductReferenceUrlName = "Bænk-Egetræ-Naturolie-1150mm"
+                            ProductReferenceUrlName = "Bænk-Egetræ-Naturolie-115cm"
                         },
                         new
                         {
                             Id = 2,
-                            Length = "1700 mm.",
+                            Length = "170 cm.",
                             ProductId = 18,
                             ProductReferenceId = 21,
-                            ProductReferenceUrlName = "Bænk-Egetræ-Naturolie-1700mm"
+                            ProductReferenceUrlName = "Bænk-Egetræ-Naturolie-170cm"
                         },
                         new
                         {
                             Id = 3,
-                            Length = "1150 mm.",
+                            Length = "115 cm.",
                             ProductId = 19,
                             ProductReferenceId = 19,
-                            ProductReferenceUrlName = "Bænk-Egetræ-Hvidolie-1150mm"
+                            ProductReferenceUrlName = "Bænk-Egetræ-Hvidolie-115cm"
                         },
                         new
                         {
                             Id = 4,
-                            Length = "1700 mm.",
+                            Length = "170 cm.",
                             ProductId = 19,
                             ProductReferenceId = 22,
-                            ProductReferenceUrlName = "Bænk-Egetræ-Hvidolie-1700mm"
+                            ProductReferenceUrlName = "Bænk-Egetræ-Hvidolie-170cm"
                         },
                         new
                         {
                             Id = 5,
-                            Length = "1150 mm.",
+                            Length = "115 cm.",
                             ProductId = 20,
                             ProductReferenceId = 20,
-                            ProductReferenceUrlName = "Bænk-Egetræ-Sortolie-1150mm"
+                            ProductReferenceUrlName = "Bænk-Egetræ-Sortolie-115cm"
                         },
                         new
                         {
                             Id = 6,
-                            Length = "1700 mm.",
+                            Length = "170 cm.",
                             ProductId = 20,
                             ProductReferenceId = 23,
-                            ProductReferenceUrlName = "Bænk-Egetræ-Sortolie-1700mm"
+                            ProductReferenceUrlName = "Bænk-Egetræ-Sortolie-170cm"
                         },
                         new
                         {
                             Id = 7,
-                            Length = "1150 mm.",
+                            Length = "115 cm.",
                             ProductId = 21,
                             ProductReferenceId = 18,
-                            ProductReferenceUrlName = "Bænk-Egetræ-Naturolie-1150mm"
+                            ProductReferenceUrlName = "Bænk-Egetræ-Naturolie-115cm"
                         },
                         new
                         {
                             Id = 8,
-                            Length = "1700 mm.",
+                            Length = "170 cm.",
                             ProductId = 21,
                             ProductReferenceId = 21,
-                            ProductReferenceUrlName = "Bænk-Egetræ-Naturolie-1700mm"
+                            ProductReferenceUrlName = "Bænk-Egetræ-Naturolie-170cm"
                         },
                         new
                         {
                             Id = 9,
-                            Length = "1150 mm.",
+                            Length = "115 cm.",
                             ProductId = 22,
                             ProductReferenceId = 19,
-                            ProductReferenceUrlName = "Bænk-Egetræ-Hvidolie-1150mm"
+                            ProductReferenceUrlName = "Bænk-Egetræ-Hvidolie-115cm"
                         },
                         new
                         {
                             Id = 10,
-                            Length = "1700 mm.",
+                            Length = "170 cm.",
                             ProductId = 22,
                             ProductReferenceId = 22,
-                            ProductReferenceUrlName = "Bænk-Egetræ-Hvidolie-1700mm"
+                            ProductReferenceUrlName = "Bænk-Egetræ-Hvidolie-170cm"
                         },
                         new
                         {
                             Id = 11,
-                            Length = "1150 mm.",
+                            Length = "115 cm.",
                             ProductId = 23,
                             ProductReferenceId = 20,
-                            ProductReferenceUrlName = "Bænk-Egetræ-Sortolie-1150mm"
+                            ProductReferenceUrlName = "Bænk-Egetræ-Sortolie-115cm"
                         },
                         new
                         {
                             Id = 12,
-                            Length = "1700 mm.",
+                            Length = "170 cm.",
                             ProductId = 23,
                             ProductReferenceId = 23,
-                            ProductReferenceUrlName = "Bænk-Egetræ-Sortolie-1700mm"
+                            ProductReferenceUrlName = "Bænk-Egetræ-Sortolie-170cm"
                         },
                         new
                         {
                             Id = 13,
-                            Length = "400 mm.",
+                            Length = "40 cm.",
                             ProductId = 4,
                             ProductReferenceId = 4,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-400mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-40cm"
                         },
                         new
                         {
                             Id = 14,
-                            Length = "600 mm.",
+                            Length = "60 cm.",
                             ProductId = 4,
                             ProductReferenceId = 7,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-600mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-60cm"
                         },
                         new
                         {
                             Id = 15,
-                            Length = "800 mm.",
+                            Length = "80 cm.",
                             ProductId = 4,
                             ProductReferenceId = 10,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-800mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-80cm"
                         },
                         new
                         {
                             Id = 16,
-                            Length = "1000 mm.",
+                            Length = "100 cm.",
                             ProductId = 4,
                             ProductReferenceId = 13,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-1000mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-100cm"
                         },
                         new
                         {
                             Id = 17,
-                            Length = "400 mm.",
+                            Length = "40 cm.",
                             ProductId = 5,
                             ProductReferenceId = 5,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-400mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-40cm"
                         },
                         new
                         {
                             Id = 18,
-                            Length = "600 mm.",
+                            Length = "60 cm.",
                             ProductId = 5,
                             ProductReferenceId = 8,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-600mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-60cm"
                         },
                         new
                         {
                             Id = 19,
-                            Length = "800 mm.",
+                            Length = "80 cm.",
                             ProductId = 5,
                             ProductReferenceId = 11,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-800mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-80cm"
                         },
                         new
                         {
                             Id = 20,
-                            Length = "1000 mm.",
+                            Length = "100 cm.",
                             ProductId = 5,
                             ProductReferenceId = 15,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-1000mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-100cm"
                         },
                         new
                         {
                             Id = 21,
-                            Length = "400 mm.",
+                            Length = "40 cm.",
                             ProductId = 6,
                             ProductReferenceId = 6,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-400mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-40cm"
                         },
                         new
                         {
                             Id = 22,
-                            Length = "600 mm.",
+                            Length = "60 cm.",
                             ProductId = 6,
                             ProductReferenceId = 9,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-600mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-60cm"
                         },
                         new
                         {
                             Id = 23,
-                            Length = "800 mm.",
+                            Length = "80 cm.",
                             ProductId = 6,
                             ProductReferenceId = 12,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-800mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-80cm"
                         },
                         new
                         {
                             Id = 24,
-                            Length = "1000 mm.",
+                            Length = "100 cm.",
                             ProductId = 6,
                             ProductReferenceId = 15,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-1000mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-100cm"
                         },
                         new
                         {
                             Id = 25,
-                            Length = "400 mm.",
+                            Length = "40 cm.",
                             ProductId = 7,
                             ProductReferenceId = 4,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-400mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-40cm"
                         },
                         new
                         {
                             Id = 26,
-                            Length = "600 mm.",
+                            Length = "60 cm.",
                             ProductId = 7,
                             ProductReferenceId = 7,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-600mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-60cm"
                         },
                         new
                         {
                             Id = 27,
-                            Length = "800 mm.",
+                            Length = "80 cm.",
                             ProductId = 7,
                             ProductReferenceId = 10,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-800mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-80cm"
                         },
                         new
                         {
                             Id = 28,
-                            Length = "1000 mm.",
+                            Length = "100 cm.",
                             ProductId = 7,
                             ProductReferenceId = 13,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-1000mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-100cm"
                         },
                         new
                         {
                             Id = 29,
-                            Length = "400 mm.",
+                            Length = "40 cm.",
                             ProductId = 8,
                             ProductReferenceId = 5,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-400mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-40cm"
                         },
                         new
                         {
                             Id = 30,
-                            Length = "600 mm.",
+                            Length = "60 cm.",
                             ProductId = 8,
                             ProductReferenceId = 8,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-600mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-60cm"
                         },
                         new
                         {
                             Id = 31,
-                            Length = "800 mm.",
+                            Length = "80 cm.",
                             ProductId = 8,
                             ProductReferenceId = 11,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-800mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-80cm"
                         },
                         new
                         {
                             Id = 32,
-                            Length = "1000 mm.",
+                            Length = "100 cm.",
                             ProductId = 8,
                             ProductReferenceId = 14,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-1000mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-100cm"
                         },
                         new
                         {
                             Id = 33,
-                            Length = "400 mm.",
+                            Length = "40 cm.",
                             ProductId = 9,
                             ProductReferenceId = 6,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-400mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-40cm"
                         },
                         new
                         {
                             Id = 34,
-                            Length = "600 mm.",
+                            Length = "60 cm.",
                             ProductId = 9,
                             ProductReferenceId = 9,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-600mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-60cm"
                         },
                         new
                         {
                             Id = 35,
-                            Length = "800 mm.",
+                            Length = "80 cm.",
                             ProductId = 9,
                             ProductReferenceId = 12,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-800mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-80cm"
                         },
                         new
                         {
                             Id = 36,
-                            Length = "1000 mm.",
+                            Length = "100 cm.",
                             ProductId = 9,
                             ProductReferenceId = 16,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-1000mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-100cm"
                         },
                         new
                         {
                             Id = 37,
-                            Length = "400 mm.",
+                            Length = "40 cm.",
                             ProductId = 10,
                             ProductReferenceId = 4,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-400mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-40cm"
                         },
                         new
                         {
                             Id = 38,
-                            Length = "600 mm.",
+                            Length = "60 cm.",
                             ProductId = 10,
                             ProductReferenceId = 7,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-600mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-60cm"
                         },
                         new
                         {
                             Id = 39,
-                            Length = "800 mm.",
+                            Length = "80 cm.",
                             ProductId = 10,
                             ProductReferenceId = 10,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-800mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-80cm"
                         },
                         new
                         {
                             Id = 40,
-                            Length = "1000 mm.",
+                            Length = "100 cm.",
                             ProductId = 10,
                             ProductReferenceId = 13,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-1000mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-100cm"
                         },
                         new
                         {
                             Id = 41,
-                            Length = "400 mm.",
+                            Length = "40 cm.",
                             ProductId = 11,
                             ProductReferenceId = 5,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-400mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-40cm"
                         },
                         new
                         {
                             Id = 42,
-                            Length = "600 mm.",
+                            Length = "60 cm.",
                             ProductId = 11,
                             ProductReferenceId = 8,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-600mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-60cm"
                         },
                         new
                         {
                             Id = 43,
-                            Length = "800 mm.",
+                            Length = "80 cm.",
                             ProductId = 11,
                             ProductReferenceId = 11,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-800mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-80cm"
                         },
                         new
                         {
                             Id = 44,
-                            Length = "1000 mm.",
+                            Length = "100 cm.",
                             ProductId = 11,
                             ProductReferenceId = 14,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-1000mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-100cm"
                         },
                         new
                         {
                             Id = 45,
-                            Length = "400 mm.",
+                            Length = "40 cm.",
                             ProductId = 12,
                             ProductReferenceId = 6,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-400mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-40cm"
                         },
                         new
                         {
                             Id = 46,
-                            Length = "600 mm.",
+                            Length = "60 cm.",
                             ProductId = 12,
                             ProductReferenceId = 9,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-600mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-60cm"
                         },
                         new
                         {
                             Id = 47,
-                            Length = "800 mm.",
+                            Length = "80 cm.",
                             ProductId = 12,
                             ProductReferenceId = 12,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-800mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-80cm"
                         },
                         new
                         {
                             Id = 48,
-                            Length = "1000 mm.",
+                            Length = "100 cm.",
                             ProductId = 12,
                             ProductReferenceId = 15,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-1000mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-100cm"
                         },
                         new
                         {
                             Id = 49,
-                            Length = "400 mm.",
+                            Length = "40 cm.",
                             ProductId = 13,
                             ProductReferenceId = 4,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-400mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-40cm"
                         },
                         new
                         {
                             Id = 50,
-                            Length = "600 mm.",
+                            Length = "60 cm.",
                             ProductId = 13,
                             ProductReferenceId = 7,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-600mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-60cm"
                         },
                         new
                         {
                             Id = 51,
-                            Length = "800 mm.",
+                            Length = "80 cm.",
                             ProductId = 13,
                             ProductReferenceId = 10,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-800mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-80cm"
                         },
                         new
                         {
                             Id = 52,
-                            Length = "1000 mm.",
+                            Length = "100 cm.",
                             ProductId = 13,
                             ProductReferenceId = 13,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-1000mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-100cm"
                         },
                         new
                         {
                             Id = 53,
-                            Length = "400 mm.",
+                            Length = "40 cm.",
                             ProductId = 14,
                             ProductReferenceId = 5,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-400mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-40cm"
                         },
                         new
                         {
                             Id = 54,
-                            Length = "600 mm.",
+                            Length = "60 cm.",
                             ProductId = 14,
                             ProductReferenceId = 8,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-600mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-60cm"
                         },
                         new
                         {
                             Id = 55,
-                            Length = "800 mm.",
+                            Length = "80 cm.",
                             ProductId = 14,
                             ProductReferenceId = 11,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-800mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-80cm"
                         },
                         new
                         {
                             Id = 56,
-                            Length = "1000 mm.",
+                            Length = "100 cm.",
                             ProductId = 14,
                             ProductReferenceId = 14,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-1000mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-100cm"
                         },
                         new
                         {
                             Id = 57,
-                            Length = "400 mm.",
+                            Length = "40 cm.",
                             ProductId = 15,
                             ProductReferenceId = 6,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-400mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-40cm"
                         },
                         new
                         {
                             Id = 58,
-                            Length = "600 mm.",
+                            Length = "60 cm.",
                             ProductId = 15,
                             ProductReferenceId = 9,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-600mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-60cm"
                         },
                         new
                         {
                             Id = 59,
-                            Length = "800 mm.",
+                            Length = "80 cm.",
                             ProductId = 15,
                             ProductReferenceId = 12,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-800mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-80cm"
                         },
                         new
                         {
                             Id = 60,
-                            Length = "1000 mm.",
+                            Length = "100 cm.",
                             ProductId = 15,
                             ProductReferenceId = 15,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-1000mm"
+                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-100cm"
                         });
                 });
 
