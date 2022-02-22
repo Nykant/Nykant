@@ -59,8 +59,6 @@ namespace NykantMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> PostLength(string urlname)
         {
-            var json = await GetRequest($"/Product/GetProductWithUrlName/{urlname}");
-            Product product = JsonConvert.DeserializeObject<Product>(json);
             return RedirectToAction("Details", new { urlname = urlname });
         }
 

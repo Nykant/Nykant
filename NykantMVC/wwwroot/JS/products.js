@@ -1,4 +1,8 @@
-﻿var category_list = document.getElementsByClassName("filter-form");
+﻿if (window.history.replaceState) {
+    window.history.replaceState(null, null, window.location.href);
+}
+
+var category_list = document.getElementsByClassName("filter-form");
 for (var i = 0; i < category_list.length; i++) {
     category_list[i].addEventListener('submit', function () {
         filterloading(true);
