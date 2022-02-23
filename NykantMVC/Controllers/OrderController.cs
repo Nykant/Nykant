@@ -107,6 +107,17 @@ namespace NykantMVC.Controllers
                     Models.Order newOrder = JsonConvert.DeserializeObject<Models.Order>(json);
                     order = newOrder;
 
+                    var orderItems = new List<Models.OrderItem>();
+                    foreach (var item in checkout.BagItems)
+                    {
+                        orderItems.Add(new Models.OrderItem { Quantity = item.Quantity, ProductId = item.ProductId, OrderId = order.Id });
+                        if (item.Product.WeightInKg > 20)
+                        {
+                            checkout.ShippingDelivery.Type = ShippingType.HomePallegods;
+                        }
+                    }
+
+                    checkout.ShippingDelivery = new ShippingDelivery();
                     checkout.ShippingDelivery.OrderId = order.Id;
                     var postShipping = await PostRequest("/ShippingDelivery/Post", checkout.ShippingDelivery);
                     if (!postShipping.IsSuccessStatusCode)
@@ -114,11 +125,6 @@ namespace NykantMVC.Controllers
                         return Json(new { ok = false, error = "could not post shipping" });
                     }
 
-                    var orderItems = new List<Models.OrderItem>();
-                    foreach (var item in checkout.BagItems)
-                    {
-                        orderItems.Add(new Models.OrderItem { Quantity = item.Quantity, ProductId = item.ProductId, OrderId = order.Id });
-                    }
                     var postRequest = await PostRequest("/Orderitem/PostOrderItems", orderItems);
                     if (!postRequest.IsSuccessStatusCode)
                     {

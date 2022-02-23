@@ -9,7 +9,7 @@ using NykantAPI.Data;
 namespace NykantAPI.data.migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220222104333_Initial")]
+    [Migration("20220223133220_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -3327,7 +3327,7 @@ namespace NykantAPI.data.migrations
                             CategoryId = 5,
                             Description = "Denne smukke bøjle med klassiske fine linjer, afrundede kanter og ender, giver perfekt støtte og mindst mulige mærker i tøjet.",
                             EColor = 0,
-                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_boejle_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_boejle_naturolie_02.png",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Sort bøjlekrog</p></td></tr>",
@@ -3351,7 +3351,7 @@ namespace NykantAPI.data.migrations
                             CategoryId = 5,
                             Description = "Denne smukke bøjle med klassiske fine linjer, afrundede kanter og ender, giver perfekt støtte og mindst mulige mærker i tøjet.",
                             EColor = 2,
-                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_boejle_sortolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_boejle_sortolie_02.png",
                             Materials = "<tr><td class='width-30'<strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Sort bøjlekrog</p></td></tr>",
@@ -3375,7 +3375,7 @@ namespace NykantAPI.data.migrations
                             CategoryId = 5,
                             Description = "Denne smukke bøjle med klassiske fine linjer, afrundede kanter og ender, giver perfekt støtte og mindst mulige mærker i tøjet.",
                             EColor = 1,
-                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_boejle_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_boejle_hvidolie_02.png",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Sort bøjlekrog</p></td></tr>",
@@ -3399,7 +3399,7 @@ namespace NykantAPI.data.migrations
                             CategoryId = 3,
                             Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse.Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
                             EColor = 1,
-                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_02.png",
                             Length = "40 cm.",
@@ -3425,7 +3425,7 @@ namespace NykantAPI.data.migrations
                             CategoryId = 3,
                             Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse.Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
                             EColor = 2,
-                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_02.png",
                             Length = "40 cm.",
@@ -3451,7 +3451,7 @@ namespace NykantAPI.data.migrations
                             CategoryId = 3,
                             Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse.Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
                             EColor = 0,
-                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_02.png",
                             Length = "40 cm.",
@@ -3477,7 +3477,7 @@ namespace NykantAPI.data.migrations
                             CategoryId = 3,
                             Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse.Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
                             EColor = 1,
-                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_02.png",
                             Length = "60 cm.",
@@ -3503,7 +3503,7 @@ namespace NykantAPI.data.migrations
                             CategoryId = 3,
                             Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse.Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
                             EColor = 2,
-                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_02.png",
                             Length = "60 cm.",
@@ -3529,7 +3529,7 @@ namespace NykantAPI.data.migrations
                             CategoryId = 3,
                             Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse.Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
                             EColor = 0,
-                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_02.png",
                             Length = "60 cm.",
@@ -3555,7 +3555,7 @@ namespace NykantAPI.data.migrations
                             CategoryId = 3,
                             Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse.Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
                             EColor = 1,
-                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_02.png",
                             Length = "80 cm.",
@@ -3581,7 +3581,7 @@ namespace NykantAPI.data.migrations
                             CategoryId = 3,
                             Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse.Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
                             EColor = 2,
-                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_02.png",
                             Length = "80 cm.",
@@ -3607,7 +3607,7 @@ namespace NykantAPI.data.migrations
                             CategoryId = 3,
                             Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse.Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
                             EColor = 0,
-                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_02.png",
                             Length = "80 cm.",
@@ -3633,7 +3633,7 @@ namespace NykantAPI.data.migrations
                             CategoryId = 3,
                             Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse.Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
                             EColor = 1,
-                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_02.png",
                             Length = "100 cm.",
@@ -3659,7 +3659,7 @@ namespace NykantAPI.data.migrations
                             CategoryId = 3,
                             Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse.Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
                             EColor = 2,
-                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_02.png",
                             Length = "100 cm.",
@@ -3685,7 +3685,7 @@ namespace NykantAPI.data.migrations
                             CategoryId = 3,
                             Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse.Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
                             EColor = 0,
-                            ExpectedDelivery = new DateTime(2022, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ExpectedDelivery = new DateTime(2022, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_02.png",
                             Length = "100 cm.",
@@ -4705,14 +4705,11 @@ namespace NykantAPI.data.migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("NotHomeNote")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Type")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -4720,59 +4717,6 @@ namespace NykantAPI.data.migrations
                         .IsUnique();
 
                     b.ToTable("ShippingDeliveries");
-                });
-
-            modelBuilder.Entity("NykantMVC.Models.ParcelshopData", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("CityName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("CompanyName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("CountryCode")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("CountryCodeISO3166A2")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int>("DistanceMetersAsTheCrowFlies")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Latitude")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Longitude")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Number")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int>("ShippingDeliveryId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Streetname")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Streetname2")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("Telephone")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<string>("ZipCode")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ShippingDeliveryId")
-                        .IsUnique();
-
-                    b.ToTable("ParcelshopData");
                 });
 
             modelBuilder.Entity("NykantAPI.Models.BagItem", b =>
@@ -4885,15 +4829,6 @@ namespace NykantAPI.data.migrations
                     b.HasOne("NykantAPI.Models.Order", "Order")
                         .WithOne("ShippingDelivery")
                         .HasForeignKey("NykantAPI.Models.ShippingDelivery", "OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("NykantMVC.Models.ParcelshopData", b =>
-                {
-                    b.HasOne("NykantAPI.Models.ShippingDelivery", "ShippingDelivery")
-                        .WithOne("ParcelshopData")
-                        .HasForeignKey("NykantMVC.Models.ParcelshopData", "ShippingDeliveryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

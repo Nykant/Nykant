@@ -12,14 +12,13 @@ namespace NykantMVC.Models
         public string Taxes { get; set; }
         public string TaxlessPrice { get; set; }
         public Stage Stage { get; set; }
-        public ParcelShopSearchResult ParcelShopSearchResult { get; set; }
+        //public ParcelShopSearchResult ParcelShopSearchResult { get; set; }
     }
     public enum Stage
     {
         unset = 0,
         customerInf = 1,
-        shipping = 2,
-        payment = 3,
-        completed = 4
+        payment = 2,
+        completed = 3
     }
 }

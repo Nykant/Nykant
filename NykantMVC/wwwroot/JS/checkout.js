@@ -1,7 +1,7 @@
 ﻿var customer_check_sign = document.getElementById("customer-check-sign");
-var shipping_check_sign = document.getElementById("shipping-check-sign");
-var shipping_wrap = document.getElementById("shipping-wrap");
-var shipping_form = document.getElementById("shipping-form");
+/*var shipping_check_sign = document.getElementById("shipping-check-sign");*/
+//var shipping_wrap = document.getElementById("shipping-wrap");
+//var shipping_form = document.getElementById("shipping-form");
 var payment_wrap = document.getElementById("payment-wrap");
 var payment_form = document.getElementById("payment-form");
 var customer_wrap = document.getElementById("customer-wrap");
@@ -23,12 +23,12 @@ var postal_input = document.getElementById("customer-postal-input");
 var address_input = document.getElementById("customer-address-input");
 var customer_edit_button = document.getElementById("customer-edit-button");
 var customer_form_complete = document.getElementById("customer-form-complete");
-var shipping_form_complete = document.getElementById("shipping-form-complete");
-var shipping_method_summary = document.getElementById("shipping-method-summary");
-var shipping_summary = document.getElementById("shipping-summary");
-var shipping_edit_button = document.getElementById("shipping-edit-button");
-var shipping_delivery_type = document.getElementById("shipping-delivery-type");
-var shipping_price_summary = document.getElementById("shipping-price-summary");
+/*var shipping_form_complete = document.getElementById("shipping-form-complete");*/
+/*var shipping_method_summary = document.getElementById("shipping-method-summary");*/
+/*var shipping_summary = document.getElementById("shipping-summary");*/
+/*var shipping_edit_button = document.getElementById("shipping-edit-button");*/
+//var shipping_delivery_type = document.getElementById("shipping-delivery-type");
+//var shipping_price_summary = document.getElementById("shipping-price-summary");
 var stage = document.getElementById("stage").dataset.stage;
 var reuse_invoice = document.getElementById('reuse-invoice');
 var shippingaddress_firstname = document.getElementById('shippingaddress-firstname');
@@ -43,19 +43,19 @@ var shippingaddress_postal_summary = document.getElementById('shippingaddress-po
 var shippingaddress_address_summary = document.getElementById('shippingaddress-address-summary');
 var shippingaddress_summary = document.getElementById('shippingaddress-summary');
 var terms_and_conditions = document.getElementById('terms-and-conditions-consent');
-var parcelshop_companyname_summary = document.getElementById('parcelshop-companyname-summary');
-var parcelshop_cityname_summary = document.getElementById('parcelshop-cityname-summary');
-var parcelshop_countrycode_summary = document.getElementById('parcelshop-countrycode-summary');
-var parcelshop_streetname_summary = document.getElementById('parcelshop-streetname-summary');
-var parcelshop_streetname2_summary = document.getElementById('parcelshop-streetname2-summary');
-var parcelshop_zipcode_summary = document.getElementById('parcelshop-zipcode-summary');
-var parcelshop_CompanyName = document.getElementById("parcelshop-CompanyName");
-var parcelshop_StreetName = document.getElementById("parcelshop-StreetName");
-var parcelshop_StreetName2 = document.getElementById("parcelshop-StreetName2");
-var parcelshop_ZipCode = document.getElementById("parcelshop-ZipCode");
-var parcelshop_CityName = document.getElementById("parcelshop-CityName");
-var parcelshop_CountryCodeISO3166A2 = document.getElementById("parcelshop-CountryCodeISO3166A2");
-var parcelshop_summary = document.getElementById("parcelshop-summary");
+//var parcelshop_companyname_summary = document.getElementById('parcelshop-companyname-summary');
+//var parcelshop_cityname_summary = document.getElementById('parcelshop-cityname-summary');
+//var parcelshop_countrycode_summary = document.getElementById('parcelshop-countrycode-summary');
+//var parcelshop_streetname_summary = document.getElementById('parcelshop-streetname-summary');
+//var parcelshop_streetname2_summary = document.getElementById('parcelshop-streetname2-summary');
+//var parcelshop_zipcode_summary = document.getElementById('parcelshop-zipcode-summary');
+//var parcelshop_CompanyName = document.getElementById("parcelshop-CompanyName");
+//var parcelshop_StreetName = document.getElementById("parcelshop-StreetName");
+//var parcelshop_StreetName2 = document.getElementById("parcelshop-StreetName2");
+//var parcelshop_ZipCode = document.getElementById("parcelshop-ZipCode");
+//var parcelshop_CityName = document.getElementById("parcelshop-CityName");
+//var parcelshop_CountryCodeISO3166A2 = document.getElementById("parcelshop-CountryCodeISO3166A2");
+//var parcelshop_summary = document.getElementById("parcelshop-summary");
 var payment_options_list = document.getElementById('payment-options-list');
 var payment_options_container = document.getElementById('payment-options');
 var payment_options = payment_options_list.children;
@@ -66,28 +66,28 @@ var backbuttonclicked = false;
 /*payment_form.style.display = "none";*/
 history.scrollRestoration = "manual";
 
-if (parcelshop_CityName.value != '') {
-    parcelshop_summary.style.display = "block";
-    parcelshop_companyname_summary.textContent = parcelshop_CompanyName.dataset.value;
-    parcelshop_cityname_summary.textContent = parcelshop_CityName.dataset.value;
-    parcelshop_countrycode_summary.textContent = parcelshop_CountryCodeISO3166A2.dataset.value;
-    parcelshop_streetname_summary.textContent = parcelshop_StreetName.dataset.value;
-    parcelshop_streetname2_summary.textContent = parcelshop_StreetName2.dataset.value;
-    parcelshop_zipcode_summary.textContent = parcelshop_ZipCode.dataset.value;
-}
+//if (parcelshop_CityName.value != '') {
+//    parcelshop_summary.style.display = "block";
+//    parcelshop_companyname_summary.textContent = parcelshop_CompanyName.dataset.value;
+//    parcelshop_cityname_summary.textContent = parcelshop_CityName.dataset.value;
+//    parcelshop_countrycode_summary.textContent = parcelshop_CountryCodeISO3166A2.dataset.value;
+//    parcelshop_streetname_summary.textContent = parcelshop_StreetName.dataset.value;
+//    parcelshop_streetname2_summary.textContent = parcelshop_StreetName2.dataset.value;
+//    parcelshop_zipcode_summary.textContent = parcelshop_ZipCode.dataset.value;
+//}
 
-if (shipping_delivery_type.value == 'Shop' || shipping_delivery_type.value == 'Butik') {
-    parcelshop_summary.style.display = "block";
-    parcelshop_companyname_summary.textContent = parcelshop_CompanyName.dataset.value;
-    parcelshop_cityname_summary.textContent = parcelshop_CityName.dataset.value;
-    parcelshop_countrycode_summary.textContent = parcelshop_CountryCodeISO3166A2.dataset.value;
-    parcelshop_streetname_summary.textContent = parcelshop_StreetName.dataset.value;
-    parcelshop_streetname2_summary.textContent = parcelshop_StreetName2.dataset.value;
-    parcelshop_zipcode_summary.textContent = parcelshop_ZipCode.dataset.value;
-}
-else {
-    parcelshop_summary.style.display = "none";
-}
+//if (shipping_delivery_type.value == 'Shop' || shipping_delivery_type.value == 'Butik') {
+//    parcelshop_summary.style.display = "block";
+//    parcelshop_companyname_summary.textContent = parcelshop_CompanyName.dataset.value;
+//    parcelshop_cityname_summary.textContent = parcelshop_CityName.dataset.value;
+//    parcelshop_countrycode_summary.textContent = parcelshop_CountryCodeISO3166A2.dataset.value;
+//    parcelshop_streetname_summary.textContent = parcelshop_StreetName.dataset.value;
+//    parcelshop_streetname2_summary.textContent = parcelshop_StreetName2.dataset.value;
+//    parcelshop_zipcode_summary.textContent = parcelshop_ZipCode.dataset.value;
+//}
+//else {
+//    parcelshop_summary.style.display = "none";
+//}
 
 //if (reuse_invoice.checked) {
 //    document.getElementById('shipping-address-box').style.display = "none";
@@ -113,22 +113,22 @@ if (stage == 1) {
         }, 'slow');
     }
 }
+//else if (stage == 2) {
+//    shipping_wrap.style.transition = "all 1s";
+//    shipping_form.style.transition = "all 1s";
+//    shipping_form.style.height = "auto";
+//    shipping_wrap.style.transform = "translateY(0%)";
+
+//    customerinf_summary.style.display = "block";
+//    customer_check_sign.style.display = "block";
+//    customer_form_complete.value = 1;
+//    customer_edit_button.style.display = "block";
+
+//    $('html,body').animate({
+//        scrollTop: $("#shipping-headerr").offset().top
+//    }, 'slow');
+//}
 else if (stage == 2) {
-    shipping_wrap.style.transition = "all 1s";
-    shipping_form.style.transition = "all 1s";
-    shipping_form.style.height = "auto";
-    shipping_wrap.style.transform = "translateY(0%)";
-
-    customerinf_summary.style.display = "block";
-    customer_check_sign.style.display = "block";
-    customer_form_complete.value = 1;
-    customer_edit_button.style.display = "block";
-
-    $('html,body').animate({
-        scrollTop: $("#shipping-headerr").offset().top
-    }, 'slow');
-}
-else if (stage == 3) {
 
     payment_wrap.style.transition = "all 1s";
     payment_form.style.transition = "all 1s";
@@ -156,10 +156,10 @@ else if (stage == 3) {
     customer_form_complete.value = 1;
     customer_edit_button.style.display = "block";
 
-    shipping_summary.style.display = "block";
-    shipping_check_sign.style.display = "block";
-    shipping_form_complete.value = 1;
-    shipping_edit_button.style.display = "block";
+    //shipping_summary.style.display = "block";
+    //shipping_check_sign.style.display = "block";
+    //shipping_form_complete.value = 1;
+    //shipping_edit_button.style.display = "block";
 
     $('html,body').animate({
         scrollTop: $("#payment-header").offset().top
@@ -235,8 +235,8 @@ customer_completed = function (response) {
         customer_check_sign.style.display = "block";
         customer_form_complete.value = 1;
         customerinf_summary.style.display = "block";
-        shipping_wrap.style.transition = "all 1s";
-        shipping_form.style.transition = "all 1s";
+        //shipping_wrap.style.transition = "all 1s";
+        //shipping_form.style.transition = "all 1s";
         customer_wrap.style.transition = "all 1s";
         customer_form.style.transition = "all 1s";
 
@@ -252,65 +252,16 @@ customer_completed = function (response) {
         customer_wrap.style.transform = "translateY(-100%)";
         customer_form.style.height = "0px";
 
-        if (shipping_form_complete.value == 0) {
-            shipping_form.style.height = "auto";
-            shipping_wrap.style.transform = "translateY(0%)";
-        };
+        //if (shipping_form_complete.value == 0) {
+        //    shipping_form.style.height = "auto";
+        //    shipping_wrap.style.transform = "translateY(0%)";
+        //};
 
-        $('html,body').animate({
-            scrollTop: $("#shipping-headerr").offset().top
-        }, 'slow');
-    }
-    else {
-        $('#checkout-modal').css('display', 'block');
-        document.getElementById('checkout-error').textContent = response.responseJSON.error + ' --- sorry: you will have to restart checkout process';
-        setTimeout(function () {
-            location.replace("https://localhost:5002/checkout/cancelcheckout")
-        }, 5000);
-    }
-};
+        //$('html,body').animate({
+        //    scrollTop: $("#shipping-headerr").offset().top
+        //}, 'slow');
 
-$(document).mouseup(function (e) {
-    if ($(e.target).closest("#checkout-error").length === 0) {
-        $('#checkout-modal').css('display', 'none');
-    }
-});
-
-shipping_completed = function (response) {
-    if (response.responseJSON.shippingPrice != undefined) {
-        document.getElementById("edit-shipping").value = false;
-        shipping_check_sign.style.display = "block";
-        shipping_form_complete.value = 1;
-        shipping_summary.style.display = "block";
-        shipping_form.style.transition = "all 1s";
-        shipping_wrap.style.transition = "all 1s";
-        payment_wrap.style.transition = "all 1s";
-        payment_form.style.transition = "all 1s";
-
-        shipping_edit_button.style.display = "block";
-
-        if (shipping_delivery_type.value == 'Shop' || shipping_delivery_type.value == 'Butik') {
-            parcelshop_summary.style.display = "block";
-            parcelshop_companyname_summary.textContent = parcelshop_CompanyName.dataset.value;
-            parcelshop_cityname_summary.textContent = parcelshop_CityName.dataset.value;
-            parcelshop_countrycode_summary.textContent = parcelshop_CountryCodeISO3166A2.dataset.value;
-            parcelshop_streetname_summary.textContent = parcelshop_StreetName.dataset.value;
-            parcelshop_streetname2_summary.textContent = parcelshop_StreetName2.dataset.value;
-            parcelshop_zipcode_summary.textContent = parcelshop_ZipCode.dataset.value;
-        }
-        else {
-            parcelshop_summary.style.display = "none";
-        }
-
-        //var totalelem = document.getElementById('checkout-total');
-
-        //var total = parseInt(totalelem.dataset.totalprice);
-        //document.getElementById('checkout-taxes').textContent = total / 5;
-
-        shipping_form.style.height = "0px";
-        shipping_wrap.style.transform = "translateY(-100%)";
-
-        payment_wrap.style.transition = "all 1s";
+                payment_wrap.style.transition = "all 1s";
         payment_form.style.transition = "all 1s";
         payment_options_container.style.transition = "all 1s";
         payment_form.style.height = "auto";
@@ -336,9 +287,8 @@ shipping_completed = function (response) {
         $('html,body').animate({
             scrollTop: $("#payment-header").offset().top
         }, 'slow');
-
     }
-    else{
+    else {
         $('#checkout-modal').css('display', 'block');
         document.getElementById('checkout-error').textContent = response.responseJSON.error + ' --- sorry: you will have to restart checkout process';
         setTimeout(function () {
@@ -347,20 +297,97 @@ shipping_completed = function (response) {
     }
 };
 
-shipping_edit_button.addEventListener("click", function () {
-    document.getElementById("edit-shipping").value = true;
-
-    shipping_wrap.style.transition = "all 1s";
-    shipping_form.style.transition = "all 1s";
-
-    shipping_form_complete.value = 0;
-    shipping_check_sign.style.display = "none";
-    shipping_summary.style.display = "none";
-    shipping_edit_button.style.display = "none";
-
-    shipping_form.style.height = "auto";
-    shipping_wrap.style.transform = "translateY(0%)";
+$(document).mouseup(function (e) {
+    if ($(e.target).closest("#checkout-error").length === 0) {
+        $('#checkout-modal').css('display', 'none');
+    }
 });
+
+//shipping_completed = function (response) {
+//    if (response.responseJSON.shippingPrice != undefined) {
+//        document.getElementById("edit-shipping").value = false;
+//        shipping_check_sign.style.display = "block";
+//        shipping_form_complete.value = 1;
+//        shipping_summary.style.display = "block";
+//        shipping_form.style.transition = "all 1s";
+//        shipping_wrap.style.transition = "all 1s";
+//        payment_wrap.style.transition = "all 1s";
+//        payment_form.style.transition = "all 1s";
+
+//        shipping_edit_button.style.display = "block";
+
+//        if (shipping_delivery_type.value == 'Shop' || shipping_delivery_type.value == 'Butik') {
+//            parcelshop_summary.style.display = "block";
+//            parcelshop_companyname_summary.textContent = parcelshop_CompanyName.dataset.value;
+//            parcelshop_cityname_summary.textContent = parcelshop_CityName.dataset.value;
+//            parcelshop_countrycode_summary.textContent = parcelshop_CountryCodeISO3166A2.dataset.value;
+//            parcelshop_streetname_summary.textContent = parcelshop_StreetName.dataset.value;
+//            parcelshop_streetname2_summary.textContent = parcelshop_StreetName2.dataset.value;
+//            parcelshop_zipcode_summary.textContent = parcelshop_ZipCode.dataset.value;
+//        }
+//        else {
+//            parcelshop_summary.style.display = "none";
+//        }
+
+//        //var totalelem = document.getElementById('checkout-total');
+
+//        //var total = parseInt(totalelem.dataset.totalprice);
+//        //document.getElementById('checkout-taxes').textContent = total / 5;
+
+//        shipping_form.style.height = "0px";
+//        shipping_wrap.style.transform = "translateY(-100%)";
+
+//        payment_wrap.style.transition = "all 1s";
+//        payment_form.style.transition = "all 1s";
+//        payment_options_container.style.transition = "all 1s";
+//        payment_form.style.height = "auto";
+//        payment_wrap.style.transform = "translateY(0%)";
+
+//        payment_options_list.style.display = "block";
+//        payment_options_container.style.display = "block";
+//        payment_card_option.style.display = "none";
+//        for (var i = 0; i < payment_options.length; i++) {
+//            payment_options[i].addEventListener('click', function () {
+//                if (this.dataset.paymentoption == 'card') {
+//                    payment_options_list.style.display = "none";
+//                    payment_options_container.style.display = "none";
+//                    payment_card_option.style.display = "block";
+//                    backbuttonclicked = false;
+//                }
+//            })
+//        }
+//        payment_form.style.height = "auto";
+//        payment_wrap.style.transform = "translateY(0%)";
+
+
+//        $('html,body').animate({
+//            scrollTop: $("#payment-header").offset().top
+//        }, 'slow');
+
+//    }
+//    else{
+//        $('#checkout-modal').css('display', 'block');
+//        document.getElementById('checkout-error').textContent = response.responseJSON.error + ' --- sorry: you will have to restart checkout process';
+//        setTimeout(function () {
+//            location.replace("https://localhost:5002/checkout/cancelcheckout")
+//        }, 5000);
+//    }
+//};
+
+//shipping_edit_button.addEventListener("click", function () {
+//    document.getElementById("edit-shipping").value = true;
+
+//    shipping_wrap.style.transition = "all 1s";
+//    shipping_form.style.transition = "all 1s";
+
+//    shipping_form_complete.value = 0;
+//    shipping_check_sign.style.display = "none";
+//    shipping_summary.style.display = "none";
+//    shipping_edit_button.style.display = "none";
+
+//    shipping_form.style.height = "auto";
+//    shipping_wrap.style.transform = "translateY(0%)";
+//});
 
 customer_edit_button.addEventListener("click", function () {
     document.getElementById("edit-customer").value = true;

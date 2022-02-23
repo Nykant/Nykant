@@ -56,7 +56,7 @@ form.addEventListener("submit", function (event) {
         if (terms_and_conditions.checked == false) {
             showError("Du skal acceptere vores handelsbetingelser før du kan gennemføre betalingen.");
         }
-        if (document.getElementById("shipping-form-complete").value == 0 || document.getElementById("customer-form-complete").value == 0) {
+        if (document.getElementById("customer-form-complete").value == 0) {
             showError("Du skal udfylde både kunde oplysninger og leveringsmetode formularerne før du kan færdiggøre ordren");
         }
         else {

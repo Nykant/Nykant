@@ -44,50 +44,20 @@
                 <p>Totalbeløb:</p><span>kr. @Model.TotalPrice</span>
             </div>
             <div class="order-information">
-                <h1>Kundeoplysninger</h1>
-                <p>Navn:</p><span>@Model.Customer.BillingAddress.Name</span>
-                <p>Telefon:</p><span>@Model.Customer.Phone</span>
-                <p>Addresse:</p><span>@Model.Customer.BillingAddress.Address</span>
-                <p>By:</p><span>@Model.Customer.BillingAddress.City</span>
-                <p>Postnummer:</p><span>@Model.Customer.BillingAddress.Postal</span>
-                <p>Land:</p><span>@Model.Customer.BillingAddress.Country</span>
-            </div>
-            @if (Model.ShippingDelivery.NotHomeNote != null)
-            {
-                <div class="order-information">
-                    <p class="red-text">!Vigtigt <span class="normal-text">- Hvis kunden ikke er hjemme: </span></p><span>@Model.ShippingDelivery.NotHomeNote</span>
-                </div>
-            }
-            <div class="order-information">
-                @if (Model.ShippingDelivery.Type == "Home")
+                <h1>Leveringsoplysninger</h1>
+                @if (Model.ShippingDelivery.Type == ShippingType.Home)
                 {
-                    <h1>Leveringsoplysninger</h1>
                     <p>Leveres til:</p><span>Leveringsaddressen med GLS</span>
-                    <p>Addresse:</p><span>@Model.Customer.ShippingAddress.Address</span>
-                    <p>By:</p><span>@Model.Customer.ShippingAddress.City</span>
-                    <p>Postnummer:</p><span>@Model.Customer.ShippingAddress.Postal</span>
-                    <p>Land:</p><span>@Model.Customer.ShippingAddress.Country</span>
                 }
-                else if (Model.ShippingDelivery.Type == "Shop")
+                else if (Model.ShippingDelivery.Type == ShippingType.HomePallegods)
                 {
-                    <h1>Leveringsoplysninger</h1>
-                    <p>Leveres til:</p><span>Pakkeshop</span>
-                    <p>Firmanavn:</p><span>@Model.ShippingDelivery.ParcelshopData.CompanyName</span>
-                    <p>Addresse:</p><span>@Model.ShippingDelivery.ParcelshopData.Streetname, @Model.ShippingDelivery.ParcelshopData.Streetname2</span>
-                    <p>By:</p><span>@Model.ShippingDelivery.ParcelshopData.CityName</span>
-                    <p>Postnummer:</p><span>@Model.ShippingDelivery.ParcelshopData.ZipCode</span>
-                    <p>Land:</p><span>@Model.ShippingDelivery.ParcelshopData.CountryCodeISO3166A2</span>
-                }
-                else if (Model.ShippingDelivery.Type == "HomeDKI")
-                {
-                    <h1>Leveringsoplysninger</h1>
                     <p>Leveres til:</p><span>Leveringsaddressen med DKI Pallegods</span>
-                    <p>Addresse:</p><span>@Model.Customer.ShippingAddress.Address</span>
-                    <p>By:</p><span>@Model.Customer.ShippingAddress.City</span>
-                    <p>Postnummer:</p><span>@Model.Customer.ShippingAddress.Postal</span>
-                    <p>Land:</p><span>@Model.Customer.ShippingAddress.Country</span>
                 }
-
+                <p>Navn:</p><span>@Model.Customer.ShippingAddress.Name</span>
+                <p>Addresse:</p><span>@Model.Customer.ShippingAddress.Address</span>
+                <p>By:</p><span>@Model.Customer.ShippingAddress.City</span>
+                <p>Postnummer:</p><span>@Model.Customer.ShippingAddress.Postal</span>
+                <p>Land:</p><span>@Model.Customer.ShippingAddress.Country</span>
             </div>
             <div class="order-information">
                 <p>Estimeret Leveringsdato:</p><span>@Model.EstimatedDelivery.DayOfWeek, @Model.EstimatedDelivery.Day / @Model.EstimatedDelivery.Month</span>

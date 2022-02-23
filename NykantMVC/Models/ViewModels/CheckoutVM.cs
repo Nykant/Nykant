@@ -9,8 +9,6 @@ namespace NykantMVC.Models.ViewModels
     public class CheckoutVM
     {
         public Checkout Checkout { get; set; }
-        public ShippingDelivery ShippingDelivery { get; set; }
         public Customer Customer { get; set; }
-        public ParcelShopSearchResult ParcelShopSearchResult { get; set; }
     }
 }

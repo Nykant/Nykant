@@ -12,10 +12,6 @@
     {
         stage = (int)Stage.customerInf;
     }
-    else if (Model.Checkout.Stage == Stage.shipping)
-    {
-        stage = (int)Stage.shipping;
-    }
     else if (Model.Checkout.Stage == Stage.payment)
     {
         stage = (int)Stage.payment;
@@ -25,7 +21,6 @@
 <link rel="stylesheet" href="~/stripe/stripe.css" />
 <link rel="stylesheet" href="~/css/checkout.css" />
 <link rel="stylesheet" href="~/css/custom-input.css" />
-<link rel="stylesheet" href="~/css/custom-list.css" />
 <link rel="stylesheet" href="~/css/custom-checkbox.css" />
 
 <input type="hidden" data-url="@url" id="stage" data-stage="@stage" />
@@ -43,16 +38,12 @@
         <input type="hidden" id="customer-form-complete" value="0" />
         <partial name="_CustomerPartial" />
 
-        <input type="hidden" id="shipping-form-complete" value="0" />
-        <partial name="_ShippingDeliveryPartial" />
-
         <partial name="_PaymentPartial" />
     </div>
 </div>
 
 <script async src="~/JS/checkout.js"></script>
 <script async src="~/JS/country-picker.js"></script>
-<script async src="~/JS/custom-list.js"></script>
 <script async src="~/stripe/client.js"></script>
 <script async src="~/JS/AjaxAntiCSRF.js"></script>
 @*<script async src="~/JS/checkout-sandbox.js"></script>*@

@@ -63,7 +63,6 @@ namespace NykantMVC.Controllers
                             BagItems = bagItemsDb,
                             Stage = Stage.customerInf,
                             TotalPrice = total.ToString(),
-                            ShippingDelivery = new ShippingDelivery { ParcelshopData = new ParcelshopData() },
                             Taxes = taxes.ToString(),
                             TaxlessPrice = taxlessPrice.ToString()
                         };
@@ -76,8 +75,7 @@ namespace NykantMVC.Controllers
                                 BillingAddress = new BillingAddress(),
                                 ShippingAddress = new ShippingAddress()
                             },
-                            Checkout = checkout,
-                            ShippingDelivery = new ShippingDelivery { ParcelshopData = new ParcelshopData() }
+                            Checkout = checkout
                         };
 
                         return View(checkoutVM);
@@ -103,7 +101,6 @@ namespace NykantMVC.Controllers
                             BagItems = bagItemsSession,
                             Stage = Stage.customerInf,
                             TotalPrice = total.ToString(),
-                            ShippingDelivery = new ShippingDelivery { ParcelshopData = new ParcelshopData() },
                             Taxes = taxes.ToString(),
                             TaxlessPrice = taxlessPrice.ToString()
                         };
@@ -116,8 +113,7 @@ namespace NykantMVC.Controllers
                                 BillingAddress = new BillingAddress(),
                                 ShippingAddress = new ShippingAddress()
                             },
-                            Checkout = checkout,
-                            ShippingDelivery = new ShippingDelivery { ParcelshopData = new ParcelshopData() }
+                            Checkout = checkout
                         };
 
                         return View(checkoutVM);
@@ -183,8 +179,7 @@ namespace NykantMVC.Controllers
                 CheckoutVM checkoutVM = new CheckoutVM
                 {
                     Customer = customer,
-                    Checkout = checkout,
-                    ShippingDelivery = checkout.ShippingDelivery
+                    Checkout = checkout
                 };
 
                 return View(checkoutVM);
@@ -279,7 +274,7 @@ namespace NykantMVC.Controllers
                             {
                                 if (!editCustomer)
                                 {
-                                    checkout.Stage = Stage.shipping;
+                                    checkout.Stage = Stage.payment;
                                 }
 
                                 HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
@@ -313,36 +308,36 @@ namespace NykantMVC.Controllers
             }
         }
 
-        [HttpPost]
-        public async Task<IActionResult> PostShipping(ShippingDelivery shippingDelivery, bool editShipping)
-        {
-            try
-            {
-                var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
+        //[HttpPost]
+        //public async Task<IActionResult> PostShipping(ShippingDelivery shippingDelivery, bool editShipping)
+        //{
+        //    try
+        //    {
+        //        var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
 
-                if (checkout.Stage == Stage.shipping || editShipping)
-                {
-                    checkout.ShippingDelivery = shippingDelivery;
+        //        if (checkout.Stage == Stage.shipping || editShipping)
+        //        {
+        //            checkout.ShippingDelivery = shippingDelivery;
 
-                    if (!editShipping)
-                    {
-                        checkout.Stage = Stage.payment;
-                    }
+        //            if (!editShipping)
+        //            {
+        //                checkout.Stage = Stage.payment;
+        //            }
 
-                    HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
-                    return Json(new { shippingPrice = 0 });
-                }
-                else
-                {
-                    return Json(new { error = "checkout stage is not correct" });
-                }
-            }
-            catch (Exception e)
-            {
-                _logger.LogInformation(e.Message);
-                return Json(new { error = e.Message });
-            }
-        }
+        //            HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
+        //            return Json(new { shippingPrice = 0 });
+        //        }
+        //        else
+        //        {
+        //            return Json(new { error = "checkout stage is not correct" });
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        _logger.LogInformation(e.Message);
+        //        return Json(new { error = e.Message });
+        //    }
+        //}
 
         [Route("Ordren-Gennemført")]
         [HttpGet]
@@ -415,11 +410,11 @@ namespace NykantMVC.Controllers
             return customer;
         }
 
-        [HttpPost]
-        public async Task<ParcelShopSearchResult> GetNearbyShopsJson(GlsAddress glsAddress)
-        {
-            var shops = await GetNearbyShops(glsAddress);
-            return shops;
-        }
+        //[HttpPost]
+        //public async Task<ParcelShopSearchResult> GetNearbyShopsJson(GlsAddress glsAddress)
+        //{
+        //    var shops = await GetNearbyShops(glsAddress);
+        //    return shops;
+        //}
     }
 }

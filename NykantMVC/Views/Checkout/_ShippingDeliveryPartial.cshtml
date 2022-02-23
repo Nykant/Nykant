@@ -1,32 +1,10 @@
-﻿@inject IViewLocalizer localizer
+﻿@*@inject IViewLocalizer localizer
 @model CheckoutVM
 
 @{
     var optionValue = 1;
     List<ShippingMethod> shippingMethods = new List<ShippingMethod>();
     bool tooHeavyForShop = false;
-    foreach(var item in Model.Checkout.BagItems)
-    {
-        if(item.Product.WeightInKg > 20)
-        {
-            tooHeavyForShop = true;
-        }
-    }
-    if (tooHeavyForShop)
-    {
-        shippingMethods = new List<ShippingMethod>
-        {
-            new ShippingMethod { Type = "HomeDKI"}
-        };
-    }
-    else
-    {
-        shippingMethods = new List<ShippingMethod>
-        {
-            new ShippingMethod { Type = "Home"},
-            new ShippingMethod { Type = "Shop"}
-        };
-    }
 }
 
 <div class="my-row bottom-side-padding">
@@ -105,4 +83,4 @@
             @localizer["Vælg Pakkeshop"]
         </div>
     </div>
-</div>
+</div>*@
