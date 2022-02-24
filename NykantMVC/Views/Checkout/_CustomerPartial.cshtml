@@ -31,7 +31,7 @@
                                 @localizer["Faktureringsaddresse"]
                             </div>
                             <div class="inputstyle left">
-                                <input id="customer-firstname-input" required autocomplete="billing given-name" asp-for="@Model.Customer.BillingAddress.Name" data-value="@Model.Customer.BillingAddress.Name" />
+                                <input id="customer-firstname-input" required autocomplete="billing name" asp-for="@Model.Customer.BillingAddress.Name" data-value="@Model.Customer.BillingAddress.Name" />
                                 <label asp-for="@Model.Customer.BillingAddress.Name"></label>
                                 <span asp-validation-for="@Model.Customer.BillingAddress.Name"></span>
                                 <div class="underline"></div>

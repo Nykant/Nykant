@@ -60,7 +60,9 @@ namespace NykantAPI.Data
 
                 // Third-Party
                 new Cookie { Name = "m", Type1 = CookieType1.Persistent, Type2 = CookieType2.ThirdParty, Category = CookieCategory.Necessary, Domain = "m.stripe.com", Description = "Denne cookie bruges af Stripe og sørger for at vores betalingsservice virker, og er sikker." },
-                new Cookie { Name = "private_machine_identifier", Type1 = CookieType1.Persistent, Type2 = CookieType2.ThirdParty, Category = CookieCategory.Necessary, Domain = ".stripe.com", Description = "Denne cookie bruges af Stripe og sørger for at vores betalingsservice virker, og er sikker." }
+                new Cookie { Name = "cookie-perms", Type1 = CookieType1.Persistent, Type2 = CookieType2.ThirdParty, Category = CookieCategory.Necessary, Domain = "stripe.com", Description = "Denne cookie bruges af Stripe og sørger for at vores betalingsservice virker, og er sikker." },
+                new Cookie { Name = "stripe.csrf", Type1 = CookieType1.Persistent, Type2 = CookieType2.ThirdParty, Category = CookieCategory.Necessary, Domain = "stripe.com", Description = "Denne cookie bruges af Stripe og sørger for at vores betalingsservice virker, og er sikker." },
+                new Cookie { Name = "private_machine_identifier", Type1 = CookieType1.Persistent, Type2 = CookieType2.ThirdParty, Category = CookieCategory.Necessary, Domain = "stripe.com", Description = "Denne cookie bruges af Stripe og sørger for at vores betalingsservice virker, og er sikker." }
              );
 
             modelBuilder.Entity<Product>().HasData(

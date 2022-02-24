@@ -184,7 +184,7 @@ namespace NykantMVC.Controllers
                 IPAddress = clientIP.ToString(),
                 Date = DateTime.Now,
                 ButtonText = "Accepter",
-                ConsentText = "Vi bruger google analytics cookies til at indsamle personlig data, til at se hvad du foretager dig på hjemmesiden, for at forbedre hjemmesidens funktioner, samt forbedre vores annonceringsstrategier. (link(her kan du læse mere om vores cookies)). Trykker du Accepter, giver du dit samtykke til vores brug af disse cookies.",
+                ConsentText = "Vi bruger google analytics cookies til at indsamle anonyme data om dig, så vi kan se hvad du foretager dig på hjemmesiden, for at forbedre den. (link til cookie politik:(her kan du læse mere om vores cookies)). Trykker du Accepter, giver du dit samtykke til at vi må bruge google analytics.",
                 How = ConsentHow.Button,
                 Type = ConsentType.Cookie,
                 Status = ConsentStatus.Given
@@ -210,9 +210,10 @@ namespace NykantMVC.Controllers
             return NoContent();
         }
 
+        [HttpPost]
         public void Log(string message)
         {
-            _logger.LogInformation(message);
+            _logger.LogError(message);
         }
 
         [HttpPost]
@@ -224,7 +225,7 @@ namespace NykantMVC.Controllers
                 IPAddress = clientIP.ToString(),
                 Date = DateTime.Now,
                 ButtonText = "Afvis",
-                ConsentText = "Vi bruger google analytics cookies til at indsamle anonymiseret data, til at se hvad du foretager dig på hjemmesiden, for at forbedre hjemmesidens funktioner, samt forbedre vores annonceringsstrategier. (link(her kan du læse mere om vores cookies)). Trykker du Accepter, giver du dit samtykke til vores brug af disse cookies.",
+                ConsentText = "Vi bruger google analytics cookies til at indsamle anonyme data om dig, så vi kan se hvad du foretager dig på hjemmesiden, for at forbedre den. (link til cookie politik:(her kan du læse mere om vores cookies)). Trykker du Accepter, giver du dit samtykke til at vi må bruge google analytics.",
                 How = ConsentHow.Button,
                 Type = ConsentType.Cookie,
                 Status = ConsentStatus.Retrieved

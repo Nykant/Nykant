@@ -1,14 +1,14 @@
 ﻿@model Order
 @inject IViewLocalizer localizer
 @{
-    ViewData["Title"] = "Ordren Gennemført";
+    ViewData["Title"] = "Bestilling Gennemført";
     ViewData["Description"] = "";
 }
 
-<link rel="stylesheet" href="~/css/orderConfirmation.css" />
+@*<link rel="stylesheet" href="~/css/orderConfirmation.css" />*@
 <h1 class="top-padding text-center large-text">Bestillingen er gennemført!</h1>
-<p class="text-center">Ordrebekræftelsen er sendt til @Model.Customer.Email</p>
-<div class="my-row padding-50">
+<p class="text-center bottom-padding">Ordrebekræftelsen er sendt til din email addresse</p>
+@*<div class="my-row padding-50">
     <div class="responsive-container center">
         <div class="order-confirmation">
             <div class="header">
@@ -64,4 +64,4 @@
             </div>
         </div>
     </div>
-</div>
+</div>*@

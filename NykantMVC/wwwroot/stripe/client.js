@@ -3,7 +3,8 @@
 /*const { ajax } = require("jquery");*/
 
 // See your keys here: https://dashboard.stripe.com/account/apikeys
-var stripe = Stripe('pk_live_51Hyy3eKS99T7pxPWeT35BJfAsYelHyBxqA3SqiH5lxMSDLpkMtTCLZgXORkXaI5Gv712AmdRyQaxgmSDOZ0sWF9q00xVcAlnbG');
+var stripePKKey = document.getElementById('stripe-key').getAttribute('data-stripePKKey');
+var stripe = Stripe(stripePKKey);
 var elements = stripe.elements();
 var url = document.getElementById('stage').dataset.url;
 
@@ -147,14 +148,19 @@ var showError = function (errorMsgText) {
     else {
         msg = errorMsgText;
     }
+    var error = 'error: ' + msg;
+    Log(error);
     loading(false);
-        $('#checkout-modal').css('display', 'block');
-        document.getElementById('checkout-error').textContent = msg;
+    $('#checkout-modal').css('display', 'block');
+    document.getElementById('checkout-error').textContent = msg;
 };
 
 var orderComplete = function (paymentIntentId) {
     try {
         gtag('event', 'purchase');
+    }
+    catch (err) {
+
     }
     finally {
         $.ajax({
@@ -165,7 +171,7 @@ var orderComplete = function (paymentIntentId) {
             })
         }).then(function (result) {
             if (result.ok) {
-                var urlstring = url + "/Ordren-Gennemført";
+                var urlstring = url + "/Bestilling-Gennemført";
                 location.replace(urlstring);
             }
             else {

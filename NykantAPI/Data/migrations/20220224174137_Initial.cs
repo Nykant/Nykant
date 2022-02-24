@@ -405,7 +405,9 @@ namespace NykantAPI.data.migrations
                     { "__stripe_mid", 0, "Denne cookie bruges af Stripe og sørger for at vores betalingsservice virker, og er sikker.", ".nykant.dk", 1, 0 },
                     { "__stripe_sid", 0, "Denne cookie bruges af Stripe og sørger for at vores betalingsservice virker, og er sikker.", ".nykant.dk", 1, 0 },
                     { "m", 0, "Denne cookie bruges af Stripe og sørger for at vores betalingsservice virker, og er sikker.", "m.stripe.com", 1, 1 },
-                    { "private_machine_identifier", 0, "Denne cookie bruges af Stripe og sørger for at vores betalingsservice virker, og er sikker.", ".stripe.com", 1, 1 }
+                    { "cookie-perms", 0, "Denne cookie bruges af Stripe og sørger for at vores betalingsservice virker, og er sikker.", "stripe.com", 1, 1 },
+                    { "stripe.csrf", 0, "Denne cookie bruges af Stripe og sørger for at vores betalingsservice virker, og er sikker.", "stripe.com", 1, 1 },
+                    { "private_machine_identifier", 0, "Denne cookie bruges af Stripe og sørger for at vores betalingsservice virker, og er sikker.", "stripe.com", 1, 1 }
                 });
 
             migrationBuilder.InsertData(

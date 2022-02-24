@@ -16,7 +16,11 @@
     {
         stage = (int)Stage.payment;
     }
+
+    
 }
+
+<input hidden id="stripe-key" data-stripePKKey="@ViewBag.StripePKKey" />
 
 <link rel="stylesheet" href="~/stripe/stripe.css" />
 <link rel="stylesheet" href="~/css/checkout.css" />
@@ -24,7 +28,6 @@
 <link rel="stylesheet" href="~/css/custom-checkbox.css" />
 
 <input type="hidden" data-url="@url" id="stage" data-stage="@stage" />
-<form id="AntiforgeryToken">@Html.AntiForgeryToken()</form>
 
 <div class="modal" id="checkout-modal">
     <div class="error-thing" id="checkout-error">
@@ -44,6 +47,5 @@
 
 <script async src="~/JS/checkout.js"></script>
 <script async src="~/JS/country-picker.js"></script>
-<script async src="~/stripe/client.js"></script>
-<script async src="~/JS/AjaxAntiCSRF.js"></script>
+<script src="~/stripe/client.js"></script>
 @*<script async src="~/JS/checkout-sandbox.js"></script>*@

@@ -1137,10 +1137,28 @@ namespace NykantAPI.data.migrations
                         },
                         new
                         {
+                            Name = "cookie-perms",
+                            Category = 0,
+                            Description = "Denne cookie bruges af Stripe og sørger for at vores betalingsservice virker, og er sikker.",
+                            Domain = "stripe.com",
+                            Type1 = 1,
+                            Type2 = 1
+                        },
+                        new
+                        {
+                            Name = "stripe.csrf",
+                            Category = 0,
+                            Description = "Denne cookie bruges af Stripe og sørger for at vores betalingsservice virker, og er sikker.",
+                            Domain = "stripe.com",
+                            Type1 = 1,
+                            Type2 = 1
+                        },
+                        new
+                        {
                             Name = "private_machine_identifier",
                             Category = 0,
                             Description = "Denne cookie bruges af Stripe og sørger for at vores betalingsservice virker, og er sikker.",
-                            Domain = ".stripe.com",
+                            Domain = "stripe.com",
                             Type1 = 1,
                             Type2 = 1
                         });

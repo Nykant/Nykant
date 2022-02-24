@@ -36,105 +36,120 @@ namespace NykantMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> PostConsent(string name, string email)
         {
-            Consent consent = new Consent
+            try
             {
-                Name = name,
-                Email = email,
-                Date = DateTime.Now,
-                ButtonText = "Gem",
-                ConsentText = "For at færdiggøre ordren, skal du skrive under på at du har læst og accepterer vores (link (Salgs- og leveringsbetingelser)) ved at klikke i checkboksen.",
-                How = ConsentHow.Checkbox,
-                Type = ConsentType.TermsAndConditions,
-                Status = ConsentStatus.Given
-            };
-            consent = _protectionService.ProtectConsent(consent);
-            PostRequest("/Consent/Post", consent).ConfigureAwait(false);
-            //if (!consentResponse.IsSuccessStatusCode)
-            //{
-            //    _logger.LogInformation($"{consentResponse.ReasonPhrase} - {consentResponse.StatusCode}");
-            //    return Json(new { error = "Could not post consent" });
-            //}
-
+                Consent consent = new Consent
+                {
+                    Name = name,
+                    Email = email,
+                    Date = DateTime.Now,
+                    ButtonText = "Gem",
+                    ConsentText = "For at færdiggøre ordren, skal du skrive under på at du har læst og accepterer vores (link (Salgs- og leveringsbetingelser)) ved at klikke i checkboksen.",
+                    How = ConsentHow.Checkbox,
+                    Type = ConsentType.TermsAndConditions,
+                    Status = ConsentStatus.Given
+                };
+                consent = _protectionService.ProtectConsent(consent);
+                PostRequest("/Consent/Post", consent).ConfigureAwait(false);
+                //if (!consentResponse.IsSuccessStatusCode)
+                //{
+                //    _logger.LogInformation($"{consentResponse.ReasonPhrase} - {consentResponse.StatusCode}");
+                //    return Json(new { error = "Could not post consent" });
+                //}
+            }
+            catch (Exception err) { _logger.LogError(err.Message); }
             return NoContent();
         }
 
         [HttpPost]
         public IActionResult Payment(string paymentMethodId)
         {
-            var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
-            if (checkout == null)
+            try
             {
-                return Json(new { error = "checkout = null" });
-            }
-
-            if (checkout.Stage == Stage.payment)
-            {
-                StripeConfiguration.ApiKey = _configuration["StripeLIVEKey"];
-                //var json = await GetRequest($"/Customer/GetCustomer/{checkout.CustomerInfId}");
-                //var customerInf = JsonConvert.DeserializeObject<CustomerInf>(json);
-                //customerInf = _protectionService.UnProtectCustomerInf(customerInf);
-
-                PaymentIntentService paymentIntentService = new PaymentIntentService();
-                PaymentIntent paymentIntent = null;
-
-                try
+                var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
+                if (checkout == null)
                 {
-                    //var chargeShippingOptions = new ChargeShippingOptions
-                    //{
-                    //    Address = new AddressOptions
-                    //    {
-                    //        City = customerInf.City,
-                    //        Country = customerInf.Country,
-                    //        Line1 = customerInf.Address1,
-                    //        Line2 = customerInf.Address2,
-                    //        PostalCode = customerInf.Postal
-                    //    },
-                    //    Name = customerInf.FirstName + " " + customerInf.LastName,
-                    //    Phone = customerInf.Phone,
-                    //};
+                    _logger.LogError("checkout = null");
+                    return Json(new { error = "checkout = null" });
+                }
 
-                    if (paymentMethodId != null)
+                if (checkout.Stage == Stage.payment)
+                {
+                    StripeConfiguration.ApiKey = _configuration["StripeSKKey"];
+                    //var json = await GetRequest($"/Customer/GetCustomer/{checkout.CustomerInfId}");
+                    //var customerInf = JsonConvert.DeserializeObject<CustomerInf>(json);
+                    //customerInf = _protectionService.UnProtectCustomerInf(customerInf);
+
+                    PaymentIntentService paymentIntentService = new PaymentIntentService();
+                    PaymentIntent paymentIntent = null;
+
+                    try
                     {
-                        int.TryParse(checkout.TotalPrice, out int amount);
-                        amount = amount * 100;
-                        var PIoptions = new PaymentIntentCreateOptions
+                        //var chargeShippingOptions = new ChargeShippingOptions
+                        //{
+                        //    Address = new AddressOptions
+                        //    {
+                        //        City = customerInf.City,
+                        //        Country = customerInf.Country,
+                        //        Line1 = customerInf.Address1,
+                        //        Line2 = customerInf.Address2,
+                        //        PostalCode = customerInf.Postal
+                        //    },
+                        //    Name = customerInf.FirstName + " " + customerInf.LastName,
+                        //    Phone = customerInf.Phone,
+                        //};
+
+                        if (paymentMethodId != null)
                         {
-                            PaymentMethod = paymentMethodId,
-                            //Shipping = chargeShippingOptions,
-                            Amount = amount,
-                            Currency = "dkk",
-                            ConfirmationMethod = "manual",
-                            Confirm = true,
-                            CaptureMethod = "manual",
-                        };
+                            int.TryParse(checkout.TotalPrice, out int amount);
+                            amount = amount * 100;
+                            var PIoptions = new PaymentIntentCreateOptions
+                            {
+                                PaymentMethod = paymentMethodId,
+                                //Shipping = chargeShippingOptions,
+                                Amount = amount,
+                                Currency = "dkk",
+                                ConfirmationMethod = "manual",
+                                Confirm = true,
+                                CaptureMethod = "manual",
+                            };
 
-                        paymentIntent = paymentIntentService.Create(PIoptions);
+                            paymentIntent = paymentIntentService.Create(PIoptions);
+                        }
                     }
+                    catch (StripeException e)
+                    {
+                        _logger.LogError($"error: {e.Message}");
+                        return Json(new { error = e.StripeError.Message });
+                    }
+
+
+                    return generatePaymentResponse(paymentIntent);
                 }
-                catch (StripeException e)
+                else
                 {
-                    return Json(new { error = e.StripeError.Message });
+                    _logger.LogError("error: stage not = payment");
+                    return Json(new { error = "stage not = payment" });
                 }
-
-                return generatePaymentResponse(paymentIntent);
-
             }
-            else
+            catch (Exception e) 
             {
-                return Json(new { error = "stage not = payment" });
+                _logger.LogError($"error: {e.Message}");
             }
+
+            return Json(new { error = "Payment error" });
         }
 
         [HttpPost]
         public async Task<IActionResult> ConfirmPayment(string paymentIntentId)
         {
-            StripeConfiguration.ApiKey = _configuration["StripeLIVEKey"];
-
-            PaymentIntentService paymentIntentService = new PaymentIntentService();
-            PaymentIntent paymentIntent = null;
-
             try
             {
+                StripeConfiguration.ApiKey = _configuration["StripeSKKey"];
+
+                PaymentIntentService paymentIntentService = new PaymentIntentService();
+                PaymentIntent paymentIntent = null;
+
                 if (paymentIntentId != null)
                 {
                     var confirmOptions = new PaymentIntentConfirmOptions { };
@@ -143,17 +158,19 @@ namespace NykantMVC.Controllers
                         confirmOptions
                     );
                 }
-            }
-            catch(StripeException e)
-            {
-                return Json(new { error = e.StripeError.Message });
-            }
 
-            return generatePaymentResponse(paymentIntent);
+                return generatePaymentResponse(paymentIntent);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"error: {e.Message}");
+            }
+            return Json(new { error = "ConfirmPayment Error" });
         }
 
         private IActionResult generatePaymentResponse(PaymentIntent intent)
         {
+
             // Note that if your API version is before 2019-02-11, 'requires_action'
             // appears as 'requires_source_action'.
             if (intent.Status == "requires_action" &&
@@ -181,58 +198,66 @@ namespace NykantMVC.Controllers
 
         public async Task<IActionResult> CapturePaymentIntent(int orderId)
         {
-            StripeConfiguration.ApiKey = _configuration["StripeLIVEKey"];
-
-            var json = await GetRequest($"/Order/GetOrder/{orderId}");
-            var order = JsonConvert.DeserializeObject<Models.Order>(json);
-            order = _protectionService.UnprotectWholeOrder(order);
-
-            var service = new PaymentIntentService();
-            var paymentIntent = await service.CaptureAsync(order.PaymentIntent_Id);
-
-            if (paymentIntent.StripeResponse.StatusCode == System.Net.HttpStatusCode.OK)
+            try
             {
-                order.Status = Status.Sent;
+                StripeConfiguration.ApiKey = _configuration["StripeSKKey"];
 
-                var now = DateTime.Now;
-                var deliveryDate = now.AddDays(2);
-                order.EstimatedDelivery = deliveryDate;
+                var json = await GetRequest($"/Order/GetOrder/{orderId}");
+                var order = JsonConvert.DeserializeObject<Models.Order>(json);
+                order = _protectionService.UnprotectWholeOrder(order);
 
-                Models.Invoice invoice = new Models.Invoice
+                var service = new PaymentIntentService();
+                var paymentIntent = await service.CaptureAsync(order.PaymentIntent_Id);
+
+                if (paymentIntent.StripeResponse.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    CreatedAt = DateTime.Now,
-                    OrderId = order.Id,
-                    Order = null
-                };
-                var response = await PostRequest("/Invoice/PostInvoice/", invoice);
-                var invoiceJson = await GetRequest(response.Headers.Location.AbsolutePath);
-                invoice = JsonConvert.DeserializeObject<Models.Invoice>(invoiceJson);
-                order.Invoice = invoice;
+                    order.Status = Status.Sent;
 
-                await mailService.SendInvoiceEmailAsync(order);
+                    var now = DateTime.Now;
+                    var deliveryDate = now.AddDays(2);
+                    order.EstimatedDelivery = deliveryDate;
 
-                order.Customer = null;
-                order = _protectionService.ProtectOrder(order);
-                await PatchRequest("/Order/UpdateOrder", order);
+                    Models.Invoice invoice = new Models.Invoice
+                    {
+                        CreatedAt = DateTime.Now,
+                        OrderId = order.Id,
+                        Order = null
+                    };
+                    var response = await PostRequest("/Invoice/PostInvoice/", invoice);
+                    var invoiceJson = await GetRequest(response.Headers.Location.AbsolutePath);
+                    invoice = JsonConvert.DeserializeObject<Models.Invoice>(invoiceJson);
+                    order.Invoice = invoice;
 
-                var json2 = await GetRequest("/Order/GetOrders");
-                var orders = JsonConvert.DeserializeObject<List<Models.Order>>(json2);
-                for (int i = 0; i < orders.Count; i++)
-                {
-                    orders[i] = _protectionService.UnprotectOrder(orders[i]);
+                    await mailService.SendInvoiceEmailAsync(order);
+
+                    order.Customer = null;
+                    order = _protectionService.ProtectOrder(order);
+                    await PatchRequest("/Order/UpdateOrder", order);
+
+                    var json2 = await GetRequest("/Order/GetOrders");
+                    var orders = JsonConvert.DeserializeObject<List<Models.Order>>(json2);
+                    for (int i = 0; i < orders.Count; i++)
+                    {
+                        orders[i] = _protectionService.UnprotectOrder(orders[i]);
+                    }
+
+                    ViewData.Model = orders;
+                    return new PartialViewResult
+                    {
+                        ViewName = "/Views/Order/_UnsentOrderListPartial.cshtml",
+                        ViewData = this.ViewData
+                    };
                 }
-
-                ViewData.Model = orders;
-                return new PartialViewResult
+                else
                 {
-                    ViewName = "/Views/Order/_UnsentOrderListPartial.cshtml",
-                    ViewData = this.ViewData
-                };
+                    return Content(paymentIntent.StripeResponse.StatusCode.ToString());
+                }
             }
-            else
+            catch (Exception e)
             {
-                return Content(paymentIntent.StripeResponse.StatusCode.ToString());
+                _logger.LogError($"error: {e.Message}");
             }
+            return Content("error: Capture Payment Intent");
         }
     }
 }

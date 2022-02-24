@@ -39,20 +39,13 @@ namespace NykantMVC.Controllers
                 var bagItems = HttpContext.Session.Get<List<BagItem>>(BagSessionKey);
                 if (bagItems == null)
                 {
-
                     bagItems = new List<BagItem>();
 
-                    ViewBag.PriceSum = CalculateAmount(bagItems);
+                    ViewBag.PriceSum = 0;
                     return View(bagItems);
                 }
                 else
                 {
-                    double priceSum = 0;
-                    foreach (var bagItem in bagItems)
-                    {
-                        priceSum += bagItem.Product.Price;
-                    }
-
                     ViewBag.PriceSum = CalculateAmount(bagItems);
                     return View(bagItems);
                 }

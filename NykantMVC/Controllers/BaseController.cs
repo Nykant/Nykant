@@ -37,228 +37,272 @@ namespace NykantMVC.Controllers
 
         public Customer EncodeCustomer(Customer customer)
         {
-            if(customer.Email != null)
+            try
             {
-                customer.Email = htmlEncoder.Encode(customer.Email);
-                if(customer.Phone != null)
+                if (customer.Email != null)
                 {
-                    customer.Phone = htmlEncoder.Encode(customer.Phone);
-                }
+                    customer.Email = htmlEncoder.Encode(customer.Email);
+                    if (customer.Phone != null)
+                    {
+                        customer.Phone = htmlEncoder.Encode(customer.Phone);
+                    }
 
 
-                if(customer.ShippingAddress != null)
-                {
-                    customer.ShippingAddress.Address = htmlEncoder.Encode(customer.ShippingAddress.Address);
-                    customer.ShippingAddress.City = htmlEncoder.Encode(customer.ShippingAddress.City);
-                    customer.ShippingAddress.Country = htmlEncoder.Encode(customer.ShippingAddress.Country);
-                    customer.ShippingAddress.Name = htmlEncoder.Encode(customer.ShippingAddress.Name);
-                    customer.ShippingAddress.Postal = htmlEncoder.Encode(customer.ShippingAddress.Postal);
+                    if (customer.ShippingAddress != null)
+                    {
+                        customer.ShippingAddress.Address = htmlEncoder.Encode(customer.ShippingAddress.Address);
+                        customer.ShippingAddress.City = htmlEncoder.Encode(customer.ShippingAddress.City);
+                        customer.ShippingAddress.Country = htmlEncoder.Encode(customer.ShippingAddress.Country);
+                        customer.ShippingAddress.Name = htmlEncoder.Encode(customer.ShippingAddress.Name);
+                        customer.ShippingAddress.Postal = htmlEncoder.Encode(customer.ShippingAddress.Postal);
+                    }
+
+                    if (customer.BillingAddress != null)
+                    {
+                        customer.BillingAddress.Postal = htmlEncoder.Encode(customer.BillingAddress.Postal);
+                        customer.BillingAddress.Address = htmlEncoder.Encode(customer.BillingAddress.Address);
+                        customer.BillingAddress.City = htmlEncoder.Encode(customer.BillingAddress.City);
+                        customer.BillingAddress.Country = htmlEncoder.Encode(customer.BillingAddress.Country);
+                        customer.BillingAddress.Name = htmlEncoder.Encode(customer.BillingAddress.Name);
+                    }
                 }
 
-                if(customer.BillingAddress != null)
-                {
-                    customer.BillingAddress.Postal = htmlEncoder.Encode(customer.BillingAddress.Postal);
-                    customer.BillingAddress.Address = htmlEncoder.Encode(customer.BillingAddress.Address);
-                    customer.BillingAddress.City = htmlEncoder.Encode(customer.BillingAddress.City);
-                    customer.BillingAddress.Country = htmlEncoder.Encode(customer.BillingAddress.Country);
-                    customer.BillingAddress.Name = htmlEncoder.Encode(customer.BillingAddress.Name);
-                }
+                return customer;
             }
-
-            return customer;
+            catch (Exception e) {
+                _logger.LogError(e.Message);
+            }
+            return null;
         }
 
         public async Task<HttpResponseMessage> PostRequest(string url, object item)
         {
-
-            HttpClient client = new HttpClient();
-
-            if (User.Identity.IsAuthenticated)
+            try
             {
-                string accessToken = await HttpContext.GetTokenAsync("access_token");
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-            }
-            else
-            {
-                // discover endpoints from metadata
-                var ISclient = new HttpClient();
-                var disco = await ISclient.GetDiscoveryDocumentAsync(_urls.Is);
-                if (disco.IsError)
+                HttpClient client = new HttpClient();
+
+                if (User.Identity.IsAuthenticated)
                 {
-                    Console.WriteLine(disco.Error);
-                    return null;
+                    string accessToken = await HttpContext.GetTokenAsync("access_token");
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
+                else
+                {
+                    // discover endpoints from metadata
+                    var ISclient = new HttpClient();
+                    var disco = await ISclient.GetDiscoveryDocumentAsync(_urls.Is);
+                    if (disco.IsError)
+                    {
+                        Console.WriteLine(disco.Error);
+                        return null;
+                    }
+
+                    // request token
+                    var tokenResponse = await ISclient.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
+                    {
+                        Address = disco.TokenEndpoint,
+
+                        ClientId = "client",
+                        ClientSecret = "secret",
+                        Scope = "NykantAPI"
+                    });
+
+                    if (tokenResponse.IsError)
+                    {
+                        Console.WriteLine(tokenResponse.Error);
+                        return null;
+                    }
+
+                    client.SetBearerToken(tokenResponse.AccessToken);
                 }
 
-                // request token
-                var tokenResponse = await ISclient.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
-                {
-                    Address = disco.TokenEndpoint,
+                var itemJson = new StringContent(
+                    JsonConvert.SerializeObject(item),
+                    Encoding.UTF8,
+                    "application/json");
 
-                    ClientId = "client",
-                    ClientSecret = "secret",
-                    Scope = "NykantAPI"
-                });
-
-                if (tokenResponse.IsError)
-                {
-                    Console.WriteLine(tokenResponse.Error);
-                    return null;
-                }
-
-                client.SetBearerToken(tokenResponse.AccessToken);
+                string uri = _urls.Api + url;
+                return await client.PostAsync(uri, itemJson);
             }
-
-            var itemJson = new StringContent(
-                JsonConvert.SerializeObject(item),
-                Encoding.UTF8,
-                "application/json");
-
-            string uri = _urls.Api + url;
-            return await client.PostAsync(uri, itemJson);
+            catch (Exception e)
+            {
+                string uri = _urls.Api + url;
+                _logger.LogError($"uri: {uri}" + e.Message);
+            }
+            return null;
         }
 
         public async Task<HttpResponseMessage> PatchRequest(string url, object item)
         {
-
-            HttpClient client = new HttpClient();
-
-            if (User.Identity.IsAuthenticated)
+            try
             {
-                string accessToken = await HttpContext.GetTokenAsync("access_token");
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-            }
-            else
-            {
-                // discover endpoints from metadata
-                var ISclient = new HttpClient();
-                var disco = await ISclient.GetDiscoveryDocumentAsync(_urls.Is);
-                if (disco.IsError)
+                HttpClient client = new HttpClient();
+
+                if (User.Identity.IsAuthenticated)
                 {
-                    Console.WriteLine(disco.Error);
-                    return null;
+                    string accessToken = await HttpContext.GetTokenAsync("access_token");
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
+                else
+                {
+                    // discover endpoints from metadata
+                    var ISclient = new HttpClient();
+                    var disco = await ISclient.GetDiscoveryDocumentAsync(_urls.Is);
+                    if (disco.IsError)
+                    {
+                        Console.WriteLine(disco.Error);
+                        return null;
+                    }
+
+                    // request token
+                    var tokenResponse = await ISclient.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
+                    {
+                        Address = disco.TokenEndpoint,
+
+                        ClientId = "client",
+                        ClientSecret = "secret",
+                        Scope = "NykantAPI"
+                    });
+
+                    if (tokenResponse.IsError)
+                    {
+                        Console.WriteLine(tokenResponse.Error);
+                        return null;
+                    }
+
+                    client.SetBearerToken(tokenResponse.AccessToken);
                 }
 
-                // request token
-                var tokenResponse = await ISclient.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
-                {
-                    Address = disco.TokenEndpoint,
+                var itemJson = new StringContent(
+                    JsonConvert.SerializeObject(item),
+                    Encoding.UTF8,
+                    "application/json");
 
-                    ClientId = "client",
-                    ClientSecret = "secret",
-                    Scope = "NykantAPI"
-                });
+                string uri = _urls.Api + url;
 
-                if (tokenResponse.IsError)
-                {
-                    Console.WriteLine(tokenResponse.Error);
-                    return null;
-                }
-
-                client.SetBearerToken(tokenResponse.AccessToken);
+                return await client.PatchAsync(uri, itemJson);
             }
-
-            var itemJson = new StringContent(
-                JsonConvert.SerializeObject(item),
-                Encoding.UTF8,
-                "application/json");
-
-            string uri = _urls.Api + url;
-
-            return await client.PatchAsync(uri, itemJson);
+            catch (Exception e)
+            {
+                string uri = _urls.Api + url;
+                _logger.LogError($"uri: {uri}" + e.Message);
+            }
+            return null;
+            
         }
 
         public async Task<string> GetRequest(string url)
         {
-            HttpClient client = new HttpClient();
+            try
+            {
+                HttpClient client = new HttpClient();
 
-            if (User.Identity.IsAuthenticated)
-            {
-                string accessToken = await HttpContext.GetTokenAsync("access_token");
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-            }
-            else
-            {
-                // discover endpoints from metadata
-                var ISclient = new HttpClient();
-                var disco = await ISclient.GetDiscoveryDocumentAsync(_urls.Is);
-                if (disco.IsError)
+                if (User.Identity.IsAuthenticated)
                 {
-                    _logger.LogInformation($"is error: {disco.Error}");
-                    return null;
+                    string accessToken = await HttpContext.GetTokenAsync("access_token");
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
+                else
+                {
+                    // discover endpoints from metadata
+                    var ISclient = new HttpClient();
+                    var disco = await ISclient.GetDiscoveryDocumentAsync(_urls.Is);
+                    if (disco.IsError)
+                    {
+                        _logger.LogInformation($"is error: {disco.Error}");
+                        return null;
+                    }
+
+                    // request token
+                    var tokenResponse = await ISclient.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
+                    {
+                        Address = disco.TokenEndpoint,
+                        ClientId = "client",
+                        ClientSecret = "secret",
+                        Scope = "NykantAPI"
+                    });
+
+                    if (tokenResponse.IsError)
+                    {
+                        _logger.LogInformation($"is error: {tokenResponse.Error}");
+                        return null;
+                    }
+
+                    client.SetBearerToken(tokenResponse.AccessToken);
                 }
 
-                // request token
-                var tokenResponse = await ISclient.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
+                string uri = null;
+                if (url.StartsWith("/api"))
                 {
-                    Address = disco.TokenEndpoint,
-                    ClientId = "client",
-                    ClientSecret = "secret",
-                    Scope = "NykantAPI"
-                });
-
-                if (tokenResponse.IsError)
+                    uri = "https://nykant.dk" + url;
+                }
+                else
                 {
-                    _logger.LogInformation($"is error: {tokenResponse.Error}");
-                    return null;
+                    uri = _urls.Api + url;
                 }
 
-                client.SetBearerToken(tokenResponse.AccessToken);
+                return await client.GetStringAsync(uri);
             }
-
-            string uri = null;
-            if (url.StartsWith("/api"))
+            catch (Exception e)
             {
-                uri = "https://nykant.dk" + url;
+                string uri = _urls.Api + url;
+                _logger.LogError($"uri: {uri}" + e.Message);
             }
-            else
-            {
-                uri = _urls.Api + url;
-            }
-
-            return await client.GetStringAsync(uri);
+            return null;
+            
         }
 
         public async Task<HttpResponseMessage> DeleteRequest(string url)
         {
-            HttpClient client = new HttpClient();
+            try
+            {
+                HttpClient client = new HttpClient();
 
-            if (User.Identity.IsAuthenticated)
-            {
-                string accessToken = await HttpContext.GetTokenAsync("access_token");
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-            }
-            else
-            {
-                // discover endpoints from metadata
-                var ISclient = new HttpClient();
-                var disco = await ISclient.GetDiscoveryDocumentAsync(_urls.Is);
-                if (disco.IsError)
+                if (User.Identity.IsAuthenticated)
                 {
-                    Console.WriteLine(disco.Error);
-                    return null;
+                    string accessToken = await HttpContext.GetTokenAsync("access_token");
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
+                else
+                {
+                    // discover endpoints from metadata
+                    var ISclient = new HttpClient();
+                    var disco = await ISclient.GetDiscoveryDocumentAsync(_urls.Is);
+                    if (disco.IsError)
+                    {
+                        Console.WriteLine(disco.Error);
+                        return null;
+                    }
+
+                    // request token
+                    var tokenResponse = await ISclient.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
+                    {
+                        Address = disco.TokenEndpoint,
+
+                        ClientId = "client",
+                        ClientSecret = "secret",
+                        Scope = "NykantAPI"
+                    });
+
+                    if (tokenResponse.IsError)
+                    {
+                        Console.WriteLine(tokenResponse.Error);
+                        return null;
+                    }
+
+                    client.SetBearerToken(tokenResponse.AccessToken);
                 }
 
-                // request token
-                var tokenResponse = await ISclient.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
-                {
-                    Address = disco.TokenEndpoint,
-
-                    ClientId = "client",
-                    ClientSecret = "secret",
-                    Scope = "NykantAPI"
-                });
-
-                if (tokenResponse.IsError)
-                {
-                    Console.WriteLine(tokenResponse.Error);
-                    return null;
-                }
-
-                client.SetBearerToken(tokenResponse.AccessToken);
+                string uri = _urls.Api + url;
+                return await client.DeleteAsync(uri);
             }
-
-            string uri = _urls.Api + url;
-            return await client.DeleteAsync(uri);
+            catch (Exception e)
+            {
+                string uri = _urls.Api + url;
+                _logger.LogError($"uri: {uri}" + e.Message);
+            }
+            return null;
+            
         }
 
         public async Task<ParcelShopSearchResult> GetNearbyShops(GlsAddress glsAddress)

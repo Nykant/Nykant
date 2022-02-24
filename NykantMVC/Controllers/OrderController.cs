@@ -75,8 +75,10 @@ namespace NykantMVC.Controllers
             try
             {
                 var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
+                checkout.ShippingDelivery = new ShippingDelivery();
                 if (checkout == null)
                 {
+                    _logger.LogError("error: checkout = null - in postorder");
                     return Json(new { ok = false, error = "checkout = null" });
                 }
 
@@ -100,6 +102,7 @@ namespace NykantMVC.Controllers
                     var response = await PostRequest("/Order/PostOrder", order);
                     if (!response.IsSuccessStatusCode)
                     {
+                        _logger.LogError("error: could not post order");
                         return Json(new { ok = false, error = "could not post order" });
                     }
 
@@ -117,17 +120,17 @@ namespace NykantMVC.Controllers
                         }
                     }
 
-                    checkout.ShippingDelivery = new ShippingDelivery();
                     checkout.ShippingDelivery.OrderId = order.Id;
                     var postShipping = await PostRequest("/ShippingDelivery/Post", checkout.ShippingDelivery);
                     if (!postShipping.IsSuccessStatusCode)
                     {
+                        _logger.LogError("error: could not post shippingdelivery");
                         return Json(new { ok = false, error = "could not post shipping" });
                     }
 
                     var postRequest = await PostRequest("/Orderitem/PostOrderItems", orderItems);
                     if (!postRequest.IsSuccessStatusCode)
-                    {
+                    {_logger.LogError("error: could not post order items");
                         return Json(new { ok = false, error = "could not post order items" });
                     }
 
@@ -160,6 +163,7 @@ namespace NykantMVC.Controllers
                         var updateOrder = await PatchRequest("/Order/UpdateOrder", order);
                         if (!updateOrder.IsSuccessStatusCode)
                         {
+                            _logger.LogError("error: error updating order");
                             return Json(new { ok = false, error = "error updating order" });
                         }
                     }
@@ -170,6 +174,7 @@ namespace NykantMVC.Controllers
                         var deleteRequest = await DeleteRequest(url);
                         if (!deleteRequest.IsSuccessStatusCode)
                         {
+                            _logger.LogError("error: could not delete bag items");
                             return Json(new { ok = false, error = "could not delete bag items" });
                         }
                         else
@@ -190,11 +195,13 @@ namespace NykantMVC.Controllers
                 }
                 else
                 {
+                    _logger.LogError("error: wrong stage");
                     return Json(new { ok = false, error = "wrong stage" });
                 }
             }
             catch (Exception e)
             {
+                _logger.LogError($"error: {e.Message}");
                 return Json(new { ok = false, error = e.Message });
             }
         }
@@ -216,32 +223,41 @@ namespace NykantMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> OrderInStorage(int orderId)
         {
-            var orderResponse = await GetRequest($"/Order/GetOrder/{orderId}");
-            var order = JsonConvert.DeserializeObject<Order>(orderResponse);
-            order = _protectionService.UnprotectWholeOrder(order);
-            await mailService.SendDKIEmailAsync(order);
+            try
+            {
+                var orderResponse = await GetRequest($"/Order/GetOrder/{orderId}");
+                var order = JsonConvert.DeserializeObject<Order>(orderResponse);
+                order = _protectionService.UnprotectWholeOrder(order);
+                await mailService.SendDKIEmailAsync(order);
 
-            order.IsBackOrder = false;
-            order.Customer = null;
-            order = _protectionService.ProtectOrder(order);
-            var updateOrder = await PatchRequest("/Order/UpdateOrder", order);
-            if (!updateOrder.IsSuccessStatusCode)
-            {
-                return Json(new { ok = false, error = "error updating order" });
-            }
+                order.IsBackOrder = false;
+                order.Customer = null;
+                order = _protectionService.ProtectOrder(order);
+                var updateOrder = await PatchRequest("/Order/UpdateOrder", order);
+                if (!updateOrder.IsSuccessStatusCode)
+                {
+                    return Json(new { ok = false, error = "error updating order" });
+                }
 
-            var ordersResponse = await GetRequest("/Order/GetOrders");
-            var orders = JsonConvert.DeserializeObject<List<Order>>(ordersResponse);
-            for (int i = 0; i < orders.Count; i++)
-            {
-                orders[i] = _protectionService.UnprotectOrder(orders[i]);
+                var ordersResponse = await GetRequest("/Order/GetOrders");
+                var orders = JsonConvert.DeserializeObject<List<Order>>(ordersResponse);
+                for (int i = 0; i < orders.Count; i++)
+                {
+                    orders[i] = _protectionService.UnprotectOrder(orders[i]);
+                }
+                ViewData.Model = orders;
+                return new PartialViewResult
+                {
+                    ViewName = "/Views/Order/_BackOrderListPartial.cshtml",
+                    ViewData = this.ViewData
+                };
             }
-            ViewData.Model = orders;
-            return new PartialViewResult
+            catch (Exception e)
             {
-                ViewName = "/Views/Order/_BackOrderListPartial.cshtml",
-                ViewData = this.ViewData
-            };
+                _logger.LogError(e.Message);
+            }
+            return NoContent();
+            
         }
 
         private Models.Order BuildOrder(Checkout checkout, string paymentIntentId)

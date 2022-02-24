@@ -102,6 +102,9 @@ if (stage == 1) {
     try {
         gtag('event', 'begin_checkout');
     }
+    catch (err) {
+
+    }
     finally {
         customer_wrap.style.transition = "all 1s";
         customer_form.style.transition = "all 1s";
