@@ -394,13 +394,94 @@
     display: inline
 }
 
-.collapsible {
-    
+
+
+
+.sidestepper {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    height: auto;
+    min-height: 600px;
+    line-height: 0px;
+}
+
+.sidestep-headers {
+    width: 100%;
+    display:inline-flex; /* HUGE FUCKING PLAY M8, REMOVES FUCKING SHIT ASS WHITE SPACE M8, THE WHITE SPACE MOTHERFUCKING ELIMINATOR M8 */
+}
+
+.sidestep-headers div {
+    background:var(--color2);
+    cursor:pointer;
+    display:inline-block;
+    width:33.3%;
+    height:50px;
+    text-align:center;
+    line-height:50px;
+}
+
+.sidestep-headers div:hover {
+    background:var(--color3);
+}
+
+.sidestep-headers .active {
+    background:var(--color3);
+}
+
+.sidestep-bodies {
+
+    overflow:hidden;
+}
+
+    .sidestep-bodies div {
+        padding: 30px;
+        text-align: left;
+        display: none;
+        background: white;
+    }
+
+    .sidestep-bodies .active {
+        display: block;
+        animation-name: rolldown;
+        animation-duration: 1s;
+    }
+
+
+@keyframes rolldown {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(-0%);
+    }
 }
 
 
+.sidestep-bodies tr {
+    padding: 20px;
+    border-bottom: 1px solid var(--black-fade);
+}
+
+.sidestep-bodies td {
+    vertical-align: middle;
+    display: inline-block;
+}
+
+
+.sidestep-bodies p {
+    display: block;
+}
+
+.no-border {
+    border:none !important;
+}
+
+/*/*.collapsible {
+    
+}*/
 /* Style the button that is used to open and close the collapsible content */
-.collapsible-button2 {
+/*.collapsible-button2 {
     background-color: var(--color2);
     color: black;
     cursor: pointer;
@@ -410,19 +491,17 @@
     text-align: left;
     outline: none;
     font-size: 16px;
-}
-
-    /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-    .active, .collapsible-button2:hover {
+}*/
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+/*.active, .collapsible-button2:hover {
         background-color: var(--color3);
     }
 
     .collapsible-button2:focus {
         outline: none;
-    }
-
+    }*/
 /* Style the collapsible content. Note: hidden by default */
-.collapsible-content {
+/*.collapsible-content {
     background-color: white;
     max-height: 0;
     overflow: hidden;
@@ -469,24 +548,18 @@
 
 .collapsible-table p {
     display:block;
-}
+}*/
 
 
-.no-border {
-    border:none !important;
-}
-
-#product-description {
+/*#product-description {
     padding:30px;
     display:block;
 }
 
 .cookie-collapsible {
-}
-
-
+}*/
 /* Style the button that is used to open and close the collapsible content */
-.cookie-collapsible-button2 {
+/*.cookie-collapsible-button2 {
     background-color: var(--color2);
     color: black;
     cursor: pointer;
@@ -496,19 +569,17 @@
     text-align: left;
     outline: none;
     font-size: 16px;
-}
-
-    /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-    .active2, .cookie-collapsible-button2:hover {
+}*/
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+/*.active2, .cookie-collapsible-button2:hover {
         background-color: var(--color3);
     }
 
     .cookie-collapsible-button2:focus {
         outline: none;
-    }
-
+    }*/
 /* Style the collapsible content. Note: hidden by default */
-.cookie-collapsible-content {
+/*.cookie-collapsible-content {
     background-color: white;
     max-height: 0;
     overflow: hidden;
@@ -531,8 +602,7 @@
     .cookie-collapsible-content strong {
         padding-right: 50px;
         display: inline;
-    }
-
+    }*/
 .notification {
     background-color: var(--light-blue);
     border: 2px solid black;
@@ -588,14 +658,7 @@
     }
 }
 
-@keyframes rolldown {
-    0%{
-        top:-115px;
-    }
-    100%{
-        top:90px;
-    }
-}
+
 
 .line {
     margin:auto;

@@ -199,17 +199,20 @@
                 </form>
             </div>
         </div>
-        <div id="collapsible-wrapper" class="col-8 left">
-            <div class="collapsible">
-                <button type="button" class="collapsible-button2 active">@localizer["Beskrivelse"]</button>
-                <div class="collapsible-content">
-                    <p id="product-description">@Model.Description</p>
-                </div>
+
+        <div class="sidestepper col-8 left">
+            <div class="sidestep-headers" id="sidestep-headers">
+                <div class="active" data-number="1">@localizer["Beskrivelse"]</div>
+                <div data-number="2">@localizer["Specifikationer"]</div>
+                @if (Model.AssemblyPath != "none")
+                {
+                    <div data-number="3">Samlevejledning</div>
+                }
             </div>
-            <div class="collapsible">
-                <button type="button" class="collapsible-button2 active">@localizer["Specifikationer"]</button>
-                <div class="collapsible-content">
-                    <table class="collapsible-table">
+            <div class="sidestep-bodies" id="sidestep-bodies">
+                <div class="active">@Model.Description</div>
+                <div>
+                    <table>
                         @Html.Raw(Model.Size)
                         @Html.Raw(Model.Materials)
                         @Html.Raw(Model.Package)
@@ -219,17 +222,35 @@
                         }
                     </table>
                 </div>
+                <div>
+                    <a href="@url@Model.AssemblyPath">Download</a>
+                </div>
+            </div>
+        </div>
+
+        @*<div id="collapsible-wrapper" class="col-8 left">
+            <div class="collapsible">
+                <button type="button" class="collapsible-button2 active"></button>
+                <div class="collapsible-content">
+                    <p id="product-description"></p>
+                </div>
+            </div>
+            <div class="collapsible">
+                <button type="button" class="collapsible-button2 active"></button>
+                <div class="collapsible-content">
+
+                </div>
             </div>
             @if (Model.AssemblyPath != "none")
             {
                 <div class="collapsible">
                     <button type="button" class="collapsible-button2 active">Samlevejledning</button>
                     <div class="collapsible-content">
-                        <a href="@url@Model.AssemblyPath">Download</a>
+                        
                     </div>
                 </div>
             }
-        </div>
+        </div>*@
     </div>
 </div>
 
