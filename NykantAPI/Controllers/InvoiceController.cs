@@ -21,30 +21,44 @@ namespace NykantAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Invoice>> PostInvoice(Invoice invoice)
         {
-            if (ModelState.IsValid)
+            try
             {
-                try
+                if (ModelState.IsValid)
                 {
                     var entity = _context.Invoices.Add(invoice).Entity;
                     await _context.SaveChangesAsync();
                     return CreatedAtAction("GetInvoice", new { id = entity.Id }, entity);
                 }
-                catch (Exception e)
+                else
                 {
-                    return BadRequest(e.Message);
+                    return BadRequest();
                 }
+
             }
-            else
+            catch (Exception e)
             {
-                return BadRequest("Invalid ModelState");
+                _logger.LogError(e.Message);
+                return BadRequest();
             }
+
+            
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Invoice>> GetInvoice(int id)
         {
-            var invoice = await _context.Invoices.FirstOrDefaultAsync(x => x.Id == id);
-            return Ok(JsonConvert.SerializeObject(invoice));
+            try
+            {
+                var invoice = await _context.Invoices.FirstOrDefaultAsync(x => x.Id == id);
+                return Ok(JsonConvert.SerializeObject(invoice));
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                return BadRequest();
+            }
+
+
         }
     }
 }

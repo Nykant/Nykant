@@ -22,7 +22,16 @@ namespace NykantAPI.Controllers
         [HttpGet]
         public async Task<ActionResult> GetCategories()
         {
-            return Ok(JsonConvert.SerializeObject(_context.Categories));
+            try
+            {
+                return Ok(JsonConvert.SerializeObject(_context.Categories));
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                return BadRequest();
+            }
+
         }
     }
 }

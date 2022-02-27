@@ -30,8 +30,17 @@ namespace NykantAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Customer>> GetCustomer(int id)
         {
-            var customerInf = await _context.Customer.Include(x => x.ShippingAddress).Include(x => x.BillingAddress).FirstOrDefaultAsync(x => x.Id == id);
-            return Ok(JsonConvert.SerializeObject(customerInf, Extensions.JsonOptions.jsonSettings));
+            try
+            {
+                var customerInf = await _context.Customer.Include(x => x.ShippingAddress).Include(x => x.BillingAddress).FirstOrDefaultAsync(x => x.Id == id);
+                return Ok(JsonConvert.SerializeObject(customerInf, Extensions.JsonOptions.jsonSettings));
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                return BadRequest();
+            }
+
         }
 
         [HttpPost]
@@ -58,12 +67,12 @@ namespace NykantAPI.Controllers
                         return CreatedAtAction("GetCustomer", new { id = entity.Id }, customerInf);
                     }
                 }
-                return Content("error");
+                return BadRequest();
             }
             catch (Exception e)
             {
-                _logger.LogInformation(e.Message);
-                return Content(e.Message);
+                _logger.LogError(e.Message);
+                return BadRequest();
             }
         }
 
@@ -91,7 +100,7 @@ namespace NykantAPI.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogInformation(e.Message);
+                _logger.LogError(e.Message);
                 return BadRequest();
             }
         }
@@ -120,9 +129,11 @@ namespace NykantAPI.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogInformation(e.Message);
+                _logger.LogError(e.Message);
                 return BadRequest();
             }
+
+           
         }
 
         [HttpDelete("{customerInfId}")]
@@ -136,8 +147,10 @@ namespace NykantAPI.Controllers
             }
             catch (Exception e)
             {
-                return NotFound(e.Message);
+                _logger.LogError(e.Message);
+                return BadRequest();
             }
+
         }
 
         private bool CustomerExists(int id)

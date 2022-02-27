@@ -22,13 +22,25 @@ namespace NykantAPI.Controllers
 
         public ActionResult<ShippingDelivery> GetShippingDeliveries()
         {
-            return Ok(JsonConvert.SerializeObject(_context.ShippingDeliveries.ToList()));
+            try
+            {
+                return Ok(JsonConvert.SerializeObject(_context.ShippingDeliveries.ToList()));
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                return BadRequest();
+            }
+
+
         }
 
 
         [HttpPost]
         public async Task<ActionResult<ShippingDelivery>> Post(ShippingDelivery shippingDelivery)
         {
+
+
             try
             {
                 if (ModelState.IsValid)
@@ -39,9 +51,9 @@ namespace NykantAPI.Controllers
                 }
                 return BadRequest();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-                _logger.LogInformation(e.Message);
+                _logger.LogError(e.Message);
                 return BadRequest();
             }
         }

@@ -8,6 +8,7 @@ using NykantMVC.Models.ViewModels;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Text.Encodings.Web;
+using System;
 
 namespace NykantMVC.Controllers
 {
@@ -51,9 +52,17 @@ namespace NykantMVC.Controllers
         [HttpGet]
         public async Task<IActionResult> Details(string urlname)
         {
-            var json = await GetRequest($"/Product/GetProductWithUrlName/{urlname}");
-            Product product = JsonConvert.DeserializeObject<Product>(json);
-            return View(product);
+            try
+            {
+                var json = await GetRequest($"/Product/GetProductWithUrlName/{urlname}");
+                Product product = JsonConvert.DeserializeObject<Product>(json);
+                return View(product);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+            }
+            return View(new Product());
         }
 
         [HttpPost]

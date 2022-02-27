@@ -24,64 +24,114 @@ namespace NykantAPI.Controllers
         [HttpGet]
         public async Task<ActionResult> GetProducts()
         {
-            var products = _context.Products.Include(x => x.Category).Include(x => x.Colors).Include(x => x.ProductLengths);
-            var json = JsonConvert.SerializeObject(products, Extensions.JsonOptions.jsonSettings);
-            return Ok(json);
+            try
+            {
+                var products = _context.Products.Include(x => x.Category).Include(x => x.Colors).Include(x => x.ProductLengths);
+                var json = JsonConvert.SerializeObject(products, Extensions.JsonOptions.jsonSettings);
+                return Ok(json);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                return BadRequest();
+            }
+
+
         }
 
         [HttpGet]
         public async Task<ActionResult> GetBagItemProducts(List<BagItem> bagItems)
         {
-            var products = new List<Product>();
-            foreach(var item in bagItems)
+            try
             {
-                products.Add(await _context.Products.FindAsync(item.ProductId));
+                var products = new List<Product>();
+                foreach (var item in bagItems)
+                {
+                    products.Add(await _context.Products.FindAsync(item.ProductId));
+                }
+                var json = JsonConvert.SerializeObject(products, Extensions.JsonOptions.jsonSettings);
+                return Ok(json);
             }
-            var json = JsonConvert.SerializeObject(products, Extensions.JsonOptions.jsonSettings);
-            return Ok(json);
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                return BadRequest();
+            }
+
+
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductDTO>> GetProduct(int id) 
         {
-            var product = await _context.Products
-                .Include(x => x.Images)
-                .Include(x => x.Colors)
-                .Include(x => x.ProductLengths)
-                .FirstOrDefaultAsync(x => x.Id == id);
+            try
+            {
+                var product = await _context.Products
+                    .Include(x => x.Images)
+                    .Include(x => x.Colors)
+                    .Include(x => x.ProductLengths)
+                    .FirstOrDefaultAsync(x => x.Id == id);
 
-            var json = JsonConvert.SerializeObject(product, Extensions.JsonOptions.jsonSettings);
+                var json = JsonConvert.SerializeObject(product, Extensions.JsonOptions.jsonSettings);
 
-            return Ok(json);
+                return Ok(json);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                return BadRequest();
+            }
+
+
         }
 
         [HttpGet("{urlname}")]
         public async Task<ActionResult<ProductDTO>> GetProductWithUrlName(string urlname)
         {
-            var product = await _context.Products
-                .Include(x => x.Images)
-                .Include(x => x.Colors)
-                .Include(x => x.ProductLengths)
-                .FirstOrDefaultAsync(x => x.UrlName == urlname);
+            try
+            {
+                var product = await _context.Products
+                    .Include(x => x.Images)
+                    .Include(x => x.Colors)
+                    .Include(x => x.ProductLengths)
+                    .FirstOrDefaultAsync(x => x.UrlName == urlname);
 
-            var json = JsonConvert.SerializeObject(product, Extensions.JsonOptions.jsonSettings);
+                var json = JsonConvert.SerializeObject(product, Extensions.JsonOptions.jsonSettings);
 
-            return Ok(json);
+                return Ok(json);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                return BadRequest();
+            }
+
+
         }
 
         [HttpPatch]
         public async Task<ActionResult<Product>> UpdateProduct(Product product)
         {
-            if (ModelState.IsValid)
+            try
             {
-                _context.Products.Update(product);
-                await _context.SaveChangesAsync();
-                return Ok();
+                if (ModelState.IsValid)
+                {
+                    _context.Products.Update(product);
+                    await _context.SaveChangesAsync();
+                    return Ok();
+                }
+                else
+                {
+                    return BadRequest();
+                }
             }
-            else
+            catch (Exception e)
             {
+                _logger.LogError(e.Message);
                 return BadRequest();
             }
+
+
         }
     }
 }

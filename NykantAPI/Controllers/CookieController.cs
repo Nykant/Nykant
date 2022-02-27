@@ -19,7 +19,17 @@ namespace NykantAPI.Controllers
         [HttpGet]
         public async Task<ActionResult> GetCookies()
         {
-            return Ok(JsonConvert.SerializeObject(_context.Cookies));
+            try
+            {
+                return Ok(JsonConvert.SerializeObject(_context.Cookies));
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                return BadRequest();
+            }
+
+
         }
     }
 }

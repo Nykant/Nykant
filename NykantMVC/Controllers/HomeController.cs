@@ -41,14 +41,16 @@ namespace NykantMVC.Controllers
         //[Route("Hjem")]
         public async Task<IActionResult> Index()
         {
-            var jsonResponse = await GetRequest("/Category/GetCategories");
-            var categories = JsonConvert.DeserializeObject<List<Category>>(jsonResponse);
-
-            FrontPageVM frontPageVM = new FrontPageVM()
+            try
             {
-                Categories = categories
-            };
-            return View(frontPageVM);
+                var jsonResponse = await GetRequest("/Category/GetCategories");
+                var categories = JsonConvert.DeserializeObject<List<Category>>(jsonResponse);
+                return View(categories);
+            }
+            catch (Exception e) {
+                _logger.LogError(e.Message);
+            }
+            return View(new List<Category>());
         }
 
         [Route("Cookie-Politik")]

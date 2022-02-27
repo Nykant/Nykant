@@ -28,26 +28,46 @@ namespace NykantAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Order>>> GetOrders()
         {
-            var orders = await _context.Orders.ToListAsync();
-            return Ok(JsonConvert.SerializeObject(orders));
+            try
+            {
+                var orders = await _context.Orders.ToListAsync();
+                return Ok(JsonConvert.SerializeObject(orders));
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                return BadRequest();
+            }
+
+
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Order>> GetOrder(int id)
         {
-            var order = await _context.Orders.Include(x => x.Customer).ThenInclude(x => x.ShippingAddress).Include(x => x.Customer).ThenInclude(x => x.BillingAddress).Include(x => x.OrderItems).ThenInclude(x => x.Product).Include(x => x.ShippingDelivery).Include(x => x.Invoice).FirstOrDefaultAsync(x => x.Id == id);
-            return Ok(JsonConvert.SerializeObject(order, Extensions.JsonOptions.jsonSettings));
+            try
+            {
+                var order = await _context.Orders.Include(x => x.Customer).ThenInclude(x => x.ShippingAddress).Include(x => x.Customer).ThenInclude(x => x.BillingAddress).Include(x => x.OrderItems).ThenInclude(x => x.Product).Include(x => x.ShippingDelivery).Include(x => x.Invoice).FirstOrDefaultAsync(x => x.Id == id);
+                return Ok(JsonConvert.SerializeObject(order, Extensions.JsonOptions.jsonSettings));
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                return BadRequest();
+            }
+
+
         }
 
         [HttpPatch]
         public async Task<ActionResult<Order>> UpdateOrder(Order order)
         {
-            _protectionService.UnprotectOrder(order);
-            if (ModelState.IsValid)
+            try
             {
-                _protectionService.ProtectOrder(order);
-                if (OrderExists(order.Id))
+                _protectionService.UnprotectOrder(order);
+                if (ModelState.IsValid)
                 {
+                    _protectionService.ProtectOrder(order);
                     _context.Orders.Update(order);
                     await _context.SaveChangesAsync();
                     return Ok();
@@ -57,43 +77,40 @@ namespace NykantAPI.Controllers
                     return NotFound();
                 }
             }
-            else
+            catch (Exception e)
             {
-                return NotFound();
+                _logger.LogError(e.Message);
+                return BadRequest();
             }
+
+
         } 
 
         [HttpPost]
         public async Task<ActionResult<Order>> PostOrder(Order order)
         {
-            _protectionService.UnprotectOrder(order);
-            if (ModelState.IsValid)
+            try
             {
-                _protectionService.ProtectOrder(order);
-                if (OrderExists(order.Id))
+                _protectionService.UnprotectOrder(order);
+                if (ModelState.IsValid)
                 {
-                    _context.Orders.Update(order);
+                    _protectionService.ProtectOrder(order);
+                    var entity = _context.Orders.Add(order).Entity;
                     await _context.SaveChangesAsync();
-                    return Ok();
+                    return CreatedAtAction("GetOrder", new { id = entity.Id }, entity);
                 }
                 else
                 {
-                    var entity = _context.Orders.Add(order).Entity;
-                    await _context.SaveChangesAsync();
-                    try
-                    {
-                        return CreatedAtAction("GetOrder", new { id = entity.Id }, entity);
-                    }
-                    catch(Exception e)
-                    {
-                        return NotFound(e.Message);
-                    }
+                    return NotFound();
                 }
             }
-            else
+            catch (Exception e)
             {
-                return NotFound();
+                _logger.LogError(e.Message);
+                return BadRequest();
             }
+
+           
         }
 
         private bool OrderExists(int orderId)

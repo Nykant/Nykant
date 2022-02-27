@@ -22,19 +22,29 @@ namespace NykantAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<OrderItem>> PostOrderItems(List<OrderItem> orderItem)
         {
-            if (ModelState.IsValid)
+            try
             {
-                foreach (var item in orderItem)
+                if (ModelState.IsValid)
                 {
-                    _context.OrderItems.Add(item);
+                    foreach (var item in orderItem)
+                    {
+                        _context.OrderItems.Add(item);
+                    }
+                    await _context.SaveChangesAsync();
+                    return Ok();
                 }
-                await _context.SaveChangesAsync();
-                return Ok();
+                else
+                {
+                    return NotFound();
+                }
             }
-            else
+            catch (Exception e)
             {
-                return NotFound();
+                _logger.LogError(e.Message);
+                return BadRequest();
             }
+
+
         }
     }
 }

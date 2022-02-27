@@ -7,7 +7,7 @@
 
 <link rel="stylesheet" href="~/css/bag.css" />
 
-<div class="my-row top-padding bottom-side-padding">
+<div class="my-row top-padding bottom-padding">
     <div class="col-10 center" id="bag-wrapper">
         <div class="col-8 left fadein" id="bagtable-container">
             <div class="bagtitle">
@@ -27,6 +27,27 @@
                     @localizer["Gå Til Kassen"]
                 </div>
             </a>
+            <div class="delivery-info">
+                @if (ViewBag.DeliveryInfo != null)
+                {
+                    <div>
+                        <p>@ViewBag.DeliveryInfo</p>
+                    </div>
+                }
+
+                <div>
+                    <p class="width-50">Forventet Leveringsdato</p>
+                    @if (ViewBag.DeliveryDate == null)
+                    {
+                        <p class="width-30 align-right">1-3 dage</p>
+                    }
+                    else
+                    {
+                        <p class="width-30 align-right">@ViewBag.DeliveryDate</p>
+                    }
+
+                </div>
+            </div>
         </div>
     </div>
 </div>

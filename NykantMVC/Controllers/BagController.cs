@@ -5,6 +5,7 @@ using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using NykantMVC.Extensions;
 using NykantMVC.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Encodings.Web;
@@ -40,12 +41,16 @@ namespace NykantMVC.Controllers
                 if (bagItems == null)
                 {
                     bagItems = new List<BagItem>();
-
+                    ViewBag.DeliveryInfo = null;
+                    ViewBag.DeliveryDate = null;
                     ViewBag.PriceSum = 0;
                     return View(bagItems);
                 }
                 else
                 {
+                    ViewBag.DeliveryInfo = DeliveryDateInfo(bagItems);
+                    var date = CalculateDeliveryDate(bagItems);
+                    ViewBag.DeliveryDate = $"{date.Day}-{date.Month}-{date.Year}";
                     ViewBag.PriceSum = CalculateAmount(bagItems);
                     return View(bagItems);
                 }
@@ -174,6 +179,89 @@ namespace NykantMVC.Controllers
                     price += item.Product.Price;
             }
             return price;
+        }
+
+        private DateTime CalculateDeliveryDate(List<BagItem> bagItems)
+        {
+            var deliveryDate = new DateTime();
+            foreach (var item in bagItems)
+            {
+                if (item.Product.ExpectedDelivery != new DateTime())
+                {
+                    if (deliveryDate != new DateTime())
+                    {
+                        if (DateTime.Compare(deliveryDate, item.Product.ExpectedDelivery) < 0)
+                        {
+                            deliveryDate = item.Product.ExpectedDelivery;
+                        }
+                    }
+                    else
+                    {
+                        deliveryDate = item.Product.ExpectedDelivery;
+                    }
+                }
+            }
+            if (deliveryDate == new DateTime())
+            {
+                deliveryDate = DateTime.Now;
+                if (DateTime.Now.Hour < 12)
+                {
+                    deliveryDate = deliveryDate.AddDays(1);
+                    if (deliveryDate.DayOfWeek == DayOfWeek.Saturday)
+                    {
+                        deliveryDate = deliveryDate.AddDays(2);
+                    }
+                    else if (deliveryDate.DayOfWeek == DayOfWeek.Sunday)
+                    {
+                        deliveryDate = deliveryDate.AddDays(1);
+                    }
+                }
+                else
+                {
+                    deliveryDate = deliveryDate.AddDays(2);
+                    if (deliveryDate.DayOfWeek == DayOfWeek.Saturday)
+                    {
+                        deliveryDate = deliveryDate.AddDays(2);
+                    }
+                    else if (deliveryDate.DayOfWeek == DayOfWeek.Sunday)
+                    {
+                        deliveryDate = deliveryDate.AddDays(2);
+                    }
+                    else if (deliveryDate.DayOfWeek == DayOfWeek.Monday)
+                    {
+                        deliveryDate = deliveryDate.AddDays(1);
+                    }
+                }
+            }
+            else
+            {
+                deliveryDate = deliveryDate.AddDays(2);
+                if (deliveryDate.DayOfWeek == DayOfWeek.Saturday)
+                {
+                    deliveryDate = deliveryDate.AddDays(2);
+                }
+                else if (deliveryDate.DayOfWeek == DayOfWeek.Sunday)
+                {
+                    deliveryDate = deliveryDate.AddDays(2);
+                }
+                else if (deliveryDate.DayOfWeek == DayOfWeek.Monday)
+                {
+                    deliveryDate = deliveryDate.AddDays(1);
+                }
+            }
+            return deliveryDate;
+        }
+
+        private string DeliveryDateInfo(List<BagItem> bagItems)
+        {
+            foreach (var item in bagItems)
+            {
+                if (item.Product.ExpectedDelivery != new DateTime())
+                {
+                    return "En eller flere produkter i din kurv, er ikke på lager. Derfor er forventet leveringstid for ordren desværre forlænget.";
+                }
+            }
+            return null;
         }
     }
 }

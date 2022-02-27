@@ -13,6 +13,7 @@
 .bagtable {
     height: auto;
     width: 100%;
+
 }
 
 .bagtable-headers {
@@ -158,6 +159,21 @@
 
 .order-info p {
     display:inline-block;
+}
+
+.delivery-info {
+    margin-top:30px;
+    border-top:1px solid var(--black-fade);
+}
+
+.delivery-info div {
+    padding-top:10px;
+    text-align:left;
+}
+
+.delivery-info p {
+    display:inline-block;
+    vertical-align:middle;
 }
 
 

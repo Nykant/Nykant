@@ -27,40 +27,54 @@ namespace NykantAPI.Controllers
         [HttpGet("{subject}")]
         public async Task<ActionResult<List<BagItem>>> GetBagItems(string subject)
         {
-            var bagItems = _context.BagItems
-                .Include(x => x.Product)
-                .Where(x => x.Subject == subject);
+            try
+            {
+                var bagItems = _context.BagItems
+                    .Include(x => x.Product)
+                    .Where(x => x.Subject == subject);
 
-            var json = JsonConvert.SerializeObject(bagItems, Extensions.JsonOptions.jsonSettings );
+                var json = JsonConvert.SerializeObject(bagItems, Extensions.JsonOptions.jsonSettings);
 
-            return Ok(json);
+                return Ok(json);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                return BadRequest();
+            }
         }
 
         [HttpPatch]
         public async Task<ActionResult<BagItem>> UpdateBagItem(BagItem bagItem)
         {
-            if (BagItemExists(bagItem.Subject, bagItem.ProductId))
+            try
             {
-                try
+                if (ModelState.IsValid)
                 {
                     var entity = _context.BagItems.Update(bagItem).Entity;
                     await _context.SaveChangesAsync();
                     return Ok();
                 }
-                catch (Exception e)
+                else
                 {
-                    return Conflict(e.Message);
+                    return BadRequest();
                 }
+
             }
-            return NotFound();
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                return BadRequest();
+            }
         }
 
         [HttpPatch]
         public async Task<ActionResult<BagItem>> AddBagItem(BagItem bagItem)
         {
-            if (BagItemExists(bagItem.Subject, bagItem.ProductId))
+
+            try
             {
-                try
+                if (ModelState.IsValid)
                 {
                     var bagitemDb = await _context.BagItems.FindAsync(bagItem.Subject, bagItem.ProductId);
                     bagitemDb.Quantity += 1;
@@ -68,12 +82,17 @@ namespace NykantAPI.Controllers
                     await _context.SaveChangesAsync();
                     return Ok();
                 }
-                catch (Exception e)
+                else
                 {
-                    return Conflict(e.Message);
+                    return BadRequest();
                 }
+
             }
-            return NotFound();
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                return BadRequest();
+            }
         }
 
         [HttpDelete("{subject}")]
@@ -86,12 +105,14 @@ namespace NykantAPI.Controllers
                     _context.BagItems.Remove(item);
                 }
                 await _context.SaveChangesAsync();
+                return Ok();
             }
             catch (Exception e)
             {
-                return NotFound(e.Message);
+                _logger.LogError(e.Message);
+                return BadRequest();
             }
-            return Ok();
+
         }
 
         [HttpDelete("{subject}/{productId}")]
@@ -105,51 +126,68 @@ namespace NykantAPI.Controllers
             }
             catch (Exception e)
             {
-                return NotFound(e.Message);
+                _logger.LogError(e.Message);
+                return BadRequest();
             }
         }
 
         [HttpPost]
         public async Task<ActionResult<BagItem>> PostBagItem(BagItem bagItem)
         {
-
-            if (ModelState.IsValid)
+            try
             {
-
-                if(!BagItemExists(bagItem.Subject, bagItem.ProductId))
+                if (ModelState.IsValid)
                 {
-                    try
+                    if (!BagItemExists(bagItem.Subject, bagItem.ProductId))
                     {
                         _context.BagItems.Add(bagItem);
                         await _context.SaveChangesAsync();
                         return CreatedAtAction("GetBagItem", new { subject = bagItem.Subject, productId = bagItem.ProductId }, bagItem);
                     }
-                    catch (Exception e)
+                    else
                     {
-                        return Conflict(e.Message);
+                        return await AddBagItem(bagItem);
                     }
                 }
                 else
                 {
-                    return await AddBagItem(bagItem);
+                    return BadRequest();
                 }
+
             }
-            else
+            catch (Exception e)
             {
-                return NotFound();
+                _logger.LogError(e.Message);
+                return BadRequest();
             }
         }
 
         [HttpGet("{subject}/{productId}")]
         public async Task<ActionResult<BagItem>> GetBagItem(string subject, int productId)
         {
-            return Ok(JsonConvert.SerializeObject(await _context.BagItems.FindAsync(subject, productId)));
+            try
+            {
+                return Ok(JsonConvert.SerializeObject(await _context.BagItems.FindAsync(subject, productId)));
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                return BadRequest();
+            }
         }
 
         [HttpGet("{subject}")]
         public async Task<ActionResult<int>> GetBagItemsQuantity(string subject)
         {
-            return Ok(JsonConvert.SerializeObject(await _context.BagItems.Where(x => x.Subject == subject).CountAsync()));
+            try
+            {
+                return Ok(JsonConvert.SerializeObject(await _context.BagItems.Where(x => x.Subject == subject).CountAsync()));
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                return BadRequest();
+            }
         }
 
         private bool BagItemExists(string sub, int productId)

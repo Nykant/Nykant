@@ -268,10 +268,11 @@ namespace NykantMVC.Controllers
             var taxes = total / 5;
             var taxlessPrice = total - taxes;
 
-            var deliveryDate = new DateTime();
+
 
             double weight = 0;
-            foreach(var item in checkout.BagItems)
+            var deliveryDate = new DateTime();
+            foreach (var item in checkout.BagItems)
             {
                 weight += item.Product.WeightInKg * item.Quantity;
                 if(item.Product.ExpectedDelivery != new DateTime())

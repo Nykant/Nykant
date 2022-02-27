@@ -41,7 +41,8 @@ namespace NykantAPI.Controllers
             }
             catch (Exception e)
             {
-                return NotFound(e.Message);
+                _logger.LogError(e.Message);
+                return BadRequest();
             }
         }
     }
