@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using NykantMVC.Extensions;
+using NykantMVC.Friends;
 using NykantMVC.Models;
 using System;
 using System.Collections.Generic;
@@ -31,7 +32,7 @@ namespace NykantMVC.Controllers
                 var json = await GetRequest($"/BagItem/GetBagItems/{subject}");
                 List<BagItem> bagItems = JsonConvert.DeserializeObject<List<BagItem>>(json);
 
-                ViewBag.PriceSum = CalculateAmount(bagItems);
+                ViewBag.PriceSum = OrderHelpers.CalculateAmount(bagItems);
 
                 return View(bagItems);
             }
@@ -48,10 +49,10 @@ namespace NykantMVC.Controllers
                 }
                 else
                 {
-                    ViewBag.DeliveryInfo = DeliveryDateInfo(bagItems);
-                    var date = CalculateDeliveryDate(bagItems);
+                    ViewBag.DeliveryInfo = OrderHelpers.DeliveryDateInfo(bagItems);
+                    var date = OrderHelpers.CalculateDeliveryDate(bagItems);
                     ViewBag.DeliveryDate = $"{date.Day}-{date.Month}-{date.Year}";
-                    ViewBag.PriceSum = CalculateAmount(bagItems);
+                    ViewBag.PriceSum = OrderHelpers.CalculateAmount(bagItems);
                     return View(bagItems);
                 }
             }
@@ -159,109 +160,17 @@ namespace NykantMVC.Controllers
             {
                 var sub = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
                 var bagitemList = JsonConvert.DeserializeObject<List<BagItem>>(await GetRequest($"/BagItem/GetBagItems/{sub}"));
-                var price = CalculateAmount(bagitemList);
+                var price = OrderHelpers.CalculateAmount(bagitemList);
                 return Json( new { price });
             }
             else
             {
                 var bagitemList = HttpContext.Session.Get<List<BagItem>>(BagSessionKey);
-                var price = CalculateAmount(bagitemList);
+                var price = OrderHelpers.CalculateAmount(bagitemList);
                 return Json(new { price });
             }
         }
 
-        private double CalculateAmount(List<BagItem> items)
-        {
-            double price = 0;
-            foreach (var item in items)
-            {
-                for (int i = 0; i < item.Quantity; i++)
-                    price += item.Product.Price;
-            }
-            return price;
-        }
 
-        private DateTime CalculateDeliveryDate(List<BagItem> bagItems)
-        {
-            var deliveryDate = new DateTime();
-            foreach (var item in bagItems)
-            {
-                if (item.Product.ExpectedDelivery != new DateTime())
-                {
-                    if (deliveryDate != new DateTime())
-                    {
-                        if (DateTime.Compare(deliveryDate, item.Product.ExpectedDelivery) < 0)
-                        {
-                            deliveryDate = item.Product.ExpectedDelivery;
-                        }
-                    }
-                    else
-                    {
-                        deliveryDate = item.Product.ExpectedDelivery;
-                    }
-                }
-            }
-            if (deliveryDate == new DateTime())
-            {
-                deliveryDate = DateTime.Now;
-                if (DateTime.Now.Hour < 12)
-                {
-                    deliveryDate = deliveryDate.AddDays(1);
-                    if (deliveryDate.DayOfWeek == DayOfWeek.Saturday)
-                    {
-                        deliveryDate = deliveryDate.AddDays(2);
-                    }
-                    else if (deliveryDate.DayOfWeek == DayOfWeek.Sunday)
-                    {
-                        deliveryDate = deliveryDate.AddDays(1);
-                    }
-                }
-                else
-                {
-                    deliveryDate = deliveryDate.AddDays(2);
-                    if (deliveryDate.DayOfWeek == DayOfWeek.Saturday)
-                    {
-                        deliveryDate = deliveryDate.AddDays(2);
-                    }
-                    else if (deliveryDate.DayOfWeek == DayOfWeek.Sunday)
-                    {
-                        deliveryDate = deliveryDate.AddDays(2);
-                    }
-                    else if (deliveryDate.DayOfWeek == DayOfWeek.Monday)
-                    {
-                        deliveryDate = deliveryDate.AddDays(1);
-                    }
-                }
-            }
-            else
-            {
-                deliveryDate = deliveryDate.AddDays(2);
-                if (deliveryDate.DayOfWeek == DayOfWeek.Saturday)
-                {
-                    deliveryDate = deliveryDate.AddDays(2);
-                }
-                else if (deliveryDate.DayOfWeek == DayOfWeek.Sunday)
-                {
-                    deliveryDate = deliveryDate.AddDays(2);
-                }
-                else if (deliveryDate.DayOfWeek == DayOfWeek.Monday)
-                {
-                    deliveryDate = deliveryDate.AddDays(1);
-                }
-            }
-            return deliveryDate;
-        }
-
-        private string DeliveryDateInfo(List<BagItem> bagItems)
-        {
-            foreach (var item in bagItems)
-            {
-                if (item.Product.ExpectedDelivery != new DateTime())
-                {
-                    return "En eller flere produkter i din kurv, er ikke på lager. Derfor er forventet leveringstid for ordren desværre forlænget.";
-                }
-            }
-            return null;
-        }
     }
 }

@@ -64,10 +64,10 @@ namespace NykantAPI.Controllers
         {
             try
             {
-                _protectionService.UnprotectOrder(order);
+                order = _protectionService.UnprotectOrder(order);
                 if (ModelState.IsValid)
                 {
-                    _protectionService.ProtectOrder(order);
+                    order = _protectionService.ProtectOrder(order);
                     _context.Orders.Update(order);
                     await _context.SaveChangesAsync();
                     return Ok();
@@ -91,10 +91,10 @@ namespace NykantAPI.Controllers
         {
             try
             {
-                _protectionService.UnprotectOrder(order);
+                order = _protectionService.UnprotectOrder(order);
                 if (ModelState.IsValid)
                 {
-                    _protectionService.ProtectOrder(order);
+                    order = _protectionService.ProtectOrder(order);
                     var entity = _context.Orders.Add(order).Entity;
                     await _context.SaveChangesAsync();
                     return CreatedAtAction("GetOrder", new { id = entity.Id }, entity);

@@ -29,6 +29,7 @@
     color: var(--font1);
     height:auto;
     background-color:white;
+    z-index:500;
 }
 
 .sidebar-items {
@@ -53,6 +54,7 @@
     .sidebar-item p {
         margin:auto;
     }
+
 
 
 .checkout-wrap {
@@ -212,7 +214,6 @@
     border-top: 1px solid var(--black-fade);
     text-align: left;
     font-weight: normal;
-    padding-bottom: 30px;
     padding-top: 10px;
     margin-top: 30px;
     padding:10px;
@@ -226,6 +227,21 @@
     .checkout-price span {
         display: inline-block;
         width: 20%;
+    }
+
+.checkout-delivery {
+    width: 100%;
+    border-top: 1px solid var(--black-fade);
+    text-align: left;
+    font-weight: normal;
+    margin-bottom: 30px;
+    margin-top:10px;
+    padding-top: 10px;
+    padding: 10px;
+}
+
+    .checkout-delivery p {
+        display: block;
     }
 
 .checkout-header h1 {

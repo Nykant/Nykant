@@ -196,43 +196,42 @@ namespace NykantMVC.Controllers
             }
         }
 
-        public async Task<IActionResult> CapturePaymentIntent(int orderId)
+        public async Task<IActionResult> CapturePaymentIntent(int paymentCaptureId)
         {
             try
             {
                 StripeConfiguration.ApiKey = _configuration["StripeSKKey"];
 
-                var json = await GetRequest($"/Order/GetOrder/{orderId}");
-                var order = JsonConvert.DeserializeObject<Models.Order>(json);
-                order = _protectionService.UnprotectWholeOrder(order);
+                var json = await GetRequest($"/PaymentCapture/GetPaymentCapture/{paymentCaptureId}");
+                var paymentCapture = JsonConvert.DeserializeObject<PaymentCapture>(json);
 
                 var service = new PaymentIntentService();
-                var paymentIntent = await service.CaptureAsync(order.PaymentIntent_Id);
+                var paymentIntent = await service.CaptureAsync(paymentCapture.PaymentIntent_Id);
 
                 if (paymentIntent.StripeResponse.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    order.Status = Status.Sent;
+                    paymentCapture.Captured = true;
 
                     var now = DateTime.Now;
                     var deliveryDate = now.AddDays(2);
-                    order.EstimatedDelivery = deliveryDate;
+                    paymentCapture.EstimatedDelivery = deliveryDate;
 
                     Models.Invoice invoice = new Models.Invoice
                     {
                         CreatedAt = DateTime.Now,
-                        OrderId = order.Id,
+                        OrderId = paymentCapture.Id,
                         Order = null
                     };
                     var response = await PostRequest("/Invoice/PostInvoice/", invoice);
                     var invoiceJson = await GetRequest(response.Headers.Location.AbsolutePath);
                     invoice = JsonConvert.DeserializeObject<Models.Invoice>(invoiceJson);
-                    order.Invoice = invoice;
+                    paymentCapture.Invoice = invoice;
 
-                    await mailService.SendInvoiceEmailAsync(order);
+                    await mailService.SendInvoiceEmailAsync(paymentCapture);
 
-                    order.Customer = null;
-                    order = _protectionService.ProtectOrder(order);
-                    await PatchRequest("/Order/UpdateOrder", order);
+                    paymentCapture.Customer = null;
+                    paymentCapture = _protectionService.ProtectOrder(paymentCapture);
+                    await PatchRequest("/Order/UpdateOrder", paymentCapture);
 
                     var json2 = await GetRequest("/Order/GetOrders");
                     var orders = JsonConvert.DeserializeObject<List<Models.Order>>(json2);

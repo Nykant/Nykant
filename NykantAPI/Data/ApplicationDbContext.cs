@@ -31,6 +31,7 @@ namespace NykantAPI.Data
         public DbSet<Color> Colors { get; set; }
         public DbSet<Invoice> Invoices { get; set; }
         public DbSet<Consent> Consents { get; set; }
+        public DbSet<PaymentCapture> PaymentCaptures { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

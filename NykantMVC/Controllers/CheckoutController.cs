@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using NykantMVC.Extensions;
+using NykantMVC.Friends;
 using NykantMVC.Models;
 using NykantMVC.Models.ViewModels;
 using NykantMVC.Models.XmlModels;
@@ -39,95 +40,59 @@ namespace NykantMVC.Controllers
             try
             {
                 var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
-                List<BagItem> bagItemsSession = new List<BagItem>();
-                List<BagItem> bagItemsDb = new List<BagItem>();
+                List<BagItem> bagItems = new List<BagItem>();
 
                 ViewBag.StripePKKey = conf["StripePKKey"];
 
                 if (User.Identity.IsAuthenticated)
                 {
                     var jsonbagItems = await GetRequest($"/BagItem/GetBagItems/{User.Claims.FirstOrDefault(x => x.Type == "sub").Value}");
-                    bagItemsDb = JsonConvert.DeserializeObject<List<BagItem>>(jsonbagItems);
+                    bagItems = JsonConvert.DeserializeObject<List<BagItem>>(jsonbagItems);
                 }
                 else
                 {
-                    bagItemsSession = HttpContext.Session.Get<List<BagItem>>(BagSessionKey);
+                    bagItems = HttpContext.Session.Get<List<BagItem>>(BagSessionKey);
                 }
+
+                if(bagItems == null || bagItems.Count() == 0)
+                {
+                    if(checkout != null)
+                    {
+                        HttpContext.Session.Set<Checkout>(CheckoutSessionKey, null);
+                    }
+                    return RedirectToAction("Details", "Bag");
+                }
+
+                var total = OrderHelpers.CalculateAmount(bagItems);
+                var taxes = total / 5;
+                var taxlessPrice = total - taxes;
 
                 if (checkout == null)
                 {
-                    if (User.Identity.IsAuthenticated)
+                    checkout = new Checkout
                     {
-                        if (bagItemsDb.Count() == 0)
-                        {
-                            return RedirectToAction("Details", "Bag");
-                        }
-                        else
-                        {
-                            double.TryParse(CalculateAmount(bagItemsDb), out double total);
-                            var taxes = total / 5;
-                            var taxlessPrice = total - taxes;
-                            checkout = new Checkout
-                            {
-                                BagItems = bagItemsDb,
-                                Stage = Stage.customerInf,
-                                TotalPrice = total.ToString(),
-                                Taxes = taxes.ToString(),
-                                TaxlessPrice = taxlessPrice.ToString()
-                            };
-                            HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
+                        BagItems = bagItems,
+                        Stage = Stage.customerInf,
+                        TotalPrice = total.ToString(),
+                        Taxes = taxes.ToString(),
+                        TaxlessPrice = taxlessPrice.ToString(),
+                        ShippingDelivery = new ShippingDelivery { Type = OrderHelpers.CalculateDeliveryType(bagItems) }
+                    };
+                    ViewBag.DeliveryType = OrderHelpers.CalculateDeliveryTypeString(checkout.ShippingDelivery.Type);
 
-                            CheckoutVM checkoutVM = new CheckoutVM
-                            {
-                                Customer = new Customer
-                                {
-                                    BillingAddress = new BillingAddress(),
-                                    ShippingAddress = new ShippingAddress()
-                                },
-                                Checkout = checkout
-                            };
+                    HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
 
-                            return View(checkoutVM);
-                        }
-                    }
-                    else
+                    CheckoutVM checkoutVM = new CheckoutVM
                     {
-                        if (bagItemsSession == null)
+                        Customer = new Customer
                         {
-                            return RedirectToAction("Details", "Bag");
-                        }
-                        if (bagItemsSession.Count() == 0)
-                        {
-                            return RedirectToAction("Details", "Bag");
-                        }
-                        else
-                        {
-                            double.TryParse(CalculateAmount(bagItemsSession), out double total);
-                            var taxes = total / 5;
-                            var taxlessPrice = total - taxes;
-                            checkout = new Checkout
-                            {
-                                BagItems = bagItemsSession,
-                                Stage = Stage.customerInf,
-                                TotalPrice = total.ToString(),
-                                Taxes = taxes.ToString(),
-                                TaxlessPrice = taxlessPrice.ToString()
-                            };
-                            HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
+                            BillingAddress = new BillingAddress(),
+                            ShippingAddress = new ShippingAddress()
+                        },
+                        Checkout = checkout
+                    };
 
-                            CheckoutVM checkoutVM = new CheckoutVM
-                            {
-                                Customer = new Customer
-                                {
-                                    BillingAddress = new BillingAddress(),
-                                    ShippingAddress = new ShippingAddress()
-                                },
-                                Checkout = checkout
-                            };
-
-                            return View(checkoutVM);
-                        }
-                    }
+                    return View(checkoutVM);
                 }
                 else
                 {
@@ -136,38 +101,12 @@ namespace NykantMVC.Controllers
                         return RedirectToAction("Success", "Checkout");
                     }
 
-                    if (bagItemsSession.Count() == 0 && bagItemsDb.Count() == 0)
-                    {
-                        HttpContext.Session.Set<Checkout>(CheckoutSessionKey, null);
-                        return RedirectToAction("Details", "Bag");
-                    }
-
-                    if (User.Identity.IsAuthenticated)
-                    {
-                        double.TryParse(CalculateAmount(bagItemsDb), out double total);
-                        var taxes = total / 5;
-                        var taxlessPrice = total - taxes;
-
-                        checkout.TotalPrice = total.ToString();
-                        checkout.Taxes = taxes.ToString();
-                        checkout.TaxlessPrice = taxlessPrice.ToString();
-
-                        checkout.BagItems = bagItemsDb;
-                        HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
-                    }
-                    else
-                    {
-                        double.TryParse(CalculateAmount(bagItemsSession), out double total);
-                        var taxes = total / 5;
-                        var taxlessPrice = total - taxes;
-
-                        checkout.TotalPrice = total.ToString();
-                        checkout.Taxes = taxes.ToString();
-                        checkout.TaxlessPrice = taxlessPrice.ToString();
-
-                        checkout.BagItems = bagItemsSession;
-                        HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
-                    }
+                    checkout.TotalPrice = total.ToString();
+                    checkout.Taxes = taxes.ToString();
+                    checkout.TaxlessPrice = taxlessPrice.ToString();
+                    ViewBag.DeliveryType = OrderHelpers.CalculateDeliveryTypeString(checkout.ShippingDelivery.Type);
+                    checkout.BagItems = bagItems;
+                    HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
 
                     Customer customer = null;
                     if (checkout.CustomerInfId != 0)
@@ -417,16 +356,6 @@ namespace NykantMVC.Controllers
                 _logger.LogError(e.Message);
                 return RedirectToAction("Details", "Bag");
             }
-        }
-
-        private string CalculateAmount(List<BagItem> items)
-        {
-            double price = 0;
-            foreach (var item in items)
-            {
-                price += item.Product.Price * item.Quantity;
-            }
-            return price.ToString();
         }
 
         private async Task<Customer> GetCustomerNoUnprotect(int id)

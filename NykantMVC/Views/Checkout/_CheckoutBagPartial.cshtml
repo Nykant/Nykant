@@ -1,36 +1,41 @@
-﻿@inject IViewLocalizer localizer 
+﻿@inject IViewLocalizer localizer
 @model CheckoutVM
 
 <div class="sidebar">
     <div class="sidebar-items">
         @foreach (var item in Model.Checkout.BagItems)
         {
-        <div class="sidebar-item">
-            <div class="width-30">
-                <img src="@item.Product.GalleryImage1" />
+            <div class="sidebar-item">
+                <div class="width-30">
+                    <img src="@item.Product.GalleryImage1" />
+                </div>
+                @if (item.Product.Length != null)
+                {
+                    <p class="width-50">@item.Product.Name <br /> @item.Product.Length <br /> @item.Product.Oil</p>
+
+                }
+                else
+                {
+                    <p class="width-50"> @item.Product.Name <br /> @item.Product.Oil</p>
+                }
+
+                <p class="width-20">@item.Quantity @localizer["stk."]</p>
             </div>
-            @if (item.Product.Length != null)
-            {
-        <p class="width-50">@item.Product.Name <br /> @item.Product.Length <br /> @item.Product.Oil</p>
-
-            }
-            else
-            {
-        <p class="width-50"> @item.Product.Name <br /> @item.Product.Oil</p>
-            }
-
-            <p class="width-20">@item.Quantity @localizer["stk."]</p>
-        </div>
         }
-    <div class="checkout-price">
-        <p>@localizer["Momsgrundlag"]:</p><span>kr. @Model.Checkout.TaxlessPrice</span>
-        <p>@localizer["Momsbeløb(25%)"]:</p><span>kr. @Model.Checkout.Taxes</span>
-        <p>@localizer["Totalbeløb"]:</p><span>kr. @Model.Checkout.TotalPrice</span>
-    </div>
+        <div class="checkout-price">
+            <p>@localizer["Momsgrundlag"]:</p><span>kr. @Model.Checkout.TaxlessPrice</span>
+            <p>@localizer["Momsbeløb(25%)"]:</p><span>kr. @Model.Checkout.Taxes</span>
+            <p>@localizer["Totalbeløb"]:</p><span>kr. @Model.Checkout.TotalPrice</span>
+        </div>
+        <div class="checkout-delivery">
+            <p>Leveringsmetode:</p><p>@ViewBag.DeliveryType</p>
+        </div>
         <a asp-controller="Checkout" asp-action="CancelCheckout">
             <div class="button">
                 @localizer["Fortryd Ordre"]
             </div>
         </a>
+
     </div>
+
 </div>

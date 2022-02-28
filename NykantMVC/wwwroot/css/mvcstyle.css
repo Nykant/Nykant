@@ -854,6 +854,14 @@ button span {
     width:50%;
 }
 
+.width-40 {
+    width: 40%;
+}
+
+.width-45 {
+    width: 45%;
+}
+
 .border-top {
     border-top: 1px solid var(--black-fade);
 }

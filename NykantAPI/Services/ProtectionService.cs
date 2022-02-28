@@ -13,12 +13,14 @@ namespace NykantAPI.Services
         IDataProtector _orderProtector;
         IDataProtector _newsSubProtector;
         IDataProtector _consentProtector;
+        IDataProtector _paymentCaptureProtector;
         public ProtectionService(IDataProtectionProvider provider)
         {
             _newsSubProtector = provider.CreateProtector("Nykant.NewsSub.Protect.v1");
             _customerProtector = provider.CreateProtector("Nykant.Customer.Protect.v1");
             _orderProtector = provider.CreateProtector("Nykant.Order.Protect.v1");
             _consentProtector = provider.CreateProtector("Nykant.Consent.Protect.v1");
+            _paymentCaptureProtector = provider.CreateProtector("Nykant.PaymentCapture.Protect.v1");
         }
 
         public Consent ProtectConsent(Consent consent)
@@ -64,6 +66,31 @@ namespace NykantAPI.Services
 
             return consent;
         }
+
+        public PaymentCapture ProtectPaymentCapture(PaymentCapture paymentCapture)
+        {
+            paymentCapture.PaymentIntent_Id = _newsSubProtector.Protect(paymentCapture.PaymentIntent_Id);
+
+            for(int i = 0; i < paymentCapture.Orders.Count(); i++)
+            {
+                paymentCapture.Orders[i] = ProtectOrder(paymentCapture.Orders[i]);
+            }
+            
+            return paymentCapture;
+        }
+
+        public PaymentCapture UnprotectPaymentCapture(PaymentCapture paymentCapture)
+        {
+            paymentCapture.PaymentIntent_Id = _newsSubProtector.Unprotect(paymentCapture.PaymentIntent_Id);
+
+            for (int i = 0; i < paymentCapture.Orders.Count(); i++)
+            {
+                paymentCapture.Orders[i] = UnprotectOrder(paymentCapture.Orders[i]);
+            }
+
+            return paymentCapture;
+        }
+
 
         public NewsSub ProtectNewsSub(NewsSub newsSub)
         {
@@ -204,6 +231,8 @@ namespace NykantAPI.Services
 
     public interface IProtectionService
     {
+        PaymentCapture UnprotectPaymentCapture(PaymentCapture paymentCapture);
+        PaymentCapture ProtectPaymentCapture(PaymentCapture paymentCapture);
         public Consent ProtectConsent(Consent consent);
         public Consent UnprotectConsent(Consent consent);
         public NewsSub ProtectNewsSub(NewsSub newsSub);

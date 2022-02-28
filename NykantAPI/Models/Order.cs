@@ -32,7 +32,8 @@ namespace NykantAPI.Models
         public DateTime EstimatedDelivery { get; set; }
         public bool IsBackOrder { get; set; } = false;
         [Required]
-        public string PaymentIntent_Id { get; set; }
+        public int PaymentCaptureId { get; set; }
+        public PaymentCapture PaymentCapture { get; set; }
         public List<OrderItem> OrderItems { get; set; }
         public ShippingDelivery ShippingDelivery { get; set; }
         public Invoice Invoice { get; set; }
