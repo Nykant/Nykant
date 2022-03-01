@@ -80,7 +80,7 @@ namespace NykantMVC
                     options.SignedOutCallbackPath = "/signout-callback-oidc";
 
                     options.ClientId = "mvc";
-                    options.ClientSecret = "secret";
+                    options.ClientSecret = Configuration["MVCClientSecret"];
                     options.ResponseType = "code";
 
                     options.SaveTokens = true;

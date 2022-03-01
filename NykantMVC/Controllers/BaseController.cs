@@ -1,6 +1,7 @@
 ﻿using IdentityModel.Client;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
@@ -26,10 +27,12 @@ namespace NykantMVC.Controllers
         public readonly ILogger<BaseController> _logger;
         private readonly Urls _urls;
         private readonly HtmlEncoder htmlEncoder;
+        public readonly IConfiguration conf;
 
 
-        public BaseController(ILogger<BaseController> logger, IOptions<Urls> urls, HtmlEncoder htmlEncoder)
+        public BaseController(ILogger<BaseController> logger, IOptions<Urls> urls, HtmlEncoder htmlEncoder, IConfiguration conf)
         {
+            this.conf = conf;
             this.htmlEncoder = htmlEncoder;
             _logger = logger;
             _urls = urls.Value;
@@ -70,7 +73,7 @@ namespace NykantMVC.Controllers
                 return customer;
             }
             catch (Exception e) {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
             }
             return null;
         }
@@ -93,7 +96,7 @@ namespace NykantMVC.Controllers
                     var disco = await ISclient.GetDiscoveryDocumentAsync(_urls.Is);
                     if (disco.IsError)
                     {
-                        Console.WriteLine(disco.Error);
+                        _logger.LogError($"time: {DateTime.Now} - {disco.Error}");
                         return null;
                     }
 
@@ -103,13 +106,13 @@ namespace NykantMVC.Controllers
                         Address = disco.TokenEndpoint,
 
                         ClientId = "client",
-                        ClientSecret = "secret",
+                        ClientSecret = conf["ClientClientSecret"],
                         Scope = "NykantAPI"
                     });
 
                     if (tokenResponse.IsError)
                     {
-                        Console.WriteLine(tokenResponse.Error);
+                        _logger.LogError($"time: {DateTime.Now} - {tokenResponse.Error}");
                         return null;
                     }
 
@@ -127,7 +130,7 @@ namespace NykantMVC.Controllers
             catch (Exception e)
             {
                 string uri = _urls.Api + url;
-                _logger.LogError($"uri: {uri}" + e.Message);
+                _logger.LogError($"time: {DateTime.Now} - uri: {uri}" + e.Message);
             }
             return null;
         }
@@ -150,7 +153,7 @@ namespace NykantMVC.Controllers
                     var disco = await ISclient.GetDiscoveryDocumentAsync(_urls.Is);
                     if (disco.IsError)
                     {
-                        Console.WriteLine(disco.Error);
+                        _logger.LogError($"time: {DateTime.Now} - {disco.Error}");
                         return null;
                     }
 
@@ -160,13 +163,13 @@ namespace NykantMVC.Controllers
                         Address = disco.TokenEndpoint,
 
                         ClientId = "client",
-                        ClientSecret = "secret",
+                        ClientSecret = conf["ClientClientSecret"],
                         Scope = "NykantAPI"
                     });
 
                     if (tokenResponse.IsError)
                     {
-                        Console.WriteLine(tokenResponse.Error);
+                        _logger.LogError($"time: {DateTime.Now} - {tokenResponse.Error}");
                         return null;
                     }
 
@@ -185,7 +188,7 @@ namespace NykantMVC.Controllers
             catch (Exception e)
             {
                 string uri = _urls.Api + url;
-                _logger.LogError($"uri: {uri}" + e.Message);
+                _logger.LogError($"time: {DateTime.Now} - uri: {uri}" + e.Message);
             }
             return null;
             
@@ -209,7 +212,7 @@ namespace NykantMVC.Controllers
                     var disco = await ISclient.GetDiscoveryDocumentAsync(_urls.Is);
                     if (disco.IsError)
                     {
-                        _logger.LogInformation($"is error: {disco.Error}");
+                        _logger.LogError($"time: {DateTime.Now} - {disco.Error}");
                         return null;
                     }
 
@@ -218,13 +221,13 @@ namespace NykantMVC.Controllers
                     {
                         Address = disco.TokenEndpoint,
                         ClientId = "client",
-                        ClientSecret = "secret",
+                        ClientSecret = conf["ClientClientSecret"],
                         Scope = "NykantAPI"
                     });
 
                     if (tokenResponse.IsError)
                     {
-                        _logger.LogInformation($"is error: {tokenResponse.Error}");
+                        _logger.LogError($"time: {DateTime.Now} - {tokenResponse.Error}");
                         return null;
                     }
 
@@ -246,7 +249,7 @@ namespace NykantMVC.Controllers
             catch (Exception e)
             {
                 string uri = _urls.Api + url;
-                _logger.LogError($"uri: {uri}" + e.Message);
+                _logger.LogError($"time: {DateTime.Now} - uri: {uri}" + e.Message);
             }
             return null;
             
@@ -270,7 +273,7 @@ namespace NykantMVC.Controllers
                     var disco = await ISclient.GetDiscoveryDocumentAsync(_urls.Is);
                     if (disco.IsError)
                     {
-                        Console.WriteLine(disco.Error);
+                        _logger.LogError($"time: {DateTime.Now} - {disco.Error}");
                         return null;
                     }
 
@@ -280,13 +283,13 @@ namespace NykantMVC.Controllers
                         Address = disco.TokenEndpoint,
 
                         ClientId = "client",
-                        ClientSecret = "secret",
+                        ClientSecret = conf["ClientClientSecret"],
                         Scope = "NykantAPI"
                     });
 
                     if (tokenResponse.IsError)
                     {
-                        Console.WriteLine(tokenResponse.Error);
+                        _logger.LogError($"time: {DateTime.Now} - {tokenResponse.Error}");
                         return null;
                     }
 
@@ -299,7 +302,7 @@ namespace NykantMVC.Controllers
             catch (Exception e)
             {
                 string uri = _urls.Api + url;
-                _logger.LogError($"uri: {uri}" + e.Message);
+                _logger.LogError($"time: {DateTime.Now} - uri: {uri}" + e.Message);
             }
             return null;
             

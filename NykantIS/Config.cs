@@ -27,15 +27,15 @@ namespace NykantIS
                 {
                     ClientId = "client",
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
-
-                    ClientSecrets = { new Secret("secret".Sha256()) },
+                    
+                    ClientSecrets = { new Secret("Veryser1Iouscl3Ient5secr44ett5hatnoknowsS".Sha256()) },
 
                     AllowedScopes = { "NykantAPI" }
                 },
                 new Client
                 {
                     ClientId = "mvc",
-                    ClientSecrets = { new Secret("secret".Sha256()) },
+                    ClientSecrets = { new Secret("Ver123XXXyser1Ious3m1v2C5secr44ett5hatnOknowsS".Sha256()) },
 
                     AllowedGrantTypes = GrantTypes.Code,
 

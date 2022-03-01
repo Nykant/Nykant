@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -10,12 +11,12 @@ using System.Threading.Tasks;
 
 namespace NykantAPI.Controllers
 {
-
+    [Authorize]
     [ApiController]
     [Route("[controller]/[action]/")]
     public class CategoryController : BaseController
     {
-        public CategoryController(ILogger<BaseController> logger, ApplicationDbContext context) : base(logger, context)
+        public CategoryController(ILogger<CategoryController> logger, ApplicationDbContext context) : base(logger, context)
         {
         }
 
@@ -28,7 +29,7 @@ namespace NykantAPI.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
                 return BadRequest();
             }
 

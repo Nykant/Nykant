@@ -1112,7 +1112,7 @@ namespace NykantAPI.data.migrations
                         {
                             Name = "__stripe_mid",
                             Category = 0,
-                            Description = "Sørger for sikkerhed under betalingen via vores betalingsservice stripe. Forebygger imod svig/forfalskning.",
+                            Description = "Sørger for sikkerhed under betalingen via vores betalingsservice stripe. Forebygger imod svig/forfalskning. Nødvendig for at betaling kan fungere.",
                             Domain = ".nykant.dk",
                             Type1 = 1,
                             Type2 = 0
@@ -1121,7 +1121,7 @@ namespace NykantAPI.data.migrations
                         {
                             Name = "__stripe_sid",
                             Category = 0,
-                            Description = "Sørger for sikkerhed under betalingen via vores betalingsservice stripe. Forebygger imod svig/forfalskning.",
+                            Description = "Sørger for sikkerhed under betalingen via vores betalingsservice stripe. Forebygger imod svig/forfalskning. Nødvendig for at betaling kan fungere.",
                             Domain = ".nykant.dk",
                             Type1 = 1,
                             Type2 = 0
@@ -1130,7 +1130,7 @@ namespace NykantAPI.data.migrations
                         {
                             Name = "m",
                             Category = 0,
-                            Description = "Sørger for sikkerhed under betalingen via vores betalingsservice stripe. Forebygger imod svig/forfalskning.",
+                            Description = "Sørger for sikkerhed under betalingen via vores betalingsservice stripe. Forebygger imod svig/forfalskning. Nødvendig for at betaling kan fungere.",
                             Domain = "m.stripe.com",
                             Type1 = 1,
                             Type2 = 1
@@ -1139,7 +1139,7 @@ namespace NykantAPI.data.migrations
                         {
                             Name = "private_machine_identifier",
                             Category = 0,
-                            Description = "Sørger for sikkerhed under betalingen via vores betalingsservice stripe. Forebygger imod svig/forfalskning.",
+                            Description = "Sørger for sikkerhed under betalingen via vores betalingsservice stripe. Forebygger imod svig/forfalskning. Nødvendig for at betaling kan fungere.",
                             Domain = "stripe.com",
                             Type1 = 1,
                             Type2 = 1
@@ -3142,12 +3142,21 @@ namespace NykantAPI.data.migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("OrderId")
+                    b.Property<int>("PaymentCaptureId")
                         .HasColumnType("int");
+
+                    b.Property<string>("TaxLessPrice")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Taxes")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("TotalPrice")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OrderId")
+                    b.HasIndex("PaymentCaptureId")
                         .IsUnique();
 
                     b.ToTable("Invoices");
@@ -3176,24 +3185,17 @@ namespace NykantAPI.data.migrations
                         .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("EstimatedDelivery")
                         .HasColumnType("datetime(6)");
 
                     b.Property<bool>("IsBackOrder")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("PaymentIntent_Id")
-                        .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                    b.Property<int>("PaymentCaptureId")
+                        .HasColumnType("int");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
-
-                    b.Property<string>("Subject")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("TaxLessPrice")
                         .IsRequired()
@@ -3212,7 +3214,7 @@ namespace NykantAPI.data.migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CustomerId");
+                    b.HasIndex("PaymentCaptureId");
 
                     b.ToTable("Orders");
                 });
@@ -3233,6 +3235,28 @@ namespace NykantAPI.data.migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("OrderItems");
+                });
+
+            modelBuilder.Entity("NykantAPI.Models.PaymentCapture", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Captured")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PaymentIntent_Id")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
+
+                    b.ToTable("PaymentCaptures");
                 });
 
             modelBuilder.Entity("NykantAPI.Models.Product", b =>
@@ -3339,7 +3363,7 @@ namespace NykantAPI.data.migrations
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 45 cm.</p></td></tr>",
                             Title = "Bøjle i massivt egetræ - Behandlet med naturolie",
                             UrlName = "Bøjle-Egetræ-Naturolie",
-                            WeightInKg = 11.6
+                            WeightInKg = 0.59999999999999998
                         },
                         new
                         {
@@ -3363,7 +3387,7 @@ namespace NykantAPI.data.migrations
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 45 cm.</p></td></tr>",
                             Title = "Bøjle i massivt egetræ - Behandlet med sortolie",
                             UrlName = "Bøjle-Egetræ-Sortolie",
-                            WeightInKg = 11.6
+                            WeightInKg = 0.59999999999999998
                         },
                         new
                         {
@@ -3387,7 +3411,7 @@ namespace NykantAPI.data.migrations
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 45 cm.</p></td></tr>",
                             Title = "Bøjle i massivt egetræ - Behandlet med hvidolie",
                             UrlName = "Bøjle-Egetræ-Hvidolie",
-                            WeightInKg = 11.6
+                            WeightInKg = 0.59999999999999998
                         },
                         new
                         {
@@ -3413,7 +3437,7 @@ namespace NykantAPI.data.migrations
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 40 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med hvidolie",
                             UrlName = "Hylde-Egetræ-Hvidolie-40cm",
-                            WeightInKg = 11.6
+                            WeightInKg = 1.3999999999999999
                         },
                         new
                         {
@@ -3439,7 +3463,7 @@ namespace NykantAPI.data.migrations
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 40 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med sortolie",
                             UrlName = "Hylde-Egetræ-Sortolie-40cm",
-                            WeightInKg = 11.6
+                            WeightInKg = 1.3999999999999999
                         },
                         new
                         {
@@ -3465,7 +3489,7 @@ namespace NykantAPI.data.migrations
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 40 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med naturolie",
                             UrlName = "Hylde-Egetræ-Naturolie-40cm",
-                            WeightInKg = 11.6
+                            WeightInKg = 1.3999999999999999
                         },
                         new
                         {
@@ -3491,7 +3515,7 @@ namespace NykantAPI.data.migrations
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 60 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med hvidolie",
                             UrlName = "Hylde-Egetræ-Hvidolie-60cm",
-                            WeightInKg = 11.6
+                            WeightInKg = 2.0
                         },
                         new
                         {
@@ -3517,7 +3541,7 @@ namespace NykantAPI.data.migrations
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 60 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med sortolie",
                             UrlName = "Hylde-Egetræ-Sortolie-60cm",
-                            WeightInKg = 11.6
+                            WeightInKg = 2.0
                         },
                         new
                         {
@@ -3543,7 +3567,7 @@ namespace NykantAPI.data.migrations
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 60 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med naturolie",
                             UrlName = "Hylde-Egetræ-Naturolie-60cm",
-                            WeightInKg = 11.6
+                            WeightInKg = 2.0
                         },
                         new
                         {
@@ -3569,7 +3593,7 @@ namespace NykantAPI.data.migrations
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 80 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med hvidolie",
                             UrlName = "Hylde-Egetræ-Hvidolie-80cm",
-                            WeightInKg = 11.6
+                            WeightInKg = 2.6000000000000001
                         },
                         new
                         {
@@ -3595,7 +3619,7 @@ namespace NykantAPI.data.migrations
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 80 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med sortolie",
                             UrlName = "Hylde-Egetræ-Sortolie-80cm",
-                            WeightInKg = 11.6
+                            WeightInKg = 2.6000000000000001
                         },
                         new
                         {
@@ -3621,7 +3645,7 @@ namespace NykantAPI.data.migrations
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 80 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med naturolie",
                             UrlName = "Hylde-Egetræ-Naturolie-80cm",
-                            WeightInKg = 11.6
+                            WeightInKg = 2.6000000000000001
                         },
                         new
                         {
@@ -3647,7 +3671,7 @@ namespace NykantAPI.data.migrations
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 100 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med hvidolie",
                             UrlName = "Hylde-Egetræ-Hvidolie-100cm",
-                            WeightInKg = 11.6
+                            WeightInKg = 3.2000000000000002
                         },
                         new
                         {
@@ -3673,7 +3697,7 @@ namespace NykantAPI.data.migrations
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 100 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med sortolie",
                             UrlName = "Hylde-Egetræ-Sortolie-100cm",
-                            WeightInKg = 11.6
+                            WeightInKg = 3.2000000000000002
                         },
                         new
                         {
@@ -3699,7 +3723,7 @@ namespace NykantAPI.data.migrations
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 100 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med naturolie",
                             UrlName = "Hylde-Egetræ-Naturolie-100cm",
-                            WeightInKg = 11.6
+                            WeightInKg = 3.2000000000000002
                         },
                         new
                         {
@@ -4703,7 +4727,7 @@ namespace NykantAPI.data.migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("OrderId")
+                    b.Property<int>("PaymentCaptureId")
                         .HasColumnType("int");
 
                     b.Property<int>("Type")
@@ -4711,7 +4735,7 @@ namespace NykantAPI.data.migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OrderId")
+                    b.HasIndex("PaymentCaptureId")
                         .IsUnique();
 
                     b.ToTable("ShippingDeliveries");
@@ -4755,18 +4779,18 @@ namespace NykantAPI.data.migrations
 
             modelBuilder.Entity("NykantAPI.Models.Invoice", b =>
                 {
-                    b.HasOne("NykantAPI.Models.Order", "Order")
+                    b.HasOne("NykantAPI.Models.PaymentCapture", "PaymentCapture")
                         .WithOne("Invoice")
-                        .HasForeignKey("NykantAPI.Models.Invoice", "OrderId")
+                        .HasForeignKey("NykantAPI.Models.Invoice", "PaymentCaptureId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
             modelBuilder.Entity("NykantAPI.Models.Order", b =>
                 {
-                    b.HasOne("NykantAPI.Models.Customer", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerId")
+                    b.HasOne("NykantAPI.Models.PaymentCapture", "PaymentCapture")
+                        .WithMany("Orders")
+                        .HasForeignKey("PaymentCaptureId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -4782,6 +4806,15 @@ namespace NykantAPI.data.migrations
                     b.HasOne("NykantAPI.Models.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("NykantAPI.Models.PaymentCapture", b =>
+                {
+                    b.HasOne("NykantAPI.Models.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -4824,9 +4857,9 @@ namespace NykantAPI.data.migrations
 
             modelBuilder.Entity("NykantAPI.Models.ShippingDelivery", b =>
                 {
-                    b.HasOne("NykantAPI.Models.Order", "Order")
+                    b.HasOne("NykantAPI.Models.PaymentCapture", "PaymentCapture")
                         .WithOne("ShippingDelivery")
-                        .HasForeignKey("NykantAPI.Models.ShippingDelivery", "OrderId")
+                        .HasForeignKey("NykantAPI.Models.ShippingDelivery", "PaymentCaptureId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

@@ -6,14 +6,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace NykantAPI.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]/[action]/")]
     public class CookieController : BaseController
     {
-        public CookieController(ILogger<BaseController> logger, ApplicationDbContext context) : base(logger, context)
+        public CookieController(ILogger<CookieController> logger, ApplicationDbContext context) : base(logger, context)
         { }
 
         [HttpGet]
@@ -25,7 +27,7 @@ namespace NykantAPI.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
                 return BadRequest();
             }
 

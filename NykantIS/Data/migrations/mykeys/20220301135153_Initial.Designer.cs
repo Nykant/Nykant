@@ -8,7 +8,7 @@ using NykantIS.Data;
 namespace NykantIS.data.migrations.mykeys
 {
     [DbContext(typeof(MyKeysContext))]
-    [Migration("20220209122020_Initial")]
+    [Migration("20220301135153_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

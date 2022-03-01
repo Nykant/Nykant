@@ -8,11 +8,6 @@ namespace NykantMVC.Models
     {
         [Key]
         public int Id { get; set; }
-        public string Subject { get; set; }
-        [Required]
-        public int CustomerId { get; set; }
-        public Customer Customer { get; set; }
-        public Invoice Invoice { get; set; }
         [Required]
         public DateTime CreatedAt { get; set; }
         [Required]
@@ -33,7 +28,6 @@ namespace NykantMVC.Models
         public PaymentCapture PaymentCapture { get; set; }
         public List<OrderItem> OrderItems { get; set; }
         public List<BagItem> BagItems { get; set; }
-        public ShippingDelivery ShippingDelivery { get; set; }
     }
 
     public enum Status

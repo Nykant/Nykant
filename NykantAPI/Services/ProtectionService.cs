@@ -14,13 +14,15 @@ namespace NykantAPI.Services
         IDataProtector _newsSubProtector;
         IDataProtector _consentProtector;
         IDataProtector _paymentCaptureProtector;
+        IDataProtector _invoiceProtector;
         public ProtectionService(IDataProtectionProvider provider)
         {
-            _newsSubProtector = provider.CreateProtector("Nykant.NewsSub.Protect.v1");
-            _customerProtector = provider.CreateProtector("Nykant.Customer.Protect.v1");
-            _orderProtector = provider.CreateProtector("Nykant.Order.Protect.v1");
-            _consentProtector = provider.CreateProtector("Nykant.Consent.Protect.v1");
-            _paymentCaptureProtector = provider.CreateProtector("Nykant.PaymentCapture.Protect.v1");
+            _newsSubProtector = provider.CreateProtector("Nykant.NewsSub.Protect.ASDdgfasd2343ø4v1");
+            _customerProtector = provider.CreateProtector("Nykant.Customer.Protect.ASDfzsæef23ø4234v1");
+            _orderProtector = provider.CreateProtector("Nykant.Order.Protect.asASæDdfa2342ø34v1");
+            _consentProtector = provider.CreateProtector("Nykant.Consent.Protect.ASDsadfaøs234æ25v1");
+            _paymentCaptureProtector = provider.CreateProtector("Nykant.PaymentCapture.Protect.dsaføæsASD2æ34235v1");
+            _invoiceProtector = provider.CreateProtector("Nykant.Invoice.Protect.dsafs2342SDFGø4235v123423æADSAFGH");
         }
 
         public Consent ProtectConsent(Consent consent)
@@ -67,26 +69,54 @@ namespace NykantAPI.Services
             return consent;
         }
 
-        public PaymentCapture ProtectPaymentCapture(PaymentCapture paymentCapture)
+        public PaymentCapture ProtectPaymentCapture(PaymentCapture paymentCapture, bool doOrder = true)
         {
-            paymentCapture.PaymentIntent_Id = _newsSubProtector.Protect(paymentCapture.PaymentIntent_Id);
-
-            for(int i = 0; i < paymentCapture.Orders.Count(); i++)
+            paymentCapture.PaymentIntent_Id = _paymentCaptureProtector.Protect(paymentCapture.PaymentIntent_Id);
+            if (paymentCapture.Customer != null)
             {
-                paymentCapture.Orders[i] = ProtectOrder(paymentCapture.Orders[i]);
+                paymentCapture.Customer = ProtectCustomer(paymentCapture.Customer);
             }
-            
+            if (paymentCapture.Invoice != null)
+            {
+                paymentCapture.Invoice = ProtectInvoice(paymentCapture.Invoice);
+            }
+            if (doOrder)
+            {
+                if (paymentCapture.Orders != null)
+                {
+                    for (int i = 0; i < paymentCapture.Orders.Count(); i++)
+                    {
+                        paymentCapture.Orders[i] = ProtectOrder(paymentCapture.Orders[i], false);
+                    }
+                }
+            }
+
+
             return paymentCapture;
         }
 
-        public PaymentCapture UnprotectPaymentCapture(PaymentCapture paymentCapture)
+        public PaymentCapture UnprotectPaymentCapture(PaymentCapture paymentCapture, bool doOrder = true)
         {
-            paymentCapture.PaymentIntent_Id = _newsSubProtector.Unprotect(paymentCapture.PaymentIntent_Id);
-
-            for (int i = 0; i < paymentCapture.Orders.Count(); i++)
+            paymentCapture.PaymentIntent_Id = _paymentCaptureProtector.Unprotect(paymentCapture.PaymentIntent_Id);
+            if (paymentCapture.Customer != null)
             {
-                paymentCapture.Orders[i] = UnprotectOrder(paymentCapture.Orders[i]);
+                paymentCapture.Customer = UnprotectCustomer(paymentCapture.Customer);
             }
+            if(paymentCapture.Invoice != null)
+            {
+                paymentCapture.Invoice = UnprotectInvoice(paymentCapture.Invoice);
+            }
+            if (doOrder)
+            {
+                if (paymentCapture.Orders != null)
+                {
+                    for (int i = 0; i < paymentCapture.Orders.Count(); i++)
+                    {
+                        paymentCapture.Orders[i] = UnprotectOrder(paymentCapture.Orders[i], false);
+                    }
+                }
+            }
+
 
             return paymentCapture;
         }
@@ -111,6 +141,16 @@ namespace NykantAPI.Services
             customer.Email = _customerProtector.Protect(customer.Email);
             customer.Phone = _customerProtector.Protect(customer.Phone);
 
+            if (customer.ShippingAddress != null)
+            {
+                customer.ShippingAddress = ProtectShippingAddress(customer.ShippingAddress);
+            }
+
+            if (customer.BillingAddress != null)
+            {
+                customer.BillingAddress = ProtectInvoiceAddress(customer.BillingAddress);
+            }
+
             return customer;
         }
 
@@ -121,45 +161,15 @@ namespace NykantAPI.Services
             customer.Email = _customerProtector.Unprotect(customer.Email);
             customer.Phone = _customerProtector.Unprotect(customer.Phone);
 
-            return customer;
-        }
+            if (customer.ShippingAddress != null)
+            {
+                customer.ShippingAddress = UnprotectShippingAddress(customer.ShippingAddress);
+            }
 
-        public Customer UnprotectWholeCustomer(Customer customer)
-        {
-            customer.Email = _customerProtector.Unprotect(customer.Email);
-            customer.Phone = _customerProtector.Unprotect(customer.Phone);
-
-            customer.ShippingAddress.Name = _customerProtector.Unprotect(customer.ShippingAddress.Name);
-            customer.ShippingAddress.Address = _customerProtector.Unprotect(customer.ShippingAddress.Address);
-            customer.ShippingAddress.City = _customerProtector.Unprotect(customer.ShippingAddress.City);
-            customer.ShippingAddress.Country = _customerProtector.Unprotect(customer.ShippingAddress.Country);
-            customer.ShippingAddress.Postal = _customerProtector.Unprotect(customer.ShippingAddress.Postal);
-
-            customer.BillingAddress.Address = _customerProtector.Unprotect(customer.BillingAddress.Address);
-            customer.BillingAddress.City = _customerProtector.Unprotect(customer.BillingAddress.City);
-            customer.BillingAddress.Country = _customerProtector.Unprotect(customer.BillingAddress.Country);
-            customer.BillingAddress.Postal = _customerProtector.Unprotect(customer.BillingAddress.Postal);
-            customer.BillingAddress.Name = _customerProtector.Unprotect(customer.BillingAddress.Name);
-
-            return customer;
-        }
-
-        public Customer ProtectWholeCustomer(Customer customer)
-        {
-            customer.Email = _customerProtector.Protect(customer.Email);
-            customer.Phone = _customerProtector.Protect(customer.Phone);
-
-            customer.ShippingAddress.Name = _customerProtector.Protect(customer.ShippingAddress.Name);
-            customer.ShippingAddress.Address = _customerProtector.Protect(customer.ShippingAddress.Address);
-            customer.ShippingAddress.City = _customerProtector.Protect(customer.ShippingAddress.City);
-            customer.ShippingAddress.Country = _customerProtector.Protect(customer.ShippingAddress.Country);
-            customer.ShippingAddress.Postal = _customerProtector.Protect(customer.ShippingAddress.Postal);
-
-            customer.BillingAddress.Address = _customerProtector.Protect(customer.BillingAddress.Address);
-            customer.BillingAddress.City = _customerProtector.Protect(customer.BillingAddress.City);
-            customer.BillingAddress.Country = _customerProtector.Protect(customer.BillingAddress.Country);
-            customer.BillingAddress.Postal = _customerProtector.Protect(customer.BillingAddress.Postal);
-            customer.BillingAddress.Name = _customerProtector.Protect(customer.BillingAddress.Name);
+            if (customer.BillingAddress != null)
+            {
+                customer.BillingAddress = UnprotectInvoiceAddress(customer.BillingAddress);
+            }
 
             return customer;
         }
@@ -208,46 +218,80 @@ namespace NykantAPI.Services
             return invoiceAddress;
         }
 
-        public Order UnprotectOrder(Order order)
+        public Order UnprotectOrder(Order order, bool dopaymentCapture = true)
         {
             order.Currency = _orderProtector.Unprotect(order.Currency);
-            order.PaymentIntent_Id = _orderProtector.Unprotect(order.PaymentIntent_Id);
             order.TotalPrice = _orderProtector.Unprotect(order.TotalPrice);
-            order.Taxes = _orderProtector.Protect(order.Taxes);
-            order.TaxLessPrice = _orderProtector.Protect(order.TaxLessPrice);
+            order.Taxes = _orderProtector.Unprotect(order.Taxes);
+            order.TaxLessPrice = _orderProtector.Unprotect(order.TaxLessPrice);
+
+            if (dopaymentCapture)
+            {
+                if (order.PaymentCapture != null)
+                {
+                    order.PaymentCapture = UnprotectPaymentCapture(order.PaymentCapture, false);
+                }
+            }
+
             return order;
         }
 
-        public Order ProtectOrder(Order order)
+        public Order ProtectOrder(Order order, bool dopaymentCapture = true)
         {
             order.Currency = _orderProtector.Protect(order.Currency);
-            order.PaymentIntent_Id = _orderProtector.Protect(order.PaymentIntent_Id);
             order.TotalPrice = _orderProtector.Protect(order.TotalPrice);
-            order.Taxes = _orderProtector.Unprotect(order.Taxes);
-            order.TaxLessPrice = _orderProtector.Unprotect(order.TaxLessPrice);
+            order.Taxes = _orderProtector.Protect(order.Taxes);
+            order.TaxLessPrice = _orderProtector.Protect(order.TaxLessPrice);
+
+            if (dopaymentCapture)
+            {
+                if (order.PaymentCapture != null)
+                {
+                    order.PaymentCapture = ProtectPaymentCapture(order.PaymentCapture, false);
+                }
+            }
+
             return order;
+        }
+
+        public Invoice UnprotectInvoice(Invoice invoice)
+        {
+            invoice.TotalPrice = _invoiceProtector.Unprotect(invoice.TotalPrice);
+            invoice.Taxes = _invoiceProtector.Unprotect(invoice.Taxes);
+            invoice.TaxLessPrice = _invoiceProtector.Unprotect(invoice.TaxLessPrice);
+
+            return invoice;
+        }
+
+        public Invoice ProtectInvoice(Invoice invoice)
+        {
+            invoice.TotalPrice = _invoiceProtector.Protect(invoice.TotalPrice);
+            invoice.Taxes = _invoiceProtector.Protect(invoice.Taxes);
+            invoice.TaxLessPrice = _invoiceProtector.Protect(invoice.TaxLessPrice);
+
+            return invoice;
         }
     }
 
     public interface IProtectionService
     {
-        PaymentCapture UnprotectPaymentCapture(PaymentCapture paymentCapture);
-        PaymentCapture ProtectPaymentCapture(PaymentCapture paymentCapture);
+        Invoice ProtectInvoice(Invoice invoice);
+        Invoice UnprotectInvoice(Invoice invoice);
+        PaymentCapture UnprotectPaymentCapture(PaymentCapture paymentCapture, bool doOrder = true);
+        PaymentCapture ProtectPaymentCapture(PaymentCapture paymentCapture, bool doOrder = true);
         public Consent ProtectConsent(Consent consent);
         public Consent UnprotectConsent(Consent consent);
         public NewsSub ProtectNewsSub(NewsSub newsSub);
         public NewsSub UnprotectNewsSub(NewsSub newsSub);
         public Customer ProtectCustomer(Customer customerInf);
         public Customer UnprotectCustomer(Customer customerInf);
-        public Customer UnprotectWholeCustomer(Customer customer);
-        public Customer ProtectWholeCustomer(Customer customer);
 
         public ShippingAddress ProtectShippingAddress(ShippingAddress customerInf);
         public ShippingAddress UnprotectShippingAddress(ShippingAddress customerInf);
 
         public BillingAddress ProtectInvoiceAddress(BillingAddress customerInf);
         public BillingAddress UnprotectInvoiceAddress(BillingAddress customerInf);
-        public Order ProtectOrder(Order order);
-        public Order UnprotectOrder(Order order);
+        public Order ProtectOrder(Order order, bool dopaymentCapture = true);
+        public Order UnprotectOrder(Order order, bool dopaymentCapture = true);
     }
 }

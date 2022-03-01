@@ -36,11 +36,4 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.15" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.15" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Data\migrations\config\" />
-    <Folder Include="Data\migrations\identity\" />
-    <Folder Include="Data\migrations\mykeys\" />
-    <Folder Include="Data\migrations\persisted\" />
-  </ItemGroup>
 </Project>

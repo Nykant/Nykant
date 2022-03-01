@@ -1,4 +1,7 @@
-﻿@model List<Order>
+﻿@{
+    List<Order> list = ViewData.Model;
+    list.Reverse();
+}
 
 <h1 class="list-h1">Rest Ordrer</h1>
 <table class="my-list">
@@ -9,7 +12,7 @@
         <th>Status</th>
         <th></th>
     </tr>
-    @foreach (var order in Model)
+    @foreach (var order in list)
     {
         @if (order.IsBackOrder)
         {

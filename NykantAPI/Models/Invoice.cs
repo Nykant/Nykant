@@ -11,7 +11,10 @@ namespace NykantAPI.Models
         [Key]
         public int Id { get; set; }
         public DateTime CreatedAt { get; set; }
-        public int OrderId { get; set; }
-        public Order Order { get; set; }
+        public int PaymentCaptureId { get; set; }
+        public PaymentCapture PaymentCapture { get; set; }
+        public string TotalPrice { get; set; }
+        public string Taxes { get; set; }
+        public string TaxLessPrice { get; set; }
     }
 }

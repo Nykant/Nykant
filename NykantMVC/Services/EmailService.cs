@@ -40,7 +40,7 @@ namespace NykantMVC.Services
                 var email = new MimeMessage();
                 email.From.Add(MailboxAddress.Parse(_mailSettings.Mail));
                 email.Sender = MailboxAddress.Parse(_mailSettings.Mail);
-                email.To.Add(MailboxAddress.Parse(order.Customer.Email));
+                email.To.Add(MailboxAddress.Parse(order.PaymentCapture.Customer.Email));
                 email.Subject = "Ordrebekræftelse";
 
                 var bodyBuilder = new BodyBuilder();
@@ -63,9 +63,44 @@ namespace NykantMVC.Services
             }
             catch (Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
             }
             
+        }
+
+        public async Task SendOrderSentEmailAsync(Order order)
+        {
+            try
+            {
+                var email = new MimeMessage();
+                email.From.Add(MailboxAddress.Parse(_mailSettings.Mail));
+                email.Sender = MailboxAddress.Parse(_mailSettings.Mail);
+                email.To.Add(MailboxAddress.Parse(order.PaymentCapture.Customer.Email));
+                email.Subject = "Ordre Sendt";
+
+                var bodyBuilder = new BodyBuilder();
+                //for (int i = 0; i < order.OrderItems.Count(); i++)
+                //{
+                //    var image = bodyBuilder.LinkedResources.Add(order.OrderItems[i].Product.Path);
+                //    image.ContentId = MimeUtils.GenerateMessageId();
+                //    order.OrderItems[i].ContentId = image.ContentId;
+                //}
+                string body = await _razorViewToStringRenderer.RenderViewToStringAsync("/Views/Shared/EmailViews/OrderSentEmail.cshtml", order);
+
+                bodyBuilder.HtmlBody = body;
+                email.Body = bodyBuilder.ToMessageBody();
+
+                using var smtp = new SmtpClient();
+                smtp.Connect(_mailSettings.Host, _mailSettings.Port, SecureSocketOptions.StartTls);
+                smtp.Authenticate(_mailSettings.Username, _mailSettings.Password);
+                await smtp.SendAsync(email);
+                smtp.Disconnect(true);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
+            }
+
         }
 
         public async Task SendDKIEmailAsync(Order order)
@@ -105,7 +140,7 @@ namespace NykantMVC.Services
             }
             catch (Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
             }
             
         }
@@ -140,22 +175,22 @@ namespace NykantMVC.Services
             }
             catch (Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
             }
             
         }
 
-        public async Task SendInvoiceEmailAsync(Order order)
+        public async Task SendInvoiceEmailAsync(PaymentCapture paymentCapture)
         {
             try
             {
                 var email = new MimeMessage();
                 email.From.Add(MailboxAddress.Parse(_mailSettings.Mail));
                 email.Sender = MailboxAddress.Parse(_mailSettings.Mail);
-                email.To.Add(MailboxAddress.Parse(order.Customer.Email));
+                email.To.Add(MailboxAddress.Parse(paymentCapture.Customer.Email));
                 email.Subject = "Faktura";
                 var bodyBuilder = new BodyBuilder();
-                string body = await _razorViewToStringRenderer.RenderViewToStringAsync("/Views/Shared/EmailViews/InvoiceEmail.cshtml", order);
+                string body = await _razorViewToStringRenderer.RenderViewToStringAsync("/Views/Shared/EmailViews/InvoiceEmail.cshtml", paymentCapture);
                 bodyBuilder.HtmlBody = body;
                 email.Body = bodyBuilder.ToMessageBody();
                 using var smtp = new SmtpClient();
@@ -166,7 +201,7 @@ namespace NykantMVC.Services
             }
             catch (Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
             }
             
         }
@@ -195,10 +230,11 @@ namespace NykantMVC.Services
 
     public interface IMailService
     {
+        Task SendOrderSentEmailAsync(Order order);
         Task SendNykantEmailAsync(Order order);
         Task SendOrderEmailAsync(Order order);
         Task SendDKIEmailAsync(Order order);
-        Task SendInvoiceEmailAsync(Order order);
+        Task SendInvoiceEmailAsync(PaymentCapture paymentCapture);
         //Task SendEmailAsync(SimpleMail simpleMail);
     }
 }

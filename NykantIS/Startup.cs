@@ -246,6 +246,8 @@ namespace NykantIS
 
         private void InitializeDatabase(IApplicationBuilder app)
         {
+            SeedData.EnsureSeedData(app.ApplicationServices);
+
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
                 serviceScope.ServiceProvider.GetRequiredService<PersistedGrantDbContext>().Database.Migrate();

@@ -7,15 +7,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace NykantAPI.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]/[action]/")]
     public class ConsentController : BaseController
     {
         private readonly IProtectionService _protectionService;
-        public ConsentController(ILogger<BaseController> logger, ApplicationDbContext context, IProtectionService protectionService)
+        public ConsentController(ILogger<ConsentController> logger, ApplicationDbContext context, IProtectionService protectionService)
             : base(logger, context)
         {
             _protectionService = protectionService;
@@ -26,7 +28,6 @@ namespace NykantAPI.Controllers
         {
             try
             {
-                consent = _protectionService.UnprotectConsent(consent);
                 if (ModelState.IsValid)
                 {
                     consent = _protectionService.ProtectConsent(consent);
@@ -41,7 +42,7 @@ namespace NykantAPI.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
                 return BadRequest();
             }
         }

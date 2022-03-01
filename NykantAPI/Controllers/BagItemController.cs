@@ -15,11 +15,12 @@ using NykantAPI.Models.DTO;
 
 namespace NykantAPI.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]/[action]/")]
     public class BagItemController : BaseController
     {
-        public BagItemController(ILogger<BaseController> logger, ApplicationDbContext context)
+        public BagItemController(ILogger<BagItemController> logger, ApplicationDbContext context)
             : base(logger, context)
         {
         }
@@ -39,7 +40,7 @@ namespace NykantAPI.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
                 return BadRequest();
             }
         }
@@ -63,7 +64,7 @@ namespace NykantAPI.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
                 return BadRequest();
             }
         }
@@ -90,7 +91,7 @@ namespace NykantAPI.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
                 return BadRequest();
             }
         }
@@ -109,7 +110,7 @@ namespace NykantAPI.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
                 return BadRequest();
             }
 
@@ -126,7 +127,7 @@ namespace NykantAPI.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
                 return BadRequest();
             }
         }
@@ -157,7 +158,7 @@ namespace NykantAPI.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
                 return BadRequest();
             }
         }
@@ -171,7 +172,7 @@ namespace NykantAPI.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
                 return BadRequest();
             }
         }
@@ -185,7 +186,7 @@ namespace NykantAPI.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
                 return BadRequest();
             }
         }

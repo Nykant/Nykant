@@ -12,10 +12,6 @@ namespace NykantAPI.Models
     {
         [Key]
         public int Id { get; set; }
-        public string Subject { get; set; }
-        [Required]
-        public int CustomerId { get; set; }
-        public Customer Customer { get; set; }
         [Required]
         public DateTime CreatedAt { get; set; }
         [Required]
@@ -35,8 +31,6 @@ namespace NykantAPI.Models
         public int PaymentCaptureId { get; set; }
         public PaymentCapture PaymentCapture { get; set; }
         public List<OrderItem> OrderItems { get; set; }
-        public ShippingDelivery ShippingDelivery { get; set; }
-        public Invoice Invoice { get; set; }
     }
 
     public enum Status

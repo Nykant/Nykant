@@ -9,13 +9,14 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Text.Encodings.Web;
 using System;
+using Microsoft.Extensions.Configuration;
 
 namespace NykantMVC.Controllers
 {
     [AutoValidateAntiforgeryToken]
     public class ProductController : BaseController
     {
-        public ProductController(ILogger<BaseController> logger, IOptions<Urls> urls, HtmlEncoder htmlEncoder) : base(logger, urls, htmlEncoder)
+        public ProductController(ILogger<ProductController> logger, IOptions<Urls> urls, HtmlEncoder htmlEncoder, IConfiguration conf) : base(logger, urls, htmlEncoder, conf)
         {
         }
 
@@ -60,7 +61,7 @@ namespace NykantMVC.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
             }
             return View(new Product());
         }

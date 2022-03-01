@@ -41,18 +41,6 @@ namespace NykantIS
             try
             {
                 var host = CreateHostBuilder(args).Build();
-
-                var seed = false;
-                if (seed)
-                {
-                    Log.Information("Seeding database...");
-                    var config = host.Services.GetRequiredService<IConfiguration>();
-                    var connectionString = config.GetConnectionString("Identity");
-                    SeedData.EnsureSeedData(connectionString);
-                    Log.Information("Done seeding database.");
-                    return 0;
-                }
-
                 Log.Information("Starting host...");
                 host.Run();
                 return 0;

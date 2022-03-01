@@ -25,12 +25,10 @@ namespace NykantMVC.Controllers
     {
         private readonly IProtectionService _protectionService;
         private readonly IHostEnvironment env;
-        private IConfiguration conf;
-        public CheckoutController(ILogger<CheckoutController> logger, IProtectionService protectionService, IOptions<Urls> urls, HtmlEncoder htmlEncoder, IHostEnvironment env, IConfiguration conf) : base(logger, urls, htmlEncoder)
+        public CheckoutController(ILogger<CheckoutController> logger, IProtectionService protectionService, IOptions<Urls> urls, HtmlEncoder htmlEncoder, IHostEnvironment env, IConfiguration conf) : base(logger, urls, htmlEncoder, conf)
         {
             _protectionService = protectionService;
             this.env = env;
-            this.conf = conf;
         }
 
         [Route("Kassen")]
@@ -113,9 +111,6 @@ namespace NykantMVC.Controllers
                     {
                         var jsonCustomer = await GetRequest($"/Customer/GetCustomer/{checkout.CustomerInfId}");
                         customer = JsonConvert.DeserializeObject<Customer>(jsonCustomer);
-                        customer = _protectionService.UnprotectCustomer(customer);
-                        customer.ShippingAddress = _protectionService.UnprotectShippingAddress(customer.ShippingAddress);
-                        customer.BillingAddress = _protectionService.UnprotectBillingAddress(customer.BillingAddress);
                     }
                     else
                     {
@@ -135,7 +130,7 @@ namespace NykantMVC.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
             }
             return NoContent();
         }
@@ -163,7 +158,6 @@ namespace NykantMVC.Controllers
                         Type = ConsentType.PrivacyPolicy,
                         Status = ConsentStatus.Given
                     };
-                    consent = _protectionService.ProtectConsent(consent);
                     PostRequest("/Consent/Post", consent).ConfigureAwait(false);
                     //if (!consentResponse.IsSuccessStatusCode)
                     //{
@@ -173,7 +167,7 @@ namespace NykantMVC.Controllers
                 }
                 else
                 {
-                    _logger.LogError("error: User has not consented - an error has occured");
+                    _logger.LogError($"time: {DateTime.Now} - error: User has not consented - an error has occured");
                     return Json(new { error = "User has not consented - an error has occured" });
                 }
 
@@ -187,17 +181,16 @@ namespace NykantMVC.Controllers
                 }
 
                 var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
-                Customer old;
                 if (editCustomer)
                 {
-                    old = await GetCustomerNoUnprotect(checkout.CustomerInfId);
+                    var jsonCustomer = await GetRequest($"/Customer/GetCustomer/{checkout.CustomerInfId}");
+                    var old = JsonConvert.DeserializeObject<Customer>(jsonCustomer);
                     customer.ShippingAddress.Id = old.ShippingAddress.Id;
                     customer.BillingAddress.Id = old.BillingAddress.Id;
                     customer.Id = old.Id;
                 }
                 if (checkout.Stage == Stage.customerInf || editCustomer)
                 {
-                    customer = _protectionService.ProtectCustomer(customer);
                     var response = await PostRequest("/Customer/PostCustomer/", new Customer { Email = customer.Email, Phone = customer.Phone, Id = customer.Id });
                     if (response.IsSuccessStatusCode)
                     {
@@ -216,13 +209,13 @@ namespace NykantMVC.Controllers
                             }
                         }
 
-                        var shippingAddress = _protectionService.ProtectShippingAddress(customer.ShippingAddress);
+                        var shippingAddress = customer.ShippingAddress;
                         shippingAddress.CustomerId = customer.Id;
                         var postResponse = await PostRequest("/Customer/PostShippingAddress", shippingAddress);
                         if (postResponse.IsSuccessStatusCode)
                         {
 
-                            var invoiceAddress = _protectionService.ProtectBillingAddress(customer.BillingAddress);
+                            var invoiceAddress = customer.BillingAddress;
                             invoiceAddress.CustomerId = customer.Id;
                             var postResponse2 = await PostRequest("/Customer/PostBillingAddress", invoiceAddress);
                             if (postResponse2.IsSuccessStatusCode)
@@ -238,31 +231,31 @@ namespace NykantMVC.Controllers
                             }
                             else
                             {
-                                _logger.LogError("error: Could not post billing");
+                                _logger.LogError($"time: {DateTime.Now} - error: Could not post billing");
                                 return Json(new { error = "Could not post billing" });
                             }
                         }
                         else
                         {
-                            _logger.LogError("error: Could not post shipping");
+                            _logger.LogError($"time: {DateTime.Now} - error: Could not post shipping");
                             return Json(new { error = "Could not post shipping" });
                         }
                     }
                     else
                     {
-                        _logger.LogError("error: Could not post customer");
+                        _logger.LogError($"time: {DateTime.Now} - error: Could not post customer");
                         return Json(new { error = "Could not post customer" });
                     }
                 }
                 else
                 {
-                    _logger.LogError("error: Wrong stage");
+                    _logger.LogError($"time: {DateTime.Now} - error: Wrong stage");
                     return Json(new { error = "Wrong stage" });
                 }
             }
             catch (Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
                 return Json(new { error = e.Message });
             }
         }
@@ -312,12 +305,9 @@ namespace NykantMVC.Controllers
 
                 if (checkout.Stage == Stage.completed)
                 {
-                    var json = await GetRequest($"/Order/GetOrder/{checkout.ShippingDelivery.OrderId}");
-                    var order = JsonConvert.DeserializeObject<Order>(json);
-                    order = _protectionService.UnprotectWholeOrder(order);
                     HttpContext.Session.Set<Checkout>(CheckoutSessionKey, null);
 
-                    return View(order);
+                    return View();
                 }
                 else
                 {
@@ -325,7 +315,7 @@ namespace NykantMVC.Controllers
                 }
             }
             catch (Exception e) {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
             }
             return NoContent();
         }
@@ -343,7 +333,7 @@ namespace NykantMVC.Controllers
 
                     if (!response.IsSuccessStatusCode)
                     {
-                        _logger.LogError(response.ReasonPhrase);
+                        _logger.LogError($"time: {DateTime.Now} - {response.ReasonPhrase}");
                     }
                 }
 
@@ -353,18 +343,18 @@ namespace NykantMVC.Controllers
             }
             catch(Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
                 return RedirectToAction("Details", "Bag");
             }
         }
 
-        private async Task<Customer> GetCustomerNoUnprotect(int id)
-        {
-            Customer customer;
-            var jsonCustomer = await GetRequest($"/Customer/GetCustomer/{id}");
-            customer = JsonConvert.DeserializeObject<Customer>(jsonCustomer);
-            return customer;
-        }
+        //private async Task<Customer> GetCustomerNoUnprotect(int id)
+        //{
+        //    Customer customer;
+        //    var jsonCustomer = await GetRequest($"/Customer/GetCustomer/{id}");
+        //    customer = JsonConvert.DeserializeObject<Customer>(jsonCustomer);
+        //    return customer;
+        //}
 
         //[HttpPost]
         //public async Task<ParcelShopSearchResult> GetNearbyShopsJson(GlsAddress glsAddress)

@@ -11,5 +11,9 @@ namespace NykantMVC.Models
         public List<Order> Orders { get; set; }
         public string PaymentIntent_Id { get; set; }
         public bool Captured { get; set; }
+        public Invoice Invoice { get; set; }
+        public int CustomerId { get; set; }
+        public Customer Customer { get; set; }
+        public ShippingDelivery ShippingDelivery { get; set; }
     }
 }

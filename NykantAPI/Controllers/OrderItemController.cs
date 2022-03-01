@@ -6,14 +6,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace NykantAPI.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]/[action]/")]
     public class OrderItemController : BaseController
     {
-        public OrderItemController(ILogger<BaseController> logger, ApplicationDbContext context)
+        public OrderItemController(ILogger<OrderItemController> logger, ApplicationDbContext context)
                     : base(logger, context)
         {
         }
@@ -40,11 +42,9 @@ namespace NykantAPI.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
                 return BadRequest();
             }
-
-
         }
     }
 }

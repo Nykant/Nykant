@@ -21,13 +21,11 @@ namespace NykantMVC.Controllers
     [AllowAnonymous]
     public class PaymentController : BaseController
     {
-        private IConfigurationRoot _configuration;
         private readonly IProtectionService _protectionService;
         private readonly IMailService mailService;
         private readonly IHostEnvironment env;
-        public PaymentController(ILogger<BaseController> logger, IHostEnvironment _env, IConfiguration configuration, IMailService mailService, IProtectionService protectionService, IOptions<Urls> urls, HtmlEncoder htmlEncoder) : base(logger, urls, htmlEncoder)
+        public PaymentController(ILogger<PaymentController> logger, IHostEnvironment _env, IConfiguration conf, IMailService mailService, IProtectionService protectionService, IOptions<Urls> urls, HtmlEncoder htmlEncoder) : base(logger, urls, htmlEncoder, conf)
         {
-            _configuration = (IConfigurationRoot)configuration;
             _protectionService = protectionService;
             this.mailService = mailService;
             env = _env;
@@ -49,7 +47,6 @@ namespace NykantMVC.Controllers
                     Type = ConsentType.TermsAndConditions,
                     Status = ConsentStatus.Given
                 };
-                consent = _protectionService.ProtectConsent(consent);
                 PostRequest("/Consent/Post", consent).ConfigureAwait(false);
                 //if (!consentResponse.IsSuccessStatusCode)
                 //{
@@ -57,7 +54,7 @@ namespace NykantMVC.Controllers
                 //    return Json(new { error = "Could not post consent" });
                 //}
             }
-            catch (Exception err) { _logger.LogError(err.Message); }
+            catch (Exception err) { _logger.LogError($"time: {DateTime.Now} - {err.Message}"); }
             return NoContent();
         }
 
@@ -69,13 +66,13 @@ namespace NykantMVC.Controllers
                 var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
                 if (checkout == null)
                 {
-                    _logger.LogError("checkout = null");
+                    _logger.LogError($"time: {DateTime.Now} - checkout = null");
                     return Json(new { error = "checkout = null" });
                 }
 
                 if (checkout.Stage == Stage.payment)
                 {
-                    StripeConfiguration.ApiKey = _configuration["StripeSKKey"];
+                    StripeConfiguration.ApiKey = conf["StripeSKKey"];
                     //var json = await GetRequest($"/Customer/GetCustomer/{checkout.CustomerInfId}");
                     //var customerInf = JsonConvert.DeserializeObject<CustomerInf>(json);
                     //customerInf = _protectionService.UnProtectCustomerInf(customerInf);
@@ -119,7 +116,7 @@ namespace NykantMVC.Controllers
                     }
                     catch (StripeException e)
                     {
-                        _logger.LogError($"error: {e.Message}");
+                        _logger.LogError($"time: {DateTime.Now} - error: {e.Message}");
                         return Json(new { error = e.StripeError.Message });
                     }
 
@@ -128,13 +125,13 @@ namespace NykantMVC.Controllers
                 }
                 else
                 {
-                    _logger.LogError("error: stage not = payment");
+                    _logger.LogError($"time: {DateTime.Now} - error: stage not = payment");
                     return Json(new { error = "stage not = payment" });
                 }
             }
             catch (Exception e) 
             {
-                _logger.LogError($"error: {e.Message}");
+                _logger.LogError($"time: {DateTime.Now} - error: {e.Message}");
             }
 
             return Json(new { error = "Payment error" });
@@ -145,7 +142,7 @@ namespace NykantMVC.Controllers
         {
             try
             {
-                StripeConfiguration.ApiKey = _configuration["StripeSKKey"];
+                StripeConfiguration.ApiKey = conf["StripeSKKey"];
 
                 PaymentIntentService paymentIntentService = new PaymentIntentService();
                 PaymentIntent paymentIntent = null;
@@ -163,7 +160,7 @@ namespace NykantMVC.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError($"error: {e.Message}");
+                _logger.LogError($"time: {DateTime.Now} - error: {e.Message}");
             }
             return Json(new { error = "ConfirmPayment Error" });
         }
@@ -196,67 +193,6 @@ namespace NykantMVC.Controllers
             }
         }
 
-        public async Task<IActionResult> CapturePaymentIntent(int paymentCaptureId)
-        {
-            try
-            {
-                StripeConfiguration.ApiKey = _configuration["StripeSKKey"];
-
-                var json = await GetRequest($"/PaymentCapture/GetPaymentCapture/{paymentCaptureId}");
-                var paymentCapture = JsonConvert.DeserializeObject<PaymentCapture>(json);
-
-                var service = new PaymentIntentService();
-                var paymentIntent = await service.CaptureAsync(paymentCapture.PaymentIntent_Id);
-
-                if (paymentIntent.StripeResponse.StatusCode == System.Net.HttpStatusCode.OK)
-                {
-                    paymentCapture.Captured = true;
-
-                    var now = DateTime.Now;
-                    var deliveryDate = now.AddDays(2);
-                    paymentCapture.EstimatedDelivery = deliveryDate;
-
-                    Models.Invoice invoice = new Models.Invoice
-                    {
-                        CreatedAt = DateTime.Now,
-                        OrderId = paymentCapture.Id,
-                        Order = null
-                    };
-                    var response = await PostRequest("/Invoice/PostInvoice/", invoice);
-                    var invoiceJson = await GetRequest(response.Headers.Location.AbsolutePath);
-                    invoice = JsonConvert.DeserializeObject<Models.Invoice>(invoiceJson);
-                    paymentCapture.Invoice = invoice;
-
-                    await mailService.SendInvoiceEmailAsync(paymentCapture);
-
-                    paymentCapture.Customer = null;
-                    paymentCapture = _protectionService.ProtectOrder(paymentCapture);
-                    await PatchRequest("/Order/UpdateOrder", paymentCapture);
-
-                    var json2 = await GetRequest("/Order/GetOrders");
-                    var orders = JsonConvert.DeserializeObject<List<Models.Order>>(json2);
-                    for (int i = 0; i < orders.Count; i++)
-                    {
-                        orders[i] = _protectionService.UnprotectOrder(orders[i]);
-                    }
-
-                    ViewData.Model = orders;
-                    return new PartialViewResult
-                    {
-                        ViewName = "/Views/Order/_UnsentOrderListPartial.cshtml",
-                        ViewData = this.ViewData
-                    };
-                }
-                else
-                {
-                    return Content(paymentIntent.StripeResponse.StatusCode.ToString());
-                }
-            }
-            catch (Exception e)
-            {
-                _logger.LogError($"error: {e.Message}");
-            }
-            return Content("error: Capture Payment Intent");
-        }
+        
     }
 }

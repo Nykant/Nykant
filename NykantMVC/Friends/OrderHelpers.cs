@@ -234,7 +234,6 @@ namespace NykantMVC.Friends
             {
                 CreatedAt = DateTime.Now,
                 Currency = "dkk",
-                CustomerId = makeOrder.CustomerId,
                 PaymentCaptureId = paymentCaptureId,
                 Status = Status.Pending,
                 TotalPrice = total.ToString(),
@@ -282,6 +281,39 @@ namespace NykantMVC.Friends
             }
 
             return orders;
+        }
+
+        public static double CalculateTotalPrice(List<Order> orders)
+        {
+            double price = 0;
+            foreach(var order in orders)
+            {
+                double.TryParse(order.TotalPrice, out double total);
+                price += total;
+            }
+            return price;
+        }
+
+        public static double CalculateTaxlessPrice(List<Order> orders)
+        {
+            double price = 0;
+            foreach (var order in orders)
+            {
+                double.TryParse(order.TaxLessPrice, out double taxless);
+                price += taxless;
+            }
+            return price;
+        }
+
+        public static double CalculateTaxes(List<Order> orders)
+        {
+            double price = 0;
+            foreach (var order in orders)
+            {
+                double.TryParse(order.Taxes, out double taxes);
+                price += taxes;
+            }
+            return price;
         }
     }
 }

@@ -98,7 +98,6 @@ namespace NykantAPI
             {
                 options.AddPolicy("ApiScope", policy =>
                 {
-                    policy.RequireAuthenticatedUser();
                     policy.RequireClaim("scope", "NykantAPI");
                 });
             });

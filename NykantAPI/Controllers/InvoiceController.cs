@@ -8,15 +8,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using NykantAPI.Services;
 
 namespace NykantAPI.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]/[action]/")]
     public class InvoiceController : BaseController
     {
-        public InvoiceController(ILogger<BaseController> logger, ApplicationDbContext context) : base(logger, context)
-        { }
+        private readonly IProtectionService _protectionService;
+        public InvoiceController(ILogger<InvoiceController> logger, ApplicationDbContext context, IProtectionService protectionService) : base(logger, context)
+        { _protectionService = protectionService; }
 
         [HttpPost]
         public async Task<ActionResult<Invoice>> PostInvoice(Invoice invoice)
@@ -25,6 +29,7 @@ namespace NykantAPI.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    invoice = _protectionService.ProtectInvoice(invoice);
                     var entity = _context.Invoices.Add(invoice).Entity;
                     await _context.SaveChangesAsync();
                     return CreatedAtAction("GetInvoice", new { id = entity.Id }, entity);
@@ -37,7 +42,7 @@ namespace NykantAPI.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
                 return BadRequest();
             }
 
@@ -50,11 +55,12 @@ namespace NykantAPI.Controllers
             try
             {
                 var invoice = await _context.Invoices.FirstOrDefaultAsync(x => x.Id == id);
+                invoice = _protectionService.UnprotectInvoice(invoice);
                 return Ok(JsonConvert.SerializeObject(invoice));
             }
             catch (Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
                 return BadRequest();
             }
 

@@ -11,15 +11,17 @@ using NykantAPI.Data;
 using NykantAPI.Models;
 using NykantAPI.Models.DTO;
 using NykantAPI.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace NykantAPI.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]/[action]/")]
     public class OrderController : BaseController
     {
         private readonly IProtectionService _protectionService;
-        public OrderController(ILogger<BaseController> logger, ApplicationDbContext context, IProtectionService protectionService)
+        public OrderController(ILogger<OrderController> logger, ApplicationDbContext context, IProtectionService protectionService)
             : base(logger, context)
         {
             _protectionService = protectionService;
@@ -35,11 +37,9 @@ namespace NykantAPI.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
                 return BadRequest();
             }
-
-
         }
 
         [HttpGet("{id}")]
@@ -47,16 +47,15 @@ namespace NykantAPI.Controllers
         {
             try
             {
-                var order = await _context.Orders.Include(x => x.Customer).ThenInclude(x => x.ShippingAddress).Include(x => x.Customer).ThenInclude(x => x.BillingAddress).Include(x => x.OrderItems).ThenInclude(x => x.Product).Include(x => x.ShippingDelivery).Include(x => x.Invoice).FirstOrDefaultAsync(x => x.Id == id);
+                var order = await _context.Orders.Include(x => x.PaymentCapture).ThenInclude(x => x.Customer).ThenInclude(x => x.ShippingAddress).Include(x => x.PaymentCapture).ThenInclude(x => x.Customer).ThenInclude(x => x.BillingAddress).Include(x => x.OrderItems).ThenInclude(x => x.Product).Include(x => x.PaymentCapture).ThenInclude(x => x.ShippingDelivery).FirstOrDefaultAsync(x => x.Id == id);
+                order = _protectionService.UnprotectOrder(order);
                 return Ok(JsonConvert.SerializeObject(order, Extensions.JsonOptions.jsonSettings));
             }
             catch (Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
                 return BadRequest();
             }
-
-
         }
 
         [HttpPatch]
@@ -64,7 +63,6 @@ namespace NykantAPI.Controllers
         {
             try
             {
-                order = _protectionService.UnprotectOrder(order);
                 if (ModelState.IsValid)
                 {
                     order = _protectionService.ProtectOrder(order);
@@ -79,19 +77,16 @@ namespace NykantAPI.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
                 return BadRequest();
             }
-
-
-        } 
+        }
 
         [HttpPost]
         public async Task<ActionResult<Order>> PostOrder(Order order)
         {
             try
             {
-                order = _protectionService.UnprotectOrder(order);
                 if (ModelState.IsValid)
                 {
                     order = _protectionService.ProtectOrder(order);
@@ -106,11 +101,9 @@ namespace NykantAPI.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
                 return BadRequest();
             }
-
-           
         }
 
         private bool OrderExists(int orderId)

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,16 +13,17 @@ using NykantAPI.Data;
 using NykantAPI.Models;
 using NykantAPI.Models.DTO;
 using NykantAPI.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace NykantAPI.Controllers
 {
-    
+    [Authorize]
     [ApiController]
     [Route("[controller]/[action]/")]
     public class CustomerController : BaseController
     {
         private readonly IProtectionService _protectionService;
-        public CustomerController(ILogger<BaseController> logger, ApplicationDbContext context, IProtectionService protectionService)
+        public CustomerController(ILogger<CustomerController> logger, ApplicationDbContext context, IProtectionService protectionService)
             : base(logger, context)
         {
             _protectionService = protectionService;
@@ -33,11 +35,12 @@ namespace NykantAPI.Controllers
             try
             {
                 var customerInf = await _context.Customer.Include(x => x.ShippingAddress).Include(x => x.BillingAddress).FirstOrDefaultAsync(x => x.Id == id);
+                customerInf = _protectionService.UnprotectCustomer(customerInf);
                 return Ok(JsonConvert.SerializeObject(customerInf, Extensions.JsonOptions.jsonSettings));
             }
             catch (Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
                 return BadRequest();
             }
 
@@ -48,30 +51,18 @@ namespace NykantAPI.Controllers
         {
             try
             {
-                customerInf = _protectionService.UnprotectCustomer(customerInf);
                 if (ModelState.IsValid)
                 {
                     customerInf = _protectionService.ProtectCustomer(customerInf);
-                    if (CustomerExists(customerInf.Id))
-                    {
-                        _context.Customer.Update(customerInf);
-                        await _context.SaveChangesAsync();
-                        return Ok();
-                    }
-                    else
-                    {
-
-                        var entity = _context.Customer.Add(customerInf).Entity;
-                        await _context.SaveChangesAsync();
-
-                        return CreatedAtAction("GetCustomer", new { id = entity.Id }, customerInf);
-                    }
+                    var entity = _context.Customer.Add(customerInf).Entity;
+                    await _context.SaveChangesAsync();
+                    return CreatedAtAction("GetCustomer", new { id = entity.Id }, customerInf);
                 }
                 return BadRequest();
             }
             catch (Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
                 return BadRequest();
             }
         }
@@ -81,18 +72,10 @@ namespace NykantAPI.Controllers
         {
             try
             {
-                shippingAddress = _protectionService.UnprotectShippingAddress(shippingAddress);
                 if (ModelState.IsValid)
                 {
                     shippingAddress = _protectionService.ProtectShippingAddress(shippingAddress);
-                    if (ShippingAddressExists(shippingAddress.Id))
-                    {
-                        _context.ShippingAddress.Update(shippingAddress);
-                    }
-                    else
-                    {
-                        _context.ShippingAddress.Add(shippingAddress);
-                    }
+                    _context.ShippingAddress.Add(shippingAddress);
                     await _context.SaveChangesAsync();
                     return Ok();
                 }
@@ -100,7 +83,7 @@ namespace NykantAPI.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
                 return BadRequest();
             }
         }
@@ -110,18 +93,10 @@ namespace NykantAPI.Controllers
         {
             try
             {
-                billingAddress = _protectionService.UnprotectInvoiceAddress(billingAddress);
                 if (ModelState.IsValid)
                 {
                     billingAddress = _protectionService.ProtectInvoiceAddress(billingAddress);
-                    if (InvoiceAddressExists(billingAddress.Id))
-                    {
-                        _context.BillingAddress.Update(billingAddress);
-                    }
-                    else
-                    {
-                        _context.BillingAddress.Add(billingAddress);
-                    }
+                    _context.BillingAddress.Add(billingAddress);
                     await _context.SaveChangesAsync();
                     return Ok();
                 }
@@ -129,7 +104,7 @@ namespace NykantAPI.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
                 return BadRequest();
             }
 
@@ -147,7 +122,7 @@ namespace NykantAPI.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
                 return BadRequest();
             }
 

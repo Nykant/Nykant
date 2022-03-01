@@ -7,15 +7,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace NykantAPI.Controllers
 {
-
+    [Authorize]
     [ApiController]
     [Route("[controller]/[action]/")]
     public class ShippingDeliveryController : BaseController
     {
-        public ShippingDeliveryController(ILogger<BaseController> logger, ApplicationDbContext context)
+        public ShippingDeliveryController(ILogger<ShippingDeliveryController> logger, ApplicationDbContext context)
             : base(logger, context)
         {
         }
@@ -28,7 +29,7 @@ namespace NykantAPI.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
                 return BadRequest();
             }
 
@@ -53,7 +54,7 @@ namespace NykantAPI.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
                 return BadRequest();
             }
         }

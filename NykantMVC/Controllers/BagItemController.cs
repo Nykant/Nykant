@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
@@ -20,7 +21,7 @@ namespace NykantMVC.Controllers
     public class BagItemController : BaseController
     {
 
-        public BagItemController(ILogger<BaseController> logger, IOptions<Urls> urls, HtmlEncoder htmlEncoder) : base(logger, urls, htmlEncoder)
+        public BagItemController(ILogger<BagItemController> logger, IOptions<Urls> urls, HtmlEncoder htmlEncoder, IConfiguration conf) : base(logger, urls, htmlEncoder, conf)
         {
         }
 
@@ -29,19 +30,20 @@ namespace NykantMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> PostBagItem(int id, int quantity)
         {
-            bool isAuthenticated = User.Identity.IsAuthenticated;
-            int bagItemQuantity = HttpContext.Session.Get<int>(BagItemAmountKey);
-
-            BagItem bagItem = new BagItem
+            try
             {
-                ProductId = id,
-                Quantity = quantity
-            };
+                bool isAuthenticated = User.Identity.IsAuthenticated;
+                int bagItemQuantity = HttpContext.Session.Get<int>(BagItemAmountKey);
 
-            if (!isAuthenticated)
-            {
-                try
+                BagItem bagItem = new BagItem
                 {
+                    ProductId = id,
+                    Quantity = quantity
+                };
+
+                if (!isAuthenticated)
+                {
+
                     var json = await GetRequest($"/Product/GetProduct/{id}");
                     Product product = JsonConvert.DeserializeObject<Product>(json);
                     bagItem.Product = product;
@@ -77,34 +79,37 @@ namespace NykantMVC.Controllers
                         ViewName = "/Views/Product/_ItemAddedPartial.cshtml",
                         ViewData = this.ViewData
                     };
-                }
-                catch (Exception e)
-                {
-                    return Content(e.Message);
-                }
-            }
-            else
-            {
-                bagItem.Subject = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
 
-                var response = await PostRequest("/BagItem/PostBagItem", bagItem);
-                if (response.IsSuccessStatusCode)
-                {
-                    bagItemQuantity += 1;
-                    HttpContext.Session.Set<int>(BagItemAmountKey, bagItemQuantity);
 
-                    ViewBag.ProductQuantity = bagItem.Quantity;
-                    ViewData.Model = bagItem.Product;
-                    return new PartialViewResult
-                    {
-                        ViewName = "/Views/Product/_ItemAddedPartial.cshtml",
-                        ViewData = this.ViewData
-                    };
                 }
                 else
                 {
-                    return Content("Fejl, prøv igen.");
+                    bagItem.Subject = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
+
+                    var response = await PostRequest("/BagItem/PostBagItem", bagItem);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        bagItemQuantity += 1;
+                        HttpContext.Session.Set<int>(BagItemAmountKey, bagItemQuantity);
+
+                        ViewBag.ProductQuantity = bagItem.Quantity;
+                        ViewData.Model = bagItem.Product;
+                        return new PartialViewResult
+                        {
+                            ViewName = "/Views/Product/_ItemAddedPartial.cshtml",
+                            ViewData = this.ViewData
+                        };
+                    }
+                    else
+                    {
+                        return Content("Fejl, prøv igen.");
+                    }
                 }
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
+                return Content(e.Message);
             }
         }
 

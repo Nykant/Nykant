@@ -1,5 +1,5 @@
 ﻿@{ 
-    List<PaymentCapture> list = ViewData.Model;
+    List<Order> list = ViewData.Model;
     list.Reverse();
 }
 
@@ -7,31 +7,33 @@
 <table class="my-list">
     <tr class="no-hover">
         <th>Id</th>
-        <th>Ordre Id'er</th>
-        @*<th>Leveringsdato</th>
-        <th>Status</th>*@
+        <th>Lavet</th>
+        <th>Leveringsdato</th>
+        <th>Status</th>
         <th></th>
     </tr>
-    @foreach (var paymentCapture in list)
+    @foreach (var order in list)
     {
-        if (paymentCapture.Captured == false)
+        if (order.Status == Status.Pending)
         {
-            <tr>
-                <td> @paymentCapture.Id</td>
-                <td> 
-                @foreach (var order in paymentCapture.Orders) {
-                    <p>@order.Id, </p>
-                }
-                </td>
-                @*<td>@((int)deliveryTimeSpan.TotalDays) dage </td>
-                <td> @paymentCapture.Status </td>*@
-            <td>
-                <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#unsent-orders" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" data-ajax-success="noop" asp-controller="Payment" asp-action="CapturePaymentIntent" asp-route-paymentCaptureId="@paymentCapture.Id">
-                    <button type="submit"> Capture </button>
-                </form>
-            </td>
-            </tr>
-        }
+            if (!order.IsBackOrder)
+            {
+                TimeSpan deliveryTimeSpan = order.EstimatedDelivery.Subtract(DateTime.Now);
+                <tr>
+                    <td> @order.Id</td>
+                    <td>
+                        @order.CreatedAt
+                    </td>
+                    <td>@((int)deliveryTimeSpan.TotalDays) dage </td>
+                        <td> @order.Status </td>
+                    <td>
+                        <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#unsent-orders" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" data-ajax-success="noop" asp-controller="Order" asp-action="OrderSent" asp-route-orderId="@order.Id">
+                            <button type="submit">Sendt</button>
+                        </form>
+                    </td>
+                </tr>
+            }
 
+        }
     }
 </table>

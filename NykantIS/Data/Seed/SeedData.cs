@@ -8,7 +8,9 @@ using System.Security.Claims;
 using IdentityModel;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using NykantIS.Models;
 using Serilog;
 
@@ -16,20 +18,11 @@ namespace NykantIS.Data.Seed
 {
     public class SeedData
     {
-        public static void EnsureSeedData(string connectionString)
+        public static void EnsureSeedData(IServiceProvider services)
         {
-            var services = new ServiceCollection();
-            services.AddLogging();
-            services.AddDbContext<IdentityContext>(options =>
-               options.UseMySql(connectionString));
-
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<IdentityContext>()
-                .AddDefaultTokenProviders();
-
-            using (var serviceProvider = services.BuildServiceProvider())
+            try
             {
-                using (var scope = serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope())
+                using (var scope = services.GetRequiredService<IServiceScopeFactory>().CreateScope())
                 {
                     var context = scope.ServiceProvider.GetService<IdentityContext>();
                     context.Database.Migrate();
@@ -64,6 +57,10 @@ namespace NykantIS.Data.Seed
                         Log.Debug("admin user exists");
                     }
                 }
+            }
+            catch (Exception e)
+            {
+                Log.Debug(e.Message);
             }
         }
     }

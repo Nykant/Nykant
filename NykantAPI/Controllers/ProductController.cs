@@ -10,14 +10,16 @@ using NykantAPI.Data;
 using NykantAPI.Models;
 using NykantAPI.Models.DTO;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Authorization;
 
 namespace NykantAPI.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]/[action]/")]
     public class ProductController : BaseController
     {
-        public ProductController(ILogger<BaseController> logger, ApplicationDbContext context) : base(logger, context)
+        public ProductController(ILogger<ProductController> logger, ApplicationDbContext context) : base(logger, context)
         {
         }
 
@@ -32,7 +34,7 @@ namespace NykantAPI.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
                 return BadRequest();
             }
 
@@ -54,7 +56,7 @@ namespace NykantAPI.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
                 return BadRequest();
             }
 
@@ -78,7 +80,7 @@ namespace NykantAPI.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
                 return BadRequest();
             }
 
@@ -102,7 +104,7 @@ namespace NykantAPI.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
                 return BadRequest();
             }
 
@@ -127,7 +129,7 @@ namespace NykantAPI.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
                 return BadRequest();
             }
 

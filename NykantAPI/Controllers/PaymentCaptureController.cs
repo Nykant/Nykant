@@ -9,9 +9,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace NykantAPI.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]/[action]/")]
     public class PaymentCaptureController : BaseController
@@ -37,10 +39,9 @@ namespace NykantAPI.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
                 return BadRequest();
             }
-
         }
 
         [HttpGet("{id}")]
@@ -48,13 +49,13 @@ namespace NykantAPI.Controllers
         {
             try
             {
-                var capture = await _context.PaymentCaptures.Include(x => x.Orders).FirstOrDefaultAsync(x => x.Id == id);
+                var capture = await _context.PaymentCaptures.Include(x => x.Orders).ThenInclude(x => x.OrderItems).ThenInclude(x => x.Product).Include(x => x.Customer).ThenInclude(x => x.BillingAddress).Include(x => x.ShippingDelivery).Include(x => x.Invoice).FirstOrDefaultAsync(x => x.Id == id);
                 capture = _protectionService.UnprotectPaymentCapture(capture);
                 return Ok(JsonConvert.SerializeObject(capture, Extensions.JsonOptions.jsonSettings));
             }
             catch (Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
                 return BadRequest();
             }
         }
@@ -79,7 +80,7 @@ namespace NykantAPI.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
                 return BadRequest();
             }
         }
@@ -103,7 +104,7 @@ namespace NykantAPI.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
                 return BadRequest();
             }
 
