@@ -162,7 +162,7 @@ namespace NykantMVC.Services
                 //    image.ContentId = MimeUtils.GenerateMessageId();
                 //    order.OrderItems[i].ContentId = image.ContentId;
                 //}
-                string body = await _razorViewToStringRenderer.RenderViewToStringAsync("/Views/Shared/EmailViews/OrderEmail.cshtml", order);
+                string body = await _razorViewToStringRenderer.RenderViewToStringAsync("/Views/Shared/EmailViews/NykantOrderEmail.cshtml", order);
 
                 bodyBuilder.HtmlBody = body;
                 email.Body = bodyBuilder.ToMessageBody();

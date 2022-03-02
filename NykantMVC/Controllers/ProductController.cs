@@ -23,30 +23,49 @@ namespace NykantMVC.Controllers
         [HttpGet("Produkter")]
         public async Task<IActionResult> Gallery()
         {
-            var json = await GetRequest("/Product/GetProducts");
-            var products = JsonConvert.DeserializeObject<List<Product>>(json);
-            ViewBag.Categories = JsonConvert.DeserializeObject<List<Category>>(await GetRequest("/Category/GetCategories"));
-            return View(products);
+            try
+            {
+                var json = await GetRequest("/Product/GetProducts");
+                var products = JsonConvert.DeserializeObject<List<Product>>(json);
+                ViewBag.Categories = JsonConvert.DeserializeObject<List<Category>>(await GetRequest("/Category/GetCategories"));
+                return View(products);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
+                return BadRequest($"time: {DateTime.Now} - {e.Message}");
+            }
+
         }
 
         [HttpPost("Produkter")]
         public async Task<IActionResult> Search(string searchString)
         {
-            var json = await GetRequest("/Product/GetProducts");
-            var products = JsonConvert.DeserializeObject<List<Product>>(json);
-            ViewBag.Categories = JsonConvert.DeserializeObject<List<Category>>(await GetRequest("/Category/GetCategories"));
-
-            var filteredList = new List<Product>();
-            foreach (var product in products)
+            try
             {
-                if (product.Description.ToLower().Contains(searchString.ToLower()) || product.Category.Name.ToLower().Contains(searchString.ToLower()))
+                var json = await GetRequest("/Product/GetProducts");
+                var products = JsonConvert.DeserializeObject<List<Product>>(json);
+                ViewBag.Categories = JsonConvert.DeserializeObject<List<Category>>(await GetRequest("/Category/GetCategories"));
+
+                var filteredList = new List<Product>();
+                foreach (var product in products)
                 {
-                    filteredList.Add(product);
+                    if (product.Description.ToLower().Contains(searchString.ToLower()) || product.Category.Name.ToLower().Contains(searchString.ToLower()))
+                    {
+                        filteredList.Add(product);
+                    }
                 }
+
+                ViewBag.CurrentFilter = searchString;
+                return View("Gallery", filteredList);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
+                return BadRequest($"time: {DateTime.Now} - {e.Message}");
             }
 
-            ViewBag.CurrentFilter = searchString;
-            return View("Gallery", filteredList);
+
         }
 
         [Route("Produkt/{urlname}")]
@@ -62,8 +81,8 @@ namespace NykantMVC.Controllers
             catch (Exception e)
             {
                 _logger.LogError($"time: {DateTime.Now} - {e.Message}");
+                return BadRequest($"time: {DateTime.Now} - {e.Message}");
             }
-            return View(new Product());
         }
 
         [HttpPost]
@@ -75,23 +94,35 @@ namespace NykantMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> Filter(string categoryName)
         {
-            var json = await GetRequest("/Product/GetProducts");
-            var filteredList = new List<Product>();
-            foreach (var product in JsonConvert.DeserializeObject<List<Product>>(json))
+            try
             {
-                if (product.Category.Name.ToLower().Contains(categoryName.ToLower()))
+                var json = await GetRequest("/Product/GetProducts");
+                var filteredList = new List<Product>();
+                foreach (var product in JsonConvert.DeserializeObject<List<Product>>(json))
                 {
-                    filteredList.Add(product);
+                    if (product.Category.Name.ToLower().Contains(categoryName.ToLower()))
+                    {
+                        filteredList.Add(product);
+                    }
                 }
-            }
-            ViewBag.CurrentFilter = categoryName;
-            ViewData.Model = filteredList;
 
-            return new PartialViewResult
+                ViewBag.CurrentFilter = categoryName;
+                ViewData.Model = filteredList;
+
+                return new PartialViewResult
+                {
+                    ViewName = "_ProductListPartial",
+                    ViewData = this.ViewData
+                };
+
+            }
+            catch (Exception e)
             {
-                ViewName = "_ProductListPartial",
-                ViewData = this.ViewData
-            };
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
+                return BadRequest($"time: {DateTime.Now} - {e.Message}");
+            }
+
+
         }
     }
 }
