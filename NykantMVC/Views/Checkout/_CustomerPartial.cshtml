@@ -1,8 +1,8 @@
 ﻿@inject IViewLocalizer localizer
 @model CheckoutVM
 
-    <div class="my-row bottom-side-padding">
-        <div class="hide-overflow responsive-form" id="customerinf-wrapper">
+    @*<div class="my-row bottom-side-padding">*@
+        <div class="hide-overflow col-8 left bottom-side-padding" id="customerinf-wrapper">
             <partial name="_CustomerSummaryPartial" />
             <form class="z50" id="customer-form" method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="noop" data-ajax-complete="customer_completed" data-ajax-begin="customer_begin" data-ajax-failure="noop" asp-controller="Checkout" asp-action="PostCustomerInf">
                 @Html.AntiForgeryToken()
@@ -145,7 +145,7 @@
                 </div>
             </form>
         </div>
-    </div>
+    @*</div>*@
 
 
 

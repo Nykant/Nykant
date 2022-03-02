@@ -14,6 +14,6 @@ namespace NykantMVC.Models
         public Invoice Invoice { get; set; }
         public int CustomerId { get; set; }
         public Customer Customer { get; set; }
-        public ShippingDelivery ShippingDelivery { get; set; }
+
     }
 }

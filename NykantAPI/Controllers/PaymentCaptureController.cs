@@ -49,7 +49,7 @@ namespace NykantAPI.Controllers
         {
             try
             {
-                var capture = await _context.PaymentCaptures.Include(x => x.Orders).ThenInclude(x => x.OrderItems).ThenInclude(x => x.Product).Include(x => x.Customer).ThenInclude(x => x.BillingAddress).Include(x => x.ShippingDelivery).Include(x => x.Invoice).FirstOrDefaultAsync(x => x.Id == id);
+                var capture = await _context.PaymentCaptures.Include(x => x.Orders).ThenInclude(x => x.OrderItems).ThenInclude(x => x.Product).Include(x => x.Customer).ThenInclude(x => x.BillingAddress).Include(x => x.Invoice).FirstOrDefaultAsync(x => x.Id == id);
                 capture = _protectionService.UnprotectPaymentCapture(capture);
                 return Ok(JsonConvert.SerializeObject(capture, Extensions.JsonOptions.jsonSettings));
             }

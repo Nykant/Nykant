@@ -106,14 +106,6 @@ namespace NykantMVC.Controllers
                     var json = await GetRequest(response.Headers.Location.AbsolutePath);
                     paymentCapture.Id = JsonConvert.DeserializeObject<PaymentCapture>(json).Id;
 
-                    checkout.ShippingDelivery.PaymentCaptureId = paymentCapture.Id;
-                    var postShipping = await PostRequest("/ShippingDelivery/Post", checkout.ShippingDelivery);
-                    if (!postShipping.IsSuccessStatusCode)
-                    {
-                        _logger.LogError($"time: {DateTime.Now} - error: could not post shippingdelivery");
-                        return Json(new { ok = false, error = "could not post shipping" });
-                    }
-
                     var orders = OrderHelpers.MakeOrders(checkout, paymentCapture.Id);
 
                     for(int i = 0; i < orders.Count(); i++)
@@ -127,6 +119,14 @@ namespace NykantMVC.Controllers
 
                         json = await GetRequest(response.Headers.Location.AbsolutePath);
                         orders[i].Id = JsonConvert.DeserializeObject<Models.Order>(json).Id;
+
+                        var shippingDelivery = new ShippingDelivery { OrderId = orders[i].Id, Type = OrderHelpers.CalculateDeliveryType(orders[i].BagItems) };
+                        var postShipping = await PostRequest("/ShippingDelivery/Post", shippingDelivery);
+                        if (!postShipping.IsSuccessStatusCode)
+                        {
+                            _logger.LogError($"time: {DateTime.Now} - error: could not post shippingdelivery");
+                            return Json(new { ok = false, error = "could not post shipping" });
+                        }
 
                         var orderItems = OrderHelpers.MakeOrderItems(orders[i].BagItems, orders[i].Id); // check om info ik er krypteret
                         var postRequest = await PostRequest("/Orderitem/PostOrderItems", orderItems);

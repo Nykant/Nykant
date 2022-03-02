@@ -44,15 +44,15 @@ namespace NykantMVC.Controllers
                 {
                     bagItems = new List<BagItem>();
                     ViewBag.DeliveryInfo = null;
-                    ViewBag.DeliveryDate = null;
+                    //ViewBag.DeliveryDate = null;
                     ViewBag.PriceSum = 0;
                     return View(bagItems);
                 }
                 else
                 {
                     ViewBag.DeliveryInfo = OrderHelpers.DeliveryDateInfo(bagItems);
-                    var date = OrderHelpers.CalculateDeliveryDate(bagItems);
-                    ViewBag.DeliveryDate = $"{date.Day}-{date.Month}-{date.Year}";
+                    //var date = OrderHelpers.CalculateDeliveryDate(bagItems);
+                    //ViewBag.DeliveryDate = $"{date.Day}-{date.Month}-{date.Year}";
                     ViewBag.PriceSum = OrderHelpers.CalculateAmount(bagItems);
                     return View(bagItems);
                 }

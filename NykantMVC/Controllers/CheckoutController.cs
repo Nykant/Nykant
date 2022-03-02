@@ -73,10 +73,9 @@ namespace NykantMVC.Controllers
                         Stage = Stage.customerInf,
                         TotalPrice = total.ToString(),
                         Taxes = taxes.ToString(),
-                        TaxlessPrice = taxlessPrice.ToString(),
-                        ShippingDelivery = new ShippingDelivery { Type = OrderHelpers.CalculateDeliveryType(bagItems) }
+                        TaxlessPrice = taxlessPrice.ToString()
                     };
-                    ViewBag.DeliveryType = OrderHelpers.CalculateDeliveryTypeString(checkout.ShippingDelivery.Type);
+                    ViewBag.DeliveryType = OrderHelpers.CalculateDeliveryTypeString(bagItems);
 
                     HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
 
@@ -102,7 +101,7 @@ namespace NykantMVC.Controllers
                     checkout.TotalPrice = total.ToString();
                     checkout.Taxes = taxes.ToString();
                     checkout.TaxlessPrice = taxlessPrice.ToString();
-                    ViewBag.DeliveryType = OrderHelpers.CalculateDeliveryTypeString(checkout.ShippingDelivery.Type);
+                    ViewBag.DeliveryType = OrderHelpers.CalculateDeliveryTypeString(bagItems);
                     checkout.BagItems = bagItems;
                     HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
 
@@ -117,7 +116,7 @@ namespace NykantMVC.Controllers
                         customer = new Customer { BillingAddress = new BillingAddress(), ShippingAddress = new ShippingAddress() };
                     }
 
-                    customer = EncodeCustomer(customer);
+                    //customer = EncodeCustomer(customer);
 
                     CheckoutVM checkoutVM = new CheckoutVM
                     {

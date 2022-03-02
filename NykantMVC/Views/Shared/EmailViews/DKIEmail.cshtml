@@ -27,7 +27,7 @@
                                                 <td class="es-m-p0r es-m-p20b" valign="top" align="center" style="padding:0;Margin:0;width:100%">
                                                     <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                                                         <tr style="border-collapse:collapse">
-                                                            <td class="es-m-txt-c" align="center" style="padding:0;Margin:0"><a href="https://nykant.dk"><h1 style="Margin:0;line-height:36px;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-size:36px;font-style:normal;font-weight:bold;color:#000000">Nykant</h1></a></td>
+                                                            <td class="es-m-txt-c" align="center" style="padding:0;Margin:0"><a href="https://nykant.dk"><img href="https://nykant.dk/images/Nykant-Logo.svg" height="90" width="150" /></a></td>
                                                         </tr>
                                                     </table>
                                                 </td>
@@ -52,9 +52,9 @@
                                                         <tr style="border-collapse:collapse">
                                                             <td align="center" style="padding:0;Margin:0;padding-bottom:10px"><h2 style="Margin:0;line-height:36px;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-size:30px;font-style:normal;font-weight:bold;color:#333333">Ordrebekræftelse</h2></td>
                                                         </tr>
-                                                        <tr style="border-collapse:collapse">
+                                                        @*<tr style="border-collapse:collapse">
                                                             <td align="left" style="padding:0;Margin:0;padding-top:15px;padding-bottom:20px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#777777;font-size:16px">Ordreoplysninger til DKI</p></td>
-                                                        </tr>
+                                                        </tr>*@
                                                     </table>
                                                 </td>
                                             </tr>
@@ -146,7 +146,7 @@
                                                                                 <td style="padding:5px 0;Margin:0" width="80%" align="left"><a href="https://nykant.dk/product/details/@item.Product.UrlName"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:16px;color:#333333;font-size:16px">(@item.Quantity) @item.Product.Name / @item.Product.Oil / @item.Product.WeightInKg kg.</p></a></td>
                                                                             }
 
-                                                                            <td style="padding:5px 0;Margin:0" width="20%" align="left"><a href="https://nykant.dk/product/details/@item.Product.UrlName"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:16px;color:#333333;font-size:16px">kr. @(item.Product.Price * item.Quantity) </p></a></td>
+                                                                            @*<td style="padding:5px 0;Margin:0" width="20%" align="left"><a href="https://nykant.dk/product/details/@item.Product.UrlName"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:16px;color:#333333;font-size:16px">kr. @(item.Product.Price * item.Quantity) </p></a></td>*@
                                                                         </tr>
                                                                         <tr style="border-collapse: collapse; padding-bottom: 15px;">
                                                                             <td style="Margin:0" width="70%" align="left"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:16px;color:#333333;font-size:16px"><strong>Varenummer:</strong> @item.Product.Number</p></td>
@@ -162,7 +162,7 @@
                                         </table>
                                     </td>
                                 </tr>
-                                <tr style="border-collapse:collapse">
+                                @*<tr style="border-collapse:collapse">
                                     <td align="left" style="padding:0;Margin:0;padding-top:10px;padding-left:35px;padding-right:35px">
                                         <table width="100%" cellspacing="0" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                                             <tr style="border-collapse:collapse">
@@ -191,7 +191,7 @@
                                             </tr>
                                         </table>
                                     </td>
-                                </tr>
+                                </tr>*@
                                 @*<tr style="border-collapse:collapse">
                                     <td align="left" style="padding:0;Margin:0;padding-top:10px;padding-left:35px;padding-right:35px">
                                         <table width="100%" cellspacing="0" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
@@ -260,18 +260,18 @@
 
                                                             <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:15px;padding-bottom:15px">
                                                                 <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:500px" class="cke_show_border" cellspacing="1" cellpadding="1" border="0" align="left" role="presentation">
-                                                                    @if (Model.PaymentCapture.ShippingDelivery.Type == ShippingType.Home)
+                                                                    @if (Model.ShippingDelivery.Type == ShippingType.Home)
                                                                     {
                                                                         <tr style="border-collapse:collapse">
-                                                                            <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Leveres til:</strong></td>
-                                                                            <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">Leveringsaddressen med GLS</span></td>
+                                                                            <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Leveringsmetode:</strong></td>
+                                                                            <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">Til leveringsaddressen med GLS</span></td>
                                                                         </tr>
                                                                     }
-                                                                    else if (Model.PaymentCapture.ShippingDelivery.Type == ShippingType.HomePallegods)
+                                                                    else if (Model.ShippingDelivery.Type == ShippingType.HomePallegods)
                                                                     {
                                                                         <tr style="border-collapse:collapse">
-                                                                            <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Leveres til:</strong></td>
-                                                                            <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">Leveringsaddressen med DKI Pallegods</span></td>
+                                                                            <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Leveringsmetode:</strong></td>
+                                                                            <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">Til leveringsaddressen med DKI Pallegods</span></td>
                                                                         </tr>
 
                                                                     }
@@ -293,7 +293,13 @@
                                                                     </tr>
                                                                     <tr style="border-collapse:collapse">
                                                                         <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Land:</strong></td>
-                                                                        <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.PaymentCapture.Customer.ShippingAddress.Country</span></td>
+                                                                        <td width="50%" style="padding:0;Margin:0">
+                                                                            @if (@Model.PaymentCapture.Customer.ShippingAddress.Country == "DK")
+                                                                            {
+                                                                                <span style="font-size: 14px; line-height: 21px; color: #000000;">Danmark</span>
+                                                                            }
+
+                                                                        </td>
                                                                     </tr>
                                                                 </table>
                                                             </td>

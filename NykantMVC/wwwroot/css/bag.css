@@ -181,6 +181,7 @@
     padding-top:20px;
     z-index:240;
     font-size:16px;
+    position:relative;
 }
 
 #checkout-box a {
@@ -198,8 +199,6 @@
     #checkout-box {
         padding: 10px;
         margin-top: 50px;
-        width: 100%;
-        position: relative;
     }
     #bagtable-container {
         padding:10px;
@@ -255,8 +254,6 @@
     #checkout-box {
         padding: 10px;
         margin-top: 50px;
-        width: 100%;
-        position: relative;
     }
     #bagtable-container {
         padding: 10px;
@@ -296,9 +293,8 @@
     }
     #checkout-box {
         margin-top: 20px;
-        right: 10px;
-        width: 220px;
-        position: fixed;
+        padding: 0px;
+        margin-left:50px;
         padding-top: 13px;
     }
     #bagtable-container {
@@ -341,12 +337,7 @@
         padding: 0px;
     }
     #checkout-box {
-        margin-top: 20px;
-        padding: 0px;
-        right: 20px;
-        width: 250px;
-        position: fixed;
-        padding-top: 13px;
+
     }
     #bagtable-container {
         padding: 0px;
@@ -388,12 +379,7 @@
         padding: 0px;
     }
     #checkout-box {
-        margin-top: 20px;
-        padding: 0px;
-        right: 50px;
-        width: 300px;
-        position: fixed;
-        padding-top: 13px;
+
     }
     #bagtable-container {
         padding: 0px;
@@ -437,12 +423,7 @@
         padding: 0px;
     }
     #checkout-box {
-        margin-top: 20px;
-        padding: 0px;
-        right: 200px;
-        width: 300px;
-        position: fixed;
-        padding-top: 13px;
+
     }
     #bagtable-container {
         padding: 0px;
@@ -486,12 +467,7 @@
         padding: 0px;
     }
     #checkout-box {
-        margin-top: 20px;
-        padding: 0px;
-        right: 350px;
-        width: 300px;
-        position: fixed;
-        padding-top: 13px;
+
     }
     #bagtable-container {
         padding: 0px;

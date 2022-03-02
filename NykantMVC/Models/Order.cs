@@ -26,6 +26,7 @@ namespace NykantMVC.Models
         [Required]
         public int PaymentCaptureId { get; set; }
         public PaymentCapture PaymentCapture { get; set; }
+        public ShippingDelivery ShippingDelivery { get; set; }
         public List<OrderItem> OrderItems { get; set; }
         public List<BagItem> BagItems { get; set; }
     }

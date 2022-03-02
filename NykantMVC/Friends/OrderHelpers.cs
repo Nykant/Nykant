@@ -166,7 +166,7 @@ namespace NykantMVC.Friends
             {
                 if (item.Product.ExpectedDelivery != new DateTime())
                 {
-                    return "En eller flere produkter i din kurv, er ikke på lager. Derfor er forventet leveringstid for ordren desværre forlænget.";
+                    return "En eller flere produkter i din kurv, er ikke på lager. Derfor vil ordren blive splittet, således at du vil modtage dine varer individuelt, hurtigst muligt.";
                 }
             }
             return null;
@@ -194,14 +194,55 @@ namespace NykantMVC.Friends
             return false;
         }
 
-        public static string CalculateDeliveryTypeString(ShippingType type)
+        public static string CalculateDeliveryTypeString(List<BagItem> bagItems)
         {
-            if (type == ShippingType.HomePallegods)
+            int typecase = 0;
+            foreach(var item in bagItems)
             {
-                return "Til leveringsaddressen med DKI Pallegods";
+                if(item.Product.WeightInKg <= 20)
+                {
+                    if(typecase != 3)
+                    {
+                        if (typecase == 2)
+                        {
+                            typecase = 3;
+                        }
+                        else
+                        {
+                            typecase = 1;
+                        }
+                    }
+                }
+                if(item.Product.WeightInKg > 20)
+                {
+                    if(typecase != 3)
+                    {
+                        if (typecase == 1)
+                        {
+                            typecase = 3;
+                        }
+                        else
+                        {
+                            typecase = 2;
+                        }
+                    }
+                }
             }
 
-            return "Til leveringsaddressen med GLS";
+            switch (typecase)
+            {
+                case 1:
+                    return "Til leveringsaddressen med GLS.";
+
+                case 2:
+                    return "Til leveringsaddressen med DKI Pallegods.";
+
+                case 3:
+                    return "En del af din bestilling vil blive leveret med DKI Pallegods, og en anden del med GLS, begge til leveringsaddressen.";
+
+                default:
+                    return null;
+            }
         }
 
         public static ShippingType CalculateDeliveryType(List<BagItem> bagItems)

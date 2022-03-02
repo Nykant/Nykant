@@ -40,8 +40,6 @@ namespace NykantAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<ShippingDelivery>> Post(ShippingDelivery shippingDelivery)
         {
-
-
             try
             {
                 if (ModelState.IsValid)

@@ -24,7 +24,6 @@
     }
 
 .sidebar {
-    position:fixed;
     padding: 15px;
     color: var(--font1);
     height:auto;
@@ -399,13 +398,13 @@
 @media only screen and (min-width: 600px) {
 
 
-    .sidebar {
+/*    .sidebar {
         position: relative;
         width: 100%;
         border: none;
         margin:auto;
         margin-bottom: 30px;
-    }
+    }*/
 
     #nearby-shops {
         position: fixed;
@@ -425,70 +424,70 @@
 @media only screen and (min-width: 768px) {
 
 
-    .sidebar {
+/*    .sidebar {
         position: fixed;
         right:10px;
         border: none;
         margin: 0px;
         width: 25%;
-    }
+    }*/
 }
 
 @media only screen and (min-width: 873px) {
 
 
-    .sidebar {
+/*    .sidebar {
         position: fixed;
         right: 1%;
         border: none;
         margin: 0px;
-    }
+    }*/
 }
 
 @media only screen and (min-width: 992px) {
 
 
-    .sidebar {
+/*    .sidebar {
         position: fixed;
         right: 1%;
         width: 250px;
         border: none;
         margin: 0px;
-    }
+    }*/
 }
 
 @media only screen and (min-width: 1200px) {
 
-
+/*
     .sidebar {
         position: fixed;
         right: 1%;
         width: 300px;
         border: none;
         margin: 0px;
-    }
+    }*/
 }
 
 @media only screen and (min-width: 1500px) {
 
 
-    .sidebar {
+/*    .sidebar {
         position: fixed;
         right: 10%;
         width: 300px;
         border: none;
         margin: 0px;
-    }
+    }*/
 }
 
 @media only screen and (min-width: 1780px) {
 
 
-    .sidebar {
+/*    .sidebar {
         position: fixed;
         right: 15%;
         width: 300px;
         border: none;
         margin: 0px;
-    }
+    }*/
 }

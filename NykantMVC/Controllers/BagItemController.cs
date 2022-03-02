@@ -79,8 +79,6 @@ namespace NykantMVC.Controllers
                         ViewName = "/Views/Product/_ItemAddedPartial.cshtml",
                         ViewData = this.ViewData
                     };
-
-
                 }
                 else
                 {

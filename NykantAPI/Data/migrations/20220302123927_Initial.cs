@@ -358,26 +358,6 @@ namespace NykantAPI.data.migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ShippingDeliveries",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    PaymentCaptureId = table.Column<int>(nullable: false),
-                    Type = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ShippingDeliveries", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ShippingDeliveries_PaymentCaptures_PaymentCaptureId",
-                        column: x => x.PaymentCaptureId,
-                        principalTable: "PaymentCaptures",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "OrderItems",
                 columns: table => new
                 {
@@ -398,6 +378,26 @@ namespace NykantAPI.data.migrations
                         name: "FK_OrderItems_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ShippingDeliveries",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    OrderId = table.Column<int>(nullable: false),
+                    Type = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ShippingDeliveries", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ShippingDeliveries_Orders_OrderId",
+                        column: x => x.OrderId,
+                        principalTable: "Orders",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -943,9 +943,9 @@ namespace NykantAPI.data.migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_ShippingDeliveries_PaymentCaptureId",
+                name: "IX_ShippingDeliveries_OrderId",
                 table: "ShippingDeliveries",
-                column: "PaymentCaptureId",
+                column: "OrderId",
                 unique: true);
         }
 
@@ -991,16 +991,16 @@ namespace NykantAPI.data.migrations
                 name: "ShippingDeliveries");
 
             migrationBuilder.DropTable(
-                name: "Orders");
-
-            migrationBuilder.DropTable(
                 name: "Products");
 
             migrationBuilder.DropTable(
-                name: "PaymentCaptures");
+                name: "Orders");
 
             migrationBuilder.DropTable(
                 name: "Categories");
+
+            migrationBuilder.DropTable(
+                name: "PaymentCaptures");
 
             migrationBuilder.DropTable(
                 name: "Customer");

@@ -53,10 +53,21 @@ namespace NykantAPI.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    customerInf = _protectionService.ProtectCustomer(customerInf);
-                    var entity = _context.Customer.Add(customerInf).Entity;
-                    await _context.SaveChangesAsync();
-                    return CreatedAtAction("GetCustomer", new { id = entity.Id }, customerInf);
+                    if (CustomerExists(customerInf.Id))
+                    {
+                        customerInf = _protectionService.ProtectCustomer(customerInf);
+                        _context.Customer.Update(customerInf);
+                        await _context.SaveChangesAsync();
+                        return Ok();
+                    }
+                    else
+                    {
+                        customerInf = _protectionService.ProtectCustomer(customerInf);
+                        var entity = _context.Customer.Add(customerInf).Entity;
+                        await _context.SaveChangesAsync();
+                        return CreatedAtAction("GetCustomer", new { id = entity.Id }, customerInf);
+                    }
+
                 }
                 return BadRequest();
             }
@@ -74,10 +85,20 @@ namespace NykantAPI.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    shippingAddress = _protectionService.ProtectShippingAddress(shippingAddress);
-                    _context.ShippingAddress.Add(shippingAddress);
-                    await _context.SaveChangesAsync();
-                    return Ok();
+                    if (ShippingAddressExists(shippingAddress.Id))
+                    {
+                        shippingAddress = _protectionService.ProtectShippingAddress(shippingAddress);
+                        _context.ShippingAddress.Update(shippingAddress);
+                        await _context.SaveChangesAsync();
+                        return Ok();
+                    }
+                    else
+                    {
+                        shippingAddress = _protectionService.ProtectShippingAddress(shippingAddress);
+                        _context.ShippingAddress.Add(shippingAddress);
+                        await _context.SaveChangesAsync();
+                        return Ok();
+                    }
                 }
                 return BadRequest();
             }
@@ -95,10 +116,21 @@ namespace NykantAPI.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    billingAddress = _protectionService.ProtectInvoiceAddress(billingAddress);
-                    _context.BillingAddress.Add(billingAddress);
-                    await _context.SaveChangesAsync();
-                    return Ok();
+                    if (InvoiceAddressExists(billingAddress.Id))
+                    {
+                        billingAddress = _protectionService.ProtectInvoiceAddress(billingAddress);
+                        _context.BillingAddress.Update(billingAddress);
+                        await _context.SaveChangesAsync();
+                        return Ok();
+                    }
+                    else
+                    {
+                        billingAddress = _protectionService.ProtectInvoiceAddress(billingAddress);
+                        _context.BillingAddress.Add(billingAddress);
+                        await _context.SaveChangesAsync();
+                        return Ok();
+                    }
+
                 }
                 return BadRequest();
             }
@@ -107,8 +139,6 @@ namespace NykantAPI.Controllers
                 _logger.LogError($"time: {DateTime.Now} - {e.Message}");
                 return BadRequest();
             }
-
-           
         }
 
         [HttpDelete("{customerInfId}")]

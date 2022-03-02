@@ -4727,7 +4727,7 @@ namespace NykantAPI.data.migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("PaymentCaptureId")
+                    b.Property<int>("OrderId")
                         .HasColumnType("int");
 
                     b.Property<int>("Type")
@@ -4735,7 +4735,7 @@ namespace NykantAPI.data.migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PaymentCaptureId")
+                    b.HasIndex("OrderId")
                         .IsUnique();
 
                     b.ToTable("ShippingDeliveries");
@@ -4857,9 +4857,9 @@ namespace NykantAPI.data.migrations
 
             modelBuilder.Entity("NykantAPI.Models.ShippingDelivery", b =>
                 {
-                    b.HasOne("NykantAPI.Models.PaymentCapture", "PaymentCapture")
+                    b.HasOne("NykantAPI.Models.Order", "Order")
                         .WithOne("ShippingDelivery")
-                        .HasForeignKey("NykantAPI.Models.ShippingDelivery", "PaymentCaptureId")
+                        .HasForeignKey("NykantAPI.Models.ShippingDelivery", "OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
