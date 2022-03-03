@@ -112,12 +112,6 @@ namespace NykantAPI.data.migrations
                             Id = 4,
                             ImgSource = "../images/Products/Category/Desktop/opbevaringsbaenk_natur_3.png",
                             Name = "Bænke"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            ImgSource = "../images/Products/Category/Desktop/boejle_natur_1.png",
-                            Name = "Bøjler"
                         });
                 });
 
@@ -149,87 +143,6 @@ namespace NykantAPI.data.migrations
                     b.ToTable("Colors");
 
                     b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            EColor = 0,
-                            ImgSrc = "../images/Products/Color/Desktop/boejle_natur_1.png",
-                            ProductId = 1,
-                            ProductSourceId = 1,
-                            ProductSourceUrlName = "Bøjle-Egetræ-Naturolie"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            EColor = 2,
-                            ImgSrc = "../images/Products/Color/Desktop/boejle_sort_1.png",
-                            ProductId = 1,
-                            ProductSourceId = 2,
-                            ProductSourceUrlName = "Bøjle-Egetræ-Sortolie"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            EColor = 1,
-                            ImgSrc = "../images/Products/Color/Desktop/boejle_hvid_1.png",
-                            ProductId = 1,
-                            ProductSourceId = 3,
-                            ProductSourceUrlName = "Bøjle-Egetræ-Hvidolie"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            EColor = 0,
-                            ImgSrc = "../images/Products/Color/Desktop/boejle_natur_1.png",
-                            ProductId = 2,
-                            ProductSourceId = 1,
-                            ProductSourceUrlName = "Bøjle-Egetræ-Naturolie"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            EColor = 2,
-                            ImgSrc = "../images/Products/Color/Desktop/boejle_sort_1.png",
-                            ProductId = 2,
-                            ProductSourceId = 2,
-                            ProductSourceUrlName = "Bøjle-Egetræ-Sortolie"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            EColor = 1,
-                            ImgSrc = "../images/Products/Color/Desktop/boejle_hvid_1.png",
-                            ProductId = 2,
-                            ProductSourceId = 3,
-                            ProductSourceUrlName = "Bøjle-Egetræ-Hvidolie"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            EColor = 0,
-                            ImgSrc = "../images/Products/Color/Desktop/boejle_natur_1.png",
-                            ProductId = 3,
-                            ProductSourceId = 1,
-                            ProductSourceUrlName = "Bøjle-Egetræ-Naturolie"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            EColor = 2,
-                            ImgSrc = "../images/Products/Color/Desktop/boejle_sort_1.png",
-                            ProductId = 3,
-                            ProductSourceId = 2,
-                            ProductSourceUrlName = "Bøjle-Egetræ-Sortolie"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            EColor = 1,
-                            ImgSrc = "../images/Products/Color/Desktop/boejle_hvid_1.png",
-                            ProductId = 3,
-                            ProductSourceId = 3,
-                            ProductSourceUrlName = "Bøjle-Egetræ-Hvidolie"
-                        },
                         new
                         {
                             Id = 10,
@@ -1193,60 +1106,6 @@ namespace NykantAPI.data.migrations
                     b.ToTable("Images");
 
                     b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ImageType = 0,
-                            ProductId = 1,
-                            Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_boejle_naturolie_01.png",
-                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_boejle_naturolie_01.png"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            ImageType = 0,
-                            ProductId = 1,
-                            Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_boejle_naturolie_02.png",
-                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_boejle_naturolie_02.png"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            ImageType = 0,
-                            ProductId = 2,
-                            Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_boejle_sortolie_01.png",
-                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_boejle_sortolie_01.png"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            ImageType = 0,
-                            ProductId = 2,
-                            Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_boejle_sortolie_02.png",
-                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_boejle_sortolie_02.png"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            ImageType = 0,
-                            ProductId = 3,
-                            Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_boejle_hvidolie_01.png",
-                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_boejle_hvidolie_01.png"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            ImageType = 0,
-                            ProductId = 3,
-                            Size = 2,
-                            Source = "../images/Products/Details_Slide/Desktop/NYKANT_boejle_hvidolie_02.png",
-                            Source2 = "../images/Products/Details_Fullscreen/Desktop/NYKANT_boejle_hvidolie_02.png"
-                        },
                         new
                         {
                             Id = 7,
@@ -2218,54 +2077,6 @@ namespace NykantAPI.data.migrations
                             Size = 2,
                             Source = "../images/Products/Details_Slide/Desktop/Ingrid_Sortolie_3.png",
                             Source2 = "../images/Products/Details_Fullscreen/Desktop/Ingrid_Sortolie_3.png"
-                        },
-                        new
-                        {
-                            Id = 229,
-                            ImageType = 1,
-                            ProductId = 1,
-                            Size = 2,
-                            Source = "../images/Products/Details_Button/Desktop/NYKANT_boejle_naturolie_01.png"
-                        },
-                        new
-                        {
-                            Id = 230,
-                            ImageType = 1,
-                            ProductId = 1,
-                            Size = 2,
-                            Source = "../images/Products/Details_Button/Desktop/NYKANT_boejle_naturolie_02.png"
-                        },
-                        new
-                        {
-                            Id = 231,
-                            ImageType = 1,
-                            ProductId = 2,
-                            Size = 2,
-                            Source = "../images/Products/Details_Button/Desktop/NYKANT_boejle_sortolie_01.png"
-                        },
-                        new
-                        {
-                            Id = 232,
-                            ImageType = 1,
-                            ProductId = 2,
-                            Size = 2,
-                            Source = "../images/Products/Details_Button/Desktop/NYKANT_boejle_sortolie_02.png"
-                        },
-                        new
-                        {
-                            Id = 233,
-                            ImageType = 1,
-                            ProductId = 3,
-                            Size = 2,
-                            Source = "../images/Products/Details_Button/Desktop/NYKANT_boejle_hvidolie_01.png"
-                        },
-                        new
-                        {
-                            Id = 234,
-                            ImageType = 1,
-                            ProductId = 3,
-                            Size = 2,
-                            Source = "../images/Products/Details_Button/Desktop/NYKANT_boejle_hvidolie_02.png"
                         },
                         new
                         {
@@ -3341,78 +3152,6 @@ namespace NykantAPI.data.migrations
                     b.ToTable("Products");
 
                     b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Amount = 0,
-                            AssemblyPath = "none",
-                            CategoryId = 5,
-                            Description = "Denne smukke bøjle med klassiske fine linjer, afrundede kanter og ender, giver perfekt støtte og mindst mulige mærker i tøjet.",
-                            EColor = 0,
-                            ExpectedDelivery = new DateTime(2022, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_boejle_naturolie_01.png",
-                            GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_boejle_naturolie_02.png",
-                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Sort bøjlekrog</p></td></tr>",
-                            Name = "Bøjlen Gertrud / 3 stk.",
-                            Number = "15001",
-                            Oil = "Naturolie",
-                            Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Størrelse: 47x17x6 cm. (L x B x H)</p><p>Vægt: 0.6 kg.</p><p>Leveres samlet med 3 stk. pr. karton</p></td></tr>",
-                            Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_boejle_naturolie_01.png",
-                            Pieces = 3,
-                            Price = 420.0,
-                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 45 cm.</p></td></tr>",
-                            Title = "Bøjle i massivt egetræ - Behandlet med naturolie",
-                            UrlName = "Bøjle-Egetræ-Naturolie",
-                            WeightInKg = 0.59999999999999998
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Amount = 0,
-                            AssemblyPath = "none",
-                            CategoryId = 5,
-                            Description = "Denne smukke bøjle med klassiske fine linjer, afrundede kanter og ender, giver perfekt støtte og mindst mulige mærker i tøjet.",
-                            EColor = 2,
-                            ExpectedDelivery = new DateTime(2022, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_boejle_sortolie_01.png",
-                            GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_boejle_sortolie_02.png",
-                            Materials = "<tr><td class='width-30'<strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Sort bøjlekrog</p></td></tr>",
-                            Name = "Bøjlen Gertrud / 3 stk.",
-                            Number = "15003",
-                            Oil = "Sortolie",
-                            Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Størrelse: 47x17x6 cm. (L x B x H)</p><p>Vægt: 0.6 kg.</p><p>Leveres samlet med 3 stk. pr. karton</p></td></tr>",
-                            Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_boejle_sortolie_01.png",
-                            Pieces = 3,
-                            Price = 420.0,
-                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 45 cm.</p></td></tr>",
-                            Title = "Bøjle i massivt egetræ - Behandlet med sortolie",
-                            UrlName = "Bøjle-Egetræ-Sortolie",
-                            WeightInKg = 0.59999999999999998
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Amount = 0,
-                            AssemblyPath = "none",
-                            CategoryId = 5,
-                            Description = "Denne smukke bøjle med klassiske fine linjer, afrundede kanter og ender, giver perfekt støtte og mindst mulige mærker i tøjet.",
-                            EColor = 1,
-                            ExpectedDelivery = new DateTime(2022, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_boejle_hvidolie_01.png",
-                            GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_boejle_hvidolie_02.png",
-                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Sort bøjlekrog</p></td></tr>",
-                            Name = "Bøjlen Gertrud / 3 stk.",
-                            Number = "15002",
-                            Oil = "Hvidolie",
-                            Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Størrelse: 47x17x6 cm. (L x B x H)</p><p>Vægt: 0.6 kg.</p><p>Leveres samlet med 3 stk. pr. karton</p></td></tr>",
-                            Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_boejle_hvidolie_01.png",
-                            Pieces = 3,
-                            Price = 420.0,
-                            Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 45 cm.</p></td></tr>",
-                            Title = "Bøjle i massivt egetræ - Behandlet med hvidolie",
-                            UrlName = "Bøjle-Egetræ-Hvidolie",
-                            WeightInKg = 0.59999999999999998
-                        },
                         new
                         {
                             Id = 4,

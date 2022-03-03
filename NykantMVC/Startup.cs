@@ -20,6 +20,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IdentityModel.Tokens.Jwt;
 using System.IO;
+using System.Security.Cryptography.X509Certificates;
 
 namespace NykantMVC
 {
@@ -57,6 +58,7 @@ namespace NykantMVC
 
             services.AddDataProtection()
                 .PersistKeysToDbContext<MyKeysContext>()
+                //.ProtectKeysWithCertificate("3fe5fcaf686e7ffbeaf80d760944e0f752f2112b")
                 .SetApplicationName("Nykant");
 
             JwtSecurityTokenHandler.DefaultMapInboundClaims = false;

@@ -65,6 +65,7 @@ namespace NykantIS
 
             services.AddDataProtection()
                 .PersistKeysToDbContext<MyKeysContext>()
+                //.ProtectKeysWithCertificate("3fe5fcaf686e7ffbeaf80d760944e0f752f2112b")
                 .SetApplicationName("Nykant");
 
             services.AddDbContext<IdentityContext>(options =>
