@@ -29,11 +29,11 @@ namespace NykantAPI.Controllers
             NewsSub sub = newsSub;
             try
             {
-                sub = _protectionService.UnprotectNewsSub(sub);
                 if (ModelState.IsValid)
                 {
                     if (!NewsSubExist(newsSub.Email))
                     {
+                        sub = _protectionService.ProtectNewsSub(sub);
                         _context.NewsSubs.Add(sub);
                         await _context.SaveChangesAsync();
                     }

@@ -135,7 +135,7 @@ namespace NykantAPI.Data
                 new Color { Id = 14, ProductId = 5, EColor = EColor.Black, ProductSourceId = 5, ProductSourceUrlName = "Hylde-Egetræ-Sortolie-40cm", ImgSrc = "../images/Products/Color/Desktop/hylde_sort_1.png" },
                 new Color { Id = 15, ProductId = 5, EColor = EColor.Nature, ProductSourceId = 6, ProductSourceUrlName = "Hylde-Egetræ-Naturolie-40cm", ImgSrc = "../images/Products/Color/Desktop/hylde_natur_1.png" },
                 new Color { Id = 16, ProductId = 6, EColor = EColor.White, ProductSourceId = 4, ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-40cm", ImgSrc = "../images/Products/Color/Desktop/hylde_hvid_1.png" },
-                new Color { Id = 17, ProductId = 6, EColor = EColor.Black, ProductSourceId = 5, ProductSourceUrlName = "Hylde-Egetræ-Sortolie-400mm", ImgSrc = "../images/Products/Color/Desktop/hylde_sort_1.png" },
+                new Color { Id = 17, ProductId = 6, EColor = EColor.Black, ProductSourceId = 5, ProductSourceUrlName = "Hylde-Egetræ-Sortolie-40cm", ImgSrc = "../images/Products/Color/Desktop/hylde_sort_1.png" },
                 new Color { Id = 18, ProductId = 6, EColor = EColor.Nature, ProductSourceId = 6, ProductSourceUrlName = "Hylde-Egetræ-Naturolie-40cm", ImgSrc = "../images/Products/Color/Desktop/hylde_natur_1.png" },
 
                 // 600
