@@ -54,6 +54,26 @@ namespace NykantMVC.Services
                         }
                     }
                 }
+                else if (consent.OnlyEssential)
+                {
+                    // Inject the code only in the head element
+                    if (string.Equals(output.TagName, "head", StringComparison.OrdinalIgnoreCase))
+                    {
+                        // Get the tracking code from the configuration
+                        var trackingCode = _googleAnalyticsOptions.TrackingCode;
+                        if (!string.IsNullOrEmpty(trackingCode))
+                        {
+                            // PostContent correspond to the text just before closing tag
+                            output.PostContent
+                                .AppendHtml("<script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('consent', 'default', { 'ad_storage': 'denied', 'analytics_storage': 'denied' });</script>")
+                                .AppendHtml("<script async src='https://www.googletagmanager.com/gtag/js?id=")
+                                .AppendHtml(trackingCode)
+                                .AppendHtml("'></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','")
+                                .AppendHtml(trackingCode)
+                                .AppendHtml("', { 'anonymize_ip': true });</script>");
+                        }
+                    }
+                }
             }
             catch (Exception e)
             {
