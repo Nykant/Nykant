@@ -238,6 +238,11 @@ ol, ul {
         padding:30px;
     }
 
+
+.lock-screen {
+    touch-action: none;
+}
+
 .error-div {
     display: none;
     padding:20px;
@@ -268,6 +273,10 @@ ol, ul {
         position:absolute;
         right:30px;
         top:30px;
+    }
+
+    .socialmedia a {
+        margin-bottom:10px;
     }
 
 

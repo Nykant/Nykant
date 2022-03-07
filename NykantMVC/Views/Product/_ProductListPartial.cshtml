@@ -50,7 +50,7 @@
                         @if (count > 5)
                         {
                             <div class="primary-img">
-                                <img loading="lazy" src="@item.GalleryImage1" />
+                                <img loading="lazy" src="@item.GalleryImage1" alt="@item.Title" />
                             </div>
                             count++;
                         }
@@ -63,7 +63,7 @@
                         }
 
                         <div class="secondary-img">
-                            <img loading="lazy" src="@item.GalleryImage2" />
+                            <img loading="lazy" src="@item.GalleryImage2" alt="@item.Title" />
                         </div>
                     </div>
                     <div class="product-item-inside">

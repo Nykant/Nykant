@@ -54,7 +54,17 @@ $(document).ready(function () {
         }
     }
 
+    //document.body.addEventListener('touchstart', event => {
+    //    if ($(event.target).closest(slideshow).length) {
+    //        document.body.setAttribute('class', 'lock-screen');
+    //    }
+    //    else if (!$(event.target).closest(slideshow).length) {
+    //        document.body.setAttribute('class', '');
+    //    }
+    //});
+
     slideshow.addEventListener('swiped-right', function () {
+        document.body.setAttribute('class', 'lock-screen');
         if (slidenumber > 0) {
             slidenumber--;
             slidebuttons[slidenumber].click();
@@ -67,8 +77,6 @@ $(document).ready(function () {
             slidebuttons[slidenumber].click();
         }
     });
-
-
 
     var slicknext = document.getElementsByClassName('slick-next');
     if (slicknext != undefined) {
