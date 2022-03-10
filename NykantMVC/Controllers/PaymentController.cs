@@ -18,7 +18,6 @@ using Microsoft.Extensions.Hosting;
 namespace NykantMVC.Controllers
 {
     [AutoValidateAntiforgeryToken]
-    [AllowAnonymous]
     public class PaymentController : BaseController
     {
         private readonly IProtectionService _protectionService;

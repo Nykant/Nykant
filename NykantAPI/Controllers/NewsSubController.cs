@@ -33,7 +33,6 @@ namespace NykantAPI.Controllers
                 {
                     if (!NewsSubExist(newsSub.Email))
                     {
-                        sub = _protectionService.ProtectNewsSub(sub);
                         _context.NewsSubs.Add(sub);
                         await _context.SaveChangesAsync();
                     }

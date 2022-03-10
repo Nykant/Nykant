@@ -30,10 +30,6 @@ namespace NykantAPI.Controllers
             try
             {
                 var captures = await _context.PaymentCaptures.Include(x => x.Orders).ToListAsync();
-                for(int i = 0; i < captures.Count(); i++)
-                {
-                    captures[i] = _protectionService.UnprotectPaymentCapture(captures[i]);
-                }
 
                 return Ok(JsonConvert.SerializeObject(captures, Extensions.JsonOptions.jsonSettings));
             }
@@ -50,7 +46,6 @@ namespace NykantAPI.Controllers
             try
             {
                 var capture = await _context.PaymentCaptures.Include(x => x.Orders).ThenInclude(x => x.OrderItems).ThenInclude(x => x.Product).Include(x => x.Customer).ThenInclude(x => x.BillingAddress).Include(x => x.Invoice).FirstOrDefaultAsync(x => x.Id == id);
-                capture = _protectionService.UnprotectPaymentCapture(capture);
                 return Ok(JsonConvert.SerializeObject(capture, Extensions.JsonOptions.jsonSettings));
             }
             catch (Exception e)
@@ -68,7 +63,6 @@ namespace NykantAPI.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    _protectionService.ProtectPaymentCapture(paymentCapture);
                     var entity = _context.PaymentCaptures.Add(paymentCapture).Entity;
                     await _context.SaveChangesAsync();
                     return CreatedAtAction("GetPaymentCapture", new { id = entity.Id }, entity);
@@ -92,7 +86,6 @@ namespace NykantAPI.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    paymentCapture = _protectionService.ProtectPaymentCapture(paymentCapture);
                     _context.PaymentCaptures.Update(paymentCapture);
                     await _context.SaveChangesAsync();
                     return Ok();

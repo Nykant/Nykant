@@ -28,6 +28,51 @@ namespace NykantIS.Data.Seed
                     context.Database.Migrate();
 
                     var userMgr = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+                    var roleMgr = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+                    // create admin role
+                    var adminRole = roleMgr.FindByNameAsync("Admin").Result;
+                    if(adminRole == null)
+                    {
+                        adminRole = new IdentityRole("Admin");
+                        var result = roleMgr.CreateAsync(adminRole).Result;
+                        if (!result.Succeeded)
+                        {
+                            throw new Exception(result.Errors.First().Description);
+                        }
+
+                        result = roleMgr.AddClaimAsync(adminRole, new Claim("Permission", "admin")).Result;
+                        if (!result.Succeeded)
+                        {
+                            throw new Exception(result.Errors.First().Description);
+                        }
+
+                        result = roleMgr.AddClaimAsync(adminRole, new Claim("Permission", "raffle")).Result;
+                        if (!result.Succeeded)
+                        {
+                            throw new Exception(result.Errors.First().Description);
+                        }
+                    }
+
+                    // create raffle role
+                    var rafflePermission = roleMgr.FindByNameAsync("Raffler").Result;
+                    if(rafflePermission == null)
+                    {
+                        rafflePermission = new IdentityRole("Raffler");
+                        var result = roleMgr.CreateAsync(rafflePermission).Result;
+                        if (!result.Succeeded)
+                        {
+                            throw new Exception(result.Errors.First().Description);
+                        }
+
+                        result = roleMgr.AddClaimAsync(adminRole, new Claim("Permission", "raffle")).Result;
+                        if (!result.Succeeded)
+                        {
+                            throw new Exception(result.Errors.First().Description);
+                        }
+                    }
+
+                    // create admin
                     var admin = userMgr.FindByNameAsync("Admin").Result;
                     if (admin == null)
                     {
@@ -35,7 +80,7 @@ namespace NykantIS.Data.Seed
                         {
                             UserName = "Admin",
                             Email = "Admin@login",
-                            EmailConfirmed = true,
+                            EmailConfirmed = true
                         };
                         var result = userMgr.CreateAsync(admin, "MinHemmelighed#123").Result;
                         if (!result.Succeeded)
@@ -43,8 +88,44 @@ namespace NykantIS.Data.Seed
                             throw new Exception(result.Errors.First().Description);
                         }
 
+                        userMgr.AddToRoleAsync(admin, adminRole.Name);
+                        userMgr.AddToRoleAsync(admin, rafflePermission.Name);
+
                         result = userMgr.AddClaimsAsync(admin, new Claim[]{
                             new Claim(JwtClaimTypes.Id, admin.Id)
+                        }).Result;
+                        if (!result.Succeeded)
+                        {
+                            throw new Exception(result.Errors.First().Description);
+                        }
+
+                        Log.Debug("admin user created");
+                    }
+                    else
+                    {
+                        Log.Debug("admin user exists");
+                    }
+
+                    // create raffletester
+                    var raffleTester = userMgr.FindByNameAsync("RaffleTester").Result;
+                    if (raffleTester == null)
+                    {
+                        raffleTester = new ApplicationUser
+                        {
+                            UserName = "RaffleTester",
+                            Email = "RaffleTester@login",
+                            EmailConfirmed = true
+                        };
+                        var result = userMgr.CreateAsync(raffleTester, "SecretTestPassword#369").Result;
+                        if (!result.Succeeded)
+                        {
+                            throw new Exception(result.Errors.First().Description);
+                        }
+
+                        userMgr.AddToRoleAsync(raffleTester, rafflePermission.Name);
+
+                        result = userMgr.AddClaimsAsync(raffleTester, new Claim[]{
+                            new Claim(JwtClaimTypes.Id, raffleTester.Id)
                         }).Result;
                         if (!result.Succeeded)
                         {

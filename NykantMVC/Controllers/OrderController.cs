@@ -28,7 +28,7 @@ namespace NykantMVC.Controllers
             _protectionService = protectionService;
         }
 
-        [Authorize]
+        [Authorize("Admin Permission")]
         [HttpGet]
         public async Task<IActionResult> UnsentOrders()
         {
@@ -37,7 +37,7 @@ namespace NykantMVC.Controllers
             return View(list);
         }
 
-        [Authorize]
+        [Authorize("Admin Permission")]
         [HttpGet]
         public async Task<IActionResult> AllOrders()
         {
@@ -46,7 +46,7 @@ namespace NykantMVC.Controllers
             return View(list);
         }
 
-        [Authorize]
+        [Authorize("Admin Permission")]
         [HttpGet]
         public async Task<IActionResult> History()
         {
@@ -55,7 +55,7 @@ namespace NykantMVC.Controllers
             return View(list);
         }
 
-        [Authorize]
+        [Authorize("Admin Permission")]
         [HttpGet]
         public async Task<IActionResult> Details(int id)
         {
@@ -178,7 +178,7 @@ namespace NykantMVC.Controllers
             }
         }
 
-        [Authorize]
+        [Authorize("Admin Permission")]
         [HttpGet]
         public async Task<IActionResult> BackOrders()
         {
@@ -187,7 +187,7 @@ namespace NykantMVC.Controllers
             return View(list);
         }
 
-        [Authorize]
+        [Authorize("Admin Permission")]
         [HttpPost]
         public async Task<IActionResult> OrderInStorage(int orderId)
         {
@@ -221,7 +221,7 @@ namespace NykantMVC.Controllers
             
         }
 
-        [Authorize]
+        [Authorize("Admin Permission")]
         [HttpPost]
         public async Task<IActionResult> OrderSent(int orderId)
         {
@@ -257,7 +257,7 @@ namespace NykantMVC.Controllers
             return Content("error: Capture Payment Intent");
         }
 
-        [Authorize]
+        [Authorize("Admin Permission")]
         public async Task CapturePaymentIntent(int paymentCaptureId)
         {
             try

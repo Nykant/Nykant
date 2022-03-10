@@ -29,7 +29,6 @@ namespace NykantAPI.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    invoice = _protectionService.ProtectInvoice(invoice);
                     var entity = _context.Invoices.Add(invoice).Entity;
                     await _context.SaveChangesAsync();
                     return CreatedAtAction("GetInvoice", new { id = entity.Id }, entity);
@@ -55,7 +54,6 @@ namespace NykantAPI.Controllers
             try
             {
                 var invoice = await _context.Invoices.FirstOrDefaultAsync(x => x.Id == id);
-                invoice = _protectionService.UnprotectInvoice(invoice);
                 return Ok(JsonConvert.SerializeObject(invoice));
             }
             catch (Exception e)

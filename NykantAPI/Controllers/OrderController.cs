@@ -48,7 +48,6 @@ namespace NykantAPI.Controllers
             try
             {
                 var order = await _context.Orders.Include(x => x.PaymentCapture).ThenInclude(x => x.Customer).ThenInclude(x => x.ShippingAddress).Include(x => x.PaymentCapture).ThenInclude(x => x.Customer).ThenInclude(x => x.BillingAddress).Include(x => x.OrderItems).ThenInclude(x => x.Product).Include(x => x.ShippingDelivery).FirstOrDefaultAsync(x => x.Id == id);
-                order = _protectionService.UnprotectOrder(order);
                 return Ok(JsonConvert.SerializeObject(order, Extensions.JsonOptions.jsonSettings));
             }
             catch (Exception e)
@@ -65,7 +64,6 @@ namespace NykantAPI.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    order = _protectionService.ProtectOrder(order);
                     _context.Orders.Update(order);
                     await _context.SaveChangesAsync();
                     return Ok();
@@ -89,7 +87,6 @@ namespace NykantAPI.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    order = _protectionService.ProtectOrder(order);
                     var entity = _context.Orders.Add(order).Entity;
                     await _context.SaveChangesAsync();
                     return CreatedAtAction("GetOrder", new { id = entity.Id }, entity);

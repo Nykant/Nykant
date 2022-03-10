@@ -93,11 +93,17 @@ namespace NykantMVC
                     options.Scope.Add("offline_access");
                 });
 
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Admin Permission", policy => policy.RequireClaim("Permission", "admin"));
+                options.AddPolicy("Raffle Permission", policy => policy.RequireClaim("Permission", "raffle"));
+            });
+
             services.AddDistributedMemoryCache();
 
             services.AddSession(options =>
             {
-                options.IdleTimeout = TimeSpan.FromHours(1);
+                options.IdleTimeout = TimeSpan.FromHours(10);
                 options.Cookie.HttpOnly = true;
                 options.Cookie.Name = "Session";
                 options.Cookie.IsEssential = true;

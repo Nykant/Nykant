@@ -13,7 +13,7 @@ using NykantAPI.Data;
 using NykantAPI.Models;
 using NykantAPI.Models.DTO;
 using NykantAPI.Services;
-using Microsoft.AspNetCore.Authorization;
+
 
 namespace NykantAPI.Controllers
 {
@@ -35,7 +35,6 @@ namespace NykantAPI.Controllers
             try
             {
                 var customerInf = await _context.Customer.Include(x => x.ShippingAddress).Include(x => x.BillingAddress).FirstOrDefaultAsync(x => x.Id == id);
-                customerInf = _protectionService.UnprotectCustomer(customerInf);
                 return Ok(JsonConvert.SerializeObject(customerInf, Extensions.JsonOptions.jsonSettings));
             }
             catch (Exception e)
@@ -55,14 +54,12 @@ namespace NykantAPI.Controllers
                 {
                     if (CustomerExists(customerInf.Id))
                     {
-                        customerInf = _protectionService.ProtectCustomer(customerInf);
                         _context.Customer.Update(customerInf);
                         await _context.SaveChangesAsync();
                         return Ok();
                     }
                     else
                     {
-                        customerInf = _protectionService.ProtectCustomer(customerInf);
                         var entity = _context.Customer.Add(customerInf).Entity;
                         await _context.SaveChangesAsync();
                         return CreatedAtAction("GetCustomer", new { id = entity.Id }, customerInf);
@@ -87,14 +84,12 @@ namespace NykantAPI.Controllers
                 {
                     if (ShippingAddressExists(shippingAddress.Id))
                     {
-                        shippingAddress = _protectionService.ProtectShippingAddress(shippingAddress);
                         _context.ShippingAddress.Update(shippingAddress);
                         await _context.SaveChangesAsync();
                         return Ok();
                     }
                     else
                     {
-                        shippingAddress = _protectionService.ProtectShippingAddress(shippingAddress);
                         _context.ShippingAddress.Add(shippingAddress);
                         await _context.SaveChangesAsync();
                         return Ok();
@@ -118,14 +113,12 @@ namespace NykantAPI.Controllers
                 {
                     if (InvoiceAddressExists(billingAddress.Id))
                     {
-                        billingAddress = _protectionService.ProtectInvoiceAddress(billingAddress);
                         _context.BillingAddress.Update(billingAddress);
                         await _context.SaveChangesAsync();
                         return Ok();
                     }
                     else
                     {
-                        billingAddress = _protectionService.ProtectInvoiceAddress(billingAddress);
                         _context.BillingAddress.Add(billingAddress);
                         await _context.SaveChangesAsync();
                         return Ok();
