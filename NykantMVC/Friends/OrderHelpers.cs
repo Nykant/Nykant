@@ -305,7 +305,7 @@ namespace NykantMVC.Friends
 
             foreach(var date in dates)
             {
-                var makeOrder = new MakeOrder { CustomerId = checkout.CustomerInfId, BagItems = new List<BagItem>() };
+                var makeOrder = new MakeOrder { CustomerId = checkout.CustomerId, BagItems = new List<BagItem>() };
                 foreach(var item in checkout.BagItems)
                 {
                     if(item.Product.ExpectedDelivery == date)
