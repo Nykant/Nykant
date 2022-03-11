@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -16,8 +17,16 @@ namespace NykantAPI.Controllers
     [Route("[controller]/[action]/")]
     public class CategoryController : BaseController
     {
-        public CategoryController(ILogger<CategoryController> logger, ApplicationDbContext context) : base(logger, context)
+        public CategoryController(ILogger<CategoryController> logger, IHostingEnvironment env) : base(logger, env)
         {
+            if (env.IsDevelopment())
+            {
+
+            }
+            else
+            {
+
+            }
         }
 
         [HttpGet]

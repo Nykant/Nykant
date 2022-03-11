@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using NykantAPI.Data;
@@ -20,12 +23,25 @@ namespace NykantAPI.Controllers
     [Route("[controller]/[action]/")]
     public class BagItemController : BaseController
     {
-        public BagItemController(ILogger<BagItemController> logger, ApplicationDbContext context)
-            : base(logger, context)
+        private dynamic _context;
+        IServiceProvider serviceProvider;
+        public BagItemController(ILogger<BagItemController> logger, IHostingEnvironment env, IServiceProvider serviceProvider)
+            : base(logger, env)
         {
+            this.serviceProvider = serviceProvider;
+            if (env.IsDevelopment())
+            {
+                _context = serviceProvider.GetRequiredService<LocalApplicationDbContext>();
+            }
+            else
+            {
+
+            }
         }
 
-        [HttpGet("{subject}")]
+
+
+[HttpGet("{subject}")]
         public async Task<ActionResult<List<BagItem>>> GetBagItems(string subject)
         {
             try

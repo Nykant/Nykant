@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -17,8 +18,16 @@ namespace NykantAPI.Controllers
     public class ReviewController : BaseController
     {
 
-        public ReviewController(ApplicationDbContext context, ILogger<BaseController> logger) : base(logger, context)
+        public ReviewController(IHostingEnvironment env, ILogger<BaseController> logger) : base(logger, env)
         {
+            if (env.IsDevelopment())
+            {
+
+            }
+            else
+            {
+
+            }
         }
 
         // GET: Review

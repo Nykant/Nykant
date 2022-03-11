@@ -54,27 +54,46 @@ namespace NykantIS
             string mykeyConnection = null;
             string identityserverConnection = null;
             string identityConnection = null;
-            var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
+            string migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 
             mykeyConnection = Configuration.GetConnectionString("MyKeysConnection");
             identityserverConnection = Configuration.GetConnectionString("IdentityServer");
             identityConnection = Configuration.GetConnectionString("Identity");
 
-            services.AddDbContext<MyKeysContext>(options =>
-                options.UseMySql(mykeyConnection));
+            if (Environment.IsDevelopment())
+            {
+                services.AddDbContext<LocalMyKeysContext>(options =>
+                    options.UseSqlServer(mykeyConnection));
 
-            services.AddDataProtection()
-                .PersistKeysToDbContext<MyKeysContext>()
-                //.ProtectKeysWithCertificate("3fe5fcaf686e7ffbeaf80d760944e0f752f2112b")
-                .SetApplicationName("Nykant");
+                services.AddDataProtection()
+                    .PersistKeysToDbContext<LocalMyKeysContext>()
+                    //.ProtectKeysWithCertificate("3fe5fcaf686e7ffbeaf80d760944e0f752f2112b")
+                    .SetApplicationName("Nykant");
 
-            services.AddDbContext<IdentityContext>(options =>
-                options.UseMySql(identityConnection));
+                services.AddDbContext<LocalIdentityContext>(options =>
+                    options.UseSqlServer(identityConnection));
 
+                services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+                    .AddEntityFrameworkStores<LocalIdentityContext>()
+                    .AddDefaultTokenProviders();
+            }
+            else
+            {
+                services.AddDbContext<MyKeysContext>(options =>
+                    options.UseMySql(mykeyConnection));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<IdentityContext>()
-                .AddDefaultTokenProviders();
+                services.AddDataProtection()
+                    .PersistKeysToDbContext<MyKeysContext>()
+                    //.ProtectKeysWithCertificate("3fe5fcaf686e7ffbeaf80d760944e0f752f2112b")
+                    .SetApplicationName("Nykant");
+
+                services.AddDbContext<IdentityContext>(options =>
+                    options.UseMySql(identityConnection));
+
+                services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+                    .AddEntityFrameworkStores<IdentityContext>()
+                    .AddDefaultTokenProviders();
+            }
 
             var builder = services.AddIdentityServer(options =>
             {
@@ -94,59 +113,50 @@ namespace NykantIS
                     CookieLifetime = TimeSpan.FromHours(10), // ID server cookie timeout set to 10 hours
                     CookieSlidingExpiration = true
                 };
-            })
-            .AddConfigurationStore(options =>
+            });
+
+            if (Environment.IsDevelopment())
             {
-                            options.ConfigureDbContext = b => b
-                .UseMySql(identityserverConnection, mySqlOptionsAction: mySql =>
+                builder.AddConfigurationStore<LocalConfigurationDbContext>(options =>
                 {
-                    mySql.MigrationsAssembly(migrationsAssembly);
+                    options.ConfigureDbContext = b => b
+                        .UseSqlServer(identityserverConnection, sqlServerOptionsAction: sql =>
+                        {
+                            sql.MigrationsAssembly(migrationsAssembly);
+                        });
                 });
-                //if (Environment.IsDevelopment())
-                //{
-                //    options.ConfigureDbContext = b => b
-                //        .UseSqlServer(identityserverConnection, sqlServerOptionsAction: sql =>
-                //        {
-                //            sql.MigrationsAssembly(migrationsAssembly);
-                //        });
-                //}
-                //else
-                //{
-                //    options.ConfigureDbContext = b => b
-                //        .UseMySql(identityserverConnection, mySqlOptionsAction: mySql =>
-                //        {
-                //            mySql.MigrationsAssembly(migrationsAssembly);
-                //        });
-                //}
 
-            })
-            .AddOperationalStore(options =>
+                builder.AddOperationalStore<LocalPersistedGrantDbContext>(options =>
+                {
+                    options.ConfigureDbContext = b => b
+                        .UseSqlServer(identityserverConnection, sqlServerOptionsAction: sql =>
+                        {
+                            sql.MigrationsAssembly(migrationsAssembly);
+                        });
+                });
+            }
+            else
             {
-                            options.ConfigureDbContext = b => b
-                .UseMySql(identityserverConnection, mySqlOptionsAction: mySql =>
+                builder.AddConfigurationStore(options =>
                 {
-                    mySql.MigrationsAssembly(migrationsAssembly);
+                    options.ConfigureDbContext = b => b
+                        .UseMySql(identityserverConnection, mySqlOptionsAction: mySql =>
+                        {
+                            mySql.MigrationsAssembly(migrationsAssembly);
+                        });
                 });
-                //if (Environment.IsDevelopment())
-                //{
-                //    options.ConfigureDbContext = b => b
-                //        .UseSqlServer(identityserverConnection, sqlServerOptionsAction: sql =>
-                //        {
-                //            sql.MigrationsAssembly(migrationsAssembly);
-                //        });
-                //}
-                //else
-                //{
-                //    options.ConfigureDbContext = b => b
-                //        .UseMySql(identityserverConnection, mySqlOptionsAction: mySql =>
-                //        {
-                //            mySql.MigrationsAssembly(migrationsAssembly);
-                //        });
-                //}
 
-            })
-
-            .AddAspNetIdentity<ApplicationUser>();
+                builder.AddOperationalStore(options =>
+                {
+                    options.ConfigureDbContext = b => b
+                        .UseMySql(identityserverConnection, mySqlOptionsAction: mySql =>
+                        {
+                            mySql.MigrationsAssembly(migrationsAssembly);
+                        });
+                });
+            }
+            
+            builder.AddAspNetIdentity<ApplicationUser>();
 
             // not recommended for production - you need to store your key material somewhere secure
             builder.AddDeveloperSigningCredential();
@@ -247,40 +257,74 @@ namespace NykantIS
 
         private void InitializeDatabase(IApplicationBuilder app)
         {
-            SeedData.EnsureSeedData(app.ApplicationServices);
-
+            SeedData.EnsureSeedData(app.ApplicationServices, Environment);
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
-                serviceScope.ServiceProvider.GetRequiredService<PersistedGrantDbContext>().Database.Migrate();
-
-                var context = serviceScope.ServiceProvider.GetRequiredService<ConfigurationDbContext>();
-                context.Database.Migrate();
-                if (!context.Clients.Any())
+                if (Environment.IsDevelopment())
                 {
-                    foreach (var client in Config.Clients)
+                    serviceScope.ServiceProvider.GetRequiredService<LocalPersistedGrantDbContext>().Database.Migrate();
+                    var context = serviceScope.ServiceProvider.GetRequiredService<LocalConfigurationDbContext>();
+                    context.Database.Migrate();
+                    if (!context.Clients.Any())
                     {
-                        context.Clients.Add(client.ToEntity());
+                        foreach (var client in Config.Clients)
+                        {
+                            context.Clients.Add(client.ToEntity());
+                        }
+                        context.SaveChanges();
                     }
-                    context.SaveChanges();
-                }
 
-                if (!context.IdentityResources.Any())
-                {
-                    foreach (var resource in Config.IdentityResources)
+                    if (!context.IdentityResources.Any())
                     {
-                        context.IdentityResources.Add(resource.ToEntity());
+                        foreach (var resource in Config.IdentityResources)
+                        {
+                            context.IdentityResources.Add(resource.ToEntity());
+                        }
+                        context.SaveChanges();
                     }
-                    context.SaveChanges();
-                }
 
-                if (!context.ApiScopes.Any())
-                {
-                    foreach (var resource in Config.ApiScopes)
+                    if (!context.ApiScopes.Any())
                     {
-                        context.ApiScopes.Add(resource.ToEntity());
+                        foreach (var resource in Config.ApiScopes)
+                        {
+                            context.ApiScopes.Add(resource.ToEntity());
+                        }
+                        context.SaveChanges();
                     }
-                    context.SaveChanges();
                 }
+                else
+                {
+                    serviceScope.ServiceProvider.GetRequiredService<PersistedGrantDbContext>().Database.Migrate();
+                    var context = serviceScope.ServiceProvider.GetRequiredService<ConfigurationDbContext>();
+                    context.Database.Migrate();
+                    if (!context.Clients.Any())
+                    {
+                        foreach (var client in Config.Clients)
+                        {
+                            context.Clients.Add(client.ToEntity());
+                        }
+                        context.SaveChanges();
+                    }
+
+                    if (!context.IdentityResources.Any())
+                    {
+                        foreach (var resource in Config.IdentityResources)
+                        {
+                            context.IdentityResources.Add(resource.ToEntity());
+                        }
+                        context.SaveChanges();
+                    }
+
+                    if (!context.ApiScopes.Any())
+                    {
+                        foreach (var resource in Config.ApiScopes)
+                        {
+                            context.ApiScopes.Add(resource.ToEntity());
+                        }
+                        context.SaveChanges();
+                    }
+                }
+                
             }
         }
     }

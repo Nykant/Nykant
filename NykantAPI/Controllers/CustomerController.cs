@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.DataProtection;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -23,10 +24,18 @@ namespace NykantAPI.Controllers
     public class CustomerController : BaseController
     {
         private readonly IProtectionService _protectionService;
-        public CustomerController(ILogger<CustomerController> logger, ApplicationDbContext context, IProtectionService protectionService)
-            : base(logger, context)
+        public CustomerController(ILogger<CustomerController> logger, IHostingEnvironment env, IProtectionService protectionService)
+            : base(logger, env)
         {
             _protectionService = protectionService;
+            if (env.IsDevelopment())
+            {
+
+            }
+            else
+            {
+
+            }
         }
 
         [HttpGet("{id}")]

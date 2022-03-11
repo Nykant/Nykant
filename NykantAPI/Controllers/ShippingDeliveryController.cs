@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 
 namespace NykantAPI.Controllers
 {
@@ -16,8 +17,8 @@ namespace NykantAPI.Controllers
     [Route("[controller]/[action]/")]
     public class ShippingDeliveryController : BaseController
     {
-        public ShippingDeliveryController(ILogger<ShippingDeliveryController> logger, ApplicationDbContext context)
-            : base(logger, context)
+        public ShippingDeliveryController(ILogger<ShippingDeliveryController> logger, IHostingEnvironment env)
+            : base(logger, env)
         {
         }
 

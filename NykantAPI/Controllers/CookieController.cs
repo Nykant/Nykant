@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 
 namespace NykantAPI.Controllers
 {
@@ -15,8 +16,17 @@ namespace NykantAPI.Controllers
     [Route("[controller]/[action]/")]
     public class CookieController : BaseController
     {
-        public CookieController(ILogger<CookieController> logger, ApplicationDbContext context) : base(logger, context)
-        { }
+        public CookieController(ILogger<CookieController> logger, IHostingEnvironment env) : base(logger, env)
+        {
+            if (env.IsDevelopment())
+            {
+
+            }
+            else
+            {
+
+            }
+        }
 
         [HttpGet]
         public async Task<ActionResult> GetCookies()

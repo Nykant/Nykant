@@ -6,6 +6,7 @@ using System;
 using System.Linq;
 using System.Security.Claims;
 using IdentityModel;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -18,21 +19,29 @@ namespace NykantIS.Data.Seed
 {
     public class SeedData
     {
-        public static void EnsureSeedData(IServiceProvider services)
+        public static void EnsureSeedData(IServiceProvider services, IWebHostEnvironment env)
         {
             try
             {
                 using (var scope = services.GetRequiredService<IServiceScopeFactory>().CreateScope())
                 {
-                    var context = scope.ServiceProvider.GetService<IdentityContext>();
-                    context.Database.Migrate();
+                    if (env.IsDevelopment())
+                    {
+                        var context = scope.ServiceProvider.GetService<LocalIdentityContext>();
+                        context.Database.Migrate();
+                    }
+                    else
+                    {
+                        var context = scope.ServiceProvider.GetService<IdentityContext>();
+                        context.Database.Migrate();
+                    }
 
                     var userMgr = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
                     var roleMgr = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
                     // create admin role
                     var adminRole = roleMgr.FindByNameAsync("Admin").Result;
-                    if(adminRole == null)
+                    if (adminRole == null)
                     {
                         adminRole = new IdentityRole("Admin");
                         var result = roleMgr.CreateAsync(adminRole).Result;
@@ -56,7 +65,7 @@ namespace NykantIS.Data.Seed
 
                     // create raffle role
                     var rafflePermission = roleMgr.FindByNameAsync("Raffler").Result;
-                    if(rafflePermission == null)
+                    if (rafflePermission == null)
                     {
                         rafflePermission = new IdentityRole("Raffler");
                         var result = roleMgr.CreateAsync(rafflePermission).Result;

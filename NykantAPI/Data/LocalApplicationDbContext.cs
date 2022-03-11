@@ -7,31 +7,15 @@ using System.Text;
 
 namespace NykantAPI.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class LocalApplicationDbContext : ApplicationDbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+        public LocalApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
             Database.Migrate();
         }
 
-        public DbSet<Product> Products { get; set; }
-        public DbSet<Image> Images { get; set; }
-        public DbSet<BagItem> BagItems { get; set; }
-        public DbSet<Order> Orders { get; set; }
-        public DbSet<OrderItem> OrderItems { get; set; }
-        public DbSet<Customer> Customer { get; set; }
-        public DbSet<ShippingDelivery> ShippingDeliveries { get; set; }
-        public DbSet<Category> Categories { get; set; }
-        public DbSet<Review> Reviews { get; set; }
-        public DbSet<Cookie> Cookies { get; set; }
-        public DbSet<BillingAddress> BillingAddress { get; set; }
-        public DbSet<ShippingAddress> ShippingAddress { get; set; }
-        //public DbSet<ParcelshopData> ParcelshopData { get; set; }
-        public DbSet<NewsSub> NewsSubs { get; set; }
-        public DbSet<Color> Colors { get; set; }
-        public DbSet<Invoice> Invoices { get; set; }
-        public DbSet<Consent> Consents { get; set; }
-        public DbSet<PaymentCapture> PaymentCaptures { get; set; }
+        protected override void OnConfiguring(DbContextOptionsBuilder options)
+    => options.UseSqlite("Data Source=my.db");sdfg
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

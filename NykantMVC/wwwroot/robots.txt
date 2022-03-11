@@ -3,11 +3,3 @@ Disallow: /Kassen
 Disallow: /Bestilling-Gennemført
 Disallow: /Kurv
 Disallow: /Order
-Disallow: /Cookie-Politik
-Disallow: /Privatlivs-Politik
-Disallow: /Salgs-Og-Leveringsbetingelser
-Disallow: /Bag
-Disallow: /Checkout
-Disallow: /Home/TermsAndConditions
-Disallow: /Home/PrivacyPolicy
-Disallow: /Home/CookiePolicy

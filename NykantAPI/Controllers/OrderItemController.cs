@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 
 namespace NykantAPI.Controllers
 {
@@ -15,9 +16,17 @@ namespace NykantAPI.Controllers
     [Route("[controller]/[action]/")]
     public class OrderItemController : BaseController
     {
-        public OrderItemController(ILogger<OrderItemController> logger, ApplicationDbContext context)
-                    : base(logger, context)
+        public OrderItemController(ILogger<OrderItemController> logger, IHostingEnvironment env)
+                    : base(logger, env)
         {
+            if (env.IsDevelopment())
+            {
+
+            }
+            else
+            {
+
+            }
         }
 
 

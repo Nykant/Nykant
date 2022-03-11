@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using NykantAPI.Services;
+using Microsoft.AspNetCore.Hosting;
 
 namespace NykantAPI.Controllers
 {
@@ -19,8 +20,17 @@ namespace NykantAPI.Controllers
     public class InvoiceController : BaseController
     {
         private readonly IProtectionService _protectionService;
-        public InvoiceController(ILogger<InvoiceController> logger, ApplicationDbContext context, IProtectionService protectionService) : base(logger, context)
-        { _protectionService = protectionService; }
+        public InvoiceController(ILogger<InvoiceController> logger, IHostingEnvironment env, IProtectionService protectionService) : base(logger, env)
+        { _protectionService = protectionService;
+            if (env.IsDevelopment())
+            {
+
+            }
+            else
+            {
+
+            }
+        }
 
         [HttpPost]
         public async Task<ActionResult<Invoice>> PostInvoice(Invoice invoice)

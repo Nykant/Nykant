@@ -96,7 +96,7 @@ namespace NykantMVC.Controllers
                 {
                     checkout.BagItems = await ValidateAndUpdateProducts(checkout.BagItems);
 
-                    var paymentCapture = new PaymentCapture { Captured = false, PaymentIntent_Id = paymentIntentId, CustomerId = checkout.CustomerId };
+                    var paymentCapture = new PaymentCapture { Captured = false, PaymentIntent_Id = paymentIntentId, CustomerId = checkout.CustomerInfId };
                     var response = await PostRequest("/PaymentCapture/PostPaymentCapture", paymentCapture);
                     if (!response.IsSuccessStatusCode)
                     {

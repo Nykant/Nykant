@@ -12,6 +12,7 @@ using NykantAPI.Models;
 using NykantAPI.Models.DTO;
 using NykantAPI.Services;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 
 namespace NykantAPI.Controllers
 {
@@ -21,10 +22,18 @@ namespace NykantAPI.Controllers
     public class OrderController : BaseController
     {
         private readonly IProtectionService _protectionService;
-        public OrderController(ILogger<OrderController> logger, ApplicationDbContext context, IProtectionService protectionService)
-            : base(logger, context)
+        public OrderController(ILogger<OrderController> logger, IHostingEnvironment env, IProtectionService protectionService)
+            : base(logger, env)
         {
             _protectionService = protectionService;
+            if (env.IsDevelopment())
+            {
+
+            }
+            else
+            {
+
+            }
         }
 
         [HttpGet]

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using NykantAPI.Data;
@@ -15,9 +16,17 @@ namespace NykantAPI.Controllers
     [Route("[controller]/[action]/")]
     public class ShippingController : BaseController
     {
-        public ShippingController(ILogger<BaseController> logger, ApplicationDbContext context)
-            : base(logger, context)
+        public ShippingController(ILogger<BaseController> logger, IHostingEnvironment env)
+            : base(logger, env)
         {
+            if (env.IsDevelopment())
+            {
+
+            }
+            else
+            {
+
+            }
         }
 
         //[HttpPost]

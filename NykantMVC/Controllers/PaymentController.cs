@@ -14,7 +14,6 @@ using System.Text.Encodings.Web;
 using System;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
-using NykantMVC.Friends;
 
 namespace NykantMVC.Controllers
 {
@@ -98,7 +97,7 @@ namespace NykantMVC.Controllers
 
                         if (paymentMethodId != null)
                         {
-                            long.TryParse(OrderHelpers.CalculateAmount(checkout.BagItems).ToString(), out long amount);
+                            int.TryParse(checkout.TotalPrice, out int amount);
                             amount = amount * 100;
                             var PIoptions = new PaymentIntentCreateOptions
                             {

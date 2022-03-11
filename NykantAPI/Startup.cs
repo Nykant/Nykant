@@ -37,51 +37,41 @@ namespace NykantAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            string mykeyConnection = null;
-            string nykantConnection = null;
+            string mykeyConnection = Configuration.GetConnectionString("MyKeysConnection");
+            string nykantConnection = Configuration.GetConnectionString("NykantDb");
 
+            if (Environment.IsDevelopment())
+            {
+                services.AddDbContext<LocalMyKeysContext>(options =>
+                    options.UseSqlServer(
+                        mykeyConnection));
 
-            mykeyConnection = Configuration.GetConnectionString("MyKeysConnection");
-            nykantConnection = Configuration.GetConnectionString("NykantDb");
+                services.AddDbContext<LocalApplicationDbContext>(options =>
+                    options
+                        .UseSqlServer(
+                            nykantConnection));
 
+                services.AddDataProtection()
+                    .PersistKeysToDbContext<LocalMyKeysContext>()
+                    //.ProtectKeysWithCertificate("3fe5fcaf686e7ffbeaf80d760944e0f752f2112b")
+                    .SetApplicationName("Nykant");
+            }
+            else
+            {
+                services.AddDbContext<MyKeysContext>(options =>
+                    options.UseMySql(
+                        mykeyConnection));
 
-            services.AddDbContext<MyKeysContext>(options =>
-                options.UseMySql(
-                    mykeyConnection));
+                services.AddDbContext<ApplicationDbContext>(options =>
+                    options.UseMySql(
+                        nykantConnection));
 
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseMySql(
-                    nykantConnection));
-            //if (Environment.IsDevelopment())
-            //{
-            //    services.AddDbContext<MyKeysContext>(options =>
-            //        options.UseSqlServer(
-            //            mykeyConnection));
-
-            //    services.AddDbContext<ApplicationDbContext>(options =>
-            //        options
-            //            .UseSqlServer(
-            //                nykantConnection));
-            //}
-            //else
-            //{
-            //    services.AddDbContext<MyKeysContext>(options =>
-            //        options.UseMySql(
-            //            mykeyConnection));
-
-            //    services.AddDbContext<ApplicationDbContext>(options =>
-            //        options
-            //            .UseMySql(
-            //                nykantConnection));
-            //}
-
-
-
-            services.AddDataProtection()
-                .PersistKeysToDbContext<MyKeysContext>()
-                //.ProtectKeysWithCertificate("3fe5fcaf686e7ffbeaf80d760944e0f752f2112b")
-                .SetApplicationName("Nykant");
-
+                services.AddDataProtection()
+                    .PersistKeysToDbContext<MyKeysContext>()
+                    //.ProtectKeysWithCertificate("3fe5fcaf686e7ffbeaf80d760944e0f752f2112b")
+                    .SetApplicationName("Nykant");
+            }
+           
 
             services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>

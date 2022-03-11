@@ -40,26 +40,30 @@ namespace NykantMVC
         {
             string mykeyConnection = Configuration.GetConnectionString("MyKeysConnection");
 
-            services.AddDbContext<MyKeysContext>(options =>
-                options.UseMySql(
-                    mykeyConnection));
-            //if (Environment.IsDevelopment())
-            //{
-            //    services.AddDbContext<MyKeysContext>(options =>
-            //        options.UseSqlServer(
-            //            mykeyConnection));
-            //}
-            //else
-            //{
-            //    services.AddDbContext<MyKeysContext>(options =>
-            //        options.UseMySql(
-            //            mykeyConnection));
-            //}
+            if (Environment.IsDevelopment())
+            {
+                services.AddDbContext<LocalMyKeysContext>(options =>
+                    options.UseSqlServer(
+                        mykeyConnection));
 
-            services.AddDataProtection()
-                .PersistKeysToDbContext<MyKeysContext>()
-                //.ProtectKeysWithCertificate("3fe5fcaf686e7ffbeaf80d760944e0f752f2112b")
-                .SetApplicationName("Nykant");
+                services.AddDataProtection()
+                    .PersistKeysToDbContext<LocalMyKeysContext>()
+                    //.ProtectKeysWithCertificate("3fe5fcaf686e7ffbeaf80d760944e0f752f2112b")
+                    .SetApplicationName("Nykant");
+            }
+            else
+            {
+                services.AddDbContext<MyKeysContext>(options =>
+                    options.UseMySql(
+                        mykeyConnection));
+
+                services.AddDataProtection()
+                    .PersistKeysToDbContext<MyKeysContext>()
+                    //.ProtectKeysWithCertificate("3fe5fcaf686e7ffbeaf80d760944e0f752f2112b")
+                    .SetApplicationName("Nykant");
+            }
+
+
 
             JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
 

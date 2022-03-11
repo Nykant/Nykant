@@ -1,4 +1,5 @@
 ﻿using IdentityModel.Client;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -18,13 +19,13 @@ namespace NykantAPI.Controllers
         public const string BagSessionKey = "verysecretbagsessionkey";
         public const string CheckoutSessionKey = "verysecretseriouscheckoutsessionkey";
         public const string BagItemAmountKey = "verysecretseriouscheckoutsessionkeyspecial";
-        public readonly ApplicationDbContext _context;
         public readonly ILogger<BaseController> _logger;
-        public BaseController(ILogger<BaseController> logger, ApplicationDbContext context)
+        public readonly IHostingEnvironment env;
+        public BaseController(ILogger<BaseController> logger, IHostingEnvironment env)
         {
 
             _logger = logger;
-            _context = context;
+            this.env = env;
         }
     }
 }

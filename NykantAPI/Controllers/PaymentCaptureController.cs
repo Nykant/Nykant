@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 
 namespace NykantAPI.Controllers
 {
@@ -19,9 +20,17 @@ namespace NykantAPI.Controllers
     public class PaymentCaptureController : BaseController
     {
         private readonly IProtectionService _protectionService;
-        public PaymentCaptureController(ILogger<PaymentCaptureController> logger, ApplicationDbContext context, IProtectionService _protectionService) : base(logger, context)
+        public PaymentCaptureController(ILogger<PaymentCaptureController> logger, IHostingEnvironment env, IProtectionService _protectionService) : base(logger, env)
         {
             this._protectionService = _protectionService;
+            if (env.IsDevelopment())
+            {
+
+            }
+            else
+            {
+
+            }
         }
 
         [HttpGet]

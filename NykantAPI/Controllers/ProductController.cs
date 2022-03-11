@@ -11,6 +11,7 @@ using NykantAPI.Models;
 using NykantAPI.Models.DTO;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 
 namespace NykantAPI.Controllers
 {
@@ -19,8 +20,16 @@ namespace NykantAPI.Controllers
     [Route("[controller]/[action]/")]
     public class ProductController : BaseController
     {
-        public ProductController(ILogger<ProductController> logger, ApplicationDbContext context) : base(logger, context)
+        public ProductController(ILogger<ProductController> logger, IHostingEnvironment env) : base(logger, env)
         {
+            if (env.IsDevelopment())
+            {
+
+            }
+            else
+            {
+
+            }
         }
 
         [HttpGet]

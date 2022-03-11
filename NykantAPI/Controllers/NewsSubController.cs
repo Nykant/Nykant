@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 
 namespace NykantAPI.Controllers
 {
@@ -17,10 +18,18 @@ namespace NykantAPI.Controllers
     public class NewsSubController : BaseController
     {
         private readonly IProtectionService _protectionService;
-        public NewsSubController(ILogger<NewsSubController> logger, ApplicationDbContext context, IProtectionService protectionService)
-            : base(logger, context)
+        public NewsSubController(ILogger<NewsSubController> logger, IHostingEnvironment env, IProtectionService protectionService)
+            : base(logger, env)
         {
             _protectionService = protectionService;
+            if (env.IsDevelopment())
+            {
+
+            }
+            else
+            {
+
+            }
         }
 
         [HttpPost]
