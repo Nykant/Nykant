@@ -46,10 +46,10 @@ namespace NykantAPI
                     options.UseSqlServer(
                         mykeyConnection));
 
-                services.AddDbContext<LocalApplicationDbContext>(options =>
-                    options
-                        .UseSqlServer(
-                            nykantConnection));
+                //services.AddDbContext<LocalApplicationDbContext>(options =>
+                //    options
+                //        .UseSqlServer(
+                //            nykantConnection));
 
                 services.AddDataProtection()
                     .PersistKeysToDbContext<LocalMyKeysContext>()

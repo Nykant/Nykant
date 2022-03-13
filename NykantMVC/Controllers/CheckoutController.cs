@@ -106,9 +106,9 @@ namespace NykantMVC.Controllers
                     HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
 
                     Customer customer = null;
-                    if (checkout.CustomerInfId != 0)
+                    if (checkout.CustomerId != 0)
                     {
-                        var jsonCustomer = await GetRequest($"/Customer/GetCustomer/{checkout.CustomerInfId}");
+                        var jsonCustomer = await GetRequest($"/Customer/GetCustomer/{checkout.CustomerId}");
                         customer = JsonConvert.DeserializeObject<Customer>(jsonCustomer);
                     }
                     else
@@ -182,7 +182,7 @@ namespace NykantMVC.Controllers
                 var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
                 if (editCustomer)
                 {
-                    var jsonCustomer = await GetRequest($"/Customer/GetCustomer/{checkout.CustomerInfId}");
+                    var jsonCustomer = await GetRequest($"/Customer/GetCustomer/{checkout.CustomerId}");
                     var old = JsonConvert.DeserializeObject<Customer>(jsonCustomer);
                     customer.ShippingAddress.Id = old.ShippingAddress.Id;
                     customer.BillingAddress.Id = old.BillingAddress.Id;
@@ -198,13 +198,13 @@ namespace NykantMVC.Controllers
                             if (customer.Id == 0)
                             {
                                 var json = await GetRequest(response.Headers.Location.AbsolutePath);
-                                checkout.CustomerInfId = JsonConvert.DeserializeObject<Customer>(json).Id;
-                                customer.Id = checkout.CustomerInfId;
+                                checkout.CustomerId = JsonConvert.DeserializeObject<Customer>(json).Id;
+                                customer.Id = checkout.CustomerId;
                             }
                             else
                             {
-                                checkout.CustomerInfId = customer.Id;
-                                customer.Id = checkout.CustomerInfId;
+                                checkout.CustomerId = customer.Id;
+                                customer.Id = checkout.CustomerId;
                             }
                         }
 
@@ -326,9 +326,9 @@ namespace NykantMVC.Controllers
             {
                 var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
 
-                if (checkout.CustomerInfId != 0)
+                if (checkout.CustomerId != 0)
                 {
-                    var response = await DeleteRequest($"/Customer/DeleteCustomerInf/{checkout.CustomerInfId}");
+                    var response = await DeleteRequest($"/Customer/DeleteCustomerInf/{checkout.CustomerId}");
 
                     if (!response.IsSuccessStatusCode)
                     {
