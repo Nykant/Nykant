@@ -9,9 +9,9 @@ using NykantAPI.Data;
 
 namespace NykantAPI.data.migrations.local
 {
-    [DbContext(typeof(LocalApplicationDbContext))]
-    [Migration("20220311103018_InitialLocal")]
-    partial class InitialLocal
+    [DbContext(typeof(ApplicationDbContext))]
+    [Migration("20220314084212_NewMigration")]
+    partial class NewMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -18,16 +18,9 @@ namespace NykantAPI.Controllers
     public class ReviewController : BaseController
     {
 
-        public ReviewController(IHostingEnvironment env, ILogger<BaseController> logger) : base(logger, env)
+        public ReviewController(ILogger<BaseController> logger, ApplicationDbContext _context) : base(logger, _context)
         {
-            if (env.IsDevelopment())
-            {
 
-            }
-            else
-            {
-
-            }
         }
 
         // GET: Review

@@ -1,8 +1,14 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
   </PropertyGroup>
+
+  <ItemGroup>
+    <!--<ProjectReference Include="..\SqlServerMigrations\SqlServerMigrations.csproj" />
+      <ProjectReference Include="..\MySqlMigrations\MySqlMigrations.csproj" />-->
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.1" />

@@ -21,19 +21,11 @@ namespace NykantAPI.Controllers
     [Route("[controller]/[action]/")]
     public class OrderController : BaseController
     {
-        private readonly IProtectionService _protectionService;
-        public OrderController(ILogger<OrderController> logger, IHostingEnvironment env, IProtectionService protectionService)
-            : base(logger, env)
+
+        public OrderController(ILogger<OrderController> logger, ApplicationDbContext _context)
+            : base(logger, _context)
         {
-            _protectionService = protectionService;
-            if (env.IsDevelopment())
-            {
 
-            }
-            else
-            {
-
-            }
         }
 
         [HttpGet]

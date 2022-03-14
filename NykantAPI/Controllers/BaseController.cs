@@ -20,12 +20,11 @@ namespace NykantAPI.Controllers
         public const string CheckoutSessionKey = "verysecretseriouscheckoutsessionkey";
         public const string BagItemAmountKey = "verysecretseriouscheckoutsessionkeyspecial";
         public readonly ILogger<BaseController> _logger;
-        public readonly IHostingEnvironment env;
-        public BaseController(ILogger<BaseController> logger, IHostingEnvironment env)
+        public readonly ApplicationDbContext _context;
+        public BaseController(ILogger<BaseController> logger, ApplicationDbContext _context)
         {
-
+            this._context = _context;
             _logger = logger;
-            this.env = env;
         }
     }
 }

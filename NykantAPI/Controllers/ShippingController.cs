@@ -16,17 +16,9 @@ namespace NykantAPI.Controllers
     [Route("[controller]/[action]/")]
     public class ShippingController : BaseController
     {
-        public ShippingController(ILogger<BaseController> logger, IHostingEnvironment env)
-            : base(logger, env)
+        public ShippingController(ILogger<BaseController> logger, ApplicationDbContext _context)
+            : base(logger, _context)
         {
-            if (env.IsDevelopment())
-            {
-
-            }
-            else
-            {
-
-            }
         }
 
         //[HttpPost]

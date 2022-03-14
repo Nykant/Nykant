@@ -194,6 +194,23 @@ namespace NykantMVC.Controllers
             
         }
 
+        public async Task<string> FacebookGetPost(string postId, string accessToken)
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+
+                string uri = "https://graph.facebook.com/104882272120980/feed/?fields&access_token=" + accessToken;
+
+                return await client.GetStringAsync(uri);
+            }
+            catch (Exception e)
+            {
+                string uri = _urls.Api + url;
+                _logger.LogError($"time: {DateTime.Now} - uri: {uri}" + e.Message);
+            }
+            return null;
+        }
         public async Task<string> GetRequest(string url)
         {
             try

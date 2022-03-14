@@ -17,16 +17,9 @@ namespace NykantAPI.Controllers
     [Route("[controller]/[action]/")]
     public class CategoryController : BaseController
     {
-        public CategoryController(ILogger<CategoryController> logger, IHostingEnvironment env) : base(logger, env)
+        public CategoryController(ILogger<CategoryController> logger, ApplicationDbContext _context) : base(logger, _context)
         {
-            if (env.IsDevelopment())
-            {
 
-            }
-            else
-            {
-
-            }
         }
 
         [HttpGet]

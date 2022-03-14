@@ -11,7 +11,7 @@ namespace NykantAPI.Data
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
-            Database.Migrate();
+            //Database.Migrate();
         }
 
         public DbSet<Product> Products { get; set; }
@@ -54,8 +54,8 @@ namespace NykantAPI.Data
                 //new Cookie { Name = "Culture", Type1 = CookieType1.Persistent, Type2 = CookieType2.FirstParty, Category = CookieCategory.Functional, Domain = ".nykant.dk", Description = "Denne cookie gemmer din præference for sprog." },
                 new Cookie { Name = "AntiforgeryToken", Type1 = CookieType1.Session, Type2 = CookieType2.FirstParty, Category = CookieCategory.Necessary, Domain = ".nykant.dk", Description = "Denne cookie beskytter imod Cross-Site Request Forgery angreb" },
                 new Cookie { Name = "Session", Type1 = CookieType1.Session, Type2 = CookieType2.FirstParty, Category = CookieCategory.Necessary, Domain = "nykant.dk", Description = "Session cookie'en gemmer et session id, som den bruger til at hente data fra session i serveren, som husker/gemmer hvad du har lagt i din kurv, gemmer dine cookie preferencer, samt giver dig en bedre checkout oplevelse." },
-                new Cookie { Name = "_ga", Type1 = CookieType1.Persistent, Type2 = CookieType2.FirstParty, Category = CookieCategory.Statistics, Domain = ".nykant.dk", Description = "Indsamler anonyme data om hvad du foretager dig på hjemmesiden, og sender det til google analytics, så vi kan se og bruge det til at forbedre hjemmesiden." },
-                new Cookie { Name = "_ga_*", Type1 = CookieType1.Persistent, Type2 = CookieType2.FirstParty, Category = CookieCategory.Statistics, Domain = ".nykant.dk", Description = "Indsamler anonyme data om hvad du foretager dig på hjemmesiden, og sender det til google analytics, så vi kan se og bruge det til at forbedre hjemmesiden." },
+                new Cookie { Name = "_ga", Type1 = CookieType1.Persistent, Type2 = CookieType2.FirstParty, Category = CookieCategory.Statistics, Domain = ".nykant.dk", Description = "Indsamler anonyme data om hvad du foretager dig på hjemmesiden, og sender det til google analytics, så vi kan bruge det til at forbedre hjemmesiden." },
+                new Cookie { Name = "_ga_*", Type1 = CookieType1.Persistent, Type2 = CookieType2.FirstParty, Category = CookieCategory.Statistics, Domain = ".nykant.dk", Description = "Indsamler anonyme data om hvad du foretager dig på hjemmesiden, og sender det til google analytics, så vi kan bruge det til at forbedre hjemmesiden." },
                 new Cookie { Name = "__stripe_mid", Type1 = CookieType1.Persistent, Type2 = CookieType2.FirstParty, Category = CookieCategory.Necessary, Domain = ".nykant.dk", Description = "Sørger for sikkerhed under betalingen via vores betalingsservice stripe. Forebygger imod svig/forfalskning. Nødvendig for at betaling kan fungere." },
                 new Cookie { Name = "__stripe_sid", Type1 = CookieType1.Persistent, Type2 = CookieType2.FirstParty, Category = CookieCategory.Necessary, Domain = ".nykant.dk", Description = "Sørger for sikkerhed under betalingen via vores betalingsservice stripe. Forebygger imod svig/forfalskning. Nødvendig for at betaling kan fungere." },
 

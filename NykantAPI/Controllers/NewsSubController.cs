@@ -17,19 +17,11 @@ namespace NykantAPI.Controllers
     [Route("[controller]/[action]/")]
     public class NewsSubController : BaseController
     {
-        private readonly IProtectionService _protectionService;
-        public NewsSubController(ILogger<NewsSubController> logger, IHostingEnvironment env, IProtectionService protectionService)
-            : base(logger, env)
+
+        public NewsSubController(ILogger<NewsSubController> logger, ApplicationDbContext _context)
+            : base(logger, _context)
         {
-            _protectionService = protectionService;
-            if (env.IsDevelopment())
-            {
 
-            }
-            else
-            {
-
-            }
         }
 
         [HttpPost]

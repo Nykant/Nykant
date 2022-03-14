@@ -23,20 +23,10 @@ namespace NykantAPI.Controllers
     [Route("[controller]/[action]/")]
     public class BagItemController : BaseController
     {
-        private dynamic _context;
-        IServiceProvider serviceProvider;
-        public BagItemController(ILogger<BagItemController> logger, IHostingEnvironment env, IServiceProvider serviceProvider)
-            : base(logger, env)
+        public BagItemController(ILogger<BagItemController> logger, ApplicationDbContext _context)
+            : base(logger, _context)
         {
-            this.serviceProvider = serviceProvider;
-            if (env.IsDevelopment())
-            {
-                _context = serviceProvider.GetRequiredService<LocalApplicationDbContext>();
-            }
-            else
-            {
 
-            }
         }
 
 

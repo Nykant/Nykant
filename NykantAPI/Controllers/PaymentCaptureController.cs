@@ -20,17 +20,9 @@ namespace NykantAPI.Controllers
     public class PaymentCaptureController : BaseController
     {
         private readonly IProtectionService _protectionService;
-        public PaymentCaptureController(ILogger<PaymentCaptureController> logger, IHostingEnvironment env, IProtectionService _protectionService) : base(logger, env)
+        public PaymentCaptureController(ILogger<PaymentCaptureController> logger, ApplicationDbContext _context) : base(logger, _context)
         {
-            this._protectionService = _protectionService;
-            if (env.IsDevelopment())
-            {
 
-            }
-            else
-            {
-
-            }
         }
 
         [HttpGet]

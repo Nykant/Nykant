@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NykantAPI.Data;
 
-namespace NykantAPI.data.migrations
+namespace NykantAPI.data.migrations.local
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -989,7 +989,7 @@ namespace NykantAPI.data.migrations
                         {
                             Name = "Session",
                             Category = 0,
-                            Description = "Denne cookie husker/gemmer hvad du har lagt i din kurv, gemmer dine cookie preferencer, samt giver dig en bedre checkout oplevelse.",
+                            Description = "Session cookie'en gemmer et session id, som den bruger til at hente data fra session i serveren, som husker/gemmer hvad du har lagt i din kurv, gemmer dine cookie preferencer, samt giver dig en bedre checkout oplevelse.",
                             Domain = "nykant.dk",
                             Type1 = 0,
                             Type2 = 0
@@ -998,7 +998,7 @@ namespace NykantAPI.data.migrations
                         {
                             Name = "_ga",
                             Category = 3,
-                            Description = "Indsamler anonyme data om hvad du foretager dig på hjemmesiden, og sender det til google analytics, så vi kan se og bruge det til at forbedre hjemmesiden.",
+                            Description = "Indsamler anonyme data om hvad du foretager dig på hjemmesiden, og sender det til google analytics, så vi kan bruge det til at forbedre hjemmesiden.",
                             Domain = ".nykant.dk",
                             Type1 = 1,
                             Type2 = 0
@@ -1007,7 +1007,7 @@ namespace NykantAPI.data.migrations
                         {
                             Name = "_ga_*",
                             Category = 3,
-                            Description = "Indsamler anonyme data om hvad du foretager dig på hjemmesiden, og sender det til google analytics, så vi kan se og bruge det til at forbedre hjemmesiden.",
+                            Description = "Indsamler anonyme data om hvad du foretager dig på hjemmesiden, og sender det til google analytics, så vi kan bruge det til at forbedre hjemmesiden.",
                             Domain = ".nykant.dk",
                             Type1 = 1,
                             Type2 = 0

@@ -8,8 +8,8 @@
     <ProjectReference Include="..\NykantAPI\NykantAPI.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Data\migrations\" />
-  </ItemGroup>
+  <PropertyGroup>
+    <BaseOutputPath>..\NykantAPI\bin\</BaseOutputPath>
+  </PropertyGroup>
 
 </Project>

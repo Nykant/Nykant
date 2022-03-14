@@ -17,8 +17,8 @@ namespace NykantAPI.Controllers
     [Route("[controller]/[action]/")]
     public class ShippingDeliveryController : BaseController
     {
-        public ShippingDeliveryController(ILogger<ShippingDeliveryController> logger, IHostingEnvironment env)
-            : base(logger, env)
+        public ShippingDeliveryController(ILogger<ShippingDeliveryController> logger, ApplicationDbContext _context)
+            : base(logger, _context)
         {
         }
 

@@ -16,16 +16,9 @@ namespace NykantAPI.Controllers
     [Route("[controller]/[action]/")]
     public class CookieController : BaseController
     {
-        public CookieController(ILogger<CookieController> logger, IHostingEnvironment env) : base(logger, env)
+        public CookieController(ILogger<CookieController> logger, ApplicationDbContext _context) : base(logger, _context)
         {
-            if (env.IsDevelopment())
-            {
 
-            }
-            else
-            {
-
-            }
         }
 
         [HttpGet]

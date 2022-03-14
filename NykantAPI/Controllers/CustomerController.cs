@@ -24,18 +24,10 @@ namespace NykantAPI.Controllers
     public class CustomerController : BaseController
     {
         private readonly IProtectionService _protectionService;
-        public CustomerController(ILogger<CustomerController> logger, IHostingEnvironment env, IProtectionService protectionService)
-            : base(logger, env)
+        public CustomerController(ILogger<CustomerController> logger, ApplicationDbContext _context)
+            : base(logger, _context)
         {
-            _protectionService = protectionService;
-            if (env.IsDevelopment())
-            {
 
-            }
-            else
-            {
-
-            }
         }
 
         [HttpGet("{id}")]

@@ -20,16 +20,9 @@ namespace NykantAPI.Controllers
     [Route("[controller]/[action]/")]
     public class ProductController : BaseController
     {
-        public ProductController(ILogger<ProductController> logger, IHostingEnvironment env) : base(logger, env)
+        public ProductController(ILogger<ProductController> logger, ApplicationDbContext _context) : base(logger, _context)
         {
-            if (env.IsDevelopment())
-            {
 
-            }
-            else
-            {
-
-            }
         }
 
         [HttpGet]

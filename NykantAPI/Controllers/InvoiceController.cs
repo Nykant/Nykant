@@ -19,17 +19,9 @@ namespace NykantAPI.Controllers
     [Route("[controller]/[action]/")]
     public class InvoiceController : BaseController
     {
-        private readonly IProtectionService _protectionService;
-        public InvoiceController(ILogger<InvoiceController> logger, IHostingEnvironment env, IProtectionService protectionService) : base(logger, env)
-        { _protectionService = protectionService;
-            if (env.IsDevelopment())
-            {
 
-            }
-            else
-            {
-
-            }
+        public InvoiceController(ILogger<InvoiceController> logger, ApplicationDbContext _context) : base(logger, _context)
+        { 
         }
 
         [HttpPost]

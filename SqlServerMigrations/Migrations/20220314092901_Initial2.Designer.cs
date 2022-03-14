@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NykantAPI.Data;
 
 namespace NykantAPI.data.migrations.local
 {
-    [DbContext(typeof(LocalApplicationDbContext))]
-    partial class LocalApplicationDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(ApplicationDbContext))]
+    [Migration("20220314092901_Initial2")]
+    partial class Initial2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1004,7 +1006,7 @@ namespace NykantAPI.data.migrations.local
                         {
                             Name = "_ga",
                             Category = 3,
-                            Description = "Indsamler anonyme data om hvad du foretager dig på hjemmesiden, og sender det til google analytics, så vi kan se og bruge det til at forbedre hjemmesiden.",
+                            Description = "Indsamler anonyme data om hvad du foretager dig på hjemmesiden, og sender det til google analytics, så vi kan bruge det til at forbedre hjemmesiden.",
                             Domain = ".nykant.dk",
                             Type1 = 1,
                             Type2 = 0
@@ -1013,7 +1015,7 @@ namespace NykantAPI.data.migrations.local
                         {
                             Name = "_ga_*",
                             Category = 3,
-                            Description = "Indsamler anonyme data om hvad du foretager dig på hjemmesiden, og sender det til google analytics, så vi kan se og bruge det til at forbedre hjemmesiden.",
+                            Description = "Indsamler anonyme data om hvad du foretager dig på hjemmesiden, og sender det til google analytics, så vi kan bruge det til at forbedre hjemmesiden.",
                             Domain = ".nykant.dk",
                             Type1 = 1,
                             Type2 = 0

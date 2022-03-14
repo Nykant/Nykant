@@ -18,18 +18,10 @@ namespace NykantAPI.Controllers
     public class ConsentController : BaseController
     {
         private readonly IProtectionService _protectionService;
-        public ConsentController(ILogger<ConsentController> logger, IHostingEnvironment env, IProtectionService protectionService)
-            : base(logger, env)
+        public ConsentController(ILogger<ConsentController> logger, ApplicationDbContext _context)
+            : base(logger, _context)
         {
-            _protectionService = protectionService;
-            if (env.IsDevelopment())
-            {
 
-            }
-            else
-            {
-
-            }
         }
 
         [HttpPost]

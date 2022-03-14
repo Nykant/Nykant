@@ -16,17 +16,10 @@ namespace NykantAPI.Controllers
     [Route("[controller]/[action]/")]
     public class OrderItemController : BaseController
     {
-        public OrderItemController(ILogger<OrderItemController> logger, IHostingEnvironment env)
-                    : base(logger, env)
+        public OrderItemController(ILogger<OrderItemController> logger, ApplicationDbContext _context)
+                    : base(logger, _context)
         {
-            if (env.IsDevelopment())
-            {
 
-            }
-            else
-            {
-
-            }
         }
 
 

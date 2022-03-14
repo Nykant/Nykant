@@ -140,11 +140,11 @@ namespace NykantIS.Data.Seed
                         {
                             throw new Exception(result.Errors.First().Description);
                         }
-                        Log.Debug("admin user created");
+                        Log.Debug("raffle user created");
                     }
                     else
                     {
-                        Log.Debug("admin user exists");
+                        Log.Debug("raffle user exists");
                     }
                 }
             }

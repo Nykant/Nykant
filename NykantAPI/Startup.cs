@@ -39,17 +39,14 @@ namespace NykantAPI
         {
             string mykeyConnection = Configuration.GetConnectionString("MyKeysConnection");
             string nykantConnection = Configuration.GetConnectionString("NykantDb");
+            string nykantConnectionLocal = Configuration.GetConnectionString("NykantDbLocal");
+            string provider = Configuration.GetValue<string>("Provider");
 
             if (Environment.IsDevelopment())
             {
                 services.AddDbContext<LocalMyKeysContext>(options =>
                     options.UseSqlServer(
                         mykeyConnection));
-
-                //services.AddDbContext<LocalApplicationDbContext>(options =>
-                //    options
-                //        .UseSqlServer(
-                //            nykantConnection));
 
                 services.AddDataProtection()
                     .PersistKeysToDbContext<LocalMyKeysContext>()
@@ -61,17 +58,36 @@ namespace NykantAPI
                 services.AddDbContext<MyKeysContext>(options =>
                     options.UseMySql(
                         mykeyConnection));
-
-                services.AddDbContext<ApplicationDbContext>(options =>
-                    options.UseMySql(
-                        nykantConnection));
-
+                
                 services.AddDataProtection()
                     .PersistKeysToDbContext<MyKeysContext>()
                     //.ProtectKeysWithCertificate("3fe5fcaf686e7ffbeaf80d760944e0f752f2112b")
                     .SetApplicationName("Nykant");
             }
-           
+
+            // migrations to mysql server
+            //services.AddDbContext<ApplicationDbContext>(
+            //    options =>
+            //    {
+            //        options.UseMySql(
+            //            nykantConnection,
+            //            x => x.MigrationsAssembly("MySqlMigrations"));
+            //    });
+
+            services.AddDbContext<ApplicationDbContext>(
+                options => _ = provider switch
+                {
+                    "SqlServer" => options.UseSqlServer(
+                        nykantConnectionLocal,
+                        x => x.MigrationsAssembly("SqlServerMigrations")),
+
+                    "MySql" => options.UseMySql(
+                        nykantConnection,
+                        x => x.MigrationsAssembly("MySqlMigrations")),
+
+                    _ => throw new Exception($"Unsupported provider: {provider}")
+                });
+
 
             services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>
