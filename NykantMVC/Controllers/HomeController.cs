@@ -212,10 +212,8 @@ namespace NykantMVC.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
+                _logger.LogError($"consent error - time: {DateTime.Now} - {e.Message}");
             }
-            
-
         }
 
         [HttpPost]
@@ -271,9 +269,8 @@ namespace NykantMVC.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
+                _logger.LogError($"consent error - time: {DateTime.Now} - {e.Message}");
             }
-
         }
 
         [HttpPost]

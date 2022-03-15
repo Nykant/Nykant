@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using NykantMVC.Models;
+using NykantMVC.Models.Facebook;
 using NykantMVC.Models.XmlModels;
 using System;
 using System.Collections.Generic;
@@ -194,20 +195,22 @@ namespace NykantMVC.Controllers
             
         }
 
-        public async Task<string> FacebookGetPost(string postId, string accessToken)
+        public async Task<Feed> FacebookGetPost(string postId, string accessToken)
         {
             try
             {
                 HttpClient client = new HttpClient();
 
-                string uri = "https://graph.facebook.com/104882272120980/feed/?fields&access_token=" + accessToken;
-
-                return await client.GetStringAsync(uri);
+                string uri = "https://graph.facebook.com/104882272120980/feed/?&access_token=" + accessToken;
+                var jsonFeed = await client.GetStringAsync(uri);
+                var feed = JsonConvert.DeserializeObject<Feed>(jsonFeed);
+                                                                                                                       
+                return feed;
             }
             catch (Exception e)
             {
-                string uri = _urls.Api + url;
-                _logger.LogError($"time: {DateTime.Now} - uri: {uri}" + e.Message);
+                //string uri = _urls.Api + url;
+                _logger.LogError($"time: {DateTime.Now} - uri: facebook feed" + e.Message);
             }
             return null;
         }
