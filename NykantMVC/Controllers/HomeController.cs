@@ -37,6 +37,12 @@ namespace NykantMVC.Controllers
             mailService = _mailService;
         }
 
+        
+        public IActionResult Claims()
+        {
+            return View();
+        }
+
         //[Route("Hjem")]
         public async Task<IActionResult> Index()
         {

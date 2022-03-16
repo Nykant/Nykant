@@ -16,6 +16,11 @@ namespace NykantMVC.Models.Facebook
         public string Id { get; set; }
         [JsonProperty("story")]
         public string Story { get; set; }
-        public List<Comment> Comments { get; set; }
+        [JsonProperty("from")]
+        public From From { get; set; }
+        [JsonProperty("can_reply_privately")]
+        public bool CanReplyPrivately { get; set; }
+        [JsonProperty("comments")]
+        public Comments Comments { get; set; }
     }
 }

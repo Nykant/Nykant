@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using NykantMVC.Models;
+using NykantMVC.Models.Facebook;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,13 +20,41 @@ namespace NykantMVC.Controllers
         public FacebookController(ILogger<FacebookController> logger, IOptions<Urls> urls, HtmlEncoder htmlEncoder, IConfiguration conf) : base(logger, urls, htmlEncoder, conf)
         { }
 
-        [Authorize("Raffle Permission")]
+        [Authorize(Roles = "Admin,Raffler")]
         [HttpGet]
-        public async Task<IActionResult> Raffle()
+        public IActionResult Posts()
         {
-            var json = await GetRequest("/Order/GetOrders");
-            List<Models.Order> list = JsonConvert.DeserializeObject<List<Models.Order>>(json);
-            return View(list);
+            return View();
+        }
+
+        [Authorize(Roles = "Admin,Raffler")]
+        [HttpGet]
+        public IActionResult Post(Post post)
+        {
+            return View(post);
+        }
+
+        [Authorize(Roles = "Admin,Raffler")]
+        [HttpPost]
+        public async Task<IActionResult> PostAccessToken(string accessToken)
+        {
+            Feed feed = await FacebookGetFeed(accessToken);
+            return View("Posts", feed.Posts);
+        }
+
+        [Authorize(Roles = "Admin,Raffler")]
+        [HttpPost]
+        public IActionResult PickRandom(List<Comment> comments)
+        {
+            var random = new Random();
+            int i = random.Next(comments.Count);
+
+            ViewBag.Winner = comments[i];
+            return new PartialViewResult
+            {
+                ViewName = "/Views/Facebook/_RandomWinnerPartial.cshtml",
+                ViewData = this.ViewData
+            };
         }
     }
 }

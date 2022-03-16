@@ -1,4 +1,5 @@
-﻿using IdentityServer4;
+﻿using IdentityModel;
+using IdentityServer4;
 using IdentityServer4.Models;
 using System.Collections.Generic;
 
@@ -11,13 +12,19 @@ namespace NykantIS
                    {
                         new IdentityResources.OpenId(),
                         new IdentityResources.Email(),
-                        new IdentityResources.Profile()
+                        new IdentityResources.Profile(),
+                        new IdentityResource
+                        {
+                            Name = "roles",
+                            DisplayName = "Roles",
+                            UserClaims = { JwtClaimTypes.Role }
+                        }
                    };
 
         public static IEnumerable<ApiScope> ApiScopes =>
             new List<ApiScope>
             {
-                new ApiScope("NykantAPI", "Nykant API")
+                new ApiScope("NykantAPI", "Nykant API", new [] { JwtClaimTypes.Role })
             };
 
         public static IEnumerable<Client> Clients =>
@@ -40,18 +47,20 @@ namespace NykantIS
                     AllowedGrantTypes = GrantTypes.Code,
 
                     // where to redirect to after login
-                    RedirectUris = { "https://nykant.dk/signin-oidc" },
+                    RedirectUris = { "https://localhost:5002/signin-oidc" },
 
                     // where to redirect to after logout
-                    PostLogoutRedirectUris = { "https://nykant.dk/signout-callback-oidc" },
+                    PostLogoutRedirectUris = { "https://localhost:5002/signout-callback-oidc" },
 
                     AllowOfflineAccess = true,
+                    UpdateAccessTokenClaimsOnRefresh = true,
 
                     AllowedScopes = new List<string>
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Email,
                         IdentityServerConstants.StandardScopes.Profile,
+                        "roles",
                         "NykantAPI"
                     }
                 }

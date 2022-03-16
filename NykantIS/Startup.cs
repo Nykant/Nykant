@@ -73,9 +73,10 @@ namespace NykantIS
                 services.AddDbContext<LocalIdentityContext>(options =>
                     options.UseSqlServer(identityConnection));
 
-                services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+                services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                    .AddRoles<IdentityRole>()
                     .AddEntityFrameworkStores<LocalIdentityContext>()
-                    .AddDefaultTokenProviders();
+                    .AddClaimsPrincipalFactory<ClaimsFactory<ApplicationUser>>();
             }
             else
             {
@@ -90,9 +91,10 @@ namespace NykantIS
                 services.AddDbContext<IdentityContext>(options =>
                     options.UseMySql(identityConnection));
 
-                services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+                services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                    .AddRoles<IdentityRole>()
                     .AddEntityFrameworkStores<IdentityContext>()
-                    .AddDefaultTokenProviders();
+                    .AddClaimsPrincipalFactory<ClaimsFactory<ApplicationUser>>();
             }
 
             var builder = services.AddIdentityServer(options =>
@@ -113,7 +115,11 @@ namespace NykantIS
                     CookieLifetime = TimeSpan.FromHours(10), // ID server cookie timeout set to 10 hours
                     CookieSlidingExpiration = true
                 };
+
+                
             });
+
+           
 
             if (Environment.IsDevelopment())
             {
@@ -155,7 +161,7 @@ namespace NykantIS
                         });
                 });
             }
-            
+
             builder.AddAspNetIdentity<ApplicationUser>();
 
             // not recommended for production - you need to store your key material somewhere secure

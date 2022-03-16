@@ -10,8 +10,8 @@ using NykantIS.Data;
 namespace NykantIS.data.migrations.localpersisted
 {
     [DbContext(typeof(LocalPersistedGrantDbContext))]
-    [Migration("20220311102011_initialLocal")]
-    partial class initialLocal
+    [Migration("20220316133756_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

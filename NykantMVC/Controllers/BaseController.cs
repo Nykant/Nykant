@@ -195,7 +195,7 @@ namespace NykantMVC.Controllers
             
         }
 
-        public async Task<Feed> FacebookGetPost(string postId, string accessToken)
+        public async Task<Feed> FacebookGetFeed(string accessToken)
         {
             try
             {

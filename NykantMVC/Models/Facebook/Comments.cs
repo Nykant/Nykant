@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace NykantMVC.Models.Facebook
 {
-    public class Feed
+    public class Comments
     {
         [JsonProperty("data")]
-        public List<Post> Posts { get; set; }
+        public List<Comment> List { get; set; }
     }
 }

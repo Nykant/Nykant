@@ -1,0 +1,41 @@
+﻿@model Post
+@{
+    ViewData["Title"] = "Post";
+    ViewData["Description"] = "";
+}
+
+<link rel="stylesheet" href="~/css/my-list.css" />
+
+<div id="randomWinnerPartial">
+    <partial name="_RandomWinnerPartial" />
+</div>
+
+<form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="randomWinnerPartial" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" data-ajax-success="noop" asp-controller="Facebook" asp-action="PickRandom" asp-route-comments="@Model.Comments.List">
+    <button type="submit">Pick Random</button>
+</form>
+
+<div class="my-row top-padding bottom-padding">
+    <div class="responsive-container center">
+        <h1 class="list-h1">Nykant Page Posts</h1>
+        <table class="my-list">
+            <tr class="no-hover">
+                <th>Id</th>
+                <th>Created Time</th>
+                <th>Name</th>
+                <th>Message</th>
+                <th></th>
+            </tr>
+
+            @foreach (var comment in Model.Comments.List)
+            {
+                <tr>
+                    <td>@comment.Id</td>
+                    <td>@comment.CreatedTime</td>
+                    <td>@comment.From.Name</td>
+                    <td>@comment.Message</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+

@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
@@ -80,10 +81,12 @@ namespace NykantMVC
                 })
                 .AddOpenIdConnect("oidc", options =>
                 {
+                    var accessDenied = Configuration.GetValue<string>("Is");
                     options.Authority = Configuration.GetValue<string>("Is");
                     options.MetadataAddress = Configuration.GetValue<string>("MetadataAddress");
                     options.CallbackPath = "/signin-oidc";
                     options.SignedOutCallbackPath = "/signout-callback-oidc";
+                    options.AccessDeniedPath = accessDenied;
 
                     options.ClientId = "mvc";
                     options.ClientSecret = Configuration["MVCClientSecret"];
@@ -95,13 +98,18 @@ namespace NykantMVC
                     options.Scope.Add("email");
                     options.Scope.Add("NykantAPI");
                     options.Scope.Add("offline_access");
+                    options.Scope.Add("roles");
+                    options.ClaimActions.MapJsonKey("role", "role", "role");
+                    options.TokenValidationParameters.RoleClaimType = "role";
+                    options.Scope.Add("profile");
+                    options.Scope.Add("openid");
                 });
 
-            services.AddAuthorization(options =>
-            {
-                options.AddPolicy("Admin Permission", policy => policy.RequireClaim("Permission", "admin"));
-                options.AddPolicy("Raffle Permission", policy => policy.RequireClaim("Permission", "raffle"));
-            });
+            //services.AddAuthorization(options =>
+            //{
+            //    options.AddPolicy("Admin Permission", policy => policy.RequireClaim("Permission", "admin"));
+            //    options.AddPolicy("Raffle Permission", policy => policy.RequireClaim("Permission", "raffle"));
+            //});
 
             services.AddDistributedMemoryCache();
 

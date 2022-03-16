@@ -1,0 +1,46 @@
+﻿@model List<Post>
+@{
+    ViewData["Title"] = "Posts";
+    ViewData["Description"] = "";
+}
+
+<link rel="stylesheet" href="~/css/my-list.css" />
+
+<form method="post" asp-controller="Facebook" asp-action="PostAccessToken">
+    <input type="text" name="accessToken" />
+</form>
+
+<div class="my-row top-padding bottom-padding">
+    <div class="responsive-container center">
+        <h1 class="list-h1">Nykant Page Posts</h1>
+        <table class="my-list">
+            <tr class="no-hover">
+                <th>Id</th>
+                <th>Created Time</th>
+                <th>Message</th>
+                <th>Story</th>
+                <th></th>
+            </tr>
+            @if (Model != null)
+            {
+                @foreach (var post in Model)
+                {
+                    <tr>
+                        <td>@post.Id</td>
+                        <td>@post.CreatedTime</td>
+                        <td>@post.Message</td>
+                        <td>@post.Story</td>
+                        <td>
+                            <form method="get" asp-controller="Facebook" asp-action="Post" asp-route-post="@post">
+                                <button type="submit">Get</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+</div>
+
+
+

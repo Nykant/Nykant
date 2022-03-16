@@ -50,35 +50,35 @@ namespace NykantIS.Data.Seed
                             throw new Exception(result.Errors.First().Description);
                         }
 
-                        result = roleMgr.AddClaimAsync(adminRole, new Claim("Permission", "admin")).Result;
-                        if (!result.Succeeded)
-                        {
-                            throw new Exception(result.Errors.First().Description);
-                        }
+                        //result = roleMgr.AddClaimAsync(adminRole, new Claim("Permission", "admin")).Result;
+                        //if (!result.Succeeded)
+                        //{
+                        //    throw new Exception(result.Errors.First().Description);
+                        //}
 
-                        result = roleMgr.AddClaimAsync(adminRole, new Claim("Permission", "raffle")).Result;
-                        if (!result.Succeeded)
-                        {
-                            throw new Exception(result.Errors.First().Description);
-                        }
+                        //result = roleMgr.AddClaimAsync(adminRole, new Claim("Permission", "raffle")).Result;
+                        //if (!result.Succeeded)
+                        //{
+                        //    throw new Exception(result.Errors.First().Description);
+                        //}
                     }
 
                     // create raffle role
-                    var rafflePermission = roleMgr.FindByNameAsync("Raffler").Result;
-                    if (rafflePermission == null)
+                    var raffleRole = roleMgr.FindByNameAsync("Raffler").Result;
+                    if (raffleRole == null)
                     {
-                        rafflePermission = new IdentityRole("Raffler");
-                        var result = roleMgr.CreateAsync(rafflePermission).Result;
+                        raffleRole = new IdentityRole("Raffler");
+                        var result = roleMgr.CreateAsync(raffleRole).Result;
                         if (!result.Succeeded)
                         {
                             throw new Exception(result.Errors.First().Description);
                         }
 
-                        result = roleMgr.AddClaimAsync(adminRole, new Claim("Permission", "raffle")).Result;
-                        if (!result.Succeeded)
-                        {
-                            throw new Exception(result.Errors.First().Description);
-                        }
+                        //result = roleMgr.AddClaimAsync(adminRole, new Claim("Permission", "raffle")).Result;
+                        //if (!result.Succeeded)
+                        //{
+                        //    throw new Exception(result.Errors.First().Description);
+                        //}
                     }
 
                     // create admin
@@ -97,8 +97,11 @@ namespace NykantIS.Data.Seed
                             throw new Exception(result.Errors.First().Description);
                         }
 
-                        userMgr.AddToRoleAsync(admin, adminRole.Name);
-                        userMgr.AddToRoleAsync(admin, rafflePermission.Name);
+                        result = userMgr.AddToRoleAsync(admin, adminRole.Name).Result;
+                        if (!result.Succeeded)
+                        {
+                            throw new Exception(result.Errors.First().Description);
+                        }
 
                         result = userMgr.AddClaimsAsync(admin, new Claim[]{
                             new Claim(JwtClaimTypes.Id, admin.Id)
@@ -131,7 +134,11 @@ namespace NykantIS.Data.Seed
                             throw new Exception(result.Errors.First().Description);
                         }
 
-                        userMgr.AddToRoleAsync(raffleTester, rafflePermission.Name);
+                        result = userMgr.AddToRoleAsync(raffleTester, raffleRole.Name).Result;
+                        if (!result.Succeeded)
+                        {
+                            throw new Exception(result.Errors.First().Description);
+                        }
 
                         result = userMgr.AddClaimsAsync(raffleTester, new Claim[]{
                             new Claim(JwtClaimTypes.Id, raffleTester.Id)

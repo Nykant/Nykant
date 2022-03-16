@@ -53,3 +53,15 @@
     z-index: 20;
     transform:translate(-32px, -8px);
 }
+
+.winner-container{
+    z-index:500;
+    position:fixed;
+    margin:auto;
+    top:0;
+    width:400px;
+    height:auto;
+    background:white;
+    border: 1px solid var(--black-fade);
+    padding:20px;
+}
