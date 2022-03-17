@@ -1,4 +1,4 @@
-﻿{
+﻿@{
     if (ViewData.TryGetValue("ParentLayout", out var parentLayout))
     {
         Layout = (string)parentLayout;
@@ -24,6 +24,6 @@
     </div>
 </div>
 
-@section Scripts {
+@*@section Scripts {
     @RenderSection("Scripts", required: false)
-}
+}*@
