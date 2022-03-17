@@ -60,6 +60,19 @@ namespace NykantIS
             identityserverConnection = Configuration.GetConnectionString("IdentityServer");
             identityConnection = Configuration.GetConnectionString("Identity");
 
+
+
+            //services.AddDbContext<MyKeysContext>(options =>
+            //    options.UseMySql(mykeyConnection));
+
+            //services.AddDbContext<IdentityContext>(options =>
+            //    options.UseMySql(identityConnection));
+
+            //services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            //    .AddRoles<IdentityRole>()
+            //    .AddEntityFrameworkStores<IdentityContext>()
+            //    .AddClaimsPrincipalFactory<ClaimsFactory<ApplicationUser>>();
+
             if (Environment.IsDevelopment())
             {
                 services.AddDbContext<LocalMyKeysContext>(options =>
@@ -119,7 +132,25 @@ namespace NykantIS
                 
             });
 
-           
+
+            //builder.AddConfigurationStore(options =>
+            //{
+            //    options.ConfigureDbContext = b => b
+            //        .UseMySql(identityserverConnection, mySqlOptionsAction: mySql =>
+            //        {
+            //            mySql.MigrationsAssembly(migrationsAssembly);
+            //        });
+            //});
+
+            //builder.AddOperationalStore(options =>
+            //{
+            //    options.ConfigureDbContext = b => b
+            //        .UseMySql(identityserverConnection, mySqlOptionsAction: mySql =>
+            //        {
+            //            mySql.MigrationsAssembly(migrationsAssembly);
+            //        });
+            //});
+
 
             if (Environment.IsDevelopment())
             {

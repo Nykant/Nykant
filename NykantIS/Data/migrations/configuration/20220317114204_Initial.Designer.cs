@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace NykantIS.data.migrations.configuration
 {
     [DbContext(typeof(ConfigurationDbContext))]
-    [Migration("20220301102536_Initial")]
+    [Migration("20220317114204_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -12,4 +12,5 @@
     <BaseOutputPath>..\NykantAPI\bin\</BaseOutputPath>
   </PropertyGroup>
 
+
 </Project>
