@@ -22,5 +22,6 @@ namespace NykantMVC.Models.Facebook
         public bool CanReplyPrivately { get; set; }
         [JsonProperty("comments")]
         public Comments Comments { get; set; }
+        public Likes Likes { get; set; }
     }
 }

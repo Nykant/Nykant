@@ -25,6 +25,7 @@ namespace NykantMVC.Controllers
         public const string CheckoutSessionKey = "verysecretseriouscheckoutsessionkey";
         public const string BagItemAmountKey = "verysecretseriousbagitemsessionkeyspecial";
         public const string ConsentCookieKey = "verysecretseriousconsentsessionkeyspecial";
+        public const string FacebookSessionKey = "verSecretSpecialFacebookSessionKeyThatNo#1Sh0ldKn02W#5123";
         public readonly ILogger<BaseController> _logger;
         private readonly Urls _urls;
         private readonly HtmlEncoder htmlEncoder;
@@ -214,6 +215,26 @@ namespace NykantMVC.Controllers
             }
             return null;
         }
+
+        public async Task<LikesData> FacebookGetPostLikes(string accessToken, string postId)
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+
+                string uri = "https://graph.facebook.com/v13.0/" + $"{postId}?fields=likes.summary(true)&access_token={accessToken}";
+                var json = await client.GetStringAsync(uri);
+                var item = JsonConvert.DeserializeObject<LikesData>(json);
+                return item;
+            }
+            catch (Exception e)
+            {
+                //string uri = _urls.Api + url;
+                _logger.LogError($"time: {DateTime.Now} - uri: facebook feed" + e.Message);
+            }
+            return null;
+        }
+
         public async Task<string> GetRequest(string url)
         {
             try

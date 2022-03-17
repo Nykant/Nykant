@@ -7,35 +7,63 @@
 <link rel="stylesheet" href="~/css/my-list.css" />
 
 <div id="randomWinnerPartial">
-    <partial name="_RandomWinnerPartial" />
+        <partial name="_RandomWinnerPartial" />
 </div>
 
-<form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="randomWinnerPartial" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" data-ajax-success="noop" asp-controller="Facebook" asp-action="PickRandom" asp-route-comments="@Model.Comments.List">
-    <button type="submit">Pick Random</button>
-</form>
+<div class="padding-50 center">
+    <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="randomWinnerPartial" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" data-ajax-success="noop" asp-controller="Facebook" asp-action="PickRandom" asp-route-postId="@Model.Id">
+        <button type="submit">Pick Random</button>
+    </form>
+</div>
 
-<div class="my-row top-padding bottom-padding">
+
+<div class="my-row bottom-padding">
     <div class="responsive-container center">
-        <h1 class="list-h1">Nykant Page Posts</h1>
-        <table class="my-list">
-            <tr class="no-hover">
-                <th>Id</th>
-                <th>Created Time</th>
-                <th>Name</th>
-                <th>Message</th>
-                <th></th>
-            </tr>
+        <div class="col-6 left">
+            <h1 class="list-h1">
+                Post Comments
+            </h1>
 
-            @foreach (var comment in Model.Comments.List)
-            {
-                <tr>
-                    <td>@comment.Id</td>
-                    <td>@comment.CreatedTime</td>
-                    <td>@comment.From.Name</td>
-                    <td>@comment.Message</td>
+            <table class="my-list">
+                <tr class="no-hover">
+                    <th>Id</th>
+                    <th>Created Time</th>
+                    <th>Name</th>
                 </tr>
-            }
-        </table>
+                @if (Model.Comments != null)
+                {
+                    @foreach (var comment in Model.Comments.List)
+                    {
+                        <tr>
+                            <td>@comment.Id</td>
+                            <td>@comment.CreatedTime</td>
+                            <td>@comment.From.Name</td>
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
+        <div class="col-6 right">
+            <h1 class="list-h1">Post Likes</h1>
+            <table class="my-list">
+                <tr class="no-hover">
+                    <th>Id</th>
+                    <th>Created Time</th>
+                    <th>Name</th>
+                </tr>
+                @if (Model.Likes != null)
+                {
+                    @foreach (var comment in Model.Likes.List)
+                    {
+                        <tr>
+                            <td>@comment.Id</td>
+                            <td>@comment.CreatedTime</td>
+                            <td>@comment.Name</td>
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
     </div>
 </div>
 

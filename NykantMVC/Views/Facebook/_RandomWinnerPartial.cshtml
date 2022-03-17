@@ -1,3 +1,7 @@
-﻿<div class="winner-container">
-    <p>@ViewBag.Winner.From.Name</p>
+﻿@if (ViewBag.Winner != null)
+{
+<div class="winner-container">
+    <p>@ViewBag.Winner.Name</p>
+    <p>@ViewBag.Winner.Id</p>
 </div>
+}

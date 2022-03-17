@@ -37,7 +37,7 @@ namespace NykantMVC.Controllers
             mailService = _mailService;
         }
 
-        
+        [Authorize(Roles = "Admin,Raffler")]
         public IActionResult Claims()
         {
             return View();
