@@ -39,7 +39,23 @@ namespace NykantMVC.Controllers
                 {
                     if(facebookSession.Feed.Posts[i].Id == postId)
                     {
+                        facebookSession.Feed.Posts[i].Winner = new Winner
+                        {
+                            Name = "",
+                            Id = ""
+                        };
                         LikesData likesData = await FacebookGetPostLikes(facebookSession.AccessToken, postId);
+                        likesData.Likes.List.Add(new Like { CreatedTime = DateTime.Now.ToString(), Id = "123", Name = "Test Name" });
+                        likesData.Likes.List.Add(new Like { CreatedTime = DateTime.Now.ToString(), Id = "124", Name = "Test Name1" });
+                        likesData.Likes.List.Add(new Like { CreatedTime = DateTime.Now.ToString(), Id = "125", Name = "Test Name2" });
+                        facebookSession.Feed.Posts[i].Comments = new Comments
+                        {
+                            List = new List<Comment>
+                             {
+                                 new Comment { Id = "234", From = new From { Id = "321", Name = "Test Name" }, CreatedTime = DateTime.Now.ToString() },
+                                 new Comment { Id = "235", From = new From { Id = "322", Name = "Test Name1" }, CreatedTime = DateTime.Now.ToString() }
+                             }
+                        };
                         if (likesData != null)
                         {
                             facebookSession.Feed.Posts[i].Likes = likesData.Likes;
@@ -73,12 +89,10 @@ namespace NykantMVC.Controllers
         {
             var facebookSession = HttpContext.Session.Get<FacebookSession>(FacebookSessionKey);
             Post post = facebookSession.Feed.Posts.Find(x => x.Id == postId);
-           
             if(post.Comments != null && post.Likes != null)
             {
                 var random = new Random();
                 var comments = post.Comments.List;
-                Winner winner = new Winner();
                 bool found = false;
                 for(int j = 0; j < 20; j++)
                 {
@@ -88,31 +102,17 @@ namespace NykantMVC.Controllers
                         if (like.Name == comments[i].From.Name)
                         {
                             found = true;
-                            winner.Name = comments[i].From.Name;
-                            winner.Id = comments[i].From.Id;
+                            post.Winner.Name = comments[i].From.Name;
+                            post.Winner.Id = comments[i].From.Id;
                             break;
                         }
                     }
                     if (found)
                         break;
                 }
-                if (found)
-                {
-                    ViewBag.Winner = winner;
-                    return new PartialViewResult
-                    {
-                        ViewName = "/Views/Facebook/_RandomWinnerPartial.cshtml",
-                        ViewData = this.ViewData
-                    };
-                }
             }
 
-            ViewBag.Winner = null;
-            return new PartialViewResult
-            {
-                ViewName = "/Views/Facebook/_RandomWinnerPartial.cshtml",
-                ViewData = this.ViewData
-            };
+            return View("Post", post);
         }
     }
 }

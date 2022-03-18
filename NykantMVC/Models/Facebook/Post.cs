@@ -23,5 +23,6 @@ namespace NykantMVC.Models.Facebook
         [JsonProperty("comments")]
         public Comments Comments { get; set; }
         public Likes Likes { get; set; }
+        public Winner Winner { get; set; }
     }
 }

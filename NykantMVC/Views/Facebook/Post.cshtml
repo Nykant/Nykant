@@ -6,12 +6,19 @@
 
 <link rel="stylesheet" href="~/css/my-list.css" />
 
-<div id="randomWinnerPartial">
-        <partial name="_RandomWinnerPartial" />
-</div>
+
+@if (Model.Winner.Name != "")
+{
+    <div id="winner-container">
+        <p>Winner name: @Model.Winner.Name</p>
+        <p>Winner Id: @Model.Winner.Id</p>
+    </div>
+}
+
+
 
 <div class="padding-50 center">
-    <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="randomWinnerPartial" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" data-ajax-success="noop" asp-controller="Facebook" asp-action="PickRandom" asp-route-postId="@Model.Id">
+    <form method="post" asp-controller="Facebook" asp-action="PickRandom" asp-route-postId="@Model.Id">
         <button type="submit">Pick Random</button>
     </form>
 </div>
@@ -67,3 +74,4 @@
     </div>
 </div>
 
+<script src="~/JS/facebook.js"></script>
