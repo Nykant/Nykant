@@ -3,17 +3,20 @@
     ViewData["Title"] = "Posts";
     ViewData["Description"] = "";
 }
+<script>
+    testApi();
+</script>
 
 <link rel="stylesheet" href="~/css/my-list.css" />
 
-<div class="padding-50 center">
+@*<div class="padding-50 center">
     <h1>Insert Facebook Graph API Page Access Token</h1>
     <form method="post" asp-controller="Facebook" asp-action="PostAccessToken">
         <input type="text" name="accessToken" />
     </form>
-</div>
+</div>*@
 
-<div class="json-get-info">
+@*<div class="json-get-info">
     @if (Model != null)
     {
         <h1 class="bottom-side-padding center">http get request: </h1>
@@ -26,7 +29,7 @@
         <h1 class="bottom-side-padding center">http get request:</h1>
         <h1 class="bottom-side-padding center">json response:</h1>
     }
-</div>
+</div>*@
 
 <div class="my-row bottom-padding">
     <div class="responsive-container center">
