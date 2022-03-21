@@ -15,7 +15,20 @@
     </div>
 }
 
-
+<div class="json-get-info margin-top-10">
+    @if (Model != null)
+    {
+        <h1 class="bottom-side-padding center">http get request: </h1>
+        <p class="bottom-padding">@Model.LikesData.Request</p>
+        <h1 class="bottom-side-padding center">json response:</h1>
+        <p>@Model.LikesData.Json</p>
+    }
+    else
+    {
+        <h1 class="bottom-side-padding center">http get request:</h1>
+        <h1 class="bottom-side-padding center">json response:</h1>
+    }
+</div>
 
 <div class="padding-50 center">
     <form method="post" asp-controller="Facebook" asp-action="PickRandom" asp-route-postId="@Model.Id">

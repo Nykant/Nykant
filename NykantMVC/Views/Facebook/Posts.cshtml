@@ -1,4 +1,4 @@
-﻿@model List<Post>
+﻿@model Feed
 @{
     ViewData["Title"] = "Posts";
     ViewData["Description"] = "";
@@ -7,10 +7,25 @@
 <link rel="stylesheet" href="~/css/my-list.css" />
 
 <div class="padding-50 center">
-    <h1>Access Token</h1>
+    <h1>Insert Facebook Graph API Page Access Token</h1>
     <form method="post" asp-controller="Facebook" asp-action="PostAccessToken">
         <input type="text" name="accessToken" />
     </form>
+</div>
+
+<div class="json-get-info">
+    @if (Model != null)
+    {
+        <h1 class="bottom-side-padding center">http get request: </h1>
+        <p class="bottom-padding">@Model.Request</p>
+        <h1 class="bottom-side-padding center">json response:</h1>
+        <p>@Model.Json</p>
+    }
+    else
+    {
+        <h1 class="bottom-side-padding center">http get request:</h1>
+        <h1 class="bottom-side-padding center">json response:</h1>
+    }
 </div>
 
 <div class="my-row bottom-padding">
@@ -18,15 +33,15 @@
         <h1 class="list-h1">Nykant Page Posts</h1>
         <table class="my-list">
             <tr class="no-hover">
-                <th>Id</th>
-                <th>Created Time</th>
-                <th>Message</th>
-                <th>Story</th>
+                <th>Facebook Post Id</th>
+                <th>Facebook Post Created Time</th>
+                <th>Facebook Post Message</th>
+                <th>Facebook Post Story</th>
                 <th></th>
             </tr>
             @if (Model != null)
             {
-                @foreach (var post in Model)
+                @foreach (var post in Model.Posts)
                 {
                     <tr>
                         <td>@post.Id</td>

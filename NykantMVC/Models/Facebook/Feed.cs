@@ -10,5 +10,7 @@ namespace NykantMVC.Models.Facebook
     {
         [JsonProperty("data")]
         public List<Post> Posts { get; set; }
+        public string Json { get; set; }
+        public string Request { get; set; }
     }
 }

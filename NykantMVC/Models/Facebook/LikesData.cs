@@ -12,5 +12,7 @@ namespace NykantMVC.Models.Facebook
         public Likes Likes { get; set; }
         [JsonProperty("id")]
         public string Id { get; set; }
+        public string Json { get; set; }
+        public string Request { get; set; }
     }
 }

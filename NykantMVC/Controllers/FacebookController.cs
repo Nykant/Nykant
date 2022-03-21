@@ -45,6 +45,7 @@ namespace NykantMVC.Controllers
                             Id = ""
                         };
                         LikesData likesData = await FacebookGetPostLikes(facebookSession.AccessToken, postId);
+                        facebookSession.Feed.Posts[i].LikesData = likesData;
                         likesData.Likes.List.Add(new Like { CreatedTime = DateTime.Now.ToString(), Id = "123", Name = "Test Name" });
                         likesData.Likes.List.Add(new Like { CreatedTime = DateTime.Now.ToString(), Id = "124", Name = "Test Name1" });
                         likesData.Likes.List.Add(new Like { CreatedTime = DateTime.Now.ToString(), Id = "125", Name = "Test Name2" });
@@ -80,7 +81,7 @@ namespace NykantMVC.Controllers
                 AccessToken = accessToken
             };
             HttpContext.Session.Set<FacebookSession>(FacebookSessionKey, facebookSession);
-            return View("Posts", feed.Posts);
+            return View("Posts", feed);
         }
 
         [Authorize(Roles = "Admin,Raffler")]

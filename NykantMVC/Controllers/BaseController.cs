@@ -205,7 +205,8 @@ namespace NykantMVC.Controllers
                 string uri = "https://graph.facebook.com/104882272120980/feed/?&access_token=" + accessToken;
                 var jsonFeed = await client.GetStringAsync(uri);
                 var feed = JsonConvert.DeserializeObject<Feed>(jsonFeed);
-                                                                                                                       
+                feed.Json = jsonFeed;
+                feed.Request = uri;                                                                              
                 return feed;
             }
             catch (Exception e)
@@ -225,6 +226,8 @@ namespace NykantMVC.Controllers
                 string uri = "https://graph.facebook.com/v13.0/" + $"{postId}?fields=likes.summary(true)&access_token={accessToken}";
                 var json = await client.GetStringAsync(uri);
                 var item = JsonConvert.DeserializeObject<LikesData>(json);
+                item.Request = uri;
+                item.Json = json;
                 return item;
             }
             catch (Exception e)

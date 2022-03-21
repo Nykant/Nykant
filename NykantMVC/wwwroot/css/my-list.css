@@ -70,3 +70,19 @@
 #winner-container p {
     display:block;
 }
+
+.json-get-info {
+    margin-left:50px;
+    margin-right:50px;
+    background:white;
+    border:1px solid var(--black-fade);
+    padding:20px;
+}
+
+.json-get-info h1 {
+    font-weight:bold;
+}
+
+    .json-get-info p {
+        word-break: break-all;
+    }
