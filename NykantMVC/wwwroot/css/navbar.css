@@ -690,3 +690,38 @@ a.icon {
 .nav-svg-link {
     float: right;
 }
+
+/*.fb_iframe_widget {
+    padding-top:40px;
+    margin-right:50px;
+    display: inline-block;
+    position: relative;
+    float: right;
+}*/
+
+.fb-login-button {
+    padding-top: 40px;
+    margin-right: 50px;
+    display: inline-block;
+    position: relative;
+    float: right;
+}
+
+.facebook-logout-button {
+    float: right;
+    padding-top: 30px;
+    margin-right: 0px;
+}
+
+    .facebook-logout-button button {
+        border: none;
+        outline: none;
+        padding: 5px;
+        font-size: 14px;
+        background: #4a66b6;
+        color: white;
+    }
+
+    .facebook-logout-button button:hover {
+        background:#6178bb;
+    }

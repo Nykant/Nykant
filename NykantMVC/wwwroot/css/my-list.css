@@ -10,10 +10,11 @@
         padding: 10px;
         display: inline-block;
         width: 19%;
+        word-break: break-all;
     }
 
     .my-list td {
-        cursor: pointer;
+
     }
 
     .my-list tr {
@@ -56,14 +57,11 @@
 
 #winner-container{
     z-index:500;
-    position:fixed;
-    top:10%;
-    left:40%;
-    right:40%;
-    width:20%;
-    height:20%;
+    top:40%;
+    width:400px;
+    height:auto;
     background:white;
-    border: 1px solid var(--black-fade);
+    border: 2px solid black;
     padding:20px;
 }
 

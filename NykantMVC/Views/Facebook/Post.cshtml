@@ -9,13 +9,16 @@
 
 @if (Model.Winner.Name != "")
 {
-    <div id="winner-container">
-        <p>Winner name: @Model.Winner.Name</p>
-        <p>Winner Id: @Model.Winner.Id</p>
-    </div>
+<div id="winner-container" class="centered">
+    <button class="close" onclick="pick_random_close()">
+        <i class="fas fa-times"></i>
+    </button>
+    <p>Winner name: @Model.Winner.Name</p>
+    <p>Winner Id: @Model.Winner.Id</p>
+</div>
 }
 
-<div class="json-get-info margin-top-10">
+@*<div class="json-get-info margin-top-10">
     @if (Model != null)
     {
         <h1 class="bottom-side-padding center">http get request: </h1>
@@ -28,7 +31,7 @@
         <h1 class="bottom-side-padding center">http get request:</h1>
         <h1 class="bottom-side-padding center">json response:</h1>
     }
-</div>
+</div>*@
 
 <div class="padding-50 center">
     <form method="post" asp-controller="Facebook" asp-action="PickRandom" asp-route-postId="@Model.Id">
@@ -47,8 +50,8 @@
             <table class="my-list">
                 <tr class="no-hover">
                     <th>Id</th>
-                    <th>Created Time</th>
                     <th>Name</th>
+                    <th>Created Time</th>
                 </tr>
                 @if (Model.Comments != null)
                 {
@@ -56,8 +59,9 @@
                     {
                         <tr>
                             <td>@comment.Id</td>
-                            <td>@comment.CreatedTime</td>
                             <td>@comment.From.Name</td>
+                            <td>@comment.CreatedTime</td>
+
                         </tr>
                     }
                 }
@@ -68,17 +72,15 @@
             <table class="my-list">
                 <tr class="no-hover">
                     <th>Id</th>
-                    <th>Created Time</th>
                     <th>Name</th>
                 </tr>
                 @if (Model.Likes != null)
                 {
-                    @foreach (var comment in Model.Likes.List)
+                    @foreach (var le in Model.Likes.List)
                     {
                         <tr>
-                            <td>@comment.Id</td>
-                            <td>@comment.CreatedTime</td>
-                            <td>@comment.Name</td>
+                            <td>@le.Id</td>
+                            <td>@le.Name</td>
                         </tr>
                     }
                 }

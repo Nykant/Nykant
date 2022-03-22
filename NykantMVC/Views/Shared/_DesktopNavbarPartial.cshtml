@@ -56,7 +56,7 @@
                 <a asp-controller="Home" asp-action="Index">
                     <div id="logo">
                         <img src="~/images/Nykant-Logo.svg" />
-                        
+
                     </div>
                 </a>
             </div>
@@ -77,8 +77,12 @@
 
             <a id="shopping-bag" asp-controller="Bag" asp-action="Details"><span>@ViewBag.BagItemAmount</span> <img class="nav-svg" src="~/lib/svg/shopping-bag.svg" /></a>
 
+
             @if (User.Identity.IsAuthenticated)
             {
+
+
+
                 <div class="dropdown">
                     <button href="javascript:void(0);" class="dropbtn" id="userLogo">
                         <img class="nav-svg" src="~/lib/svg/user.svg" />
@@ -107,6 +111,15 @@
                         </a>
                     </div>
                 </div>
+
+                <div class="fb-login-button" data-width="" data-size="small" data-button-type="login_with" data-layout="default" data-auto-logout-link="true" data-use-continue-as="false">
+                    <fb:login-button scope="public_profile,email,pages_read_engagement,pages_show_list,pages_read_user_content" onlogin="checkLoginState();"></fb:login-button>
+                </div>
+
+                <div class="facebook-logout-button">
+                    <button onclick="facebookLogout()">fb log out</button>
+                </div>
+
             }
         </div>
 

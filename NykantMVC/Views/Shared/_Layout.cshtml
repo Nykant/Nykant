@@ -9,8 +9,9 @@
     <title>@ViewData["Title"]</title>
     <meta name="description" content="@ViewData["Description"]" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://connect.facebook.net" crossorigin>
 
     <link rel="preload" as="style" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
     <link rel="preload" as="style" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -26,6 +27,7 @@
     <link rel="preload" as="script" href="~/lib/jquery-validation/dist/jquery.validate.js">
     <link rel="preload" as="script" href="~/lib/ajax/jquery.unobtrusive-ajax.min.js">
     <link rel="preload" as="script" href="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js">
+    @*<link rel="preload" as="script" href="https://connect.facebook.net/da_DK/sdk.js" crossorigin="anonymous">*@
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -47,8 +49,50 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js" integrity="sha512-0xrMWUXzEAc+VY7k48pWd5YT6ig03p4KARKxs4Bqxb9atrcn2fV41fWs+YXTKb8lD2sbPAmZMjKENiyzM/Gagw==" crossorigin="anonymous"></script>*@
 </head>
 <body>
-    <partial name="_FacebookJavascriptSDK" />
-    <partial name="_MessengerPartial" />
+    <div id="fb-root"></div>
+
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+        var chatbox = document.getElementById('fb-customer-chat');
+        chatbox.setAttribute("page_id", "104882272120980");
+        chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '391655249463703',
+                cookie: true,
+                autoLogAppEvents: true,
+                xfbml: true,
+                version: 'v13.0'
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        <div class="status-bar">
+            <div id="status">
+            </div>
+        </div>
+
+        <script defer crossorigin="anonymous" src="https://connect.facebook.net/da_DK/sdk.js#xfbml=1&version=v13.0&appId=391655249463703&autoLogAppEvents=1" nonce="pJvbNYGk"></script>
+        <script defer src="~/JS/facebookLogin.js"></script>
+        <script defer src="~/JS/facebookLogout.js"></script>
+    }
+
+
 
     <form id="AntiforgeryToken">@Html.AntiForgeryToken()</form>
 
@@ -115,6 +159,7 @@
 
 
     @* ----------------------------------GLOBAL SCRIPTS-------------------------------------- *@
+    @*<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>*@
 
     <script src="~/JS/noop.js"></script>
     <script src="~/JS/mobileNav.js"></script>

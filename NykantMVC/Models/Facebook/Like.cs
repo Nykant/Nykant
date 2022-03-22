@@ -12,7 +12,7 @@ namespace NykantMVC.Models.Facebook
         public string Name { get; set; }
         [JsonProperty("id")]
         public string Id { get; set; }
-        [JsonProperty("created_time")]
-        public string CreatedTime { get; set; }
+        //[JsonProperty("created_time")]
+        //public string CreatedTime { get; set; }
     }
 }

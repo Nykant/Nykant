@@ -217,17 +217,15 @@ namespace NykantMVC.Controllers
             return null;
         }
 
-        public async Task<LikesData> FacebookGetPostLikes(string accessToken, string postId)
+        public async Task<Likes> FacebookGetPostLikes(string accessToken, string postId)
         {
             try
             {
                 HttpClient client = new HttpClient();
 
-                string uri = "https://graph.facebook.com/v13.0/" + $"{postId}?fields=likes.summary(true)&access_token={accessToken}";
+                string uri = "https://graph.facebook.com/v13.0/" + $"{postId}/likes?&access_token={accessToken}";
                 var json = await client.GetStringAsync(uri);
-                var item = JsonConvert.DeserializeObject<LikesData>(json);
-                item.Request = uri;
-                item.Json = json;
+                var item = JsonConvert.DeserializeObject<Likes>(json);
                 return item;
             }
             catch (Exception e)

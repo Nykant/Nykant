@@ -662,6 +662,16 @@ ol, ul {
         outline: none;
     }
 
+.status-bar {
+    display: block;
+    position: relative;
+    width: 100%;
+    background: var(--dark);
+    color: white;
+    font-size: 14px;
+    text-align: center;
+}
+
 button span {
     line-height:normal;
 }
@@ -680,6 +690,10 @@ button span {
             color: grey;
             box-shadow: none;
             background-color: var(--dark);
+        }
+
+        .close {
+
         }
 
 .green-button {

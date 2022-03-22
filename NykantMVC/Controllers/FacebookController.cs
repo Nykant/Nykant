@@ -21,11 +21,12 @@ namespace NykantMVC.Controllers
         public FacebookController(ILogger<FacebookController> logger, IOptions<Urls> urls, HtmlEncoder htmlEncoder, IConfiguration conf) : base(logger, urls, htmlEncoder, conf)
         { }
 
+
         [Authorize(Roles = "Admin,Raffler")]
         [HttpGet]
         public IActionResult Posts()
         {
-            return View();
+                return View();
         }
 
         [Authorize(Roles = "Admin,Raffler")]
@@ -44,25 +45,10 @@ namespace NykantMVC.Controllers
                             Name = "",
                             Id = ""
                         };
-                        LikesData likesData = await FacebookGetPostLikes(facebookSession.AccessToken, postId);
-                        facebookSession.Feed.Posts[i].LikesData = likesData;
-                        likesData.Likes.List.Add(new Like { CreatedTime = DateTime.Now.ToString(), Id = "123", Name = "Test Name" });
-                        likesData.Likes.List.Add(new Like { CreatedTime = DateTime.Now.ToString(), Id = "124", Name = "Test Name1" });
-                        likesData.Likes.List.Add(new Like { CreatedTime = DateTime.Now.ToString(), Id = "125", Name = "Test Name2" });
-                        facebookSession.Feed.Posts[i].Comments = new Comments
-                        {
-                            List = new List<Comment>
-                             {
-                                 new Comment { Id = "234", From = new From { Id = "321", Name = "Test Name" }, CreatedTime = DateTime.Now.ToString() },
-                                 new Comment { Id = "235", From = new From { Id = "322", Name = "Test Name1" }, CreatedTime = DateTime.Now.ToString() }
-                             }
-                        };
-                        if (likesData != null)
-                        {
-                            facebookSession.Feed.Posts[i].Likes = likesData.Likes;
-                            HttpContext.Session.Set<FacebookSession>(FacebookSessionKey, facebookSession);
-                            return View(facebookSession.Feed.Posts[i]);
-                        }
+                        Likes likes = await FacebookGetPostLikes(facebookSession.AccessToken, postId);
+                        facebookSession.Feed.Posts[i].Likes = likes;
+                        HttpContext.Session.Set<FacebookSession>(FacebookSessionKey, facebookSession);
+                        return View(facebookSession.Feed.Posts[i]);
                     }
                 }
 
@@ -72,16 +58,22 @@ namespace NykantMVC.Controllers
 
         [Authorize(Roles = "Admin,Raffler")]
         [HttpPost]
-        public async Task<IActionResult> PostAccessToken(string accessToken)
+        public async Task<IActionResult> PostFeed(string jsonFeed, string accessToken)
         {
-            Feed feed = await FacebookGetFeed(accessToken);
+            var feed = JsonConvert.DeserializeObject<Feed>(jsonFeed);
             FacebookSession facebookSession = new FacebookSession
             {
                 Feed = feed,
                 AccessToken = accessToken
             };
             HttpContext.Session.Set<FacebookSession>(FacebookSessionKey, facebookSession);
-            return View("Posts", feed);
+
+            ViewData.Model = feed;
+            return new PartialViewResult
+            {
+                ViewName = "/Views/Facebook/_PostsPartial.cshtml",
+                ViewData = this.ViewData
+            };
         }
 
         [Authorize(Roles = "Admin,Raffler")]
