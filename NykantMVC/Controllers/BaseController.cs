@@ -226,6 +226,8 @@ namespace NykantMVC.Controllers
                 string uri = "https://graph.facebook.com/v13.0/" + $"{postId}/likes?&access_token={accessToken}";
                 var json = await client.GetStringAsync(uri);
                 var item = JsonConvert.DeserializeObject<Likes>(json);
+                item.Request = "https://graph.facebook.com/v13.0/" + $"{postId}/likes?&access_token={accessToken}";
+                item.Json = json;
                 return item;
             }
             catch (Exception e)

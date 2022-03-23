@@ -10,7 +10,7 @@ namespace NykantMVC.Models.Facebook
     {
         [JsonProperty("data")]
         public List<Like> List { get; set; }
-        //[JsonProperty("summary")]
-        //public Summary Summary { get; set; }
+        public string Json { get; set; }
+        public string Request { get; set; }
     }
 }

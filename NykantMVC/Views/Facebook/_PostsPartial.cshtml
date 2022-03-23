@@ -4,6 +4,21 @@
 {
     <script defer src="~/JS/facebookRequest.js"></script>
 }
+<div class="json-get-info margin-top-10">
+    @if (Model != null)
+    {
+        <h1 class="bottom-side-padding center">http get request: </h1>
+        <p class="bottom-padding">@Model.Request</p>
+        <h1 class="bottom-side-padding center">json response:</h1>
+        <p>@Model.Json</p>
+    }
+    else
+    {
+        <h1 class="bottom-side-padding center">http get request:</h1>
+        <h1 class="bottom-side-padding center">json response:</h1>
+    }
+</div>
+
 <h1 class="list-h1">Nykant Page Posts</h1>
 <table class="my-list">
     <tr class="no-hover">

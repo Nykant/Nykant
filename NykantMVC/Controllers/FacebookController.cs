@@ -61,6 +61,8 @@ namespace NykantMVC.Controllers
         public async Task<IActionResult> PostFeed(string jsonFeed, string accessToken)
         {
             var feed = JsonConvert.DeserializeObject<Feed>(jsonFeed);
+            feed.Request = "https://graph.facebook.com/v13.0/109096938387808/feed?fields=from,id,created_time,comments&access_token=" + accessToken;
+            feed.Json = jsonFeed;
             FacebookSession facebookSession = new FacebookSession
             {
                 Feed = feed,
