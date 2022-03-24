@@ -5,7 +5,7 @@ function statusChangeCallback(response) {  // Called with the results from FB.ge
     if (response.status === 'connected') {   // Logged into your webpage and Facebook.
         loginResponse();
     } else {                                 // Not logged into your webpage or we are unable to tell.
-        document.getElementById('status').innerHTML = 'Facebook: Not loggen in';
+        document.getElementById('status').innerHTML = 'Facebook: Not logged in';
     }
 }
 
@@ -13,10 +13,11 @@ function checkLoginState() {               // Called when a person is finished w
     FB.getLoginStatus(function (response) {   // See the onlogin handler
         statusChangeCallback(response);
     });
+    location.reload();
 }
 
-FB.getLoginStatus(function (response) {   // Called after the JS SDK has been initialized.
-    statusChangeCallback(response);        // Returns the login status.
+FB.getLoginStatus(function (response) {   // See the onlogin handler
+    statusChangeCallback(response);
 });
 
 function loginResponse() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
@@ -25,5 +26,7 @@ function loginResponse() {                      // Testing Graph API after login
         console.log('Successful login for: ' + response.name);
         document.getElementById('status').innerHTML =
             'Facebook: Logged in as: ' + response.name;
+        document.getElementById('fb-user').dataset.fbuser = response.name;
+
     });
 }

@@ -4,7 +4,17 @@
     ViewData["Description"] = "";
 }
 
-<link rel="stylesheet" href="~/css/my-list.css" />
+<link rel="stylesheet" href="~/css/my-list.css?100" />
+
+<div id="fb-logincase" class="centered">
+    <h1 class="bottom-padding">You are not logged into facebook as the correct test user, please log in by pressing the botton below, using these credentials:</h1>
+    <p class="margin-bottom-10"><span class="bold-text">email: </span>spiderman_pwzhsto_user@tfbnw.net</p>
+    <p><span class="bold-text">password: </span>SecretTestPassword#369</p>
+    <div class="fb-login-button" data-width="" data-size="small" data-button-type="login_with" data-layout="default" data-auto-logout-link="true" data-use-continue-as="false">
+        <fb:login-button scope="public_profile,email,pages_read_engagement,pages_show_list,pages_read_user_content" onlogin="checkLoginState();"></fb:login-button>
+    </div>
+</div>
+
 
 @*<div class="padding-50 center">
         <h1>Insert Facebook Graph API Page Access Token</h1>

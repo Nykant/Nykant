@@ -32,8 +32,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral&display=swap">
-    <link rel="stylesheet" href="~/css/mvcstyle.css" />
-    <link rel="stylesheet" href="~/css/navbar.css" />
+    <link rel="stylesheet" href="~/css/mvcstyle.css?100" />
+    <link rel="stylesheet" href="~/css/navbar.css?100" />
     <link rel="stylesheet" href="~/css/search.css" />
     <link rel="stylesheet" href="~/css/culture.css" />
     <link rel="stylesheet" href="~/css/privacy.css" />
@@ -86,10 +86,11 @@
             <div id="status">
             </div>
         </div>
+        <input hidden id="fb-user" />
 
-        <script defer crossorigin="anonymous" src="https://connect.facebook.net/da_DK/sdk.js#xfbml=1&version=v13.0&appId=391655249463703&autoLogAppEvents=1" nonce="pJvbNYGk"></script>
-        <script defer src="~/JS/facebookLogin.js"></script>
-        <script defer src="~/JS/facebookLogout.js"></script>
+        <script crossorigin="anonymous" src="https://connect.facebook.net/da_DK/sdk.js#xfbml=1&version=v13.0&appId=391655249463703&autoLogAppEvents=1" nonce="pJvbNYGk"></script>
+        <script src="~/JS/facebookLogin.js?100"></script>
+        <script src="~/JS/facebookLogout.js?100"></script>
     }
 
 
