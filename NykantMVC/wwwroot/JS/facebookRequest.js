@@ -1,11 +1,11 @@
 ﻿FB.getLoginStatus(function (response) {
     if (response.status === 'connected') {
+        var userAccessToken = response.authResponse.accessToken;
         FB.api('/me', function (response) {
             if (response.name !== "Spiderman Test User") {
                 document.getElementById('fb-logincase').style.display = 'block';
             }
             else {
-                var userAccessToken = response.authResponse.accessToken;
                 var request = '/109096938387808?fields=access_token&access_token=' + userAccessToken;
                 FB.api(request, function (response) {
                     var pageAccessToken = response.access_token;
