@@ -40,6 +40,8 @@ namespace NykantMVC.Controllers
                 {
                     if(facebookSession.Feed.Posts[i].Id == postId)
                     {
+                        facebookSession.Feed.Posts[i].Request = facebookSession.Feed.Request;
+                        facebookSession.Feed.Posts[i].Json = facebookSession.Feed.Json;
                         facebookSession.Feed.Posts[i].Winner = new Winner
                         {
                             Name = "",

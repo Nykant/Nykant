@@ -24,6 +24,8 @@ namespace NykantMVC.Models.Facebook
         public Comments Comments { get; set; }
         public Likes Likes { get; set; }
         public Winner Winner { get; set; }
+        public string Json { get; set; }
+        public string Request { get; set; }
         //public LikesData LikesData { get; set; }
     }
 }

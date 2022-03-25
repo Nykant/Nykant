@@ -4,7 +4,7 @@
     ViewData["Description"] = "";
 }
 
-<link rel="stylesheet" href="~/css/my-list.css?100" />
+<link rel="stylesheet" href="~/css/my-list.css" />
 
 
 @if (Model.Winner.Name != "")
@@ -21,15 +21,30 @@
 <div class="json-get-info margin-top-10">
     @if (Model != null)
     {
-        <h1 class="bottom-side-padding center">http get request: </h1>
+        <h1 class="bottom-side-padding center">http get request for post + comments: </h1>
+        <p class="bottom-padding">@Model.Request</p>
+        <h1 class="bottom-side-padding center">json response for post + comments:</h1>
+        <p>@Model.Json</p>
+    }
+    else
+    {
+        <h1 class="bottom-side-padding center">http get request for post + comments:</h1>
+        <h1 class="bottom-side-padding center">json response for post + comments:</h1>
+    }
+</div>
+
+<div class="json-get-info margin-top-10">
+    @if (Model != null)
+    {
+        <h1 class="bottom-side-padding center">http get request for likes: </h1>
         <p class="bottom-padding">@Model.Likes.Request</p>
-        <h1 class="bottom-side-padding center">json response:</h1>
+        <h1 class="bottom-side-padding center">json response for likes:</h1>
         <p>@Model.Likes.Json</p>
     }
     else
     {
-        <h1 class="bottom-side-padding center">http get request:</h1>
-        <h1 class="bottom-side-padding center">json response:</h1>
+        <h1 class="bottom-side-padding center">http get request for likes:</h1>
+        <h1 class="bottom-side-padding center">json response for likes:</h1>
     }
 </div>
 
@@ -42,7 +57,7 @@
 
 <div class="my-row bottom-padding">
     <div class="responsive-container center">
-        <div class="col-6 left">
+        <div class="col-12 left">
             <h1 class="list-h1">
                 Post Comments
             </h1>
@@ -51,23 +66,25 @@
                 <tr class="no-hover">
                     <th>Id</th>
                     <th>Name</th>
+                    <th>Message</th>
                     <th>Created Time</th>
                 </tr>
                 @if (Model.Comments != null)
                 {
                     @foreach (var comment in Model.Comments.List)
                     {
-                        <tr>
-                            <td>@comment.Id</td>
-                            <td>@comment.From.Name</td>
-                            <td>@comment.CreatedTime</td>
+            <tr>
+                <td>@comment.Id</td>
+                <td>@comment.From.Name</td>
+                <td>@comment.Message</td>
+                <td>@comment.CreatedTime</td>
 
-                        </tr>
+            </tr>
                     }
                 }
             </table>
         </div>
-        <div class="col-6 right">
+        <div class="col-12 right">
             <h1 class="list-h1">Post Likes</h1>
             <table class="my-list">
                 <tr class="no-hover">

@@ -294,7 +294,7 @@
     position: absolute;
     background-color: transparent;
     min-width: 300px;
-    z-index: 200;
+    z-index: 1;
     transition: none;
     transform: translateX(-100px);
     text-align: center;

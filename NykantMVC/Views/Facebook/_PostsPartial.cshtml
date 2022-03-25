@@ -2,13 +2,12 @@
 
 @if (Model == null)
 {
-    <script defer src="~/JS/facebookRequest.js?100"></script>
+    <script defer src="~/JS/facebookRequest.js"></script>
 }
-
 <div class="json-get-info margin-top-10">
     @if (Model != null)
     {
-        <h1 class="bottom-side-padding center">http get request: </h1>
+        <h1 class="bottom-side-padding center">http get request for feed: </h1>
         <p class="bottom-padding">@Model.Request</p>
         <h1 class="bottom-side-padding center">json response:</h1>
         <p>@Model.Json</p>
