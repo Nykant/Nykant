@@ -21,13 +21,13 @@
 {
     if (item.EColor == EColor.Nature)
     {
-        //if (item.Category.Name == "Hylder")
-        //{
-        //    if (item.Length != "600 mm.")
-        //    {
-        //        goto skip;
-        //    }
-        //}
+        if (item.Category.Name == "Hylder")
+        {
+            if (item.Length != "40 cm.")
+            {
+                goto skip;
+            }
+        }
         <div class="col-4 left product-col">
             @if (item.Colors.Count() > 1)
             {
@@ -68,14 +68,7 @@
                     </div>
                     <div class="product-item-inside">
                         <div class="product-text">
-                            @if (item.Length != null)
-                            {
-                                <p>@item.Name / @item.Length</p>
-                            }
-                            else
-                            {
-                                <p>@item.Name</p>
-                            }
+                            <p>@item.Name</p>
                             <p>kr. @item.Price</p>
                         </div>
                     </div>

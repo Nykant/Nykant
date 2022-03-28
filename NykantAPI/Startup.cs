@@ -65,7 +65,7 @@ namespace NykantAPI
                     .SetApplicationName("Nykant");
             }
 
-            // migrations to mysql server
+            //migrations to mysql server
             //services.AddDbContext<ApplicationDbContext>(
             //    options =>
             //    {
