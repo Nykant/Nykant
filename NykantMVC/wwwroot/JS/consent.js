@@ -4,6 +4,7 @@ var cookie_consent = document.getElementById("cookie-consent");
 var consent_updated = function (xhr) {
     if (cookie_consent !== null) {
         cookie_consent.style.display = "none";
+        location.reload();
     };
 }
 

@@ -49,50 +49,61 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js" integrity="sha512-0xrMWUXzEAc+VY7k48pWd5YT6ig03p4KARKxs4Bqxb9atrcn2fV41fWs+YXTKb8lD2sbPAmZMjKENiyzM/Gagw==" crossorigin="anonymous"></script>*@
 </head>
 <body>
-    <div id="fb-root"></div>
+    @using NykantMVC.Extensions;
 
-    <div id="fb-customer-chat" class="fb-customerchat">
-    </div>
+    @{
+        var consent = Context.Session.Get<CookieConsent>("verysecretseriousconsentsessionkeyspecial");
+    }
 
-    <script>
-        var chatbox = document.getElementById('fb-customer-chat');
-        chatbox.setAttribute("page_id", "104882272120980");
-        chatbox.setAttribute("attribution", "biz_inbox");
-    </script>
-
-    <script>
-        window.fbAsyncInit = function () {
-            FB.init({
-                appId: '391655249463703',
-                cookie: true,
-                autoLogAppEvents: true,
-                xfbml: true,
-                version: 'v13.0'
-            });
-        };
-
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
-
-    @if (User.Identity.IsAuthenticated)
+    @if (consent.NonEssential)
     {
-        <div class="status-bar">
-            <div id="status">
-            </div>
+        <div id="fb-root"></div>
+
+        <div id="fb-customer-chat" class="fb-customerchat">
         </div>
 
-        <input hidden id="fb-user" />
+        <script>
+            var chatbox = document.getElementById('fb-customer-chat');
+            chatbox.setAttribute("page_id", "104882272120980");
+            chatbox.setAttribute("attribution", "biz_inbox");
+        </script>
 
-        <script crossorigin="anonymous" src="https://connect.facebook.net/da_DK/sdk.js#xfbml=1&version=v13.0&appId=391655249463703&autoLogAppEvents=1" nonce="pJvbNYGk"></script>
-        <script src="~/JS/facebookLogin.js?101"></script>
-        <script src="~/JS/facebookLogout.js?101"></script>
+        <script>
+            window.fbAsyncInit = function () {
+                FB.init({
+                    appId: '391655249463703',
+                    autoLogAppEvents: true,
+                    xfbml: true,
+                    version: 'v13.0'
+                });
+            };
+
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="status-bar">
+                <div id="status">
+                </div>
+            </div>
+
+            <input hidden id="fb-user" />
+
+            <script crossorigin="anonymous" src="https://connect.facebook.net/da_DK/sdk.js#xfbml=1&version=v13.0&appId=391655249463703&autoLogAppEvents=1" nonce="pJvbNYGk"></script>
+            <script src="~/JS/facebookLogin.js?101"></script>
+            <script src="~/JS/facebookLogout.js?101"></script>
+        }
     }
+
+
+
 
 
 

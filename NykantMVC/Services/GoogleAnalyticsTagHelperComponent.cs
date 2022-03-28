@@ -50,7 +50,7 @@ namespace NykantMVC.Services
                                 .AppendHtml(trackingCode)
                                 .AppendHtml("'></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','")
                                 .AppendHtml(trackingCode)
-                                .AppendHtml("', { 'anonymize_ip': true });</script>");
+                                .AppendHtml("', { 'anonymize_ip': true }); gtag('config', 'AW-10853506642');</script>");
                         }
                     }
                 }
@@ -70,7 +70,7 @@ namespace NykantMVC.Services
                                 .AppendHtml(trackingCode)
                                 .AppendHtml("'></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','")
                                 .AppendHtml(trackingCode)
-                                .AppendHtml("', { 'anonymize_ip': true });</script>");
+                                .AppendHtml("', { 'anonymize_ip': true }); gtag('config', 'AW-10853506642');</script>");
                         }
                     }
                 }

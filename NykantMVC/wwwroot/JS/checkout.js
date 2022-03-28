@@ -101,6 +101,12 @@ history.scrollRestoration = "manual";
 if (stage == 1) {
     try {
         gtag('event', 'begin_checkout');
+
+        gtag('event', 'conversion', {
+            'send_to': 'AW-10853506642/KmueCLHirawDENK8rbco',
+            'value': 1.0,
+            'currency': 'DKK'
+        });
     }
     catch (err) {
 
