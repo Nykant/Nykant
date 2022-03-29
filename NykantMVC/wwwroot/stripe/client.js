@@ -158,6 +158,13 @@ var showError = function (errorMsgText) {
 var orderComplete = function (paymentIntentId) {
     try {
         gtag('event', 'purchase');
+
+        gtag('event', 'conversion', {
+            'send_to': 'AW-10853506642/iWIVCLCt460DENK8rbco',
+            'value': 1.0,
+            'currency': 'DKK',
+            'transaction_id': ''
+        });
     }
     catch (err) {
 
