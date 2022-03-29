@@ -115,7 +115,7 @@ namespace NykantMVC
 
             services.AddSession(options =>
             {
-                options.IdleTimeout = TimeSpan.FromHours(10);
+                options.IdleTimeout = TimeSpan.FromDays(30);
                 options.Cookie.HttpOnly = true;
                 options.Cookie.Name = "Session";
                 options.Cookie.IsEssential = true;
