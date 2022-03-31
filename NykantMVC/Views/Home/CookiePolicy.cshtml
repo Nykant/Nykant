@@ -6,14 +6,14 @@
 
 }
 
-<link rel="stylesheet" href="~/css/privacy.css" />
+<!--<link rel="stylesheet" href="~/css/privacy.css" />
 <link rel="stylesheet" type="text/css" href="~/css/custom-table.css" />
 
 <div class="my-row background-color2 bottom-padding">
     <div class="responsive-container cookie-header center">
-        <h1>Cookie Politik</h1>
+        <h1>Cookie Politik</h1>-->
         @*@localizer["Cookie Policy"]*@
-    <p class="margin-bottom-10">Vi bruger google analytics cookies til at indsamle anonyme data om dig, så vi kan se hvad du foretager dig på hjemmesiden, for at forbedre den. Trykker du Accepter, giver du dit samtykke til at vi må bruge google analytics.</p>
+        <!--<p class="margin-bottom-10">Vi bruger google analytics cookies til at indsamle anonyme data om dig, så vi kan se hvad du foretager dig på hjemmesiden, for at forbedre den. Trykker du Accepter, giver du dit samtykke til at vi må bruge google analytics.</p>
     </div>
     <div class="responsive-container center cookie-buttons">
         <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="onlyEssential_succeed" data-ajax-complete="consent_updated" data-ajax-begin="onlyEssential_begin" data-ajax-failure="onlyEssential_failure" asp-action="OnlyEssentialConsent" class="col-6 left padding-5">
@@ -27,17 +27,17 @@
                 <div class="loading-check-sign" id="onlyEssential-check-sign">
                     <i class="fa fa-check" aria-hidden="true"></i>
                 </div>
-                <div id="onlyEssential-text">Afvis</div>
+                <div id="onlyEssential-text">Afvis</div>-->
                 @*@localizer["Only Essential Cookies"]*@
-            </button>
-        </form>
+            <!--</button>
+       
         <!--<div class="col-4 left cookie-button">
             <button type="button" class="button" id="open-privacy1">
                 Instillinger-->
-                @*@localizer["Settings"]*@
-            <!--</button>
+        <!--@*@localizer["Settings"]*@-->
+        <!--<!--</button>
         </div>-->
-        <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="allowAll_succeed" data-ajax-complete="consent_updated" data-ajax-begin="allowAll_begin" data-ajax-failure="allowAll_failure" asp-action="AllowAllConsent" class="col-6 left padding-5">
+        <!--<form method="post" data-ajax="true" data-ajax-method="post" data-ajax-success="allowAll_succeed" data-ajax-complete="consent_updated" data-ajax-begin="allowAll_begin" data-ajax-failure="allowAll_failure" asp-action="AllowAllConsent" class="col-6 left padding-5">
             <button type="submit" class="green-button">
                 <div id="allowAll-error" class="loading-error">
                     <i class="fas fa-times"></i>
@@ -48,9 +48,9 @@
                 <div class="loading-check-sign" id="allowAll-check-sign">
                     <i class="fa fa-check" aria-hidden="true"></i>
                 </div>
-                <div id="allowAll-text">Accepter</div>
+                <div id="allowAll-text">Accepter</div>-->
                 @*@localizer["Accept All Cookies"]*@
-            </button>
+            <!--</button>
         </form>
     </div>
 </div>
@@ -118,20 +118,20 @@
                 <a class="simple-link" href="http://timeread.hubpages.com/hub/How-to-delete-internet-cookies-on-your-Droid-or-any-Android-device">Android cookies</a>
                 <a class="simple-link" href="http://www.windowsphone.com/da-dk/how-to/wp7/web/changing-privacy-and-other-browser-settings">Phone Windows 7</a>
             </div>
-        </div>
+        </div>-->
         @*@if (localizer["CookiePolicy"] == null)
-        {
+            {
 
-        }
-        else
-        {
-            @localizer["CookiePolicy"]
-        }*@
+            }
+            else
+            {
+                @localizer["CookiePolicy"]
+            }*@
 
-        <div>
+        <!--<div>-->
             @*------------------------- LISTE AF COOKIES ---------------------*@
 
-            <div class="custom-table">
+            @*<div class="custom-table">
                 <h1>Liste over vores First-Party cookies</h1>
                 <div class="custom-table-headers">
                     <div>Cookie</div>
@@ -187,4 +187,12 @@
 </div>
 
 <script src="~/JS/consent.js"></script>
-<script src="~/JS/cookie-policy-spinner.js"></script>
+<script src="~/JS/cookie-policy-spinner.js"></script>-->*@
+
+<div class="my-row">
+    <div class="responsive-container background-white">
+        <script id="CookieDeclaration" src="https://consent.cookiebot.com/490e7f44-ffeb-46ab-b54c-dc5700002e92/cd.js" type="text/javascript" async></script>
+    </div>
+</div>
+
+

@@ -1,0 +1,18 @@
+﻿
+<div id="fb-root"></div>
+<div id="fb-customer-chat" class="fb-customerchat"></div>
+<script src="~/JS/facebook-init.js"></script>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="status-bar">
+        <div id="status">
+        </div>
+    </div>
+
+    <input hidden id="fb-user" />
+
+    <script crossorigin="anonymous" defer async src="https://connect.facebook.net/da_DK/sdk.js#xfbml=1&version=v13.0&appId=391655249463703&autoLogAppEvents=1" nonce="pJvbNYGk"></script>
+    <script defer src="~/JS/facebookLogin.js?101"></script>
+    <script defer src="~/JS/facebookLogout.js?101"></script>
+}

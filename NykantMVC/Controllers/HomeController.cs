@@ -182,45 +182,45 @@ namespace NykantMVC.Controllers
         //    };
         //}
 
-        [HttpPost]
-        public async Task AllowAllConsent()
-        {
-            try
-            {
-                var clientIP = Request.HttpContext.Connection.RemoteIpAddress;
-                Consent consent = new Consent
-                {
-                    IPAddress = clientIP.ToString(),
-                    Date = DateTime.Now,
-                    ButtonText = "Accepter",
-                    ConsentText = "Vi bruger google analytics cookies til at indsamle anonyme data om dig, så vi kan se hvad du foretager dig på hjemmesiden, for at forbedre den. (link til cookie politik:(her kan du læse mere om vores cookies)). Trykker du Accepter, giver du dit samtykke til at vi må bruge google analytics.",
-                    How = ConsentHow.Button,
-                    Type = ConsentType.Cookie,
-                    Status = ConsentStatus.Given
-                };
+        //[HttpPost]
+        //public async Task AllowAllConsent()
+        //{
+        //    try
+        //    {
+        //        var clientIP = Request.HttpContext.Connection.RemoteIpAddress;
+        //        Consent consent = new Consent
+        //        {
+        //            IPAddress = clientIP.ToString(),
+        //            Date = DateTime.Now,
+        //            ButtonText = "Accepter",
+        //            ConsentText = "Vi bruger google analytics cookies til at indsamle anonyme data om dig, så vi kan se hvad du foretager dig på hjemmesiden, for at forbedre den. (link til cookie politik:(her kan du læse mere om vores cookies)). Trykker du Accepter, giver du dit samtykke til at vi må bruge google analytics.",
+        //            How = ConsentHow.Button,
+        //            Type = ConsentType.Cookie,
+        //            Status = ConsentStatus.Given
+        //        };
 
-                PostRequest("/Consent/Post", consent).ConfigureAwait(false);
+        //        PostRequest("/Consent/Post", consent).ConfigureAwait(false);
 
-                var cookieConsent = new CookieConsent
-                {
-                    OnlyEssential = false,
-                    ShowBanner = false,
-                    NonEssential = true
-                };
-                HttpContext.Session.Set<CookieConsent>(ConsentCookieKey, cookieConsent);
+        //        var cookieConsent = new CookieConsent
+        //        {
+        //            OnlyEssential = false,
+        //            ShowBanner = false,
+        //            NonEssential = true
+        //        };
+        //        HttpContext.Session.Set<CookieConsent>(ConsentCookieKey, cookieConsent);
 
-                //ViewBag.NonEssential = cookieConsent.NonEssential;
-                //return new PartialViewResult
-                //{
-                //    ViewName = "_CookieSettingsPartial",
-                //    ViewData = this.ViewData
-                //};
-            }
-            catch (Exception e)
-            {
-                _logger.LogError($"consent error - time: {DateTime.Now} - {e.Message}");
-            }
-        }
+        //        //ViewBag.NonEssential = cookieConsent.NonEssential;
+        //        //return new PartialViewResult
+        //        //{
+        //        //    ViewName = "_CookieSettingsPartial",
+        //        //    ViewData = this.ViewData
+        //        //};
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        _logger.LogError($"consent error - time: {DateTime.Now} - {e.Message}");
+        //    }
+        //}
 
         [HttpPost]
         public void Log(string message)
@@ -228,56 +228,56 @@ namespace NykantMVC.Controllers
             _logger.LogError(message);
         }
 
-        [HttpPost]
-        public async Task OnlyEssentialConsent()
-        {
-            try
-            {
-                var clientIP = Request.HttpContext.Connection.RemoteIpAddress;
-                Consent consent = new Consent
-                {
-                    IPAddress = clientIP.ToString(),
-                    Date = DateTime.Now,
-                    ButtonText = "Afvis",
-                    ConsentText = "Vi bruger google analytics cookies til at indsamle anonyme data om dig, så vi kan se hvad du foretager dig på hjemmesiden, for at forbedre den. (link til cookie politik:(her kan du læse mere om vores cookies)). Trykker du Accepter, giver du dit samtykke til at vi må bruge google analytics.",
-                    How = ConsentHow.Button,
-                    Type = ConsentType.Cookie,
-                    Status = ConsentStatus.Retrieved
-                };
+        //[HttpPost]
+        //public async Task OnlyEssentialConsent()
+        //{
+        //    try
+        //    {
+        //        var clientIP = Request.HttpContext.Connection.RemoteIpAddress;
+        //        Consent consent = new Consent
+        //        {
+        //            IPAddress = clientIP.ToString(),
+        //            Date = DateTime.Now,
+        //            ButtonText = "Afvis",
+        //            ConsentText = "Vi bruger google analytics cookies til at indsamle anonyme data om dig, så vi kan se hvad du foretager dig på hjemmesiden, for at forbedre den. (link til cookie politik:(her kan du læse mere om vores cookies)). Trykker du Accepter, giver du dit samtykke til at vi må bruge google analytics.",
+        //            How = ConsentHow.Button,
+        //            Type = ConsentType.Cookie,
+        //            Status = ConsentStatus.Retrieved
+        //        };
 
-                PostRequest("/Consent/Post", consent).ConfigureAwait(false);
+        //        PostRequest("/Consent/Post", consent).ConfigureAwait(false);
 
-                var jsonCookies = await GetRequest("/Cookie/GetCookies");
-                var cookies = JsonConvert.DeserializeObject<List<Cookie>>(jsonCookies);
-                foreach (var cookie in cookies)
-                {
-                    if (cookie.Category == CookieCategory.Functional || cookie.Category == CookieCategory.Statistics)
-                    {
-                        Response.Cookies.Delete(cookie.Name);
-                    }
-                }
+        //        var jsonCookies = await GetRequest("/Cookie/GetCookies");
+        //        var cookies = JsonConvert.DeserializeObject<List<Cookie>>(jsonCookies);
+        //        foreach (var cookie in cookies)
+        //        {
+        //            if (cookie.Category == CookieCategory.Functional || cookie.Category == CookieCategory.Statistics)
+        //            {
+        //                Response.Cookies.Delete(cookie.Name);
+        //            }
+        //        }
 
-                var cookieConsent = new CookieConsent
-                {
-                    OnlyEssential = true,
-                    ShowBanner = false,
-                    NonEssential = false
-                };
-                HttpContext.Session.Set<CookieConsent>(ConsentCookieKey, cookieConsent);
+        //        var cookieConsent = new CookieConsent
+        //        {
+        //            OnlyEssential = true,
+        //            ShowBanner = false,
+        //            NonEssential = false
+        //        };
+        //        HttpContext.Session.Set<CookieConsent>(ConsentCookieKey, cookieConsent);
 
-                //ViewBag.NonEssential = cookieConsent.NonEssential;
-                //return new PartialViewResult
-                //{
-                //    ViewName = "_CookieSettingsPartial",
-                //    ViewData = this.ViewData
-                //};
+        //        //ViewBag.NonEssential = cookieConsent.NonEssential;
+        //        //return new PartialViewResult
+        //        //{
+        //        //    ViewName = "_CookieSettingsPartial",
+        //        //    ViewData = this.ViewData
+        //        //};
                 
-            }
-            catch (Exception e)
-            {
-                _logger.LogError($"consent error - time: {DateTime.Now} - {e.Message}");
-            }
-        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        _logger.LogError($"consent error - time: {DateTime.Now} - {e.Message}");
+        //    }
+        //}
 
         [HttpPost]
         public IActionResult UpdateCulture(string culture, string redirectController, string redirectAction)

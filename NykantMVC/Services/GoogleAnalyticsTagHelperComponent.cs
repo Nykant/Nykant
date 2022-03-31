@@ -28,50 +28,21 @@ namespace NykantMVC.Services
         {
             try
             {
-                var consent = _httpContextAccessor.HttpContext.Session.Get<CookieConsent>("verysecretseriousconsentsessionkeyspecial");
-                if (consent == null)
+                // Inject the code only in the head element
+                if (string.Equals(output.TagName, "head", StringComparison.OrdinalIgnoreCase))
                 {
-                    consent = new CookieConsent { NonEssential = false, OnlyEssential = true, ShowBanner = true };
-                    _httpContextAccessor.HttpContext.Session.Set<CookieConsent>("verysecretseriousconsentsessionkeyspecial", consent);
-                }
-                if (!consent.OnlyEssential)
-                {
-                    // Inject the code only in the head element
-                    if (string.Equals(output.TagName, "head", StringComparison.OrdinalIgnoreCase))
+                    // Get the tracking code from the configuration
+                    var trackingCode = _googleAnalyticsOptions.TrackingCode;
+                    if (!string.IsNullOrEmpty(trackingCode))
                     {
-                        // Get the tracking code from the configuration
-                        var trackingCode = _googleAnalyticsOptions.TrackingCode;
-                        if (!string.IsNullOrEmpty(trackingCode))
-                        {
-                            // PostContent correspond to the text just before closing tag
-                            output.PostContent
-                                .AppendHtml("<script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('consent', 'default', { 'ad_storage': 'denied', 'analytics_storage': 'granted' });</script>")
-                                .AppendHtml("<script async src='https://www.googletagmanager.com/gtag/js?id=")
-                                .AppendHtml(trackingCode)
-                                .AppendHtml("'></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','")
-                                .AppendHtml(trackingCode)
-                                .AppendHtml("', { 'anonymize_ip': true }); gtag('config', 'AW-10853506642');</script>");
-                        }
-                    }
-                }
-                else if (consent.OnlyEssential)
-                {
-                    // Inject the code only in the head element
-                    if (string.Equals(output.TagName, "head", StringComparison.OrdinalIgnoreCase))
-                    {
-                        // Get the tracking code from the configuration
-                        var trackingCode = _googleAnalyticsOptions.TrackingCode;
-                        if (!string.IsNullOrEmpty(trackingCode))
-                        {
-                            // PostContent correspond to the text just before closing tag
-                            output.PostContent
-                                .AppendHtml("<script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('consent', 'default', { 'ad_storage': 'denied', 'analytics_storage': 'denied' });</script>")
-                                .AppendHtml("<script async src='https://www.googletagmanager.com/gtag/js?id=")
-                                .AppendHtml(trackingCode)
-                                .AppendHtml("'></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','")
-                                .AppendHtml(trackingCode)
-                                .AppendHtml("', { 'anonymize_ip': true }); gtag('config', 'AW-10853506642');</script>");
-                        }
+                        // PostContent correspond to the text just before closing tag
+                        output.PostContent
+                            .AppendHtml("<script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('consent', 'default', { 'ad_storage': 'granted', 'analytics_storage': 'granted' });</script>")
+                            .AppendHtml("<script async src='https://www.googletagmanager.com/gtag/js?id=")
+                            .AppendHtml(trackingCode)
+                            .AppendHtml("'></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','")
+                            .AppendHtml(trackingCode)
+                            .AppendHtml("', { 'anonymize_ip': true }); gtag('config', 'AW-10853506642');</script>");
                     }
                 }
             }
@@ -79,7 +50,6 @@ namespace NykantMVC.Services
             {
                 logger.LogError($"time: {DateTime.Now} - {e.Message}");
             }
-
         }
     }
 

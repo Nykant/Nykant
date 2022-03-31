@@ -7,6 +7,8 @@
 }
 
 :root {
+    --white: #F7F5F2;
+    --black: #141414;
     --green: #8cffa4;
     --blue: #7ed8ff;
     --dark: #303030;
@@ -28,6 +30,7 @@
     --white-fade: rgba(255, 255, 255, 0.9);
     --basish: #fffff7;
     --nicegreen: #d8ffec;
+    --nicegreen2: #66ff86;
     --font1: #777069;
     --font2: #e6e6e6;
     --color1: #F7F5F2;

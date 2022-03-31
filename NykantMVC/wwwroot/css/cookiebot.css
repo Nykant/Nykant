@@ -1,0 +1,125 @@
+/*** BANNER ***/
+
+/** CONSENT **/
+
+/* TABS */
+
+#CybotCookiebotDialogNav .CybotCookiebotDialogNavItemLink.CybotCookiebotDialogActive {
+    border-bottom: 2px solid var(--font1) !important;
+    color: var(--font1) !important;
+}
+
+#CybotCookiebotDialogNav .CybotCookiebotDialogNavItemLink:hover {
+    color: var(--font1) !important;
+}
+
+/* HEADINGS */
+
+.CybotCookiebotScrollArea h2 {
+    font-size: 50px !important;
+}
+
+/* BUTTON SLIDERS */
+
+#CybotCookiebotDialogTabContent input:checked + .CybotCookiebotDialogBodyLevelButtonSlider {
+    background-color: var(--nicegreen2) !important;
+}
+
+#CybotCookiebotDialog input:checked + .CybotCookiebotDialogBodyLevelButtonSliderWrapperDisabled .CybotCookiebotDialogBodyLevelButtonSlider {
+    background-color: initial !important;
+}
+
+#CybotCookiebotDialogBodyLevelButtonsSelectPane .CybotCookiebotDialogBodyLevelButtonDescription:hover {
+    color:var(--black);
+}
+
+/* BUTTONS */
+
+#CybotCookiebotDialogFooter .CybotCookiebotDialogBodyButton {
+    border: 2px solid var(--dark) !important;
+    color: var(--black) !important;
+}
+
+#CybotCookiebotDialogFooter #CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll {
+    border: 2px solid var(--nicegreen2) !important;
+    background-color: var(--nicegreen2) !important;
+    color: var(--black) !important;
+}
+
+/** DETAILS **/
+
+/* CARD */
+
+#CybotCookiebotDialog .CookieCard .CybotCookiebotDialogDetailBodyContentCookieContainerButton:hover {
+    color: var(--font1) !important;
+}
+
+#CybotCookiebotDialog .CybotCookiebotDialogDetailBodyContentCookieLink {
+    color: var(--font1) !important;
+    text-decoration:underline !important;
+}
+
+#CybotCookiebotDialogDetailBodyContentCookieContainerTypes .CybotCookiebotDialogDetailBodyContentCookieProvider:not(.CybotCookiebotDialogDetailBodyContentCookieInfoCount):hover {
+    color: var(--font1);
+}
+
+/*** WIDGET ***/
+
+/** WIDGET LOGO **/
+
+#CookiebotWidget .CookiebotWidget-logo svg circle {
+    fill: var(--dark) !important;
+}
+
+/** LIST **/
+
+#CookiebotWidget .CookiebotWidget-body .CookiebotWidget-consents-list li.CookiebotWidget-approved svg {
+    fill: var(--dark) !important;
+}
+
+#CookiebotWidget .CookiebotWidget-consent-details button {
+    color: var(--dark) !important;
+
+}
+
+/** BUTTONS **/
+
+#CookiebotWidget #CookiebotWidget-buttons #CookiebotWidget-btn-withdraw {
+    border-color: initial !important;
+    color: initial !important;
+}
+
+#CookiebotWidget #CookiebotWidget-buttons #CookiebotWidget-btn-change {
+    background-color: var(--nicegreen2) !important;
+    border-color: var(--nicegreen2) !important;
+    color: var(--black) !important;
+}
+
+/**** TABLET ****/
+@media screen and (max-width: 959px) {
+
+    /*** BANNER ***/
+
+    /** CONSENT **/
+
+    /* HEADINGS */
+
+    .CybotCookiebotScrollArea h2 {
+        font-size: 40px !important;
+    }
+}
+
+/**** MOBILE ****/
+@media screen and (max-width: 569px) {
+
+    /*** BANNER ***/
+
+    /** CONSENT **/
+
+    /* HEADINGS */
+
+    .CybotCookiebotScrollArea h2 {
+        font-size: 30px !important;
+        line-height: 1.25em !important;
+    }
+}
