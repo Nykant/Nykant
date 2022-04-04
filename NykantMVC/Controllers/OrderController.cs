@@ -94,68 +94,79 @@ namespace NykantMVC.Controllers
 
                 if (checkout.Stage == Stage.payment)
                 {
+                    var customer = _protectionService.UnprotectCustomer(checkout.Customer);
+                    var response = await PostRequest("/Customer/PostCustomer/", new Models.Customer { Email = customer.Email, Phone = customer.Phone });
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        _logger.LogError($"time: {DateTime.Now} - error: could not post customer");
+                        return Json(new { ok = false, error = "could not post customer" });
+                    }
+                    var json = await GetRequest(response.Headers.Location.AbsolutePath);
+                    customer.Id = JsonConvert.DeserializeObject<Models.Customer>(json).Id;
+                    checkout.Customer.Id = customer.Id;
+
+                    customer.ShippingAddress.CustomerId = customer.Id;
+                    response = await PostRequest("/Customer/PostShippingAddress", customer.ShippingAddress);
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        _logger.LogError($"time: {DateTime.Now} - error: Could not post shipping");
+                        return Json(new { error = "Could not post shipping" });
+                    }
+
+                    customer.BillingAddress.CustomerId = customer.Id;
+                    response = await PostRequest("/Customer/PostBillingAddress", customer.BillingAddress);
+                    if (!response.IsSuccessStatusCode) 
+                    {
+                        _logger.LogError($"time: {DateTime.Now} - error: Could not post billing");
+                        return Json(new { error = "Could not post billing" });
+                    }
+
                     checkout.BagItems = await ValidateAndUpdateProducts(checkout.BagItems);
 
-                    var paymentCapture = new PaymentCapture { Captured = false, PaymentIntent_Id = paymentIntentId, CustomerId = checkout.CustomerId };
-                    var response = await PostRequest("/PaymentCapture/PostPaymentCapture", paymentCapture);
+                    var paymentCapture = new PaymentCapture { Captured = false, PaymentIntent_Id = paymentIntentId, CustomerId = customer.Id };
+                    response = await PostRequest("/PaymentCapture/PostPaymentCapture", paymentCapture);
                     if (!response.IsSuccessStatusCode)
                     {
                         _logger.LogError($"time: {DateTime.Now} - error: could not post paymentCapture");
                         return Json(new { ok = false, error = "could not post paymentCapture" });
                     }
-                    var json = await GetRequest(response.Headers.Location.AbsolutePath);
+                    json = await GetRequest(response.Headers.Location.AbsolutePath);
                     paymentCapture.Id = JsonConvert.DeserializeObject<PaymentCapture>(json).Id;
 
-                    var orders = OrderHelpers.MakeOrders(checkout, paymentCapture.Id);
+                    var order = OrderHelpers.BuildOrder(checkout.BagItems, paymentCapture.Id);
 
-                    for(int i = 0; i < orders.Count(); i++)
+                    response = await PostRequest("/Order/PostOrder", order);
+                    if (!response.IsSuccessStatusCode)
                     {
-                        response = await PostRequest("/Order/PostOrder", orders[i]);
-                        if (!response.IsSuccessStatusCode)
-                        {
-                            _logger.LogError($"time: {DateTime.Now} - error: could not post order");
-                            return Json(new { ok = false, error = "could not post order" });
-                        }
-
-                        json = await GetRequest(response.Headers.Location.AbsolutePath);
-                        orders[i].Id = JsonConvert.DeserializeObject<Models.Order>(json).Id;
-
-                        var shippingDelivery = new ShippingDelivery { OrderId = orders[i].Id, Type = OrderHelpers.CalculateDeliveryType(orders[i].BagItems) };
-                        var postShipping = await PostRequest("/ShippingDelivery/Post", shippingDelivery);
-                        if (!postShipping.IsSuccessStatusCode)
-                        {
-                            _logger.LogError($"time: {DateTime.Now} - error: could not post shippingdelivery");
-                            return Json(new { ok = false, error = "could not post shipping" });
-                        }
-
-                        var orderItems = OrderHelpers.MakeOrderItems(orders[i].BagItems, orders[i].Id); // check om info ik er krypteret
-                        var postRequest = await PostRequest("/Orderitem/PostOrderItems", orderItems);
-                        if (!postRequest.IsSuccessStatusCode)
-                        {
-                            _logger.LogError($"time: {DateTime.Now} - error: could not post order items");
-                            return Json(new { ok = false, error = "could not post order items" });
-                        }
-
-                        json = await GetRequest($"/Order/GetOrder/{orders[i].Id}");
-                        orders[i] = JsonConvert.DeserializeObject<Models.Order>(json);
-
-                        mailService.SendOrderEmailAsync(orders[i]).ConfigureAwait(false);
-                        mailService.SendNykantEmailAsync(orders[i]).ConfigureAwait(false);
-
-                        if (!orders[i].IsBackOrder)
-                        {
-                            mailService.SendDKIEmailAsync(orders[i]).ConfigureAwait(false);
-                        }
-                        else
-                        {
-                            var updateOrder = await PatchRequest("/Order/UpdateOrder", orders[i]);
-                            if (!updateOrder.IsSuccessStatusCode)
-                            {
-                                _logger.LogError($"time: {DateTime.Now} - error: error updating order");
-                                return Json(new { ok = false, error = "error updating order" });
-                            }
-                        }
+                        _logger.LogError($"time: {DateTime.Now} - error: could not post order");
+                        return Json(new { ok = false, error = "could not post order" });
                     }
+
+                    json = await GetRequest(response.Headers.Location.AbsolutePath);
+                    order.Id = JsonConvert.DeserializeObject<Models.Order>(json).Id;
+
+                    var shippingDelivery = new ShippingDelivery { OrderId = order.Id, Type = OrderHelpers.CalculateDeliveryType(order.BagItems) };
+                    var postShipping = await PostRequest("/ShippingDelivery/Post", shippingDelivery);
+                    if (!postShipping.IsSuccessStatusCode)
+                    {
+                        _logger.LogError($"time: {DateTime.Now} - error: could not post shippingdelivery");
+                        return Json(new { ok = false, error = "could not post shipping" });
+                    }
+
+                    var orderItems = OrderHelpers.MakeOrderItems(order.BagItems, order.Id); // check om info ik er krypteret
+                    var postRequest = await PostRequest("/Orderitem/PostOrderItems", orderItems);
+                    if (!postRequest.IsSuccessStatusCode)
+                    {
+                        _logger.LogError($"time: {DateTime.Now} - error: could not post order items");
+                        return Json(new { ok = false, error = "could not post order items" });
+                    }
+
+                    json = await GetRequest($"/Order/GetOrder/{order.Id}");
+                    order = JsonConvert.DeserializeObject<Models.Order>(json);
+
+                    mailService.SendOrderEmailAsync(order).ConfigureAwait(false);
+                    mailService.SendNykantEmailAsync(order).ConfigureAwait(false);
+                    mailService.SendDKIEmailAsync(order).ConfigureAwait(false);
 
                     HttpContext.Session.Set<List<BagItem>>(BagSessionKey, null);
                     HttpContext.Session.Set<int>(BagItemAmountKey, 0);
@@ -178,48 +189,48 @@ namespace NykantMVC.Controllers
             }
         }
 
-        [Authorize(Roles = "Admin")]
-        [HttpGet]
-        public async Task<IActionResult> BackOrders()
-        {
-            var jsonResponse = await GetRequest("/Order/GetOrders");
-            var list = JsonConvert.DeserializeObject<List<Models.Order>>(jsonResponse);
-            return View(list);
-        }
+        //[Authorize(Roles = "Admin")]
+        //[HttpGet]
+        //public async Task<IActionResult> BackOrders()
+        //{
+        //    var jsonResponse = await GetRequest("/Order/GetOrders");
+        //    var list = JsonConvert.DeserializeObject<List<Models.Order>>(jsonResponse);
+        //    return View(list);
+        //}
 
-        [Authorize(Roles = "Admin")]
-        [HttpPost]
-        public async Task<IActionResult> OrderInStorage(int orderId)
-        {
-            try
-            {
-                var orderResponse = await GetRequest($"/Order/GetOrder/{orderId}");
-                var order = JsonConvert.DeserializeObject<Models.Order>(orderResponse);
-                mailService.SendDKIEmailAsync(order).ConfigureAwait(false);
+        //[Authorize(Roles = "Admin")]
+        //[HttpPost]
+        //public async Task<IActionResult> OrderInStorage(int orderId)
+        //{
+        //    try
+        //    {
+        //        var orderResponse = await GetRequest($"/Order/GetOrder/{orderId}");
+        //        var order = JsonConvert.DeserializeObject<Models.Order>(orderResponse);
+        //        mailService.SendDKIEmailAsync(order).ConfigureAwait(false);
 
-                order.IsBackOrder = false;
-                var updateOrder = await PatchRequest("/Order/UpdateOrder", order);
-                if (!updateOrder.IsSuccessStatusCode)
-                {
-                    return Json(new { ok = false, error = "error updating order" });
-                }
+        //        //order.IsBackOrder = false;
+        //        var updateOrder = await PatchRequest("/Order/UpdateOrder", order);
+        //        if (!updateOrder.IsSuccessStatusCode)
+        //        {
+        //            return Json(new { ok = false, error = "error updating order" });
+        //        }
 
-                var ordersResponse = await GetRequest("/Order/GetOrders");
-                var orders = JsonConvert.DeserializeObject<List<Models.Order>>(ordersResponse);
-                ViewData.Model = orders;
-                return new PartialViewResult
-                {
-                    ViewName = "/Views/Order/_BackOrderListPartial.cshtml",
-                    ViewData = this.ViewData
-                };
-            }
-            catch (Exception e)
-            {
-                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
-            }
-            return NoContent();
+        //        var ordersResponse = await GetRequest("/Order/GetOrders");
+        //        var orders = JsonConvert.DeserializeObject<List<Models.Order>>(ordersResponse);
+        //        ViewData.Model = orders;
+        //        return new PartialViewResult
+        //        {
+        //            ViewName = "/Views/Order/_BackOrderListPartial.cshtml",
+        //            ViewData = this.ViewData
+        //        };
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        _logger.LogError($"time: {DateTime.Now} - {e.Message}");
+        //    }
+        //    return NoContent();
             
-        }
+        //}
 
         [Authorize( Roles = "Admin" )]
         [HttpPost]
@@ -229,7 +240,7 @@ namespace NykantMVC.Controllers
             {
                 var json = await GetRequest($"/Order/GetOrder/{orderId}");
                 var order = JsonConvert.DeserializeObject<Models.Order>(json);
-                mailService.SendOrderSentEmailAsync(order).ConfigureAwait(false);
+                //mailService.SendOrderSentEmailAsync(order).ConfigureAwait(false);
                 order.Status = Status.Sent;
                 var response = await PatchRequest("/Order/UpdateOrder", order);
                 if (!response.IsSuccessStatusCode)
@@ -265,14 +276,6 @@ namespace NykantMVC.Controllers
                 var json = await GetRequest($"/PaymentCapture/GetPaymentCapture/{paymentCaptureId}");
                 var paymentCapture = JsonConvert.DeserializeObject<PaymentCapture>(json); // check customer data we need
 
-                foreach (var order in paymentCapture.Orders)
-                {
-                    if(order.Status != Status.Sent)
-                    {
-                        goto end;
-                    }
-                }
-
                 StripeConfiguration.ApiKey = conf["StripeSKKey"];
                 var service = new PaymentIntentService();
                 var paymentIntent = await service.CaptureAsync(paymentCapture.PaymentIntent_Id);
@@ -284,9 +287,9 @@ namespace NykantMVC.Controllers
                     {
                         CreatedAt = DateTime.Now,
                         PaymentCaptureId = paymentCapture.Id,
-                        TotalPrice = OrderHelpers.CalculateTotalPrice(paymentCapture.Orders).ToString(),
-                        TaxLessPrice = OrderHelpers.CalculateTaxlessPrice(paymentCapture.Orders).ToString(),
-                        Taxes = OrderHelpers.CalculateTaxes(paymentCapture.Orders).ToString()
+                        TotalPrice = paymentCapture.Order.TotalPrice,
+                        TaxLessPrice = paymentCapture.Order.TaxLessPrice,
+                        Taxes = paymentCapture.Order.Taxes
                     };
 
                     var response = await PostRequest("/Invoice/PostInvoice/", invoice);

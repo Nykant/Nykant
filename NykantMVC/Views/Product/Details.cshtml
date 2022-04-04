@@ -120,11 +120,11 @@
                     {
                         @if (Model.Amount == 0)
                         {
-                            <p>Forventet leveringstid: 10-12 uger</p>
+                            <p>Forventes på lager: 10-12 uger</p>
                         }
                         else
                         {
-                            <p>Forventet leveringstid: 1 - 2 hverdage</p>
+                            <p>Forventet leveringstid: 1 - 3 hverdage</p>
                         }
                     }
                     else
@@ -146,7 +146,7 @@
                         }
                         deliveryTimeSpan = deliveryDate.Subtract(DateTime.Now);
 
-                        <p>Forventet leveringstid: @((int)deliveryTimeSpan.TotalDays) dage</p>
+                        <p>Forventes på lager: @((int)deliveryTimeSpan.TotalDays) dage</p>
                     }
                 </div>
 
@@ -181,21 +181,44 @@
                         <input id="product-counter-input" type="number" name="quantity" value="1" />
                         <button id="product-counter-up" type="button"><i class="fas fa-plus"></i></button>
                     </div>
+                    @if (Model.ExpectedDelivery == new DateTime())
+                    {
+                        @if (Model.Amount > 0)
+                        {
+                            <div class="top-side-padding bottom-side-padding fadein " id="addproduct-button">
+                                <button class="button" type="submit">
+                                    <div id="addToBag-error" class="loading-error">
+                                        <i class="fas fa-times"></i>
+                                    </div>
+                                    <div id="addToBag-spinner" class="hidden">
+                                        <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                                    </div>
+                                    <div class="loading-check-sign" id="addToBag-check-sign">
+                                        <i class="fa fa-check" aria-hidden="true"></i>
+                                    </div>
+                                    <div id="addToBag-text">@localizer["Tilføj Til Kurv"]</div>
+                                </button> @*style=border-radius="0"????*@
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="top-side-padding bottom-side-padding fadein " id="addproduct-button">
+                            <button disabled class="button" type="submit">
+                                <div id="addToBag-error" class="loading-error">
+                                    <i class="fas fa-times"></i>
+                                </div>
+                                <div id="addToBag-spinner" class="hidden">
+                                    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                                </div>
+                                <div class="loading-check-sign" id="addToBag-check-sign">
+                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                </div>
+                                <div id="addToBag-text">@localizer["Tilføj Til Kurv"]</div>
+                            </button> @*style=border-radius="0"????*@
+                        </div>
+                    }
 
-                    <div class="top-side-padding bottom-side-padding fadein " id="addproduct-button">
-                        <button class="button" type="submit">
-                            <div id="addToBag-error" class="loading-error">
-                                <i class="fas fa-times"></i>
-                            </div>
-                            <div id="addToBag-spinner" class="hidden">
-                                <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
-                            </div>
-                            <div class="loading-check-sign" id="addToBag-check-sign">
-                                <i class="fa fa-check" aria-hidden="true"></i>
-                            </div>
-                            <div id="addToBag-text">@localizer["Tilføj Til Kurv"]</div>
-                        </button> @*style=border-radius="0"????*@
-                    </div>
                 </form>
             </div>
         </div>

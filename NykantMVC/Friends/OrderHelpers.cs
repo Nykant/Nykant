@@ -257,19 +257,19 @@ namespace NykantMVC.Friends
             return ShippingType.Home;
         }
 
-        public static Order BuildOrder(MakeOrder makeOrder, int paymentCaptureId)
+        public static Order BuildOrder(List<BagItem> bagItems, int paymentCaptureId)
         {
-            var total = CalculateAmount(makeOrder.BagItems);
+            var total = CalculateAmount(bagItems);
             var taxes = total / 5;
             var taxlessPrice = total - taxes;
 
             double weight = 0;
-            foreach (var item in makeOrder.BagItems)
+            foreach (var item in bagItems)
             {
                 weight += item.Product.WeightInKg * item.Quantity;
             }
 
-            var deliveryDate = CalculateDeliveryDate(makeOrder.BagItems);
+            var deliveryDate = CalculateDeliveryDate(bagItems);
 
             Order order = new Order
             {
@@ -282,47 +282,46 @@ namespace NykantMVC.Friends
                 WeightInKg = weight,
                 TaxLessPrice = taxlessPrice.ToString(),
                 EstimatedDelivery = deliveryDate,
-                IsBackOrder = IsBackOrder(makeOrder.BagItems),
-                BagItems = makeOrder.BagItems
+                BagItems = bagItems
             };
 
             return order;
         }
 
-        public static List<Order> MakeOrders(Checkout checkout, int paymentCaptureId)
-        {
-            var orders = new List<Order>();
-            var dates = new List<DateTime>();
-            var makeOrders = new List<MakeOrder>();
+        //public static List<Order> MakeOrders(Checkout checkout, int paymentCaptureId)
+        //{
+        //    var orders = new List<Order>();
+        //    var dates = new List<DateTime>();
+        //    var makeOrders = new List<MakeOrder>();
 
-            foreach(var item in checkout.BagItems)
-            {
-                if (!dates.Contains(item.Product.ExpectedDelivery))
-                {
-                    dates.Add(item.Product.ExpectedDelivery);
-                }
-            }
+        //    foreach(var item in checkout.BagItems)
+        //    {
+        //        if (!dates.Contains(item.Product.ExpectedDelivery))
+        //        {
+        //            dates.Add(item.Product.ExpectedDelivery);
+        //        }
+        //    }
 
-            foreach(var date in dates)
-            {
-                var makeOrder = new MakeOrder { CustomerId = checkout.CustomerId, BagItems = new List<BagItem>() };
-                foreach(var item in checkout.BagItems)
-                {
-                    if(item.Product.ExpectedDelivery == date)
-                    {
-                        makeOrder.BagItems.Add(item);
-                    }
-                }
-                makeOrders.Add(makeOrder);
-            }
+        //    foreach(var date in dates)
+        //    {
+        //        var makeOrder = new MakeOrder { CustomerId = checkout.CustomerId, BagItems = new List<BagItem>() };
+        //        foreach(var item in checkout.BagItems)
+        //        {
+        //            if(item.Product.ExpectedDelivery == date)
+        //            {
+        //                makeOrder.BagItems.Add(item);
+        //            }
+        //        }
+        //        makeOrders.Add(makeOrder);
+        //    }
 
-            foreach(var makeOrder in makeOrders)
-            {
-                orders.Add(BuildOrder(makeOrder, paymentCaptureId));
-            }
+        //    foreach(var makeOrder in makeOrders)
+        //    {
+        //        orders.Add(BuildOrder(makeOrder, paymentCaptureId));
+        //    }
 
-            return orders;
-        }
+        //    return orders;
+        //}
 
         public static double CalculateTotalPrice(List<Order> orders)
         {

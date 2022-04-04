@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NykantAPI.Data;
 
-namespace NykantAPI.data.migrations.local
+namespace MySqlMigrations.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -2990,9 +2990,6 @@ namespace NykantAPI.data.migrations.local
                     b.Property<DateTime>("EstimatedDelivery")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<bool>("IsBackOrder")
-                        .HasColumnType("tinyint(1)");
-
                     b.Property<int>("PaymentCaptureId")
                         .HasColumnType("int");
 
@@ -3016,7 +3013,8 @@ namespace NykantAPI.data.migrations.local
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PaymentCaptureId");
+                    b.HasIndex("PaymentCaptureId")
+                        .IsUnique();
 
                     b.ToTable("Orders");
                 });
@@ -4519,8 +4517,8 @@ namespace NykantAPI.data.migrations.local
             modelBuilder.Entity("NykantAPI.Models.Order", b =>
                 {
                     b.HasOne("NykantAPI.Models.PaymentCapture", "PaymentCapture")
-                        .WithMany("Orders")
-                        .HasForeignKey("PaymentCaptureId")
+                        .WithOne("Order")
+                        .HasForeignKey("NykantAPI.Models.Order", "PaymentCaptureId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

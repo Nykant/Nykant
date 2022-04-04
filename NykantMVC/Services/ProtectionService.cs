@@ -20,102 +20,102 @@ namespace NykantMVC.Services
             _paymentCaptureProtector = provider.CreateProtector("Nykant.PaymentCapture.Protect.dsafsASD234235v1");
         }
 
-        public Consent ProtectConsent(Consent consent)
-        {
-            if (consent.Email != null)
-            {
-                consent.Email = _consentProtector.Protect(consent.Email);
-            }
-            if (consent.IPAddress != null)
-            {
-                consent.IPAddress = _consentProtector.Protect(consent.IPAddress);
-            }
-            if (consent.Name != null)
-            {
-                consent.Name = _consentProtector.Protect(consent.Name);
-            }
-            if (consent.UserId != null)
-            {
-                consent.UserId = _consentProtector.Protect(consent.UserId);
-            }
+        //public Consent ProtectConsent(Consent consent)
+        //{
+        //    if (consent.Email != null)
+        //    {
+        //        consent.Email = _consentProtector.Protect(consent.Email);
+        //    }
+        //    if (consent.IPAddress != null)
+        //    {
+        //        consent.IPAddress = _consentProtector.Protect(consent.IPAddress);
+        //    }
+        //    if (consent.Name != null)
+        //    {
+        //        consent.Name = _consentProtector.Protect(consent.Name);
+        //    }
+        //    if (consent.UserId != null)
+        //    {
+        //        consent.UserId = _consentProtector.Protect(consent.UserId);
+        //    }
 
-            return consent;
-        }
+        //    return consent;
+        //}
 
-        public Consent UnprotectConsent(Consent consent)
-        {
-            if (consent.Email != null)
-            {
-                consent.Email = _consentProtector.Unprotect(consent.Email);
-            }
-            if (consent.IPAddress != null)
-            {
-                consent.IPAddress = _consentProtector.Unprotect(consent.IPAddress);
-            }
-            if (consent.Name != null)
-            {
-                consent.Name = _consentProtector.Unprotect(consent.Name);
-            }
-            if (consent.UserId != null)
-            {
-                consent.UserId = _consentProtector.Unprotect(consent.UserId);
-            }
+        //public Consent UnprotectConsent(Consent consent)
+        //{
+        //    if (consent.Email != null)
+        //    {
+        //        consent.Email = _consentProtector.Unprotect(consent.Email);
+        //    }
+        //    if (consent.IPAddress != null)
+        //    {
+        //        consent.IPAddress = _consentProtector.Unprotect(consent.IPAddress);
+        //    }
+        //    if (consent.Name != null)
+        //    {
+        //        consent.Name = _consentProtector.Unprotect(consent.Name);
+        //    }
+        //    if (consent.UserId != null)
+        //    {
+        //        consent.UserId = _consentProtector.Unprotect(consent.UserId);
+        //    }
 
-            return consent;
-        }
+        //    return consent;
+        //}
 
-        public PaymentCapture ProtectPaymentCapture(PaymentCapture paymentCapture)
-        {
-            paymentCapture.PaymentIntent_Id = _paymentCaptureProtector.Protect(paymentCapture.PaymentIntent_Id);
-            if (paymentCapture.Customer != null)
-            {
-                paymentCapture.Customer = ProtectCustomer(paymentCapture.Customer);
-            }
+        //public PaymentCapture ProtectPaymentCapture(PaymentCapture paymentCapture)
+        //{
+        //    paymentCapture.PaymentIntent_Id = _paymentCaptureProtector.Protect(paymentCapture.PaymentIntent_Id);
+        //    if (paymentCapture.Customer != null)
+        //    {
+        //        paymentCapture.Customer = ProtectCustomer(paymentCapture.Customer);
+        //    }
 
-            if (paymentCapture.Orders != null)
-            {
-                for (int i = 0; i < paymentCapture.Orders.Count(); i++)
-                {
-                    paymentCapture.Orders[i] = ProtectOrder(paymentCapture.Orders[i]);
-                }
-            }
+        //    if (paymentCapture.Orders != null)
+        //    {
+        //        for (int i = 0; i < paymentCapture.Orders.Count(); i++)
+        //        {
+        //            paymentCapture.Orders[i] = ProtectOrder(paymentCapture.Orders[i]);
+        //        }
+        //    }
 
-            return paymentCapture;
-        }
+        //    return paymentCapture;
+        //}
 
-        public PaymentCapture UnprotectPaymentCapture(PaymentCapture paymentCapture)
-        {
-            paymentCapture.PaymentIntent_Id = _paymentCaptureProtector.Unprotect(paymentCapture.PaymentIntent_Id);
-            if (paymentCapture.Customer != null)
-            {
-                paymentCapture.Customer = UnprotectCustomer(paymentCapture.Customer);
-            }
+        //public PaymentCapture UnprotectPaymentCapture(PaymentCapture paymentCapture)
+        //{
+        //    paymentCapture.PaymentIntent_Id = _paymentCaptureProtector.Unprotect(paymentCapture.PaymentIntent_Id);
+        //    if (paymentCapture.Customer != null)
+        //    {
+        //        paymentCapture.Customer = UnprotectCustomer(paymentCapture.Customer);
+        //    }
 
-            if (paymentCapture.Orders != null)
-            {
-                for (int i = 0; i < paymentCapture.Orders.Count(); i++)
-                {
-                    paymentCapture.Orders[i] = UnprotectOrder(paymentCapture.Orders[i]);
-                }
-            }
+        //    if (paymentCapture.Orders != null)
+        //    {
+        //        for (int i = 0; i < paymentCapture.Orders.Count(); i++)
+        //        {
+        //            paymentCapture.Orders[i] = UnprotectOrder(paymentCapture.Orders[i]);
+        //        }
+        //    }
 
-            return paymentCapture;
-        }
+        //    return paymentCapture;
+        //}
 
 
-        public NewsSub ProtectNewsSub(NewsSub newsSub)
-        {
-            newsSub.Email = _newsSubProtector.Protect(newsSub.Email);
+        //public NewsSub ProtectNewsSub(NewsSub newsSub)
+        //{
+        //    newsSub.Email = _newsSubProtector.Protect(newsSub.Email);
 
-            return newsSub;
-        }
+        //    return newsSub;
+        //}
 
-        public NewsSub UnprotectNewsSub(NewsSub newsSub)
-        {
-            newsSub.Email = _newsSubProtector.Unprotect(newsSub.Email);
+        //public NewsSub UnprotectNewsSub(NewsSub newsSub)
+        //{
+        //    newsSub.Email = _newsSubProtector.Unprotect(newsSub.Email);
 
-            return newsSub;
-        }
+        //    return newsSub;
+        //}
 
         public Customer ProtectCustomer(Customer customer)
         {
@@ -199,35 +199,35 @@ namespace NykantMVC.Services
             return invoiceAddress;
         }
 
-        public Order UnprotectOrder(Order order)
-        {
-            order.Currency = _orderProtector.Unprotect(order.Currency);
-            order.TotalPrice = _orderProtector.Unprotect(order.TotalPrice);
-            order.Taxes = _orderProtector.Unprotect(order.Taxes);
-            order.TaxLessPrice = _orderProtector.Unprotect(order.TaxLessPrice);
+        //public Order UnprotectOrder(Order order)
+        //{
+        //    order.Currency = _orderProtector.Unprotect(order.Currency);
+        //    order.TotalPrice = _orderProtector.Unprotect(order.TotalPrice);
+        //    order.Taxes = _orderProtector.Unprotect(order.Taxes);
+        //    order.TaxLessPrice = _orderProtector.Unprotect(order.TaxLessPrice);
 
-            if (order.PaymentCapture != null)
-            {
-                order.PaymentCapture = UnprotectPaymentCapture(order.PaymentCapture);
-            }
+        //    if (order.PaymentCapture != null)
+        //    {
+        //        order.PaymentCapture = UnprotectPaymentCapture(order.PaymentCapture);
+        //    }
 
-            return order;
-        }
+        //    return order;
+        //}
 
-        public Order ProtectOrder(Order order)
-        {
-            order.Currency = _orderProtector.Protect(order.Currency);
-            order.TotalPrice = _orderProtector.Protect(order.TotalPrice);
-            order.Taxes = _orderProtector.Protect(order.Taxes);
-            order.TaxLessPrice = _orderProtector.Protect(order.TaxLessPrice);
+        //public Order ProtectOrder(Order order)
+        //{
+        //    order.Currency = _orderProtector.Protect(order.Currency);
+        //    order.TotalPrice = _orderProtector.Protect(order.TotalPrice);
+        //    order.Taxes = _orderProtector.Protect(order.Taxes);
+        //    order.TaxLessPrice = _orderProtector.Protect(order.TaxLessPrice);
 
-            if (order.PaymentCapture != null)
-            {
-                order.PaymentCapture = ProtectPaymentCapture(order.PaymentCapture);
-            }
+        //    if (order.PaymentCapture != null)
+        //    {
+        //        order.PaymentCapture = ProtectPaymentCapture(order.PaymentCapture);
+        //    }
 
-            return order;
-        }
+        //    return order;
+        //}
     }
 
     public interface IProtectionService
@@ -238,8 +238,8 @@ namespace NykantMVC.Services
         //public Consent UnprotectConsent(Consent consent);
         //public NewsSub ProtectNewsSub(NewsSub newsSub);
         //public NewsSub UnprotectNewsSub(NewsSub newsSub);
-        //public Customer ProtectCustomer(Customer customerInf);
-        //public Customer UnprotectCustomer(Customer customerInf);
+        public Customer ProtectCustomer(Customer customerInf);
+        public Customer UnprotectCustomer(Customer customerInf);
 
         //public ShippingAddress ProtectShippingAddress(ShippingAddress customerInf);
         //public ShippingAddress UnprotectShippingAddress(ShippingAddress customerInf);

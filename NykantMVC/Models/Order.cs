@@ -22,7 +22,7 @@ namespace NykantMVC.Models
         public Status Status { get; set; }
         public double WeightInKg { get; set; }
         public DateTime EstimatedDelivery { get; set; }
-        public bool IsBackOrder { get; set; } = false;
+        //public bool IsBackOrder { get; set; } = false;
         [Required]
         public int PaymentCaptureId { get; set; }
         public PaymentCapture PaymentCapture { get; set; }

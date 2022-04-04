@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NykantAPI.Data;
 
-namespace NykantAPI.data.migrations
+namespace MySqlMigrations.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220308125133_Initial3")]
-    partial class Initial3
+    [Migration("20220404104406_BackOrdersGone")]
+    partial class BackOrdersGone
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -991,7 +991,7 @@ namespace NykantAPI.data.migrations
                         {
                             Name = "Session",
                             Category = 0,
-                            Description = "Denne cookie husker/gemmer hvad du har lagt i din kurv, gemmer dine cookie preferencer, samt giver dig en bedre checkout oplevelse.",
+                            Description = "Session cookie'en gemmer et session id, som den bruger til at hente data fra session i serveren, som husker/gemmer hvad du har lagt i din kurv, gemmer dine cookie preferencer, samt giver dig en bedre checkout oplevelse.",
                             Domain = "nykant.dk",
                             Type1 = 0,
                             Type2 = 0
@@ -1000,7 +1000,7 @@ namespace NykantAPI.data.migrations
                         {
                             Name = "_ga",
                             Category = 3,
-                            Description = "Indsamler anonyme data om hvad du foretager dig på hjemmesiden, og sender det til google analytics, så vi kan se og bruge det til at forbedre hjemmesiden.",
+                            Description = "Indsamler anonyme data om hvad du foretager dig på hjemmesiden, og sender det til google analytics, så vi kan bruge det til at forbedre hjemmesiden.",
                             Domain = ".nykant.dk",
                             Type1 = 1,
                             Type2 = 0
@@ -1009,7 +1009,7 @@ namespace NykantAPI.data.migrations
                         {
                             Name = "_ga_*",
                             Category = 3,
-                            Description = "Indsamler anonyme data om hvad du foretager dig på hjemmesiden, og sender det til google analytics, så vi kan se og bruge det til at forbedre hjemmesiden.",
+                            Description = "Indsamler anonyme data om hvad du foretager dig på hjemmesiden, og sender det til google analytics, så vi kan bruge det til at forbedre hjemmesiden.",
                             Domain = ".nykant.dk",
                             Type1 = 1,
                             Type2 = 0
@@ -2992,9 +2992,6 @@ namespace NykantAPI.data.migrations
                     b.Property<DateTime>("EstimatedDelivery")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<bool>("IsBackOrder")
-                        .HasColumnType("tinyint(1)");
-
                     b.Property<int>("PaymentCaptureId")
                         .HasColumnType("int");
 
@@ -3018,7 +3015,8 @@ namespace NykantAPI.data.migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PaymentCaptureId");
+                    b.HasIndex("PaymentCaptureId")
+                        .IsUnique();
 
                     b.ToTable("Orders");
                 });
@@ -3518,7 +3516,7 @@ namespace NykantAPI.data.migrations
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_kortbaenk_naturolie_02.png",
                             Length = "115 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p></td></tr>",
-                            Name = "Thyra Bænken",
+                            Name = "Kort Thyra Bænk",
                             Number = "12001",
                             Oil = "Naturolie",
                             Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Størrelse: 11 x 47 x 120 cm. (H x B x L)</p><p>Vægt: 14 kg.</p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
@@ -3543,7 +3541,7 @@ namespace NykantAPI.data.migrations
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_kortbaenk_hvidolie_02.png",
                             Length = "115 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p></td></tr>",
-                            Name = "Thyra Bænken",
+                            Name = "Kort Thyra Bænk",
                             Number = "12002",
                             Oil = "Hvidolie",
                             Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Størrelse: 11 x 47 x 120 cm. (H x B x L)</p><p>Vægt: 14 kg.</p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
@@ -3568,7 +3566,7 @@ namespace NykantAPI.data.migrations
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_kortbaenk_sortolie_02.png",
                             Length = "115 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p></td></tr>",
-                            Name = "Thyra Bænken",
+                            Name = "Kort Thyra Bænk",
                             Number = "12003",
                             Oil = "Sortolie",
                             Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Størrelse: 11 x 47 x 120 cm. (H x B x L)</p><p>Vægt: 14 kg.</p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
@@ -3593,7 +3591,7 @@ namespace NykantAPI.data.migrations
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_langbaenk_naturolie_02.png",
                             Length = "170 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p></td></tr>",
-                            Name = "Thyra Bænken",
+                            Name = "Lang Thyra Bænk",
                             Number = "11001",
                             Oil = "Naturolie",
                             Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Størrelse: 11 x 47 x 175 cm. (H x B x L)</p><p>Vægt: 20 kg.</p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
@@ -3618,7 +3616,7 @@ namespace NykantAPI.data.migrations
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_langbaenk_hvidolie_02.png",
                             Length = "170 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p></td></tr>",
-                            Name = "Thyra Bænken",
+                            Name = "Lang Thyra Bænk",
                             Number = "11002",
                             Oil = "Hvidolie",
                             Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Størrelse: 11 x 47 x 175 cm. (H x B x L)</p><p>Vægt: 20 kg.</p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
@@ -3643,7 +3641,7 @@ namespace NykantAPI.data.migrations
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_langbaenk_sortolie_02.png",
                             Length = "170 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p></td></tr>",
-                            Name = "Thyra Bænken",
+                            Name = "Lang Thyra Bænk",
                             Number = "11003",
                             Oil = "Sortolie",
                             Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Størrelse: 11 x 47 x 175 cm. (H x B x L)</p><p>Vægt: 20 kg.</p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
@@ -4521,8 +4519,8 @@ namespace NykantAPI.data.migrations
             modelBuilder.Entity("NykantAPI.Models.Order", b =>
                 {
                     b.HasOne("NykantAPI.Models.PaymentCapture", "PaymentCapture")
-                        .WithMany("Orders")
-                        .HasForeignKey("PaymentCaptureId")
+                        .WithOne("Order")
+                        .HasForeignKey("NykantAPI.Models.Order", "PaymentCaptureId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

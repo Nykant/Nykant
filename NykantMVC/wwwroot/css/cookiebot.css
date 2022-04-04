@@ -25,12 +25,12 @@
     background-color: var(--nicegreen2) !important;
 }
 
-#CybotCookiebotDialog input:checked + .CybotCookiebotDialogBodyLevelButtonSliderWrapperDisabled .CybotCookiebotDialogBodyLevelButtonSlider {
-    background-color: initial !important;
+#CybotCookiebotDialogTabContent input[type=checkbox][disabled]:checked + .CybotCookiebotDialogBodyLevelButtonSlider {
+    background: var(--black-fade) !important;
 }
 
 #CybotCookiebotDialogBodyLevelButtonsSelectPane .CybotCookiebotDialogBodyLevelButtonDescription:hover {
-    color:var(--black);
+    color: var(--black-fade2) !important;
 }
 
 /* BUTTONS */
@@ -55,12 +55,18 @@
 }
 
 #CybotCookiebotDialog .CybotCookiebotDialogDetailBodyContentCookieLink {
-    color: var(--font1) !important;
-    text-decoration:underline !important;
+    color: var(--black) !important;
 }
 
 #CybotCookiebotDialogDetailBodyContentCookieContainerTypes .CybotCookiebotDialogDetailBodyContentCookieProvider:not(.CybotCookiebotDialogDetailBodyContentCookieInfoCount):hover {
-    color: var(--font1);
+    color: var(--font1) !important;
+}
+
+/* DETAILS FOOTER */
+
+#CybotCookiebotDialogDetailFooter a {
+    color: var(--black) !important;
+    text-decoration: underline !important;
 }
 
 /*** WIDGET ***/

@@ -16,8 +16,7 @@
     {
         if (order.Status == Status.Pending)
         {
-            if (!order.IsBackOrder)
-            {
+
                 TimeSpan deliveryTimeSpan = order.EstimatedDelivery.Subtract(DateTime.Now);
                 <tr>
                     <td> @order.Id</td>
@@ -32,7 +31,7 @@
                         </form>
                     </td>
                 </tr>
-            }
+            
 
         }
     }

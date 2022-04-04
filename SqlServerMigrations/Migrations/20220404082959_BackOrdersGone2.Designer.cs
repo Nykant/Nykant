@@ -2,27 +2,29 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NykantAPI.Data;
 
-namespace NykantAPI.data.migrations
+namespace NykantAPI.data.migrations.local
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220303070753_Initial")]
-    partial class Initial
+    [Migration("20220404082959_BackOrdersGone2")]
+    partial class BackOrdersGone2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.14")
-                .HasAnnotation("Relational:MaxIdentifierLength", 64);
+                .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("NykantAPI.Models.BagItem", b =>
                 {
                     b.Property<string>("Subject")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -41,30 +43,31 @@ namespace NykantAPI.data.migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Address")
                         .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("City")
                         .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Country")
                         .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Postal")
                         .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -78,13 +81,14 @@ namespace NykantAPI.data.migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ImgSource")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -121,13 +125,14 @@ namespace NykantAPI.data.migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("EColor")
                         .HasColumnType("int");
 
                     b.Property<string>("ImgSrc")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -136,7 +141,7 @@ namespace NykantAPI.data.migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ProductSourceUrlName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -215,7 +220,7 @@ namespace NykantAPI.data.migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_sort_1.png",
                             ProductId = 6,
                             ProductSourceId = 5,
-                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-400mm"
+                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-40cm"
                         },
                         new
                         {
@@ -916,28 +921,29 @@ namespace NykantAPI.data.migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ButtonText")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ConsentText")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Date")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("How")
                         .HasColumnType("int");
 
                     b.Property<string>("IPAddress")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -946,7 +952,7 @@ namespace NykantAPI.data.migrations
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -956,16 +962,16 @@ namespace NykantAPI.data.migrations
             modelBuilder.Entity("NykantAPI.Models.Cookie", b =>
                 {
                     b.Property<string>("Name")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("Category")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Domain")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Type1")
                         .HasColumnType("int");
@@ -980,15 +986,6 @@ namespace NykantAPI.data.migrations
                     b.HasData(
                         new
                         {
-                            Name = "Culture",
-                            Category = 1,
-                            Description = "Denne cookie gemmer din præference for sprog.",
-                            Domain = ".nykant.dk",
-                            Type1 = 1,
-                            Type2 = 0
-                        },
-                        new
-                        {
                             Name = "AntiforgeryToken",
                             Category = 0,
                             Description = "Denne cookie beskytter imod Cross-Site Request Forgery angreb",
@@ -1000,7 +997,7 @@ namespace NykantAPI.data.migrations
                         {
                             Name = "Session",
                             Category = 0,
-                            Description = "Denne cookie husker/gemmer hvad du har lagt i din kurv, gemmer dine cookie preferencer, samt giver dig en bedre checkout oplevelse.",
+                            Description = "Session cookie'en gemmer et session id, som den bruger til at hente data fra session i serveren, som husker/gemmer hvad du har lagt i din kurv, gemmer dine cookie preferencer, samt giver dig en bedre checkout oplevelse.",
                             Domain = "nykant.dk",
                             Type1 = 0,
                             Type2 = 0
@@ -1009,7 +1006,7 @@ namespace NykantAPI.data.migrations
                         {
                             Name = "_ga",
                             Category = 3,
-                            Description = "Indsamler anonymiseret data om hvad du foretager dig på hjemmesiden, og sender det til google analytics, så vi kan se og bruge det til at forbedre hjemmesiden.",
+                            Description = "Indsamler anonyme data om hvad du foretager dig på hjemmesiden, og sender det til google analytics, så vi kan bruge det til at forbedre hjemmesiden.",
                             Domain = ".nykant.dk",
                             Type1 = 1,
                             Type2 = 0
@@ -1018,7 +1015,7 @@ namespace NykantAPI.data.migrations
                         {
                             Name = "_ga_*",
                             Category = 3,
-                            Description = "Indsamler anonymiseret data om hvad du foretager dig på hjemmesiden, og sender det til google analytics, så vi kan se og bruge det til at forbedre hjemmesiden.",
+                            Description = "Indsamler anonyme data om hvad du foretager dig på hjemmesiden, og sender det til google analytics, så vi kan bruge det til at forbedre hjemmesiden.",
                             Domain = ".nykant.dk",
                             Type1 = 1,
                             Type2 = 0
@@ -1065,15 +1062,16 @@ namespace NykantAPI.data.migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
                         .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -1084,7 +1082,8 @@ namespace NykantAPI.data.migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("ImageType")
                         .HasColumnType("int");
@@ -1096,10 +1095,10 @@ namespace NykantAPI.data.migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Source")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Source2")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -2950,22 +2949,23 @@ namespace NykantAPI.data.migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("PaymentCaptureId")
                         .HasColumnType("int");
 
                     b.Property<string>("TaxLessPrice")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Taxes")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TotalPrice")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -2978,7 +2978,7 @@ namespace NykantAPI.data.migrations
             modelBuilder.Entity("NykantAPI.Models.NewsSub", b =>
                 {
                     b.Property<string>("Email")
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Email");
 
@@ -2989,20 +2989,18 @@ namespace NykantAPI.data.migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Currency")
                         .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("EstimatedDelivery")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<bool>("IsBackOrder")
-                        .HasColumnType("tinyint(1)");
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("PaymentCaptureId")
                         .HasColumnType("int");
@@ -3012,22 +3010,23 @@ namespace NykantAPI.data.migrations
 
                     b.Property<string>("TaxLessPrice")
                         .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Taxes")
                         .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TotalPrice")
                         .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("WeightInKg")
-                        .HasColumnType("double");
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PaymentCaptureId");
+                    b.HasIndex("PaymentCaptureId")
+                        .IsUnique();
 
                     b.ToTable("Orders");
                 });
@@ -3054,16 +3053,17 @@ namespace NykantAPI.data.migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<bool>("Captured")
-                        .HasColumnType("tinyint(1)");
+                        .HasColumnType("bit");
 
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
                     b.Property<string>("PaymentIntent_Id")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -3076,76 +3076,77 @@ namespace NykantAPI.data.migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Alt")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Amount")
                         .HasColumnType("int");
 
                     b.Property<string>("AssemblyPath")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("EColor")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("ExpectedDelivery")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("GalleryImage1")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("GalleryImage2")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Length")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Materials")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Note")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Number")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Oil")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Package")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Path")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Pieces")
                         .HasColumnType("int");
 
                     b.Property<double>("Price")
-                        .HasColumnType("double");
+                        .HasColumnType("float");
 
                     b.Property<string>("Size")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UrlName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("WeightInKg")
-                        .HasColumnType("double");
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
@@ -3160,7 +3161,7 @@ namespace NykantAPI.data.migrations
                             Amount = 0,
                             AssemblyPath = "/word/Hylde.docx",
                             CategoryId = 3,
-                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse.Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
+                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse. Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
                             EColor = 1,
                             ExpectedDelivery = new DateTime(2022, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_01.png",
@@ -3186,7 +3187,7 @@ namespace NykantAPI.data.migrations
                             Amount = 0,
                             AssemblyPath = "/word/Hylde.docx",
                             CategoryId = 3,
-                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse.Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
+                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse. Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
                             EColor = 2,
                             ExpectedDelivery = new DateTime(2022, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_01.png",
@@ -3212,7 +3213,7 @@ namespace NykantAPI.data.migrations
                             Amount = 0,
                             AssemblyPath = "/word/Hylde.docx",
                             CategoryId = 3,
-                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse.Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
+                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse. Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
                             EColor = 0,
                             ExpectedDelivery = new DateTime(2022, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_01.png",
@@ -3238,7 +3239,7 @@ namespace NykantAPI.data.migrations
                             Amount = 0,
                             AssemblyPath = "/word/Hylde.docx",
                             CategoryId = 3,
-                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse.Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
+                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse. Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
                             EColor = 1,
                             ExpectedDelivery = new DateTime(2022, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_01.png",
@@ -3264,7 +3265,7 @@ namespace NykantAPI.data.migrations
                             Amount = 0,
                             AssemblyPath = "/word/Hylde.docx",
                             CategoryId = 3,
-                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse.Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
+                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse. Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
                             EColor = 2,
                             ExpectedDelivery = new DateTime(2022, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_01.png",
@@ -3290,7 +3291,7 @@ namespace NykantAPI.data.migrations
                             Amount = 0,
                             AssemblyPath = "/word/Hylde.docx",
                             CategoryId = 3,
-                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse.Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
+                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse. Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
                             EColor = 0,
                             ExpectedDelivery = new DateTime(2022, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_01.png",
@@ -3316,7 +3317,7 @@ namespace NykantAPI.data.migrations
                             Amount = 0,
                             AssemblyPath = "/word/Hylde.docx",
                             CategoryId = 3,
-                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse.Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
+                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse. Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
                             EColor = 1,
                             ExpectedDelivery = new DateTime(2022, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_01.png",
@@ -3342,7 +3343,7 @@ namespace NykantAPI.data.migrations
                             Amount = 0,
                             AssemblyPath = "/word/Hylde.docx",
                             CategoryId = 3,
-                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse.Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
+                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse. Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
                             EColor = 2,
                             ExpectedDelivery = new DateTime(2022, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_01.png",
@@ -3368,7 +3369,7 @@ namespace NykantAPI.data.migrations
                             Amount = 0,
                             AssemblyPath = "/word/Hylde.docx",
                             CategoryId = 3,
-                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse.Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
+                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse. Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
                             EColor = 0,
                             ExpectedDelivery = new DateTime(2022, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_01.png",
@@ -3394,7 +3395,7 @@ namespace NykantAPI.data.migrations
                             Amount = 0,
                             AssemblyPath = "/word/Hylde.docx",
                             CategoryId = 3,
-                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse.Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
+                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse. Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
                             EColor = 1,
                             ExpectedDelivery = new DateTime(2022, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_01.png",
@@ -3420,7 +3421,7 @@ namespace NykantAPI.data.migrations
                             Amount = 0,
                             AssemblyPath = "/word/Hylde.docx",
                             CategoryId = 3,
-                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse.Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
+                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse. Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
                             EColor = 2,
                             ExpectedDelivery = new DateTime(2022, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_01.png",
@@ -3446,7 +3447,7 @@ namespace NykantAPI.data.migrations
                             Amount = 0,
                             AssemblyPath = "/word/Hylde.docx",
                             CategoryId = 3,
-                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse.Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
+                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse. Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
                             EColor = 0,
                             ExpectedDelivery = new DateTime(2022, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_01.png",
@@ -3527,7 +3528,7 @@ namespace NykantAPI.data.migrations
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_kortbaenk_naturolie_02.png",
                             Length = "115 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p></td></tr>",
-                            Name = "Thyra Bænken",
+                            Name = "Kort Thyra Bænk",
                             Number = "12001",
                             Oil = "Naturolie",
                             Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Størrelse: 11 x 47 x 120 cm. (H x B x L)</p><p>Vægt: 14 kg.</p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
@@ -3552,7 +3553,7 @@ namespace NykantAPI.data.migrations
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_kortbaenk_hvidolie_02.png",
                             Length = "115 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p></td></tr>",
-                            Name = "Thyra Bænken",
+                            Name = "Kort Thyra Bænk",
                             Number = "12002",
                             Oil = "Hvidolie",
                             Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Størrelse: 11 x 47 x 120 cm. (H x B x L)</p><p>Vægt: 14 kg.</p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
@@ -3577,7 +3578,7 @@ namespace NykantAPI.data.migrations
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_kortbaenk_sortolie_02.png",
                             Length = "115 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p></td></tr>",
-                            Name = "Thyra Bænken",
+                            Name = "Kort Thyra Bænk",
                             Number = "12003",
                             Oil = "Sortolie",
                             Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Størrelse: 11 x 47 x 120 cm. (H x B x L)</p><p>Vægt: 14 kg.</p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
@@ -3602,7 +3603,7 @@ namespace NykantAPI.data.migrations
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_langbaenk_naturolie_02.png",
                             Length = "170 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p></td></tr>",
-                            Name = "Thyra Bænken",
+                            Name = "Lang Thyra Bænk",
                             Number = "11001",
                             Oil = "Naturolie",
                             Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Størrelse: 11 x 47 x 175 cm. (H x B x L)</p><p>Vægt: 20 kg.</p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
@@ -3627,7 +3628,7 @@ namespace NykantAPI.data.migrations
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_langbaenk_hvidolie_02.png",
                             Length = "170 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p></td></tr>",
-                            Name = "Thyra Bænken",
+                            Name = "Lang Thyra Bænk",
                             Number = "11002",
                             Oil = "Hvidolie",
                             Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Størrelse: 11 x 47 x 175 cm. (H x B x L)</p><p>Vægt: 20 kg.</p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
@@ -3652,7 +3653,7 @@ namespace NykantAPI.data.migrations
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_langbaenk_sortolie_02.png",
                             Length = "170 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p></td></tr>",
-                            Name = "Thyra Bænken",
+                            Name = "Lang Thyra Bænk",
                             Number = "11003",
                             Oil = "Sortolie",
                             Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Størrelse: 11 x 47 x 175 cm. (H x B x L)</p><p>Vægt: 20 kg.</p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
@@ -3889,10 +3890,11 @@ namespace NykantAPI.data.migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Length")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -3901,7 +3903,7 @@ namespace NykantAPI.data.migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ProductReferenceUrlName")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -4396,11 +4398,12 @@ namespace NykantAPI.data.migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Body")
                         .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -4410,10 +4413,10 @@ namespace NykantAPI.data.migrations
 
                     b.Property<string>("Subject")
                         .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -4426,33 +4429,34 @@ namespace NykantAPI.data.migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Address")
                         .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("City")
                         .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Country")
                         .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Postal")
                         .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("SameAsBilling")
-                        .HasColumnType("tinyint(1)");
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
@@ -4466,7 +4470,8 @@ namespace NykantAPI.data.migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
@@ -4530,8 +4535,8 @@ namespace NykantAPI.data.migrations
             modelBuilder.Entity("NykantAPI.Models.Order", b =>
                 {
                     b.HasOne("NykantAPI.Models.PaymentCapture", "PaymentCapture")
-                        .WithMany("Orders")
-                        .HasForeignKey("PaymentCaptureId")
+                        .WithOne("Order")
+                        .HasForeignKey("NykantAPI.Models.Order", "PaymentCaptureId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

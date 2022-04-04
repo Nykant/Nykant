@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace NykantAPI.data.migrations
+namespace NykantAPI.data.migrations.local
 {
-    public partial class Initial5 : Migration
+    public partial class BackOrdersGone2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

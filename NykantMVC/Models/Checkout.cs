@@ -5,7 +5,7 @@ namespace NykantMVC.Models
 {
     public class Checkout
     {
-        public int CustomerId { get; set; }
+        public Customer Customer { get; set; }
         //public ShippingDelivery ShippingDelivery { get; set; }
         public List<BagItem> BagItems { get; set; }
         public string TotalPrice { get; set; }

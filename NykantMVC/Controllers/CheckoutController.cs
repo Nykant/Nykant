@@ -65,67 +65,69 @@ namespace NykantMVC.Controllers
                 var taxes = total / 5;
                 var taxlessPrice = total - taxes;
 
-                if (checkout == null)
+                checkout = new Checkout
                 {
-                    checkout = new Checkout
-                    {
-                        BagItems = bagItems,
-                        Stage = Stage.customerInf,
-                        TotalPrice = total.ToString(),
-                        Taxes = taxes.ToString(),
-                        TaxlessPrice = taxlessPrice.ToString()
-                    };
-                    ViewBag.DeliveryType = OrderHelpers.CalculateDeliveryTypeString(bagItems);
+                    BagItems = bagItems,
+                    Stage = Stage.customerInf,
+                    TotalPrice = total.ToString(),
+                    Taxes = taxes.ToString(),
+                    TaxlessPrice = taxlessPrice.ToString()
+                };
+                ViewBag.DeliveryType = OrderHelpers.CalculateDeliveryTypeString(bagItems);
 
-                    HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
+                HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
 
-                    CheckoutVM checkoutVM = new CheckoutVM
-                    {
-                        Customer = new Customer
-                        {
-                            BillingAddress = new BillingAddress(),
-                            ShippingAddress = new ShippingAddress()
-                        },
-                        Checkout = checkout
-                    };
-
-                    return View(checkoutVM);
-                }
-                else
+                CheckoutVM checkoutVM = new CheckoutVM
                 {
-                    if (checkout.Stage == Stage.completed)
+                    Customer = new Customer
                     {
-                        return RedirectToAction("Success", "Checkout");
-                    }
+                        BillingAddress = new BillingAddress(),
+                        ShippingAddress = new ShippingAddress()
+                    },
+                    Checkout = checkout
+                };
 
-                    checkout.TotalPrice = total.ToString();
-                    checkout.Taxes = taxes.ToString();
-                    checkout.TaxlessPrice = taxlessPrice.ToString();
-                    ViewBag.DeliveryType = OrderHelpers.CalculateDeliveryTypeString(bagItems);
-                    checkout.BagItems = bagItems;
-                    HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
+                return View(checkoutVM);
 
-                    Customer customer = null;
-                    if (checkout.CustomerId != 0)
-                    {
-                        var jsonCustomer = await GetRequest($"/Customer/GetCustomer/{checkout.CustomerId}");
-                        customer = JsonConvert.DeserializeObject<Customer>(jsonCustomer);
-                    }
-                    else
-                    {
-                        customer = new Customer { BillingAddress = new BillingAddress(), ShippingAddress = new ShippingAddress() };
-                    }
+                //if (checkout == null)
+                //{
 
-                    //customer = EncodeCustomer(customer);
+                //}
+                //else
+                //{
+                //    if (checkout.Stage == Stage.completed)
+                //    {
+                //        return RedirectToAction("Success", "Checkout");
+                //    }
 
-                    CheckoutVM checkoutVM = new CheckoutVM
-                    {
-                        Customer = customer,
-                        Checkout = checkout
-                    };
+                //    checkout.TotalPrice = total.ToString();
+                //    checkout.Taxes = taxes.ToString();
+                //    checkout.TaxlessPrice = taxlessPrice.ToString();
+                //    ViewBag.DeliveryType = OrderHelpers.CalculateDeliveryTypeString(bagItems);
+                //    checkout.BagItems = bagItems;
+                //    HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
 
-                    return View(checkoutVM);
-                }
+                //    Customer customer = null;
+                //    if (checkout.CustomerId != 0)
+                //    {
+                //        var jsonCustomer = await GetRequest($"/Customer/GetCustomer/{checkout.CustomerId}");
+                //        customer = JsonConvert.DeserializeObject<Customer>(jsonCustomer);
+                //    }
+                //    else
+                //    {
+                //        customer = new Customer { BillingAddress = new BillingAddress(), ShippingAddress = new ShippingAddress() };
+                //    }
+
+                //    //customer = EncodeCustomer(customer);
+
+                //    CheckoutVM checkoutVM = new CheckoutVM
+                //    {
+                //        Customer = customer,
+                //        Checkout = checkout
+                //    };
+
+                //    return View(checkoutVM);
+                //}
             }
             catch (Exception e)
             {
@@ -180,71 +182,20 @@ namespace NykantMVC.Controllers
                 }
 
                 var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
-                if (editCustomer)
-                {
-                    var jsonCustomer = await GetRequest($"/Customer/GetCustomer/{checkout.CustomerId}");
-                    var old = JsonConvert.DeserializeObject<Customer>(jsonCustomer);
-                    customer.ShippingAddress.Id = old.ShippingAddress.Id;
-                    customer.BillingAddress.Id = old.BillingAddress.Id;
-                    customer.Id = old.Id;
-                }
+
                 if (checkout.Stage == Stage.customerInf || editCustomer)
                 {
-                    var response = await PostRequest("/Customer/PostCustomer/", new Customer { Email = customer.Email, Phone = customer.Phone, Id = customer.Id });
-                    if (response.IsSuccessStatusCode)
+                   
+                    checkout.Customer = _protectionService.ProtectCustomer(customer);
+
+                    if (!editCustomer)
                     {
-                        if (!editCustomer)
-                        {
-                            if (customer.Id == 0)
-                            {
-                                var json = await GetRequest(response.Headers.Location.AbsolutePath);
-                                checkout.CustomerId = JsonConvert.DeserializeObject<Customer>(json).Id;
-                                customer.Id = checkout.CustomerId;
-                            }
-                            else
-                            {
-                                checkout.CustomerId = customer.Id;
-                                customer.Id = checkout.CustomerId;
-                            }
-                        }
-
-                        var shippingAddress = customer.ShippingAddress;
-                        shippingAddress.CustomerId = customer.Id;
-                        var postResponse = await PostRequest("/Customer/PostShippingAddress", shippingAddress);
-                        if (postResponse.IsSuccessStatusCode)
-                        {
-
-                            var invoiceAddress = customer.BillingAddress;
-                            invoiceAddress.CustomerId = customer.Id;
-                            var postResponse2 = await PostRequest("/Customer/PostBillingAddress", invoiceAddress);
-                            if (postResponse2.IsSuccessStatusCode)
-                            {
-                                if (!editCustomer)
-                                {
-                                    checkout.Stage = Stage.payment;
-                                }
-
-                                HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
-
-                                return NoContent();
-                            }
-                            else
-                            {
-                                _logger.LogError($"time: {DateTime.Now} - error: Could not post billing");
-                                return Json(new { error = "Could not post billing" });
-                            }
-                        }
-                        else
-                        {
-                            _logger.LogError($"time: {DateTime.Now} - error: Could not post shipping");
-                            return Json(new { error = "Could not post shipping" });
-                        }
+                        checkout.Stage = Stage.payment;
                     }
-                    else
-                    {
-                        _logger.LogError($"time: {DateTime.Now} - error: Could not post customer");
-                        return Json(new { error = "Could not post customer" });
-                    }
+
+                    HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
+
+                    return NoContent();
                 }
                 else
                 {
@@ -319,33 +270,33 @@ namespace NykantMVC.Controllers
             return NoContent();
         }
 
-        [HttpGet]
-        public async Task<IActionResult> CancelCheckout()
-        {
-            try
-            {
-                var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
+        //[HttpGet]
+        //public async Task<IActionResult> CancelCheckout()
+        //{
+        //    try
+        //    {
+        //        var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
 
-                if (checkout.CustomerId != 0)
-                {
-                    var response = await DeleteRequest($"/Customer/DeleteCustomerInf/{checkout.CustomerId}");
+        //        if (checkout.CustomerId != 0)
+        //        {
+        //            var response = await DeleteRequest($"/Customer/DeleteCustomerInf/{checkout.CustomerId}");
 
-                    if (!response.IsSuccessStatusCode)
-                    {
-                        _logger.LogError($"time: {DateTime.Now} - {response.ReasonPhrase}");
-                    }
-                }
+        //            if (!response.IsSuccessStatusCode)
+        //            {
+        //                _logger.LogError($"time: {DateTime.Now} - {response.ReasonPhrase}");
+        //            }
+        //        }
 
-                HttpContext.Session.Set<Checkout>(CheckoutSessionKey, null);
+        //        HttpContext.Session.Set<Checkout>(CheckoutSessionKey, null);
 
-                return RedirectToAction("Details", "Bag");
-            }
-            catch(Exception e)
-            {
-                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
-                return RedirectToAction("Details", "Bag");
-            }
-        }
+        //        return RedirectToAction("Details", "Bag");
+        //    }
+        //    catch(Exception e)
+        //    {
+        //        _logger.LogError($"time: {DateTime.Now} - {e.Message}");
+        //        return RedirectToAction("Details", "Bag");
+        //    }
+        //}
 
         //private async Task<Customer> GetCustomerNoUnprotect(int id)
         //{

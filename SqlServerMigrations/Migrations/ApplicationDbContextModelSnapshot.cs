@@ -3000,9 +3000,6 @@ namespace NykantAPI.data.migrations.local
                     b.Property<DateTime>("EstimatedDelivery")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("IsBackOrder")
-                        .HasColumnType("bit");
-
                     b.Property<int>("PaymentCaptureId")
                         .HasColumnType("int");
 
@@ -3026,7 +3023,8 @@ namespace NykantAPI.data.migrations.local
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PaymentCaptureId");
+                    b.HasIndex("PaymentCaptureId")
+                        .IsUnique();
 
                     b.ToTable("Orders");
                 });
@@ -4535,8 +4533,8 @@ namespace NykantAPI.data.migrations.local
             modelBuilder.Entity("NykantAPI.Models.Order", b =>
                 {
                     b.HasOne("NykantAPI.Models.PaymentCapture", "PaymentCapture")
-                        .WithMany("Orders")
-                        .HasForeignKey("PaymentCaptureId")
+                        .WithOne("Order")
+                        .HasForeignKey("NykantAPI.Models.Order", "PaymentCaptureId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
