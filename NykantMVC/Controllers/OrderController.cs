@@ -73,7 +73,14 @@ namespace NykantMVC.Controllers
                 bagItems[i].Product = product;
                 if (product.Amount >= bagItems[i].Quantity)
                 {
-                    product.Amount = product.Amount - bagItems[i].Quantity;
+                    if(product.Id == 1 || product.Id == 2 || product.Id == 3)
+                    {
+                        product.Amount = product.Amount - (bagItems[i].Quantity * 3);
+                    }
+                    else
+                    {
+                        product.Amount = product.Amount - bagItems[i].Quantity;
+                    }
                     await PatchRequest("/Product/UpdateProduct", product);
                 }
             }
