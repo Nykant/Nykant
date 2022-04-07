@@ -1,14 +1,14 @@
-﻿@*@model Order*@
+﻿@model Order
 @inject IViewLocalizer localizer
 @{
     ViewData["Title"] = "Bestilling Gennemført";
     ViewData["Description"] = "";
 }
 
-@*<link rel="stylesheet" href="~/css/orderConfirmation.css" />*@
+<link rel="stylesheet" href="~/css/orderConfirmation.css" />
 <h1 class="top-padding text-center large-text">Bestillingen er gennemført!</h1>
 <p class="text-center bottom-padding">Ordrebekræftelsen er sendt til din email addresse</p>
-@*<div class="my-row padding-50">
+<div class="my-row padding-50">
     <div class="responsive-container center">
         <div class="order-confirmation">
             <div class="header">
@@ -43,25 +43,10 @@
                 <p>Momsbeløb(25%):</p><span>kr. @Model.Taxes</span>
                 <p>Totalbeløb:</p><span>kr. @Model.TotalPrice</span>
             </div>
-            <div class="order-information">
-                <h1>Leveringsoplysninger</h1>
-                @if (Model.ShippingDelivery.Type == ShippingType.Home)
-                {
-                    <p>Leveres til:</p><span>Leveringsaddressen med GLS</span>
-                }
-                else if (Model.ShippingDelivery.Type == ShippingType.HomePallegods)
-                {
-                    <p>Leveres til:</p><span>Leveringsaddressen med DKI Pallegods</span>
-                }
-                <p>Navn:</p><span>@Model.Customer.ShippingAddress.Name</span>
-                <p>Addresse:</p><span>@Model.Customer.ShippingAddress.Address</span>
-                <p>By:</p><span>@Model.Customer.ShippingAddress.City</span>
-                <p>Postnummer:</p><span>@Model.Customer.ShippingAddress.Postal</span>
-                <p>Land:</p><span>@Model.Customer.ShippingAddress.Country</span>
-            </div>
+            
             <div class="order-information">
                 <p>Estimeret Leveringsdato:</p><span>@Model.EstimatedDelivery.DayOfWeek, @Model.EstimatedDelivery.Day / @Model.EstimatedDelivery.Month</span>
             </div>
         </div>
     </div>
-</div>*@
+</div>

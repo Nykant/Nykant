@@ -255,9 +255,11 @@ namespace NykantMVC.Controllers
 
                 if (checkout.Stage == Stage.completed)
                 {
+                    var json = await GetRequest($"/Order/GetOrder/{checkout.OrderId}");
+                    var order = JsonConvert.DeserializeObject<Order>(json);
                     HttpContext.Session.Set<Checkout>(CheckoutSessionKey, null);
 
-                    return View();
+                    return View(order);
                 }
                 else
                 {

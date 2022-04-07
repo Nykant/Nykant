@@ -179,6 +179,7 @@ namespace NykantMVC.Controllers
                     HttpContext.Session.Set<int>(BagItemAmountKey, 0);
 
                     checkout.Stage = Stage.completed;
+                    checkout.OrderId = order.Id;
                     HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
 
                     return Json(new { ok = true });

@@ -201,31 +201,12 @@ namespace NykantMVC.Friends
             {
                 if(item.Product.WeightInKg <= 20)
                 {
-                    if(typecase != 3)
-                    {
-                        if (typecase == 2)
-                        {
-                            typecase = 3;
-                        }
-                        else
-                        {
-                            typecase = 1;
-                        }
-                    }
+                    typecase = 1;
                 }
                 if(item.Product.WeightInKg > 20)
                 {
-                    if(typecase != 3)
-                    {
-                        if (typecase == 1)
-                        {
-                            typecase = 3;
-                        }
-                        else
-                        {
-                            typecase = 2;
-                        }
-                    }
+                    typecase = 2;
+                    break;
                 }
             }
 
@@ -236,9 +217,6 @@ namespace NykantMVC.Friends
 
                 case 2:
                     return "Til leveringsaddressen med DKI Pallegods.";
-
-                case 3:
-                    return "En del af din bestilling vil blive leveret med DKI Pallegods, og en anden del med GLS, begge til leveringsaddressen.";
 
                 default:
                     return null;
