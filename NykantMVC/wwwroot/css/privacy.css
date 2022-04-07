@@ -105,8 +105,13 @@
 
 .privacy-information {
     height:auto;
+    background:white;
     padding:30px;
     text-align:left;
+    border:1px solid var(--black-fade);
+    margin-top:10px;
+    margin-bottom:10px;
+    color:var(--black);
 }
 .privacy-information h1 {
     padding-top:20px;
@@ -119,16 +124,17 @@
 
     .privacy-information h2 {
         padding-top:10px;
-        padding-left:20px;
-        font-size: var(--medium-plus);
+/*        padding-left:20px;*/
+/*        font-size: var(--medium-plus);*/
+font-weight:bold;
     }
-        .privacy-information h2:before {
+/*        .privacy-information h2:before {
             content: '\2022';
             padding-right:5px;
-        }
+        }*/
 
 .privacy-information p {
-    padding-top:10px;
+/*    padding-top:10px;*/
 }
 
 .privacy-information a {
@@ -141,7 +147,7 @@
 }
 
 .pushed-text {
-    padding-left:25px;
+    padding-left:35px;
 }
 
 #open-privacy1 {

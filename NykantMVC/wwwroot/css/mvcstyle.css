@@ -1124,6 +1124,10 @@ button span {
         width: 100%;
     }
 
+    .responsive-col {
+        width: 100%;
+    }
+
     .responsive-form {
         width: 100%;
         float: none;
@@ -1159,6 +1163,11 @@ button span {
 
 @media only screen and (min-width: 600px) {
     .responsive-container {
+        width: 540px;
+        margin: auto;
+    }
+
+    .responsive-col {
         width: 540px;
         margin: auto;
     }
@@ -1204,6 +1213,11 @@ button span {
         margin: auto;
     }
 
+    .responsive-col {
+        width: 700px;
+        margin: auto;
+    }
+
     .responsive-form {
         width: 70%;
         float: left;
@@ -1214,6 +1228,11 @@ button span {
 
 @media only screen and (min-width: 873px) {
     .responsive-container {
+        width: 800px;
+        margin: auto;
+    }
+
+    .responsive-col {
         width: 800px;
         margin: auto;
     }
@@ -1232,12 +1251,15 @@ button span {
         margin: auto;
     }
 
+    .responsive-col {
+        width: 800px;
+        margin: auto;
+    }
+
     .responsive-form {
         width: 70%;
         float: left;
     }
-
-
 }
 
 @media only screen and (min-width: 1200px) {
@@ -1246,12 +1268,15 @@ button span {
         margin: auto;
     }
 
+    .responsive-col {
+        width: 800px;
+        margin: auto;
+    }
+
     .responsive-form {
         width: 70%;
         float: left;
     }
-
-
 }
 
 @media only screen and (min-width: 1500px) {
@@ -1260,17 +1285,8 @@ button span {
         margin: auto;
     }
 
-    .responsive-form {
-        width: 70%;
-        float: left;
-    }
-
-
-}
-
-@media only screen and (min-width: 1780px) {
-    .responsive-container {
-        width: 1200px;
+    .responsive-col {
+        width: 800px;
         margin: auto;
     }
 
@@ -1278,6 +1294,21 @@ button span {
         width: 70%;
         float: left;
     }
+}
 
+@media only screen and (min-width: 1780px) {
+    .responsive-container {
+        width: 1000px;
+        margin: auto;
+    }
 
+    .responsive-col {
+        width: 800px;
+        margin: auto;
+    }
+
+    .responsive-form {
+        width: 70%;
+        float: left;
+    }
 }
