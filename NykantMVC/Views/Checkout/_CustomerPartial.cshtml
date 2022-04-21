@@ -1,6 +1,12 @@
 ﻿@inject IViewLocalizer localizer
 @model CheckoutVM
 
+
+<script>
+    document.getElementById('privacy-policy-consent').value = "false";
+    document.getElementById('privacy-policy-input').value = null;
+</script>
+
     @*<div class="my-row bottom-side-padding">*@
         <div class="hide-overflow col-8 left bottom-side-padding" id="customerinf-wrapper">
             <partial name="_CustomerSummaryPartial" />

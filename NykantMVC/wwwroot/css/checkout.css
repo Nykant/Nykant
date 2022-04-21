@@ -318,6 +318,10 @@
     margin-top:30px;
 }
 
+.payment-card-list img {
+    display:inline-block;
+}
+
 .payment-options:hover {
     background:var(--color1);
 }
@@ -325,6 +329,10 @@
 .credit-card-logos {
     right:40px;
 }
+
+    .credit-card-logos img {
+        display: inline-block;
+    }
 
 #payment-form {
     background-color: white;
@@ -370,15 +378,20 @@
 
 
 @media only screen and (max-width: 600px) {
+    .sidebar-container {
+        display:none;
+        padding-left: 0px;
+        padding-top: 10px;
+    }
 
-    
+    .sidebar-container-mobile {
+        display:block;
+        padding-left: 0px;
+        padding-top: 10px;
+    }
+
     .sidebar {
         position: relative;
-        right: unset;
-        width: 100%;
-        padding: 10px;
-        border: none;
-        margin-bottom: 30px;
     }
 
     #nearby-shops {
@@ -396,15 +409,21 @@
 }
 
 @media only screen and (min-width: 600px) {
+    .sidebar-container-mobile {
+        display:block;
+        padding-left: 0px;
+        padding-top: 10px;
+    }
 
+    .sidebar-container {
+        display:none;
+        padding-left: 0px;
+        padding-top: 10px;
+    }
 
-/*    .sidebar {
+    .sidebar {
         position: relative;
-        width: 100%;
-        border: none;
-        margin:auto;
-        margin-bottom: 30px;
-    }*/
+    }
 
     #nearby-shops {
         position: fixed;
@@ -422,72 +441,79 @@
 }
 
 @media only screen and (min-width: 768px) {
+    .sidebar-container {
+        display:block;
+        padding-left: 10px;
+        padding-top: 0px;
+    }
 
+    .sidebar-container-mobile {
+        display: none;
+        padding-left: 0px;
+        padding-top: 10px;
+    }
 
-/*    .sidebar {
+    .sidebar {
+
         position: fixed;
-        right:10px;
-        border: none;
-        margin: 0px;
-        width: 25%;
-    }*/
+    }
 }
 
 @media only screen and (min-width: 873px) {
+    .sidebar-container {
+        padding-left: 10px;
+        padding-top: 0px;
+    }
 
+    .sidebar {
 
-/*    .sidebar {
         position: fixed;
-        right: 1%;
-        border: none;
-        margin: 0px;
-    }*/
+    }
 }
 
 @media only screen and (min-width: 992px) {
+    .sidebar-container {
+        padding-left: 10px;
+        padding-top: 0px;
+    }
 
+    .sidebar {
 
-/*    .sidebar {
         position: fixed;
-        right: 1%;
-        width: 250px;
-        border: none;
-        margin: 0px;
-    }*/
+    }
 }
 
 @media only screen and (min-width: 1200px) {
-
-/*
+    .sidebar-container {
+        padding-left: 10px;
+        padding-top: 0px;
+    }
     .sidebar {
+
         position: fixed;
-        right: 1%;
-        width: 300px;
-        border: none;
-        margin: 0px;
-    }*/
+    }
 }
 
 @media only screen and (min-width: 1500px) {
 
+    .sidebar-container {
+        padding-left: 10px;
+        padding-top: 0px;
+    }
+    .sidebar {
 
-/*    .sidebar {
         position: fixed;
-        right: 10%;
-        width: 300px;
-        border: none;
-        margin: 0px;
-    }*/
+    }
 }
 
 @media only screen and (min-width: 1780px) {
+    .sidebar-container {
+        padding-left: 10px;
+        padding-top: 0px;
+    }
 
+    .sidebar {
 
-/*    .sidebar {
         position: fixed;
-        right: 15%;
-        width: 300px;
-        border: none;
-        margin: 0px;
-    }*/
+    }
 }

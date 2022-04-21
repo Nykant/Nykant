@@ -16,8 +16,8 @@
     {
         stage = (int)Stage.payment;
     }
-}
 
+}
 
 <input hidden id="stripe-key" data-stripePKKey="@ViewBag.StripePKKey" />
 
@@ -33,18 +33,22 @@
     </div>
 </div>
 
-<div class="top-padding">
+
+<div class="my-row bottom-padding top-padding">
     <div class="responsive-container">
-        <div class="my-row bottom-padding">
-            <partial name="_CheckoutBagPartial" />
 
-            <input type="hidden" id="customer-form-complete" value="0" />
-            <partial name="_CustomerPartial" />
+        <partial name="_CheckoutBagPartial" />
 
-            <partial name="_PaymentPartial" />
-        </div>
+        <input type="hidden" id="customer-form-complete" value="0" />
+        <partial name="_CustomerPartial" />
+
+        <partial name="_PaymentPartial" />
+
+        <partial name="_CheckoutBagMobilePartial" />
+
     </div>
 </div>
+
 
 <script src="~/JS/checkout.js?1"></script>
 <script src="~/JS/country-picker.js"></script>

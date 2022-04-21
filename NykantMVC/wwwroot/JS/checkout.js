@@ -97,6 +97,10 @@ history.scrollRestoration = "manual";
 //    document.getElementById('shipping-address-box').style.display = "block";
 //    shippingaddress_summary.style.display = "block";
 //}
+$('#privacy-policy-consent').prop('checked', false);
+$('#privacy-policy-consent').prop('value', "false");
+$('#privacy-policy-input').prop('value', "");
+$('#customerInf-submit').prop('disabled', true);
 
 if (stage == 1) {
     try {
@@ -183,7 +187,6 @@ else if (stage == 2) {
         scrollTop: $("#payment-header").offset().top
     }, 'slow');
 };
-
 
 back_button.addEventListener('click', function () {
     terms_and_conditions.checked = false;

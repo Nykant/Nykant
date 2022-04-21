@@ -37,7 +37,6 @@ namespace NykantMVC.Controllers
         {
             try
             {
-                var checkout = HttpContext.Session.Get<Checkout>(CheckoutSessionKey);
                 List<BagItem> bagItems = new List<BagItem>();
 
                 ViewBag.StripePKKey = conf["StripePKKey"];
@@ -54,10 +53,6 @@ namespace NykantMVC.Controllers
 
                 if(bagItems == null || bagItems.Count() == 0)
                 {
-                    if(checkout != null)
-                    {
-                        HttpContext.Session.Set<Checkout>(CheckoutSessionKey, null);
-                    }
                     return RedirectToAction("Details", "Bag");
                 }
 
@@ -65,7 +60,7 @@ namespace NykantMVC.Controllers
                 var taxes = total / 5;
                 var taxlessPrice = total - taxes;
 
-                checkout = new Checkout
+                var checkout = new Checkout
                 {
                     BagItems = bagItems,
                     Stage = Stage.customerInf,
