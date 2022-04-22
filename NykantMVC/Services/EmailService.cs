@@ -13,6 +13,8 @@ using NykantMVC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mime;
+//using System.Net.Mail;
 using System.Threading.Tasks;
 
 namespace NykantMVC.Services
@@ -44,6 +46,8 @@ namespace NykantMVC.Services
                 email.Subject = "Ordrebekræftelse";
 
                 var bodyBuilder = new BodyBuilder();
+                byte[] pdfBytes = System.IO.File.ReadAllBytes("wwwroot/pdf/standardfortrydelsesformular.pdf");
+                bodyBuilder.Attachments.Add("fortrydelsesformular.pdf", pdfBytes, new MimeKit.ContentType("application", "pdf"));
                 //for (int i = 0; i < order.OrderItems.Count(); i++)
                 //{
                 //    var image = bodyBuilder.LinkedResources.Add(order.OrderItems[i].Product.Path);
@@ -65,7 +69,6 @@ namespace NykantMVC.Services
             {
                 _logger.LogError($"time: {DateTime.Now} - {e.Message}");
             }
-            
         }
 
         public async Task SendOrderSentEmailAsync(Order order)

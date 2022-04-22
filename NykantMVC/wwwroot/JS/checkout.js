@@ -97,10 +97,10 @@ history.scrollRestoration = "manual";
 //    document.getElementById('shipping-address-box').style.display = "block";
 //    shippingaddress_summary.style.display = "block";
 //}
-$('#privacy-policy-consent').prop('checked', false);
-$('#privacy-policy-consent').prop('value', "false");
-$('#privacy-policy-input').prop('value', "");
-$('#customerInf-submit').prop('disabled', true);
+//$('#privacy-policy-consent').prop('checked', false);
+//$('#privacy-policy-consent').prop('value', "false");
+//$('#privacy-policy-input').prop('value', "");
+//$('#customerInf-submit').prop('disabled', true);
 
 if (stage == 1) {
     try {
@@ -429,18 +429,18 @@ customer_edit_button.addEventListener("click", function () {
     customer_wrap.style.transform = "translateY(0%)";
 });
 
-$('#privacy-policy-consent').on('click', function () {
-    if (document.getElementById('privacy-policy-consent').value == "true") {
-        document.getElementById('privacy-policy-consent').value = "false";
-        document.getElementById('privacy-policy-input').value = null;
-        document.getElementById('customerInf-submit').disabled = true;
-    }
-    else {
-        document.getElementById('privacy-policy-consent').value = "true";
-        document.getElementById('privacy-policy-input').value = "true";
-        document.getElementById('customerInf-submit').disabled = false;
-    }
-});
+//$('#privacy-policy-consent').on('click', function () {
+//    if (document.getElementById('privacy-policy-consent').value == "true") {
+//        document.getElementById('privacy-policy-consent').value = "false";
+//        document.getElementById('privacy-policy-input').value = null;
+//        document.getElementById('customerInf-submit').disabled = true;
+//    }
+//    else {
+//        document.getElementById('privacy-policy-consent').value = "true";
+//        document.getElementById('privacy-policy-input').value = "true";
+//        document.getElementById('customerInf-submit').disabled = false;
+//    }
+//});
 
 
 $('#terms-and-conditions-consent').on('click', function () {

@@ -23,6 +23,17 @@
         display: inline;
     }
 
+    .sidebar-header {
+        width:100%;
+        text-align:center;
+        background-color:var(--color2);
+        
+    }
+
+    .sidebar-header h1 {
+        line-height:50px;
+    }
+
 .sidebar {
     padding: 15px;
     color: var(--font1);
@@ -179,6 +190,7 @@
     padding: 10px;
     padding-left: 35px;
     padding-right: 35px;
+    padding-bottom: 35px;
     line-height: normal;
     text-align: left;
 }
@@ -376,6 +388,9 @@
     transform:translate(+25px, -30px);
 }*/
 
+.sidebar-container {
+    height:1000px;
+}
 
 @media only screen and (max-width: 600px) {
     .sidebar-container {
@@ -387,7 +402,7 @@
     .sidebar-container-mobile {
         display:block;
         padding-left: 0px;
-        padding-top: 10px;
+        padding-top: 30px;
     }
 
     .sidebar {
@@ -412,13 +427,13 @@
     .sidebar-container-mobile {
         display:block;
         padding-left: 0px;
-        padding-top: 10px;
+        padding-top: 30px;
     }
 
     .sidebar-container {
         display:none;
         padding-left: 0px;
-        padding-top: 10px;
+        padding-top: 30px;
     }
 
     .sidebar {
@@ -454,8 +469,9 @@
     }
 
     .sidebar {
-
-        position: fixed;
+        position: -webkit-sticky; /* Safari */
+        position: sticky;
+        top: 0;
     }
 }
 
@@ -466,8 +482,9 @@
     }
 
     .sidebar {
-
-        position: fixed;
+        position: -webkit-sticky; /* Safari */
+        position: sticky;
+        top: 0;
     }
 }
 
@@ -478,8 +495,9 @@
     }
 
     .sidebar {
-
-        position: fixed;
+        position: -webkit-sticky; /* Safari */
+        position: sticky;
+        top: 0;
     }
 }
 
@@ -489,8 +507,9 @@
         padding-top: 0px;
     }
     .sidebar {
-
-        position: fixed;
+        position: -webkit-sticky; /* Safari */
+        position: sticky;
+        top: 0;
     }
 }
 
@@ -501,8 +520,9 @@
         padding-top: 0px;
     }
     .sidebar {
-
-        position: fixed;
+        position: -webkit-sticky; /* Safari */
+        position: sticky;
+        top: 0;
     }
 }
 
@@ -513,7 +533,8 @@
     }
 
     .sidebar {
-
-        position: fixed;
+        position: -webkit-sticky; /* Safari */
+        position: sticky;
+        top: 0;
     }
 }

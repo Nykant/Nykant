@@ -141,31 +141,31 @@ namespace NykantMVC.Controllers
                     customer.BillingAddress.Country = "DK";
                 }
 
-                if (customer.PrivacyPolicyConsent == "true")
-                {
-                    Consent consent = new Consent
-                    {
-                        Name = customer.BillingAddress.Name,
-                        Email = customer.Email,
-                        Date = DateTime.Now,
-                        ButtonText = "Gem",
-                        ConsentText = "For at fortsætte skal du skrive under på at du har læst og accepterer vores (link (håndtering af persondata)) ved at klikke i checkboksen.",
-                        How = ConsentHow.Checkbox,
-                        Type = ConsentType.PrivacyPolicy,
-                        Status = ConsentStatus.Given
-                    };
-                    PostRequest("/Consent/Post", consent).ConfigureAwait(false);
-                    //if (!consentResponse.IsSuccessStatusCode)
-                    //{
-                    //    _logger.LogInformation($"{consentResponse.ReasonPhrase} - {consentResponse.StatusCode}");
-                    //    return Json(new { error = "Could not post consent" });
-                    //}
-                }
-                else
-                {
-                    _logger.LogError($"time: {DateTime.Now} - error: User has not consented - an error has occured");
-                    return Json(new { error = "User has not consented - an error has occured" });
-                }
+                //if (customer.PrivacyPolicyConsent == "true")
+                //{
+                //    Consent consent = new Consent
+                //    {
+                //        Name = customer.BillingAddress.Name,
+                //        Email = customer.Email,
+                //        Date = DateTime.Now,
+                //        ButtonText = "Gem",
+                //        ConsentText = "For at fortsætte skal du skrive under på at du har læst og accepterer vores (link (håndtering af persondata)) ved at klikke i checkboksen.",
+                //        How = ConsentHow.Checkbox,
+                //        Type = ConsentType.PrivacyPolicy,
+                //        Status = ConsentStatus.Given
+                //    };
+                //    PostRequest("/Consent/Post", consent).ConfigureAwait(false);
+                //    //if (!consentResponse.IsSuccessStatusCode)
+                //    //{
+                //    //    _logger.LogInformation($"{consentResponse.ReasonPhrase} - {consentResponse.StatusCode}");
+                //    //    return Json(new { error = "Could not post consent" });
+                //    //}
+                //}
+                //else
+                //{
+                //    _logger.LogError($"time: {DateTime.Now} - error: User has not consented - an error has occured");
+                //    return Json(new { error = "User has not consented - an error has occured" });
+                //}
 
                 if (customer.ShippingAddress.SameAsBilling)
                 {
