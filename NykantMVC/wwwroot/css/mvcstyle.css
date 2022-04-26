@@ -266,12 +266,13 @@ ol, ul {
     padding-bottom: 20px;
 }
 
-    .nykant-info {
-        color:var(--font1);
-        padding-bottom:20px;
-        display: inline-block;
-        padding-right: 100px;
-    }
+.nykant-info {
+    vertical-align: top;
+    color: var(--font1);
+    padding-bottom: 20px;
+    display: inline-block;
+    padding-right: 100px;
+}
 
     .socialmedia {
         position:absolute;

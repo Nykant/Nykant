@@ -72,8 +72,14 @@ namespace NykantMVC.Controllers
             return View();
         }
 
-        [Route("Om")]
+        [Route("Om-Os")]
         public IActionResult About()
+        {
+            return View();
+        }
+
+        [Route("Handlevejledning")]
+        public IActionResult HowToOrder()
         {
             return View();
         }
