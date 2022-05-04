@@ -61,13 +61,29 @@
     position: relative;
 }
 
+/*      ------------------------------ ----------------------------------      */
+/*      ------------------------------ ----------------------------------      */
+/*      ------------------------------ ----------------------------------      */
 
-/*      ------------------------------ ----------------------------------      */
-/*      ------------------------------ ----------------------------------      */
-/*      ------------------------------ ----------------------------------      */
+.favorites {
+    margin-top: 30px;
+    background: white;
+}
+
+.favorites h1 {
+    padding:20px;
+    text-align:center;
+    font-size:30px;
+}
+
+    .favorites div {
+        height: 500px;
+        border: 1px solid var(--black-fade);
+        background: white;
+        display:inline-block;
+    }
 
 .info-row {
-    padding: 30px;
     margin-top:50px;
     background: white;
 /*    border:1px solid black;*/
@@ -95,25 +111,13 @@
     fill: #777069;
 }
 
-.truck {
-    display: block;
-    width: auto;
-    float: none;
+
+.video {
+    margin:auto;
+    width:400px;
+    height:600px;
 }
 
-    .truck i {
-        display: inline;
-        font-size: 43px;
-    }
-
-    .truck p {
-        width: auto;
-        display: inline;
-        font-size: 16px;
-        line-height: normal;
-        padding: 10px;
-        transform:translateY(-20px);
-    }
 
 .about-us {
     color: var(--font1);
@@ -156,6 +160,23 @@
         }
     }
 
+    .info-item {
+        padding:20px;
+        float:left;
+        background:white;
+    }
+
+        .info-item i {
+            display: block;
+            font-size: 24px;
+        }
+
+        .info-item p {
+            display: inline;
+            font-size: 16px;
+            line-height: normal;
+            padding: 10px;
+        }
 
 @media only screen and (max-width: 600px) {
     .mobile-sidepadding {
@@ -163,14 +184,16 @@
         padding-right:20px;
     }
     .info-row {
-        height: 500px;
+        
+    }
+    .info-item {
+        width:100%;
+        display:block;
     }
     .e-mark {
 
     }
-    .truck {
-        padding-top: 50px;
-    }
+
     .about-us {
         padding-top: 70px;
         padding-bottom: 70px;
@@ -184,17 +207,18 @@
         padding-left: 0px;
         padding-right: 0px;
     }
-
+    .info-item {
+        width: 100%;
+        display: block;
+    }
     .info-row {
-        height: 500px;
+        
     }
     .e-mark {
 
     }
 
-    .truck {
-        padding-top: 50px;
-    }
+
     .about-us {
         padding-top: 70px;
         padding-bottom: 70px;
@@ -205,16 +229,17 @@
 
 @media only screen and (min-width: 768px) {
     .info-row {
-        height: 140px;
+        
     }
-
+    .info-item {
+        width: 25%;
+        display: inline-block;
+    }
     .e-mark {
 
     }
 
-    .truck {
-        padding-top: 0px;
-    }
+
     .about-us {
         padding-top:90px;
         padding-bottom:90px;
