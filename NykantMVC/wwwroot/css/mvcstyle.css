@@ -932,6 +932,10 @@ button span {
     }
 
 
+    .big-text {
+        font-size: 50px;
+    }
+
     /* spinner/processing state, errors */
 
 .lds-ring {

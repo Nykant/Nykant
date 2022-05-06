@@ -102,6 +102,29 @@
         padding: 10px;
     }
 
+    #follow-container {
+        position:absolute;
+        top:0;
+        bottom:0;
+        right:0;
+        left:-100px;
+    }
+
+#follow-box {
+    position: absolute;
+    width:50px;
+    height:50px;
+    border:1px solid black;
+    
+}
+
+.half {
+    position:relative;
+    width:49%;
+    display:inline-block;
+    height:auto;
+}
+
 .e-mark-svg {
     display: inline;
     height: 3.3em;
@@ -111,13 +134,35 @@
     fill: #777069;
 }
 
+.video-details {
+    position:absolute;
+    bottom:45%;
+    left:45%
+}
+
+.video-slide {
+    overflow: hidden;
+    transition:opacity linear .3s;
+}
+
+    .video-slide:hover {
+        opacity:0.3;
+    }
 
 .video {
     margin:auto;
-    width:400px;
-    height:600px;
+    width: 400px;
+    height: 600px;
 }
 
+
+.vertical-align {
+    vertical-align:middle;
+}
+
+.height-600 {
+    height:600px;
+}
 
 .about-us {
     color: var(--font1);
