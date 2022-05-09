@@ -61,45 +61,108 @@
 </div>
 
 <div class="my-row top-padding bottom-padding">
-    <div class="col-4 left padding text-center height-600">
-        <p class="big-text vertical-center">VI STRÆBER EFTER INNOVATIVE, NEMME MÅDER AT SAMLE MØBLER PÅ, MED ET ÆSTETISK LOOK.</p>
-    </div>
-    <div id="video-slide" class="col-8 left video-slide">
-        <div class="half">
-            <video class="video" autoplay loop muted>
-                <source src="../videos/Tøjstativ.mp4" type="video/mp4" />
-            </video>
+    <div class="responsive-container">
+        <div class="col-4 left text-center height-600">
+            <p class="big-text vertical-center">VI STRÆBER EFTER INNOVATIVE, NEMME MÅDER AT SAMLE MØBLER PÅ, MED ET ÆSTETISK LOOK.</p>
         </div>
-        <div class="half">
-            <img class="center" height="400" width="400" src="~/images/Products/Details_Fullscreen/Desktop/NYKANT_rack_naturolie_02.png" />
-        </div>
-        <div id="follow-container">
-            <div id="follow-box">
-                heeey
+        <div id="video-slide" class="col-8 left video-slide">
+            <div class="half">
+                <video class="vertical-center video" autoplay loop muted>
+                    <source src="../videos/Tøjstativ.mp4" type="video/mp4" />
+                </video>
             </div>
+            <div class="half">
+                <img class="vertical-center video-img" src="~/images/Products/Details_Fullscreen/Desktop/NYKANT_rack_naturolie_02.png" />
+            </div>
+
+            <a id="follow-link" asp-controller="Product" asp-action="Details" asp-route-urlname="Tøjstativ-Egetræ-Naturolie">
+                <div id="follow-container">
+
+                    <div id="follow-box">
+                        <p id="follow-name">Tøjstativet Nora</p>
+                        <p id="follow-price">kr. 2595</p>
+                    </div>
+
+                </div>
+            </a>
+
         </div>
-
-
     </div>
 </div>
-
-
 
 <div class="my-row">
     <div class="col-12">
 
         <div class="favorites">
-            <h1>Kundernes Favoritter</h1>
-            <div class="col-6 left">
+            <div class="favorites-header">
+                <h1>KUNDERNES FAVORITTER</h1>
+            </div>
+            <div class="col-6 left favorite-item">
+                <a asp-controller="product" asp-action="details" asp-route-urlname="Tøjstativ-Egetræ-Naturolie">
+                    <img class="absolute-center favorite-img" src="~/images/Products/Details_Fullscreen/Desktop/NYKANT_rack_naturolie_02.png" />
+                    <div class="follow-container" id="follow-container-rack">
+
+                        <div class="follow-box" id="follow-box-rack">
+                            <p id="follow-name-rack">Tøjstativet Nora</p>
+                            <p id="follow-price-rack">kr. 2595</p>
+                        </div>
+
+                    </div>
+                </a>
 
             </div>
-            <div class="col-6 left">
+            <div class="col-6 left favorite-item">
+                <a asp-controller="product" asp-action="details" asp-route-urlname="Opbevaringsbænk-Egetræ-Sortolie">
+                    <img class="absolute-center favorite-img" src="~/images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_sort_03.png" />
+                    <div id="follow-container">
+
+                        <div class="follow-container" id="follow-container-baenk">
+
+                            <div class="follow-box" id="follow-box-baenk">
+                                <p id="follow-name-baenk">Filippa Bænken</p>
+                                <p id="follow-price-baenk">kr. 4985</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </a>
 
             </div>
-            <div class="col-6 left">
+            <div class="col-6 left favorite-item">
+                <a asp-controller="product" asp-action="details" asp-route-urlname="Bænk-Egetræ-Naturolie-115cm">
+                    <img class="absolute-center favorite-img" src="~/images/Products/Details_Fullscreen/Desktop/NYKANT_kortbaenk_naturolie_02.png" />
+                    <div id="follow-container">
+
+                        <div class="follow-container" id="follow-container-kortbaenk">
+
+                            <div class="follow-box" id="follow-box-kortbaenk">
+                                <p id="follow-name-kortbaenk">Thyra Bænken</p>
+                                <p id="follow-price-kortbaenk">kr. 3665</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </a>
 
             </div>
-            <div class="col-6 left">
+            <div class="col-6 left favorite-item"> 
+                <a asp-controller="product" asp-action="details" asp-route-urlname="Bord-Egetræ-Naturolie">
+                    <img class="absolute-center favorite-img" src="~/images/Products/Details_Fullscreen/Desktop/NYKANT_bord_naturolie_02.png" />
+                    <div id="follow-container">
+
+                        <div class="follow-container" id="follow-container-table">
+
+                            <div class="follow-box" id="follow-box-table">
+                                <p id="follow-name-table">Dagmar Bordet</p>
+                                <p id="follow-price-table">kr. 3585</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </a>
 
             </div>
         </div>
@@ -112,7 +175,7 @@
 
         <div class="col-md-12">
             <div class="carousel-header">
-                Alle Vores Kategorier
+                ALLE VORES KATEGORIER
             </div>
             <div class="owl-carousel">
                 @foreach (var category in Model)
@@ -209,5 +272,9 @@
 <script type="text/javascript" src="~/JS/carousel.js"></script>
 <script src="~/JS/slideshow.js"></script>
 <script src="~/JS/moving-box.js"></script>
+<script src="~/JS/follow-box-1.js"></script>
+<script src="~/JS/follow-box-2.js"></script>
+<script src="~/JS/follow-box-3.js"></script>
+<script src="~/JS/follow-box-4.js"></script>
 @*<script async src="~/JS/checkout-sandbox.js"></script>*@
 

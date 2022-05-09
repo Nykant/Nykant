@@ -644,6 +644,18 @@ ol, ul {
     transform: translateY(-50%);
 }
 
+.absolute-center {
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
 .button {
     font-family: 'Lato', sans-serif;
     font-size: 14px;
@@ -933,7 +945,7 @@ button span {
 
 
     .big-text {
-        font-size: 50px;
+        font-size: 35px;
     }
 
     /* spinner/processing state, errors */
@@ -1303,7 +1315,7 @@ button span {
 
 @media only screen and (min-width: 1780px) {
     .responsive-container {
-        width: 1000px;
+        width: 1400px;
         margin: auto;
     }
 
