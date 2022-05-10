@@ -16,6 +16,12 @@
 
 <div class="my-row">
     <div class="slideshow" id="slideshow">
+        <div id="slideshow-prev" class="slideshow-button">
+            <img class="absolute-center" width="50" height="50" src="~/lib/svg/arrow-left.svg" />
+        </div>
+        <div id="slideshow-next" class="slideshow-button">
+            <img class="absolute-center" width="50" height="50" src="~/lib/svg/arrow-right.svg" />
+        </div>
         <div class="slide-container" id="slide-container">
             <div class="slide">
                 <picture>
@@ -63,7 +69,7 @@
 <div class="my-row top-padding bottom-padding">
     <div class="responsive-container">
         <div class="col-4 left text-center height-600">
-            <p class="big-text vertical-center">VI STRÆBER EFTER INNOVATIVE, NEMME MÅDER AT SAMLE MØBLER PÅ, MED ET ÆSTETISK LOOK.</p>
+            <p class="big-text vertical-center">VI SKABER NYE, NEMME MÅDER AT SAMLE MØBLER PÅ, MED ET ÆSTETISK LOOK.</p>
         </div>
         <div id="video-slide" class="col-8 left video-slide">
             <div class="half">
@@ -76,10 +82,11 @@
             </div>
 
             <a id="follow-link" asp-controller="Product" asp-action="Details" asp-route-urlname="Tøjstativ-Egetræ-Naturolie">
-                <div id="follow-container">
+                <div class="follow-container" id="follow-container">
 
-                    <div id="follow-box">
+                    <div class="follow-box" id="follow-box">
                         <p id="follow-name">Tøjstativet Nora</p>
+                        <p id="follow-oil">Naturolie</p>
                         <p id="follow-price">kr. 2595</p>
                     </div>
 
@@ -94,8 +101,8 @@
     <div class="col-12">
 
         <div class="favorites">
-            <div class="favorites-header">
-                <h1>KUNDERNES FAVORITTER</h1>
+            <div id="favorites-header" class="favorites-header">
+                <h1>POPULÆRE</h1>
             </div>
             <div class="col-6 left favorite-item">
                 <a asp-controller="product" asp-action="details" asp-route-urlname="Tøjstativ-Egetræ-Naturolie">
@@ -104,6 +111,7 @@
 
                         <div class="follow-box" id="follow-box-rack">
                             <p id="follow-name-rack">Tøjstativet Nora</p>
+                            <p id="follow-oil-rack">Naturolie</p>
                             <p id="follow-price-rack">kr. 2595</p>
                         </div>
 
@@ -120,6 +128,7 @@
 
                             <div class="follow-box" id="follow-box-baenk">
                                 <p id="follow-name-baenk">Filippa Bænken</p>
+                                <p id="follow-oil-baenk">Sortolie</p>
                                 <p id="follow-price-baenk">kr. 4985</p>
                             </div>
 
@@ -138,6 +147,7 @@
 
                             <div class="follow-box" id="follow-box-kortbaenk">
                                 <p id="follow-name-kortbaenk">Thyra Bænken</p>
+                                <p id="follow-oil-kortbaenk">Naturolie</p>
                                 <p id="follow-price-kortbaenk">kr. 3665</p>
                             </div>
 
@@ -156,6 +166,7 @@
 
                             <div class="follow-box" id="follow-box-table">
                                 <p id="follow-name-table">Dagmar Bordet</p>
+                                <p id="follow-oil-table">Naturolie</p>
                                 <p id="follow-price-table">kr. 3585</p>
                             </div>
 
@@ -175,7 +186,7 @@
 
         <div class="col-md-12">
             <div class="carousel-header">
-                ALLE VORES KATEGORIER
+                KATEGORIER
             </div>
             <div class="owl-carousel">
                 @foreach (var category in Model)

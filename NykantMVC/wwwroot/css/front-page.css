@@ -16,6 +16,33 @@
     /*    border: 1px solid var(--black-fade);*/
 }
 
+
+.slideshow-button {
+    position: absolute;
+    height: 100%;
+    width: 100px;
+    z-index: 1000;
+    background: white;
+    opacity: 0.3;
+    cursor:pointer;
+    user-select:none;
+}
+
+#slideshow-prev {
+    left: 0;
+    top: 0;
+}
+
+#slideshow-next {
+    right: 0;
+    top: 0;
+}
+
+.slideshow-button:hover {
+    opacity:0.6;
+}
+
+
 .slide-container {
     width: 700%;
     height: 100%;
@@ -90,20 +117,41 @@
 }
 
 .favorites-header {
+    padding-top:10px;
     width: 100%;
     height: auto !important;
     display: block !important;
     text-align: center;
 }
 
-    .favorites-header h1 {
-        padding: 20px;
-        text-align: center;
-        font-size: 35px;
-        border-bottom: 20px solid var(--color1);
-        border-radius:15px;
-        display:inline-block;
+@keyframes zikzak {
+    0% {
+        transform:translateX(-20%);
     }
+    50% {
+        transform: translateX(+20%);
+    }
+    100% {
+        transform: translateX(-20%);
+    }
+}
+
+.favorites-header h1 {
+    padding: 20px;
+    text-align: center;
+    font-size: 35px;
+    border-top: 5px solid var(--color1);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom: 20px solid var(--color1);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    display: inline-block;
+    animation-name: zikzak;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
 
 .info-row {
     margin-top:50px;
@@ -136,16 +184,10 @@
         cursor: pointer;
     }
 
-.follow-container:hover .follow-box {
-    height: 100px;
-    font-weight: normal;
-    color: var(--font1);
-}
-
 .follow-box {
     position: absolute;
     border: 1px solid var(--black-fade);
-    background: var(--color3);
+    background: var(--color1);
     text-align: center;
     line-height: 50px;
     width: 200px;
@@ -153,51 +195,28 @@
     overflow: hidden;
     transition: height ease 1s;
     font-size: 20px;
+/*    transition: top ease .05s;
+    transition: left ease .05s;*/
+}
+
+#follow-box {
+    background: var(--color2);
+}
+
+.follow-container:hover .follow-box {
+    height: 150px;
+    font-weight: normal;
+    color: var(--font1);
 }
 
     .follow-box p {
         line-height: 50px;
     }
 
-    #follow-container {
-        position:absolute;
-        top:0;
-        bottom:0;
-        right:0;
-        left:0; 
-    }
-
-        #follow-container:hover {
-            cursor:pointer;
-        }
-
-            #follow-container:hover #follow-box {
-                height: 100px;
-                font-weight: normal;
-                color: var(--font1);
-            }
-
             #follow-link {
                 height:100%;
                 width:100%;
             }
-
-#follow-box {
-    position: absolute;
-    border: 1px solid var(--black-fade);
-    background: var(--color3);
-    text-align: center;
-    line-height: 50px;
-    width: 200px;
-    height: 50px;
-    overflow: hidden;
-    transition: height ease 1s;
-    font-size:20px;
-}
-
-#follow-box p {
-    line-height:50px;
-}
 
 .half {
     position: relative;

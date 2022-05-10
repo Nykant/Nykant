@@ -55,9 +55,12 @@ $(document).ready(function () {
     }
 
     slideshow.addEventListener('swiped-right', function () {
-        document.body.setAttribute('class', 'lock-screen');
         if (slidenumber > 0) {
             slidenumber--;
+            slidebuttons[slidenumber].click();
+        }
+        else {
+            slidenumber = 3;
             slidebuttons[slidenumber].click();
         }
     });
@@ -65,6 +68,32 @@ $(document).ready(function () {
     slideshow.addEventListener('swiped-left', function () {
         if (slidenumber < slidebuttons.length - 1) {
             slidenumber++;
+            slidebuttons[slidenumber].click();
+        }
+        else {
+            slidenumber = 0;
+            slidebuttons[slidenumber].click();
+        }
+    });
+
+    $('#slideshow-next').click(function () {
+        if (slidenumber < slidebuttons.length - 1) {
+            slidenumber++;
+            slidebuttons[slidenumber].click();
+        }
+        else {
+            slidenumber = 0;
+            slidebuttons[slidenumber].click();
+        }
+    });
+
+    $('#slideshow-prev').click(function () {
+        if (slidenumber > 0) {
+            slidenumber--;
+            slidebuttons[slidenumber].click();
+        }
+        else {
+            slidenumber = 3;
             slidebuttons[slidenumber].click();
         }
     });

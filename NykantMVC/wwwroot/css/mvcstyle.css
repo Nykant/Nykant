@@ -647,9 +647,7 @@ ol, ul {
 .absolute-center {
     left: 0;
     right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    margin: 0;
+    margin: auto;
     position: absolute;
     top: 50%;
     -ms-transform: translateY(-50%);
