@@ -1,7 +1,11 @@
 ﻿@inject IViewLocalizer localizer
+@inject IConfiguration conf
+
 @{
     ViewData["Title"] = "Nykants Salgs- Og Leveringsbetingelser";
     ViewData["Description"] = "Nykants betingelser for salg og levering.";
+
+    string url = @conf.GetSection("Urls")["Mvc"];
 }
 
 <link rel="stylesheet" href="~/css/privacy.css?1" />
@@ -34,8 +38,11 @@
             <p>
                 Disse salgsbetingelser gælder altid, når du som forbruger handler på nykant.dk. Nykant.dk er en handelsplatform, hvor du som forbruger kan købe varer direkte fra Nykant.
             </p>
+            <p>
+                På nykant.dk kan du kun bestille varer via vores webshop. Hvis du har spørgsmål til varer, som ikke er på siden, er du velkommen til at kontakte os.
+            </p>
             <p class="top-side-padding">
-                Alle produkter som sælges på nykant.dk, er originale produkter, designet og produceret af Nykant Aps.
+                Alle produkter som sælges på nykant.dk, er originale produkter, designet og produceret af Nykant ApS.
             </p>
             <p class="top-side-padding">
                 Disse vilkår og betingelser udgør sammen med ordrebekræftelsen, det samlede aftalegrundlag for dit køb.
@@ -43,6 +50,8 @@
             <p class="top-side-padding">
                 Ved bestilling af varer via Nykants handelsplatform bekræfter du, at du ikke køber varer med henblik på videresalg.
             </p>
+            <p>Du skal være fyldt 18 år for at handle hos os. Er du under 18 år, skal du have samtykke fra en forælder eller værge.</p>
+            <p>Det er ikke muligt at se tidligere ordrer ved login på webshoppen. Hvis du ønsker at modtage en kopi af din ordrebekræftelse, kan du sende en mail til mail@nykant.dk.</p>
         </div>
 
         <div>
@@ -51,33 +60,32 @@
             <p>Alle priser er i danske kroner og inkl. moms.</p>
             <p>En samlet pris vil fremgå ved bestilling, af ordrebekræftelsen og fakturaen.</p>
             <p>
-                Du kan vælge mellem de betalingsmetoder, som vi tilbyder i købsprocessen hvilket kun indebære kortbetaling på nuværende tidspunkt. Følgende kort accepteres via kortbetaling: Visa, Mastercard og American Express.
+                Du kan vælge mellem de betalingsmetoder, som vi tilbyder i købsprocessen. Følgende kort accepteres via kortbetaling: Visa, Mastercard og American Express.
             </p>
-            <p>Beløb hæves først når dine varer er sendt fra lageret, hvor du på samme tid vil modtage en faktura via email.</p>
+            <p>Beløb hæves først når dine varer er sendt fra lageret, hvor du samtidig vil modtage en faktura via email.</p>
         </div>
 
         <div>
             <h1>Levering</h1>
             <p>
-                Der kan ikke vælges forskellige leveringsmuligheder, dvs. at ordrer med varer der vejer over 20 kg. leveres på leveringsadressen via DKI Pallegods og ordrer uden varer over 20 kg. leveres på leveringsadressen via GLS.
+                Der kan ikke vælges forskellige leveringsmuligheder, dvs. at ordrer med varer der vejer over 20 kg. leveres på leveringsadressen via DKI og ordrer uden varer over 20 kg. leveres på leveringsadressen via GLS.
             </p>
             <p>
-                Vi levere kun i danmark, og der er ingen leveringsomkostninger.
-
+                Vi leverer kun i danmark, og der er ingen leveringsomkostninger.
             </p>
             <p>Vi bestræber os på at levere indenfor 3-5 hverdage. </p>
             <p>
-                Der er ingen opbæring på nogen af leveringsmulighederne.
+                Der er ingen hjælp til opbæring.
             </p>
         </div>
 
         <div>
             <h1>Fortrydelsesret</h1>
-            <p >
+            <p>
                 Som forbruger har du 14 dages fortrydelsesret, når du handler hos os.
             </p>
             <p class="top-side-padding">Fortrydelsesfristen udløber 14 dage efter den dag, du har modtaget din vare. Hvis du har bestilt flere forskellige varer i én ordre, men de leveres enkeltvist, løber fristen fra den dag, hvor du modtager den sidste vare.</p>
-            <p class="top-side-padding">Fristen indebærer, at du har 14 dage fra modtagelsen til at give os besked om, at du vil fortryde dit køb. Du kan sende en mail til mail@nykant.dk eller benytte standardfortrydelsesformularen, som du finder vedlagt i ordrebekræftelsen eller kan downloades her(pdf link).</p>
+            <p class="top-side-padding">Fristen indebærer, at du har 14 dage fra modtagelsen til at give os besked om, at du vil fortryde dit køb. Du kan sende en mail til mail@nykant.dk eller benytte standardfortrydelsesformularen, som du finder vedlagt i ordrebekræftelsen eller kan downloades <a class="simple-link" href="@url/pdf/standardfortrydelsesformular.pdf"></a>her</p>.
             <p class="top-side-padding">
                 Du kan ikke fortryde købet ved at nægte at modtage varen uden samtidig at give os besked.
             </p>
@@ -93,13 +101,17 @@
             </p>
 
             <h2>Returnering</h2>
-            <p>Når du har givet os besked om, at du vil fortryde dit køb, har du 14 dage til at sende varen tilbage til os.</p>
-            <p>Du skal selv betale for at pakken returneres, og det er dig, der hæfter, hvis der opstår en skade under transporten. </p>
-            <p>Visse varer kan ikke returneres med normal post. Dette gælder for: Alle varer over 20kg. Hvor vi vil aftale med DKI Pallegods at de skal komme og hente varen hos dig.</p>
+            <p>Når du har givet os besked om, at du vil fortryde dit køb, har du 14 dage til at sende varen tilbage til os. </p>
             <p>
-                Udgifterne for returnering af disse varer forventes højst at koste: 300kr. og 750kr. for kunder fra bornholm.
+                Du skal selv betale for at pakken returneres, og det er dig, der hæfter, hvis der opstår en skade under transporten.
             </p>
-            <p>Da du ikke kan betale DKI Pallegods direkte, vil udgifterne blive trukket fra det beløb som returneres til kunden, for de returnerede varer.</p>
+
+            <p>
+                Ved mindre pakker under 20kg, kan vi sende dig et returlabel til GLS pakkeshop via deres ShopReturn system. Prisen er deres(gls) normale pris for dette. Det beløb vil blive modregnet i det beløb du skal have retur. Du har fortsat selv ansvaret for pakken.
+            </p>
+            <p>
+                Ved større varer over 20 kg. Kan vi tilbyde at aftale med gls at de skal hente pakken hos dig via deres PickReturn system. Prisen er deres(gls) normale pris for dette. Det er en udgift du hæfter for, som vi vil modregne det beløb du skal have retur.
+            </p>
 
             <h2>Varens stand, når du sender den retur</h2>
             <p>Hvis varen har mistet værdi, og det skyldes at du har brugt den på en anden måde, end hvad der var nødvendigt for at fastslå varens art, egenskaber og den måde, den fungerer, kan du kun få en del af købsbeløbet tilbage. Beløbet du kan få tilbage afhænger af varens handelsmæssige værdi, og i visse tilfælde kan det betyde, at du kun kan få fragtomkostningerne tilbage.</p>
@@ -107,50 +119,116 @@
             <p>Hvis den originale emballage mangler, kan det muligvis medføre en værdiforringelse af varen.</p>
 
             <h2>Tilbagebetaling af købsbeløbet </h2>
-            <p>Hvis du fortryder dit køb, får du dine penge tilbage, minus det beløb vi betaler for at returnere dine varer hvis varen skal returneres med DKI Pallegods. Hvis varen er værdiforringet, fratrækker vi det beløb, du hæfter for. </p>
-            <p>Vi refunderer alle betalinger modtaget fra dig, herunder leveringsomkostninger (det gælder dog ikke ekstra leveringsomkostninger i de tilfælde, hvor du har valgt en anden leveringsform, end den billigste form for standardlevering, som vi tilbyder), senest 14 dage fra den dag, hvor vi har modtaget din besked om, at du vil fortryde aftalen. </p>
+            <p>Hvis du fortryder dit køb, får du dine penge tilbage, minus det beløb vi betaler for at returnere dine varer hvis varen skal returneres med DKI Pallegods. Hvis varen er værdiforringet, fratrækker vi det beløb, du hæfter for.</p>
+            <p>Vi refunderer alle betalinger modtaget fra dig, herunder leveringsomkostninger (det gælder dog ikke ekstra leveringsomkostninger i de tilfælde, hvor du har valgt en anden leveringsform, end den billigste form for standardlevering, som vi tilbyder), senest 14 dage fra den dag, hvor vi har modtaget din besked om, at du vil fortryde aftalen.</p>
             <p>Vi tilbagefører pengene med samme betalingsmiddel, som du benyttede ved købet, medmindre vi har aftalt andet.</p>
-            <p>Vi kan tilbageholde betalingen indtil vi har modtaget varen, med mindre du sender os dokumentation for at have returneret den. </p>
-
-        </div>
-        <div>
-            <h1>6. Reklamationer</h1>
             <p>
-                Hvis der mod forventning skulle være problemer med et produkt, så ordner vi det uden omkostninger for jer.
+                Vi kan tilbageholde betalingen indtil vi har modtaget varen, med mindre du sender os dokumentation for at have returneret den.
             </p>
 
+            <h2>Varen sendes til:</h2>
+            <p>Gislev Drejerforretning</p>
+            <p>Byvejen 21, Køng</p>
+            <p>5620 Glamsbjerg</p>
+            <p>Danmark</p>
+
+            <p class="top-side-padding">
+                Vi modtager kun pakker, som sendes direkte til adressen.
+
+            </p>
+        </div>
+        <div>
+            <h1>Reklamationsret </h1>
+            <p>
+                Når du handler hos os som forbruger, gælder købelovens regler for varekøb.
+            </p>
+            <p>Det betyder, at du har reklamationsret i 24 måneder.</p>
+            <p>Hvis din reklamation er berettiget, betyder det, at du enten kan få varen repareret, ombyttet, pengene tilbage eller et afslag i prisen, afhængig af den konkrete situation.</p>
+            <p class="top-side-padding">Du skal reklamere inden for ”rimelig tid” efter, at du har opdaget fejlen. Hvis du reklamerer inden for to måneder efter, at fejlen er opdaget, vil reklamationen altid være rettidig.</p>
+            <p class="top-side-padding">Er reklamationen berettiget, refunderer vi dine (rimelige) fragtomkostninger. Varen skal altid sendes tilbage i forsvarlig emballage. Husk også at få en kvittering for afsendelse, så vi kan tilbagebetale dine fragtomkostninger.</p>
             <div class="pushed-text">
                 <h2>
                     Send en email til mail@nykant.dk med:
                 </h2>
+                <p><span class="bold-text inline right-side-padding">-</span>navn og adresse</p>
                 <p><span class="bold-text inline right-side-padding">-</span>ordrenummer</p>
-                <p><span class="bold-text inline right-side-padding">-</span>Beskrivelse af reklamationen</p>
+                <p><span class="bold-text inline right-side-padding">-</span>Beskrivelse af problemet</p>
                 <p><span class="bold-text inline right-side-padding">-</span>Billeder af problemet</p>
             </div>
 
+            <h2>Varen sendes til:</h2>
+            <p>Gislev Drejerforretning</p>
+            <p>Byvejen 21, Køng</p>
+            <p>5620 Glamsbjerg</p>
+            <p>Danmark</p>
 
-            <p></p>
+            <p class="top-side-padding">
+                Vi modtager kun pakker, som sendes direkte til adressen.
+
+            </p>
+            <p>Når du returnerer varen, bedes du vedlægge en detaljeret beskrivelse af problemet.</p>
         </div>
         <div>
-            <h1>7. Personoplysninger</h1>
-            <p>Nykants databeskyttelsespolitik kan læses <a class="simple-link" asp-controller="Home" asp-action="PrivacyPolicy">her</a>.</p>
+            <h1>Force Majeure og andre forhold</h1>
+            <p>I tilfælde af forsinkelse, restordre eller udsolgte varer, bestræber vi os på hurtigst muligt at informere dig herom, og hvad vi kan gøre i sagen.</p>
+            <p>
+                Hvis en pris er åbenlyst forkert, og du rimeligvis burde have opdaget dette, er vi ikke forpligtet til at levere det pågældende produkt til den forkerte pris.
+            </p>
+            <p class="top-side-padding">
+                Nykant forbeholder sig retten til at kunne annullere ordren, hvis der foreligger force majeure
+                Force majeure foreligger, når korrekt opfyldelse af aftalevilkårene er umulig, og dette skyldes ekstraordinære omstændigheder, som leverandøren ikke kunne afbøde og ikke burde have forudset f.eks. krig, usædvanlige naturbegivenheder, brand, strejker, lockouts og pandemi.
+                Når du har afgivet en bestilling via hjemmesiden, vil Nykants system sende dig en ordrebekræftelse. Du bør læse ordrebekræftelsen nøje igennem og tjekke, at den stemmer overens med bestillingen.
+            </p>
+        </div>
+
+        <div>
+            <h1>Klageadgang</h1>
+            <p>Hvis du som forbruger vil klage over dit køb, skal du kontakte mail@nykant.dk. Hvis det ikke lykkes os at finde en løsning, kan du sende en klage til:</p>
+
+            <p class="top-side-padding">
+                Center for Klageløsning
+            </p>
+            <p>Nævnenes Hus</p>
+            <p>Toldboden 2</p>
+            <p>8800 Viborg</p>
+            <a href="https://www.naevneneshus.dk">www.naevneneshus.dk</a>
+
+            <p class="top-side-padding">Har du bopæl i et andet EU-land end Danmark, kan du klage til EU-Kommissionens online klageportal her - <a href="https://ec.europa.eu/odr">https://ec.europa.eu/odr</a> </p>
         </div>
         <div>
-            <h1>8. Tvister</h1>
-            <p>Hvis du er utilfreds med Nykants håndtering af en reklamation eller andet, skal du først forsøge at løse tvisten direkte med os. Såfremt dette ikke lykkes, kan du indbringe sagen for Nævnenes Hus på <a class="simple-link" href="https://www.naevneneshus.dk">www.naevneneshus.dk</a> og herefter Forbrugerklagenævnet eller gøre brug af Europa-Kommissionens online klageportal ("ODR"). Alle tvister skal afgøres i henhold til dansk ret. Såfremt sagen indbringes for domstolene, skal den afgøres ved dit hjemting, dvs. i nærheden af, hvor du bor.</p>
-        </div>
-        <div>
-            <h1>9. Ændring af vilkår</h1>
-            <p>Ændrer vi vores vilkår, samtykker og politikker, og har det væsentlig betydning for dig og dine købte ydelser, orienterer vi dig via e-mail. Du kan altid se de gældende vilkår på vores hjemmeside.</p>
+            <h1>Persondatapolitik </h1>
+            <p>Vi har brug for følgende oplysninger, når du handler hos os:</p>
+            <p>Navn, adresse, tlf.nr. og mailadresse.</p>
+            <p class="top-side-padding">
+                Vi registrerer og videregiver de personoplysninger, som er nødvendige for at kunne levere varen til dig.
+            </p>
+            <p class="top-side-padding">
+                Personoplysningerne registreres hos Nykant ApS og opbevares i fem år, hvorefter oplysningerne slettes.
+            </p>
+            <p>Vi samarbejder herudover med en række andre virksomheder, som opbevarer og behandler data.</p>
+            <p>Virksomhederne behandler udelukkende oplysninger på vores vegne og må ikke bruge dem til egne formål.</p>
+            <p class="top-side-padding">
+                Vi samarbejder kun med databehandlere i EU eller i lande, der kan give dine oplysninger en tilstrækkelig beskyttelse.
+            </p>
+            <p class="top-side-padding">
+                Den dataansvarlige på nykant.dk er Nykant ApS.
+            </p>
+            <p>Du har ret til at få oplyst, hvilke oplysninger vi behandler om dig.</p>
+            <p>
+                Hvis du mener, at oplysningerne er unøjagtige, har du ret til at få dem rettet. I nogle tilfælde har vi pligt til at slette dine persondata, hvis du beder om det. Det kan f.eks. være hvis dine data ikke længere er nødvendige i forhold til det formål, som vi skulle bruge dem til. Du kan også kontakte os, hvis du mener, at dine persondata bliver behandlet i strid med lovgivningen. Du kan skrive til os på: mail@nykant.dk.
+            </p>
+            <p>Du kan læse mere om vores persondatapolitik her: <a href="https://nykant.dk/Privatlivs-Politik">https://nykant.dk/Privatlivs-Politik</a></p>
         </div>
         @*@if (localizer["TermsAndConditions"] == null)
-        {
+            {
 
-        }
-        else
-        {
-            @localizer["TermsAndConditions"]
-        }*@
-
+            }
+            else
+            {
+                @localizer["TermsAndConditions"]
+            }*@
+        <div>
+            <p class="text-center">Handelsbetingelserne er senest opdateret d. 30.05.2022</p>
+        </div>
     </div>
 </div>

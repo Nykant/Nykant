@@ -199,6 +199,27 @@
     transition: left ease .05s;*/
 }
 
+#follow-box-about {
+    padding: 10px;
+    position: absolute;
+    border: 1px solid var(--black-fade);
+    background: white;
+    text-align: center;
+    line-height: 50px;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+    transition: height ease 1s;
+    font-size: 20px;
+    transform: scale(0.6);
+    transition:transform ease .3s;
+}
+
+#follow-box-about:hover {
+    font-weight:normal;
+    transform:scale(1);
+}
+
 #follow-box {
     background: var(--color2);
 }
@@ -292,16 +313,16 @@
 }
 
 .about-us h1 {
-    font-size:30px;
+    font-size:35px;
     padding-bottom:30px;
 }
 
     .about-us p {
-        line-height:40px;
+        line-height:normal;
         display:table;
         margin: 0px auto 0px auto;
 /*        border: 1px solid black;*/
-        font-size: 18px;
+        font-size: 35px;
         opacity:1;
 /*        animation: about-us-in 1s ease;*/
         transition:all ease 1s;
