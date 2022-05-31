@@ -109,8 +109,25 @@ namespace NykantAPI.Controllers
                 _logger.LogError($"time: {DateTime.Now} - {e.Message}");
                 return BadRequest();
             }
+        }
 
+        [HttpGet("{categoryId}")]
+        public ActionResult<IQueryable<Product>> GetRelatedProducts(int categoryId)
+        {
+            try
+            {
+                var products = _context.Products
+                    .Where(x => x.Category.Id == categoryId);
 
+                var json = JsonConvert.SerializeObject(products, Extensions.JsonOptions.jsonSettings);
+
+                return Ok(json);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
+                return BadRequest();
+            }
         }
 
         [HttpPatch]

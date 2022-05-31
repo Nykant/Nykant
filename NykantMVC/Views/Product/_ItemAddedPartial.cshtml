@@ -1,4 +1,4 @@
-﻿@model Product
+﻿@model ProductVM
 
 <div id="bagitem-added" class="centered">
     <div id="bagitem-added-close">
@@ -10,18 +10,18 @@
         <p>Produkt tilføjet til din kurv</p>
         <div class="bagitem-added-product">
             <div class="bag-item-img">
-                <img src="../@Model.GalleryImage1" />
+                <img src="../@Model.Product.GalleryImage1" />
             </div>
-            @if (Model.Length != null)
+            @if (Model.Product.Length != null)
             {
-                <p class="width-70">(@ViewBag.ProductQuantity) @Model.Name <br /> @Model.Length <br /> @Model.Oil</p>
+                <p class="width-70">(@ViewBag.ProductQuantity) @Model.Product.Name <br /> @Model.Product.Length <br /> @Model.Product.Oil</p>
             }
             else
             {
-                <p class="width-70">(@ViewBag.ProductQuantity) @Model.Name <br /> @Model.Oil</p>
+                <p class="width-70">(@ViewBag.ProductQuantity) @Model.Product.Name <br /> @Model.Product.Oil</p>
             }
 
-            <p class="width-20">kr. @(Model.Price * ViewBag.ProductQuantity)</p>
+            <p class="width-20">kr. @(Model.Product.Price * ViewBag.ProductQuantity)</p>
         </div>
     }
 

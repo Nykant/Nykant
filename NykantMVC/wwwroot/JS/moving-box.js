@@ -13,7 +13,7 @@
             x = e.clientX - rect.left;
             y = e.clientY - rect.top;
 
-            $("#follow-box").css({ 'left': x - 170, 'top': y - 80 });
+            $("#follow-box").css({ 'left': x - 150, 'top': y - 170 });
 
             //$("#follow-box").stop().animate({ left: x - 170, top: y - 80 }, {
             //    duration: 500,

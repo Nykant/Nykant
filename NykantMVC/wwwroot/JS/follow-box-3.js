@@ -13,7 +13,7 @@
             x = e.clientX - rect.left;
             y = e.clientY - rect.top;
 
-            $("#follow-box-baenk").css({ 'left': x - 170, 'top': y - 80 });
+            $("#follow-box-baenk").css({ 'left': x - 150, 'top': y - 170 });
 
             //$("#follow-box-baenk").stop().animate({ left: x - 170, top: y - 80 }, {
             //    duration: 500,

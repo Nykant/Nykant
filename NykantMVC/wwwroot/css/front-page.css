@@ -28,6 +28,11 @@
     user-select:none;
 }
 
+.slideshow-button img {
+height:50px;
+width:50px;
+}
+
 #slideshow-prev {
     left: 0;
     top: 0;
@@ -126,13 +131,13 @@
 
 @keyframes zikzak {
     0% {
-        transform:translateX(-20%);
+        transform:translateX(-10%);
     }
     50% {
-        transform: translateX(+20%);
+        transform: translateX(+10%);
     }
     100% {
-        transform: translateX(-20%);
+        transform: translateX(-10%);
     }
 }
 
@@ -156,6 +161,8 @@
 .info-row {
     margin-top:50px;
     background: white;
+
+
 /*    border:1px solid black;*/
 }
 
@@ -212,12 +219,12 @@
     transition: height ease 1s;
     font-size: 20px;
     transform: scale(0.6);
-    transition:transform ease .3s;
+    transition: transform ease .3s;
 }
 
-#follow-box-about:hover {
+#follow-container-about:hover #follow-box-about {
     font-weight:normal;
-    transform:scale(1);
+    transform:scale(0.8);
 }
 
 #follow-box {
@@ -304,10 +311,10 @@
 .about-us {
     color: var(--font1);
     padding:90px;
-    height:auto;
+    object-fit:fill;
     text-align:left;
     border-radius:10px;
-
+    background-color:var(--basish);
 /*    border:1px solid var(--black-fade);*/
 /*    background:var(--light-blue);*/
 }
@@ -322,7 +329,7 @@
         display:table;
         margin: 0px auto 0px auto;
 /*        border: 1px solid black;*/
-        font-size: 35px;
+        font-size: 25px;
         opacity:1;
 /*        animation: about-us-in 1s ease;*/
         transition:all ease 1s;
@@ -386,6 +393,22 @@
         padding-left: 30px;
         padding-right: 30px;
     }
+
+    .slideshow-button {
+        position: absolute;
+        height: 100%;
+        width: 50px;
+        z-index: 1000;
+        background: white;
+        opacity: 0.3;
+        cursor: pointer;
+        user-select: none;
+    }
+
+        .slideshow-button img {
+            height: 25px;
+            width: 25px;
+        }
 }
 
 @media only screen and (min-width: 600px) {

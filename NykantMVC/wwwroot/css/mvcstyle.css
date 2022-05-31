@@ -833,16 +833,16 @@ button span {
     }
 
     .background-lightblue {
-        background-color: var(--light-blue);
+        background-color: var(--light-blue) !important;
     }
 
-    .background-lightgrey {
-        background-color: var(--light-grey);
-    }
+.background-lightgrey {
+    background-color: var(--light-grey) !important;
+}
 
-    .background-basish {
-        background-color:var(--basish);
-    }
+.background-basish {
+    background-color: var(--basish) !important;
+}
 
 .background-color2 {
     background-color: var(--color2);

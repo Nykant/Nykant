@@ -1,0 +1,55 @@
+﻿#karusel {
+    height:300px;
+    overflow:hidden;
+}
+
+#karusel-box {
+    width:400%;
+}
+
+#karusel-box div {
+    width:32%;
+    height:100%;
+    display:inline-block;
+
+}
+
+    #karusel-box div a img {
+        max-width: 100%;
+        height: auto;
+        max-height:100%; 
+    }
+
+
+@media only screen and (max-width: 600px) {
+    #karusel {
+        width:100%;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    #karusel {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    #karusel {
+        width: 80%;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    #karusel {
+        width: 70%;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+}
+
+@media only screen and (min-width: 1500px) {
+}
+
+@media only screen and (min-width: 1780px) {
+}
