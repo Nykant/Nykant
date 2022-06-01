@@ -340,14 +340,17 @@ ol, ul {
     background: white;
     padding: 40px;
     margin: 50px;
+
 }
 
     .simple-info h1 {
-        font-size: 20px;
+        font-size: 30px;
         padding-bottom: 20px;
     }
 
     .simple-info p {
+        line-height: 40px;
+        font-size:20px;
     }
 
         .simple-info p a {
@@ -597,6 +600,10 @@ ol, ul {
 
     .top-side-padding {
         padding-top: 10px;
+    }
+
+    .top-padding-15 {
+        padding-top:15px;
     }
 
     .left-side-padding {

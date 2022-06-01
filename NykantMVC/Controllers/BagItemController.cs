@@ -48,6 +48,9 @@ namespace NykantMVC.Controllers
                     Product product = JsonConvert.DeserializeObject<Product>(json);
                     bagItem.Product = product;
 
+                    //var relatedProductsJson = await GetRequest($"/Product/GetRelatedProducts/{product.CategoryId}");
+                    //var relatedProducts = JsonConvert.DeserializeObject<List<Product>>(relatedProductsJson);
+
                     List<BagItem> bagItems = HttpContext.Session.Get<List<BagItem>>(BagSessionKey);
                     if (bagItems == default || bagItems == null)
                     {
@@ -72,8 +75,14 @@ namespace NykantMVC.Controllers
 
                     HttpContext.Session.Set<List<BagItem>>(BagSessionKey, bagItems);
 
+                    var productVM = new ProductVM
+                    {
+                        Product = product
+                        //RelatedProducts = relatedProducts
+                    };
+
                     ViewBag.ProductQuantity = bagItem.Quantity;
-                    ViewData.Model = bagItem.Product;
+                    ViewData.Model = productVM;
                     return new PartialViewResult
                     {
                         ViewName = "/Views/Product/_ItemAddedPartial.cshtml",
@@ -89,6 +98,7 @@ namespace NykantMVC.Controllers
                     {
                         bagItemQuantity += 1;
                         HttpContext.Session.Set<int>(BagItemAmountKey, bagItemQuantity);
+
 
                         ViewBag.ProductQuantity = bagItem.Quantity;
                         ViewData.Model = bagItem.Product;

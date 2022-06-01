@@ -216,7 +216,7 @@ namespace NykantMVC.Friends
                     return "Til leveringsaddressen med GLS.";
 
                 case 2:
-                    return "Til leveringsaddressen med DKI Pallegods.";
+                    return "Til leveringsaddressen med DKI.";
 
                 default:
                     return null;

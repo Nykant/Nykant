@@ -1,23 +1,41 @@
 ﻿#karusel {
-    height:300px;
-    overflow:hidden;
+    height: 300px;
+    width:100%;
+    overflow: hidden;
+    z-index: 0;
+    position: relative;
+    text-align: center;
+    margin: auto;
+    background:white;
+    border-radius:60px;
+
 }
 
 #karusel-box {
-    width:400%;
+    height: 100%;
+    clear: both;
+    position: relative;
+    -webkit-transition: transform 1s;
+    -moz-transition: transform 1s;
+    -o-transition: transform 1s;
+    transition: transform 1s;
 }
 
-#karusel-box div {
-    width:32%;
-    height:100%;
-    display:inline-block;
-
-}
+    #karusel-box div {
+        width: 33.3333%;
+        height: 100%;
+        float: left;
+        margin: 0px;
+        padding: 0px;
+        position: relative;
+    }
 
     #karusel-box div a img {
         max-width: 100%;
         height: auto;
-        max-height:100%; 
+        max-height: 100%;
+        object-fit: cover;
+        object-position: center;
     }
 
 
