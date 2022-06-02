@@ -46,8 +46,10 @@ namespace NykantMVC.Services
                 email.Subject = "Ordrebekræftelse";
 
                 var bodyBuilder = new BodyBuilder();
-                byte[] pdfBytes = System.IO.File.ReadAllBytes("wwwroot/pdf/standardfortrydelsesformular.pdf");
-                bodyBuilder.Attachments.Add("fortrydelsesformular.pdf", pdfBytes, new MimeKit.ContentType("application", "pdf"));
+                byte[] agreementBytes = System.IO.File.ReadAllBytes("wwwroot/pdf/Handelsbetingelser.pdf");
+                byte[] regretBytes = System.IO.File.ReadAllBytes("wwwroot/pdf/standardfortrydelsesformular.pdf");
+                bodyBuilder.Attachments.Add("Handelsbetingelser.pdf", agreementBytes, new MimeKit.ContentType("application", "pdf"));
+                bodyBuilder.Attachments.Add("Standardfortrydelsesformular.pdf", regretBytes, new MimeKit.ContentType("application", "pdf"));
                 //for (int i = 0; i < order.OrderItems.Count(); i++)
                 //{
                 //    var image = bodyBuilder.LinkedResources.Add(order.OrderItems[i].Product.Path);
@@ -55,6 +57,40 @@ namespace NykantMVC.Services
                 //    order.OrderItems[i].ContentId = image.ContentId;
                 //}
                 string body = await _razorViewToStringRenderer.RenderViewToStringAsync("/Views/Shared/EmailViews/OrderEmail.cshtml", order);
+
+                bodyBuilder.HtmlBody = body;
+                email.Body = bodyBuilder.ToMessageBody();
+
+                using var smtp = new SmtpClient();
+                smtp.Connect(_mailSettings.Host, _mailSettings.Port, SecureSocketOptions.StartTls);
+                smtp.Authenticate(_mailSettings.Username, _mailSettings.Password);
+                await smtp.SendAsync(email);
+                smtp.Disconnect(true);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
+            }
+        }
+
+        public async Task SendRegretEmailAsync(Regret regret)
+        {
+            try
+            {
+                var email = new MimeMessage();
+                email.From.Add(MailboxAddress.Parse(_mailSettings.Mail));
+                email.Sender = MailboxAddress.Parse(_mailSettings.Mail);
+                email.To.Add(MailboxAddress.Parse(_mailSettings.Me));
+                email.Subject = "Fortrydelse";
+
+                var bodyBuilder = new BodyBuilder();
+                //for (int i = 0; i < order.OrderItems.Count(); i++)
+                //{
+                //    var image = bodyBuilder.LinkedResources.Add(order.OrderItems[i].Product.Path);
+                //    image.ContentId = MimeUtils.GenerateMessageId();
+                //    order.OrderItems[i].ContentId = image.ContentId;
+                //}
+                string body = await _razorViewToStringRenderer.RenderViewToStringAsync("/Views/Shared/EmailViews/RegretEmail.cshtml", regret);
 
                 bodyBuilder.HtmlBody = body;
                 email.Body = bodyBuilder.ToMessageBody();
@@ -238,6 +274,7 @@ namespace NykantMVC.Services
         Task SendOrderEmailAsync(Order order);
         Task SendDKIEmailAsync(Order order);
         Task SendInvoiceEmailAsync(PaymentCapture paymentCapture);
+        Task SendRegretEmailAsync(Regret regret);
         //Task SendEmailAsync(SimpleMail simpleMail);
     }
 }

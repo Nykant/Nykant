@@ -1,6 +1,6 @@
 ﻿@inject IViewLocalizer localizer
 @inject IConfiguration conf
-
+@model Regret
 @{
     ViewData["Title"] = "Nykants Salgs- Og Leveringsbetingelser";
     ViewData["Description"] = "Nykants betingelser for salg og levering.";
@@ -9,6 +9,7 @@
 }
 
 <link rel="stylesheet" href="~/css/privacy.css?1" />
+<link rel="stylesheet" href="~/css/regretstyle.css" />
 
 <div class="my-row background-color2">
     <div class="privacy-header center">
@@ -68,7 +69,7 @@
         <div>
             <h1>Levering</h1>
             <p>
-                Der kan ikke vælges forskellige leveringsmuligheder, dvs. at ordrer med varer der vejer over 20 kg. leveres på leveringsadressen via DKI og ordrer uden varer over 20 kg. leveres på leveringsadressen via GLS.
+                Der kan ikke vælges forskellige leveringsmuligheder, dvs. at ordrer med varer der vejer over 20 kg. leveres via DKI og ordrer uden varer over 20 kg. leveres via GLS.
             </p>
             <p>
                 Vi leverer kun i danmark, og der er ingen leveringsomkostninger.
@@ -85,7 +86,7 @@
                 Som forbruger har du 14 dages fortrydelsesret, når du handler hos os.
             </p>
             <p class="top-side-padding">Fortrydelsesfristen udløber 14 dage efter den dag, du har modtaget din vare. Hvis du har bestilt flere forskellige varer i én ordre, men de leveres enkeltvist, løber fristen fra den dag, hvor du modtager den sidste vare.</p>
-            <p class="top-side-padding">Fristen indebærer, at du har 14 dage fra modtagelsen til at give os besked om, at du vil fortryde dit køb. <br />Du kan sende en mail til mail@nykant.dk eller benytte standardfortrydelsesformularen, som du finder vedlagt i ordrebekræftelsen eller kan downloades <a class="simple-link" href="@url/pdf/standardfortrydelsesformular.pdf"></a>her</p>.
+            <p class="top-side-padding">Fristen indebærer, at du har 14 dage fra modtagelsen til at give os besked om, at du vil fortryde dit køb, med tilstrækkelig og korrekt information til at kunne identificere dig og returvarerne. <br />Du kan sende en mail til mail@nykant.dk eller benytte standardfortrydelsesformularen, som du kan finde nederst i handelsbetingelserne, vedlagt i ordrebekræftelsen og kan downloades <a class="simple-link" href="@url/pdf/standardfortrydelsesformular.pdf">her</a>.</p>
             <p class="top-side-padding">
                 Du kan ikke fortryde købet ved at nægte at modtage varen uden samtidig at give os besked.
             </p>
@@ -107,10 +108,10 @@
             </p>
 
             <p>
-                Ved mindre pakker under 20kg, kan vi sende dig et returlabel til GLS pakkeshop via deres ShopReturn system. Prisen er deres(gls) normale pris for dette. Det beløb vil blive modregnet i det beløb du skal have retur. Du har fortsat selv ansvaret for pakken.
+                Ved mindre pakker under 20kg, kan vi tilbyde at sende dig et returlabel til GLS pakkeshop via deres ShopReturn system. Prisen er deres(gls) normale pris for dette, hvilket afhænger af vægt. Det beløb vil blive modregnet i det beløb du skal have retur. Du har fortsat selv ansvaret for pakken.
             </p>
             <p>
-                Ved større varer over 20 kg. Kan vi tilbyde at aftale med gls at de skal hente pakken hos dig via deres PickReturn system. Prisen er deres(gls) normale pris for dette. Det er en udgift du hæfter for, som vi vil modregne det beløb du skal have retur.
+                Ved større varer over 20 kg. Kan vi tilbyde at aftale med gls at de skal hente pakken hos dig via deres PickReturn system. Prisen er deres(gls) normale pris for dette, hvilket afhænger af vægt og distance, kan det varriere. Det er en udgift du hæfter for, som vi vil modregne det beløb du skal have retur.
             </p>
 
             <h2>Varens stand, når du sender den retur</h2>
@@ -134,7 +135,6 @@
 
             <p class="top-side-padding">
                 Vi modtager kun pakker, som sendes direkte til adressen.
-
             </p>
         </div>
         <div>
@@ -228,14 +228,79 @@
                 @localizer["TermsAndConditions"]
             }*@
 
-        <div class="responsive-col">
-            <form>
-                
+        <div class="bottom-padding top-padding">
+            <form class="padding regretform" method="post" data-ajax="true" data-ajax-method="post" data-ajax-complete="noop" data-ajax-begin="regret_begin" data-ajax-failure="regret_error" data-ajax-success="regret_succeed" asp-controller="Home" asp-action="RegretFormular">
+                @Html.AntiForgeryToken()
+                <h1 class="text-center">Fortrydelsesformular</h1>
+                <div class="top-padding">
+                    <p>
+                        Jeg meddeler herved, at jeg ønsker at gøre fortrydelsesretten gældende i forbindelse med min
+                        købsaftale om følgende varer:
+                    </p>
+                    <input class="width-100" required asp-for="@Model.Products" />
+                    <span asp-validation-for="@Model.Products"></span>
+                </div>
+
+                <div class="top-padding-15 width-49 inline">
+                    <p>Bestilt den:</p>
+                    <input class="width-100" required asp-for="@Model.OrderedDate" />
+                    <span asp-validation-for="@Model.OrderedDate"></span>
+                </div>
+                <div class="top-padding-15 left-side-padding width-49 inline">
+                    <p>Modtaget den:</p>
+                    <input class="width-100" required asp-for="@Model.ReceivedDate" />
+                    <span asp-validation-for="@Model.ReceivedDate"></span>
+                </div>
+                <div class="top-padding-15">
+                    <p>Ordrenummer</p>
+                    <input class="width-100" required asp-for="@Model.OrderId" />
+                    <span asp-validation-for="@Model.OrderId"></span>
+                </div>
+                <div class="top-padding-15">
+                    <p>Forbrugerens navn: </p>
+                    <input class="width-100" required asp-for="@Model.CustomerName" />
+                    <span asp-validation-for="@Model.CustomerName"></span>
+                </div>
+                <div class="top-padding-15">
+                    <p>Forbrugerens adresse:</p>
+                    <input class="width-100" required asp-for="@Model.CustomerAddress" />
+                    <span asp-validation-for="@Model.CustomerAddress"></span>
+                </div>
+                <div class="top-padding-15">
+                    <p>Forbrugerens email:</p>
+                    <input class="width-100" required asp-for="@Model.CustomerEmail" />
+                    <span asp-validation-for="@Model.CustomerEmail"></span>
+                </div>
+                <div class="top-padding-15">
+                    <p>Dato:</p>
+                    <input class="width-100" required asp-for="@Model.Date" />
+                    <span asp-validation-for="@Model.Date"></span>
+                </div>
+
+                <div class="width-100">
+                    <button type="submit" id="regret-button">
+                        <div id="error-regret" class="loading-error">
+                            <i class="fas fa-times"></i>
+                        </div>
+                        <div id="regret-spinner" class="hidden">
+                            <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                        </div>
+                        <div class="loading-check-sign" id="regret-check-sign">
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                        </div>
+                        <div id="regret-text">
+                            Send
+                        </div>
+                    </button>
+                </div>
+
             </form>
         </div>
 
         <div>
-            <p class="text-center">Handelsbetingelserne er senest opdateret d. 30.05.2022</p>
+            <p class="text-center">Handelsbetingelserne er senest opdateret d. 02.06.2022</p>
         </div>
     </div>
 </div>
+
+<script src="~/JS/regret.js"></script>

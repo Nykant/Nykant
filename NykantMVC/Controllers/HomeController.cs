@@ -58,7 +58,7 @@ namespace NykantMVC.Controllers
             return View(new List<Category>());
         }
 
-        [Route("Cookie-Politik")]
+        [Route("Cookiepolitik")]
         public async Task<IActionResult> CookiePolicy()
         {
             var json = await GetRequest("/Cookie/GetCookies");
@@ -88,13 +88,13 @@ namespace NykantMVC.Controllers
         //    return View();
         //}
 
-        [Route("Privatlivs-Politik")]
+        [Route("Persondatapolitik")]
         public IActionResult PrivacyPolicy()
         {
             return View();
         }
 
-        [Route("Salgs-Og-Leveringsbetingelser")]
+        [Route("Handelsbetingelser")]
         public IActionResult TermsAndConditions()
         {
             return View();
@@ -373,6 +373,22 @@ namespace NykantMVC.Controllers
                 return Json("Success");
             }
             catch(Exception e)
+            {
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
+                return Json("Error");
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RegretFormular(Regret regret)
+        {
+            try
+            {
+                await mailService.SendRegretEmailAsync(regret);
+
+                return Json("Success");
+            }
+            catch (Exception e)
             {
                 _logger.LogError($"time: {DateTime.Now} - {e.Message}");
                 return Json("Error");

@@ -1,0 +1,16 @@
+﻿#regret-button {
+    width:100%;
+    border-radius:5px;
+    margin-top:20px;
+    height:50px;
+    background:var(--color3);
+}
+
+.regretform {
+
+}
+
+.regretform input {
+    padding:5px;
+    border-radius:5px;
+}
