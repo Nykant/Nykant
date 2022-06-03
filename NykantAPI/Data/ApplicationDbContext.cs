@@ -32,7 +32,8 @@ namespace NykantAPI.Data
         public DbSet<Invoice> Invoices { get; set; }
         public DbSet<Consent> Consents { get; set; }
         public DbSet<PaymentCapture> PaymentCaptures { get; set; }
-
+        public DbSet<Refund> Refunds { get; set; }
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //modelBuilder.Entity<Order>().HasOne(x => x.Invoice);

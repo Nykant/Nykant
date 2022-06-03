@@ -1,0 +1,16 @@
+﻿#refund-div {
+    display:none;
+    z-index:100;
+    background:white;
+    border:5px solid var(--black-fade);
+    padding:80px;
+    width:400px;
+}
+
+#refund-div div {
+    margin-top:20px;
+}
+
+#refund-div button {
+    margin-top:20px;
+}

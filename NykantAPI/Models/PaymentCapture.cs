@@ -13,6 +13,8 @@ namespace NykantAPI.Models
         public Order Order { get; set; }
         public string PaymentIntent_Id { get; set; }
         public bool Captured { get; set; }
+        public bool Refunded { get; set; }
+        public Refund Refund { get; set; }
         public Invoice Invoice { get; set; }
         public int CustomerId { get; set; }
         public Customer Customer { get; set; }

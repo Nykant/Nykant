@@ -245,6 +245,32 @@ namespace NykantMVC.Services
             
         }
 
+        public async Task SendRefundEmailAsync(PaymentCapture paymentCapture)
+        {
+            try
+            {
+                var email = new MimeMessage();
+                email.From.Add(MailboxAddress.Parse(_mailSettings.Mail));
+                email.Sender = MailboxAddress.Parse(_mailSettings.Mail);
+                email.To.Add(MailboxAddress.Parse(paymentCapture.Customer.Email));
+                email.Subject = "Refunderet";
+                var bodyBuilder = new BodyBuilder();
+                string body = await _razorViewToStringRenderer.RenderViewToStringAsync("/Views/Shared/EmailViews/RefundEmail.cshtml", paymentCapture);
+                bodyBuilder.HtmlBody = body;
+                email.Body = bodyBuilder.ToMessageBody();
+                using var smtp = new SmtpClient();
+                smtp.Connect(_mailSettings.Host, _mailSettings.Port, SecureSocketOptions.StartTls);
+                smtp.Authenticate(_mailSettings.Username, _mailSettings.Password);
+                await smtp.SendAsync(email);
+                smtp.Disconnect(true);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
+            }
+
+        }
+
         //public async Task SendEmailAsync(SimpleMail simpleMail)
         //{
         //    var email = new MimeMessage();
@@ -275,6 +301,7 @@ namespace NykantMVC.Services
         Task SendDKIEmailAsync(Order order);
         Task SendInvoiceEmailAsync(PaymentCapture paymentCapture);
         Task SendRegretEmailAsync(Regret regret);
+        Task SendRefundEmailAsync(PaymentCapture paymentCapture);
         //Task SendEmailAsync(SimpleMail simpleMail);
     }
 }

@@ -1,0 +1,13 @@
+﻿@model List<PaymentCapture>
+@{
+    ViewData["Title"] = "Sendte Ordrer";
+    ViewData["Description"] = "";
+}
+
+<link rel="stylesheet" href="~/css/my-list.css" />
+
+<div class="my-row top-padding bottom-padding">
+    <div class="col-8 center" id="sent-orders">
+        <partial name="_SentOrderListPartial" />
+    </div>
+</div>

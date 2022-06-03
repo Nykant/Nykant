@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NykantAPI.Data;
 
 namespace NykantAPI.data.migrations.local
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220603090858_refund")]
+    partial class refund
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -3252,12 +3254,18 @@ namespace NykantAPI.data.migrations.local
                     b.Property<string>("PaymentIntent_Id")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("RefundId")
+                        .HasColumnType("int");
+
                     b.Property<bool>("Refunded")
                         .HasColumnType("bit");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
+
+                    b.HasIndex("RefundId")
+                        .IsUnique();
 
                     b.ToTable("PaymentCaptures");
                 });
@@ -4666,9 +4674,6 @@ namespace NykantAPI.data.migrations.local
                     b.Property<int>("Amount")
                         .HasColumnType("int");
 
-                    b.Property<int>("PaymentCaptureId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Products")
                         .HasColumnType("nvarchar(max)");
 
@@ -4679,9 +4684,6 @@ namespace NykantAPI.data.migrations.local
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("PaymentCaptureId")
-                        .IsUnique();
 
                     b.ToTable("Refunds");
                 });
@@ -4855,6 +4857,12 @@ namespace NykantAPI.data.migrations.local
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("NykantAPI.Models.Refund", "Refund")
+                        .WithOne("PaymentCapture")
+                        .HasForeignKey("NykantAPI.Models.PaymentCapture", "RefundId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("NykantAPI.Models.Product", b =>
@@ -4871,15 +4879,6 @@ namespace NykantAPI.data.migrations.local
                     b.HasOne("NykantAPI.Models.Product", "Product")
                         .WithMany("ProductLengths")
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("NykantAPI.Models.Refund", b =>
-                {
-                    b.HasOne("NykantAPI.Models.PaymentCapture", "PaymentCapture")
-                        .WithOne("Refund")
-                        .HasForeignKey("NykantAPI.Models.Refund", "PaymentCaptureId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

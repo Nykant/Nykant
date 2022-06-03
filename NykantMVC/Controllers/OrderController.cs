@@ -39,6 +39,15 @@ namespace NykantMVC.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpGet]
+        public async Task<IActionResult> SentOrders()
+        {
+            var json = await GetRequest("/PaymentCapture/GetPaymentCaptures");
+            List<PaymentCapture> list = JsonConvert.DeserializeObject<List<PaymentCapture>>(json);
+            return View(list);
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
         public async Task<IActionResult> AllOrders()
         {
             var json = await GetRequest("/Order/GetOrders");
@@ -309,7 +318,7 @@ namespace NykantMVC.Controllers
                     invoice = JsonConvert.DeserializeObject<Models.Invoice>(invoiceJson);
                     paymentCapture.Invoice = invoice;
 
-                    mailService.SendInvoiceEmailAsync(paymentCapture).ConfigureAwait(false);
+                    await mailService.SendInvoiceEmailAsync(paymentCapture);
 
                     response = await PatchRequest("/PaymentCapture/UpdatePaymentCapture", paymentCapture);
                     if (!response.IsSuccessStatusCode)
@@ -328,6 +337,75 @@ namespace NykantMVC.Controllers
             {
                 _logger.LogError($"time: {DateTime.Now} - error: {e.Message}");
             }
+        }
+
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> RefundPaymentIntent(int paymentCaptureId, string refundedProducts, int refundAmount, int qualityFee, int returnFee)
+        {
+            try
+            {
+                var json = await GetRequest($"/PaymentCapture/GetPaymentCapture/{paymentCaptureId}");
+                var paymentCapture = JsonConvert.DeserializeObject<PaymentCapture>(json); // check customer data we need
+
+                StripeConfiguration.ApiKey = conf["StripeSKKey"];
+                var service = new RefundService();
+                var stripeRefund = await service.CreateAsync(new RefundCreateOptions
+                {
+                     PaymentIntent = paymentCapture.PaymentIntent_Id,
+                     Amount = refundAmount * 100,
+                     Reason = "requested_by_customer"
+                });
+
+                if (stripeRefund.StripeResponse.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    paymentCapture.Refunded = true;
+
+                    var refund = new Models.Refund
+                    {
+                        PaymentCaptureId = paymentCapture.Id,
+                        Products = refundedProducts,
+                        Amount = refundAmount,
+                        QualityFee = qualityFee,
+                        ReturnFee = returnFee
+                    };
+
+                    var response = await PostRequest("/Refund/PostRefund/", refund);
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        _logger.LogError($"time: {DateTime.Now} - error: {response.StatusCode + response.ReasonPhrase}");
+                    }
+                    var refundJson = await GetRequest(response.Headers.Location.AbsolutePath);
+                    refund = JsonConvert.DeserializeObject<Models.Refund>(refundJson);
+                    paymentCapture.Refund = refund;
+
+                    await mailService.SendRefundEmailAsync(paymentCapture);
+
+                    response = await PatchRequest("/PaymentCapture/UpdatePaymentCapture", paymentCapture);
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        _logger.LogError($"time: {DateTime.Now} - error: {response.StatusCode + response.ReasonPhrase}");
+                    }
+
+                    json = await GetRequest($"/PaymentCapture/GetPaymentCaptures");
+                    var paymentCaptures = JsonConvert.DeserializeObject<List<PaymentCapture>>(json);
+                    ViewData.Model = paymentCaptures;
+                    return new PartialViewResult
+                    {
+                        ViewName = "/Views/Order/_SentOrderListPartial.cshtml",
+                        ViewData = this.ViewData
+                    };
+                }
+                else
+                {
+                    _logger.LogError($"time: {DateTime.Now} - error: {stripeRefund.StripeResponse.StatusCode}");
+                }
+
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"time: {DateTime.Now} - error: {e.Message}");
+            }
+            return Content("error: Refund Payment Intent");
         }
     }
 }

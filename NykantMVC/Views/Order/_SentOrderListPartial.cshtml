@@ -1,0 +1,71 @@
+﻿@{
+    List<PaymentCapture> list = ViewData.Model;
+    list.Reverse();
+}
+
+<link rel="stylesheet" href="~/css/refund.css" />
+
+<h1 class="list-h1">Sendte Ordrer</h1>
+<table class="my-list">
+    <tr class="no-hover">
+        <th>Id</th>
+        <th>Lavet</th>
+        <th>Leveringsdato</th>
+        <th>Status</th>
+        <th>Refunded</th>
+        <th></th>
+    </tr>
+    @foreach (var paymentCapture in list)
+    {
+        if (paymentCapture.Order.Status == Status.Sent)
+        {
+            TimeSpan deliveryTimeSpan = paymentCapture.Order.EstimatedDelivery.Subtract(DateTime.Now);
+            <tr>
+                <td> @paymentCapture.Order.Id</td>
+                <td>
+                    @paymentCapture.Order.CreatedAt
+                </td>
+                <td>@((int)deliveryTimeSpan.TotalDays) dage</td>
+                <td> @paymentCapture.Order.Status </td>
+                <td>@paymentCapture.Refunded</td>
+                <td>
+                    <button onclick="refund(this)" data-paymentCaptureId="@paymentCapture.Id">Refund</button>
+                </td>
+            </tr>
+        }
+    }
+</table>
+
+
+<div class="absolute-center" id="refund-div">
+    <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#sent-orders" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" data-ajax-success="noop" asp-controller="Order" asp-action="RefundPaymentIntent">
+        <div>
+            <label>Payment Capture ID</label>
+            <input id="paymentCaptureId" name="paymentCaptureId" />
+        </div>
+
+        <div>
+            <label>Refunded Products</label>
+            <input name="refundedProducts" value="" />
+        </div>
+
+        <div>
+            <label>Refund Amount</label>
+            <input name="refundAmount" value="0" />
+        </div>
+
+        <div>
+            <label>Quality Fee</label>
+            <input name="qualityFee" value="0" />
+        </div>
+
+        <div>
+            <label>Return Fee</label>
+            <input name="returnFee" value="0" />
+        </div>
+
+        <button type="submit">Submit Refund</button>
+    </form>
+</div>
+
+<script src="~/JS/refund.js"></script>
