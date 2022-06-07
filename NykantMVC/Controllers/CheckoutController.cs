@@ -33,7 +33,7 @@ namespace NykantMVC.Controllers
 
         [Route("Kassen")]
         [HttpGet]
-        public async Task<IActionResult> Checkout()
+        public async Task<IActionResult> Checkout(string coupon)
         {
             try
             {

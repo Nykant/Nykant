@@ -1,0 +1,46 @@
+﻿@{
+    List<Coupon> list = ViewData.Model;
+    list.Reverse();
+}
+
+<h1 class="list-h1">Coupons</h1>
+<table class="my-list">
+    <tr class="no-hover">
+        <th>Code</th>
+        <th>Discount</th>
+        <th>Enabled</th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+    @foreach (var coupon in list)
+    {
+
+<tr>
+    <td> @coupon.Code</td>
+    <td>
+        @coupon.Discount
+    </td>
+    <td>@coupon.Enabled</td>
+    <td>
+        <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#couponlist" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" data-ajax-success="noop" asp-controller="Coupon" asp-action="Enable">
+            <input hidden asp-for="@coupon.Code" />
+            <button type="submit">Enable</button>
+        </form>
+    </td>
+    <td>
+        <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#couponlist" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" data-ajax-success="noop" asp-controller="Coupon" asp-action="Disable">
+            <input hidden asp-for="@coupon.Code" />
+            <button type="submit">Disable</button>
+        </form>
+    </td>
+    <td>
+        <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#couponlist" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" data-ajax-success="noop" asp-controller="Coupon" asp-action="Delete">
+            <input hidden name="code" value="@coupon.Code" />
+            <button type="submit">Delete</button>
+        </form>
+    </td>
+</tr>
+
+    }
+</table>

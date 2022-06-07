@@ -18,10 +18,25 @@
             </div>
         </div>
         <div class="col-3 left" id="checkout-box">
-            <div class="order-info">
+            <div class="order-info" id="order-info">
+                @if(ViewBag.CouponResponse != null)
+            {
+                <p>@ViewBag.CouponResponse</p>
+            }
+                <p id="price-info" class="width-20">@localizer["Rabat"]</p>
+                <p id="total-price-text" class="width-70 align-right">kr. @ViewBag.Discount</p>
+                <p id="price-info" class="width-20">@localizer["Momsgrundlag"]</p>
+                <p id="total-price-text" class="width-70 align-right">kr. @ViewBag.TaxlessPrice</p>
+                <p id="price-info" class="width-20">@localizer["Momsbeløb(25%)"]</p>
+                <p id="total-price-text" class="width-70 align-right">kr. @ViewBag.Taxes</p>
                 <p id="price-info" class="width-20">@localizer["I Alt"]</p>
                 <p id="total-price-text" class="width-70 align-right">kr. @ViewBag.PriceSum</p>
             </div>
+            <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#order-info" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" data-ajax-success="noop" asp-controller="Bag" asp-action="ActivateCoupon">
+                <input name="couponCode" placeholder="Rabat kode" />
+                <button type="submit">Anvend</button>
+            </form>
+
             <a asp-controller="Checkout" asp-action="Checkout">
                 <div class="button">
                     @localizer["Gå Til Kassen"]

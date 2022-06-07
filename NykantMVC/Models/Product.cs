@@ -33,5 +33,6 @@ namespace NykantMVC.Models
         public IEnumerable<ProductLength> ProductLengths { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; }
+        public IEnumerable<CouponForProduct> CouponForProducts { get; set; }
     }
 }

@@ -50,14 +50,26 @@ namespace NykantMVC.Controllers
                 }
                 else
                 {
+                    var total = OrderHelpers.CalculateAmount(bagItems);
+                    var taxes = total / 5;
+                    var taxlessPrice = total - taxes;
                     ViewBag.DeliveryInfo = OrderHelpers.DeliveryDateInfo(bagItems);
                     //var date = OrderHelpers.CalculateDeliveryDate(bagItems);
                     //ViewBag.DeliveryDate = $"{date.Day}-{date.Month}-{date.Year}";
-                    ViewBag.PriceSum = OrderHelpers.CalculateAmount(bagItems);
+                    ViewBag.Taxes = taxes;
+                    ViewBag.TaxlessPrice = taxlessPrice;
+                    ViewBag.Discount = 0;
+                    ViewBag.PriceSum = total;
                     return View(bagItems);
                 }
             }
         }
+
+        //[HttpPost]
+        //public async Task<IActionResult> ActivateCoupon(string couponCode)
+        //{
+
+        //}
 
         [HttpPost]
         public async Task<IActionResult> UpdateBagItem(BagItem bagItem, int selection)

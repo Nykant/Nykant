@@ -33,7 +33,9 @@ namespace NykantAPI.Data
         public DbSet<Consent> Consents { get; set; }
         public DbSet<PaymentCapture> PaymentCaptures { get; set; }
         public DbSet<Refund> Refunds { get; set; }
-        
+        public DbSet<Coupon> Coupons { get; set; }
+        public DbSet<CouponForProduct> CouponForProducts { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //modelBuilder.Entity<Order>().HasOne(x => x.Invoice);

@@ -1,0 +1,64 @@
+﻿@model Coupon
+@{
+    ViewData["Title"] = "Tilføj";
+    ViewData["Description"] = "";
+
+    List<Product> products = ViewBag.Products;
+}
+
+<div class="my-row padding">
+    <div class="responsive-col center">
+
+        <form method="post" asp-controller="Coupon" asp-action="Add">
+            <div class="top-padding">
+                <label>Code</label>
+                <input asp-for="@Model.Code" />
+            </div>
+
+            <div class="top-padding">
+                <label>Discount</label>
+                <input asp-for="@Model.Discount" />
+            </div>
+
+            <div class="top-padding">
+                <label>Enabled/Disabled</label>
+                <select asp-for="@Model.Enabled">
+                    <option>true</option>
+                    <option>false</option>
+                </select>
+            </div>
+
+            <div class="top-padding">
+                <label>For All Products</label>
+                <select asp-for="@Model.ForAllProducts">
+                    <option>true</option>
+                    <option>false</option>
+                </select>
+            </div>
+
+            <div class="top-padding">
+                <label>Coupon For Products</label>
+                <input name="couponForProducts" id="coupon-for-products" />
+            </div>
+
+            <div class="top-padding">
+                <select id="coupon-product-select">
+                    @foreach (var item in products)
+                    {
+                        <option data-id="@item.Id">@item.Name -- @item.Oil</option>
+                    }
+                </select>
+            </div>
+
+            <div class="top-padding">
+                <button type="submit">Add</button>
+            </div>
+        </form>
+
+
+
+
+    </div>
+</div>
+
+<script type="text/javascript" src="~/JS/coupon.js"></script>
