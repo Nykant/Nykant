@@ -45,6 +45,9 @@ namespace NykantMVC.Controllers
                     bagItems = new List<BagItem>();
                     ViewBag.DeliveryInfo = null;
                     //ViewBag.DeliveryDate = null;
+                    ViewBag.Taxes = 0;
+                    ViewBag.TaxlessPrice = 0;
+                    ViewBag.Discount = 0;
                     ViewBag.PriceSum = 0;
                     return View(bagItems);
                 }
@@ -65,11 +68,114 @@ namespace NykantMVC.Controllers
             }
         }
 
-        //[HttpPost]
-        //public async Task<IActionResult> ActivateCoupon(string couponCode)
-        //{
+        [HttpPost]
+        public async Task<IActionResult> ActivateCoupon(string couponCode)
+        {
+            try
+            {
+                var bagItems = HttpContext.Session.Get<List<BagItem>>(BagSessionKey);
+                if (bagItems == null)
+                {
+                    ViewBag.CouponResponse = "<p class='red-text'>Der er ingen varer i din kurv</p>";
+                    ViewBag.Taxes = 0;
+                    ViewBag.TaxlessPrice = 0;
+                    ViewBag.Discount = 0;
+                    ViewBag.PriceSum = 0;
+                }
+                else
+                {
+                    var total = OrderHelpers.CalculateAmount(bagItems);
+                    var taxes = total / 5;
+                    var taxlessPrice = total - taxes;
+                    var json = await GetRequest($"/Coupon/Get/{couponCode}");
+                    if (json == "null")
+                    {
+                        ViewBag.CouponResponse = "<p class='red-text'>Rabat koden findes ikke</p>";
+                        ViewBag.Discount = 0;
+                        ViewBag.TaxlessPrice = taxlessPrice;
+                        ViewBag.Taxes = taxes;
+                        ViewBag.PriceSum = total;
+                    }
+                    else
+                    {
+                        var coupon = JsonConvert.DeserializeObject<Coupon>(json);
 
-        //}
+                        if (coupon.Enabled)
+                        {
+                            if (coupon.ForAllProducts)
+                            {
+                                double discount = total * (double.Parse(coupon.Discount.ToString()) / 100);
+                                total = total - discount;
+                                taxes = total / 5;
+                                taxlessPrice = total - taxes;
+                                ViewBag.CouponCode = couponCode;
+                                ViewBag.DiscountPercentage = coupon.Discount;
+                                ViewBag.CouponResponse = "<p class='green-text'>Rabat koden er aktiveret</p>";
+                                ViewBag.Discount = discount;
+                                ViewBag.TaxlessPrice = taxlessPrice;
+                                ViewBag.Taxes = taxes;
+                                ViewBag.PriceSum = total;
+                            }
+                            else
+                            {
+                                var discountProducts = OrderHelpers.GetDiscountProducts(coupon.CouponForProducts, bagItems);
+                                if(discountProducts.Count == 0)
+                                {
+                                    ViewBag.CouponResponse = "<p class='red-text'>Rabat koden virker ikke på nogen af de produkter du har valgt</p>";
+                                    ViewBag.Discount = 0;
+                                    ViewBag.TaxlessPrice = taxlessPrice;
+                                    ViewBag.Taxes = taxes;
+                                    ViewBag.PriceSum = total;
+                                }
+                                else
+                                {
+                                    double discount = OrderHelpers.CalculateAmount(discountProducts) * (double.Parse(coupon.Discount.ToString()) / 100);
+                                    total = total - discount;
+                                    taxes = total / 5;
+                                    taxlessPrice = total - taxes;
+                                    ViewBag.CouponCode = couponCode;
+                                    ViewBag.DiscountPercentage = coupon.Discount;
+                                    if(discountProducts.Count == bagItems.Count)
+                                    {
+                                        ViewBag.CouponResponse = "<p class='green-text'>Rabat koden er aktiveret</p>";
+                                    }
+                                    else
+                                    {
+                                        ViewBag.CouponResponse = "<p class='green-text'>Rabat koden er aktiveret for nogle af produkterne i din kurv</p>";
+                                    }
+                                    
+                                    ViewBag.Discount = discount;
+                                    ViewBag.TaxlessPrice = taxlessPrice;
+                                    ViewBag.Taxes = taxes;
+                                    ViewBag.PriceSum = total;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            ViewBag.CouponResponse = "<p class='red-text'>Rabat koden er ikke aktiveret</p>";
+                            ViewBag.Discount = 0;
+                            ViewBag.TaxlessPrice = taxlessPrice;
+                            ViewBag.Taxes = taxes;
+                            ViewBag.PriceSum = total;
+                        }
+                    }
+                }
+
+                
+
+                return new PartialViewResult
+                {
+                    ViewName = "/Views/Bag/_OrderInfoPartial.cshtml",
+                    ViewData = this.ViewData
+                };
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"time: {DateTime.Now} - error: {e.Message}");
+                return Content("error: Delete Coupon Failed");
+            }
+        }
 
         [HttpPost]
         public async Task<IActionResult> UpdateBagItem(BagItem bagItem, int selection)

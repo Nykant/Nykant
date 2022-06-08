@@ -123,6 +123,32 @@
 
     }
 
+    .coupon-form {
+        width:100%;
+
+    }
+
+.coupon-form input {
+    width:59%;
+    display:inline-block;
+    border:none;
+    outline:none;
+    padding:5px;
+}
+
+.coupon-form button {
+    padding:5px;
+    width:38%;
+    display:inline-block;
+    border:none;
+    outline:none;
+    background:var(--color2);
+}
+
+        .coupon-form button:hover {
+            background: var(--color3);
+        }
+
 #add-bagitem button:hover {
     transform: scale(1.3);
 }

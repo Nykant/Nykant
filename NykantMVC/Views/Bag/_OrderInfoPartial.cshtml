@@ -1,0 +1,38 @@
+﻿@inject IViewLocalizer localizer
+
+<div class="order-info" id="order-info">
+
+    <p id="price-info" class="width-20">@localizer["Rabat"]</p>
+    <p id="total-price-text" class="width-70 align-right">kr. @ViewBag.Discount @if (ViewBag.Discount > 0) { <span class="inline">(@ViewBag.DiscountPercentage%)</span> }</p>
+    <p id="price-info" class="width-20">@localizer["Momsgrundlag"]</p>
+    <p id="total-price-text" class="width-70 align-right">kr. @ViewBag.TaxlessPrice</p>
+    <p id="price-info" class="width-20">@localizer["Momsbeløb(25%)"]</p>
+    <p id="total-price-text" class="width-70 align-right">kr. @ViewBag.Taxes</p>
+    <p id="price-info" class="width-20">@localizer["I Alt"]</p>
+    <p id="total-price-text" class="width-70 align-right">kr. @ViewBag.PriceSum</p>
+</div>
+<form class="coupon-form" method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#order-info-partial" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" data-ajax-success="noop" asp-controller="Bag" asp-action="ActivateCoupon">
+    <input name="couponCode" placeholder="Rabat kode" />
+    <button type="submit">Anvend</button>
+</form>
+@if (ViewBag.CouponResponse != null)
+{
+    @Html.Raw(ViewBag.CouponResponse)
+}
+
+@if (ViewBag.CouponCode == null)
+{
+    <a asp-controller="Checkout" asp-action="Checkout">
+        <div class="button">
+            @localizer["Gå Til Kassen"]
+        </div>
+    </a>
+}
+else
+{
+    <a asp-controller="Checkout" asp-action="Checkout" asp-route-couponCode="@ViewBag.CouponCode">
+        <div class="button">
+            @localizer["Gå Til Kassen"]
+        </div>
+    </a>
+}

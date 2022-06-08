@@ -9,6 +9,21 @@ namespace NykantMVC.Friends
 {
     public static class OrderHelpers
     {
+        public static List<BagItem> GetDiscountProducts(IEnumerable<CouponForProduct> couponForProducts, List<BagItem> bagItems)
+        {
+            var discountProducts = new List<BagItem>();
+            foreach(var item in bagItems)
+            {
+                foreach(var i in couponForProducts)
+                {
+                    if(item.ProductId == i.ProductId)
+                    {
+                        discountProducts.Add(item);
+                    }
+                }
+            }
+            return discountProducts;
+        }
 
         public static DateTime CalculateDeliveryDate(List<BagItem> bagItems)
         {

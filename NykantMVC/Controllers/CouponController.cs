@@ -14,13 +14,13 @@ using System.Threading.Tasks;
 namespace NykantMVC.Controllers
 {
     [AutoValidateAntiforgeryToken]
-    [AllowAnonymous]
     public class CouponController : BaseController
     {
         public CouponController(ILogger<CouponController> logger, IOptions<Urls> urls, HtmlEncoder htmlEncoder, IConfiguration conf) : base(logger, urls, htmlEncoder, conf)
         {
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> List()
         {
@@ -29,6 +29,7 @@ namespace NykantMVC.Controllers
             return View(coupons);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> Add()
         {
@@ -39,6 +40,7 @@ namespace NykantMVC.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Enable(Coupon coupon) // dont use the model, it fucks, and go get the whole model and update that 
         {
@@ -68,6 +70,7 @@ namespace NykantMVC.Controllers
 
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Disable(Coupon coupon) // dont use the model, it fucks, and go get the whole model and update that 
         {
@@ -97,6 +100,7 @@ namespace NykantMVC.Controllers
 
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Add(Coupon coupon, string couponForProducts)
         {
@@ -140,6 +144,7 @@ namespace NykantMVC.Controllers
 
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Delete(string code)
         {

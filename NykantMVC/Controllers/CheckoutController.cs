@@ -33,10 +33,17 @@ namespace NykantMVC.Controllers
 
         [Route("Kassen")]
         [HttpGet]
-        public async Task<IActionResult> Checkout(string coupon)
+        public async Task<IActionResult> Checkout(string couponCode = null)
         {
             try
             {
+                Coupon coupon = null;
+                var json = await GetRequest($"/Coupon/Get/{couponCode}");
+                if(json != "null")
+                {
+                    coupon = JsonConvert.DeserializeObject<Coupon>(json);
+                }
+
                 List<BagItem> bagItems = new List<BagItem>();
 
                 ViewBag.StripePKKey = conf["StripePKKey"];

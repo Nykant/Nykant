@@ -97,7 +97,7 @@ namespace NykantAPI.Controllers
         {
             try
             {
-                var coupon = await _context.Coupons.FirstOrDefaultAsync(x => x.Code == code);
+                var coupon = await _context.Coupons.Include(x => x.CouponForProducts).FirstOrDefaultAsync(x => x.Code == code);
                 return Ok(JsonConvert.SerializeObject(coupon, Extensions.JsonOptions.jsonSettings));
             }
             catch (Exception e)
