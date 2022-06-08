@@ -149,7 +149,7 @@ namespace NykantMVC.Controllers
                     json = await GetRequest(response.Headers.Location.AbsolutePath);
                     paymentCapture.Id = JsonConvert.DeserializeObject<PaymentCapture>(json).Id;
 
-                    var order = OrderHelpers.BuildOrder(checkout.BagItems, paymentCapture.Id);
+                    var order = OrderHelpers.BuildOrder(checkout, paymentCapture.Id);
 
                     response = await PostRequest("/Order/PostOrder", order);
                     if (!response.IsSuccessStatusCode)

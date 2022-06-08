@@ -42,10 +42,12 @@ namespace NykantMVC.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task<IActionResult> Enable(Coupon coupon) // dont use the model, it fucks, and go get the whole model and update that 
+        public async Task<IActionResult> Enable(string code) // dont use the model, it fucks, and go get the whole model and update that 
         {
             try
             {
+                var json = await GetRequest($"/Coupon/Get/{code}");
+                var coupon = JsonConvert.DeserializeObject<Coupon>(json);
                 coupon.Enabled = true;
                 var response = await PatchRequest("/Coupon/Update", coupon);
                 if (!response.IsSuccessStatusCode)
@@ -53,7 +55,7 @@ namespace NykantMVC.Controllers
                     _logger.LogError($"time: {DateTime.Now} - error: {response.StatusCode}");
                     return Content("error: Delete Coupon Failed");
                 }
-                var json = await GetRequest($"/Coupon/Get");
+                json = await GetRequest($"/Coupon/Get");
                 var coupons = JsonConvert.DeserializeObject<List<Coupon>>(json);
                 ViewData.Model = coupons;
                 return new PartialViewResult
@@ -72,10 +74,12 @@ namespace NykantMVC.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task<IActionResult> Disable(Coupon coupon) // dont use the model, it fucks, and go get the whole model and update that 
+        public async Task<IActionResult> Disable(string code) // dont use the model, it fucks, and go get the whole model and update that 
         {
             try
             {
+                var json = await GetRequest($"/Coupon/Get/{code}");
+                var coupon = JsonConvert.DeserializeObject<Coupon>(json);
                 coupon.Enabled = false;
                 var response = await PatchRequest("/Coupon/Update", coupon);
                 if (!response.IsSuccessStatusCode)
@@ -83,7 +87,7 @@ namespace NykantMVC.Controllers
                     _logger.LogError($"time: {DateTime.Now} - error: {response.StatusCode}");
                     return Content("error: Delete Coupon Failed");
                 }
-                var json = await GetRequest($"/Coupon/Get");
+                json = await GetRequest($"/Coupon/Get");
                 var coupons = JsonConvert.DeserializeObject<List<Coupon>>(json);
                 ViewData.Model = coupons;
                 return new PartialViewResult

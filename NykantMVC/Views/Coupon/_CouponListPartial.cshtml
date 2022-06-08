@@ -24,13 +24,13 @@
     <td>@coupon.Enabled</td>
     <td>
         <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#couponlist" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" data-ajax-success="noop" asp-controller="Coupon" asp-action="Enable">
-            <input hidden asp-for="@coupon.Code" />
+            <input hidden name="code" value="@coupon.Code" />
             <button type="submit">Enable</button>
         </form>
     </td>
     <td>
         <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#couponlist" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" data-ajax-success="noop" asp-controller="Coupon" asp-action="Disable">
-            <input hidden asp-for="@coupon.Code" />
+            <input hidden name="code" value="@coupon.Code" />
             <button type="submit">Disable</button>
         </form>
     </td>

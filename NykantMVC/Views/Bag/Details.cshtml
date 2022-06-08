@@ -9,42 +9,7 @@
 
 <div class="my-row top-padding bottom-padding">
     <div class="col-10 center" id="bag-wrapper">
-        <div class="col-8 left fadein" id="bagtable-container">
-            <div class="bagtitle">
-                @localizer["Kurv"]
-            </div>
-            <div class="bagtable" id="bagtable">
-                <partial name="_BagTablePartial" />
-            </div>
-        </div>
-        <div class="col-3 left" id="checkout-box">
-            <div id="order-info-partial">
-                <partial name="_OrderInfoPartial">
-            </div>
-            
-
-            <div class="delivery-info">
-                @if (ViewBag.DeliveryInfo != null)
-                {
-                    <div>
-                        <p>@ViewBag.DeliveryInfo</p>
-                    </div>
-                }
-
-                <div class="bottom-side-padding">
-                    <p class="width-70">Forventet Leveringstid</p>
-                    <p class="width-20 align-right">3-5 dage</p>
-                </div>
-
-                <div class="bottom-side-padding">
-                    <p>14 dages fortrydelsesret på alle varer.</p>
-                </div>
-
-                <div>
-                    <p>Betalingen gennemføres først når varerne er sendt til dig.</p>
-                </div>
-            </div>
-        </div>
+        <partial name="_BagWrapperPartial" />
     </div>
 </div>
 

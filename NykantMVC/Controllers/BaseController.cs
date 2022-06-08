@@ -26,6 +26,7 @@ namespace NykantMVC.Controllers
         public const string BagItemAmountKey = "verysecretseriousbagitemsessionkeyspecial";
         public const string ConsentCookieKey = "verysecretseriousconsentsessionkeyspecial";
         public const string FacebookSessionKey = "verSecretSpecialFacebookSessionKeyThatNo#1Sh0ldKn02W#5123";
+        public const string CouponCodeKey = "versercioisdfgsgCoaufposgnka123ASDf1239ASD#¤";
         public readonly ILogger<BaseController> _logger;
         private readonly Urls _urls;
         private readonly HtmlEncoder htmlEncoder;

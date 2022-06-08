@@ -29,7 +29,7 @@
         </div>
         <div id="bag-item-price"><label>kr. @bagItem.Product.Price</label></div>
         <div id="remove-bagitem">
-            <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#bagtable" data-ajax-success="bag_item_updated" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" asp-controller="Bag" asp-action="UpdateBagItem">
+            <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#bag-wrapper" data-ajax-success="noop" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" asp-controller="Bag" asp-action="UpdateBagItem">
                 @Html.AntiForgeryToken()
                 <input type="hidden" name="bagItem.Quantity" value="@bagItem.Quantity" />
                 <input type="hidden" name="bagItem.ProductId" value="@bagItem.ProductId" />
@@ -42,7 +42,7 @@
             <p id="bagitem-quantity-text">@bagItem.Quantity</p>
         </div>
         <div id="add-bagitem">
-            <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#bagtable" data-ajax-success="bag_item_updated" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" asp-controller="Bag" asp-action="UpdateBagItem">
+            <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#bag-wrapper" data-ajax-success="noop" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" asp-controller="Bag" asp-action="UpdateBagItem">
                 @Html.AntiForgeryToken()
                 <input type="hidden" name="bagItem.Quantity" value="@bagItem.Quantity" />
                 <input type="hidden" name="bagItem.ProductId" value="@bagItem.ProductId" />

@@ -33,15 +33,19 @@ namespace NykantMVC.Controllers
 
         [Route("Kassen")]
         [HttpGet]
-        public async Task<IActionResult> Checkout(string couponCode = null)
+        public async Task<IActionResult> Checkout()
         {
             try
             {
                 Coupon coupon = null;
-                var json = await GetRequest($"/Coupon/Get/{couponCode}");
-                if(json != "null")
+                var couponCode = HttpContext.Session.Get<string>(CouponCodeKey);
+                if(couponCode != null)
                 {
-                    coupon = JsonConvert.DeserializeObject<Coupon>(json);
+                    var json = await GetRequest($"/Coupon/Get/{couponCode}");
+                    if (json != "null")
+                    {
+                        coupon = JsonConvert.DeserializeObject<Coupon>(json);
+                    }
                 }
 
                 List<BagItem> bagItems = new List<BagItem>();
@@ -63,19 +67,58 @@ namespace NykantMVC.Controllers
                     return RedirectToAction("Details", "Bag");
                 }
 
+                Checkout checkout = new Checkout();
+
                 var total = OrderHelpers.CalculateAmount(bagItems);
+                double discount = 0;
                 var taxes = total / 5;
                 var taxlessPrice = total - taxes;
 
-                var checkout = new Checkout
+                if (coupon == null)
                 {
-                    BagItems = bagItems,
-                    Stage = Stage.customerInf,
-                    TotalPrice = total.ToString(),
-                    Taxes = taxes.ToString(),
-                    TaxlessPrice = taxlessPrice.ToString()
-                };
-                ViewBag.DeliveryType = OrderHelpers.CalculateDeliveryTypeString(bagItems);
+                    checkout = new Checkout
+                    {
+                        BagItems = bagItems,
+                        Stage = Stage.customerInf,
+                        TotalPrice = total.ToString(),
+                        Taxes = taxes.ToString(),
+                        TaxlessPrice = taxlessPrice.ToString()
+                    };
+                    ViewBag.DeliveryType = OrderHelpers.CalculateDeliveryTypeString(bagItems);
+                }
+                else
+                {
+                    if (coupon.ForAllProducts)
+                    {
+                        discount = total * (coupon.Discount / 100);
+                        total = total - discount;
+                        taxes = total / 5;
+                        taxlessPrice = total - taxes;
+                    }
+                    else
+                    {
+                        var discountProducts = OrderHelpers.GetDiscountProducts(coupon.CouponForProducts, bagItems);
+                        if (discountProducts.Count > 0)
+                        {
+                            discount = OrderHelpers.CalculateAmount(discountProducts) * (coupon.Discount / 100);
+                            total = total - discount;
+                            taxes = total / 5;
+                            taxlessPrice = total - taxes;
+                        }
+                    }
+
+                    checkout = new Checkout
+                    {
+                        Coupon = coupon,
+                        BagItems = bagItems,
+                        Stage = Stage.customerInf,
+                        Discount = discount.ToString(),
+                        TotalPrice = total.ToString(),
+                        Taxes = taxes.ToString(),
+                        TaxlessPrice = taxlessPrice.ToString()
+                    };
+                    ViewBag.DeliveryType = OrderHelpers.CalculateDeliveryTypeString(bagItems);
+                }
 
                 HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
 

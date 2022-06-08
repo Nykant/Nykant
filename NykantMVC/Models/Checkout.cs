@@ -13,6 +13,7 @@ namespace NykantMVC.Models
         public string Taxes { get; set; }
         public string TaxlessPrice { get; set; }
         public Stage Stage { get; set; }
+        public string Discount { get; set; }
         public Coupon Coupon { get; set; }
         //public ParcelShopSearchResult ParcelShopSearchResult { get; set; }
     }

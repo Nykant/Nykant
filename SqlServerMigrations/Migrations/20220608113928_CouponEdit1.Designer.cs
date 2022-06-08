@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NykantAPI.Data;
 
 namespace NykantAPI.data.migrations.local
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220608113928_CouponEdit1")]
+    partial class CouponEdit1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -3220,17 +3222,11 @@ namespace NykantAPI.data.migrations.local
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CouponCode")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Currency")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Discount")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("EstimatedDelivery")
@@ -3258,8 +3254,6 @@ namespace NykantAPI.data.migrations.local
                         .HasColumnType("float");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CouponCode");
 
                     b.HasIndex("PaymentCaptureId")
                         .IsUnique();
@@ -4888,10 +4882,6 @@ namespace NykantAPI.data.migrations.local
 
             modelBuilder.Entity("NykantAPI.Models.Order", b =>
                 {
-                    b.HasOne("NykantAPI.Models.Coupon", "Coupon")
-                        .WithMany("Orders")
-                        .HasForeignKey("CouponCode");
-
                     b.HasOne("NykantAPI.Models.PaymentCapture", "PaymentCapture")
                         .WithOne("Order")
                         .HasForeignKey("NykantAPI.Models.Order", "PaymentCaptureId")

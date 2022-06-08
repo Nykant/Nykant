@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NykantMVC.Models
 {
@@ -20,6 +21,10 @@ namespace NykantMVC.Models
         public string Currency { get; set; }
         [Required]
         public Status Status { get; set; }
+        public string Discount { get; set; }
+        [ForeignKey("Code")]
+        public string CouponCode { get; set; }
+        public Coupon Coupon { get; set; }
         public double WeightInKg { get; set; }
         public DateTime EstimatedDelivery { get; set; }
         //public bool IsBackOrder { get; set; } = false;

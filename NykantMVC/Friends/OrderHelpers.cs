@@ -250,33 +250,78 @@ namespace NykantMVC.Friends
             return ShippingType.Home;
         }
 
-        public static Order BuildOrder(List<BagItem> bagItems, int paymentCaptureId)
+        public static Order BuildOrder(Checkout checkout, int paymentCaptureId)
         {
-            var total = CalculateAmount(bagItems);
-            var taxes = total / 5;
-            var taxlessPrice = total - taxes;
+            double total = CalculateAmount(checkout.BagItems);
+            double discount = 0;
+            double taxes = total / 5;
+            double taxlessPrice = total - taxes;
+            Order order = new Order();
 
             double weight = 0;
-            foreach (var item in bagItems)
+            foreach (var item in checkout.BagItems)
             {
                 weight += item.Product.WeightInKg * item.Quantity;
             }
 
-            var deliveryDate = CalculateDeliveryDate(bagItems);
+            var deliveryDate = CalculateDeliveryDate(checkout.BagItems);
 
-            Order order = new Order
+            if (checkout.Coupon == null)
             {
-                CreatedAt = DateTime.Now,
-                Currency = "dkk",
-                PaymentCaptureId = paymentCaptureId,
-                Status = Status.Pending,
-                TotalPrice = total.ToString(),
-                Taxes = taxes.ToString(),
-                WeightInKg = weight,
-                TaxLessPrice = taxlessPrice.ToString(),
-                EstimatedDelivery = deliveryDate,
-                BagItems = bagItems
-            };
+                order = new Order
+                {
+                    Discount = null,
+                    CouponCode = null,
+                    CreatedAt = DateTime.Now,
+                    Currency = "dkk",
+                    PaymentCaptureId = paymentCaptureId,
+                    Status = Status.Pending,
+                    TotalPrice = total.ToString(),
+                    Taxes = taxes.ToString(),
+                    WeightInKg = weight,
+                    TaxLessPrice = taxlessPrice.ToString(),
+                    EstimatedDelivery = deliveryDate,
+                    BagItems = checkout.BagItems
+                };
+            }
+            else
+            {
+                if (checkout.Coupon.ForAllProducts)
+                {
+                    discount = total * (checkout.Coupon.Discount / 100);
+                    total = total - discount;
+                    taxes = total / 5;
+                    taxlessPrice = total - taxes;
+                }
+                else
+                {
+                    var discountProducts = OrderHelpers.GetDiscountProducts(checkout.Coupon.CouponForProducts, checkout.BagItems);
+                    if (discountProducts.Count > 0)
+                    {
+                        discount = OrderHelpers.CalculateAmount(discountProducts) * (checkout.Coupon.Discount / 100);
+                        total = total - discount;
+                        taxes = total / 5;
+                        taxlessPrice = total - taxes;
+                    }
+                }
+
+                order = new Order
+                {
+                    Discount = discount.ToString(),
+                    CouponCode = checkout.Coupon.Code,
+                    CreatedAt = DateTime.Now,
+                    Currency = "dkk",
+                    PaymentCaptureId = paymentCaptureId,
+                    Status = Status.Pending,
+                    TotalPrice = total.ToString(),
+                    Taxes = taxes.ToString(),
+                    WeightInKg = weight,
+                    TaxLessPrice = taxlessPrice.ToString(),
+                    EstimatedDelivery = deliveryDate,
+                    BagItems = checkout.BagItems
+                };
+
+            }
 
             return order;
         }
