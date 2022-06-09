@@ -164,9 +164,9 @@ namespace NykantMVC.Friends
             return deliveryDate;
         }
 
-        public static double CalculateAmount(List<BagItem> items)
+        public static long CalculateAmount(List<BagItem> items)
         {
-            double price = 0;
+            long price = 0;
             foreach (var item in items)
             {
                 for (int i = 0; i < item.Quantity; i++)
@@ -252,10 +252,10 @@ namespace NykantMVC.Friends
 
         public static Order BuildOrder(Checkout checkout, int paymentCaptureId)
         {
-            double total = CalculateAmount(checkout.BagItems);
-            double discount = 0;
-            double taxes = total / 5;
-            double taxlessPrice = total - taxes;
+            long total = CalculateAmount(checkout.BagItems);
+            long discount = 0;
+            long taxes = total / 5;
+            long taxlessPrice = total - taxes;
             Order order = new Order();
 
             double weight = 0;
@@ -288,7 +288,7 @@ namespace NykantMVC.Friends
             {
                 if (checkout.Coupon.ForAllProducts)
                 {
-                    discount = total * (checkout.Coupon.Discount / 100);
+                    discount = Convert.ToInt64(Math.Round(Convert.ToDouble(total) * (Convert.ToDouble(checkout.Coupon.Discount) / 100)));
                     total = total - discount;
                     taxes = total / 5;
                     taxlessPrice = total - taxes;
@@ -298,7 +298,7 @@ namespace NykantMVC.Friends
                     var discountProducts = OrderHelpers.GetDiscountProducts(checkout.Coupon.CouponForProducts, checkout.BagItems);
                     if (discountProducts.Count > 0)
                     {
-                        discount = OrderHelpers.CalculateAmount(discountProducts) * (checkout.Coupon.Discount / 100);
+                        discount = Convert.ToInt64(Math.Round(Convert.ToDouble(OrderHelpers.CalculateAmount(discountProducts)) * (Convert.ToDouble(checkout.Coupon.Discount) / 100)));
                         total = total - discount;
                         taxes = total / 5;
                         taxlessPrice = total - taxes;

@@ -1,0 +1,139 @@
+﻿@model Product
+
+<form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#edit-form-container" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" data-ajax-success="noop" asp-controller="Product" asp-action="Edit">
+    <div class="col-6 left">
+        <div class="col-5 center">
+            <div>
+                <label asp-for="@Model.Id"></label>
+                <input asp-for="@Model.Id" />
+            </div>
+
+            <div>
+                <label asp-for="@Model.Name"></label>
+                <input asp-for="@Model.Name" />
+            </div>
+
+            <div>
+                <label asp-for="@Model.UrlName"></label>
+                <input asp-for="@Model.UrlName" />
+            </div>
+
+            <div>
+                <label asp-for="@Model.Title"></label>
+                <input asp-for="@Model.Title" />
+            </div>
+
+            <div>
+                <label asp-for="@Model.Description"></label>
+                <input asp-for="@Model.Description" />
+            </div>
+
+            <div>
+                <label asp-for="@Model.Amount"></label>
+                <input asp-for="@Model.Amount" />
+            </div>
+
+            <div>
+                <label asp-for="@Model.Price"></label>
+                <input asp-for="@Model.Price" />
+            </div>
+
+            <div>
+                <label asp-for="@Model.Discount"></label>
+                <input asp-for="@Model.Discount" />
+            </div>
+
+            <div>
+                <label asp-for="@Model.Number"></label>
+                <input asp-for="@Model.Number" />
+            </div>
+
+            <div>
+                <label asp-for="@Model.Size"></label>
+                <input asp-for="@Model.Size" />
+            </div>
+
+            <div>
+                <label asp-for="@Model.WeightInKg"></label>
+                <input asp-for="@Model.WeightInKg" />
+            </div>
+
+            <div>
+                <label asp-for="@Model.EColor"></label>
+                <input asp-for="@Model.EColor" />
+            </div>
+
+        </div>
+    </div>
+    <div class="col-6 left">
+        <div class="col-5 center">
+            <div>
+                <label asp-for="@Model.Oil"></label>
+                <input asp-for="@Model.Oil" />
+            </div>
+
+            <div>
+                <label asp-for="@Model.Alt"></label>
+                <input asp-for="@Model.Alt" />
+            </div>
+
+            <div>
+                <label asp-for="@Model.CategoryId"></label>
+                <input asp-for="@Model.CategoryId" />
+            </div>
+
+            <div>
+                <label asp-for="@Model.ExpectedDelivery"></label>
+                <input asp-for="@Model.ExpectedDelivery" />
+            </div>
+
+            <div>
+                <label asp-for="@Model.GalleryImage1"></label>
+                <input asp-for="@Model.GalleryImage1" />
+            </div>
+
+            <div>
+                <label asp-for="@Model.GalleryImage2"></label>
+                <input asp-for="@Model.GalleryImage2" />
+            </div>
+
+            <div>
+                <label asp-for="@Model.Length"></label>
+                <input asp-for="@Model.Length" />
+            </div>
+
+            <div>
+                <label asp-for="@Model.Materials"></label>
+                <input asp-for="@Model.Materials" />
+            </div>
+
+            <div>
+                <label asp-for="@Model.Package"></label>
+                <input asp-for="@Model.Package" />
+            </div>
+
+            <div>
+                <label asp-for="@Model.Note"></label>
+                <input asp-for="@Model.Note" />
+            </div>
+
+            <div>
+                <label asp-for="@Model.Pieces"></label>
+                <input asp-for="@Model.Pieces" />
+            </div>
+
+            <div>
+                <label asp-for="@Model.Path"></label>
+                <input asp-for="@Model.Path" />
+            </div>
+
+            <div>
+                <label asp-for="@Model.AssemblyPath"></label>
+                <input asp-for="@Model.AssemblyPath" />
+            </div>
+
+        </div>
+    </div>
+
+    <button type="submit">Edit</button>
+</form>

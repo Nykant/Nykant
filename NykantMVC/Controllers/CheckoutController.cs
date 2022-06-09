@@ -70,7 +70,7 @@ namespace NykantMVC.Controllers
                 Checkout checkout = new Checkout();
 
                 var total = OrderHelpers.CalculateAmount(bagItems);
-                double discount = 0;
+                long discount = 0;
                 var taxes = total / 5;
                 var taxlessPrice = total - taxes;
 
@@ -90,7 +90,7 @@ namespace NykantMVC.Controllers
                 {
                     if (coupon.ForAllProducts)
                     {
-                        discount = total * (coupon.Discount / 100);
+                        discount = Convert.ToInt64(Math.Round(Convert.ToDouble(total) * (Convert.ToDouble(coupon.Discount) / 100)));
                         total = total - discount;
                         taxes = total / 5;
                         taxlessPrice = total - taxes;
@@ -100,7 +100,7 @@ namespace NykantMVC.Controllers
                         var discountProducts = OrderHelpers.GetDiscountProducts(coupon.CouponForProducts, bagItems);
                         if (discountProducts.Count > 0)
                         {
-                            discount = OrderHelpers.CalculateAmount(discountProducts) * (coupon.Discount / 100);
+                            discount = Convert.ToInt64(Math.Round(Convert.ToDouble(OrderHelpers.CalculateAmount(discountProducts)) * (Convert.ToDouble(coupon.Discount) / 100)));
                             total = total - discount;
                             taxes = total / 5;
                             taxlessPrice = total - taxes;

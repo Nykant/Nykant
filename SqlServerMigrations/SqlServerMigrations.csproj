@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20220609094024_OrderError.cs" />
+    <Compile Remove="Migrations\20220609094024_OrderError.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\NykantAPI\NykantAPI.csproj" />
   </ItemGroup>
 

@@ -17,7 +17,7 @@ namespace NykantAPI.Models
         public string UrlName { get; set; }
         public string Number { get; set; }
         public string Description { get; set; }
-        public double Price { get; set; }
+        public long Price { get; set; }
         public string GalleryImage1 { get; set; }
         public string GalleryImage2 { get; set; }
         public int Pieces { get; set; }
@@ -29,6 +29,7 @@ namespace NykantAPI.Models
 
         public EColor EColor { get; set; }
         public string Length { get; set; }
+        public int Discount { get; set; } = 0;
         public string Oil { get; set; }
         public string Alt { get; set; }
         public double WeightInKg { get; set; }

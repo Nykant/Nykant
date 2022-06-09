@@ -97,7 +97,7 @@ namespace NykantMVC.Controllers
 
                         if (paymentMethodId != null)
                         {
-                            int.TryParse(checkout.TotalPrice, out int amount);
+                            long.TryParse(checkout.TotalPrice, out long amount);
                             amount = amount * 100;
                             var PIoptions = new PaymentIntentCreateOptions
                             {

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Text.Encodings.Web;
 using System;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Authorization;
 
 namespace NykantMVC.Controllers
 {
@@ -18,6 +19,23 @@ namespace NykantMVC.Controllers
     {
         public ProductController(ILogger<ProductController> logger, IOptions<Urls> urls, HtmlEncoder htmlEncoder, IConfiguration conf) : base(logger, urls, htmlEncoder, conf)
         {
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        public async Task<IActionResult> List()
+        {
+            try
+            {
+                var json = await GetRequest("/Product/GetProducts");
+                var products = JsonConvert.DeserializeObject<List<Product>>(json);
+                return View(products);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
+                return BadRequest($"time: {DateTime.Now} - {e.Message}");
+            }
         }
 
         [HttpGet("Produkter")]
@@ -66,6 +84,52 @@ namespace NykantMVC.Controllers
             }
 
 
+        }
+
+        [Authorize(Roles = "Admin")]
+        [Route("Product/Edit/{urlname}")]
+        [HttpGet]
+        public async Task<IActionResult> Edit(string urlname)
+        {
+            try
+            {
+                var json = await GetRequest($"/Product/GetProductWithUrlName/{urlname}");
+                Product product = JsonConvert.DeserializeObject<Product>(json);
+
+                return View(product);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
+                return BadRequest($"time: {DateTime.Now} - {e.Message}");
+            }
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost("Product/Edit/{urlname}")]
+        public async Task<IActionResult> Edit(Product product) // dont use the model, it fucks, and go get the whole model and update that 
+        {
+            try
+            {
+                var json = await PatchRequest($"/Product/Update", product);
+                if (!json.IsSuccessStatusCode)
+                {
+                    _logger.LogError($"time: {DateTime.Now} - error: {json.StatusCode}");
+                    return Content("error: Failed to update product");
+                }
+
+                ViewData.Model = product;
+                return new PartialViewResult
+                {
+                    ViewName = "_EditFormPartial",
+                    ViewData = this.ViewData
+                };
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"time: {DateTime.Now} - error: {e.Message}");
+                return Content("error: Delete Coupon Failed");
+            }
         }
 
         [Route("Produkt/{urlname}")]

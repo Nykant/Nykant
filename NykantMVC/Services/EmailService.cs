@@ -35,7 +35,7 @@ namespace NykantMVC.Services
             this._logger = _logger;
         }
 
-        public async Task SendOrderEmailAsync(Order order)
+        public async Task<string> SendOrderEmailAsync(Order order)
         {
             try
             {
@@ -66,14 +66,17 @@ namespace NykantMVC.Services
                 smtp.Authenticate(_mailSettings.Username, _mailSettings.Password);
                 await smtp.SendAsync(email);
                 smtp.Disconnect(true);
+
+                return "success";
             }
             catch (Exception e)
             {
                 _logger.LogError($"time: {DateTime.Now} - {e.Message}");
+                return "fail";
             }
         }
 
-        public async Task SendRegretEmailAsync(Regret regret)
+        public async Task<string> SendRegretEmailAsync(Regret regret)
         {
             try
             {
@@ -100,14 +103,17 @@ namespace NykantMVC.Services
                 smtp.Authenticate(_mailSettings.Username, _mailSettings.Password);
                 await smtp.SendAsync(email);
                 smtp.Disconnect(true);
+
+                return "success";
             }
             catch (Exception e)
             {
                 _logger.LogError($"time: {DateTime.Now} - {e.Message}");
+                return "fail";
             }
         }
 
-        public async Task SendOrderSentEmailAsync(Order order)
+        public async Task<string> SendOrderSentEmailAsync(Order order)
         {
             try
             {
@@ -134,15 +140,18 @@ namespace NykantMVC.Services
                 smtp.Authenticate(_mailSettings.Username, _mailSettings.Password);
                 await smtp.SendAsync(email);
                 smtp.Disconnect(true);
+
+                return "success";
             }
             catch (Exception e)
             {
                 _logger.LogError($"time: {DateTime.Now} - {e.Message}");
+                return "fail";
             }
 
         }
 
-        public async Task SendDKIEmailAsync(Order order)
+        public async Task<string> SendDKIEmailAsync(Order order)
         {
             try
             {
@@ -176,15 +185,18 @@ namespace NykantMVC.Services
                 smtp.Authenticate(_mailSettings.Username, _mailSettings.Password);
                 await smtp.SendAsync(email);
                 smtp.Disconnect(true);
+
+                return "success";
             }
             catch (Exception e)
             {
                 _logger.LogError($"time: {DateTime.Now} - {e.Message}");
+                return "fail";
             }
             
         }
 
-        public async Task SendNykantEmailAsync(Order order)
+        public async Task<string> SendNykantEmailAsync(Order order)
         {
             try
             {
@@ -211,15 +223,18 @@ namespace NykantMVC.Services
                 smtp.Authenticate(_mailSettings.Username, _mailSettings.Password);
                 await smtp.SendAsync(email);
                 smtp.Disconnect(true);
+
+                return "success";
             }
             catch (Exception e)
             {
                 _logger.LogError($"time: {DateTime.Now} - {e.Message}");
+                return "fail";
             }
             
         }
 
-        public async Task SendInvoiceEmailAsync(PaymentCapture paymentCapture)
+        public async Task<string> SendInvoiceEmailAsync(PaymentCapture paymentCapture)
         {
             try
             {
@@ -237,15 +252,18 @@ namespace NykantMVC.Services
                 smtp.Authenticate(_mailSettings.Username, _mailSettings.Password);
                 await smtp.SendAsync(email);
                 smtp.Disconnect(true);
+
+                return "success";
             }
             catch (Exception e)
             {
                 _logger.LogError($"time: {DateTime.Now} - {e.Message}");
+                return "fail";
             }
             
         }
 
-        public async Task SendRefundEmailAsync(PaymentCapture paymentCapture)
+        public async Task<string> SendRefundEmailAsync(PaymentCapture paymentCapture)
         {
             try
             {
@@ -263,10 +281,13 @@ namespace NykantMVC.Services
                 smtp.Authenticate(_mailSettings.Username, _mailSettings.Password);
                 await smtp.SendAsync(email);
                 smtp.Disconnect(true);
+
+                return "success";
             }
             catch (Exception e)
             {
                 _logger.LogError($"time: {DateTime.Now} - {e.Message}");
+                return "fail";
             }
 
         }
@@ -295,13 +316,13 @@ namespace NykantMVC.Services
 
     public interface IMailService
     {
-        Task SendOrderSentEmailAsync(Order order);
-        Task SendNykantEmailAsync(Order order);
-        Task SendOrderEmailAsync(Order order);
-        Task SendDKIEmailAsync(Order order);
-        Task SendInvoiceEmailAsync(PaymentCapture paymentCapture);
-        Task SendRegretEmailAsync(Regret regret);
-        Task SendRefundEmailAsync(PaymentCapture paymentCapture);
+        Task<string> SendOrderSentEmailAsync(Order order);
+        Task<string> SendNykantEmailAsync(Order order);
+        Task<string> SendOrderEmailAsync(Order order);
+        Task<string> SendDKIEmailAsync(Order order);
+        Task<string> SendInvoiceEmailAsync(PaymentCapture paymentCapture);
+        Task<string> SendRegretEmailAsync(Regret regret);
+        Task<string> SendRefundEmailAsync(PaymentCapture paymentCapture);
         //Task SendEmailAsync(SimpleMail simpleMail);
     }
 }

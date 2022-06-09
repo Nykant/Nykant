@@ -39,13 +39,25 @@
                 }
             </div>
             <div class="order-price-summary">
-                <p id="taxless-price-header">Momsgrundlag:</p><span id="taxless-price">kr. @Model.TaxLessPrice</span>
+
+                @if (Model.Coupon != null)
+                {
+                    <p id="taxless-price-header">Rabatkode</p><span id="taxless-price">@Model.Coupon.Code</span>
+                    <p>Rabat</p><span>
+                        kr. @Model.Discount (@Model.Coupon.Discount%)
+                    </span>
+                    <p>Momsgrundlag:</p><span >kr. @Model.TaxLessPrice</span>
+                }
+                else
+                {
+                    <p id="taxless-price-header">Momsgrundlag:</p><span id="taxless-price">kr. @Model.TaxLessPrice</span>
+                }
                 <p>Momsbeløb(25%):</p><span>kr. @Model.Taxes</span>
                 <p>Totalbeløb:</p><span>kr. @Model.TotalPrice</span>
             </div>
             
             <div class="order-information">
-                <p>Estimeret Leveringsdato:</p><span>@Model.EstimatedDelivery.DayOfWeek, @Model.EstimatedDelivery.Day / @Model.EstimatedDelivery.Month</span>
+                <p>Estimeret Leveringstid:</p><span>3-5 hverdage</span>
             </div>
         </div>
     </div>

@@ -6,11 +6,31 @@
     border:1px solid var(--black-fade);
 }
 
+.my-list-4-cells th, .my-list-4-cells td {
+    width: 24%;
+}
+
+.my-list-5-cells th, .my-list-5-cells td {
+    width: 19%;
+}
+
+.my-list-6-cells th, .my-list-6-cells td {
+    width: 16%;
+}
+
+.my-list-7-cells th, .my-list-7-cells td {
+    width: 14%;
+}
+
+.my-list-8-cells th, .my-list-8-cells td {
+    width: 12%;
+}
+
     .my-list td, .my-list th {
         padding: 10px;
         display: inline-block;
-        width: 19%;
         word-break: break-all;
+        vertical-align:middle;
     }
 
     .my-list td {

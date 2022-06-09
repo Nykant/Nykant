@@ -117,7 +117,7 @@ namespace NykantMVC.Controllers
                         {
                             if (coupon.ForAllProducts)
                             {
-                                double discount = total * (double.Parse(coupon.Discount.ToString()) / 100);
+                                long discount = Convert.ToInt64(Math.Round(Convert.ToDouble(total) * (Convert.ToDouble(coupon.Discount) / 100)));
                                 total = total - discount;
                                 taxes = total / 5;
                                 taxlessPrice = total - taxes;
@@ -146,7 +146,7 @@ namespace NykantMVC.Controllers
                                 }
                                 else
                                 {
-                                    double discount = OrderHelpers.CalculateAmount(discountProducts) * (coupon.Discount / 100);
+                                    long discount =  Convert.ToInt64(Math.Round(Convert.ToDouble(OrderHelpers.CalculateAmount(discountProducts)) * (Convert.ToDouble(coupon.Discount) / 100)));
                                     total = total - discount;
                                     taxes = total / 5;
                                     taxlessPrice = total - taxes;

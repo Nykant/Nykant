@@ -8,7 +8,7 @@ namespace NykantMVC.Models
     public class Coupon
     {
         public string Code { get; set; }
-        public double Discount { get; set; }
+        public int Discount { get; set; }
         public bool Enabled { get; set; }
         public bool ForAllProducts { get; set; }
         public IEnumerable<CouponForProduct> CouponForProducts { get; set; }

@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="~/css/refund.css" />
 
 <h1 class="list-h1">Sendte Ordrer</h1>
-<table class="my-list">
+<table class="my-list my-list-6-cells">
     <tr class="no-hover">
         <th>Id</th>
         <th>Lavet</th>
@@ -38,6 +38,9 @@
 
 
 <div class="absolute-center" id="refund-div">
+    <div class="close-button-right-corner" id="refund-close">
+        <i class="fas fa-times"></i>
+    </div>
     <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#sent-orders" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" data-ajax-success="noop" asp-controller="Order" asp-action="RefundPaymentIntent">
         <div>
             <label>Payment Capture ID</label>

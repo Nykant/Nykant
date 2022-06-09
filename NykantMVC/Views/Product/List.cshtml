@@ -1,0 +1,36 @@
+﻿@model List<Product>
+
+@{
+    ViewData["Title"] = "Produktliste";
+    ViewData["Description"] = "";
+}
+
+<link rel="stylesheet" href="~/css/my-list.css" />
+
+<div class="my-row top-padding bottom-padding">
+    <div class="col-8 center">
+        <h1 class="list-h1">All Products</h1>
+        <table class="my-list my-list-6-cells">
+            <tr class="no-hover">
+                <th>Name</th>
+                <th>Oil</th>
+                <th>Price</th>
+                <th>Discount</th>
+                <th>Amount</th>
+                <th></th>
+            </tr>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>@product.Name</td>
+                    <td>@product.Oil</td>
+                    <td>@product.Price</td>
+                    <td>@product.Discount</td>
+                    <td>@product.Amount</td>
+                    <td><a asp-controller="product" asp-action="edit" asp-route-urlname="@product.UrlName">Edit</a></td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
