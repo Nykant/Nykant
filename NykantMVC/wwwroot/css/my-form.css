@@ -1,0 +1,38 @@
+﻿.my-form {
+
+}
+
+.my-form div {
+
+}
+
+.my-form input {
+
+}
+
+.my-form label {
+
+}
+
+    .my-form .my-form-split {
+
+    }
+
+        .my-form .my-form-split div {
+            padding-top:10px;
+        }
+
+        .my-form .my-form-split input {
+            padding:10px;
+            width:100%;
+            outline:none;
+            border:none;
+        }
+
+        .my-form .my-form-split label {
+        }
+
+        .my-form button {
+            width:50%;
+            margin-top:20px;
+        }

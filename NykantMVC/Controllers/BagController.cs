@@ -33,7 +33,7 @@ namespace NykantMVC.Controllers
                 var json = await GetRequest($"/BagItem/GetBagItems/{subject}");
                 List<BagItem> bagItems = JsonConvert.DeserializeObject<List<BagItem>>(json);
 
-                ViewBag.PriceSum = OrderHelpers.CalculateAmount(bagItems);
+                ViewBag.PriceSum = OrderHelpers.CalculateTotal(bagItems);
 
                 return View(bagItems);
             }
@@ -53,6 +53,7 @@ namespace NykantMVC.Controllers
                 }
                 else
                 {
+                    bagItems = OrderHelpers.SetBagItemsPrice(bagItems);
                     var couponCode = HttpContext.Session.Get<string>(CouponCodeKey);
                     if (couponCode != null)
                     {
@@ -61,7 +62,7 @@ namespace NykantMVC.Controllers
                     }
                     else
                     {
-                        var total = OrderHelpers.CalculateAmount(bagItems);
+                        var total = OrderHelpers.CalculateTotal(bagItems);
                         var taxes = total / 5;
                         var taxlessPrice = total - taxes;
                         ViewBag.DeliveryInfo = OrderHelpers.DeliveryDateInfo(bagItems);
@@ -69,7 +70,7 @@ namespace NykantMVC.Controllers
                         //ViewBag.DeliveryDate = $"{date.Day}-{date.Month}-{date.Year}";
                         ViewBag.Taxes = taxes;
                         ViewBag.TaxlessPrice = taxlessPrice;
-                        ViewBag.Discount = 0;
+                        ViewBag.Discount = OrderHelpers.CalculateDiscount(bagItems);
                         ViewBag.PriceSum = total;
                     }
 
@@ -92,42 +93,47 @@ namespace NykantMVC.Controllers
             }
             else
             {
-                var total = OrderHelpers.CalculateAmount(bagItems);
+                var total = OrderHelpers.CalculateTotal(bagItems);
+                long discount = OrderHelpers.CalculateDiscount(bagItems);
                 var taxes = total / 5;
                 var taxlessPrice = total - taxes;
+                ViewBag.Discount = discount;
+                ViewBag.TaxlessPrice = taxlessPrice;
+                ViewBag.Taxes = taxes;
+                ViewBag.PriceSum = total;
 
-                if(couponCode != null)
+                if (couponCode != null)
                 {
                     var json = await GetRequest($"/Coupon/Get/{couponCode}");
                     if (json == "null")
                     {
                         ViewBag.CouponResponse = $"<p class='red-text'>Rabat koden '{couponCode}' findes ikke</p>";
-                        ViewBag.Discount = 0;
-                        ViewBag.TaxlessPrice = taxlessPrice;
-                        ViewBag.Taxes = taxes;
-                        ViewBag.PriceSum = total;
+                        //ViewBag.Discount = discount;
+                        //ViewBag.TaxlessPrice = taxlessPrice;
+                        //ViewBag.Taxes = taxes;
+                        //ViewBag.PriceSum = total;
 
                         HttpContext.Session.Set<string>(CouponCodeKey, null);
                     }
                     else
                     {
                         var coupon = JsonConvert.DeserializeObject<Coupon>(json);
-
+                        bagItems = OrderHelpers.SetBagItemsPrice(bagItems, coupon);
+                        HttpContext.Session.Set(BagSessionKey, bagItems);
                         if (coupon.Enabled)
                         {
                             if (coupon.ForAllProducts)
                             {
-                                long discount = Convert.ToInt64(Math.Round(Convert.ToDouble(total) * (Convert.ToDouble(coupon.Discount) / 100)));
-                                total = total - discount;
-                                taxes = total / 5;
-                                taxlessPrice = total - taxes;
-                                ViewBag.CouponCode = couponCode;
+                                //long couponDiscount = Convert.ToInt64(Math.Round(Convert.ToDouble(OrderHelpers.CalculateTotalWithoutDiscounts(bagItems)) * (Convert.ToDouble(coupon.Discount) / 100)));
+
+
+                                ViewBag.Coupon = coupon;
                                 ViewBag.DiscountPercentage = coupon.Discount;
                                 ViewBag.CouponResponse = $"<p class='green-text'>Rabat koden '{couponCode}' er aktiveret</p>";
-                                ViewBag.Discount = discount;
-                                ViewBag.TaxlessPrice = taxlessPrice;
-                                ViewBag.Taxes = taxes;
-                                ViewBag.PriceSum = total;
+                                //ViewBag.Discount = discount;
+                                //ViewBag.TaxlessPrice = taxlessPrice;
+                                //ViewBag.Taxes = taxes;
+                                //ViewBag.PriceSum = total;
 
                                 HttpContext.Session.Set<string>(CouponCodeKey, couponCode);
                             }
@@ -137,21 +143,22 @@ namespace NykantMVC.Controllers
                                 if (discountProducts.Count == 0)
                                 {
                                     ViewBag.CouponResponse = $"<p class='red-text'>Rabat koden '{couponCode}' virker ikke på nogen af de produkter du har valgt</p>";
-                                    ViewBag.Discount = 0;
-                                    ViewBag.TaxlessPrice = taxlessPrice;
-                                    ViewBag.Taxes = taxes;
-                                    ViewBag.PriceSum = total;
+                                    //ViewBag.Discount = discount;
+                                    //ViewBag.TaxlessPrice = taxlessPrice;
+                                    //ViewBag.Taxes = taxes;
+                                    //ViewBag.PriceSum = total;
 
                                     HttpContext.Session.Set<string>(CouponCodeKey, null);
                                 }
                                 else
                                 {
-                                    long discount =  Convert.ToInt64(Math.Round(Convert.ToDouble(OrderHelpers.CalculateAmount(discountProducts)) * (Convert.ToDouble(coupon.Discount) / 100)));
-                                    total = total - discount;
-                                    taxes = total / 5;
-                                    taxlessPrice = total - taxes;
-                                    ViewBag.CouponCode = couponCode;
-                                    ViewBag.DiscountPercentage = coupon.Discount;
+                                    //long couponDiscount = Convert.ToInt64(Math.Round(Convert.ToDouble(OrderHelpers.CalculateTotalWithoutDiscounts(bagItems)) * (Convert.ToDouble(coupon.Discount) / 100)));
+                                    //long discount = OrderHelpers.CalculateDiscount(bagItems) + Convert.ToInt64(Math.Round(Convert.ToDouble(OrderHelpers.CalculateTotalWithoutDiscounts(discountProducts)) * (Convert.ToDouble(coupon.Discount) / 100)));
+                                    //total = total - couponDiscount;
+                                    //taxes = total / 5;
+                                    //taxlessPrice = total - taxes;
+                                    //ViewBag.CouponCode = coupon;
+                                    //ViewBag.DiscountPercentage = coupon.Discount;
                                     if (discountProducts.Count == bagItems.Count)
                                     {
                                         ViewBag.CouponResponse = $"<p class='green-text'>Rabat koden '{couponCode}' er aktiveret</p>";
@@ -161,10 +168,10 @@ namespace NykantMVC.Controllers
                                         ViewBag.CouponResponse = $"<p class='green-text'>Rabat koden '{couponCode}' er aktiveret på nogle af produkterne i din kurv</p>";
                                     }
 
-                                    ViewBag.Discount = discount;
-                                    ViewBag.TaxlessPrice = taxlessPrice;
-                                    ViewBag.Taxes = taxes;
-                                    ViewBag.PriceSum = total;
+                                    //ViewBag.Discount = discount;
+                                    //ViewBag.TaxlessPrice = taxlessPrice;
+                                    //ViewBag.Taxes = taxes;
+                                    //ViewBag.PriceSum = total;
 
                                     HttpContext.Session.Set<string>(CouponCodeKey, couponCode);
                                 }
@@ -173,10 +180,10 @@ namespace NykantMVC.Controllers
                         else
                         {
                             ViewBag.CouponResponse = $"<p class='red-text'>Rabat koden '{couponCode}' er ikke aktiveret</p>";
-                            ViewBag.Discount = 0;
-                            ViewBag.TaxlessPrice = taxlessPrice;
-                            ViewBag.Taxes = taxes;
-                            ViewBag.PriceSum = total;
+                            //ViewBag.Discount = OrderHelpers.CalculateDiscount(bagItems);
+                            //ViewBag.TaxlessPrice = taxlessPrice;
+                            //ViewBag.Taxes = taxes;
+                            //ViewBag.PriceSum = total;
 
                             HttpContext.Session.Set<string>(CouponCodeKey, null);
                         }
@@ -184,10 +191,10 @@ namespace NykantMVC.Controllers
                 }
                 else
                 {
-                    ViewBag.Discount = 0;
-                    ViewBag.TaxlessPrice = taxlessPrice;
-                    ViewBag.Taxes = taxes;
-                    ViewBag.PriceSum = total;
+                    //ViewBag.Discount = OrderHelpers.CalculateDiscount(bagItems);
+                    //ViewBag.TaxlessPrice = taxlessPrice;
+                    //ViewBag.Taxes = taxes;
+                    //ViewBag.PriceSum = total;
 
                     HttpContext.Session.Set<string>(CouponCodeKey, null);
                 }
@@ -203,6 +210,7 @@ namespace NykantMVC.Controllers
 
                 await ManageCoupon(bagItems, couponCode);
 
+                bagItems = HttpContext.Session.Get<List<BagItem>>(BagSessionKey);
                 ViewData.Model = bagItems;
                 return new PartialViewResult
                 {
@@ -302,22 +310,23 @@ namespace NykantMVC.Controllers
                         }
                     }
                 }
+                HttpContext.Session.Set(BagSessionKey, bagItems);
 
                 var couponCode = HttpContext.Session.Get<string>(CouponCodeKey);
                 if(couponCode != null)
                 {
                     await ManageCoupon(bagItems, couponCode);
+                    bagItems = HttpContext.Session.Get<List<BagItem>>(BagSessionKey);
                 }
                 else
                 {
-                    ViewBag.Discount = 0;
-                    ViewBag.PriceSum = OrderHelpers.CalculateAmount(bagItems);
+                    ViewBag.Discount = OrderHelpers.CalculateDiscount(bagItems);
+                    ViewBag.PriceSum = OrderHelpers.CalculateTotal(bagItems);
                     ViewBag.Taxes = ViewBag.PriceSum / 5;
                     ViewBag.TaxlessPrice = ViewBag.PriceSum - ViewBag.Taxes;
                 }
 
                 ViewData.Model = bagItems;
-                HttpContext.Session.Set<List<BagItem>>(BagSessionKey, bagItems);
                 return new PartialViewResult
                 {
                     ViewName = "_BagWrapperPartial",
@@ -326,23 +335,6 @@ namespace NykantMVC.Controllers
             }
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetPrice()
-        {
-            if (User.Identity.IsAuthenticated)
-            {
-                var sub = User.Claims.FirstOrDefault(x => x.Type == "sub").Value;
-                var bagitemList = JsonConvert.DeserializeObject<List<BagItem>>(await GetRequest($"/BagItem/GetBagItems/{sub}"));
-                var price = OrderHelpers.CalculateAmount(bagitemList);
-                return Json( new { price });
-            }
-            else
-            {
-                var bagitemList = HttpContext.Session.Get<List<BagItem>>(BagSessionKey);
-                var price = OrderHelpers.CalculateAmount(bagitemList);
-                return Json(new { price });
-            }
-        }
 
 
     }

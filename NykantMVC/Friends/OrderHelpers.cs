@@ -164,15 +164,64 @@ namespace NykantMVC.Friends
             return deliveryDate;
         }
 
-        public static long CalculateAmount(List<BagItem> items)
+        public static long CalculateTotal(List<BagItem> items)
         {
-            long price = 0;
+            long total = 0;
             foreach (var item in items)
             {
-                for (int i = 0; i < item.Quantity; i++)
-                    price += item.Product.Price;
+                total += item.TotalPrice;
             }
-            return price;
+            return total;
+        }
+
+        public static List<BagItem> SetBagItemsPrice(List<BagItem> items, Coupon coupon = null)
+        {
+            
+            for (int i = 0; i < items.Count; i++)
+            {
+                items[i].PiecePrice = ProductHelper.GetPrice(items[i].Product, coupon);
+                items[i].TotalPrice += items[i].PiecePrice * items[i].Quantity;
+            }
+
+            return items;
+        }
+
+        public static long CalculateTotalDiscountsOnly(List<BagItem> items)
+        {
+            long total = 0;
+            foreach (var item in items)
+            {
+                if(item.Product.Discount > 0)
+                {
+                    for (int i = 0; i < item.Quantity; i++)
+                        total += ProductHelper.GetPrice(item.Product);
+                }
+            }
+            return total;
+        }
+
+        //public static long CalculateTotalWithoutDiscounts(List<BagItem> items)
+        //{
+        //    long total = 0;
+        //    foreach (var item in items)
+        //    {
+        //        if (item.Product.Discount == 0)
+        //        {
+        //            for (int i = 0; i < item.Quantity; i++)
+        //                total += item.Product.Price;
+        //        }
+        //    }
+        //    return total;
+        //}
+
+        public static long CalculateDiscount(List<BagItem> items)
+        {
+            long discount = 0;
+            foreach (var item in items)
+            {
+                discount += item.Product.Price * item.Quantity - item.TotalPrice;
+            }
+            return discount;
         }
 
         public static string DeliveryDateInfo(List<BagItem> bagItems)
@@ -214,11 +263,11 @@ namespace NykantMVC.Friends
             int typecase = 0;
             foreach(var item in bagItems)
             {
-                if(item.Product.WeightInKg <= 20)
+                if(double.Parse(item.Product.WeightInKg) <= 20)
                 {
                     typecase = 1;
                 }
-                if(item.Product.WeightInKg > 20)
+                if(double.Parse(item.Product.WeightInKg) > 20)
                 {
                     typecase = 2;
                     break;
@@ -242,7 +291,7 @@ namespace NykantMVC.Friends
         {
             foreach (var item in bagItems)
             {
-                if (item.Product.WeightInKg > 20)
+                if (double.Parse(item.Product.WeightInKg) > 20)
                 {
                     return ShippingType.HomePallegods;
                 }
@@ -252,7 +301,7 @@ namespace NykantMVC.Friends
 
         public static Order BuildOrder(Checkout checkout, int paymentCaptureId)
         {
-            long total = CalculateAmount(checkout.BagItems);
+            long total = CalculateTotal(checkout.BagItems);
             long discount = 0;
             long taxes = total / 5;
             long taxlessPrice = total - taxes;
@@ -261,7 +310,7 @@ namespace NykantMVC.Friends
             double weight = 0;
             foreach (var item in checkout.BagItems)
             {
-                weight += item.Product.WeightInKg * item.Quantity;
+                weight += double.Parse(item.Product.WeightInKg) * item.Quantity;
             }
 
             var deliveryDate = CalculateDeliveryDate(checkout.BagItems);
@@ -298,7 +347,7 @@ namespace NykantMVC.Friends
                     var discountProducts = OrderHelpers.GetDiscountProducts(checkout.Coupon.CouponForProducts, checkout.BagItems);
                     if (discountProducts.Count > 0)
                     {
-                        discount = Convert.ToInt64(Math.Round(Convert.ToDouble(OrderHelpers.CalculateAmount(discountProducts)) * (Convert.ToDouble(checkout.Coupon.Discount) / 100)));
+                        discount = Convert.ToInt64(Math.Round(Convert.ToDouble(OrderHelpers.CalculateTotal(discountProducts)) * (Convert.ToDouble(checkout.Coupon.Discount) / 100)));
                         total = total - discount;
                         taxes = total / 5;
                         taxlessPrice = total - taxes;

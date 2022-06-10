@@ -24,7 +24,7 @@ namespace NykantMVC.Models
         public int Discount { get; set; } = 0;
         public string Oil { get; set; }
         public string Alt { get; set; }
-        public double WeightInKg { get; set; }
+        public string WeightInKg { get; set; }
         public string Size { get; set; }
         public string Materials { get; set; }
         public string Package { get; set; }

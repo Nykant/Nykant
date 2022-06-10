@@ -68,7 +68,14 @@
 
                 <h1>@Model.Product.Name</h1>
 
-                <p>kr. @Model.Product.Price</p>
+                @if (Model.Product.Discount == 0)
+                {
+                    <p>kr. @Model.Product.Price</p>
+                }
+                else
+                {
+                    <p>kr. @ProductHelper.GetPrice(Model.Product) <span class="inline line-through red-text">@Model.Product.Price</span></p>
+                }
 
                 <div class="fake-box">
                     <h2>@Model.Product.Oil</h2>

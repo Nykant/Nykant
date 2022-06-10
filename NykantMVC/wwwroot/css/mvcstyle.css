@@ -252,6 +252,10 @@ ol, ul {
     padding:20px;
 }
 
+.line-through {
+    text-decoration:line-through;
+}
+
     .error-div p {
         color: red;
     }

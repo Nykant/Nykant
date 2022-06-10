@@ -21,7 +21,15 @@
                 <p class="width-70">(@ViewBag.ProductQuantity) @Model.Product.Name <br /> @Model.Product.Oil</p>
             }
 
-            <p class="width-20">kr. @(Model.Product.Price * ViewBag.ProductQuantity)</p>
+            @if (Model.Product.Discount == 0)
+            {
+                <p class="width-30">kr. @(Model.Product.Price * ViewBag.ProductQuantity)</p>
+            }
+            else
+            {
+                <p class="width-30">kr. @(ProductHelper.GetPrice(Model.Product) * ViewBag.ProductQuantity) <span class="inline line-through red-text">@(Model.Product.Price * ViewBag.ProductQuantity)</span></p>
+            }
+
         </div>
     }
 

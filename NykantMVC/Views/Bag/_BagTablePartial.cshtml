@@ -9,51 +9,74 @@
 </div>
 @foreach (var bagItem in Model)
 {
-    <div class="bag-item">
-        <div id="bag-item-image">
-            <a asp-action="Details" asp-controller="Product" asp-route-urlname="@bagItem.Product.UrlName">
-                <img src="@bagItem.Product.GalleryImage1" />
-            </a>
-        </div>
-        <div id="bag-item-name">
-            <a asp-action="Details" asp-controller="Product" asp-route-urlname="@bagItem.Product.UrlName">
-                @if (bagItem.Product.Length != null)
-                {
-                <p>@bagItem.Product.Name <br /> @bagItem.Product.Length <br /> @bagItem.Product.Oil</p>
-                }
-                else
-                {
-            <p>@bagItem.Product.Name <br /> @bagItem.Product.Oil</p>
-                }
-            </a>
-        </div>
-        <div id="bag-item-price"><label>kr. @bagItem.Product.Price</label></div>
-        <div id="remove-bagitem">
-            <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#bag-wrapper" data-ajax-success="noop" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" asp-controller="Bag" asp-action="UpdateBagItem">
-                @Html.AntiForgeryToken()
-                <input type="hidden" name="bagItem.Quantity" value="@bagItem.Quantity" />
-                <input type="hidden" name="bagItem.ProductId" value="@bagItem.ProductId" />
-                <input type="hidden" name="bagItem.Subject" value="@bagItem.Subject" />
-                <input type="hidden" value="2" name="selection" />
-                <button type="submit"><i class="fas fa-minus"></i></button>
-            </form>
-        </div>
-        <div id="bag-item-quantity">
-            <p id="bagitem-quantity-text">@bagItem.Quantity</p>
-        </div>
-        <div id="add-bagitem">
-            <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#bag-wrapper" data-ajax-success="noop" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" asp-controller="Bag" asp-action="UpdateBagItem">
-                @Html.AntiForgeryToken()
-                <input type="hidden" name="bagItem.Quantity" value="@bagItem.Quantity" />
-                <input type="hidden" name="bagItem.ProductId" value="@bagItem.ProductId" />
-                <input type="hidden" name="bagItem.Subject" value="@bagItem.Subject" />
-                <input type="hidden" value="1" name="selection" />
-                <button type="submit"><i class="fas fa-plus"></i></button>
-            </form>
-        </div>
-        @{
-            var total = bagItem.Quantity * bagItem.Product.Price;
-        }
-        <div id="bag-item-total"><label>kr. @total</label></div>
+<div class="bag-item">
+    <div id="bag-item-image">
+        <a asp-action="Details" asp-controller="Product" asp-route-urlname="@bagItem.Product.UrlName">
+            <img src="@bagItem.Product.GalleryImage1" />
+        </a>
     </div>
+    <div id="bag-item-name">
+        <a asp-action="Details" asp-controller="Product" asp-route-urlname="@bagItem.Product.UrlName">
+            @if (bagItem.Product.Length != null)
+            {
+                <p>@bagItem.Product.Name <br /> @bagItem.Product.Length <br /> @bagItem.Product.Oil</p>
+            }
+            else
+            {
+                <p>@bagItem.Product.Name <br /> @bagItem.Product.Oil</p>
+            }
+        </a>
+    </div>
+    <div id="bag-item-price">
+        @if (ViewBag.Coupon != null)
+        {
+            <label>kr. @ProductHelper.GetPrice(bagItem.Product, ViewBag.Coupon)</label>
+            <label class="line-through red-text">kr. @bagItem.Product.Price</label>
+        }
+        else
+        {
+            <label>kr. @ProductHelper.GetPrice(bagItem.Product)</label> @if (bagItem.Product.Discount > 0)
+            {<label class="line-through red-text">kr. @bagItem.Product.Price</label>}
+        }
+
+    </div>
+    <div id="remove-bagitem">
+        <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#bag-wrapper" data-ajax-success="noop" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" asp-controller="Bag" asp-action="UpdateBagItem">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="bagItem.Quantity" value="@bagItem.Quantity" />
+            <input type="hidden" name="bagItem.ProductId" value="@bagItem.ProductId" />
+            <input type="hidden" name="bagItem.Subject" value="@bagItem.Subject" />
+            <input type="hidden" value="2" name="selection" />
+            <button type="submit"><i class="fas fa-minus"></i></button>
+        </form>
+    </div>
+    <div id="bag-item-quantity">
+        <p id="bagitem-quantity-text">@bagItem.Quantity</p>
+    </div>
+    <div id="add-bagitem">
+        <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#bag-wrapper" data-ajax-success="noop" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" asp-controller="Bag" asp-action="UpdateBagItem">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="bagItem.Quantity" value="@bagItem.Quantity" />
+            <input type="hidden" name="bagItem.ProductId" value="@bagItem.ProductId" />
+            <input type="hidden" name="bagItem.Subject" value="@bagItem.Subject" />
+            <input type="hidden" value="1" name="selection" />
+            <button type="submit"><i class="fas fa-plus"></i></button>
+        </form>
+    </div>
+    @if (ViewBag.Coupon != null)
+    {
+        <div id="bag-item-total">
+            <label>kr. @(bagItem.Quantity * @ProductHelper.GetPrice(bagItem.Product, ViewBag.Coupon))</label>
+            <label class="line-through red-text">kr. @(bagItem.Quantity * @bagItem.Product.Price)</label>
+        </div>
+    }
+    else
+    {
+        <div id="bag-item-total">
+            <label>kr. @(bagItem.Quantity * @ProductHelper.GetPrice(bagItem.Product))</label> @if (bagItem.Product.Discount > 0)
+            {<label class="line-through red-text">kr. @(bagItem.Quantity * @bagItem.Product.Price)</label>}
+        </div>
+    }
+
+</div>
 }

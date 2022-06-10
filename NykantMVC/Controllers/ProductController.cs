@@ -111,24 +111,37 @@ namespace NykantMVC.Controllers
         {
             try
             {
-                var json = await PatchRequest($"/Product/Update", product);
+                var json = await PatchRequest($"/Product/UpdateProduct", product);
                 if (!json.IsSuccessStatusCode)
                 {
                     _logger.LogError($"time: {DateTime.Now} - error: {json.StatusCode}");
-                    return Content("error: Failed to update product");
+                    ViewData.Model = product;
+                    return new PartialViewResult
+                    {
+                        ViewName = "_EditFormPartial",
+                        ViewData = this.ViewData,
+                        StatusCode = 500
+                    };
                 }
 
                 ViewData.Model = product;
                 return new PartialViewResult
                 {
                     ViewName = "_EditFormPartial",
-                    ViewData = this.ViewData
+                    ViewData = this.ViewData,
+                    StatusCode = 200
                 };
             }
             catch (Exception e)
             {
                 _logger.LogError($"time: {DateTime.Now} - error: {e.Message}");
-                return Content("error: Delete Coupon Failed");
+                ViewData.Model = product;
+                return new PartialViewResult
+                {
+                    ViewName = "_EditFormPartial",
+                    ViewData = this.ViewData,
+                    StatusCode = 500
+                };
             }
         }
 
