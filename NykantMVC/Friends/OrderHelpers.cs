@@ -180,7 +180,7 @@ namespace NykantMVC.Friends
             for (int i = 0; i < items.Count; i++)
             {
                 items[i].PiecePrice = ProductHelper.GetPrice(items[i].Product, coupon);
-                items[i].TotalPrice += items[i].PiecePrice * items[i].Quantity;
+                items[i].TotalPrice = items[i].PiecePrice * items[i].Quantity;
             }
 
             return items;
@@ -241,7 +241,7 @@ namespace NykantMVC.Friends
             var orderItems = new List<OrderItem>();
             foreach (var item in bagItems)
             {
-                orderItems.Add(new OrderItem { Quantity = item.Quantity, ProductId = item.ProductId, OrderId = orderId });
+                orderItems.Add(new OrderItem { Quantity = item.Quantity, ProductId = item.ProductId, OrderId = orderId, Price = item.TotalPrice });
             }
             return orderItems;
         }
@@ -302,7 +302,7 @@ namespace NykantMVC.Friends
         public static Order BuildOrder(Checkout checkout, int paymentCaptureId)
         {
             long total = CalculateTotal(checkout.BagItems);
-            long discount = 0;
+            long discount = CalculateDiscount(checkout.BagItems);
             long taxes = total / 5;
             long taxlessPrice = total - taxes;
             Order order = new Order();
@@ -313,13 +313,11 @@ namespace NykantMVC.Friends
                 weight += double.Parse(item.Product.WeightInKg) * item.Quantity;
             }
 
-            var deliveryDate = CalculateDeliveryDate(checkout.BagItems);
-
             if (checkout.Coupon == null)
             {
                 order = new Order
                 {
-                    Discount = null,
+                    Discount = discount.ToString(),
                     CouponCode = null,
                     CreatedAt = DateTime.Now,
                     Currency = "dkk",
@@ -329,30 +327,11 @@ namespace NykantMVC.Friends
                     Taxes = taxes.ToString(),
                     WeightInKg = weight,
                     TaxLessPrice = taxlessPrice.ToString(),
-                    EstimatedDelivery = deliveryDate,
                     BagItems = checkout.BagItems
                 };
             }
             else
             {
-                if (checkout.Coupon.ForAllProducts)
-                {
-                    discount = Convert.ToInt64(Math.Round(Convert.ToDouble(total) * (Convert.ToDouble(checkout.Coupon.Discount) / 100)));
-                    total = total - discount;
-                    taxes = total / 5;
-                    taxlessPrice = total - taxes;
-                }
-                else
-                {
-                    var discountProducts = OrderHelpers.GetDiscountProducts(checkout.Coupon.CouponForProducts, checkout.BagItems);
-                    if (discountProducts.Count > 0)
-                    {
-                        discount = Convert.ToInt64(Math.Round(Convert.ToDouble(OrderHelpers.CalculateTotal(discountProducts)) * (Convert.ToDouble(checkout.Coupon.Discount) / 100)));
-                        total = total - discount;
-                        taxes = total / 5;
-                        taxlessPrice = total - taxes;
-                    }
-                }
 
                 order = new Order
                 {
@@ -366,10 +345,8 @@ namespace NykantMVC.Friends
                     Taxes = taxes.ToString(),
                     WeightInKg = weight,
                     TaxLessPrice = taxlessPrice.ToString(),
-                    EstimatedDelivery = deliveryDate,
                     BagItems = checkout.BagItems
                 };
-
             }
 
             return order;

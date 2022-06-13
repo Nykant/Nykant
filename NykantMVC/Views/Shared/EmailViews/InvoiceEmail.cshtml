@@ -186,7 +186,7 @@
                                                                                 <td style="padding:5px 0;Margin:0" width="80%" align="left"><a href="https://nykant.dk/product/details/@item.Product.UrlName"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:16px;color:#333333;font-size:16px">(@item.Quantity) @item.Product.Name / @item.Product.Oil / @item.Product.WeightInKg kg.</p></a></td>
                                                                             }
 
-                                                                            <td style="padding:5px 0;Margin:0" width="20%" align="left"><a href="https://nykant.dk/product/details/@item.Product.UrlName"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:16px;color:#333333;font-size:16px">kr. @(item.Product.Price * item.Quantity) </p></a></td>
+                                                                            <td style="padding:5px 0;Margin:0" width="20%" align="left"><a href="https://nykant.dk/product/details/@item.Product.UrlName"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:16px;color:#333333;font-size:16px">kr. @item.Price</p></a></td>
                                                                         </tr>
                                                                         <tr style="border-collapse: collapse; padding-bottom: 15px;">
                                                                             <td style="Margin:0" width="70%" align="left"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:16px;color:#333333;font-size:16px"><strong>Varenummer:</strong> @item.Product.Number</p></td>
@@ -212,34 +212,29 @@
                                                         <tr style="border-collapse:collapse">
                                                             <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:15px;padding-bottom:15px">
                                                                 <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:500px" class="cke_show_border" cellspacing="1" cellpadding="1" border="0" align="left" role="presentation">
-                                                                    @if (Model.Order.Coupon != null)
-                                                                    {
-                                                                        <tr style="border-collapse:collapse">
-                                                                            <td width="30%" style="padding:0;Margin:0"><h4 style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif">Rabatkode</h4></td>
-                                                                            <td width="70%" style="padding:0;Margin:0"><p style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif">@Model.Order.Coupon.Code </p></td>
-                                                                        </tr>
-                                                                    }
+                                                                    @*@if (Model.Coupon != null)
+        {
+            <tr style="border-collapse:collapse">
+                <td width="30%" style="padding:0;Margin:0"><h4 style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif">Rabatkode</h4></td>
+                <td width="70%" style="padding:0;Margin:0"><p style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif">@Model.Coupon.Code</p></td>
+            </tr>
+        }*@
 
                                                                     <tr style="border-collapse:collapse">
                                                                         <td width="80%" style="padding:0;Margin:0"><h4 style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif">Rabat</h4></td>
-                                                                        <td width="20%" style="padding:0;Margin:0">
-                                                                            <p style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif">
-                                                                                kr. @Model.Order.Discount @if (Model.Order.Coupon != null)
-                                                                                {<span class="inline">(@Model.Order.Coupon.Discount%)</span>}
-                                                                            </p>
-                                                                        </td>
+                                                                        <td width="20%" style="padding:0;Margin:0"><p style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif">kr. @Model.Order.Discount</p></td>
                                                                     </tr>
                                                                     <tr style="border-collapse:collapse">
                                                                         <td width="80%" style="padding:0;Margin:0"><h4 style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif">Momsgrundlag</h4></td>
-                                                                        <td width="20%" style="padding:0;Margin:0"><p style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif">kr. @Model.Invoice.TaxLessPrice</p></td>
+                                                                        <td width="20%" style="padding:0;Margin:0"><p style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif">kr. @Model.Order.TaxLessPrice</p></td>
                                                                     </tr>
                                                                     <tr style="border-collapse:collapse">
                                                                         <td width="80%" style="padding:0;Margin:0"><h4 style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif">Momsbeløb (25%)</h4></td>
-                                                                        <td width="20%" style="padding:0;Margin:0"><p style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif">kr. @Model.Invoice.Taxes</p></td>
+                                                                        <td width="20%" style="padding:0;Margin:0"><p style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif">kr. @Model.Order.Taxes</p></td>
                                                                     </tr>
                                                                     <tr style="border-collapse:collapse">
                                                                         <td width="80%" style="padding:0;Margin:0"><h4 style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif">Totalbeløb</h4></td>
-                                                                        <td width="20%" style="padding:0;Margin:0"><p style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif">kr. @Model.Invoice.TotalPrice</p></td>
+                                                                        <td width="20%" style="padding:0;Margin:0"><p style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif">kr. @Model.Order.TotalPrice</p></td>
                                                                     </tr>
                                                                 </table>
                                                             </td>

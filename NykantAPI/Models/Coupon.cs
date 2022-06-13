@@ -13,7 +13,7 @@ namespace NykantAPI.Models
         public int Discount { get; set; }
         public bool Enabled { get; set; }
         public bool ForAllProducts { get; set; }
+        public DateTime CreatedAt { get; set; }
         public IEnumerable<CouponForProduct> CouponForProducts { get; set; }
-        public IEnumerable<Order> Orders { get; set; }
     }
 }

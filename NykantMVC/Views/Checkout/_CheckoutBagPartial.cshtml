@@ -6,7 +6,6 @@
         <div class="sidebar-header">
             <h1>Ordreopsummering</h1>
         </div>
-
         <div class="sidebar-items">
             @foreach (var item in Model.Checkout.BagItems)
             {
@@ -24,20 +23,13 @@
                             <p class="width-50"> @item.Product.Name <br /> @item.Product.Oil</p>
                         }
 
-                        <p class="width-20">@item.Quantity @localizer["stk."] <br /> kr. @(item.Product.Price * item.Quantity)</p>
+                        <p class="width-20">@item.Quantity @localizer["stk."] <br /> kr. @item.TotalPrice</p>
                     </div>
                 </a>
             }
         <div class="checkout-price">
             <p>Fragt:</p><span>Gratis</span>
-            @if (Model.Checkout.Coupon != null)
-            {
-                <p>@localizer["Rabat"]:</p><span>kr. @Model.Checkout.Discount (@Model.Checkout.Coupon.Discount%)</span>
-            }
-            else
-            {
-                <p>@localizer["Rabat"]:</p><span>kr. 0</span>
-            }
+            <p>@localizer["Rabat"]:</p><span>kr. @Model.Checkout.Discount</span>
             <p>@localizer["Momsgrundlag"]:</p><span>kr. @Model.Checkout.TaxlessPrice</span>
             <p>@localizer["Momsbeløb(25%)"]:</p><span>kr. @Model.Checkout.Taxes</span>
             <p>@localizer["Totalbeløb"]:</p><span>kr. @Model.Checkout.TotalPrice</span>

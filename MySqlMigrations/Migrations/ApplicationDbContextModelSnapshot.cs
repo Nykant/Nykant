@@ -1137,6 +1137,49 @@ namespace MySqlMigrations.Migrations
                         });
                 });
 
+            modelBuilder.Entity("NykantAPI.Models.Coupon", b =>
+                {
+                    b.Property<string>("Code")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("Discount")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Enabled")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<bool>("ForAllProducts")
+                        .HasColumnType("tinyint(1)");
+
+                    b.HasKey("Code");
+
+                    b.ToTable("Coupons");
+                });
+
+            modelBuilder.Entity("NykantAPI.Models.CouponForProduct", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("CouponCode")
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CouponCode");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("CouponForProducts");
+                });
+
             modelBuilder.Entity("NykantAPI.Models.Customer", b =>
                 {
                     b.Property<int>("Id")
@@ -3169,11 +3212,17 @@ namespace MySqlMigrations.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<string>("CouponCode")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Currency")
                         .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Discount")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<DateTime>("EstimatedDelivery")
@@ -3216,6 +3265,9 @@ namespace MySqlMigrations.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
+                    b.Property<long>("Price")
+                        .HasColumnType("bigint");
+
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
@@ -3240,6 +3292,9 @@ namespace MySqlMigrations.Migrations
 
                     b.Property<string>("PaymentIntent_Id")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<bool>("Refunded")
+                        .HasColumnType("tinyint(1)");
 
                     b.HasKey("Id");
 
@@ -3268,6 +3323,9 @@ namespace MySqlMigrations.Migrations
 
                     b.Property<string>("Description")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("Discount")
+                        .HasColumnType("int");
 
                     b.Property<int>("EColor")
                         .HasColumnType("int");
@@ -3308,8 +3366,8 @@ namespace MySqlMigrations.Migrations
                     b.Property<int>("Pieces")
                         .HasColumnType("int");
 
-                    b.Property<double>("Price")
-                        .HasColumnType("double");
+                    b.Property<long>("Price")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Size")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -3320,8 +3378,8 @@ namespace MySqlMigrations.Migrations
                     b.Property<string>("UrlName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<double>("WeightInKg")
-                        .HasColumnType("double");
+                    b.Property<string>("WeightInKg")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -3336,23 +3394,24 @@ namespace MySqlMigrations.Migrations
                             Amount = 420,
                             AssemblyPath = "none",
                             CategoryId = 5,
-                            Description = "Denne smukke bøjle med klassiske fine linjer, afrundede kanter og ender, giver perfekt støtte og mindst mulige mærker i tøjet.",
+                            Description = "En smuk bøjle i massivt egetræ med afrundede hjørner, som er bløde, og skåner tøjet. Gertrud har også fået en lille blød nedrunding til tøj med stropper, så den kan klare hvad som helst.",
+                            Discount = 0,
                             EColor = 0,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_boejle_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_boejle_naturolie_02.png",
-                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Sort bøjlekrog</p></td></tr>",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Sort bøjlekrog</p></td></tr>",
                             Name = "Bøjlen Gertrud / 3 stk.",
                             Number = "15001",
                             Oil = "Naturolie",
                             Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Størrelse: 47x17x6 cm. (L x B x H)</p><p>Vægt: 0.6 kg.</p><p>Leveres samlet med 3 stk. pr. karton</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_boejle_naturolie_01.png",
                             Pieces = 3,
-                            Price = 420.0,
+                            Price = 420L,
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 45 cm.</p></td></tr>",
                             Title = "Bøjle i massivt egetræ - Behandlet med naturolie",
                             UrlName = "Bøjle-Egetræ-Naturolie",
-                            WeightInKg = 0.59999999999999998
+                            WeightInKg = "0.6"
                         },
                         new
                         {
@@ -3360,23 +3419,24 @@ namespace MySqlMigrations.Migrations
                             Amount = 123,
                             AssemblyPath = "none",
                             CategoryId = 5,
-                            Description = "Denne smukke bøjle med klassiske fine linjer, afrundede kanter og ender, giver perfekt støtte og mindst mulige mærker i tøjet.",
+                            Description = "En smuk bøjle i massivt egetræ med afrundede hjørner, som er bløde, og skåner tøjet. Gertrud har også fået en lille blød nedrunding til tøj med stropper, så den kan klare hvad som helst.",
+                            Discount = 0,
                             EColor = 2,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_boejle_sortolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_boejle_sortolie_02.png",
-                            Materials = "<tr><td class='width-30'<strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Sort bøjlekrog</p></td></tr>",
+                            Materials = "<tr><td class='width-30'<strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Sort bøjlekrog</p></td></tr>",
                             Name = "Bøjlen Gertrud / 3 stk.",
                             Number = "15003",
                             Oil = "Sortolie",
                             Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Størrelse: 47x17x6 cm. (L x B x H)</p><p>Vægt: 0.6 kg.</p><p>Leveres samlet med 3 stk. pr. karton</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_boejle_sortolie_01.png",
                             Pieces = 3,
-                            Price = 420.0,
+                            Price = 420L,
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 45 cm.</p></td></tr>",
                             Title = "Bøjle i massivt egetræ - Behandlet med sortolie",
                             UrlName = "Bøjle-Egetræ-Sortolie",
-                            WeightInKg = 0.59999999999999998
+                            WeightInKg = "0.6"
                         },
                         new
                         {
@@ -3384,23 +3444,24 @@ namespace MySqlMigrations.Migrations
                             Amount = 123,
                             AssemblyPath = "none",
                             CategoryId = 5,
-                            Description = "Denne smukke bøjle med klassiske fine linjer, afrundede kanter og ender, giver perfekt støtte og mindst mulige mærker i tøjet.",
+                            Description = "En smuk bøjle i massivt egetræ med afrundede hjørner, som er bløde, og skåner tøjet. Gertrud har også fået en lille blød nedrunding til tøj med stropper, så den kan klare hvad som helst.",
+                            Discount = 0,
                             EColor = 1,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_boejle_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_boejle_hvidolie_02.png",
-                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Sort bøjlekrog</p></td></tr>",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Sort bøjlekrog</p></td></tr>",
                             Name = "Bøjlen Gertrud / 3 stk.",
                             Number = "15002",
                             Oil = "Hvidolie",
                             Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Størrelse: 47x17x6 cm. (L x B x H)</p><p>Vægt: 0.6 kg.</p><p>Leveres samlet med 3 stk. pr. karton</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_boejle_hvidolie_01.png",
                             Pieces = 3,
-                            Price = 420.0,
+                            Price = 420L,
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 45 cm.</p></td></tr>",
                             Title = "Bøjle i massivt egetræ - Behandlet med hvidolie",
                             UrlName = "Bøjle-Egetræ-Hvidolie",
-                            WeightInKg = 0.59999999999999998
+                            WeightInKg = "0.6"
                         },
                         new
                         {
@@ -3408,13 +3469,14 @@ namespace MySqlMigrations.Migrations
                             Amount = 4,
                             AssemblyPath = "/word/Hylde.docx",
                             CategoryId = 3,
-                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse. Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
+                            Description = "Denne væghylde er simpel, og kan finde sig til rette i hvilket som helst hjem. I hyldeknægtene er nøglehulsbeslagene allerede bygget ind, så hylden monteres helt fladt til væggen, uden synlig fastgørelse. Nøglehulsbeslagene sidder både i top og bunden af hyldeknægtene, således at man kan vende hylden både op eller ned alt efter smag, og nemt skifte frem og tilbage. Der er 4 forskellige længder og 3 forskellige overfladebehandlinger af hylden, så man kan vælge den som passer bedst til sit hjem.",
+                            Discount = 0,
                             EColor = 1,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_02.png",
                             Length = "40 cm.",
-                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
                             Name = "Ingeborg Hylden",
                             Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17032",
@@ -3422,11 +3484,11 @@ namespace MySqlMigrations.Migrations
                             Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse: 43x22x4.5 cm. (L x B x H)</p><p>Vægt: 1.4 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_hvidolie_01.png",
                             Pieces = 1,
-                            Price = 685.0,
+                            Price = 685L,
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 40 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med hvidolie",
                             UrlName = "Hylde-Egetræ-Hvidolie-40cm",
-                            WeightInKg = 1.3999999999999999
+                            WeightInKg = "1.4"
                         },
                         new
                         {
@@ -3434,13 +3496,14 @@ namespace MySqlMigrations.Migrations
                             Amount = 0,
                             AssemblyPath = "/word/Hylde.docx",
                             CategoryId = 3,
-                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse. Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
+                            Description = "Denne væghylde er simpel, og kan finde sig til rette i hvilket som helst hjem. I hyldeknægtene er nøglehulsbeslagene allerede bygget ind, så hylden monteres helt fladt til væggen, uden synlig fastgørelse. Nøglehulsbeslagene sidder både i top og bunden af hyldeknægtene, således at man kan vende hylden både op eller ned alt efter smag, og nemt skifte frem og tilbage. Der er 4 forskellige længder og 3 forskellige overfladebehandlinger af hylden, så man kan vælge den som passer bedst til sit hjem.",
+                            Discount = 0,
                             EColor = 2,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_02.png",
                             Length = "40 cm.",
-                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
                             Name = "Ingeborg Hylden",
                             Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17033",
@@ -3448,11 +3511,11 @@ namespace MySqlMigrations.Migrations
                             Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse: 43x22x4.5 cm. (L x B x H)</p><p>Vægt: 1.4 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_sortolie_01.png",
                             Pieces = 1,
-                            Price = 685.0,
+                            Price = 685L,
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 40 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med sortolie",
                             UrlName = "Hylde-Egetræ-Sortolie-40cm",
-                            WeightInKg = 1.3999999999999999
+                            WeightInKg = "1.4"
                         },
                         new
                         {
@@ -3460,13 +3523,14 @@ namespace MySqlMigrations.Migrations
                             Amount = 14,
                             AssemblyPath = "/word/Hylde.docx",
                             CategoryId = 3,
-                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse. Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
+                            Description = "Denne væghylde er simpel, og kan finde sig til rette i hvilket som helst hjem. I hyldeknægtene er nøglehulsbeslagene allerede bygget ind, så hylden monteres helt fladt til væggen, uden synlig fastgørelse. Nøglehulsbeslagene sidder både i top og bunden af hyldeknægtene, således at man kan vende hylden både op eller ned alt efter smag, og nemt skifte frem og tilbage. Der er 4 forskellige længder og 3 forskellige overfladebehandlinger af hylden, så man kan vælge den som passer bedst til sit hjem.",
+                            Discount = 0,
                             EColor = 0,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_02.png",
                             Length = "40 cm.",
-                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
                             Name = "Ingeborg Hylden",
                             Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17031",
@@ -3474,11 +3538,11 @@ namespace MySqlMigrations.Migrations
                             Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse: 43x22x4.5 cm. (L x B x H)</p><p>Vægt: 1.4 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_naturolie_01.png",
                             Pieces = 1,
-                            Price = 685.0,
+                            Price = 685L,
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 40 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med naturolie",
                             UrlName = "Hylde-Egetræ-Naturolie-40cm",
-                            WeightInKg = 1.3999999999999999
+                            WeightInKg = "1.4"
                         },
                         new
                         {
@@ -3486,13 +3550,14 @@ namespace MySqlMigrations.Migrations
                             Amount = 10,
                             AssemblyPath = "/word/Hylde.docx",
                             CategoryId = 3,
-                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse. Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
+                            Description = "Denne væghylde er simpel, og kan finde sig til rette i hvilket som helst hjem. I hyldeknægtene er nøglehulsbeslagene allerede bygget ind, så hylden monteres helt fladt til væggen, uden synlig fastgørelse. Nøglehulsbeslagene sidder både i top og bunden af hyldeknægtene, således at man kan vende hylden både op eller ned alt efter smag, og nemt skifte frem og tilbage. Der er 4 forskellige længder og 3 forskellige overfladebehandlinger af hylden, så man kan vælge den som passer bedst til sit hjem.",
+                            Discount = 0,
                             EColor = 1,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_02.png",
                             Length = "60 cm.",
-                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
                             Name = "Ingeborg Hylden",
                             Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17022",
@@ -3500,11 +3565,11 @@ namespace MySqlMigrations.Migrations
                             Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse: 63x22x4.5 cm. (L x B x H)</p><p>Vægt: 2 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_hvidolie_01.png",
                             Pieces = 1,
-                            Price = 785.0,
+                            Price = 785L,
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 60 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med hvidolie",
                             UrlName = "Hylde-Egetræ-Hvidolie-60cm",
-                            WeightInKg = 2.0
+                            WeightInKg = "2"
                         },
                         new
                         {
@@ -3512,13 +3577,14 @@ namespace MySqlMigrations.Migrations
                             Amount = 11,
                             AssemblyPath = "/word/Hylde.docx",
                             CategoryId = 3,
-                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse. Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
+                            Description = "Denne væghylde er simpel, og kan finde sig til rette i hvilket som helst hjem. I hyldeknægtene er nøglehulsbeslagene allerede bygget ind, så hylden monteres helt fladt til væggen, uden synlig fastgørelse. Nøglehulsbeslagene sidder både i top og bunden af hyldeknægtene, således at man kan vende hylden både op eller ned alt efter smag, og nemt skifte frem og tilbage. Der er 4 forskellige længder og 3 forskellige overfladebehandlinger af hylden, så man kan vælge den som passer bedst til sit hjem.",
+                            Discount = 0,
                             EColor = 2,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_02.png",
                             Length = "60 cm.",
-                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
                             Name = "Ingeborg Hylden",
                             Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17023",
@@ -3526,11 +3592,11 @@ namespace MySqlMigrations.Migrations
                             Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse: 63x22x4.5 cm. (L x B x H)</p><p>Vægt: 2 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_sortolie_01.png",
                             Pieces = 1,
-                            Price = 785.0,
+                            Price = 785L,
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 60 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med sortolie",
                             UrlName = "Hylde-Egetræ-Sortolie-60cm",
-                            WeightInKg = 2.0
+                            WeightInKg = "2"
                         },
                         new
                         {
@@ -3538,13 +3604,14 @@ namespace MySqlMigrations.Migrations
                             Amount = 30,
                             AssemblyPath = "/word/Hylde.docx",
                             CategoryId = 3,
-                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse. Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
+                            Description = "Denne væghylde er simpel, og kan finde sig til rette i hvilket som helst hjem. I hyldeknægtene er nøglehulsbeslagene allerede bygget ind, så hylden monteres helt fladt til væggen, uden synlig fastgørelse. Nøglehulsbeslagene sidder både i top og bunden af hyldeknægtene, således at man kan vende hylden både op eller ned alt efter smag, og nemt skifte frem og tilbage. Der er 4 forskellige længder og 3 forskellige overfladebehandlinger af hylden, så man kan vælge den som passer bedst til sit hjem.",
+                            Discount = 0,
                             EColor = 0,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_02.png",
                             Length = "60 cm.",
-                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
                             Name = "Ingeborg Hylden",
                             Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17021",
@@ -3552,11 +3619,11 @@ namespace MySqlMigrations.Migrations
                             Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse: 63x22x4.5 cm. (L x B x H)</p><p>Vægt: 2 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_naturolie_01.png",
                             Pieces = 1,
-                            Price = 785.0,
+                            Price = 785L,
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 60 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med naturolie",
                             UrlName = "Hylde-Egetræ-Naturolie-60cm",
-                            WeightInKg = 2.0
+                            WeightInKg = "2"
                         },
                         new
                         {
@@ -3564,13 +3631,14 @@ namespace MySqlMigrations.Migrations
                             Amount = 4,
                             AssemblyPath = "/word/Hylde.docx",
                             CategoryId = 3,
-                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse. Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
+                            Description = "Denne væghylde er simpel, og kan finde sig til rette i hvilket som helst hjem. I hyldeknægtene er nøglehulsbeslagene allerede bygget ind, så hylden monteres helt fladt til væggen, uden synlig fastgørelse. Nøglehulsbeslagene sidder både i top og bunden af hyldeknægtene, således at man kan vende hylden både op eller ned alt efter smag, og nemt skifte frem og tilbage. Der er 4 forskellige længder og 3 forskellige overfladebehandlinger af hylden, så man kan vælge den som passer bedst til sit hjem.",
+                            Discount = 0,
                             EColor = 1,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_02.png",
                             Length = "80 cm.",
-                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
                             Name = "Ingeborg Hylden",
                             Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17012",
@@ -3578,11 +3646,11 @@ namespace MySqlMigrations.Migrations
                             Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse: 83x22x4.5 cm. (L x B x H)</p><p>Vægt: 2.6 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_hvidolie_01.png",
                             Pieces = 1,
-                            Price = 885.0,
+                            Price = 885L,
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 80 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med hvidolie",
                             UrlName = "Hylde-Egetræ-Hvidolie-80cm",
-                            WeightInKg = 2.6000000000000001
+                            WeightInKg = "2.6"
                         },
                         new
                         {
@@ -3590,13 +3658,14 @@ namespace MySqlMigrations.Migrations
                             Amount = 2,
                             AssemblyPath = "/word/Hylde.docx",
                             CategoryId = 3,
-                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse. Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
+                            Description = "Denne væghylde er simpel, og kan finde sig til rette i hvilket som helst hjem. I hyldeknægtene er nøglehulsbeslagene allerede bygget ind, så hylden monteres helt fladt til væggen, uden synlig fastgørelse. Nøglehulsbeslagene sidder både i top og bunden af hyldeknægtene, således at man kan vende hylden både op eller ned alt efter smag, og nemt skifte frem og tilbage. Der er 4 forskellige længder og 3 forskellige overfladebehandlinger af hylden, så man kan vælge den som passer bedst til sit hjem.",
+                            Discount = 0,
                             EColor = 2,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_02.png",
                             Length = "80 cm.",
-                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
                             Name = "Ingeborg Hylden",
                             Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17013",
@@ -3604,11 +3673,11 @@ namespace MySqlMigrations.Migrations
                             Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse: 83x22x4.5 cm. (L x B x H)</p><p>Vægt: 2.6 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_sortolie_01.png",
                             Pieces = 1,
-                            Price = 885.0,
+                            Price = 885L,
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 80 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med sortolie",
                             UrlName = "Hylde-Egetræ-Sortolie-80cm",
-                            WeightInKg = 2.6000000000000001
+                            WeightInKg = "2.6"
                         },
                         new
                         {
@@ -3616,13 +3685,14 @@ namespace MySqlMigrations.Migrations
                             Amount = 11,
                             AssemblyPath = "/word/Hylde.docx",
                             CategoryId = 3,
-                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse. Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
+                            Description = "Denne væghylde er simpel, og kan finde sig til rette i hvilket som helst hjem. I hyldeknægtene er nøglehulsbeslagene allerede bygget ind, så hylden monteres helt fladt til væggen, uden synlig fastgørelse. Nøglehulsbeslagene sidder både i top og bunden af hyldeknægtene, således at man kan vende hylden både op eller ned alt efter smag, og nemt skifte frem og tilbage. Der er 4 forskellige længder og 3 forskellige overfladebehandlinger af hylden, så man kan vælge den som passer bedst til sit hjem.",
+                            Discount = 0,
                             EColor = 0,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_02.png",
                             Length = "80 cm.",
-                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
                             Name = "Ingeborg Hylden",
                             Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17011",
@@ -3630,11 +3700,11 @@ namespace MySqlMigrations.Migrations
                             Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse: 83x22x4.5 cm. (L x B x H)</p><p>Vægt: 2.6 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_naturolie_01.png",
                             Pieces = 1,
-                            Price = 885.0,
+                            Price = 885L,
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 80 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med naturolie",
                             UrlName = "Hylde-Egetræ-Naturolie-80cm",
-                            WeightInKg = 2.6000000000000001
+                            WeightInKg = "2.6"
                         },
                         new
                         {
@@ -3642,13 +3712,14 @@ namespace MySqlMigrations.Migrations
                             Amount = 3,
                             AssemblyPath = "/word/Hylde.docx",
                             CategoryId = 3,
-                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse. Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
+                            Description = "Denne væghylde er simpel, og kan finde sig til rette i hvilket som helst hjem. I hyldeknægtene er nøglehulsbeslagene allerede bygget ind, så hylden monteres helt fladt til væggen, uden synlig fastgørelse. Nøglehulsbeslagene sidder både i top og bunden af hyldeknægtene, således at man kan vende hylden både op eller ned alt efter smag, og nemt skifte frem og tilbage. Der er 4 forskellige længder og 3 forskellige overfladebehandlinger af hylden, så man kan vælge den som passer bedst til sit hjem.",
+                            Discount = 0,
                             EColor = 1,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_02.png",
                             Length = "100 cm.",
-                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
                             Name = "Ingeborg Hylden",
                             Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17002",
@@ -3656,11 +3727,11 @@ namespace MySqlMigrations.Migrations
                             Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse:  103x22x4.5 cm. (L x B x H)</p><p>Vægt: 3.2 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_hvidolie_01.png",
                             Pieces = 1,
-                            Price = 985.0,
+                            Price = 985L,
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 100 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med hvidolie",
                             UrlName = "Hylde-Egetræ-Hvidolie-100cm",
-                            WeightInKg = 3.2000000000000002
+                            WeightInKg = "3.2"
                         },
                         new
                         {
@@ -3668,13 +3739,14 @@ namespace MySqlMigrations.Migrations
                             Amount = 2,
                             AssemblyPath = "/word/Hylde.docx",
                             CategoryId = 3,
-                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse. Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
+                            Description = "Denne væghylde er simpel, og kan finde sig til rette i hvilket som helst hjem. I hyldeknægtene er nøglehulsbeslagene allerede bygget ind, så hylden monteres helt fladt til væggen, uden synlig fastgørelse. Nøglehulsbeslagene sidder både i top og bunden af hyldeknægtene, således at man kan vende hylden både op eller ned alt efter smag, og nemt skifte frem og tilbage. Der er 4 forskellige længder og 3 forskellige overfladebehandlinger af hylden, så man kan vælge den som passer bedst til sit hjem.",
+                            Discount = 0,
                             EColor = 2,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_02.png",
                             Length = "100 cm.",
-                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
                             Name = "Ingeborg Hylden",
                             Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17003",
@@ -3682,11 +3754,11 @@ namespace MySqlMigrations.Migrations
                             Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse:  103x22x4.5 cm. (L x B x H)</p><p>Vægt: 3.2 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_sortolie_01.png",
                             Pieces = 1,
-                            Price = 985.0,
+                            Price = 985L,
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 100 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med sortolie",
                             UrlName = "Hylde-Egetræ-Sortolie-100cm",
-                            WeightInKg = 3.2000000000000002
+                            WeightInKg = "3.2"
                         },
                         new
                         {
@@ -3694,13 +3766,14 @@ namespace MySqlMigrations.Migrations
                             Amount = 7,
                             AssemblyPath = "/word/Hylde.docx",
                             CategoryId = 3,
-                            Description = "Denne enkle hylde i massivt egetræ indeholder flere fine detaljer. De sammenskarede hyldeknægte og det skjulte nøglehulsbeslag gør at denne hylde monteres helt fladt til væggen, og uden synlig fastgørelse. Hylden fås i 4 længder, med de samme hyldeknægte som også vil kunne ophænges omvendt, da der er monteret nøglehulsbeslag som vender modsat hvis man har lyst til denne udgave af hylden.",
+                            Description = "Denne væghylde er simpel, og kan finde sig til rette i hvilket som helst hjem. I hyldeknægtene er nøglehulsbeslagene allerede bygget ind, så hylden monteres helt fladt til væggen, uden synlig fastgørelse. Nøglehulsbeslagene sidder både i top og bunden af hyldeknægtene, således at man kan vende hylden både op eller ned alt efter smag, og nemt skifte frem og tilbage. Der er 4 forskellige længder og 3 forskellige overfladebehandlinger af hylden, så man kan vælge den som passer bedst til sit hjem.",
+                            Discount = 0,
                             EColor = 0,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_02.png",
                             Length = "100 cm.",
-                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
                             Name = "Ingeborg Hylden",
                             Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17001",
@@ -3708,11 +3781,11 @@ namespace MySqlMigrations.Migrations
                             Package = "<tr><td class='width-30'><strong>Pakken</strong></td><td><p>Størelse:  103x22x4.5 cm. (L x B x H)</p><p>Vægt: 3.2 kg. </p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_naturolie_01.png",
                             Pieces = 1,
-                            Price = 985.0,
+                            Price = 985L,
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 100 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
                             Title = "Hylde i massivt egetræ - Behandlet med naturolie",
                             UrlName = "Hylde-Egetræ-Naturolie-100cm",
-                            WeightInKg = 3.2000000000000002
+                            WeightInKg = "3.2"
                         },
                         new
                         {
@@ -3720,23 +3793,24 @@ namespace MySqlMigrations.Migrations
                             Amount = 72,
                             AssemblyPath = "/word/Bord.docx",
                             CategoryId = 2,
-                            Description = "Dette massive egetræsbord fremstår smukt og elegant med de affasede kanter, og drejede koniske ben, som skråner ud mod hjørnerne.Bordpladen er med gennemgående lameller.",
+                            Description = "Affasede kanter, og drejede koniske ben som skråner ud mod hjørnerne, gør bordet unikt at se på. Det eneste man skal gøre er at skrue nogle ben på, og så har man samlet bordet. Både nemt at samle og pakke sammen igen hvis man vil flytte det. Bordet er ikke særligt langt, så passer rigtigt godt til et tebord eller et lille skrivebord, men det er selfølgelig dig som bestemmer det. Bordet fås i 2 overfladebehandlinger, og træet består selvfølgelig udelukkende af massivt egetræ.",
+                            Discount = 0,
                             EColor = 0,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_bord_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_bord_naturolie_02.png",
-                            Materials = "<tr><td class='width-30'><strong>Materialer:</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Metal fittings</p></td></tr>",
+                            Materials = "<tr><td class='width-30'><strong>Materialer:</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Metal fittings</p></td></tr>",
                             Name = "Dagmar Bordet",
                             Number = "16001",
                             Oil = "Naturolie",
                             Package = "<tr class='no-border'><td class='width-30'><strong>Pakken:</strong></td><td><p>Vægt: 22 kg.</p><p>Størrelse: 11 x 75 x 114 cm. (H x B x L)</p><p> Leveres usamlet - se samlevejledning </p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_bord_naturolie_01.png",
                             Pieces = 1,
-                            Price = 3585.0,
+                            Price = 3585L,
                             Size = "<tr><td class='width-30'><strong>Størrelse:</strong></td><td><p>Bordplade tykkelse: 2.5 cm.</p><p>Højde: 74 cm.</p><p>Længde: 110 cm.</p><p>Bredde: 70 cm.</p></td></tr>",
                             Title = "Bord i massivt egetræ - Behandlet med naturolie",
                             UrlName = "Bord-Egetræ-Naturolie",
-                            WeightInKg = 22.0
+                            WeightInKg = "22"
                         },
                         new
                         {
@@ -3744,23 +3818,24 @@ namespace MySqlMigrations.Migrations
                             Amount = 30,
                             AssemblyPath = "/word/Bord.docx",
                             CategoryId = 2,
-                            Description = "Dette massive egetræsbord fremstår smukt og elegant med de affasede kanter, og drejede koniske ben, som skråner ud mod hjørnerne.Bordpladen er med gennemgående lameller.",
+                            Description = "Affasede kanter, og drejede koniske ben som skråner ud mod hjørnerne, gør bordet unikt at se på. Det eneste man skal gøre er at skrue nogle ben på, og så har man samlet bordet. Både nemt at samle og pakke sammen igen hvis man vil flytte det. Bordet er ikke særligt langt, så passer rigtigt godt til et tebord eller et lille skrivebord, men det er selfølgelig dig som bestemmer det. Bordet fås i 2 overfladebehandlinger, og træet består selvfølgelig udelukkende af massivt egetræ.",
+                            Discount = 0,
                             EColor = 1,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_bord_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_bord_hvidolie_02.png",
-                            Materials = "<tr><td class='width-30'><strong>Materialer:</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Metal fittings</p></td></tr>",
+                            Materials = "<tr><td class='width-30'><strong>Materialer:</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Metal fittings</p></td></tr>",
                             Name = "Dagmar Bordet",
                             Number = "16002",
                             Oil = "Hvidolie",
                             Package = "<tr class='no-border'><td class='width-30'><strong>Pakken:</strong></td><td><p>Vægt: 22 kg.</p><p>Størrelse: 11 x 75 x 114 cm. (H x B x L)</p><p> Leveres usamlet - se samlevejledning </p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_bord_hvidolie_01.png",
                             Pieces = 1,
-                            Price = 3585.0,
+                            Price = 3585L,
                             Size = "<tr><td class='width-30'><strong>Størrelse:</strong></td><td><p>Bordplade tykkelse: 2.5 cm.</p><p>Højde: 74 cm.</p><p>Længde: 110 cm.</p><p>Bredde: 70 cm.</p></td></tr>",
                             Title = "Bord i massivt egetræ - Behandlet med hvidolie",
                             UrlName = "Bord-Egetræ-Hvidolie",
-                            WeightInKg = 22.0
+                            WeightInKg = "22"
                         },
                         new
                         {
@@ -3768,24 +3843,25 @@ namespace MySqlMigrations.Migrations
                             Amount = 42,
                             AssemblyPath = "/word/bænk.docx",
                             CategoryId = 4,
-                            Description = "Den elegante og praktiske bænk i massivt egetræ, med afrundede hjørner og synlige drejede ben, er fantastisk stabil og robust.",
+                            Description = "Thyra er en meget elegant og robust bænk at se på. De afrundede hjørner, og drejede ben, som går op igennem sædet og gør sig synlige, giver Thyra det unikke look som det fortjener. Bygget i den bedste kvalitet af massivt egetræ, fås det i 3 forskellige overfladebehandlinger og 2 størrrelse, så det kan passe ind i hvilket som helst hjem.",
+                            Discount = 0,
                             EColor = 0,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_kortbaenk_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_kortbaenk_naturolie_02.png",
                             Length = "115 cm.",
-                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p></td></tr>",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Skruer</p></td></tr>",
                             Name = "Kort Thyra Bænk",
                             Number = "12001",
                             Oil = "Naturolie",
                             Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Størrelse: 11 x 47 x 120 cm. (H x B x L)</p><p>Vægt: 14 kg.</p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_kortbaenk_naturolie_01.png",
                             Pieces = 1,
-                            Price = 3665.0,
+                            Price = 3665L,
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Højde: 47 cm.</p><p>Længde: 115 cm.</p><p>Bredde: 40 cm.</p></td></tr>",
                             Title = "Bænk i massivt egetræ - Behandlet med naturolie",
                             UrlName = "Bænk-Egetræ-Naturolie-115cm",
-                            WeightInKg = 14.0
+                            WeightInKg = "14"
                         },
                         new
                         {
@@ -3793,24 +3869,25 @@ namespace MySqlMigrations.Migrations
                             Amount = 20,
                             AssemblyPath = "/word/bænk.docx",
                             CategoryId = 4,
-                            Description = "Den elegante og praktiske bænk i massivt egetræ, med afrundede hjørner og synlige drejede ben, er fantastisk stabil og robust.",
+                            Description = "Thyra er en meget elegant og robust bænk at se på. De afrundede hjørner, og drejede ben, som går op igennem sædet og gør sig synlige, giver Thyra det unikke look som det fortjener. Bygget i den bedste kvalitet af massivt egetræ, fås det i 3 forskellige overfladebehandlinger og 2 størrrelse, så det kan passe ind i hvilket som helst hjem.",
+                            Discount = 0,
                             EColor = 1,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_kortbaenk_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_kortbaenk_hvidolie_02.png",
                             Length = "115 cm.",
-                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p></td></tr>",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Skruer</p></td></tr>",
                             Name = "Kort Thyra Bænk",
                             Number = "12002",
                             Oil = "Hvidolie",
                             Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Størrelse: 11 x 47 x 120 cm. (H x B x L)</p><p>Vægt: 14 kg.</p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_kortbaenk_naturolie_01.png",
                             Pieces = 1,
-                            Price = 3665.0,
+                            Price = 3665L,
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Højde: 47 cm.</p><p>Længde: 115 cm.</p><p>Bredde: 40 cm.</p></td></tr>",
                             Title = "Bænk i massivt egetræ - Behandlet med hvidolie",
                             UrlName = "Bænk-Egetræ-Hvidolie-115cm",
-                            WeightInKg = 14.0
+                            WeightInKg = "14"
                         },
                         new
                         {
@@ -3818,24 +3895,25 @@ namespace MySqlMigrations.Migrations
                             Amount = 10,
                             AssemblyPath = "/word/bænk.docx",
                             CategoryId = 4,
-                            Description = "Den elegante og praktiske bænk i massivt egetræ, med afrundede hjørner og synlige drejede ben, er fantastisk stabil og robust.",
+                            Description = "Thyra er en meget elegant og robust bænk at se på. De afrundede hjørner, og drejede ben, som går op igennem sædet og gør sig synlige, giver Thyra det unikke look som det fortjener. Bygget i den bedste kvalitet af massivt egetræ, fås det i 3 forskellige overfladebehandlinger og 2 størrrelse, så det kan passe ind i hvilket som helst hjem.",
+                            Discount = 0,
                             EColor = 2,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_kortbaenk_sortolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_kortbaenk_sortolie_02.png",
                             Length = "115 cm.",
-                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p></td></tr>",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Skruer</p></td></tr>",
                             Name = "Kort Thyra Bænk",
                             Number = "12003",
                             Oil = "Sortolie",
                             Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Størrelse: 11 x 47 x 120 cm. (H x B x L)</p><p>Vægt: 14 kg.</p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_kortbaenk_naturolie_01.png",
                             Pieces = 1,
-                            Price = 3665.0,
+                            Price = 3665L,
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Højde: 47 cm.</p><p>Længde: 115 cm.</p><p>Bredde: 40 cm.</p></td></tr>",
                             Title = "Bænk i massivt egetræ - Behandlet med sortolie",
                             UrlName = "Bænk-Egetræ-Sortolie-115cm",
-                            WeightInKg = 14.0
+                            WeightInKg = "14"
                         },
                         new
                         {
@@ -3843,24 +3921,25 @@ namespace MySqlMigrations.Migrations
                             Amount = 17,
                             AssemblyPath = "/word/bænk.docx",
                             CategoryId = 4,
-                            Description = "Den elegante og praktiske bænk i massivt egetræ, med afrundede hjørner og synlige drejede ben, er fantastisk stabil og robust.",
+                            Description = "Thyra er en meget elegant og robust bænk at se på. De afrundede hjørner, og drejede ben, som går op igennem sædet og gør sig synlige, giver Thyra det unikke look som det fortjener. Bygget i den bedste kvalitet af massivt egetræ, fås det i 3 forskellige overfladebehandlinger og 2 størrrelse, så det kan passe ind i hvilket som helst hjem.",
+                            Discount = 0,
                             EColor = 0,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_langbaenk_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_langbaenk_naturolie_02.png",
                             Length = "170 cm.",
-                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p></td></tr>",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Skruer</p></td></tr>",
                             Name = "Lang Thyra Bænk",
                             Number = "11001",
                             Oil = "Naturolie",
                             Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Størrelse: 11 x 47 x 175 cm. (H x B x L)</p><p>Vægt: 20 kg.</p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_langbaenk_naturolie_01.png",
                             Pieces = 1,
-                            Price = 4395.0,
+                            Price = 4395L,
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Højde: 47 cm.</p><p>Længde: 170 cm.</p><p>Bredde: 40 cm.</p></td></tr>",
                             Title = "Bænk i massivt egetræ - Behandlet med naturolie",
                             UrlName = "Bænk-Egetræ-Naturolie-170cm",
-                            WeightInKg = 20.0
+                            WeightInKg = "20"
                         },
                         new
                         {
@@ -3868,24 +3947,25 @@ namespace MySqlMigrations.Migrations
                             Amount = 10,
                             AssemblyPath = "/word/bænk.docx",
                             CategoryId = 4,
-                            Description = "Den elegante og praktiske bænk i massivt egetræ, med afrundede hjørner og synlige drejede ben, er fantastisk stabil og robust.",
+                            Description = "Thyra er en meget elegant og robust bænk at se på. De afrundede hjørner, og drejede ben, som går op igennem sædet og gør sig synlige, giver Thyra det unikke look som det fortjener. Bygget i den bedste kvalitet af massivt egetræ, fås det i 3 forskellige overfladebehandlinger og 2 størrrelse, så det kan passe ind i hvilket som helst hjem.",
+                            Discount = 0,
                             EColor = 1,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_langbaenk_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_langbaenk_hvidolie_02.png",
                             Length = "170 cm.",
-                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p></td></tr>",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Skruer</p></td></tr>",
                             Name = "Lang Thyra Bænk",
                             Number = "11002",
                             Oil = "Hvidolie",
                             Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Størrelse: 11 x 47 x 175 cm. (H x B x L)</p><p>Vægt: 20 kg.</p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_langbaenk_naturolie_01.png",
                             Pieces = 1,
-                            Price = 4395.0,
+                            Price = 4395L,
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Højde: 47 cm.</p><p>Længde: 170 cm.</p><p>Bredde: 40 cm.</p></td></tr>",
                             Title = "Bænk i massivt egetræ - Behandlet med hvidolie",
                             UrlName = "Bænk-Egetræ-Hvidolie-170cm",
-                            WeightInKg = 20.0
+                            WeightInKg = "20"
                         },
                         new
                         {
@@ -3893,24 +3973,25 @@ namespace MySqlMigrations.Migrations
                             Amount = 5,
                             AssemblyPath = "/word/bænk.docx",
                             CategoryId = 4,
-                            Description = "Den elegante og praktiske bænk i massivt egetræ, med afrundede hjørner og synlige drejede ben, er fantastisk stabil og robust.",
+                            Description = "Thyra er en meget elegant og robust bænk at se på. De afrundede hjørner, og drejede ben, som går op igennem sædet og gør sig synlige, giver Thyra det unikke look som det fortjener. Bygget i den bedste kvalitet af massivt egetræ, fås det i 3 forskellige overfladebehandlinger og 2 størrrelse, så det kan passe ind i hvilket som helst hjem.",
+                            Discount = 0,
                             EColor = 2,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_langbaenk_sortolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_langbaenk_sortolie_02.png",
                             Length = "170 cm.",
-                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Skruer</p></td></tr>",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Skruer</p></td></tr>",
                             Name = "Lang Thyra Bænk",
                             Number = "11003",
                             Oil = "Sortolie",
                             Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Størrelse: 11 x 47 x 175 cm. (H x B x L)</p><p>Vægt: 20 kg.</p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_langbaenk_naturolie_01.png",
                             Pieces = 1,
-                            Price = 4395.0,
+                            Price = 4395L,
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Højde: 47 cm.</p><p>Længde: 170 cm.</p><p>Bredde: 40 cm.</p></td></tr>",
                             Title = "Bænk i massivt egetræ - Behandlet med sortolie",
                             UrlName = "Bænk-Egetræ-Sortolie-170cm",
-                            WeightInKg = 20.0
+                            WeightInKg = "20"
                         },
                         new
                         {
@@ -3918,12 +3999,13 @@ namespace MySqlMigrations.Migrations
                             Amount = 50,
                             AssemblyPath = "none",
                             CategoryId = 4,
-                            Description = "Denne elegante og robuste opbevaringsbænk er lavet i massivt egetræ, med drejede ben som er synlige i top. Opmagasineringen er enkel og nem at åbne. Det er en praktisk men samtidig en elegant bænk med fine detaljer, som vil føle sig hjemme hvor som helst.",
+                            Description = "Filippa er en smuk og praktisk opbevaringsbænk lavet i massivt egetræ, med drejede ben som er synlige op igennem sædet. Bænken har et flot læderhåndtag til at åbne opbevaringsrummet, som er stort og kan bruges til hvad som helst. Filippa er også meget robust og stabil, så man skal ikke være bange for at lægge vægt på. Fås i 3 forskellige overfladebehandlinger, og vil passe ind i alle hjem.",
+                            Discount = 0,
                             EColor = 0,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_opbevaringsbaenk_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_opbevaringsbaenk_naturolie_02.png",
-                            Materials = "<tr><td class='width-30'><strong>Materialer:</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Læderstrop</p><p>Beslag </p></td></tr>",
+                            Materials = "<tr><td class='width-30'><strong>Materialer:</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Læderstrop</p><p>Beslag </p></td></tr>",
                             Name = "Filippa Bænk",
                             Note = "<tr class='no-border'><td class='width-30'><strong>Note:</strong></td><td><p>Indvendige mål for opbevaring: 30 x 30 x 85 cm</p></td></tr>",
                             Number = "10001",
@@ -3931,11 +4013,11 @@ namespace MySqlMigrations.Migrations
                             Package = "<tr><td class='width-30'><strong>Pakken:</strong></td><td><p>Vægt: 24 kg.</p><p>Størrelse: 40 x 50 x 115 cm. (B x H x L)</p><p>Leveres samlet </p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_opbevaringsbaenk_naturolie_01.png",
                             Pieces = 1,
-                            Price = 4985.0,
+                            Price = 4985L,
                             Size = "<tr><td class='width-30'><strong>Størrelse:</strong></td><td><p>Højde: 45 cm.</p><p>Længde: 110 cm.</p><p>Dybde: 35 cm. </p></td></tr>",
                             Title = "Opbevaringsbænk i massivt egetræ - Behandlet med naturolie",
                             UrlName = "Opbevaringsbænk-Egetræ-Naturolie",
-                            WeightInKg = 24.0
+                            WeightInKg = "24"
                         },
                         new
                         {
@@ -3943,12 +4025,13 @@ namespace MySqlMigrations.Migrations
                             Amount = 30,
                             AssemblyPath = "none",
                             CategoryId = 4,
-                            Description = "Denne elegante og robuste opbevaringsbænk er lavet i massivt egetræ, med drejede ben som er synlige i top. Opmagasineringen er enkel og nem at åbne. Det er en praktisk men samtidig en elegant bænk med fine detaljer, som vil føle sig hjemme hvor som helst.",
+                            Description = "Filippa er en smuk og praktisk opbevaringsbænk lavet i massivt egetræ, med drejede ben som er synlige op igennem sædet. Bænken har et flot læderhåndtag til at åbne opbevaringsrummet, som er stort og kan bruges til hvad som helst. Filippa er også meget robust og stabil, så man skal ikke være bange for at lægge vægt på. Fås i 3 forskellige overfladebehandlinger, og vil passe ind i alle hjem.",
+                            Discount = 0,
                             EColor = 1,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_opbevaringsbaenk_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_opbevaringsbaenk_hvidolie_02.png",
-                            Materials = "<tr><td class='width-30'><strong>Materialer:</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Læderstrop</p><p>Beslag </p></td></tr>",
+                            Materials = "<tr><td class='width-30'><strong>Materialer:</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Læderstrop</p><p>Beslag </p></td></tr>",
                             Name = "Filippa Bænk",
                             Note = "<tr class='no-border'><td class='width-30'><strong>Note:</strong></td><td><p>Indvendige mål for opbevaring: 30 x 30 x 85 cm</p></td></tr>",
                             Number = "10002",
@@ -3956,11 +4039,11 @@ namespace MySqlMigrations.Migrations
                             Package = "<tr><td class='width-30'><strong>Pakken:</strong></td><td><p>Vægt: 24 kg.</p><p>Størrelse: 40 x 50 x 115 cm. (B x H x L)</p><p>Leveres samlet </p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_opbevaringsbaenk_naturolie_01.png",
                             Pieces = 1,
-                            Price = 4985.0,
+                            Price = 4985L,
                             Size = "<tr><td class='width-30'><strong>Størrelse:</strong></td><td><p>Højde: 45 cm.</p><p>Længde: 110 cm.</p><p>Dybde: 35 cm. </p></td></tr>",
                             Title = "Opbevaringsbænk i massivt egetræ - Behandlet med hvidolie",
                             UrlName = "Opbevaringsbænk-Egetræ-Hvidolie",
-                            WeightInKg = 24.0
+                            WeightInKg = "24"
                         },
                         new
                         {
@@ -3968,12 +4051,13 @@ namespace MySqlMigrations.Migrations
                             Amount = 20,
                             AssemblyPath = "none",
                             CategoryId = 4,
-                            Description = "Denne elegante og robuste opbevaringsbænk er lavet i massivt egetræ, med drejede ben som er synlige i top. Opmagasineringen er enkel og nem at åbne. Det er en praktisk men samtidig en elegant bænk med fine detaljer, som vil føle sig hjemme hvor som helst.",
+                            Description = "Filippa er en smuk og praktisk opbevaringsbænk lavet i massivt egetræ, med drejede ben som er synlige op igennem sædet. Bænken har et flot læderhåndtag til at åbne opbevaringsrummet, som er stort og kan bruges til hvad som helst. Filippa er også meget robust og stabil, så man skal ikke være bange for at lægge vægt på. Fås i 3 forskellige overfladebehandlinger, og vil passe ind i alle hjem.",
+                            Discount = 0,
                             EColor = 2,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_opbevaringsbaenk_sort_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_opbevaringsbaenk_sort_02.png",
-                            Materials = "<tr><td class='width-30'><strong>Materialer:</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Læderstrop</p><p>Beslag </p></td></tr>",
+                            Materials = "<tr><td class='width-30'><strong>Materialer:</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Læderstrop</p><p>Beslag </p></td></tr>",
                             Name = "Filippa Bænk",
                             Note = "<tr class='no-border'><td class='width-30'><strong>Note:</strong></td><td><p>Indvendige mål for opbevaring: 30 x 30 x 85 cm</p></td></tr>",
                             Number = "10003",
@@ -3981,11 +4065,11 @@ namespace MySqlMigrations.Migrations
                             Package = "<tr><td class='width-30'><strong>Pakken:</strong></td><td><p>Vægt: 24 kg.</p><p>Størrelse: 40 x 50 x 115 cm. (B x H x L)</p><p>Leveres samlet </p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_opbevaringsbaenk_naturolie_01.png",
                             Pieces = 1,
-                            Price = 4985.0,
+                            Price = 4985L,
                             Size = "<tr><td class='width-30'><strong>Størrelse:</strong></td><td><p>Højde: 45 cm.</p><p>Længde: 110 cm.</p><p>Dybde: 35 cm. </p></td></tr>",
                             Title = "Opbevaringsbænk i massivt egetræ - Behandlet med sortolie",
                             UrlName = "Opbevaringsbænk-Egetræ-Sortolie",
-                            WeightInKg = 24.0
+                            WeightInKg = "24"
                         },
                         new
                         {
@@ -3993,23 +4077,24 @@ namespace MySqlMigrations.Migrations
                             Amount = 26,
                             AssemblyPath = "/word/Tøjstativ.docx",
                             CategoryId = 1,
-                            Description = "Vores elegante tøjstativ i massivt egetræ, er designet således at det samles udelukkende med trækiler. Bøjlestangen er en drejet rundstok, som er fræset i enderne så kilerne passer igennem. Det massive egetræsmøbel står sikkert og dekorativt med det fine snedkerarbejde, og lækre detaljer.",
+                            Description = "Nora er vores bedste svar på minimalisme. Ingen skruer, ingen beslag, ingen metal. Nora er så naturlig som muligt. Nora består udelukkende af massivt egetræ, som samles via trækiler man bare skubber i, og så står det robust og elegant. Bøjlestangen og underdelen, er fræset i enderne så kilerne passer igennem. Designet med trækiler giver Nora et unikt og naturligt look, som giver øjnene varme og sjælen ro.",
+                            Discount = 0,
                             EColor = 0,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_rack_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_rack_naturolie_02.png",
-                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Kiler</p></td></tr>",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Kiler</p></td></tr>",
                             Name = "Nora Tøjstativ",
                             Number = "13001 + 13001A",
                             Oil = "Naturolie",
                             Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Leveres usamlet i 2 kartoner - se samlevejledning</p></td></tr><tr class='no-border'><td class='width-30'><strong>Karton 1</strong></td><td> <p>Vægt: 5 kg.</p><p> Størrelse: 6.5 x 11.5 x 186 cm. (H x B x L)</p></td></tr><tr><td class='width-30'><strong>Karton 2</strong></td><td> <p>Vægt: 3 kg.</p><p>Størrelse: 5.5 x 54 x 119 cm. (H x B x L)</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_rack_naturolie_01.png",
                             Pieces = 1,
-                            Price = 2595.0,
+                            Price = 2595L,
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Højde: 180 cm.</p><p>Længde: 100 cm.</p><p>Bredde: 55 cm.</p></td></tr>",
                             Title = "Tøjstativ i massivt egetræ - Behandlet med naturolie",
                             UrlName = "Tøjstativ-Egetræ-Naturolie",
-                            WeightInKg = 8.0
+                            WeightInKg = "8"
                         },
                         new
                         {
@@ -4017,23 +4102,24 @@ namespace MySqlMigrations.Migrations
                             Amount = 16,
                             AssemblyPath = "/word/Tøjstativ.docx",
                             CategoryId = 1,
-                            Description = "Vores elegante tøjstativ i massivt egetræ, er designet således at det samles udelukkende med trækiler. Bøjlestangen er en drejet rundstok, som er fræset i enderne så kilerne passer igennem. Det massive egetræsmøbel står sikkert og dekorativt med det fine snedkerarbejde, og lækre detaljer.",
+                            Description = "Nora er vores bedste svar på minimalisme. Ingen skruer, ingen beslag, ingen metal. Nora er så naturlig som muligt. Nora består udelukkende af massivt egetræ, som samles via trækiler man bare skubber i, og så står det robust og elegant. Bøjlestangen og underdelen, er fræset i enderne så kilerne passer igennem. Designet med trækiler giver Nora et unikt og naturligt look, som giver øjnene varme og sjælen ro.",
+                            Discount = 0,
                             EColor = 1,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_rack_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_rack_hvidolie_02.png",
-                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Kiler</p></td></tr>",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Kiler</p></td></tr>",
                             Name = "Nora Tøjstativ",
                             Number = "13002 + 13002A",
                             Oil = "Hvidolie",
                             Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Leveres usamlet i 2 kartoner - se samlevejledning</p></td></tr><tr class='no-border'><td class='width-30'><strong>Karton 1</strong></td><td> <p>Vægt: 5 kg.</p><p> Størrelse: 6.5 x 11.5 x 186 cm. (H x B x L)</p></td></tr><tr><td class='width-30'><strong>Karton 2</strong></td><td> <p>Vægt: 3 kg.</p><p>Størrelse: 5.5 x 54 x 119 cm. (H x B x L)</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_rack_naturolie_01.png",
                             Pieces = 1,
-                            Price = 2595.0,
+                            Price = 2595L,
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Højde: 180 cm.</p><p>Længde: 100 cm.</p><p>Bredde: 55 cm.</p></td></tr>",
                             Title = "Tøjstativ i massivt egetræ - Behandlet med hvidolie",
                             UrlName = "Tøjstativ-Egetræ-Hvidolie",
-                            WeightInKg = 8.0
+                            WeightInKg = "8"
                         },
                         new
                         {
@@ -4041,23 +4127,24 @@ namespace MySqlMigrations.Migrations
                             Amount = 10,
                             AssemblyPath = "/word/Tøjstativ.docx",
                             CategoryId = 1,
-                            Description = "Vores elegante tøjstativ i massivt egetræ, er designet således at det samles udelukkende med trækiler. Bøjlestangen er en drejet rundstok, som er fræset i enderne så kilerne passer igennem. Det massive egetræsmøbel står sikkert og dekorativt med det fine snedkerarbejde, og lækre detaljer.",
+                            Description = "Nora er vores bedste svar på minimalisme. Ingen skruer, ingen beslag, ingen metal. Nora er så naturlig som muligt. Nora består udelukkende af massivt egetræ, som samles via trækiler man bare skubber i, og så står det robust og elegant. Bøjlestangen og underdelen, er fræset i enderne så kilerne passer igennem. Designet med trækiler giver Nora et unikt og naturligt look, som giver øjnene varme og sjælen ro.",
+                            Discount = 0,
                             EColor = 2,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_rack_sortolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_rack_sortolie_02.png",
-                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Kiler</p></td></tr>",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Kiler</p></td></tr>",
                             Name = "Nora Tøjstativ",
                             Number = "13003 + 13003A",
                             Oil = "Sortolie",
                             Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Leveres usamlet i 2 kartoner - se samlevejledning</p></td></tr><tr class='no-border'><td class='width-30'><strong>Karton 1</strong></td><td> <p>Vægt: 5 kg.</p><p> Størrelse: 6.5 x 11.5 x 186 cm. (H x B x L)</p></td></tr><tr><td class='width-30'><strong>Karton 2</strong></td><td> <p>Vægt: 3 kg.</p><p>Størrelse: 5.5 x 54 x 119 cm. (H x B x L)</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_rack_naturolie_01.png",
                             Pieces = 1,
-                            Price = 2595.0,
+                            Price = 2595L,
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Højde: 180 cm.</p><p>Længde: 100 cm.</p><p>Bredde: 55 cm.</p></td></tr>",
                             Title = "Tøjstativ i massivt egetræ - Behandlet med sortolie",
                             UrlName = "Tøjstativ-Egetræ-Sortolie",
-                            WeightInKg = 8.0
+                            WeightInKg = "8"
                         },
                         new
                         {
@@ -4065,23 +4152,24 @@ namespace MySqlMigrations.Migrations
                             Amount = 25,
                             AssemblyPath = "/word/hænge_tøjrack.docx",
                             CategoryId = 1,
-                            Description = "Vores unikke og smukke væghængte tøjstativ i massivt egetræ, er udviklet således den samles med kiler og monteres hængende ud fra væggen, med en lædderstrop.",
+                            Description = "Da vi tegnede Ingrid tog vi udgangspunkt i vores andet andet tøjstativ Nora. Designet minder lidt om hinanden, med den drejede rundstok, og trækiler til at holde stativet sammen. Ingrid monteres hængende ud fra væggen med, 2 skrå læderstropper, for at skabe mere stabilitet, og plantet løst i 2 fødder som skrues ind i væggen. Det var et forsøg på at lave et tøjstativ som ikke fylder ret meget, men stadig har et æstetisk look. ",
+                            Discount = 0,
                             EColor = 0,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/Ingrid_Naturolie_1.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/Ingrid_Naturolie_2.png",
-                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Lædderstrop</p><p>Beslag</p><p>Skruer</p></td></tr>",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Lædderstrop</p><p>Beslag</p><p>Skruer</p></td></tr>",
                             Name = "Ingrid Tøjstativ",
                             Number = "14001",
                             Oil = "Naturolie",
                             Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Vægt: 2kg.</p><p>Størrelse: 7 x 105 x 9.5 cm. (H x L x B)</p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_rack_naturolie_01.png",
                             Pieces = 1,
-                            Price = 1995.0,
+                            Price = 1995L,
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Højde: 90 cm.</p><p>Fra væg/dybde: 40 cm.</p><p>Bredde: 105 cm.</p></td></tr>",
                             Title = "Hængende tøjstativ i massivt egetræ - Behandlet med naturolie",
                             UrlName = "Ophængt-Tøjstativ-Egetræ-Naturolie",
-                            WeightInKg = 2.0
+                            WeightInKg = "2"
                         },
                         new
                         {
@@ -4089,23 +4177,24 @@ namespace MySqlMigrations.Migrations
                             Amount = 15,
                             AssemblyPath = "/word/hænge_tøjrack.docx",
                             CategoryId = 1,
-                            Description = "Vores unikke og smukke væghængte tøjstativ i massivt egetræ, er udviklet således den samles med kiler og monteres hængende ud fra væggen, med en lædderstrop.",
+                            Description = "Da vi tegnede Ingrid tog vi udgangspunkt i vores andet andet tøjstativ Nora. Designet minder lidt om hinanden, med den drejede rundstok, og trækiler til at holde stativet sammen. Ingrid monteres hængende ud fra væggen med, 2 skrå læderstropper, for at skabe mere stabilitet, og plantet løst i 2 fødder som skrues ind i væggen. Det var et forsøg på at lave et tøjstativ som ikke fylder ret meget, men stadig har et æstetisk look. ",
+                            Discount = 0,
                             EColor = 1,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/Ingrid_Hvidolie_1.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/Ingrid_Hvidolie_2.png",
-                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Lædderstrop</p><p>Beslag</p><p>Skruer</p></td></tr>",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Lædderstrop</p><p>Beslag</p><p>Skruer</p></td></tr>",
                             Name = "Ingrid Tøjstativ",
                             Number = "14002",
                             Oil = "Hvidolie",
                             Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Vægt: 2kg.</p><p>Størrelse: 7 x 105 x 9.5 cm. (H x L x B)</p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_rack_naturolie_01.png",
                             Pieces = 1,
-                            Price = 1995.0,
+                            Price = 1995L,
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Højde: 90 cm.</p><p>Fra væg/dybde: 40 cm.</p><p>Bredde: 105 cm.</p></td></tr>",
                             Title = "Hængende tøjstativ i massivt egetræ - Behandlet med hvidolie",
                             UrlName = "Ophængt-Tøjstativ-Egetræ-Hvidolie",
-                            WeightInKg = 2.0
+                            WeightInKg = "2"
                         },
                         new
                         {
@@ -4113,23 +4202,24 @@ namespace MySqlMigrations.Migrations
                             Amount = 10,
                             AssemblyPath = "/word/hænge_tøjrack.docx",
                             CategoryId = 1,
-                            Description = "Vores unikke og smukke væghængte tøjstativ i massivt egetræ, er udviklet således den samles med kiler og monteres hængende ud fra væggen, med en lædderstrop.",
+                            Description = "Da vi tegnede Ingrid tog vi udgangspunkt i vores andet andet tøjstativ Nora. Designet minder lidt om hinanden, med den drejede rundstok, og trækiler til at holde stativet sammen. Ingrid monteres hængende ud fra væggen med, 2 skrå læderstropper, for at skabe mere stabilitet, og plantet løst i 2 fødder som skrues ind i væggen. Det var et forsøg på at lave et tøjstativ som ikke fylder ret meget, men stadig har et æstetisk look. ",
+                            Discount = 0,
                             EColor = 2,
                             ExpectedDelivery = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GalleryImage1 = "../images/Products/Gallery/Desktop/Ingrid_Sortolie_1.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/Ingrid_Sortolie_2.png",
-                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Bæredygtigt FSC certificeret egetræ</p><p>Olie</p><p>Lædderstrop</p><p>Beslag</p><p>Skruer</p></td></tr>",
+                            Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Lædderstrop</p><p>Beslag</p><p>Skruer</p></td></tr>",
                             Name = "Ingrid Tøjstativ",
                             Number = "14003",
                             Oil = "Sortolie",
                             Package = "<tr class='no-border'><td class='width-30'><strong>Pakken</strong></td><td><p>Vægt: 2kg.</p><p>Størrelse: 7 x 105 x 9.5 cm. (H x L x B)</p><p>Leveres usamlet - se samlevejledning</p></td></tr>",
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_rack_naturolie_01.png",
                             Pieces = 1,
-                            Price = 1995.0,
+                            Price = 1995L,
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Højde: 90 cm.</p><p>Fra væg/dybde: 40 cm.</p><p>Bredde: 105 cm.</p></td></tr>",
                             Title = "Hængende tøjstativ i massivt egetræ - Behandlet med sortolie",
                             UrlName = "Ophængt-Tøjstativ-Egetræ-Sortolie",
-                            WeightInKg = 2.0
+                            WeightInKg = "2"
                         });
                 });
 
@@ -4640,6 +4730,35 @@ namespace MySqlMigrations.Migrations
                         });
                 });
 
+            modelBuilder.Entity("NykantAPI.Models.Refund", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PaymentCaptureId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Products")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("QualityFee")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ReturnFee")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PaymentCaptureId")
+                        .IsUnique();
+
+                    b.ToTable("Refunds");
+                });
+
             modelBuilder.Entity("NykantAPI.Models.Review", b =>
                 {
                     b.Property<int>("Id")
@@ -4757,6 +4876,19 @@ namespace MySqlMigrations.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("NykantAPI.Models.CouponForProduct", b =>
+                {
+                    b.HasOne("NykantAPI.Models.Coupon", "Coupon")
+                        .WithMany("CouponForProducts")
+                        .HasForeignKey("CouponCode");
+
+                    b.HasOne("NykantAPI.Models.Product", "Product")
+                        .WithMany("CouponForProducts")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("NykantAPI.Models.Image", b =>
                 {
                     b.HasOne("NykantAPI.Models.Product", "Product")
@@ -4822,6 +4954,15 @@ namespace MySqlMigrations.Migrations
                     b.HasOne("NykantAPI.Models.Product", "Product")
                         .WithMany("ProductLengths")
                         .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("NykantAPI.Models.Refund", b =>
+                {
+                    b.HasOne("NykantAPI.Models.PaymentCapture", "PaymentCapture")
+                        .WithOne("Refund")
+                        .HasForeignKey("NykantAPI.Models.Refund", "PaymentCaptureId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

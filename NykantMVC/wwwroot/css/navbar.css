@@ -293,7 +293,7 @@
     display: none;
     position: absolute;
     background-color: transparent;
-    min-width: 300px;
+    min-width: 500px;
     z-index: 9999;
     transition: none;
     transform: translateX(-100px);

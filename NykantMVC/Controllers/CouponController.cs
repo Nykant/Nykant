@@ -110,6 +110,7 @@ namespace NykantMVC.Controllers
         {
             try
             {
+                coupon.CreatedAt = DateTime.Now;
                 var response = await PostRequest("/Coupon/Post", coupon);
                 if (!response.IsSuccessStatusCode)
                 {

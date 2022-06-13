@@ -22,9 +22,7 @@ namespace NykantMVC.Models
         [Required]
         public Status Status { get; set; }
         public string Discount { get; set; }
-        [ForeignKey("Code")]
         public string CouponCode { get; set; }
-        public Coupon Coupon { get; set; }
         public double WeightInKg { get; set; }
         public DateTime EstimatedDelivery { get; set; }
         //public bool IsBackOrder { get; set; } = false;

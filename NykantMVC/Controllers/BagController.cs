@@ -54,6 +54,7 @@ namespace NykantMVC.Controllers
                 else
                 {
                     bagItems = OrderHelpers.SetBagItemsPrice(bagItems);
+                    HttpContext.Session.Set(BagSessionKey, bagItems);
                     var couponCode = HttpContext.Session.Get<string>(CouponCodeKey);
                     if (couponCode != null)
                     {
@@ -130,9 +131,11 @@ namespace NykantMVC.Controllers
                                 ViewBag.Coupon = coupon;
                                 ViewBag.DiscountPercentage = coupon.Discount;
                                 ViewBag.CouponResponse = $"<p class='green-text'>Rabat koden '{couponCode}' er aktiveret</p>";
-                                //ViewBag.Discount = discount;
-                                //ViewBag.TaxlessPrice = taxlessPrice;
-                                //ViewBag.Taxes = taxes;
+                                ViewBag.Discount = OrderHelpers.CalculateDiscount(bagItems);
+                                ViewBag.PriceSum = OrderHelpers.CalculateTotal(bagItems);
+                                ViewBag.Taxes = ViewBag.PriceSum / 5;
+                                ViewBag.TaxlessPrice = ViewBag.PriceSum - ViewBag.Taxes;
+
                                 //ViewBag.PriceSum = total;
 
                                 HttpContext.Session.Set<string>(CouponCodeKey, couponCode);
@@ -168,10 +171,10 @@ namespace NykantMVC.Controllers
                                         ViewBag.CouponResponse = $"<p class='green-text'>Rabat koden '{couponCode}' er aktiveret på nogle af produkterne i din kurv</p>";
                                     }
 
-                                    //ViewBag.Discount = discount;
-                                    //ViewBag.TaxlessPrice = taxlessPrice;
-                                    //ViewBag.Taxes = taxes;
-                                    //ViewBag.PriceSum = total;
+                                    ViewBag.Discount = OrderHelpers.CalculateDiscount(bagItems);
+                                    ViewBag.PriceSum = OrderHelpers.CalculateTotal(bagItems);
+                                    ViewBag.Taxes = ViewBag.PriceSum / 5;
+                                    ViewBag.TaxlessPrice = ViewBag.PriceSum - ViewBag.Taxes;
 
                                     HttpContext.Session.Set<string>(CouponCodeKey, couponCode);
                                 }
@@ -310,6 +313,7 @@ namespace NykantMVC.Controllers
                         }
                     }
                 }
+                bagItems = OrderHelpers.SetBagItemsPrice(bagItems);
                 HttpContext.Session.Set(BagSessionKey, bagItems);
 
                 var couponCode = HttpContext.Session.Get<string>(CouponCodeKey);

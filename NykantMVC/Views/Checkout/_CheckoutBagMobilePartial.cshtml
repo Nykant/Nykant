@@ -23,17 +23,17 @@
                             <p class="width-50"> @item.Product.Name <br /> @item.Product.Oil</p>
                         }
 
-                        <p class="width-20">@item.Quantity @localizer["stk."] <br /> kr. @(item.Product.Price * item.Quantity)</p>
+                        <p class="width-20">@item.Quantity @localizer["stk."] <br /> kr. @item.TotalPrice</p>
                     </div>
                 </a>
-
             }
-            <div class="checkout-price">
-                <p>Fragtomkostninger:</p><span>kr. 0</span>
-                <p>@localizer["Momsgrundlag"]:</p><span>kr. @Model.Checkout.TaxlessPrice</span>
-                <p>@localizer["Momsbeløb(25%)"]:</p><span>kr. @Model.Checkout.Taxes</span>
-                <p>@localizer["Totalbeløb"]:</p><span>kr. @Model.Checkout.TotalPrice</span>
-            </div>
+        <div class="checkout-price">
+            <p>Fragt:</p><span>Gratis</span>
+            <p>@localizer["Rabat"]:</p><span>kr. @Model.Checkout.Discount</span>
+            <p>@localizer["Momsgrundlag"]:</p><span>kr. @Model.Checkout.TaxlessPrice</span>
+            <p>@localizer["Momsbeløb(25%)"]:</p><span>kr. @Model.Checkout.Taxes</span>
+            <p>@localizer["Totalbeløb"]:</p><span>kr. @Model.Checkout.TotalPrice</span>
+        </div>
             <div class="checkout-delivery">
                 <p>Leveringsmetode:</p><p>@ViewBag.DeliveryType</p>
             </div>

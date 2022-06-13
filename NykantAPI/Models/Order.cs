@@ -26,9 +26,7 @@ namespace NykantAPI.Models
         public Status Status { get; set; }
         public string Discount { get; set; }
         public double WeightInKg { get; set; }
-        [ForeignKey("Code")]
         public string CouponCode { get; set; }
-        public Coupon Coupon { get; set; }
         public DateTime EstimatedDelivery { get; set; }
         //public bool IsBackOrder { get; set; } = false;
         [Required]

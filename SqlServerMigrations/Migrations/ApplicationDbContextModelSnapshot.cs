@@ -1148,6 +1148,9 @@ namespace NykantAPI.data.migrations.local
                     b.Property<string>("Code")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("Discount")
                         .HasColumnType("int");
 
@@ -3221,7 +3224,7 @@ namespace NykantAPI.data.migrations.local
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("CouponCode")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -3259,8 +3262,6 @@ namespace NykantAPI.data.migrations.local
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CouponCode");
-
                     b.HasIndex("PaymentCaptureId")
                         .IsUnique();
 
@@ -3274,6 +3275,9 @@ namespace NykantAPI.data.migrations.local
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
+
+                    b.Property<long>("Price")
+                        .HasColumnType("bigint");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
@@ -4923,10 +4927,6 @@ namespace NykantAPI.data.migrations.local
 
             modelBuilder.Entity("NykantAPI.Models.Order", b =>
                 {
-                    b.HasOne("NykantAPI.Models.Coupon", "Coupon")
-                        .WithMany("Orders")
-                        .HasForeignKey("CouponCode");
-
                     b.HasOne("NykantAPI.Models.PaymentCapture", "PaymentCapture")
                         .WithOne("Order")
                         .HasForeignKey("NykantAPI.Models.Order", "PaymentCaptureId")

@@ -186,7 +186,7 @@
                                                                             <td style="padding:5px 0;Margin:0" width="80%" align="left"><a href="https://nykant.dk/product/details/@item.Product.UrlName"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:16px;color:#333333;font-size:16px">(@item.Quantity) @item.Product.Name / @item.Product.Oil / @item.Product.WeightInKg kg.</p></a></td>
                                                                         }
 
-                                                                        <td style="padding:5px 0;Margin:0" width="20%" align="left"><a href="https://nykant.dk/product/details/@item.Product.UrlName"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:16px;color:#333333;font-size:16px">kr. @(item.Product.Price * item.Quantity) </p></a></td>
+                                                                        <td style="padding:5px 0;Margin:0" width="20%" align="left"><a href="https://nykant.dk/product/details/@item.Product.UrlName"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:16px;color:#333333;font-size:16px">kr. @item.Price</p></a></td>
                                                                     </tr>
                                                                         <tr style="border-collapse: collapse; padding-bottom: 15px;">
                                                                             <td style="Margin:0" width="70%" align="left"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:16px;color:#333333;font-size:16px"><strong>Varenummer:</strong> @item.Product.Number</p></td>
@@ -211,18 +211,17 @@
                                                         <tr style="border-collapse:collapse">
                                                             <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:15px;padding-bottom:15px">
                                                                 <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:500px" class="cke_show_border" cellspacing="1" cellpadding="1" border="0" align="left" role="presentation">
-                                                                    @if (Model.Coupon != null)
+                                                                    @*@if (Model.Coupon != null)
                                                                     {
                                                                         <tr style="border-collapse:collapse">
                                                                             <td width="30%" style="padding:0;Margin:0"><h4 style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif">Rabatkode</h4></td>
                                                                             <td width="70%" style="padding:0;Margin:0"><p style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif">@Model.Coupon.Code</p></td>
                                                                         </tr>
-                                                                    }
+                                                                    }*@
 
                                                                     <tr style="border-collapse:collapse">
                                                                         <td width="80%" style="padding:0;Margin:0"><h4 style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif">Rabat</h4></td>
-                                                                        <td width="20%" style="padding:0;Margin:0"><p style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif">kr. @Model.Discount @if (Model.Coupon != null)
-                                                                        {<span class="inline">(@Model.Coupon.Discount%)</span>}</p></td>
+                                                                        <td width="20%" style="padding:0;Margin:0"><p style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif">kr. @Model.Discount</p></td>
                                                                     </tr>
                                                                     <tr style="border-collapse:collapse">
                                                                         <td width="80%" style="padding:0;Margin:0"><h4 style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif">Momsgrundlag</h4></td>
@@ -303,19 +302,19 @@
                                                                     }
                                                                     <tr style="border-collapse:collapse">
                                                                         <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Navn:</strong></td>
-                                                                        <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.PaymentCapture.Customer.ShippingAddress.Name</span></td>
+                                                                        <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;"></span></td>
                                                                     </tr>
                                                                     <tr style="border-collapse:collapse">
                                                                         <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Addresse:</strong></td>
-                                                                        <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.PaymentCapture.Customer.ShippingAddress.Address</span></td>
+                                                                        <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;"></span></td>
                                                                     </tr>
                                                                     <tr style="border-collapse:collapse">
                                                                         <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>By:</strong></td>
-                                                                        <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.PaymentCapture.Customer.ShippingAddress.City</span></td>
+                                                                        <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;"></span></td>
                                                                     </tr>
                                                                     <tr style="border-collapse:collapse">
                                                                         <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Postnummer:</strong></td>
-                                                                        <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.PaymentCapture.Customer.ShippingAddress.Postal</span></td>
+                                                                        <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;"></span></td>
                                                                     </tr>
                                                                     <tr style="border-collapse:collapse">
                                                                         <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Land:</strong></td>
@@ -347,10 +346,10 @@
                                                             <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:15px;padding-bottom:15px">
                                                                 <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                                                                     <tr style="border-collapse:collapse">
-                                                                        <td align="left" style="padding:0;Margin:0;padding-bottom:15px"><h4 style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif">Estimeret Leveringsdato<br></h4></td>
+                                                                        <td align="left" style="padding:0;Margin:0;padding-bottom:15px"><h4 style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif">Estimeret Leveringstid<br></h4></td>
                                                                     </tr>
                                                                     <tr style="border-collapse:collapse">
-                                                                        <td align="left" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#333333;font-size:16px">@Model.EstimatedDelivery.Day-@Model.EstimatedDelivery.Month-@Model.EstimatedDelivery.Year</p></td>
+                                                                        <td align="left" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#333333;font-size:16px">3-5 arbejdsdage</p></td>
                                                                     </tr>
                                                                 </table>
                                                             </td>
