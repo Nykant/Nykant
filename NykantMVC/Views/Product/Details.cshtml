@@ -15,7 +15,7 @@
 }
 
 <link rel="stylesheet" href="~/css/product-details.css" />
-@*<link rel="stylesheet" href="~/css/karusel.css" />*@
+<link rel="stylesheet" href="~/css/karusel.css" />
 <script src="~/JS/swiped-events.min.js"></script>
 
 <div class="pop" id="pop">
@@ -281,26 +281,11 @@
             </div>*@
     </div>
 
-    @*<div class="col-12 left">
+    <div class="col-12 left">
         <div id="karusel">
-            <div id="karusel-box">
-                @foreach (var product in Model.RelatedProducts)
-                {
-                    if (product.Id != Model.Product.Id && product.EColor == Model.Product.EColor)
-                    {
-                        <div>
-                            <a>
-                                <img class="vertical-center" src="@product.GalleryImage1" />
-                            </a>
-                        </div>
-                    }
-
-                }
-            </div>
+            <partial name="_KaruselPartial" />
         </div>
-        <button id="karusel-back"><</button>
-        <button id="karusel-forward">></button>
-    </div>*@
+    </div>
 </div>
 
 <div class="my-row top-padding bottom-padding">
@@ -310,6 +295,6 @@
 
 <script src="~/JS/product-slideshow.js"></script>
 <script src="~/JS/product-details.js?1"></script>
-@*<script src="~/JS/karusel.js"></script>*@
+<script src="~/JS/karusel.js"></script>
 
 

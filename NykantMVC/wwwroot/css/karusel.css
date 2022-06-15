@@ -12,13 +12,10 @@
 }
 
 #karusel-box {
+    left:0px;
     height: 100%;
     clear: both;
     position: relative;
-    -webkit-transition: transform 1s;
-    -moz-transition: transform 1s;
-    -o-transition: transform 1s;
-    transition: transform 1s;
 }
 
     #karusel-box div {
@@ -30,13 +27,50 @@
         position: relative;
     }
 
-    #karusel-box div a img {
-        max-width: 100%;
-        height: auto;
-        max-height: 100%;
-        object-fit: cover;
-        object-position: center;
+    #karusel-box div a {
+        z-index:1000;
+        height:100%;
+        width:100%;
     }
+
+        #karusel-box div a img {
+            max-width: 100%;
+            height: auto;
+            max-height: 100%;
+            object-fit: cover;
+            object-position: center;
+            pointer-events:none;
+            user-select:none;
+        }
+
+    #karusel button {
+        position:absolute;
+        height:100%;
+        width:50px;
+        background:var(--black-fade);
+        color:white;
+        top:0;
+        border:none;
+        outline:none;
+    }
+
+#karusel button img {
+    transition:all ease-out .3s;
+    transform:scale(.6);
+    opacity:.3;
+}
+
+        #karusel button:hover img {
+            transform: scale(.8);
+            opacity: .7;
+        }
+
+#karusel-back {
+    left:0;
+}
+#karusel-forward {
+    right:0;
+}
 
 
 @media only screen and (max-width: 600px) {
@@ -70,4 +104,9 @@
 }
 
 @media only screen and (min-width: 1780px) {
+}
+
+
+.cancelclickevent {
+    pointer-events: none;
 }

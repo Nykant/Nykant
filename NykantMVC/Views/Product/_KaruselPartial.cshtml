@@ -1,0 +1,18 @@
+﻿@model ProductVM
+
+<div id="karusel-box">
+    @foreach (var product in Model.RelatedProducts)
+    {
+        //if (product.Id != Model.Product.Id && product.EColor == Model.Product.EColor)
+        //{
+        <div>
+            <a asp-controller="product" asp-action="details" asp-route-urlname="@product.UrlName">
+                <img class="vertical-center" src="@product.GalleryImage1" />
+            </a>
+        </div>
+        @*}*@
+
+    }
+</div>
+<button id="karusel-back" onclick="backevent()"><img src="~/lib/svg/arrow-left.svg" /></button>
+<button id="karusel-forward" onclick="forwardevent()"><img src="~/lib/svg/arrow-right.svg" /></button>
