@@ -16,6 +16,7 @@
     height: 100%;
     clear: both;
     position: relative;
+    transition:all 1s;
 }
 
     #karusel-box div {
@@ -31,9 +32,11 @@
         z-index:1000;
         height:100%;
         width:100%;
+        transition:all .3s;
     }
 
         #karusel-box div a img {
+            margin:auto;
             max-width: 100%;
             height: auto;
             max-height: 100%;
@@ -41,6 +44,10 @@
             object-position: center;
             pointer-events:none;
             user-select:none;
+        }
+
+        #karusel-box div a:hover {
+            transform:scale(1.2);
         }
 
     #karusel button {
@@ -72,26 +79,79 @@
     right:0;
 }
 
+.karusel-discount {
+    position:absolute !important;
+    padding:10px !important;
+/*    border-radius:30px;*/
+    background:var(--color1);
+    height:auto !important;
+    width:auto !important;
+    float:none !important;
+    border:1px solid var(--black-fade);
+    left:25%;
+    top:5%;
+}
+
+.karusel-discount p {
+    text-align:center;
+    vertical-align:middle;
+    color:red;
+}
+
+.karusel-price {
+    position: absolute !important;
+    padding: 10px !important;
+/*    border-radius: 30px;*/
+    background: var(--color1);
+    height: auto !important;
+    width: auto !important;
+    float: none !important;
+    border: 1px solid var(--black-fade);
+    left: 25%;
+    bottom: 5%;
+}
+
+    .karusel-price p {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .karusel-price p span {
+
+    }
+
 
 @media only screen and (max-width: 600px) {
+    #karusel-box div {
+        width: 100%;
+    }
     #karusel {
         width:100%;
     }
 }
 
 @media only screen and (min-width: 600px) {
+    #karusel-box div {
+        width: 100%;
+    }
     #karusel {
         width: 100%;
     }
 }
 
 @media only screen and (min-width: 768px) {
+    #karusel-box div {
+        width: 50%;
+    }
     #karusel {
         width: 80%;
     }
 }
 
 @media only screen and (min-width: 992px) {
+    #karusel-box div {
+        width: 33.3333%;
+    }
     #karusel {
         width: 70%;
     }

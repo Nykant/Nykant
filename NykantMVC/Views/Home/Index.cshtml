@@ -6,8 +6,6 @@
 }
 
 <link rel="stylesheet" href="~/css/front-page.css" />
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-<link rel="stylesheet" type="text/css" href="~/css/carousel.css" />
 <script src="~/JS/swiped-events.min.js"></script>
 
 <div id="lb-back">
@@ -17,10 +15,10 @@
 <div class="my-row">
     <div class="slideshow" id="slideshow">
         <div id="slideshow-prev" class="slideshow-button">
-            <img class="absolute-center"  src="~/lib/svg/arrow-left.svg" />
+            <img class="absolute-center" src="~/lib/svg/arrow-left.svg" />
         </div>
         <div id="slideshow-next" class="slideshow-button">
-            <img class="absolute-center"  src="~/lib/svg/arrow-right.svg" />
+            <img class="absolute-center" src="~/lib/svg/arrow-right.svg" />
         </div>
         <div class="slide-container" id="slide-container">
             <div class="slide">
@@ -80,26 +78,21 @@
             <div class="half">
                 <img class="vertical-center video-img" src="~/images/Products/Details_Fullscreen/Desktop/NYKANT_rack_naturolie_02.png" />
             </div>
-
             <a id="follow-link" asp-controller="Product" asp-action="Details" asp-route-urlname="Tøjstativ-Egetræ-Naturolie">
                 <div class="follow-container" id="follow-container">
-
                     <div class="follow-box" id="follow-box">
                         <p id="follow-name">Tøjstativet Nora</p>
                         <p id="follow-oil">Naturolie</p>
                         <p id="follow-price">kr. 2595</p>
                     </div>
-
                 </div>
             </a>
-
         </div>
     </div>
 </div>
 
 <div class="my-row top-padding bottom-padding">
     <div class="col-12">
-
         <div class="favorites">
             <div id="favorites-header" class="favorites-header">
                 <h1>FAVORITTER</h1>
@@ -108,135 +101,109 @@
                 <a asp-controller="product" asp-action="details" asp-route-urlname="Tøjstativ-Egetræ-Naturolie">
                     <img class="absolute-center favorite-img" src="~/images/Products/Details_Fullscreen/Desktop/NYKANT_rack_naturolie_02.png" />
                     <div class="follow-container" id="follow-container-rack">
-
                         <div class="follow-box" id="follow-box-rack">
                             <p id="follow-name-rack">Tøjstativet Nora</p>
                             <p id="follow-oil-rack">Naturolie</p>
                             <p id="follow-price-rack">kr. 2595</p>
                         </div>
-
                     </div>
                 </a>
-
             </div>
             <div class="col-6 left favorite-item">
                 <a asp-controller="product" asp-action="details" asp-route-urlname="Opbevaringsbænk-Egetræ-Sortolie">
                     <img class="absolute-center favorite-img" src="~/images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_sort_03.png" />
                     <div id="follow-container">
-
                         <div class="follow-container" id="follow-container-baenk">
-
                             <div class="follow-box" id="follow-box-baenk">
                                 <p id="follow-name-baenk">Filippa Bænken</p>
                                 <p id="follow-oil-baenk">Sortolie</p>
                                 <p id="follow-price-baenk">kr. 4985</p>
                             </div>
-
                         </div>
-
                     </div>
                 </a>
-
             </div>
             <div class="col-6 left favorite-item">
                 <a asp-controller="product" asp-action="details" asp-route-urlname="Bænk-Egetræ-Naturolie-115cm">
                     <img class="absolute-center favorite-img" src="~/images/Products/Details_Fullscreen/Desktop/NYKANT_kortbaenk_naturolie_02.png" />
                     <div id="follow-container">
-
                         <div class="follow-container" id="follow-container-kortbaenk">
-
                             <div class="follow-box" id="follow-box-kortbaenk">
                                 <p id="follow-name-kortbaenk">Thyra Bænken</p>
                                 <p id="follow-oil-kortbaenk">Naturolie</p>
                                 <p id="follow-price-kortbaenk">kr. 3665</p>
                             </div>
-
                         </div>
-
                     </div>
                 </a>
-
             </div>
-            <div class="col-6 left favorite-item"> 
+            <div class="col-6 left favorite-item">
                 <a asp-controller="product" asp-action="details" asp-route-urlname="Bord-Egetræ-Naturolie">
                     <img class="absolute-center favorite-img" src="~/images/Products/Details_Fullscreen/Desktop/NYKANT_bord_naturolie_02.png" />
                     <div id="follow-container">
-
                         <div class="follow-container" id="follow-container-table">
-
                             <div class="follow-box" id="follow-box-table">
                                 <p id="follow-name-table">Dagmar Bordet</p>
                                 <p id="follow-oil-table">Naturolie</p>
                                 <p id="follow-price-table">kr. 3585</p>
                             </div>
-
                         </div>
-
                     </div>
                 </a>
-
             </div>
         </div>
     </div>
 </div>
 
-<div class="container top-padding bottom-padding" id="owl-carousel">
 
-    <div class="row">
-
-        <div class="col-md-12">
-            <div class="carousel-header">
-                KATEGORIER
-            </div>
-            <div class="owl-carousel">
-                @foreach (var category in Model)
-                {
-                    <form method="post" asp-action="Search" asp-controller="Product">
-                        <div class="product-card">
-
-                            @Html.AntiForgeryToken()
-                            <input class="search__input" type="hidden" name="searchString" value="@category.Name">
-                            <button type="submit">
-                                @*<div class="product-badge text-danger">28% Off</div>*@<img loading="lazy" src="@category.ImgSource" alt="Category">
-                                <h3 class="product-title">@category.Name</h3>
-                            </button>
-
-
-                            @*<h4 class="product-price"> <del>$844.99</del>@cat.Price kr.</h4>*@
-                            @*<div class="product-buttons"> <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="" data-original-title="Whishlist"><i class="fa fa-heart"></i></button> <button class="button">Add to Cart</button> </div>*@
-                        </div>
-                    </form>
-                }
-            </div>
-        </div>
+<div class="row top-padding bottom-padding">
+    <div class="col-12 center z200 category-header">
+        <h1 class="big-text text-center">Kategorier</h1>
     </div>
+
+    <div class="col-12">
+        @foreach (var category in Model)
+        {
+            <form method="post" asp-controller="product" asp-action="search">
+                <input type="hidden" name="searchstring" value="@category.Name" />
+                <button class="category" type="submit">
+                    <div >
+                        <img class="absolute-center" src="@category.ImgSource" />
+                        <p class="centered">@category.Name</p>
+                    </div>
+                </button>
+            </form>
+
+        }
+    </div>
+
 </div>
 
 <div class="my-row top-padding bottom-padding">
     <div class="info-row">
         @*<div class="col-3 left">
-            <div class="col-3 center e-mark">
+                <div class="col-3 center e-mark">
 
-                <svg class="e-mark-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 801">
-                    <g>
-                        <path class="fill" d="M135.58,290H19.05A11.29,11.29,0,0,1,9.4,272.84c17.19-28,59.07-86.29,138.83-144.57l.15-.12c2.7-2.39,86.76-75.72,234.86-105.94,0,0,205.51-48.46,404.1,43.7,0,0,166.13,82.92,235.55,207.35A11.3,11.3,0,0,1,1013,290H963.3a45,45,0,0,1-39.17-22.64c-14.61-25.71-46.91-70.29-113-117.63,0,0-119.41-88.17-306.75-69.56,0,0-106.79,7.78-195,63.1l-.19.11c-2.47,1.19-56.09,27.76-134.12,127.45A50.14,50.14,0,0,1,135.58,290Z"></path>
-                        <path class="fill" d="M895.73,335.93h116.52a11.29,11.29,0,0,1,9.65,17.18c-17.18,28-59,86.26-138.77,144.53a2.23,2.23,0,0,0-.24.19c-3.39,3-87.35,75.82-234.83,105.91,0,0-205.51,48.46-404.1-43.7,0,0-166.13-82.92-235.54-207.35a11.3,11.3,0,0,1,9.91-16.76H68a45,45,0,0,1,39.17,22.63c14.62,25.72,46.92,70.3,113,117.64,0,0,119.41,88.17,306.75,69.56,0,0,106.72-7.78,195-63.06l.33-.18c3.18-1.54,56.58-28.45,134.06-127.42A50.09,50.09,0,0,1,895.73,335.93Z"></path>
-                        <path class="fill" d="M633.66,362.34A40.1,40.1,0,0,0,601,379.48c-9.29,13.33-25.94,31-52.52,39.46,0,0-64.15,23.19-111.34-30.78L680,279.18a20.42,20.42,0,0,0,10.52-25.6A184.52,184.52,0,0,0,511.88,135.07c-97.11,3.25-175.78,82.7-178.12,179.83a184.49,184.49,0,0,0,360.33,60.23,10.06,10.06,0,0,0-9.66-13.05ZM412.28,320.67a103.52,103.52,0,0,1,183.2-66.09l-182,82.11A104.42,104.42,0,0,1,412.28,320.67Z"></path>
-                    </g>
-                </svg>
-                <div>
-                    <p>Vi er e-mærket</p>
+                    <svg class="e-mark-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 801">
+                        <g>
+                            <path class="fill" d="M135.58,290H19.05A11.29,11.29,0,0,1,9.4,272.84c17.19-28,59.07-86.29,138.83-144.57l.15-.12c2.7-2.39,86.76-75.72,234.86-105.94,0,0,205.51-48.46,404.1,43.7,0,0,166.13,82.92,235.55,207.35A11.3,11.3,0,0,1,1013,290H963.3a45,45,0,0,1-39.17-22.64c-14.61-25.71-46.91-70.29-113-117.63,0,0-119.41-88.17-306.75-69.56,0,0-106.79,7.78-195,63.1l-.19.11c-2.47,1.19-56.09,27.76-134.12,127.45A50.14,50.14,0,0,1,135.58,290Z"></path>
+                            <path class="fill" d="M895.73,335.93h116.52a11.29,11.29,0,0,1,9.65,17.18c-17.18,28-59,86.26-138.77,144.53a2.23,2.23,0,0,0-.24.19c-3.39,3-87.35,75.82-234.83,105.91,0,0-205.51,48.46-404.1-43.7,0,0-166.13-82.92-235.54-207.35a11.3,11.3,0,0,1,9.91-16.76H68a45,45,0,0,1,39.17,22.63c14.62,25.72,46.92,70.3,113,117.64,0,0,119.41,88.17,306.75,69.56,0,0,106.72-7.78,195-63.06l.33-.18c3.18-1.54,56.58-28.45,134.06-127.42A50.09,50.09,0,0,1,895.73,335.93Z"></path>
+                            <path class="fill" d="M633.66,362.34A40.1,40.1,0,0,0,601,379.48c-9.29,13.33-25.94,31-52.52,39.46,0,0-64.15,23.19-111.34-30.78L680,279.18a20.42,20.42,0,0,0,10.52-25.6A184.52,184.52,0,0,0,511.88,135.07c-97.11,3.25-175.78,82.7-178.12,179.83a184.49,184.49,0,0,0,360.33,60.23,10.06,10.06,0,0,0-9.66-13.05ZM412.28,320.67a103.52,103.52,0,0,1,183.2-66.09l-182,82.11A104.42,104.42,0,0,1,412.28,320.67Z"></path>
+                        </g>
+                    </svg>
+                    <div>
+                        <p>Vi er e-mærket</p>
+                    </div>
+
+
                 </div>
-
-
-            </div>
-        </div>*@
+            </div>*@
 
         <div class="info-item">
             <div class="center">
 
                 @*<i class="fas fa-tree"></i>
-                <p>FSC Certificeret Træ</p>*@
+                    <p>FSC Certificeret Træ</p>*@
 
 
             </div>
@@ -261,7 +228,7 @@
             <div class="center">
 
                 @*<i class="far fa-clock"></i>
-                <p>Vi er E-Mærket</p>*@
+                    <p>Vi er E-Mærket</p>*@
 
             </div>
         </div>
@@ -290,11 +257,9 @@
     </div>
 </div>
 @*<div class="my-row">
-    
-</div>*@
 
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-<script type="text/javascript" src="~/JS/carousel.js"></script>
+    </div>*@
+
 <script src="~/JS/slideshow.js"></script>
 <script src="~/JS/moving-box.js"></script>
 <script src="~/JS/follow-box-1.js"></script>

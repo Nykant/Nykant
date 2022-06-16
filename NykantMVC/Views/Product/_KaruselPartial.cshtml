@@ -5,11 +5,29 @@
     {
         //if (product.Id != Model.Product.Id && product.EColor == Model.Product.EColor)
         //{
-        <div>
-            <a asp-controller="product" asp-action="details" asp-route-urlname="@product.UrlName">
-                <img class="vertical-center" src="@product.GalleryImage1" />
-            </a>
-        </div>
+    <div>
+        @if (product.Discount > 0)
+        {
+            <div class="karusel-discount">
+                <p>-@product.Discount%</p>
+            </div>
+
+            <div class="karusel-price">
+                <p>kr. @ProductHelper.GetPrice(product) <span class="line-through red-text">@product.Price</span></p>
+            </div>
+        }
+        else
+        {
+            <div class="karusel-price">
+                <p>kr. @product.Price</p>
+            </div>
+        }
+
+        <a asp-controller="product" asp-action="details" asp-route-urlname="@product.UrlName">
+            <img class="absolute-center" src="@product.GalleryImage1" />
+        </a>
+
+    </div>
         @*}*@
 
     }
