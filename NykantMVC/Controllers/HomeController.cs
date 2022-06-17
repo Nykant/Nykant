@@ -50,6 +50,7 @@ namespace NykantMVC.Controllers
             {
                 var jsonResponse = await GetRequest("/Category/GetCategories");
                 var categories = JsonConvert.DeserializeObject<List<Category>>(jsonResponse);
+                ViewBag.Products = JsonConvert.DeserializeObject<List<Product>>(await GetRequest("/Product/GetProducts"));
                 return View(categories);
             }
             catch (Exception e) {

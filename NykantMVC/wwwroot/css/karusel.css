@@ -1,4 +1,4 @@
-﻿#karusel {
+﻿.karusel {
     height: 300px;
     width:100%;
     overflow: hidden;
@@ -11,7 +11,7 @@
 
 }
 
-#karusel-box {
+.karusel-box {
     left:0px;
     height: 100%;
     clear: both;
@@ -19,7 +19,7 @@
     transition:all 1s;
 }
 
-    #karusel-box div {
+    .karusel-box div {
         width: 33.3333%;
         height: 100%;
         float: left;
@@ -28,14 +28,20 @@
         position: relative;
     }
 
-    #karusel-box div a {
+    .karusel-header {
+        text-align:center;
+        padding:10px;
+        font-size:25px;
+    }
+
+    .karusel-box div a {
         z-index:1000;
         height:100%;
         width:100%;
         transition:all .3s;
     }
 
-        #karusel-box div a img {
+        .karusel-box div a img {
             margin:auto;
             max-width: 100%;
             height: auto;
@@ -46,11 +52,11 @@
             user-select:none;
         }
 
-        #karusel-box div a:hover {
+        .karusel-box div a:hover {
             transform:scale(1.2);
         }
 
-    #karusel button {
+    .karusel button {
         position:absolute;
         height:100%;
         width:50px;
@@ -61,21 +67,21 @@
         outline:none;
     }
 
-#karusel button img {
+.karusel button img {
     transition:all ease-out .3s;
     transform:scale(.6);
     opacity:.3;
 }
 
-        #karusel button:hover img {
+        .karusel button:hover img {
             transform: scale(.8);
             opacity: .7;
         }
 
-#karusel-back {
+.karusel-back {
     left:0;
 }
-#karusel-forward {
+.karusel-forward {
     right:0;
 }
 
@@ -90,6 +96,7 @@
     border:1px solid var(--black-fade);
     left:25%;
     top:5%;
+    z-index:100;
 }
 
 .karusel-discount p {
@@ -101,7 +108,7 @@
 .karusel-price {
     position: absolute !important;
     padding: 10px !important;
-/*    border-radius: 30px;*/
+    /*    border-radius: 30px;*/
     background: var(--color1);
     height: auto !important;
     width: auto !important;
@@ -109,6 +116,7 @@
     border: 1px solid var(--black-fade);
     left: 25%;
     bottom: 5%;
+    z-index: 100;
 }
 
     .karusel-price p {
@@ -122,37 +130,37 @@
 
 
 @media only screen and (max-width: 600px) {
-    #karusel-box div {
+    .karusel-box div {
         width: 100%;
     }
-    #karusel {
+    .karusel {
         width:100%;
     }
 }
 
 @media only screen and (min-width: 600px) {
-    #karusel-box div {
+    .karusel-box div {
         width: 100%;
     }
-    #karusel {
+    .karusel {
         width: 100%;
     }
 }
 
 @media only screen and (min-width: 768px) {
-    #karusel-box div {
+    .karusel-box div {
         width: 50%;
     }
-    #karusel {
+    .karusel {
         width: 80%;
     }
 }
 
 @media only screen and (min-width: 992px) {
-    #karusel-box div {
+    .karusel-box div {
         width: 33.3333%;
     }
-    #karusel {
+    .karusel {
         width: 70%;
     }
 }

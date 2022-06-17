@@ -3,9 +3,17 @@
 @{
     ViewData["Title"] = "Nykant - Egetræsmøbler i Dansk Design";
     ViewData["Description"] = "Nykant er et nyt dansk brand, som med inspiration fra dansk design, udvikler moderne egetræsmøbler med minimalistiske detaljer i høj kvalitet, produceret i bæredygtigt FSC certificeret, massivt, Egetræ.";
+
+    List<Product> randomProducts = ProductHelper.RandomizeList(ViewBag.Products);
+    var randomDiscountProducts = randomProducts.Where(x => x.Discount > 0);
+    var nora = randomProducts.Find(x => x.Id == 27);
+    var filippa = randomProducts.Find(x => x.Id == 26);
+    var thyra = randomProducts.Find(x => x.Id == 18);
+    var dagmar = randomProducts.Find(x => x.Id == 16);
 }
 
 <link rel="stylesheet" href="~/css/front-page.css" />
+<link rel="stylesheet" href="~/css/karusel.css" />
 <script src="~/JS/swiped-events.min.js"></script>
 
 <div id="lb-back">
@@ -14,6 +22,7 @@
 
 <div class="my-row">
     <div class="slideshow" id="slideshow">
+
         <div id="slideshow-prev" class="slideshow-button">
             <img class="absolute-center" src="~/lib/svg/arrow-left.svg" />
         </div>
@@ -67,7 +76,7 @@
 <div class="my-row top-padding bottom-padding">
     <div class="responsive-container">
         <div class="col-4 left text-center height-600">
-            <p class="big-text vertical-center">VI HAR FUNDET PÅ NYE MÅDER AT SAMLE MØBLER PÅ</p>
+            <p class="big-text vertical-center">VI HAR FUNDET PÅ NYE MÅDER AT SAMLE MØBLER PÅ, SOM GIVER ET UNIKT ÆSTETISK LOOK.</p>
         </div>
         <div id="video-slide" class="col-8 left video-slide">
             <div class="half">
@@ -81,15 +90,70 @@
             <a id="follow-link" asp-controller="Product" asp-action="Details" asp-route-urlname="Tøjstativ-Egetræ-Naturolie">
                 <div class="follow-container" id="follow-container">
                     <div class="follow-box" id="follow-box">
-                        <p id="follow-name">Tøjstativet Nora</p>
-                        <p id="follow-oil">Naturolie</p>
-                        <p id="follow-price">kr. 2595</p>
+                        <p id="follow-name">@nora.Name</p>
+                        <p id="follow-oil">@nora.Oil</p>
+                        <p id="follow-price">
+                            kr. @ProductHelper.GetPrice(nora) @if (nora.Discount > 0)
+                            {<span class="line-through red-text">@nora.Price</span>}
+                        </p>
                     </div>
                 </div>
             </a>
         </div>
     </div>
 </div>
+
+<div class="my-row">
+    <div class="col-12 left top-padding bottom-padding">
+        <h1 class="karusel-header">ALLE TILBUD:</h1>
+        <div class="karusel" id="frontpage-karusel">
+            <div class="karusel-box" id="frontpage-karusel-box">
+                @foreach (var product in randomDiscountProducts)
+                {
+
+                    <div>
+                        @if (product.Discount > 0)
+                        {
+                            <div class="karusel-discount">
+                                <p>-@product.Discount%</p>
+                            </div>
+
+                            <div class="karusel-price">
+                                <p>kr. @ProductHelper.GetPrice(product) <span class="line-through red-text">@product.Price</span></p>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="karusel-price">
+                                <p>kr. @product.Price</p>
+                            </div>
+                        }
+                        <a asp-controller="product" asp-action="details" asp-route-urlname="@product.UrlName">
+                            <img class="absolute-center" src="@product.GalleryImage1" />
+                        </a>
+                    </div>
+
+                }
+            </div>
+            <button class="karusel-back" onclick="frontpage_backevent()"><img src="~/lib/svg/arrow-left.svg" /></button>
+            <button class="karusel-forward" onclick="frontpage_forwardevent()"><img src="~/lib/svg/arrow-right.svg" /></button>
+        </div>
+    </div>
+</div>
+
+<div class="my-row padding" >
+    <div class="col-8 center">
+        <div class="about-wood">
+            <h1 class="text-center">VI ELSKER TRÆ</h1>
+            <p >Det er verdens mest miljøvenlige råstof</p>
+            <p >Træ suger CO2 fra luften og lægger det på lager i træprodukter</p>
+            <p >Træ er en fornyelig ressource</p>
+            <p >Det kan genbruges</p>
+            <p >Træ giver intet affald, men CO2-neutral energi når det brændes.</p>
+        </div>
+    </div>
+</div>
+
 
 <div class="my-row top-padding bottom-padding">
     <div class="col-12">
@@ -102,9 +166,12 @@
                     <img class="absolute-center favorite-img" src="~/images/Products/Details_Fullscreen/Desktop/NYKANT_rack_naturolie_02.png" />
                     <div class="follow-container" id="follow-container-rack">
                         <div class="follow-box" id="follow-box-rack">
-                            <p id="follow-name-rack">Tøjstativet Nora</p>
-                            <p id="follow-oil-rack">Naturolie</p>
-                            <p id="follow-price-rack">kr. 2595</p>
+                            <p id="follow-name-rack">@nora.Name</p>
+                            <p id="follow-oil-rack">@nora.Oil</p>
+                            <p id="follow-price-rack">
+                                kr. @ProductHelper.GetPrice(nora) @if (nora.Discount > 0)
+                                {<span class="line-through red-text">@nora.Price</span>}
+                            </p>
                         </div>
                     </div>
                 </a>
@@ -115,9 +182,12 @@
                     <div id="follow-container">
                         <div class="follow-container" id="follow-container-baenk">
                             <div class="follow-box" id="follow-box-baenk">
-                                <p id="follow-name-baenk">Filippa Bænken</p>
-                                <p id="follow-oil-baenk">Sortolie</p>
-                                <p id="follow-price-baenk">kr. 4985</p>
+                                <p id="follow-name-baenk">@filippa.Name</p>
+                                <p id="follow-oil">@filippa.Oil</p>
+                                <p id="follow-price">
+                                    kr. @ProductHelper.GetPrice(filippa) @if (filippa.Discount > 0)
+                                    {<span class="line-through red-text">@filippa.Price</span>}
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -129,9 +199,12 @@
                     <div id="follow-container">
                         <div class="follow-container" id="follow-container-kortbaenk">
                             <div class="follow-box" id="follow-box-kortbaenk">
-                                <p id="follow-name-kortbaenk">Thyra Bænken</p>
-                                <p id="follow-oil-kortbaenk">Naturolie</p>
-                                <p id="follow-price-kortbaenk">kr. 3665</p>
+                                <p id="follow-name-baenk">@thyra.Name</p>
+                                <p id="follow-oil">@thyra.Oil</p>
+                                <p id="follow-price">
+                                    kr. @ProductHelper.GetPrice(thyra) @if (thyra.Discount > 0)
+                                    {<span class="line-through red-text">@thyra.Price</span>}
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -143,9 +216,12 @@
                     <div id="follow-container">
                         <div class="follow-container" id="follow-container-table">
                             <div class="follow-box" id="follow-box-table">
-                                <p id="follow-name-table">Dagmar Bordet</p>
-                                <p id="follow-oil-table">Naturolie</p>
-                                <p id="follow-price-table">kr. 3585</p>
+                                <p id="follow-name-baenk">@dagmar.Name</p>
+                                <p id="follow-oil">@dagmar.Oil</p>
+                                <p id="follow-price">
+                                    kr. @ProductHelper.GetPrice(dagmar) @if (dagmar.Discount > 0)
+                                    {<span class="line-through red-text">@dagmar.Price</span>}
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -156,9 +232,9 @@
 </div>
 
 
-<div class="row top-padding bottom-padding">
+<div class="my-row top-padding bottom-padding">
     <div class="col-12 center z200 category-header">
-        <h1 class="big-text text-center">Kategorier</h1>
+        <h1 class="text-center">KATEGORIER</h1>
     </div>
 
     <div class="col-12">
@@ -167,7 +243,7 @@
             <form method="post" asp-controller="product" asp-action="search">
                 <input type="hidden" name="searchstring" value="@category.Name" />
                 <button class="category" type="submit">
-                    <div >
+                    <div>
                         <img class="absolute-center" src="@category.ImgSource" />
                         <p class="centered">@category.Name</p>
                     </div>
@@ -247,7 +323,7 @@
                 <div class="follow-container" id="follow-container-about">
 
                     <div id="follow-box-about">
-                        <p id="follow-about">LÆS OM NYKANT</p>
+                        <p id="follow-about">MERE OM NYKANT</p>
                     </div>
 
                 </div>
@@ -261,11 +337,12 @@
     </div>*@
 
 <script src="~/JS/slideshow.js"></script>
-<script src="~/JS/moving-box.js"></script>
-<script src="~/JS/follow-box-1.js"></script>
-<script src="~/JS/follow-box-2.js"></script>
-<script src="~/JS/follow-box-3.js"></script>
-<script src="~/JS/follow-box-4.js"></script>
-<script src="~/JS/follow-box-5.js"></script>
+@*<script src="~/JS/moving-box.js"></script>
+    <script src="~/JS/follow-box-1.js"></script>
+    <script src="~/JS/follow-box-2.js"></script>
+    <script src="~/JS/follow-box-3.js"></script>
+    <script src="~/JS/follow-box-4.js"></script>
+    <script src="~/JS/follow-box-5.js"></script>*@
 @*<script async src="~/JS/checkout-sandbox.js"></script>*@
+<script src="~/JS/frontpage-karusel.js"></script>
 

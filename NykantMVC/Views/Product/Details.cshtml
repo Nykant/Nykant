@@ -12,6 +12,8 @@
     var slideImages = Model.Product.Images.Where(x => x.ImageType == ImageType.DetailsSlide);
 
     var count = 1;
+
+    var randomRelated = ProductHelper.RandomizeList(Model.RelatedProducts);
 }
 
 <link rel="stylesheet" href="~/css/product-details.css" />
@@ -281,20 +283,46 @@
             </div>*@
     </div>
 
-    <div class="col-12 left">
-        <div id="karusel">
-            <partial name="_KaruselPartial" />
+    <div class="col-12 left top-padding bottom-padding">
+        <h1 class="karusel-header">Du kunne måske være interesseret i disse:</h1>
+        <div class="karusel" id="details-karusel">
+            <div class="karusel-box" id="details-karusel-box">
+                @foreach (var product in randomRelated)
+                {
+                    if (product.Id != Model.Product.Id)
+                    {
+                        <div>
+                            @if (product.Discount > 0)
+                            {
+                                <div class="karusel-discount">
+                                    <p>-@product.Discount%</p>
+                                </div>
+
+                                <div class="karusel-price">
+                                    <p>kr. @ProductHelper.GetPrice(product) <span class="line-through red-text">@product.Price</span></p>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="karusel-price">
+                                    <p>kr. @product.Price</p>
+                                </div>
+                            }
+                            <a asp-controller="product" asp-action="details" asp-route-urlname="@product.UrlName">
+                                <img class="absolute-center" src="@product.GalleryImage1" />
+                            </a>
+                        </div>
+                    }
+                }
+            </div>
+            <button class="karusel-back"  onclick="details_backevent()"><img src="~/lib/svg/arrow-left.svg" /></button>
+            <button class="karusel-forward"  onclick="details_forwardevent()"><img src="~/lib/svg/arrow-right.svg" /></button>
         </div>
     </div>
 </div>
 
-<div class="my-row top-padding bottom-padding">
-
-
-</div>
-
 <script src="~/JS/product-slideshow.js"></script>
 <script src="~/JS/product-details.js?1"></script>
-<script src="~/JS/karusel.js"></script>
+<script src="~/JS/details-karusel.js"></script>
 
 

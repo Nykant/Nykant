@@ -8,6 +8,12 @@ namespace NykantMVC.Friends
 {
     public static class ProductHelper
     {
+        private static Random rng = new Random();
+        public static List<Product> RandomizeList(List<Product> products) 
+        {
+            return products.OrderBy(x => rng.Next()).ToList();
+        }
+
         public static long GetPrice(Product product, Coupon coupon = null)
         {
             if(coupon == null)

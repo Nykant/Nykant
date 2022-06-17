@@ -116,9 +116,36 @@ namespace NykantAPI.Controllers
         {
             try
             {
-                var products = _context.Products
-                    .Where(x => x.Category.Id == categoryId);
+                IQueryable<Product> products;
+                if(categoryId == 5 || categoryId == 1)
+                {
+                    products = _context.Products
+                        .Where(x => x.Category.Id == 5 || x.Category.Id == 1);
+                }
+                else
+                {
+                    products = _context.Products
+                        .Where(x => x.Category.Id == categoryId);
+                }
 
+                var json = JsonConvert.SerializeObject(products, Extensions.JsonOptions.jsonSettings);
+
+                return Ok(json);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
+                return BadRequest();
+            }
+        }
+
+        [HttpGet]
+        public ActionResult<IQueryable<Product>> GetDiscountProducts()
+        {
+            try
+            {
+
+                var products = _context.Products.Where(x => x.Discount > 0);
                 var json = JsonConvert.SerializeObject(products, Extensions.JsonOptions.jsonSettings);
 
                 return Ok(json);
