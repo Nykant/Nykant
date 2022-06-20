@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20220620132442_NewFresh.cs" />
+    <Compile Remove="Migrations\20220620132442_NewFresh.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\NykantAPI\NykantAPI.csproj" />
   </ItemGroup>
 

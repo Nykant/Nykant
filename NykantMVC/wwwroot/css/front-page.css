@@ -481,6 +481,7 @@ width:50px;
         border: 1px solid var(--black-fade);
         transition: all .3s;
         z-index:200;
+        color:var(--font1);
     }
 
 @media only screen and (max-width: 600px) {
