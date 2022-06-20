@@ -586,7 +586,7 @@ ol, ul {
     }
 
     .padding-10 {
-        padding:10px;
+        padding:10px !important;
     }
 
     .z50{
@@ -598,7 +598,7 @@ ol, ul {
     }
 
     .top-padding {
-        padding-top: 5vh;
+        padding-top: 40px;
     }
 
 .top-padding-8vh {

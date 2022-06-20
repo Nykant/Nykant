@@ -39,6 +39,7 @@ namespace NykantMVC.Controllers
             }
             else
             {
+                HttpContext.Session.Set<string>(CouponCodeKey, null);
                 var bagItems = HttpContext.Session.Get<List<BagItem>>(BagSessionKey);
                 if (bagItems == null)
                 {
@@ -55,14 +56,14 @@ namespace NykantMVC.Controllers
                 {
                     bagItems = OrderHelpers.SetBagItemsPrice(bagItems);
                     HttpContext.Session.Set(BagSessionKey, bagItems);
-                    var couponCode = HttpContext.Session.Get<string>(CouponCodeKey);
-                    if (couponCode != null)
-                    {
-                        await ManageCoupon(bagItems, couponCode);
-                        ViewBag.DeliveryInfo = OrderHelpers.DeliveryDateInfo(bagItems);
-                    }
-                    else
-                    {
+                    //var couponCode = HttpContext.Session.Get<string>(CouponCodeKey);
+                    //if (couponCode != null)
+                    //{
+                    //    await ManageCoupon(bagItems, couponCode);
+                    //    ViewBag.DeliveryInfo = OrderHelpers.DeliveryDateInfo(bagItems);
+                    //}
+                    //else
+                    //{
                         var total = OrderHelpers.CalculateTotal(bagItems);
                         var taxes = total / 5;
                         var taxlessPrice = total - taxes;
@@ -73,7 +74,7 @@ namespace NykantMVC.Controllers
                         ViewBag.TaxlessPrice = taxlessPrice;
                         ViewBag.Discount = OrderHelpers.CalculateDiscount(bagItems);
                         ViewBag.PriceSum = total;
-                    }
+                    //}
 
                     return View(bagItems);
                 }

@@ -31,7 +31,7 @@
     .karusel-header {
         text-align:center;
         padding:10px;
-        font-size:25px;
+        font-size:35px;
     }
 
     .karusel-box div a {
@@ -60,11 +60,13 @@
         position:absolute;
         height:100%;
         width:50px;
-        background:var(--black-fade);
+        background:var(--color3);
+        opacity:0.6;
         color:white;
         top:0;
         border:none;
         outline:none;
+        z-index: 101;
     }
 
 .karusel button img {

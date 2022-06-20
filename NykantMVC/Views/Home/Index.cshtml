@@ -74,6 +74,60 @@
 </div>
 
 <div class="my-row top-padding bottom-padding">
+    <div class="info-row">
+        @*<div class="col-3 left">
+                <div class="col-3 center e-mark">
+
+                    <svg class="e-mark-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 801">
+                        <g>
+                            <path class="fill" d="M135.58,290H19.05A11.29,11.29,0,0,1,9.4,272.84c17.19-28,59.07-86.29,138.83-144.57l.15-.12c2.7-2.39,86.76-75.72,234.86-105.94,0,0,205.51-48.46,404.1,43.7,0,0,166.13,82.92,235.55,207.35A11.3,11.3,0,0,1,1013,290H963.3a45,45,0,0,1-39.17-22.64c-14.61-25.71-46.91-70.29-113-117.63,0,0-119.41-88.17-306.75-69.56,0,0-106.79,7.78-195,63.1l-.19.11c-2.47,1.19-56.09,27.76-134.12,127.45A50.14,50.14,0,0,1,135.58,290Z"></path>
+                            <path class="fill" d="M895.73,335.93h116.52a11.29,11.29,0,0,1,9.65,17.18c-17.18,28-59,86.26-138.77,144.53a2.23,2.23,0,0,0-.24.19c-3.39,3-87.35,75.82-234.83,105.91,0,0-205.51,48.46-404.1-43.7,0,0-166.13-82.92-235.54-207.35a11.3,11.3,0,0,1,9.91-16.76H68a45,45,0,0,1,39.17,22.63c14.62,25.72,46.92,70.3,113,117.64,0,0,119.41,88.17,306.75,69.56,0,0,106.72-7.78,195-63.06l.33-.18c3.18-1.54,56.58-28.45,134.06-127.42A50.09,50.09,0,0,1,895.73,335.93Z"></path>
+                            <path class="fill" d="M633.66,362.34A40.1,40.1,0,0,0,601,379.48c-9.29,13.33-25.94,31-52.52,39.46,0,0-64.15,23.19-111.34-30.78L680,279.18a20.42,20.42,0,0,0,10.52-25.6A184.52,184.52,0,0,0,511.88,135.07c-97.11,3.25-175.78,82.7-178.12,179.83a184.49,184.49,0,0,0,360.33,60.23,10.06,10.06,0,0,0-9.66-13.05ZM412.28,320.67a103.52,103.52,0,0,1,183.2-66.09l-182,82.11A104.42,104.42,0,0,1,412.28,320.67Z"></path>
+                        </g>
+                    </svg>
+                    <div>
+                        <p>Vi er e-mærket</p>
+                    </div>
+
+
+                </div>
+            </div>*@
+
+        <!--<div class="info-item">
+            <div class="center">-->
+        @*<i class="fas fa-tree"></i>
+            <p>FSC Certificeret Træ</p>*@
+
+
+        <!--</div>
+        </div>-->
+        <div class="info-item">
+            <div class="center">
+
+                <i class="fas fa-truck"></i>
+                <p>Gratis Forsendelse</p>
+
+            </div>
+        </div>
+        <div class="info-item">
+            <div class="center">
+
+                <i class="far fa-clock"></i>
+                <p>3-5 Arbejdsdage Leveringstid</p>
+
+            </div>
+        </div>
+        <!--<div class="info-item">
+            <div class="center">-->
+        @*<i class="far fa-clock"></i>
+            <p>Vi er E-Mærket</p>*@
+
+        <!--</div>
+        </div>-->
+    </div>
+</div>
+
+<div class="my-row top-padding bottom-padding">
     <div class="responsive-container">
         <div class="col-4 left text-center height-600">
             <p class="big-text vertical-center">VI HAR FUNDET PÅ NYE MÅDER AT SAMLE MØBLER PÅ, SOM GIVER ET UNIKT ÆSTETISK LOOK.</p>
@@ -141,15 +195,15 @@
     </div>
 </div>
 
-<div class="my-row padding" >
+<div class="my-row top-padding bottom-padding" >
     <div class="col-8 center">
         <div class="about-wood">
-            <h1 class="text-center">VI ELSKER TRÆ</h1>
-            <p >Det er verdens mest miljøvenlige råstof</p>
-            <p >Træ suger CO2 fra luften og lægger det på lager i træprodukter</p>
-            <p >Træ er en fornyelig ressource</p>
-            <p >Det kan genbruges</p>
-            <p >Træ giver intet affald, men CO2-neutral energi når det brændes.</p>
+            <h1 class="text-center">VI <i class="fa fa-heart padding-10"></i> TRÆ</h1>
+            <p ><i class="fa fa-tree"></i>Er verdens mest miljøvenlige råstof.</p>
+            <p ><i class="fa fa-tree"></i>Tager CO2 fra luften og lægger det på lager i træprodukter.</p>
+            <p ><i class="fa fa-tree"></i>Er en fornyelig ressource.</p>
+            <p ><i class="fa fa-tree"></i>Kan genbruges.</p>
+            <p ><i class="fa fa-tree"></i>Giver intet affald, men CO2-neutral energi når det brændes.</p>
         </div>
     </div>
 </div>
@@ -159,7 +213,7 @@
     <div class="col-12">
         <div class="favorites">
             <div id="favorites-header" class="favorites-header">
-                <h1>FAVORITTER</h1>
+                <h1>MEST SOLGTE</h1>
             </div>
             <div class="col-6 left favorite-item">
                 <a asp-controller="product" asp-action="details" asp-route-urlname="Tøjstativ-Egetræ-Naturolie">
@@ -255,68 +309,15 @@
 
 </div>
 
-<div class="my-row top-padding bottom-padding">
-    <div class="info-row">
-        @*<div class="col-3 left">
-                <div class="col-3 center e-mark">
 
-                    <svg class="e-mark-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 801">
-                        <g>
-                            <path class="fill" d="M135.58,290H19.05A11.29,11.29,0,0,1,9.4,272.84c17.19-28,59.07-86.29,138.83-144.57l.15-.12c2.7-2.39,86.76-75.72,234.86-105.94,0,0,205.51-48.46,404.1,43.7,0,0,166.13,82.92,235.55,207.35A11.3,11.3,0,0,1,1013,290H963.3a45,45,0,0,1-39.17-22.64c-14.61-25.71-46.91-70.29-113-117.63,0,0-119.41-88.17-306.75-69.56,0,0-106.79,7.78-195,63.1l-.19.11c-2.47,1.19-56.09,27.76-134.12,127.45A50.14,50.14,0,0,1,135.58,290Z"></path>
-                            <path class="fill" d="M895.73,335.93h116.52a11.29,11.29,0,0,1,9.65,17.18c-17.18,28-59,86.26-138.77,144.53a2.23,2.23,0,0,0-.24.19c-3.39,3-87.35,75.82-234.83,105.91,0,0-205.51,48.46-404.1-43.7,0,0-166.13-82.92-235.54-207.35a11.3,11.3,0,0,1,9.91-16.76H68a45,45,0,0,1,39.17,22.63c14.62,25.72,46.92,70.3,113,117.64,0,0,119.41,88.17,306.75,69.56,0,0,106.72-7.78,195-63.06l.33-.18c3.18-1.54,56.58-28.45,134.06-127.42A50.09,50.09,0,0,1,895.73,335.93Z"></path>
-                            <path class="fill" d="M633.66,362.34A40.1,40.1,0,0,0,601,379.48c-9.29,13.33-25.94,31-52.52,39.46,0,0-64.15,23.19-111.34-30.78L680,279.18a20.42,20.42,0,0,0,10.52-25.6A184.52,184.52,0,0,0,511.88,135.07c-97.11,3.25-175.78,82.7-178.12,179.83a184.49,184.49,0,0,0,360.33,60.23,10.06,10.06,0,0,0-9.66-13.05ZM412.28,320.67a103.52,103.52,0,0,1,183.2-66.09l-182,82.11A104.42,104.42,0,0,1,412.28,320.67Z"></path>
-                        </g>
-                    </svg>
-                    <div>
-                        <p>Vi er e-mærket</p>
-                    </div>
-
-
-                </div>
-            </div>*@
-
-        <div class="info-item">
-            <div class="center">
-
-                @*<i class="fas fa-tree"></i>
-                    <p>FSC Certificeret Træ</p>*@
-
-
-            </div>
-        </div>
-        <div class="info-item">
-            <div class="center">
-
-                <i class="fas fa-truck"></i>
-                <p>Gratis Forsendelse</p>
-
-            </div>
-        </div>
-        <div class="info-item">
-            <div class="center">
-
-                <i class="far fa-clock"></i>
-                <p>3-5 Arbejdsdage Leveringstid</p>
-
-            </div>
-        </div>
-        <div class="info-item">
-            <div class="center">
-
-                @*<i class="far fa-clock"></i>
-                    <p>Vi er E-Mærket</p>*@
-
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="my-row top-padding bottom-padding">
     <div class="col-6 center">
         <div class="about-us" id="about-us">
             <h1>MØBLER I DANSK DESIGN</h1>
             <p id="about-us-text">
-                Vi er inspireret af dansk design, og vi vil være med til at innovere det. Minimalisme er et områder vi sætter fokus på, når vi går i gang med at tegne. Vi sigter efter at skabe nogle unikke og praktiske designs, med æstetiske detaljer, som gør møblet mere tiltrækkende, hver gang man kigger på det. Det er sådan noget vi stræber efter at lave. Det er dansk design, med kant.
+                Nykant er et nyt dansk møbel brand, med inspiration fra dansk design. <br />
+                Med kærlighed til træ, vil vi være med til at innovere møbelindustrien. Vi sætter meget pris på minimalistiske detajler, og går efter at tegne nogle unikke og praktiske designs, med æstetik, som gør møblet mere tiltrækkende, hver gang man kigger på det. Det er møbler i dansk design med kant.
             </p>
 
             <a asp-controller="home" asp-action="about">
