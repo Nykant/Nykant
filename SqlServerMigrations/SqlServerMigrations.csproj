@@ -7,6 +7,8 @@
   <ItemGroup>
     <Compile Remove="Migrations\20220609094024_OrderError.cs" />
     <Compile Remove="Migrations\20220609094024_OrderError.Designer.cs" />
+    <Compile Remove="Migrations\20220621195245_Discount.cs" />
+    <Compile Remove="Migrations\20220621195245_Discount.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

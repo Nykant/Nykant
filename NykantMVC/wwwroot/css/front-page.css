@@ -420,7 +420,7 @@ width:50px;
 
         .info-item img {
             max-height: 30px;
-            max-width: 100%;
+            max-width: 40px;
             object-fit: cover;
             object-position: center;
             margin: auto;

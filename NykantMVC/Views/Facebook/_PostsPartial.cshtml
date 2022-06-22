@@ -1,9 +1,6 @@
 ﻿@model Feed
 
-@if (Model == null)
-{
-<script defer src="~/JS/facebookRequest.js?101"></script>
-}
+
 <div class="json-get-info margin-top-10">
     @if (Model != null)
     {
@@ -47,3 +44,7 @@
     }
 </table>
 
+@if (Model == null)
+{
+    <script src="~/JS/facebookRequest.js?102"></script>
+}
