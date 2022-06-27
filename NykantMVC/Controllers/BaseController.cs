@@ -76,7 +76,7 @@ namespace NykantMVC.Controllers
                 return customer;
             }
             catch (Exception e) {
-                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}, {e.InnerException}, {e.StackTrace}, {e.TargetSite}");
             }
             return null;
         }
@@ -132,8 +132,7 @@ namespace NykantMVC.Controllers
             }
             catch (Exception e)
             {
-                string uri = _urls.Api + url;
-                _logger.LogError($"time: {DateTime.Now} - uri: {uri}" + e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}, {e.InnerException}, {e.StackTrace}, {e.TargetSite}");
             }
             return null;
         }
@@ -190,8 +189,7 @@ namespace NykantMVC.Controllers
             }
             catch (Exception e)
             {
-                string uri = _urls.Api + url;
-                _logger.LogError($"time: {DateTime.Now} - uri: {uri}" + e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}, {e.InnerException}, {e.StackTrace}, {e.TargetSite}");
             }
             return null;
             
@@ -212,8 +210,7 @@ namespace NykantMVC.Controllers
             }
             catch (Exception e)
             {
-                //string uri = _urls.Api + url;
-                _logger.LogError($"time: {DateTime.Now} - uri: facebook feed" + e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}, {e.InnerException}, {e.StackTrace}, {e.TargetSite}");
             }
             return null;
         }
@@ -233,8 +230,7 @@ namespace NykantMVC.Controllers
             }
             catch (Exception e)
             {
-                //string uri = _urls.Api + url;
-                _logger.LogError($"time: {DateTime.Now} - uri: facebook feed" + e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}, {e.InnerException}, {e.StackTrace}, {e.TargetSite}");
             }
             return null;
         }
@@ -293,8 +289,7 @@ namespace NykantMVC.Controllers
             }
             catch (Exception e)
             {
-                string uri = _urls.Api + url;
-                _logger.LogError($"time: {DateTime.Now} - uri: {uri}" + e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}, {e.InnerException}, {e.StackTrace}, {e.TargetSite}");
             }
             return null;
             
@@ -346,8 +341,7 @@ namespace NykantMVC.Controllers
             }
             catch (Exception e)
             {
-                string uri = _urls.Api + url;
-                _logger.LogError($"time: {DateTime.Now} - uri: {uri}" + e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}, {e.InnerException}, {e.StackTrace}, {e.TargetSite}");
             }
             return null;
             
@@ -369,7 +363,7 @@ namespace NykantMVC.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogInformation(e.Message);
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}, {e.InnerException}, {e.StackTrace}, {e.TargetSite}");
                 return null;
             }
         }

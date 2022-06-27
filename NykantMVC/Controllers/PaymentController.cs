@@ -53,7 +53,7 @@ namespace NykantMVC.Controllers
                 //    return Json(new { error = "Could not post consent" });
                 //}
             }
-            catch (Exception err) { _logger.LogError($"time: {DateTime.Now} - {err.Message}"); }
+            catch (Exception e) { _logger.LogError($"time: {DateTime.Now} - {e.Message}, {e.InnerException}, {e.StackTrace}, {e.TargetSite}"); }
             return NoContent();
         }
 
@@ -115,7 +115,7 @@ namespace NykantMVC.Controllers
                     }
                     catch (StripeException e)
                     {
-                        _logger.LogError($"time: {DateTime.Now} - error: {e.Message}");
+                        _logger.LogError($"time: {DateTime.Now} - {e.Message}, {e.InnerException}, {e.StackTrace}, {e.TargetSite}");
                         return Json(new { error = e.StripeError.Message });
                     }
 
@@ -130,7 +130,7 @@ namespace NykantMVC.Controllers
             }
             catch (Exception e) 
             {
-                _logger.LogError($"time: {DateTime.Now} - error: {e.Message}");
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}, {e.InnerException}, {e.StackTrace}, {e.TargetSite}");
             }
 
             return Json(new { error = "Payment error" });
@@ -159,7 +159,7 @@ namespace NykantMVC.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError($"time: {DateTime.Now} - error: {e.Message}");
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}, {e.InnerException}, {e.StackTrace}, {e.TargetSite}");
             }
             return Json(new { error = "ConfirmPayment Error" });
         }

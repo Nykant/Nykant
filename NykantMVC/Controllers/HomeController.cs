@@ -60,7 +60,7 @@ namespace NykantMVC.Controllers
                 return View(viewModel);
             }
             catch (Exception e) {
-                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}, {e.InnerException}, {e.StackTrace}, {e.TargetSite}");
             }
             return View(new List<Category>());
         }
@@ -340,7 +340,7 @@ namespace NykantMVC.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}, {e.InnerException}, {e.StackTrace}, {e.TargetSite}");
             }
 
             return RedirectToAction(redirectAction, redirectController);
@@ -381,7 +381,7 @@ namespace NykantMVC.Controllers
             }
             catch(Exception e)
             {
-                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}, {e.InnerException}, {e.StackTrace}, {e.TargetSite}");
                 return Json("Error");
             }
         }
@@ -397,7 +397,7 @@ namespace NykantMVC.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}, {e.InnerException}, {e.StackTrace}, {e.TargetSite}");
                 return Json("Error");
             }
         }

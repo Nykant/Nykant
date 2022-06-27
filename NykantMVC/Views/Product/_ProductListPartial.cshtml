@@ -1,7 +1,6 @@
-﻿@model List<Product>
+﻿@model GalleryVM
 
 @{
-    var products = Model;
 
     var count = 1;
 }
@@ -18,7 +17,7 @@
         </h1>
     </div>
 </div>
-@foreach (var item in products)
+@foreach (var item in Model.Products)
 {
     if (item.EColor == EColor.Nature)
     {

@@ -1,4 +1,4 @@
-﻿ @model List<Product>
+﻿ @model GalleryVM
 @{
     ViewData["Title"] = "Nykants Produkter - Massive Egetræsmøbler";
     ViewData["Description"] = "Massive egetræsmøbler behandlet med forskellige olier, inspireret af dansk design.";
@@ -9,7 +9,7 @@
 <div class="my-row">
     <div class="col-6 center col-wrapper">
         <div class="filter">
-            @foreach (var category in ViewBag.Categories)
+            @foreach (var category in Model.Categories)
             {
             <form class="filter-form" asp-controller="Product" asp-action="Filter" method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#product-list" data-ajax-complete="filtercomplete" data-ajax-begin="noop" data-ajax-failure="noop" data-ajax-success="noop">
                 @Html.AntiForgeryToken()

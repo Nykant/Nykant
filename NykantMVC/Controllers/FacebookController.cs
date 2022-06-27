@@ -33,82 +33,109 @@ namespace NykantMVC.Controllers
         [HttpGet("/Facebook/Post/{postId}")]
         public async Task<IActionResult> Post(string postId)
         {
-            var facebookSession = HttpContext.Session.Get<FacebookSession>(FacebookSessionKey);
-            if (facebookSession.Feed != null)
+            try
             {
-                for(int i = 0; i < facebookSession.Feed.Posts.Count(); i++)
+                var facebookSession = HttpContext.Session.Get<FacebookSession>(FacebookSessionKey);
+                if (facebookSession.Feed != null)
                 {
-                    if(facebookSession.Feed.Posts[i].Id == postId)
+                    for (int i = 0; i < facebookSession.Feed.Posts.Count(); i++)
                     {
-                        facebookSession.Feed.Posts[i].Request = facebookSession.Feed.Request;
-                        facebookSession.Feed.Posts[i].Json = facebookSession.Feed.Json;
-                        facebookSession.Feed.Posts[i].Winner = new Winner
+                        if (facebookSession.Feed.Posts[i].Id == postId)
                         {
-                            Name = "",
-                            Id = ""
-                        };
-                        Likes likes = await FacebookGetPostLikes(facebookSession.AccessToken, postId);
-                        facebookSession.Feed.Posts[i].Likes = likes;
-                        HttpContext.Session.Set<FacebookSession>(FacebookSessionKey, facebookSession);
-                        return View(facebookSession.Feed.Posts[i]);
+                            facebookSession.Feed.Posts[i].Request = facebookSession.Feed.Request;
+                            facebookSession.Feed.Posts[i].Json = facebookSession.Feed.Json;
+                            facebookSession.Feed.Posts[i].Winner = new Winner
+                            {
+                                Name = "",
+                                Id = ""
+                            };
+                            Likes likes = await FacebookGetPostLikes(facebookSession.AccessToken, postId);
+                            facebookSession.Feed.Posts[i].Likes = likes;
+                            HttpContext.Session.Set<FacebookSession>(FacebookSessionKey, facebookSession);
+                            return View(facebookSession.Feed.Posts[i]);
+                        }
                     }
                 }
+                return View(new Post());
             }
-            return View(new Post());
+            catch(Exception e)
+            {
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}, {e.InnerException}, {e.StackTrace}, {e.TargetSite}");
+                return View(new Post());
+            }
+
         }
 
         [Authorize(Roles = "Admin,Raffler")]
         [HttpPost]
         public async Task<IActionResult> PostFeed(string jsonFeed, string accessToken)
         {
-            var feed = JsonConvert.DeserializeObject<Feed>(jsonFeed);
-            feed.Request = "https://graph.facebook.com/v13.0/109096938387808/feed?fields=from,id,created_time,comments&access_token=" + accessToken;
-            feed.Json = jsonFeed;
-            FacebookSession facebookSession = new FacebookSession
+            try
             {
-                Feed = feed,
-                AccessToken = accessToken
-            };
-            HttpContext.Session.Set<FacebookSession>(FacebookSessionKey, facebookSession);
+                var feed = JsonConvert.DeserializeObject<Feed>(jsonFeed);
+                feed.Request = "https://graph.facebook.com/v13.0/109096938387808/feed?fields=from,id,created_time,comments&access_token=" + accessToken;
+                feed.Json = jsonFeed;
+                FacebookSession facebookSession = new FacebookSession
+                {
+                    Feed = feed,
+                    AccessToken = accessToken
+                };
+                HttpContext.Session.Set<FacebookSession>(FacebookSessionKey, facebookSession);
 
-            ViewData.Model = feed;
-            return new PartialViewResult
+                ViewData.Model = feed;
+                return new PartialViewResult
+                {
+                    ViewName = "/Views/Facebook/_PostsPartial.cshtml",
+                    ViewData = this.ViewData
+                };
+            }
+            catch (Exception e)
             {
-                ViewName = "/Views/Facebook/_PostsPartial.cshtml",
-                ViewData = this.ViewData
-            };
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}, {e.InnerException}, {e.StackTrace}, {e.TargetSite}");
+                return BadRequest();
+            }
+
         }
 
         [Authorize(Roles = "Admin,Raffler")]
         [HttpPost("/Facebook/Post/{postId}")]
         public IActionResult PickRandom(string postId)
         {
-            var facebookSession = HttpContext.Session.Get<FacebookSession>(FacebookSessionKey);
-            Post post = facebookSession.Feed.Posts.Find(x => x.Id == postId);
-            if(post.Comments != null && post.Likes != null)
+            try
             {
-                var random = new Random();
-                var comments = post.Comments.List;
-                bool found = false;
-                for(int j = 0; j < 20; j++)
+                var facebookSession = HttpContext.Session.Get<FacebookSession>(FacebookSessionKey);
+                Post post = facebookSession.Feed.Posts.Find(x => x.Id == postId);
+                if (post.Comments != null && post.Likes != null)
                 {
-                    int i = random.Next(comments.Count);
-                    foreach (var like in post.Likes.List)
+                    var random = new Random();
+                    var comments = post.Comments.List;
+                    bool found = false;
+                    for (int j = 0; j < 20; j++)
                     {
-                        if (like.Name == comments[i].From.Name)
+                        int i = random.Next(comments.Count);
+                        foreach (var like in post.Likes.List)
                         {
-                            found = true;
-                            post.Winner.Name = comments[i].From.Name;
-                            post.Winner.Id = comments[i].From.Id;
-                            break;
+                            if (like.Name == comments[i].From.Name)
+                            {
+                                found = true;
+                                post.Winner.Name = comments[i].From.Name;
+                                post.Winner.Id = comments[i].From.Id;
+                                break;
+                            }
                         }
+                        if (found)
+                            break;
                     }
-                    if (found)
-                        break;
                 }
+
+                return View("Post", post);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}, {e.InnerException}, {e.StackTrace}, {e.TargetSite}");
+                return BadRequest();
             }
 
-            return View("Post", post);
         }
     }
 }

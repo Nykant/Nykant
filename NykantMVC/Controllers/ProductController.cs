@@ -33,7 +33,7 @@ namespace NykantMVC.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}, {e.InnerException}, {e.StackTrace}, {e.TargetSite}");
                 return BadRequest($"time: {DateTime.Now} - {e.Message}");
             }
         }
@@ -45,12 +45,18 @@ namespace NykantMVC.Controllers
             {
                 var json = await GetRequest("/Product/GetProducts");
                 var products = JsonConvert.DeserializeObject<List<Product>>(json);
-                ViewBag.Categories = JsonConvert.DeserializeObject<List<Category>>(await GetRequest("/Category/GetCategories"));
-                return View(products);
+                var jsonCategories = await GetRequest("/Category/GetCategories");
+                var categories = JsonConvert.DeserializeObject<List<Category>>(jsonCategories);
+                var galleryVM = new GalleryVM
+                {
+                    Categories = categories,
+                    Products = products
+                };
+                return View(galleryVM);
             }
             catch (Exception e)
             {
-                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}, {e.InnerException}, {e.StackTrace}, {e.TargetSite}");
                 return BadRequest($"time: {DateTime.Now} - {e.Message}");
             }
 
@@ -63,7 +69,8 @@ namespace NykantMVC.Controllers
             {
                 var json = await GetRequest("/Product/GetProducts");
                 var products = JsonConvert.DeserializeObject<List<Product>>(json);
-                ViewBag.Categories = JsonConvert.DeserializeObject<List<Category>>(await GetRequest("/Category/GetCategories"));
+                var jsonCategories = await GetRequest("/Category/GetCategories");
+                var categories = JsonConvert.DeserializeObject<List<Category>>(jsonCategories);
 
                 var filteredList = new List<Product>();
                 foreach (var product in products)
@@ -73,17 +80,19 @@ namespace NykantMVC.Controllers
                         filteredList.Add(product);
                     }
                 }
-
+                var galleryVM = new GalleryVM
+                {
+                    Categories = categories,
+                    Products = filteredList
+                };
                 ViewBag.CurrentFilter = searchString;
-                return View("Gallery", filteredList);
+                return View("Gallery", galleryVM);
             }
             catch (Exception e)
             {
-                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}, {e.InnerException}, {e.StackTrace}, {e.TargetSite}");
                 return BadRequest($"time: {DateTime.Now} - {e.Message}");
             }
-
-
         }
 
         [Authorize(Roles = "Admin")]
@@ -100,7 +109,7 @@ namespace NykantMVC.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}, {e.InnerException}, {e.StackTrace}, {e.TargetSite}");
                 return BadRequest($"time: {DateTime.Now} - {e.Message}");
             }
         }
@@ -134,7 +143,7 @@ namespace NykantMVC.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError($"time: {DateTime.Now} - error: {e.Message}");
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}, {e.InnerException}, {e.StackTrace}, {e.TargetSite}");
                 ViewData.Model = product;
                 return new PartialViewResult
                 {
@@ -166,7 +175,7 @@ namespace NykantMVC.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}, {e.InnerException}, {e.StackTrace}, {e.TargetSite}");
                 return BadRequest($"time: {DateTime.Now} - {e.Message}");
             }
         }
@@ -183,17 +192,24 @@ namespace NykantMVC.Controllers
             try
             {
                 var json = await GetRequest("/Product/GetProducts");
+                var products = JsonConvert.DeserializeObject<List<Product>>(json);
+                var jsonCategories = await GetRequest("/Category/GetCategories");
+                var categories = JsonConvert.DeserializeObject<List<Category>>(jsonCategories);
                 var filteredList = new List<Product>();
-                foreach (var product in JsonConvert.DeserializeObject<List<Product>>(json))
+                foreach (var product in products)
                 {
                     if (product.Category.Name.ToLower().Contains(categoryName.ToLower()))
                     {
                         filteredList.Add(product);
                     }
                 }
-
+                var galleryVM = new GalleryVM
+                {
+                    Categories = categories,
+                    Products = filteredList
+                };
                 ViewBag.CurrentFilter = categoryName;
-                ViewData.Model = filteredList;
+                ViewData.Model = galleryVM;
 
                 return new PartialViewResult
                 {
@@ -204,7 +220,7 @@ namespace NykantMVC.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError($"time: {DateTime.Now} - {e.Message}");
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}, {e.InnerException}, {e.StackTrace}, {e.TargetSite}");
                 return BadRequest($"time: {DateTime.Now} - {e.Message}");
             }
 
