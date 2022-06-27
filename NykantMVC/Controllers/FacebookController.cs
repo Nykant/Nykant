@@ -53,7 +53,6 @@ namespace NykantMVC.Controllers
                         return View(facebookSession.Feed.Posts[i]);
                     }
                 }
-
             }
             return View(new Post());
         }

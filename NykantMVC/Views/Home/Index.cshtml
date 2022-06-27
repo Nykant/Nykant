@@ -1,15 +1,16 @@
-﻿@model List<Category>
+﻿@model FrontPageVM
 
 @{
     ViewData["Title"] = "Nykant - Egetræsmøbler i Dansk Design";
     ViewData["Description"] = "Nykant er et nyt dansk brand, som med inspiration fra dansk design, udvikler moderne egetræsmøbler med minimalistiske detaljer i høj kvalitet, produceret i bæredygtigt FSC certificeret, massivt, Egetræ.";
 
-    List<Product> randomProducts = ProductHelper.RandomizeList(ViewBag.Products);
-    var randomDiscountProducts = randomProducts.Where(x => x.Discount > 0);
-    var nora = randomProducts.Find(x => x.Id == 27);
-    var filippa = randomProducts.Find(x => x.Id == 26);
-    var thyra = randomProducts.Find(x => x.Id == 18);
-    var dagmar = randomProducts.Find(x => x.Id == 16);
+    //List<Product> randomProducts = ProductHelper.RandomizeList(ViewBag.Products);
+    List<Product> products = Model.Products;
+    var randomDiscountProducts = products.Where(x => x.Discount > 0);
+    var nora = products.Find(x => x.Id == 27);
+    var filippa = products.Find(x => x.Id == 26);
+    var thyra = products.Find(x => x.Id == 18);
+    var dagmar = products.Find(x => x.Id == 16);
 }
 
 <link rel="stylesheet" href="~/css/front-page.css?2" />
@@ -292,7 +293,7 @@
     </div>
 
     <div class="col-12">
-        @foreach (var category in Model)
+        @foreach (var category in Model.Categories)
         {
             <form method="post" asp-controller="product" asp-action="search">
                 <input type="hidden" name="searchstring" value="@category.Name" />

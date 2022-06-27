@@ -50,8 +50,14 @@ namespace NykantMVC.Controllers
             {
                 var jsonResponse = await GetRequest("/Category/GetCategories");
                 var categories = JsonConvert.DeserializeObject<List<Category>>(jsonResponse);
-                ViewBag.Products = JsonConvert.DeserializeObject<List<Product>>(await GetRequest("/Product/GetProducts"));
-                return View(categories);
+                jsonResponse = await GetRequest("/Product/GetProducts");
+                var products = JsonConvert.DeserializeObject<List<Product>>(jsonResponse);
+                var viewModel = new FrontPageVM()
+                {
+                    Categories = categories,
+                    Products = products
+                };
+                return View(viewModel);
             }
             catch (Exception e) {
                 _logger.LogError($"time: {DateTime.Now} - {e.Message}");
@@ -72,8 +78,8 @@ namespace NykantMVC.Controllers
         {
             return View();
         }
-
-        [Route("Om-Os")]
+        [HttpGet("Om-Os")]
+        //[Route("Om-Os")]
         public IActionResult About()
         {
             return View();

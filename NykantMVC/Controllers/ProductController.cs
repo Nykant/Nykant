@@ -145,8 +145,7 @@ namespace NykantMVC.Controllers
             }
         }
 
-        [Route("Produkt/{urlname}")]
-        [HttpGet]
+        [HttpGet("Produkt/{urlname}")]
         public async Task<IActionResult> Details(string urlname)
         {
             try

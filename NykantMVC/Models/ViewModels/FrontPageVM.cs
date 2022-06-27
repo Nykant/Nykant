@@ -8,6 +8,6 @@ namespace NykantMVC.Models.ViewModels
     public class FrontPageVM
     {
         public List<Category> Categories { get; set; }
-        public NewsSub NewsSub { get; set; }
+        public List<Product> Products { get; set; }
     }
 }
