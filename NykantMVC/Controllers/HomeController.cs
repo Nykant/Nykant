@@ -30,7 +30,7 @@ namespace NykantMVC.Controllers
         private readonly IProtectionService _protectionService;
         private readonly IMailService mailService;
         private  IHostEnvironment Environment { get; set; }
-        public HomeController(ILogger<HomeController> logger, IHostEnvironment _environment, IMailService _mailService, IProtectionService protectionService, IOptions<Urls> urls, HtmlEncoder htmlEncoder, IConfiguration conf) : base(logger, urls, htmlEncoder, conf)
+        public HomeController(ILogger<HomeController> logger, IHostEnvironment _environment, IMailService _mailService, IProtectionService protectionService, IOptions<Urls> urls, HtmlEncoder htmlEncoder, IConfiguration conf, ITokenService _tokenService) : base(logger, urls, htmlEncoder, conf, _tokenService)
         {
             _protectionService = protectionService;
             Environment = _environment;
@@ -62,7 +62,7 @@ namespace NykantMVC.Controllers
             catch (Exception e) {
                 _logger.LogError($"time: {DateTime.Now} - {e.Message}, {e.InnerException}, {e.StackTrace}, {e.TargetSite}");
             }
-            return View(new List<Category>());
+            return BadRequest();
         }
 
         [Route("Cookiepolitik")]

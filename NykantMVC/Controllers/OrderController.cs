@@ -22,7 +22,7 @@ namespace NykantMVC.Controllers
     {
         private readonly IMailService mailService;
         private readonly IProtectionService _protectionService;
-        public OrderController(IMailService mailService, ILogger<OrderController> logger, IProtectionService protectionService, IOptions<Urls> urls, HtmlEncoder htmlEncoder, IConfiguration conf) : base(logger, urls, htmlEncoder, conf)
+        public OrderController(IMailService mailService, ILogger<OrderController> logger, IProtectionService protectionService, IOptions<Urls> urls, HtmlEncoder htmlEncoder, IConfiguration conf, ITokenService _tokenService) : base(logger, urls, htmlEncoder, conf, _tokenService)
         {
             this.mailService = mailService;
             _protectionService = protectionService;

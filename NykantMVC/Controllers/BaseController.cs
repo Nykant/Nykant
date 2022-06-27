@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using NykantMVC.Models;
 using NykantMVC.Models.Facebook;
 using NykantMVC.Models.XmlModels;
+using NykantMVC.Services;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -31,14 +32,16 @@ namespace NykantMVC.Controllers
         private readonly Urls _urls;
         private readonly HtmlEncoder htmlEncoder;
         public readonly IConfiguration conf;
+        private readonly ITokenService tokenService;
 
 
-        public BaseController(ILogger<BaseController> logger, IOptions<Urls> urls, HtmlEncoder htmlEncoder, IConfiguration conf)
+        public BaseController(ILogger<BaseController> logger, IOptions<Urls> urls, HtmlEncoder htmlEncoder, IConfiguration conf, ITokenService _tokenService)
         {
             this.conf = conf;
             this.htmlEncoder = htmlEncoder;
             _logger = logger;
             _urls = urls.Value;
+            tokenService = _tokenService;
         }
 
         public Customer EncodeCustomer(Customer customer)
@@ -94,32 +97,8 @@ namespace NykantMVC.Controllers
                 }
                 else
                 {
-                    // discover endpoints from metadata
-                    var ISclient = new HttpClient();
-                    var disco = await ISclient.GetDiscoveryDocumentAsync(_urls.Is);
-                    if (disco.IsError)
-                    {
-                        _logger.LogError($"time: {DateTime.Now} - {disco.Error}");
-                        return null;
-                    }
-
-                    // request token
-                    var tokenResponse = await ISclient.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
-                    {
-                        Address = disco.TokenEndpoint,
-
-                        ClientId = "client",
-                        ClientSecret = conf["ClientClientSecret"],
-                        Scope = "NykantAPI"
-                    });
-
-                    if (tokenResponse.IsError)
-                    {
-                        _logger.LogError($"time: {DateTime.Now} - {tokenResponse.Error}");
-                        return null;
-                    }
-
-                    client.SetBearerToken(tokenResponse.AccessToken);
+                    var token = tokenService.GetToken();
+                    client.SetBearerToken(token.AccessToken);
                 }
 
                 var itemJson = new StringContent(
@@ -150,32 +129,8 @@ namespace NykantMVC.Controllers
                 }
                 else
                 {
-                    // discover endpoints from metadata
-                    var ISclient = new HttpClient();
-                    var disco = await ISclient.GetDiscoveryDocumentAsync(_urls.Is);
-                    if (disco.IsError)
-                    {
-                        _logger.LogError($"time: {DateTime.Now} - {disco.Error}");
-                        return null;
-                    }
-
-                    // request token
-                    var tokenResponse = await ISclient.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
-                    {
-                        Address = disco.TokenEndpoint,
-
-                        ClientId = "client",
-                        ClientSecret = conf["ClientClientSecret"],
-                        Scope = "NykantAPI"
-                    });
-
-                    if (tokenResponse.IsError)
-                    {
-                        _logger.LogError($"time: {DateTime.Now} - {tokenResponse.Error}");
-                        return null;
-                    }
-
-                    client.SetBearerToken(tokenResponse.AccessToken);
+                    var token = tokenService.GetToken();
+                    client.SetBearerToken(token.AccessToken);
                 }
 
                 var itemJson = new StringContent(
@@ -248,31 +203,8 @@ namespace NykantMVC.Controllers
                 }
                 else
                 {
-                    // discover endpoints from metadata
-                    var ISclient = new HttpClient();
-                    var disco = await ISclient.GetDiscoveryDocumentAsync(_urls.Is);
-                    if (disco.IsError)
-                    {
-                        _logger.LogError($"time: {DateTime.Now} - {disco.Error}");
-                        return null;
-                    }
-
-                    // request token
-                    var tokenResponse = await ISclient.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
-                    {
-                        Address = disco.TokenEndpoint,
-                        ClientId = "client",
-                        ClientSecret = conf["ClientClientSecret"],
-                        Scope = "NykantAPI"
-                    });
-
-                    if (tokenResponse.IsError)
-                    {
-                        _logger.LogError($"time: {DateTime.Now} - {tokenResponse.Error}");
-                        return null;
-                    }
-
-                    client.SetBearerToken(tokenResponse.AccessToken);
+                    var token = tokenService.GetToken();
+                    client.SetBearerToken(token.AccessToken);
                 }
 
                 string uri = null;
@@ -308,32 +240,8 @@ namespace NykantMVC.Controllers
                 }
                 else
                 {
-                    // discover endpoints from metadata
-                    var ISclient = new HttpClient();
-                    var disco = await ISclient.GetDiscoveryDocumentAsync(_urls.Is);
-                    if (disco.IsError)
-                    {
-                        _logger.LogError($"time: {DateTime.Now} - {disco.Error}");
-                        return null;
-                    }
-
-                    // request token
-                    var tokenResponse = await ISclient.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
-                    {
-                        Address = disco.TokenEndpoint,
-
-                        ClientId = "client",
-                        ClientSecret = conf["ClientClientSecret"],
-                        Scope = "NykantAPI"
-                    });
-
-                    if (tokenResponse.IsError)
-                    {
-                        _logger.LogError($"time: {DateTime.Now} - {tokenResponse.Error}");
-                        return null;
-                    }
-
-                    client.SetBearerToken(tokenResponse.AccessToken);
+                    var token = tokenService.GetToken();
+                    client.SetBearerToken(token.AccessToken);
                 }
 
                 string uri = _urls.Api + url;

@@ -6,6 +6,7 @@ using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using NykantMVC.Extensions;
 using NykantMVC.Models;
+using NykantMVC.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace NykantMVC.Controllers
     [Authorize]
     public class AccountController : BaseController
     {
-        public AccountController(ILogger<AccountController> logger, IOptions<Urls> urls, HtmlEncoder htmlEncoder, IConfiguration conf) : base(logger, urls, htmlEncoder, conf)
+        public AccountController(ILogger<AccountController> logger, IOptions<Urls> urls, HtmlEncoder htmlEncoder, IConfiguration conf, ITokenService _tokenService) : base(logger, urls, htmlEncoder, conf, _tokenService)
         {
 
         }

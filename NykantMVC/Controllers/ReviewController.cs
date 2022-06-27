@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using NykantMVC.Models;
+using NykantMVC.Services;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 
@@ -13,7 +14,7 @@ namespace NykantMVC.Controllers
     [Authorize]
     public class ReviewController : BaseController
     {
-        public ReviewController(ILogger<BaseController> logger, IOptions<Urls> urls, HtmlEncoder htmlEncoder, IConfiguration conf) : base(logger, urls, htmlEncoder, conf)
+        public ReviewController(ILogger<BaseController> logger, IOptions<Urls> urls, HtmlEncoder htmlEncoder, IConfiguration conf, ITokenService _tokenService) : base(logger, urls, htmlEncoder, conf, _tokenService)
         {
 
         }

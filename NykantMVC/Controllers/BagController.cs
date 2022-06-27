@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using NykantMVC.Extensions;
 using NykantMVC.Friends;
 using NykantMVC.Models;
+using NykantMVC.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace NykantMVC.Controllers
     [AllowAnonymous]
     public class BagController : BaseController
     {
-        public BagController(ILogger<BagController> logger, IOptions<Urls> urls, HtmlEncoder htmlEncoder, IConfiguration conf) : base(logger, urls, htmlEncoder, conf)
+        public BagController(ILogger<BagController> logger, IOptions<Urls> urls, HtmlEncoder htmlEncoder, IConfiguration conf, ITokenService _tokenService) : base(logger, urls, htmlEncoder, conf, _tokenService)
         {
         }
 

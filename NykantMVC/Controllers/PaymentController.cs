@@ -23,7 +23,7 @@ namespace NykantMVC.Controllers
         private readonly IProtectionService _protectionService;
         private readonly IMailService mailService;
         private readonly IHostEnvironment env;
-        public PaymentController(ILogger<PaymentController> logger, IHostEnvironment _env, IConfiguration conf, IMailService mailService, IProtectionService protectionService, IOptions<Urls> urls, HtmlEncoder htmlEncoder) : base(logger, urls, htmlEncoder, conf)
+        public PaymentController(ILogger<PaymentController> logger, IHostEnvironment _env, IConfiguration conf, IMailService mailService, IProtectionService protectionService, IOptions<Urls> urls, HtmlEncoder htmlEncoder, ITokenService _tokenService) : base(logger, urls, htmlEncoder, conf, _tokenService)
         {
             _protectionService = protectionService;
             this.mailService = mailService;

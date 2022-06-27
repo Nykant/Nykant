@@ -5,13 +5,14 @@ using NykantMVC.Models;
 using System.Threading.Tasks;
 using System.Text.Encodings.Web;
 using Microsoft.Extensions.Configuration;
+using NykantMVC.Services;
 
 namespace NykantMVC.Controllers
 {
     [AutoValidateAntiforgeryToken]
     public class PrivacyController : BaseController
     {
-        public PrivacyController(ILogger<BaseController> logger, IOptions<Urls> urls, HtmlEncoder htmlEncoder, IConfiguration conf) : base(logger, urls, htmlEncoder, conf)
+        public PrivacyController(ILogger<BaseController> logger, IOptions<Urls> urls, HtmlEncoder htmlEncoder, IConfiguration conf, ITokenService _tokenService) : base(logger, urls, htmlEncoder, conf, _tokenService)
         {
         }
 

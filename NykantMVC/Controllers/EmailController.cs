@@ -15,7 +15,7 @@ namespace NykantMVC.Controllers
     {
         private readonly IMailService mailService;
         private readonly IRazorViewToStringRenderer _razorViewToStringRenderer;
-        public EmailController(IMailService mailService, ILogger<BaseController> logger, IRazorViewToStringRenderer razorViewToStringRenderer, IOptions<Urls> urls, HtmlEncoder htmlEncoder, IConfiguration conf) : base(logger, urls, htmlEncoder, conf)
+        public EmailController(IMailService mailService, ILogger<BaseController> logger, IRazorViewToStringRenderer razorViewToStringRenderer, IOptions<Urls> urls, HtmlEncoder htmlEncoder, IConfiguration conf, ITokenService _tokenService) : base(logger, urls, htmlEncoder, conf, _tokenService)
         {
             this.mailService = mailService;
             _razorViewToStringRenderer = razorViewToStringRenderer;

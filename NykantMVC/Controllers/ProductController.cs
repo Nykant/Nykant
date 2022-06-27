@@ -11,13 +11,14 @@ using System.Text.Encodings.Web;
 using System;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Authorization;
+using NykantMVC.Services;
 
 namespace NykantMVC.Controllers
 {
     [AutoValidateAntiforgeryToken]
     public class ProductController : BaseController
     {
-        public ProductController(ILogger<ProductController> logger, IOptions<Urls> urls, HtmlEncoder htmlEncoder, IConfiguration conf) : base(logger, urls, htmlEncoder, conf)
+        public ProductController(ILogger<ProductController> logger, IOptions<Urls> urls, HtmlEncoder htmlEncoder, IConfiguration conf, ITokenService _tokenService) : base(logger, urls, htmlEncoder, conf, _tokenService)
         {
         }
 

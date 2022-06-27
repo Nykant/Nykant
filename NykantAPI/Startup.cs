@@ -89,6 +89,7 @@ namespace NykantAPI
                 });
 
 
+
             services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>
                 {
@@ -99,6 +100,8 @@ namespace NykantAPI
                     {
                         ValidateAudience = false
                     };
+
+                    //options.Audience = "NykantAPI";
                 });
 
             services.AddAuthorization(options =>
@@ -120,6 +123,7 @@ namespace NykantAPI
             });
 
             services.AddControllers();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

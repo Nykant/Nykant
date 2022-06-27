@@ -129,6 +129,8 @@ namespace NykantMVC
             services.AddScoped<IRazorViewToStringRenderer, RazorViewToStringRenderer>();
             services.AddScoped<IProtectionService, ProtectionService>();
 
+            services.AddSingleton<ITokenService, TokenService>();
+
             services.AddLocalization(options => {
                 options.ResourcesPath = "Resources";
             });

@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using NykantMVC.Extensions;
 using NykantMVC.Models;
 using NykantMVC.Models.Facebook;
+using NykantMVC.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace NykantMVC.Controllers
     [AutoValidateAntiforgeryToken]
     public class FacebookController : BaseController
     {
-        public FacebookController(ILogger<FacebookController> logger, IOptions<Urls> urls, HtmlEncoder htmlEncoder, IConfiguration conf) : base(logger, urls, htmlEncoder, conf)
+        public FacebookController(ILogger<FacebookController> logger, IOptions<Urls> urls, HtmlEncoder htmlEncoder, IConfiguration conf, ITokenService _tokenService) : base(logger, urls, htmlEncoder, conf, _tokenService)
         { }
 
 

@@ -25,7 +25,7 @@ namespace NykantMVC.Controllers
     {
         private readonly IProtectionService _protectionService;
         private readonly IHostEnvironment env;
-        public CheckoutController(ILogger<CheckoutController> logger, IProtectionService protectionService, IOptions<Urls> urls, HtmlEncoder htmlEncoder, IHostEnvironment env, IConfiguration conf) : base(logger, urls, htmlEncoder, conf)
+        public CheckoutController(ILogger<CheckoutController> logger, IProtectionService protectionService, IOptions<Urls> urls, HtmlEncoder htmlEncoder, IHostEnvironment env, IConfiguration conf, ITokenService _tokenService) : base(logger, urls, htmlEncoder, conf, _tokenService)
         {
             _protectionService = protectionService;
             this.env = env;
