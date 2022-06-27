@@ -176,7 +176,7 @@ namespace NykantMVC.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError($"time: {DateTime.Now} - {e.Message}, {e.InnerException}, {e.StackTrace}, {e.TargetSite}");
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}, {e.InnerException}, {e.StackTrace}, {e.TargetSite}, produkt: {urlname}");
                 return BadRequest($"time: {DateTime.Now} - {e.Message}");
             }
         }
