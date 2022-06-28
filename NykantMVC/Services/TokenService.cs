@@ -51,7 +51,7 @@ namespace NykantMVC.Services
                 var disco = client.GetDiscoveryDocumentAsync(_urls.Is).Result;
                 if (disco.IsError)
                 {
-                    _logger.LogError($"time: {DateTime.Now} - {disco.Error}");
+                    _logger.LogError($"time: {DateTime.Now} - {disco.Error}, {disco.Exception.Message}, {disco.Exception.StackTrace}, {disco.Exception.InnerException}, {disco.Exception.Data.Values}, {disco.Exception.TargetSite}");
                     //await Task.Delay(1000);
                     goto tryAgain;
                 }
@@ -68,7 +68,7 @@ namespace NykantMVC.Services
 
                 if (tokenResponse.IsError)
                 {
-                    _logger.LogError($"time: {DateTime.Now} - {tokenResponse.Error}");
+                    _logger.LogError($"time: {DateTime.Now} - {tokenResponse.Error}, {tokenResponse.Exception.Message}, {tokenResponse.Exception.StackTrace}, {tokenResponse.Exception.InnerException}, {tokenResponse.Exception.Data.Values}, {tokenResponse.Exception.TargetSite}");
                     //await Task.Delay(1000);
                     goto tryAgain;
                 }
