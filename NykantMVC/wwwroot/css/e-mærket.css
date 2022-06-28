@@ -1,0 +1,10 @@
+﻿
+
+@media only screen and (max-width: 1216px) {
+    .emaerket-widget-hide-print {
+        left: 20px !important;
+        bottom: 100px !important;
+        background: var(--dark) !important;
+    }
+
+}
