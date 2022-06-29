@@ -129,3 +129,10 @@
         line-height: 1.25em !important;
     }
 }
+
+@media screen and (max-width: 600px) {
+    #CookiebotWidget:not(.CookiebotWidget-inactive) {
+        bottom: 20px !important;
+        left: 20px !important;
+    }
+}
