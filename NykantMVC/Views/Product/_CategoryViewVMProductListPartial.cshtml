@@ -1,0 +1,107 @@
+﻿@model CategoryViewVM
+
+@{
+
+    var count = 1;
+}
+
+<div class="col-12 left ">
+    <div id="current-filter">
+        <div class="spinner hidden" id="filterspinner"></div>
+        <h1>
+            <i class="fas fa-search"></i>
+            @Model.CategoryName
+        </h1>
+    </div>
+</div>
+
+@*<div class="col-12 left">
+    <div class="categoryView-header">
+        <h1></h1>
+        <p></p>
+    </div>
+</div>*@
+
+@foreach (var item in Model.Products)
+{
+    if (item.EColor == EColor.Nature)
+    {
+        if (item.Category.Name == "Hylder")
+        {
+            if (item.Length != "40 cm.")
+            {
+                goto skip;
+            }
+        }
+        <div class="col-4 left product-col">
+            @if (item.Colors.Count() > 1)
+            {
+                <div class="product-item-colors">
+                    @foreach (var color in item.Colors)
+                    {
+                        if (color.EColor != EColor.Nature)
+                        {
+                            <a class="product-item-color" asp-controller="product" asp-action="details" asp-route-urlname="@color.ProductSourceUrlName">
+                                <img src="@color.ImgSrc" />
+                            </a>
+                        }
+                    }
+                </div>
+            }
+
+            <div class="product-item">
+                <a asp-controller="product" asp-action="details" asp-route-urlname="@item.UrlName">
+
+                    <div class="product-images">
+                        @if (item.Discount != 0)
+                        {
+                            <div class="product-discount">
+                                <p class="red-text">-@item.Discount%</p>
+                            </div>
+                        }
+                        @if (count > 5)
+                        {
+                            <div class="primary-img">
+                                <img loading="lazy" src="@item.GalleryImage1" alt="@item.Title" />
+                            </div>
+                            count++;
+                        }
+                        else
+                        {
+                            <div class="primary-img">
+                                <img src="@item.GalleryImage1" />
+                            </div>
+                            count++;
+                        }
+
+                        <div class="secondary-img">
+                            <img loading="lazy" src="@item.GalleryImage2" alt="@item.Title" />
+                        </div>
+                    </div>
+                    <div class="product-item-inside">
+                        <div class="product-text">
+                            <p>@item.Name</p>
+                            @if (item.Discount == 0)
+                            {
+                                <p>kr. @item.Price</p>
+                            }
+                            else
+                            {
+                                <p>kr. @ProductHelper.GetPrice(item) <span class="inline line-through red-text">@item.Price</span></p>
+                            }
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    }
+    skip:;
+}
+
+@*<div class="col-12 left">
+    <div class="categoryView-footer">
+        <h2></h2>
+        <p></p>
+    </div>
+</div>*@

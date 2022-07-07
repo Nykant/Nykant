@@ -37,12 +37,18 @@ namespace NykantMVC.Services
                     {
                         // PostContent correspond to the text just before closing tag
                         output.PostContent
-                            .AppendHtml("<script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('consent', 'default', { 'ad_storage': 'granted', 'analytics_storage': 'granted' });</script>")
-                            .AppendHtml("<script async src='https://www.googletagmanager.com/gtag/js?id=")
-                            .AppendHtml(trackingCode)
-                            .AppendHtml("'></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','")
-                            .AppendHtml(trackingCode)
-                            .AppendHtml("', { 'anonymize_ip': true }); gtag('config', 'AW-10853506642');</script>");
+                        //.AppendHtml("<script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('consent', 'default', { 'ad_storage': 'granted', 'analytics_storage': 'granted' });</script>")
+                        //.AppendHtml("<script async src='https://www.googletagmanager.com/gtag/js?id=")
+                        //.AppendHtml(trackingCode)
+                        //.AppendHtml("'></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','")
+                        //.AppendHtml(trackingCode)
+                        //.AppendHtml("', { 'anonymize_ip': true }); gtag('config', 'AW-10853506642');</script>");
+
+                        .AppendHtml("<script async src='https://www.googletagmanager.com/gtag/js?id=")
+                        .AppendHtml(trackingCode)
+                        .AppendHtml("'></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','")
+                        .AppendHtml(trackingCode)
+                        .AppendHtml("');</script>");
                     }
                 }
             }

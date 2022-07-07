@@ -101,3 +101,22 @@ $(document).ready(function () {
 });
 
 
+function CategoryClick() {
+    gtag('event', 'frontpage-category-click');
+}
+
+function AboutClick() {
+    gtag('event', 'frontpage-about-click');
+}
+
+function DiscountClick() {
+    gtag('event', 'frontpage-discount-click');
+}
+
+function VideoClick() {
+    gtag('event', 'frontpage-video-click');
+}
+
+function FavoriteClick() {
+    gtag('event', 'frontpage-favorite-click');
+}

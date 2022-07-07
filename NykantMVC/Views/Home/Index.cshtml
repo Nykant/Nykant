@@ -142,7 +142,7 @@
             <div class="half">
                 <img class="vertical-center video-img" src="~/images/Products/Details_Fullscreen/Desktop/NYKANT_rack_naturolie_02.png" />
             </div>
-            <a id="follow-link" asp-controller="Product" asp-action="Details" asp-route-urlname="Tøjstativ-Egetræ-Naturolie">
+            <a onclick="VideoClick()" id="follow-link" asp-controller="Product" asp-action="Details" asp-route-urlname="Tøjstativ-Egetræ-Naturolie">
                 <div class="follow-container" id="follow-container">
                     <div class="follow-box" id="follow-box">
                         <p id="follow-name">@nora.Name</p>
@@ -183,7 +183,7 @@
                                 <p>kr. @product.Price</p>
                             </div>
                         }
-                        <a asp-controller="product" asp-action="details" asp-route-urlname="@product.UrlName">
+                        <a onclick="DiscountClick()" asp-controller="product" asp-action="details" asp-route-urlname="@product.UrlName">
                             <img class="absolute-center" src="@product.GalleryImage1" />
                         </a>
                     </div>
@@ -217,7 +217,7 @@
                 <h1>JERES FAVORITTER</h1>
             </div>
             <div class="col-6 left favorite-item">
-                <a asp-controller="product" asp-action="details" asp-route-urlname="Tøjstativ-Egetræ-Naturolie">
+                <a onclick="FavoriteClick()" asp-controller="product" asp-action="details" asp-route-urlname="Tøjstativ-Egetræ-Naturolie">
                     <img class="absolute-center favorite-img" src="~/images/Products/Details_Fullscreen/Desktop/NYKANT_rack_naturolie_02.png" />
                     <div class="follow-container" id="follow-container-rack">
                         <div class="follow-box" id="follow-box-rack">
@@ -232,7 +232,7 @@
                 </a>
             </div>
             <div class="col-6 left favorite-item">
-                <a asp-controller="product" asp-action="details" asp-route-urlname="Opbevaringsbænk-Egetræ-Sortolie">
+                <a onclick="FavoriteClick()" asp-controller="product" asp-action="details" asp-route-urlname="Opbevaringsbænk-Egetræ-Sortolie">
                     <img class="absolute-center favorite-img" src="~/images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_sort_03.png" />
                     <div id="follow-container">
                         <div class="follow-container" id="follow-container-baenk">
@@ -249,7 +249,7 @@
                 </a>
             </div>
             <div class="col-6 left favorite-item">
-                <a asp-controller="product" asp-action="details" asp-route-urlname="Bænk-Egetræ-Naturolie-115cm">
+                <a onclick="FavoriteClick()" asp-controller="product" asp-action="details" asp-route-urlname="Bænk-Egetræ-Naturolie-115cm">
                     <img class="absolute-center favorite-img" src="~/images/Products/Details_Fullscreen/Desktop/NYKANT_kortbaenk_naturolie_02.png" />
                     <div id="follow-container">
                         <div class="follow-container" id="follow-container-kortbaenk">
@@ -266,7 +266,7 @@
                 </a>
             </div>
             <div class="col-6 left favorite-item">
-                <a asp-controller="product" asp-action="details" asp-route-urlname="Bord-Egetræ-Naturolie">
+                <a onclick="FavoriteClick()" asp-controller="product" asp-action="details" asp-route-urlname="Bord-Egetræ-Naturolie">
                     <img class="absolute-center favorite-img" src="~/images/Products/Details_Fullscreen/Desktop/NYKANT_bord_naturolie_02.png" />
                     <div id="follow-container">
                         <div class="follow-container" id="follow-container-table">
@@ -295,16 +295,10 @@
     <div class="col-12">
         @foreach (var category in Model.Categories)
         {
-            <form method="post" asp-controller="product" asp-action="search">
-                <input type="hidden" name="searchstring" value="@category.Name" />
-                <button class="category" type="submit">
-                    <div>
-                        <img class="absolute-center" src="@category.ImgSource" />
-                        <p class="centered">@category.Name</p>
-                    </div>
-                </button>
-            </form>
-
+            <a onclick="CategoryClick()" class="category" method="get" asp-controller="product" asp-action="CategoryView" asp-route-category="@category.Name">
+                <img class="absolute-center" src="@category.ImgSource" />
+                <p class="centered">@category.Name</p>
+            </a>
         }
     </div>
 
@@ -321,7 +315,7 @@
                 Med kærlighed til træ, vil vi være med til at innovere møbelindustrien. Vi sætter meget pris på minimalistiske detajler, og går efter at tegne nogle unikke og praktiske designs, med æstetik, som gør møblet mere tiltrækkende, hver gang man kigger på det. Det er møbler i dansk design med kant.
             </p>
 
-            <a asp-controller="home" asp-action="about">
+            <a asp-controller="home" asp-action="about" onclick="AboutClick()">
                 <div class="follow-container" id="follow-container-about">
 
                     <div id="follow-box-about">
@@ -338,7 +332,7 @@
 
     </div>*@
 
-<script src="~/JS/slideshow.js?1"></script>
+<script src="~/JS/slideshow.js?2"></script>
 @*<script src="~/JS/moving-box.js"></script>
     <script src="~/JS/follow-box-1.js"></script>
     <script src="~/JS/follow-box-2.js"></script>
@@ -348,3 +342,6 @@
 @*<script async src="~/JS/checkout-sandbox.js"></script>*@
 <script src="~/JS/frontpage-karusel.js"></script>
 
+<script>
+    gtag('event', 'frontpage-entry');
+</script>

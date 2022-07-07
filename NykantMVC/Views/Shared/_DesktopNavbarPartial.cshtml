@@ -24,26 +24,11 @@
     <a asp-controller="Product" asp-action="Gallery">PRODUKTER</a>
 
     <div id="nav-links-product-filter">
-        <form method="post" asp-action="Search" asp-controller="Product">
-            @Html.AntiForgeryToken()
-            <input class="search__input" type="submit" name="searchString" value="Tøjstativer">
-        </form>
-        <form method="post" asp-action="Search" asp-controller="Product">
-            @Html.AntiForgeryToken()
-            <input class="search__input" type="submit" name="searchString" value="Borde">
-        </form>
-        <form method="post" asp-action="Search" asp-controller="Product">
-            @Html.AntiForgeryToken()
-            <input class="search__input" type="submit" name="searchString" value="Hylder">
-        </form>
-        <form method="post" asp-action="Search" asp-controller="Product">
-            @Html.AntiForgeryToken()
-            <input class="search__input" type="submit" name="searchString" value="Bænke">
-        </form>
-        <form method="post" asp-action="Search" asp-controller="Product">
-            @Html.AntiForgeryToken()
-            <input class="search__input" type="submit" name="searchString" value="Bøjler">
-        </form>
+        <a method="get" asp-action="CategoryView" asp-controller="Product" asp-route-category="Tøjstativer">Tøjstativer</a>
+        <a method="get" asp-action="CategoryView" asp-controller="Product" asp-route-category="Borde">Borde</a>
+        <a method="get" asp-action="CategoryView" asp-controller="Product" asp-route-category="Hylder">Hylder</a>
+        <a method="get" asp-action="CategoryView" asp-controller="Product" asp-route-category="Bænke">Bænke</a>
+        <a method="get" asp-action="CategoryView" asp-controller="Product" asp-route-category="Bøjler">Bøjler</a>
     </div>
     @*<a asp-controller="Home" asp-action="About">OM OS</a>
         <a asp-controller="Home" asp-action="Contact">KONTAKT</a>*@
@@ -144,11 +129,12 @@
 
 
         <div id="navbar-product-filter">
-            <form method="post" asp-action="Search" asp-controller="Product">
-                @Html.AntiForgeryToken()
-                <input class="search__input" type="submit" name="searchString" value="Tøjstativer">
-            </form>
-            <form method="post" asp-action="Search" asp-controller="Product">
+            <a method="get" asp-action="CategoryView" asp-controller="Product" asp-route-category="Tøjstativer">Tøjstativer</a>
+            <a method="get" asp-action="CategoryView" asp-controller="Product" asp-route-category="Borde">Borde</a>
+            <a method="get" asp-action="CategoryView" asp-controller="Product" asp-route-category="Hylder">Hylder</a>
+            <a method="get" asp-action="CategoryView" asp-controller="Product" asp-route-category="Bænke">Bænke</a>
+            <a method="get" asp-action="CategoryView" asp-controller="Product" asp-route-category="Bøjler">Bøjler</a>
+            @*<form method="post" asp-action="Search" asp-controller="Product">
                 @Html.AntiForgeryToken()
                 <input class="search__input" type="submit" name="searchString" value="Borde">
             </form>
@@ -163,7 +149,7 @@
             <form method="post" asp-action="Search" asp-controller="Product">
                 @Html.AntiForgeryToken()
                 <input class="search__input" type="submit" name="searchString" value="Bøjler">
-            </form>
+            </form>*@
         </div>
 
     </div>

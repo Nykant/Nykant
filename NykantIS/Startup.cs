@@ -68,6 +68,10 @@ namespace NykantIS
             //services.AddDbContext<IdentityContext>(options =>
             //    options.UseMySql(identityConnection));
 
+            //services.AddDataProtection()
+            //    .PersistKeysToDbContext<MyKeysContext>()
+            //    .SetApplicationName("Nykant");
+
             //services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
             //    .AddRoles<IdentityRole>()
             //    .AddEntityFrameworkStores<IdentityContext>()

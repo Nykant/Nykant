@@ -466,8 +466,8 @@ width:50px;
 
 .category:hover {
     opacity:0.4;
+    font-weight:normal;
 }
-
 
 .category img {
     margin: auto;

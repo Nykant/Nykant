@@ -51,6 +51,7 @@ cardCvc.mount("#card-element-cvc");
 var terms_and_conditions = document.getElementById('terms-and-conditions-consent');
 var form = document.getElementById("payment-form");
 form.addEventListener("submit", function (event) {
+    gtag('event', 'begin-purchase');
     event.preventDefault();
     if (!backbuttonclicked) {
         loading(true);
@@ -148,16 +149,17 @@ var showError = function (errorMsgText) {
     else {
         msg = errorMsgText;
     }
-    var error = 'error: ' + msg;
+    var error = 'purchase-error: ' + msg;
     Log(error);
     loading(false);
     $('#checkout-modal').css('display', 'block');
     document.getElementById('checkout-error').textContent = msg;
+    gtag('event', error);
 };
 
 var orderComplete = function (paymentIntentId) {
     try {
-        gtag('event', 'purchase');
+        gtag('event', 'purchase-complete');
 
         gtag('event', 'conversion', {
             'send_to': 'AW-10853506642/iWIVCLCt460DENK8rbco',

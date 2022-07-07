@@ -32,6 +32,14 @@ var addToBag_begin = function () {
     addToBag_check_sign.style.display = 'none';
     addToBag_text.style.display = 'none';
     addToBag_spinner.style.display = 'block';
+
+    gtag('event', 'add-to-bag');
+
+    gtag('event', 'conversion', {
+        'send_to': 'AW-10853506642/8pSQCLHpq60DENK8rbco',
+        'value': 1.0,
+        'currency': 'DKK'
+    });
 }
 
 var addToBag_failure = function (response) {
@@ -55,11 +63,6 @@ item_added = function (response) {
         }, 3000)
     }
     else {
-        gtag('event', 'conversion', {
-            'send_to': 'AW-10853506642/8pSQCLHpq60DENK8rbco',
-            'value': 1.0,
-            'currency': 'DKK'
-        });
 
         addToBag_spinner.style.display = 'none';
         addToBag_check_sign.style.display = 'block';

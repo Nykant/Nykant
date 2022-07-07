@@ -28,7 +28,6 @@ else if (shipping_method_summary.textContent == 'HomeDKI') {
     shipping_method_summary.textContent = 'Leveringsaddressen med DKI Pallegods';
 }
 
-
 for (i = 0; i < l; i++) {
     selElmnt = x[i].getElementsByTagName("select")[0];
     ll = selElmnt.length;
@@ -203,7 +202,6 @@ for (i = 0; i < l; i++) {
                                     nearby_shops.appendChild(img);
                                 }
                             }
-
                             nearby_shops_modal.style.display = "block";
                         });
                     }
