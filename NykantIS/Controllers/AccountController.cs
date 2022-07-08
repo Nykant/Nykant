@@ -154,7 +154,7 @@ namespace NykantIS.Controllers
                     }
                     else if (result.RequiresTwoFactor)
                     {
-                        return Redirect($"{model.ISPath}/identity/account/loginwith2fa?rememberMe={model.RememberLogin}");
+                        return Redirect($"{model.ISPath}/is/identity/account/loginwith2fa?rememberMe={model.RememberLogin}");
                     }
                     else if (result.IsLockedOut)
                     {
