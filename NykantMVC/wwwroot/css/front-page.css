@@ -112,7 +112,7 @@ width:50px;
 }
 
 .favorite-item:hover .favorite-img {
-    opacity:0.3;
+/*    opacity:0.3;*/
 }
 
 .favorite-item {
@@ -308,7 +308,7 @@ width:50px;
 }
 
     .video-slide:hover .half {
-        opacity:0.3;
+        /*opacity:0.3;*/
     }
 
 .video {
@@ -465,7 +465,7 @@ width:50px;
     }
 
 .category:hover {
-    opacity:0.4;
+/*    opacity:0.4;*/
     font-weight:normal;
 }
 

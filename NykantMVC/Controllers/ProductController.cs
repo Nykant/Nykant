@@ -12,6 +12,7 @@ using System;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Authorization;
 using NykantMVC.Services;
+using System.Linq;
 
 namespace NykantMVC.Controllers
 {
@@ -97,20 +98,23 @@ namespace NykantMVC.Controllers
                 var categories = JsonConvert.DeserializeObject<List<Category>>(jsonCategories);
 
                 var filteredList = new List<Product>();
+                var categoryMod = new Category();
                 foreach (var product in products)
                 {
-                    if (product.Category.Name == category)
+                    if (product.Category.Name.ToLower() == category.ToLower())
                     {
+                        categoryMod = product.Category;
                         filteredList.Add(product);
                     }
                 }
+
                 if(filteredList.Count > 0)
                 {
                     var categoryVM = new CategoryViewVM
                     {
                         Categories = categories,
                         Products = filteredList,
-                        CategoryName = category
+                        Category = categoryMod
                     };
                     return View(categoryVM);
                 }
@@ -128,8 +132,6 @@ namespace NykantMVC.Controllers
             }
         }
 
-       
-
         [HttpPost("Produkter")]
         public async Task<IActionResult> Search(string searchString)
         {
@@ -139,6 +141,13 @@ namespace NykantMVC.Controllers
                 var products = JsonConvert.DeserializeObject<List<Product>>(json);
                 var jsonCategories = await GetRequest("/Category/GetCategories");
                 var categories = JsonConvert.DeserializeObject<List<Category>>(jsonCategories);
+                foreach(var item in categories)
+                {
+                    if(item.Name.ToLower() == searchString.ToLower())
+                    {
+                        return RedirectToAction("CategoryView", new { category = searchString });
+                    }
+                }
 
                 var filteredList = new List<Product>();
                 foreach (var product in products)
@@ -148,13 +157,45 @@ namespace NykantMVC.Controllers
                         filteredList.Add(product);
                     }
                 }
+
+                int isOneCategory = 0;
+                if(filteredList.Count > 1)
+                {
+                    isOneCategory = 1;
+                    for(int i = 1; i < filteredList.Count; i++)
+                    {
+                        if(filteredList[i - 1].Category.Id != filteredList[i].Category.Id)
+                        {
+                            isOneCategory = 2;
+                        }
+                    }
+                }
+                else if(filteredList.Count == 1)
+                {
+                    isOneCategory = 1;
+                }
+
                 var galleryVM = new GalleryVM
                 {
                     Categories = categories,
                     Products = filteredList
                 };
-                ViewBag.CurrentFilter = searchString;
-                return View("Gallery", galleryVM);
+
+                switch (isOneCategory)
+                {
+                    case 1:
+                        var category = categories.FirstOrDefault(x => x.Name.ToLower().Contains(searchString.ToLower()));
+                        if(category == default)
+                        {
+                            ViewBag.CurrentFilter = searchString;
+                            return View("Gallery", galleryVM);
+                        }
+                        var categoryName = category.Name;
+                        return RedirectToAction("CategoryView", new { category = categoryName });
+                    default:
+                        ViewBag.CurrentFilter = searchString;
+                        return View("Gallery", galleryVM);
+                }
             }
             catch (Exception e)
             {

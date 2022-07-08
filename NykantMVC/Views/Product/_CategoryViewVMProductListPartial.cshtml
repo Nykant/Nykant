@@ -3,24 +3,35 @@
 @{
 
     var count = 1;
+    var productsWithoutSizesAndColors = Model.Products.Where(x => x.EColor == EColor.Nature).ToList();
+    for(int i = 0; i < productsWithoutSizesAndColors.Count; i++)
+    {
+        if (productsWithoutSizesAndColors[i].Category.Name == "Hylder")
+        {
+            if (productsWithoutSizesAndColors[i].Length != "40 cm.")
+            {
+                productsWithoutSizesAndColors.RemoveAt(i);
+            }
+        }
+    }
 }
 
-<div class="col-12 left ">
-    <div id="current-filter">
-        <div class="spinner hidden" id="filterspinner"></div>
-        <h1>
-            <i class="fas fa-search"></i>
-            @Model.CategoryName
-        </h1>
+@*<div class="col-12 left ">
+        <div id="current-filter">
+            <div class="spinner hidden" id="filterspinner"></div>
+            <h1>
+                <i class="fas fa-search"></i>
+                @Model.CategoryName
+            </h1>
+        </div>
+    </div>*@
+
+<div class="col-12 left bottom-padding">
+    <div class="categoryView-text">
+        <h1>@Model.Category.H1</h1>
+        <p>@Model.Category.Text1</p>
     </div>
 </div>
-
-@*<div class="col-12 left">
-    <div class="categoryView-header">
-        <h1></h1>
-        <p></p>
-    </div>
-</div>*@
 
 @foreach (var item in Model.Products)
 {
@@ -33,75 +44,144 @@
                 goto skip;
             }
         }
-        <div class="col-4 left product-col">
-            @if (item.Colors.Count() > 1)
-            {
-                <div class="product-item-colors">
-                    @foreach (var color in item.Colors)
-                    {
-                        if (color.EColor != EColor.Nature)
+        if (productsWithoutSizesAndColors.Count < 3)
+        {
+            <div class="col-4 center product-col">
+                @if (item.Colors.Count() > 1)
+                {
+                    <div class="product-item-colors">
+                        @foreach (var color in item.Colors)
                         {
-                            <a class="product-item-color" asp-controller="product" asp-action="details" asp-route-urlname="@color.ProductSourceUrlName">
-                                <img src="@color.ImgSrc" />
-                            </a>
-                        }
-                    }
-                </div>
-            }
-
-            <div class="product-item">
-                <a asp-controller="product" asp-action="details" asp-route-urlname="@item.UrlName">
-
-                    <div class="product-images">
-                        @if (item.Discount != 0)
-                        {
-                            <div class="product-discount">
-                                <p class="red-text">-@item.Discount%</p>
-                            </div>
-                        }
-                        @if (count > 5)
-                        {
-                            <div class="primary-img">
-                                <img loading="lazy" src="@item.GalleryImage1" alt="@item.Title" />
-                            </div>
-                            count++;
-                        }
-                        else
-                        {
-                            <div class="primary-img">
-                                <img src="@item.GalleryImage1" />
-                            </div>
-                            count++;
-                        }
-
-                        <div class="secondary-img">
-                            <img loading="lazy" src="@item.GalleryImage2" alt="@item.Title" />
-                        </div>
-                    </div>
-                    <div class="product-item-inside">
-                        <div class="product-text">
-                            <p>@item.Name</p>
-                            @if (item.Discount == 0)
+                            if (color.EColor != EColor.Nature)
                             {
-                                <p>kr. @item.Price</p>
+                                <a class="product-item-color" asp-controller="product" asp-action="details" asp-route-urlname="@color.ProductSourceUrlName">
+                                    <img src="@color.ImgSrc" />
+                                </a>
+                            }
+                        }
+                    </div>
+                }
+
+                <div class="product-item">
+                    <a asp-controller="product" asp-action="details" asp-route-urlname="@item.UrlName">
+
+                        <div class="product-images">
+                            @if (item.Discount != 0)
+                            {
+                                <div class="product-discount">
+                                    <p class="red-text">-@item.Discount%</p>
+                                </div>
+                            }
+                            @if (count > 5)
+                            {
+                                <div class="primary-img">
+                                    <img loading="lazy" src="@item.GalleryImage1" alt="@item.Title" />
+                                </div>
+                                count++;
                             }
                             else
                             {
-                                <p>kr. @ProductHelper.GetPrice(item) <span class="inline line-through red-text">@item.Price</span></p>
+                                <div class="primary-img">
+                                    <img src="@item.GalleryImage1" />
+                                </div>
+                                count++;
                             }
-                        </div>
-                    </div>
-                </a>
-            </div>
 
-        </div>
+                            <div class="secondary-img">
+                                <img loading="lazy" src="@item.GalleryImage2" alt="@item.Title" />
+                            </div>
+                        </div>
+                        <div class="product-item-inside">
+                            <div class="product-text">
+                                <p>@item.Name</p>
+                                @if (item.Discount == 0)
+                                {
+                                    <p>kr. @item.Price</p>
+                                }
+                                else
+                                {
+                                    <p>kr. @ProductHelper.GetPrice(item) <span class="inline line-through red-text">@item.Price</span></p>
+                                }
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        }
+        else
+        {
+            <div class="col-4 left product-col">
+                @if (item.Colors.Count() > 1)
+                {
+                    <div class="product-item-colors">
+                        @foreach (var color in item.Colors)
+                        {
+                            if (color.EColor != EColor.Nature)
+                            {
+                                <a class="product-item-color" asp-controller="product" asp-action="details" asp-route-urlname="@color.ProductSourceUrlName">
+                                    <img src="@color.ImgSrc" />
+                                </a>
+                            }
+                        }
+                    </div>
+                }
+
+                <div class="product-item">
+                    <a asp-controller="product" asp-action="details" asp-route-urlname="@item.UrlName">
+
+                        <div class="product-images">
+                            @if (item.Discount != 0)
+                            {
+                                <div class="product-discount">
+                                    <p class="red-text">-@item.Discount%</p>
+                                </div>
+                            }
+                            @if (count > 5)
+                            {
+                                <div class="primary-img">
+                                    <img loading="lazy" src="@item.GalleryImage1" alt="@item.Title" />
+                                </div>
+                                count++;
+                            }
+                            else
+                            {
+                                <div class="primary-img">
+                                    <img src="@item.GalleryImage1" />
+                                </div>
+                                count++;
+                            }
+
+                            <div class="secondary-img">
+                                <img loading="lazy" src="@item.GalleryImage2" alt="@item.Title" />
+                            </div>
+                        </div>
+                        <div class="product-item-inside">
+                            <div class="product-text">
+                                <p>@item.Name</p>
+                                @if (item.Discount == 0)
+                                {
+                                    <p>kr. @item.Price</p>
+                                }
+                                else
+                                {
+                                    <p>kr. @ProductHelper.GetPrice(item) <span class="inline line-through red-text">@item.Price</span></p>
+                                }
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        }
+
     }
     skip:;
 }
 
-@*<div class="col-12 left">
-    <div class="categoryView-footer">
-        <h2></h2>
-        <p></p>
+<div class="col-12 left bottom-padding top-padding">
+    <div class="categoryView-text">
+        <h2>@Model.Category.H2</h2>
+        <p>@Model.Category.Text2</p>
     </div>
-</div>*@
+</div>

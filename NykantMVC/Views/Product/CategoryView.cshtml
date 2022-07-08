@@ -1,10 +1,10 @@
 ﻿@model CategoryViewVM
 @{
-    ViewData["Title"] = "Nykants Produkter - Massive Egetræsmøbler";
-    ViewData["Description"] = "Massive egetræsmøbler behandlet med forskellige olier, inspireret af dansk design.";
+    ViewData["Title"] = Model.Category.Title;
+    ViewData["Description"] = Model.Category.Description;
 }
 
-<link rel="stylesheet" href="~/css/product-gallery.css?3" />
+<link rel="stylesheet" href="~/css/product-gallery.css?4" />
 
 <div class="my-row">
     <div class="col-6 center col-wrapper">
@@ -35,11 +35,6 @@
 
 @*<script src="~/JS/image-changer.js"></script>*@
 <script src="~/JS/products.js?1"></script>
-
-<script>
-    gtag('event', 'categoryView-entry');
-</script>
-
 
 
 

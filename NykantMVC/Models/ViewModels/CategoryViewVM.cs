@@ -9,6 +9,6 @@ namespace NykantMVC.Models.ViewModels
     {
         public List<Category> Categories { get; set; }
         public List<Product> Products { get; set; }
-        public string CategoryName { get; set; }
+        public Category Category { get; set; }
     }
 }

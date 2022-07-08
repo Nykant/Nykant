@@ -1,8 +1,8 @@
 ﻿@model FrontPageVM
 
 @{
-    ViewData["Title"] = "Nykant - Egetræsmøbler i Dansk Design";
-    ViewData["Description"] = "Nykant er et nyt dansk brand, som med inspiration fra dansk design, udvikler moderne egetræsmøbler med minimalistiske detaljer i høj kvalitet, produceret i bæredygtigt FSC certificeret, massivt, Egetræ.";
+    ViewData["Title"] = "Egetræsmøbler | Køb moderne egetræsmøbler i dansk design";
+    ViewData["Description"] = "Hos Nykant designer vi moderne egetræsmøbler i høj kvalitet. Kombinationen af dansk design, minimalistiske detaljer og bæredygtigt egetræ er helt unik. Se mere her.";
 
     //List<Product> randomProducts = ProductHelper.RandomizeList(ViewBag.Products);
     List<Product> products = Model.Products;
@@ -13,7 +13,7 @@
     var dagmar = products.Find(x => x.Id == 16);
 }
 
-<link rel="stylesheet" href="~/css/front-page.css?2" />
+<link rel="stylesheet" href="~/css/front-page.css?4" />
 <link rel="stylesheet" href="~/css/karusel.css?1" />
 <script src="~/JS/swiped-events.min.js"></script>
 
@@ -342,6 +342,3 @@
 @*<script async src="~/JS/checkout-sandbox.js"></script>*@
 <script src="~/JS/frontpage-karusel.js"></script>
 
-<script>
-    gtag('event', 'frontpage-entry');
-</script>

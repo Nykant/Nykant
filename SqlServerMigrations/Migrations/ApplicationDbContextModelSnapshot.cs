@@ -82,10 +82,28 @@ namespace NykantAPI.data.migrations.local
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("H1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("H2")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ImgSource")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Text1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Text2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -96,32 +114,62 @@ namespace NykantAPI.data.migrations.local
                         new
                         {
                             Id = 1,
+                            Description = "Hos Nykant får du æstetiske tøjstativer i massivt egetræ. Tøjstativerne er lette at samle, og du kan vælge blandt flere farver. Shop online med hurtig levering.",
+                            H1 = "Tøjstativer I Træ",
+                            H2 = "Moderne Tøjstativer I Massivt Egetræ",
                             ImgSource = "../images/Products/Category/Desktop/ingrid_natur_2.png",
-                            Name = "Tøjstativer"
+                            Name = "Tøjstativer",
+                            Text1 = "Vores moderne og praktiske tøjstativer er i massivt træ, tydeligt inspireret af minimalistisk dansk design, og som både er nemme at samle og sætte op. De er perfekte til indretning af et smukt, naturligt og flot hjem, hvor der er tænkt på hver detalje, i ophæng, såvel som udseende.",
+                            Text2 = "Vores tøjstativer kan nemt sættes op, hvad enten det er i entréen, på kontoret eller soveværelset. Ophæng og tøjstativer, giver plads til opbevaring og er noget af det første man ser i et hjem. De giver et rigtig godt førstehåndsindtryk og skaber orden, samtidig med at se godt ud og give kant i hjemmet.",
+                            Title = "Tøjstativ træ | Elegante tøjstativer i massivt egetræ | Køb online"
                         },
                         new
                         {
                             Id = 2,
+                            Description = "Med et bord fra Nykant får du dansk design, overlegne detaljer og materialer i høj kvalitet. Bordene passer ind i moderne hjem. Køb online med hurtig levering.",
+                            H1 = "Borde I Træ",
+                            H2 = "Egetræsborde I Minimalistisk Dansk Design",
                             ImgSource = "../images/Products/Category/Desktop/bord_natur_2.png",
-                            Name = "Borde"
+                            Name = "Borde",
+                            Text1 = "Vores Dagmar bord er et enkelt og stilrent møbel i høj kvalitet, og tager udgangspunkt i sit smukke udseende, såvel som funktionalitet. Det er nemt at flytte og praktisk, hvad end det er til det lille tekøkken, hjørnekontoret, studieboligen, eller andre steder, hvor der ikke kræves meget plads.",
+                            Text2 = "Vores borde kan nemt danne rammerne for en hyggelig krog eller samlingssted for små og store samtaleemner, samt giver det med sit udseende, et minimalistisk look til hjemmet. Match det med en af vores bænke for et fuldendt look eller sammensæt det på din egen måde.",
+                            Title = "Egetræsbord | Køb massivt egetræsbord her | Bæredygtigt valg"
                         },
                         new
                         {
                             Id = 3,
+                            Description = "Her hos Nykant finder du dansk designede hylder i massivt egetræ. Hylderne er lette at montere på væggen, og du kan vælge blandt flere farver. Hurtig levering.",
+                            H1 = "Hylder I Træ",
+                            H2 = "Simple Træhylder I Mange Størrelser Og Farver",
                             ImgSource = "../images/Products/Category/Desktop/hylde_natur_1.png",
-                            Name = "Hylder"
+                            Name = "Hylder",
+                            Text1 = "Hylden, Ingeborg er solid, enkel og fås i tre, flotte overfladebehandlinger. Det er hylden til små nips, billeder, bøger eller andre ting, som er med til at skabe et hjem med kant. Det er lavet i stil med vores andre møbler med massivt træ og mere funktion.",
+                            Text2 = "Ingeborg, kan monteres helt ind til væggen, og opsættes med bunden, op eller ned, så du helt selv bestemmer, hvordan det skal se ud. I soveværelset, stuen, kontoret eller entréen, der er ikke det sted, hvor den ikke kan være og så fås den også i flere størrelser, så der gås ikke ned på plads og opbevaring.",
+                            Title = "Egetræshylder | Moderne væghylder i massivt egetræ | køb her"
                         },
                         new
                         {
                             Id = 4,
+                            Description = "Find din nye favorit træbænk her hos Nykant. Designet er elegant og dansk, og bænkene er lavet i massivt egetræ. Se udvalget og køb online. Hurtig levering.",
+                            H1 = "Bænke I Træ",
+                            H2 = "Solide Og Praktiske Bænke I Massivt Træ",
                             ImgSource = "../images/Products/Category/Desktop/opbevaringsbaenk_natur_3.png",
-                            Name = "Bænke"
+                            Name = "Bænke",
+                            Text1 = "Leder du efter solide, smukke og praktisk bænke, hvor der er tænkt i funktion, såvel som æstetik, så har vi det rette. Her gås der ikke ned på detaljerne, og det ses blandt andet på vores bløde hjørner og rundinger af ben og planke. De går sig godt til ethvert hjem, og hvad enten du er til helt lys eller mørk overflade, eller midt imellem, så har vi noget til enhver smag.",
+                            Text2 = "Bænke er det perfekte sted at have noget ekstra opbevaring, så mangler du noget ekstra plads til sko, handsker, m.m, så kan de nemt opbevares i vores opbevaringsbænk. Bænkene er med til at have en “holdeplads” i hjemmet, og kan sammensættes på mange måder. Det er kun fantasien, der sætter grænserne, og om det er ved spisebordet, entréen, soveværelset eller ude på en overdækket terrasse, så er vi sikre på at vores bænke kan give den kant du søger.",
+                            Title = "Træbænk | Stilrene egetræsbænke i dansk design | Køb online"
                         },
                         new
                         {
                             Id = 5,
+                            Description = "Se de lækre bøjler i massivt egetræ hos Nykant. Der er kræset for detaljerne, og intet er tilfældigt. Bøjlerne kommer i forskellige farver. Hurtig levering.",
+                            H1 = "Bøjler I Træ",
+                            H2 = "Kvalitetsbøjler I Massivt Træ I Flere Farver",
                             ImgSource = "../images/Products/Category/Desktop/boejle_natur_1.png",
-                            Name = "Bøjler"
+                            Name = "Bøjler",
+                            Text1 = "Et tøjstativ, knagerække eller stumtjener er altid godt komplimenteret med et par bøjler. De er med til at holde vores tøj pænt, nemt tilgængeligt og fremhæver ens yndlingstasker, tøj, m.m.",
+                            Text2 = "Vores bøjler er ligeledes også i massivt træ, med henblik på holdbarhed og langvarig brug, så du ikke går ned på ophæng af dine yndlingsting. De fås i tre farver, så de nemt kan sammensættes efter dine behov og i et tidløst design.",
+                            Title = "Træbøjler | Køb massive egetræsbøjler i elegant dansk design"
                         });
                 });
 
