@@ -52,7 +52,7 @@ namespace NykantMVC.Services
                 if (disco.IsError)
                 {
                     _logger.LogError($"time: {DateTime.Now} - {disco.Error}, {disco.Exception.Message}, {disco.Exception.StackTrace}, {disco.Exception.InnerException}, {disco.Exception.Data.Values}, {disco.Exception.TargetSite}");
-                    //await Task.Delay(1000);
+                    Task.Delay(1000).Wait();
                     goto tryAgain;
                 }
 
@@ -69,7 +69,7 @@ namespace NykantMVC.Services
                 if (tokenResponse.IsError)
                 {
                     _logger.LogError($"time: {DateTime.Now} - {tokenResponse.Error}, {tokenResponse.Exception.Message}, {tokenResponse.Exception.StackTrace}, {tokenResponse.Exception.InnerException}, {tokenResponse.Exception.Data.Values}, {tokenResponse.Exception.TargetSite}");
-                    //await Task.Delay(1000);
+                    Task.Delay(1000).Wait();
                     goto tryAgain;
                 }
 
@@ -78,8 +78,8 @@ namespace NykantMVC.Services
                 ExpiryTime = DateTime.UtcNow.AddSeconds(Token.ExpiresIn);
 
                 //return fresh token
-                return Token;
             }
+            return Token;
         }
     }
 
