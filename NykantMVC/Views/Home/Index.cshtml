@@ -4,9 +4,9 @@
     ViewData["Title"] = "Egetræsmøbler | Køb moderne egetræsmøbler i dansk design";
     ViewData["Description"] = "Hos Nykant designer vi moderne egetræsmøbler i høj kvalitet. Kombinationen af dansk design, minimalistiske detaljer og bæredygtigt egetræ er helt unik. Se mere her.";
 
-    //List<Product> randomProducts = ProductHelper.RandomizeList(ViewBag.Products);
     List<Product> products = Model.Products;
-    var randomDiscountProducts = products.Where(x => x.Discount > 0);
+    var discountProducts = products.Where(x => x.Discount > 0);
+    var randomDiscountProducts = ProductHelper.RandomizeList(discountProducts.ToList());
     var nora = products.Find(x => x.Id == 27);
     var filippa = products.Find(x => x.Id == 26);
     var thyra = products.Find(x => x.Id == 18);
@@ -165,29 +165,26 @@
             <div class="karusel-box" id="frontpage-karusel-box">
                 @foreach (var product in randomDiscountProducts)
                 {
-
+                    if (product.Category.Name == "Hylder")
+                    {
+                        if (product.Length != "40 cm.")
+                        {
+                            goto skip;
+                        }
+                    }
                     <div>
-                        @if (product.Discount > 0)
-                        {
-                            <div class="karusel-discount">
-                                <p>-@product.Discount%</p>
-                            </div>
+                        <div class="karusel-discount">
+                            <p>-@product.Discount%</p>
+                        </div>
 
-                            <div class="karusel-price">
-                                <p>kr. @ProductHelper.GetPrice(product) <span class="line-through red-text">@product.Price</span></p>
-                            </div>
-                        }
-                        else
-                        {
-                            <div class="karusel-price">
-                                <p>kr. @product.Price</p>
-                            </div>
-                        }
+                        <div class="karusel-price">
+                            <p>kr. @ProductHelper.GetPrice(product) <span class="line-through red-text">@product.Price</span></p>
+                        </div>
                         <a onclick="DiscountClick()" asp-controller="product" asp-action="details" asp-route-urlname="@product.UrlName">
                             <img class="absolute-center" src="@product.GalleryImage1" />
                         </a>
                     </div>
-
+                    skip:;
                 }
             </div>
             <button class="karusel-back" onclick="frontpage_backevent()"><img src="~/lib/svg/arrow-left.svg" /></button>
