@@ -1,4 +1,4 @@
-﻿User-agent: *
+User-agent: *
 Disallow: /Kassen
 Disallow: /Bestilling-Gennemført
 Disallow: /Kurv
