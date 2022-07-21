@@ -9,5 +9,6 @@ namespace NykantMVC.Models
     {
         public string Api { get; set; }
         public string Is { get; set; }
+        public string Mvc { get; set; }
     }
 }

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
@@ -184,6 +185,7 @@ namespace NykantMVC
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
             var DK = new CultureInfo("da-DK");
             var EN = new CultureInfo("en-GB");
             var cultureList = new List<CultureInfo>
@@ -210,6 +212,20 @@ namespace NykantMVC
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
+
+            app.Use(async (context, next) =>
+            {
+                if (context.Request.Path.StartsWithSegments("/sitemap"))
+                {
+                    var syncIoFeature = context.Features.Get<IHttpBodyControlFeature>();
+                    if (syncIoFeature != null)
+                    {
+                        syncIoFeature.AllowSynchronousIO = true;
+                    }
+                }
+
+                await next();
+            });
 
             app.UseCertificateForwarding();
 
