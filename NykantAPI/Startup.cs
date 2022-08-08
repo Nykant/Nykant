@@ -66,27 +66,27 @@ namespace NykantAPI
             }
 
             //migrations to mysql server
-            services.AddDbContext<ApplicationDbContext>(
-                options =>
-                {
-                    options.UseMySql(
-                        nykantConnection,
-                        x => x.MigrationsAssembly("MySqlMigrations"));
-                });
-
             //services.AddDbContext<ApplicationDbContext>(
-            //    options => _ = provider switch
+            //    options =>
             //    {
-            //        "SqlServer" => options.UseSqlServer(
-            //            nykantConnectionLocal,
-            //            x => x.MigrationsAssembly("SqlServerMigrations")),
-
-            //        "MySql" => options.UseMySql(
+            //        options.UseMySql(
             //            nykantConnection,
-            //            x => x.MigrationsAssembly("MySqlMigrations")),
-
-            //        _ => throw new Exception($"Unsupported provider: {provider}")
+            //            x => x.MigrationsAssembly("MySqlMigrations"));
             //    });
+
+            services.AddDbContext<ApplicationDbContext>(
+                options => _ = provider switch
+                {
+                    "SqlServer" => options.UseSqlServer(
+                        nykantConnectionLocal,
+                        x => x.MigrationsAssembly("SqlServerMigrations")),
+
+                    "MySql" => options.UseMySql(
+                        nykantConnection,
+                        x => x.MigrationsAssembly("MySqlMigrations")),
+
+                    _ => throw new Exception($"Unsupported provider: {provider}")
+                });
 
 
 
