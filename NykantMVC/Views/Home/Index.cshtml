@@ -8,12 +8,12 @@
     var discountProducts = products.Where(x => x.Discount > 0);
     var randomDiscountProducts = ProductHelper.RandomizeList(discountProducts.ToList());
     var nora = products.Find(x => x.Id == 27);
-    var filippa = products.Find(x => x.Id == 26);
+    var filippa = products.Find(x => x.Id == 24);
     var thyra = products.Find(x => x.Id == 18);
     var dagmar = products.Find(x => x.Id == 16);
 }
 
-<link rel="stylesheet" href="~/css/front-page.css?4" />
+<link rel="stylesheet" href="~/css/front-page.css?5" />
 <link rel="stylesheet" href="~/css/karusel.css?1" />
 <script src="~/JS/swiped-events.min.js"></script>
 
@@ -142,7 +142,7 @@
             <div class="half">
                 <img class="vertical-center video-img" src="~/images/Products/Details_Fullscreen/Desktop/NYKANT_rack_naturolie_02.png" />
             </div>
-            <a onclick="VideoClick()" id="follow-link" asp-controller="Product" asp-action="Details" asp-route-urlname="Tøjstativ-Egetræ-Naturolie">
+            <a onclick="VideoClick()" id="follow-link" asp-controller="Product" asp-action="Details" asp-route-urlname="@nora.UrlName">
                 <div class="follow-container" id="follow-container">
                     <div class="follow-box" id="follow-box">
                         <p id="follow-name">@nora.Name</p>
@@ -162,7 +162,7 @@
 {
     <div class="my-row">
         <div class="col-12 left top-padding bottom-padding">
-            <h1 class="karusel-header">ALLE TILBUD:</h1>
+            <p class="karusel-header titlesize">ALLE TILBUD:</p>
             <div class="karusel" id="frontpage-karusel">
                 <div class="karusel-box" id="frontpage-karusel-box">
 
@@ -198,44 +198,58 @@
         </div>
     </div>
 }
-    <div class="my-row top-padding bottom-padding">
-        <div class="col-8 center">
-            <div class="about-wood">
-                <h1 class="text-center">VI <i class="fa fa-heart padding-10"></i> TRÆ</h1>
-                <p><i class="fa fa-tree"></i>Er verdens mest miljøvenlige råstof.</p>
-                <p><i class="fa fa-tree"></i>Tager CO2 fra luften og lægger det på lager i træprodukter.</p>
-                <p><i class="fa fa-tree"></i>Er en fornyelig ressource.</p>
-                <p><i class="fa fa-tree"></i>Kan genbruges.</p>
-                <p><i class="fa fa-tree"></i>Giver intet affald, men CO2-neutral energi når det brændes.</p>
-            </div>
+
+<div class="my-row top-padding bottom-padding">
+    <div class="col-6 center">
+        <div class="about-us" id="about-us">
+            <h1>MØBLER I DANSK DESIGN</h1>
+            <h2 class="bigsize">Nykant er et nyt dansk møbel brand, med inspiration fra dansk design.</h2>
+            <p id="about-us-text">
+                Med kærlighed til træ, vil vi være med til at innovere møbelindustrien. Vi sætter meget pris på minimalistiske detajler, og går efter at tegne nogle unikke og praktiske designs, med æstetik, som gør møblet mere tiltrækkende, hver gang man kigger på det. Det er møbler i dansk design med kant.
+            </p>
+
+            <a asp-controller="home" asp-action="about" onclick="AboutClick()">
+                <div class="follow-container" id="follow-container-about">
+
+                    <div id="follow-box-about">
+                        <p id="follow-about">MERE OM NYKANT</p>
+                    </div>
+
+                </div>
+            </a>
+
         </div>
     </div>
+</div>
+
 
 
     <div class="my-row top-padding bottom-padding">
         <div class="col-12">
             <div class="favorites">
                 <div id="favorites-header" class="favorites-header">
-                    <h1>JERES FAVORITTER</h1>
+                <p class="titlesize">FAVORITTER</p>
                 </div>
                 <div class="col-6 left favorite-item">
-                    <a onclick="FavoriteClick()" asp-controller="product" asp-action="details" asp-route-urlname="Tøjstativ-Egetræ-Naturolie">
-                        <img class="absolute-center favorite-img" src="~/images/Products/Details_Fullscreen/Desktop/NYKANT_rack_naturolie_02.png" />
-                        <div class="follow-container" id="follow-container-rack">
-                            <div class="follow-box" id="follow-box-rack">
-                                <p id="follow-name-rack">@nora.Name</p>
-                                <p id="follow-oil-rack">@nora.Oil</p>
-                                <p id="follow-price-rack">
-                                    kr. @ProductHelper.GetPrice(nora) @if (nora.Discount > 0)
-                                    {<span class="line-through red-text">@nora.Price</span>}
-                                </p>
+                    <a onclick="FavoriteClick()" asp-controller="product" asp-action="details" asp-route-urlname="@dagmar.UrlName">
+                        <img class="absolute-center favorite-img" src="@dagmar.GalleryImage2" />
+                        <div id="follow-container">
+                            <div class="follow-container" id="follow-container-table">
+                                <div class="follow-box" id="follow-box-table">
+                                    <p id="follow-name-baenk">@dagmar.Name</p>
+                                    <p id="follow-oil">@dagmar.Oil</p>
+                                    <p id="follow-price">
+                                        kr. @ProductHelper.GetPrice(dagmar) @if (dagmar.Discount > 0)
+                                        {<span class="line-through red-text">@dagmar.Price</span>}
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </a>
                 </div>
                 <div class="col-6 left favorite-item">
-                    <a onclick="FavoriteClick()" asp-controller="product" asp-action="details" asp-route-urlname="Opbevaringsbænk-Egetræ-Sortolie">
-                        <img class="absolute-center favorite-img" src="~/images/Products/Details_Fullscreen/Desktop/NYKANT_opbevaringsbaenk_sort_03.png" />
+                    <a onclick="FavoriteClick()" asp-controller="product" asp-action="details" asp-route-urlname="@filippa.UrlName">
+                        <img class="absolute-center favorite-img" src="@filippa.GalleryImage2" />
                         <div id="follow-container">
                             <div class="follow-container" id="follow-container-baenk">
                                 <div class="follow-box" id="follow-box-baenk">
@@ -251,8 +265,24 @@
                     </a>
                 </div>
                 <div class="col-6 left favorite-item">
-                    <a onclick="FavoriteClick()" asp-controller="product" asp-action="details" asp-route-urlname="Bænk-Egetræ-Naturolie-115cm">
-                        <img class="absolute-center favorite-img" src="~/images/Products/Details_Fullscreen/Desktop/NYKANT_kortbaenk_naturolie_02.png" />
+                    <a onclick="FavoriteClick()" asp-controller="product" asp-action="details" asp-route-urlname="@nora.UrlName">
+                        <img class="absolute-center favorite-img" src="@nora.GalleryImage2" />
+                        <div class="follow-container" id="follow-container-rack">
+                            <div class="follow-box" id="follow-box-rack">
+                                <p id="follow-name-rack">@nora.Name</p>
+                                <p id="follow-oil-rack">@nora.Oil</p>
+                                <p id="follow-price-rack">
+                                    kr. @ProductHelper.GetPrice(nora) @if (nora.Discount > 0)
+                                    {<span class="line-through red-text">@nora.Price</span>}
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-6 left favorite-item">
+                    <a onclick="FavoriteClick()" asp-controller="product" asp-action="details" asp-route-urlname="@thyra.UrlName">
+                        <img class="absolute-center favorite-img" src="@thyra.GalleryImage2" />
                         <div id="follow-container">
                             <div class="follow-container" id="follow-container-kortbaenk">
                                 <div class="follow-box" id="follow-box-kortbaenk">
@@ -267,23 +297,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="col-6 left favorite-item">
-                    <a onclick="FavoriteClick()" asp-controller="product" asp-action="details" asp-route-urlname="Bord-Egetræ-Naturolie">
-                        <img class="absolute-center favorite-img" src="~/images/Products/Details_Fullscreen/Desktop/NYKANT_bord_naturolie_02.png" />
-                        <div id="follow-container">
-                            <div class="follow-container" id="follow-container-table">
-                                <div class="follow-box" id="follow-box-table">
-                                    <p id="follow-name-baenk">@dagmar.Name</p>
-                                    <p id="follow-oil">@dagmar.Oil</p>
-                                    <p id="follow-price">
-                                        kr. @ProductHelper.GetPrice(dagmar) @if (dagmar.Discount > 0)
-                                        {<span class="line-through red-text">@dagmar.Price</span>}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+
             </div>
         </div>
     </div>
@@ -291,7 +305,7 @@
 
     <div class="my-row top-padding bottom-padding">
         <div class="col-12 center z200 category-header">
-            <h1 class="text-center">KATEGORIER</h1>
+        <p class="text-center titlesize">KATEGORIER</p>
         </div>
 
         <div class="col-12">
@@ -306,30 +320,20 @@
 
     </div>
 
-
-
-    <div class="my-row top-padding bottom-padding">
-        <div class="col-6 center">
-            <div class="about-us" id="about-us">
-                <h1>MØBLER I DANSK DESIGN</h1>
-                <p id="about-us-text">
-                    Nykant er et nyt dansk møbel brand, med inspiration fra dansk design. <br />
-                    Med kærlighed til træ, vil vi være med til at innovere møbelindustrien. Vi sætter meget pris på minimalistiske detajler, og går efter at tegne nogle unikke og praktiske designs, med æstetik, som gør møblet mere tiltrækkende, hver gang man kigger på det. Det er møbler i dansk design med kant.
-                </p>
-
-                <a asp-controller="home" asp-action="about" onclick="AboutClick()">
-                    <div class="follow-container" id="follow-container-about">
-
-                        <div id="follow-box-about">
-                            <p id="follow-about">MERE OM NYKANT</p>
-                        </div>
-
-                    </div>
-                </a>
-
-            </div>
+<div class="my-row top-padding bottom-padding">
+    <div class="col-8 center">
+        <div class="about-wood">
+            <p class="text-center titlesize">VI <i class="fa fa-heart padding-10"></i> TRÆ</p>
+            <h2 class="bigsize"><i class="fa fa-tree"></i>Er verdens mest miljøvenlige råstof.</h2>
+            <p><i class="fa fa-tree"></i>Tager CO2 fra luften og lægger det på lager i træprodukter.</p>
+            <p><i class="fa fa-tree"></i>Er en fornyelig ressource.</p>
+            <p><i class="fa fa-tree"></i>Kan genbruges.</p>
+            <p><i class="fa fa-tree"></i>Giver intet affald, men CO2-neutral energi når det brændes.</p>
         </div>
     </div>
+</div>
+
+    
     @*<div class="my-row">
 
         </div>*@

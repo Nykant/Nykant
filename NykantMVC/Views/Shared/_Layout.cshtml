@@ -32,7 +32,7 @@
     @*<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">*@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral&display=swap">
-    <link rel="stylesheet" href="~/css/mvcstyle.css?115" />
+    <link rel="stylesheet" href="~/css/mvcstyle.css?117" />
     <link rel="stylesheet" href="~/css/navbar.css?105" />
     <link rel="stylesheet" href="~/css/search.css" />
     <link rel="stylesheet" href="~/css/culture.css" />
@@ -75,6 +75,8 @@
 
     @*<partial name="_CultureCookiePartial" />*@
 
+    <partial name="_topbarpartial" />
+
     <partial name="_DesktopNavbarPartial" />
 
     <div>
@@ -86,14 +88,14 @@
     <footer>
         <div class="top-footer">
             <div class="nykant-info">
-                <h1>Info</h1>
+                <p class="bold-text">Info</p>
                 @*<a asp-controller="Home" asp-action="About">Om Os</a>*@
                 <a asp-controller="Home" asp-action="Contact">Kontakt Os</a>
                 <a asp-controller="Home" asp-action="HowToOrder">Handlevejledning</a>
             </div>
 
             <div class="nykant-info">
-                <h1>Anmeldelser</h1>
+                <p class="bold-text">Anmeldelser</p>
                 <a href="https://dk.trustpilot.com/review/nykant.dk">Trustpilot</a>
                 <a href="https://www.facebook.com/nykant.dk/reviews">Facebook</a>
             </div>

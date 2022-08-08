@@ -47,35 +47,45 @@ namespace NykantMVC.Services
 
                 tryAgain:;
 
-                var client = new HttpClient();
-                var disco = client.GetDiscoveryDocumentAsync(_urls.Is).Result;
-                if (disco.IsError)
+                try
                 {
-                    _logger.LogInformation($"time: {DateTime.Now} - {disco.Error}, {disco.Exception.Message}, {disco.Exception.StackTrace}, {disco.Exception.InnerException}, {disco.Exception.Data.Values}, {disco.Exception.TargetSite}, ---- Trying again...");
+                    var client = new HttpClient();
+                    var disco = client.GetDiscoveryDocumentAsync(_urls.Is).Result;
+                    if (disco.IsError)
+                    {
+                        _logger.LogInformation($"time: {DateTime.Now} - {disco.Error}, {disco.Exception.Message}, {disco.Exception.StackTrace}, {disco.Exception.InnerException}, {disco.Exception.Data.Values}, {disco.Exception.TargetSite}, ---- Trying again...");
+                        Thread.Sleep(1000);
+                        goto tryAgain;
+                    }
+
+                    // request token
+                    var tokenResponse = client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
+                    {
+                        Address = disco.TokenEndpoint,
+
+                        ClientId = "client",
+                        ClientSecret = conf["ClientClientSecret"],
+                        Scope = "NykantAPI"
+                    }).Result;
+
+                    if (tokenResponse.IsError)
+                    {
+                        _logger.LogInformation($"time: {DateTime.Now} - {disco.Error}, {disco.Exception.Message}, {disco.Exception.StackTrace}, {disco.Exception.InnerException}, {disco.Exception.Data.Values}, {disco.Exception.TargetSite}, ---- Trying again...");
+                        Thread.Sleep(1000);
+                        goto tryAgain;
+                    }
+
+                    //set Token to the new token and set the expiry time to the new expiry time
+                    Token = tokenResponse;
+                    ExpiryTime = DateTime.UtcNow.AddSeconds(Token.ExpiresIn);
+                }
+                catch (Exception e)
+                {
+                    _logger.LogInformation($"time: {DateTime.Now} - {e.Message}, {e.StackTrace}, {e.InnerException}, {e.Data.Values}, {e.TargetSite}, ---- Trying again...");
                     Thread.Sleep(1000);
                     goto tryAgain;
                 }
 
-                // request token
-                var tokenResponse = client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
-                {
-                    Address = disco.TokenEndpoint,
-
-                    ClientId = "client",
-                    ClientSecret = conf["ClientClientSecret"],
-                    Scope = "NykantAPI"
-                }).Result;
-
-                if (tokenResponse.IsError)
-                {
-                    _logger.LogInformation($"time: {DateTime.Now} - {disco.Error}, {disco.Exception.Message}, {disco.Exception.StackTrace}, {disco.Exception.InnerException}, {disco.Exception.Data.Values}, {disco.Exception.TargetSite}, ---- Trying again...");
-                    Thread.Sleep(1000);
-                    goto tryAgain;
-                }
-
-                //set Token to the new token and set the expiry time to the new expiry time
-                Token = tokenResponse;
-                ExpiryTime = DateTime.UtcNow.AddSeconds(Token.ExpiresIn);
 
                 //return fresh token
             }

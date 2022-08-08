@@ -13,14 +13,19 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Authorization;
 using NykantMVC.Services;
 using System.Linq;
+using System.Net.Http;
+using System.Text;
+using NykantMVC.Friends;
 
 namespace NykantMVC.Controllers
 {
     [AutoValidateAntiforgeryToken]
     public class ProductController : BaseController
     {
-        public ProductController(ILogger<ProductController> logger, IOptions<Urls> urls, HtmlEncoder htmlEncoder, IConfiguration conf, ITokenService _tokenService) : base(logger, urls, htmlEncoder, conf, _tokenService)
+        private readonly IGoogleApiService googleApiService;
+        public ProductController(ILogger<ProductController> logger, IGoogleApiService googleApiService, IOptions<Urls> urls, HtmlEncoder htmlEncoder, IConfiguration conf, ITokenService _tokenService) : base(logger, urls, htmlEncoder, conf, _tokenService)
         {
+            this.googleApiService = googleApiService;
         }
 
         [Authorize(Roles = "Admin")]
@@ -242,6 +247,9 @@ namespace NykantMVC.Controllers
                     };
                 }
 
+                //var list = await googleApiService.GetProductList();
+
+
                 ViewData.Model = product;
                 return new PartialViewResult
                 {
@@ -261,6 +269,33 @@ namespace NykantMVC.Controllers
                     StatusCode = 500
                 };
             }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> UpdateMerchantCenter()
+        {
+            var json = await GetRequest("/Product/GetProducts");
+            var products = JsonConvert.DeserializeObject<List<Product>>(json);
+
+            var accesstoken = googleApiService.GetAccessToken();
+
+            var client = new HttpClient();
+            //var response = await client.GetStringAsync($"https://shoppingcontent.googleapis.com/content/v2.1/549068494/products?access_token={accesstoken}");
+            //var products = JsonConvert.SerializeObject(response);
+
+            foreach(var product in products)
+            {
+                var updateProduct = new Models.Google.Product { Title = product.MetaTitle, Description = product.MetaDescription, Price = new Models.Google.Price { Currency = "dkk", Value = product.Price.ToString() }, SalePrice = new Models.Google.Price { Currency = "dkk", Value = ProductHelper.GetPrice(product).ToString() } };
+                var content = new StringContent(JsonConvert.SerializeObject(updateProduct), Encoding.UTF8, "application/json-patch+json");
+                var httpResponse = await client.PatchAsync($"https://shoppingcontent.googleapis.com/content/v2.1/549068494/products/{product.RestId}?access_token={accesstoken}", content);
+                if (!httpResponse.IsSuccessStatusCode)
+                {
+                    _logger.LogError($"time: {DateTime.Now} - update merchant product error - {httpResponse.ReasonPhrase}");
+                    return Content("error");
+                }
+            }
+
+            return RedirectToAction("List");
         }
 
         [HttpGet("Produkt/{urlname}")]

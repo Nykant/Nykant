@@ -129,6 +129,7 @@ namespace NykantMVC
 
             services.AddScoped<IRazorViewToStringRenderer, RazorViewToStringRenderer>();
             services.AddScoped<IProtectionService, ProtectionService>();
+            services.AddSingleton<IGoogleApiService, GoogleApiService>();
 
             services.AddSingleton<ITokenService, TokenService>();
 

@@ -3,8 +3,8 @@
 @inject IConfiguration conf
 
 @{
-    ViewData["Title"] = Model.Product.Title;
-    ViewData["Description"] = localizer[Model.Product.Description];
+    ViewData["Title"] = Model.Product.MetaTitle;
+    ViewData["Description"] = localizer[Model.Product.MetaDescription];
 
     string url = @conf.GetSection("Urls")["Mvc"];
 
@@ -17,7 +17,7 @@
     //var randomRelated = ProductHelper.RandomizeList(Model.RelatedProducts);
 }
 
-<link rel="stylesheet" href="~/css/product-details.css?1" />
+<link rel="stylesheet" href="~/css/product-details.css?2" />
 <link rel="stylesheet" href="~/css/karusel.css?1" />
 <script src="~/JS/swiped-events.min.js"></script>
 
@@ -69,20 +69,20 @@
         <div class="col-4 left" id="details-right">
             <div class="details-info-wrap">
 
-                <h1>@Model.Product.Name</h1>
+                <p class="product-name">@Model.Product.Name</p>
 
                 @if (Model.Product.Discount == 0)
                 {
-                    <p>kr. @Model.Product.Price</p>
+                    <p class="right">kr. @Model.Product.Price</p>
                 }
                 else
                 {
-                    <p>kr. @ProductHelper.GetPrice(Model.Product) <span class="inline line-through red-text">@Model.Product.Price</span></p>
+                    <p class="right">kr. @ProductHelper.GetPrice(Model.Product) <span class="inline line-through red-text">@Model.Product.Price</span></p>
                 }
 
                 <div class="fake-box">
-                    <h2>@Model.Product.Oil</h2>
-                    <h3>@Model.Product.Length</h3>
+                    <p class="left">@Model.Product.Oil</p>
+                    <p class="right">@Model.Product.Length</p>
                 </div>
 
                 @if (Model.Product.ProductLengths.Count() > 0)
@@ -162,7 +162,7 @@
                 </div>
 
                 <div id="color-select">
-                    <h3>Farver</h3>
+                    <p>Farver</p>
                     @foreach (var color in Model.Product.Colors)
                     {
                         if (color.EColor == Model.Product.EColor)
@@ -241,7 +241,10 @@
                 }
             </div>
             <div class="sidestep-bodies" id="sidestep-bodies">
-                <div class="active">@Model.Product.Description</div>
+                <div class="active">
+                    <h1 class="underline">@Model.Product.Title</h1>
+                    <h2>@Model.Product.Description</h2>
+                </div>
                 <div>
                     <table>
                         @Html.Raw(Model.Product.Size)
@@ -285,7 +288,7 @@
     </div>
 
     <div class="col-12 left top-padding bottom-padding">
-        <h1 class="karusel-header">Du kunne måske være interesseret i disse:</h1>
+        <p class="karusel-header">Du kunne måske være interesseret i disse:</p>
         <div class="karusel" id="details-karusel">
             <div class="karusel-box" id="details-karusel-box">
                 @foreach (var product in randomRelated)

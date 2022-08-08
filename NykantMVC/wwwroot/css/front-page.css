@@ -366,6 +366,11 @@ width:50px;
         padding:20px;
     }
 
+    .about-wood h2 {
+        font-size: 25px;
+        padding: 20px;
+    }
+
 .about-us {
     color: var(--font1);
     padding:90px;

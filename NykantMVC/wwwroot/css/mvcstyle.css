@@ -23,8 +23,8 @@
     --small-plus: 12px;
     --medium: 16px;
     --medium-plus: 20px;
-    --large: 24px;
-    --extra-large: 34px;
+    --large: 25px;
+    --extra-large: 35px;
     --black-fade: rgba(0, 0, 0, 0.1);
     --black-fade2: rgba(0, 0, 0, 0.9);
     --white-fade: rgba(255, 255, 255, 0.9);
@@ -74,6 +74,7 @@ input, textarea {
 html {
     overflow-y: scroll;
     font-family: 'Spectral', serif;
+    overflow-x: hidden;
 }
 
 body {
@@ -82,6 +83,7 @@ body {
     line-height: 33px;
     color: #777069;
     background-color: #F7F5F2;
+    overflow-x: hidden;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -551,6 +553,33 @@ ol, ul {
         text-align: center;
     }
 
+    .top-info-bar {
+        height:30px;
+        background:var(--dark);
+        color:white;
+        max-width:100%;
+        line-height:30px;
+        overflow:hidden;
+    }
+
+    .top-info-bar p {
+        position:absolute;
+        animation-name:info-bar-slide;
+        animation-duration:15s;
+        animation-iteration-count:infinite;
+        animation-timing-function:linear;
+        white-space:nowrap;
+    }
+
+    @keyframes info-bar-slide {
+        0% {
+            left:-25%;
+        }
+        100%{
+            left:100%;
+        }
+    }
+
 .text-center {
     text-align: center;
 }
@@ -583,6 +612,18 @@ ol, ul {
     .fullscreen {
         height:100%;
         width:100%;
+    }
+
+    .line-height-100 {
+        line-height:100px;
+    }
+
+    .titlesize {
+        font-size:var(--extra-large);
+    }
+
+    .bigsize {
+        font-size:var(--large);
     }
 
     .padding-10 {

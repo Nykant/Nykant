@@ -204,7 +204,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/boejle_natur_1.png",
                             ProductId = 1,
                             ProductSourceId = 1,
-                            ProductSourceUrlName = "Bøjle-Egetræ-Naturolie"
+                            ProductSourceUrlName = "Tøjbøjle-Massivt-Egetræ-Naturolie"
                         },
                         new
                         {
@@ -213,7 +213,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/boejle_sort_1.png",
                             ProductId = 1,
                             ProductSourceId = 2,
-                            ProductSourceUrlName = "Bøjle-Egetræ-Sortolie"
+                            ProductSourceUrlName = "Tøjbøjle-Massivt-Egetræ-Sortolie"
                         },
                         new
                         {
@@ -222,7 +222,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/boejle_hvid_1.png",
                             ProductId = 1,
                             ProductSourceId = 3,
-                            ProductSourceUrlName = "Bøjle-Egetræ-Hvidolie"
+                            ProductSourceUrlName = "Tøjbøjle-Massivt-Egetræ-Hvidolie"
                         },
                         new
                         {
@@ -231,7 +231,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/boejle_natur_1.png",
                             ProductId = 2,
                             ProductSourceId = 1,
-                            ProductSourceUrlName = "Bøjle-Egetræ-Naturolie"
+                            ProductSourceUrlName = "Tøjbøjle-Massivt-Egetræ-Naturolie"
                         },
                         new
                         {
@@ -240,7 +240,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/boejle_sort_1.png",
                             ProductId = 2,
                             ProductSourceId = 2,
-                            ProductSourceUrlName = "Bøjle-Egetræ-Sortolie"
+                            ProductSourceUrlName = "Tøjbøjle-Massivt-Egetræ-Sortolie"
                         },
                         new
                         {
@@ -249,7 +249,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/boejle_hvid_1.png",
                             ProductId = 2,
                             ProductSourceId = 3,
-                            ProductSourceUrlName = "Bøjle-Egetræ-Hvidolie"
+                            ProductSourceUrlName = "Tøjbøjle-Massivt-Egetræ-Hvidolie"
                         },
                         new
                         {
@@ -258,7 +258,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/boejle_natur_1.png",
                             ProductId = 3,
                             ProductSourceId = 1,
-                            ProductSourceUrlName = "Bøjle-Egetræ-Naturolie"
+                            ProductSourceUrlName = "Tøjbøjle-Massivt-Egetræ-Naturolie"
                         },
                         new
                         {
@@ -267,7 +267,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/boejle_sort_1.png",
                             ProductId = 3,
                             ProductSourceId = 2,
-                            ProductSourceUrlName = "Bøjle-Egetræ-Sortolie"
+                            ProductSourceUrlName = "Tøjbøjle-Massivt-Egetræ-Sortolie"
                         },
                         new
                         {
@@ -276,7 +276,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/boejle_hvid_1.png",
                             ProductId = 3,
                             ProductSourceId = 3,
-                            ProductSourceUrlName = "Bøjle-Egetræ-Hvidolie"
+                            ProductSourceUrlName = "Tøjbøjle-Massivt-Egetræ-Hvidolie"
                         },
                         new
                         {
@@ -285,7 +285,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_hvid_1.png",
                             ProductId = 4,
                             ProductSourceId = 4,
-                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-40cm"
+                            ProductSourceUrlName = "Væghylde-Massivt-Egetræ-Hvidolie-40cm"
                         },
                         new
                         {
@@ -294,7 +294,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_sort_1.png",
                             ProductId = 4,
                             ProductSourceId = 5,
-                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-40cm"
+                            ProductSourceUrlName = "Væghylde-Massivt-Egetræ-Sortolie-40cm"
                         },
                         new
                         {
@@ -303,7 +303,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_natur_1.png",
                             ProductId = 4,
                             ProductSourceId = 6,
-                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-40cm"
+                            ProductSourceUrlName = "Væghylde-Massivt-Egetræ-Naturolie-40cm"
                         },
                         new
                         {
@@ -312,7 +312,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_hvid_1.png",
                             ProductId = 5,
                             ProductSourceId = 4,
-                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-40cm"
+                            ProductSourceUrlName = "Væghylde-Massivt-Egetræ-Hvidolie-40cm"
                         },
                         new
                         {
@@ -321,7 +321,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_sort_1.png",
                             ProductId = 5,
                             ProductSourceId = 5,
-                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-40cm"
+                            ProductSourceUrlName = "Væghylde-Massivt-Egetræ-Sortolie-40cm"
                         },
                         new
                         {
@@ -330,7 +330,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_natur_1.png",
                             ProductId = 5,
                             ProductSourceId = 6,
-                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-40cm"
+                            ProductSourceUrlName = "Væghylde-Massivt-Egetræ-Naturolie-40cm"
                         },
                         new
                         {
@@ -339,7 +339,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_hvid_1.png",
                             ProductId = 6,
                             ProductSourceId = 4,
-                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-40cm"
+                            ProductSourceUrlName = "Væghylde-Massivt-Egetræ-Hvidolie-40cm"
                         },
                         new
                         {
@@ -348,7 +348,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_sort_1.png",
                             ProductId = 6,
                             ProductSourceId = 5,
-                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-40cm"
+                            ProductSourceUrlName = "Væghylde-Massivt-Egetræ-Sortolie-40cm"
                         },
                         new
                         {
@@ -357,7 +357,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_natur_1.png",
                             ProductId = 6,
                             ProductSourceId = 6,
-                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-40cm"
+                            ProductSourceUrlName = "Væghylde-Massivt-Egetræ-Naturolie-40cm"
                         },
                         new
                         {
@@ -366,7 +366,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_hvid_1.png",
                             ProductId = 7,
                             ProductSourceId = 7,
-                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-60cm"
+                            ProductSourceUrlName = "Væghylde-Massivt-Egetræ-Hvidolie-60cm"
                         },
                         new
                         {
@@ -375,7 +375,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_sort_1.png",
                             ProductId = 7,
                             ProductSourceId = 8,
-                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-60cm"
+                            ProductSourceUrlName = "Væghylde-Massivt-Egetræ-Sortolie-60cm"
                         },
                         new
                         {
@@ -384,7 +384,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_natur_1.png",
                             ProductId = 7,
                             ProductSourceId = 9,
-                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-60cm"
+                            ProductSourceUrlName = "Væghylde-Massivt-Egetræ-Naturolie-60cm"
                         },
                         new
                         {
@@ -393,7 +393,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_hvid_1.png",
                             ProductId = 8,
                             ProductSourceId = 7,
-                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-60cm"
+                            ProductSourceUrlName = "Væghylde-Massivt-Egetræ-Hvidolie-60cm"
                         },
                         new
                         {
@@ -402,7 +402,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_sort_1.png",
                             ProductId = 8,
                             ProductSourceId = 8,
-                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-60cm"
+                            ProductSourceUrlName = "Væghylde-Massivt-Egetræ-Sortolie-60cm"
                         },
                         new
                         {
@@ -411,7 +411,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_natur_1.png",
                             ProductId = 8,
                             ProductSourceId = 9,
-                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-60cm"
+                            ProductSourceUrlName = "Væghylde-Massivt-Egetræ-Naturolie-60cm"
                         },
                         new
                         {
@@ -420,7 +420,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_hvid_1.png",
                             ProductId = 9,
                             ProductSourceId = 7,
-                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-60cm"
+                            ProductSourceUrlName = "Væghylde-Massivt-Egetræ-Hvidolie-60cm"
                         },
                         new
                         {
@@ -429,7 +429,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_sort_1.png",
                             ProductId = 9,
                             ProductSourceId = 8,
-                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-60cm"
+                            ProductSourceUrlName = "Væghylde-Massivt-Egetræ-Sortolie-60cm"
                         },
                         new
                         {
@@ -438,7 +438,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_natur_1.png",
                             ProductId = 9,
                             ProductSourceId = 9,
-                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-60cm"
+                            ProductSourceUrlName = "Væghylde-Massivt-Egetræ-Naturolie-60cm"
                         },
                         new
                         {
@@ -447,7 +447,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_hvid_1.png",
                             ProductId = 10,
                             ProductSourceId = 10,
-                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-80cm"
+                            ProductSourceUrlName = "Væghylde-Massivt-Egetræ-Hvidolie-80cm"
                         },
                         new
                         {
@@ -456,7 +456,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_sort_1.png",
                             ProductId = 10,
                             ProductSourceId = 11,
-                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-80cm"
+                            ProductSourceUrlName = "Væghylde-Massivt-Egetræ-Sortolie-80cm"
                         },
                         new
                         {
@@ -465,7 +465,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_natur_1.png",
                             ProductId = 10,
                             ProductSourceId = 12,
-                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-80cm"
+                            ProductSourceUrlName = "Væghylde-Massivt-Egetræ-Naturolie-80cm"
                         },
                         new
                         {
@@ -474,7 +474,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_hvid_1.png",
                             ProductId = 11,
                             ProductSourceId = 10,
-                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-80cm"
+                            ProductSourceUrlName = "Væghylde-Massivt-Egetræ-Hvidolie-80cm"
                         },
                         new
                         {
@@ -483,7 +483,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_sort_1.png",
                             ProductId = 11,
                             ProductSourceId = 11,
-                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-80cm"
+                            ProductSourceUrlName = "Væghylde-Massivt-Egetræ-Sortolie-80cm"
                         },
                         new
                         {
@@ -492,7 +492,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_natur_1.png",
                             ProductId = 11,
                             ProductSourceId = 12,
-                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-80cm"
+                            ProductSourceUrlName = "Væghylde-Massivt-Egetræ-Naturolie-80cm"
                         },
                         new
                         {
@@ -501,7 +501,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_hvid_1.png",
                             ProductId = 12,
                             ProductSourceId = 10,
-                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-80cm"
+                            ProductSourceUrlName = "Væghylde-Massivt-Egetræ-Hvidolie-80cm"
                         },
                         new
                         {
@@ -510,7 +510,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_sort_1.png",
                             ProductId = 12,
                             ProductSourceId = 11,
-                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-80cm"
+                            ProductSourceUrlName = "Væghylde-Massivt-Egetræ-Sortolie-80cm"
                         },
                         new
                         {
@@ -519,7 +519,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_natur_1.png",
                             ProductId = 12,
                             ProductSourceId = 12,
-                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-80cm"
+                            ProductSourceUrlName = "Væghylde-Massivt-Egetræ-Naturolie-80cm"
                         },
                         new
                         {
@@ -528,7 +528,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_hvid_1.png",
                             ProductId = 13,
                             ProductSourceId = 13,
-                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-100cm"
+                            ProductSourceUrlName = "Væghylde-Massivt-Egetræ-Hvidolie-100cm"
                         },
                         new
                         {
@@ -537,7 +537,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_sort_1.png",
                             ProductId = 13,
                             ProductSourceId = 14,
-                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-100cm"
+                            ProductSourceUrlName = "Væghylde-Massivt-Egetræ-Sortolie-100cm"
                         },
                         new
                         {
@@ -546,7 +546,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_natur_1.png",
                             ProductId = 13,
                             ProductSourceId = 15,
-                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-100cm"
+                            ProductSourceUrlName = "Væghylde-Massivt-Egetræ-Naturolie-100cm"
                         },
                         new
                         {
@@ -555,7 +555,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_hvid_1.png",
                             ProductId = 14,
                             ProductSourceId = 13,
-                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-100cm"
+                            ProductSourceUrlName = "Væghylde-Massivt-Egetræ-Hvidolie-100cm"
                         },
                         new
                         {
@@ -564,7 +564,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_sort_1.png",
                             ProductId = 14,
                             ProductSourceId = 14,
-                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-100cm"
+                            ProductSourceUrlName = "Væghylde-Massivt-Egetræ-Sortolie-100cm"
                         },
                         new
                         {
@@ -573,7 +573,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_natur_1.png",
                             ProductId = 14,
                             ProductSourceId = 15,
-                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-100cm"
+                            ProductSourceUrlName = "Væghylde-Massivt-Egetræ-Naturolie-100cm"
                         },
                         new
                         {
@@ -582,7 +582,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_hvid_1.png",
                             ProductId = 15,
                             ProductSourceId = 13,
-                            ProductSourceUrlName = "Hylde-Egetræ-Hvidolie-100cm"
+                            ProductSourceUrlName = "Væghylde-Massivt-Egetræ-Hvidolie-100cm"
                         },
                         new
                         {
@@ -591,7 +591,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_sort_1.png",
                             ProductId = 15,
                             ProductSourceId = 14,
-                            ProductSourceUrlName = "Hylde-Egetræ-Sortolie-100cm"
+                            ProductSourceUrlName = "Væghylde-Massivt-Egetræ-Sortolie-100cm"
                         },
                         new
                         {
@@ -600,7 +600,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/hylde_natur_1.png",
                             ProductId = 15,
                             ProductSourceId = 15,
-                            ProductSourceUrlName = "Hylde-Egetræ-Naturolie-100cm"
+                            ProductSourceUrlName = "Væghylde-Massivt-Egetræ-Naturolie-100cm"
                         },
                         new
                         {
@@ -609,7 +609,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/bord_natur_2.png",
                             ProductId = 16,
                             ProductSourceId = 16,
-                            ProductSourceUrlName = "Bord-Egetræ-Naturolie"
+                            ProductSourceUrlName = "Bord-Massivt-Egetræ-Naturolie"
                         },
                         new
                         {
@@ -618,7 +618,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/bord_hvid_2.png",
                             ProductId = 16,
                             ProductSourceId = 17,
-                            ProductSourceUrlName = "Bord-Egetræ-Hvidolie"
+                            ProductSourceUrlName = "Bord-Massivt-Egetræ-Hvidolie"
                         },
                         new
                         {
@@ -627,7 +627,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/bord_natur_2.png",
                             ProductId = 17,
                             ProductSourceId = 16,
-                            ProductSourceUrlName = "Bord-Egetræ-Naturolie"
+                            ProductSourceUrlName = "Bord-Massivt-Egetræ-Naturolie"
                         },
                         new
                         {
@@ -636,7 +636,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/bord_hvid_2.png",
                             ProductId = 17,
                             ProductSourceId = 17,
-                            ProductSourceUrlName = "Bord-Egetræ-Hvidolie"
+                            ProductSourceUrlName = "Bord-Massivt-Egetræ-Hvidolie"
                         },
                         new
                         {
@@ -645,7 +645,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/kortbaenk_natur_2.png",
                             ProductId = 18,
                             ProductSourceId = 18,
-                            ProductSourceUrlName = "Bænk-Egetræ-Naturolie-115cm"
+                            ProductSourceUrlName = "Bænk-Massivt-Egetræ-Naturolie-115cm"
                         },
                         new
                         {
@@ -654,7 +654,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/kortbaenk_hvid_2.png",
                             ProductId = 18,
                             ProductSourceId = 19,
-                            ProductSourceUrlName = "Bænk-Egetræ-Hvidolie-115cm"
+                            ProductSourceUrlName = "Bænk-Massivt-Egetræ-Hvidolie-115cm"
                         },
                         new
                         {
@@ -663,7 +663,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_kortbaenk_sortolie_02.png",
                             ProductId = 18,
                             ProductSourceId = 20,
-                            ProductSourceUrlName = "Bænk-Egetræ-Sortolie-115cm"
+                            ProductSourceUrlName = "Bænk-Massivt-Egetræ-Sortolie-115cm"
                         },
                         new
                         {
@@ -672,7 +672,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/kortbaenk_natur_2.png",
                             ProductId = 19,
                             ProductSourceId = 18,
-                            ProductSourceUrlName = "Bænk-Egetræ-Naturolie-115cm"
+                            ProductSourceUrlName = "Bænk-Massivt-Egetræ-Naturolie-115cm"
                         },
                         new
                         {
@@ -681,7 +681,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/kortbaenk_hvid_2.png",
                             ProductId = 19,
                             ProductSourceId = 19,
-                            ProductSourceUrlName = "Bænk-Egetræ-Hvidolie-115cm"
+                            ProductSourceUrlName = "Bænk-Massivt-Egetræ-Hvidolie-115cm"
                         },
                         new
                         {
@@ -690,7 +690,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_kortbaenk_sortolie_02.png",
                             ProductId = 19,
                             ProductSourceId = 20,
-                            ProductSourceUrlName = "Bænk-Egetræ-Sortolie-115cm"
+                            ProductSourceUrlName = "Bænk-Massivt-Egetræ-Sortolie-115cm"
                         },
                         new
                         {
@@ -699,7 +699,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/kortbaenk_natur_2.png",
                             ProductId = 20,
                             ProductSourceId = 18,
-                            ProductSourceUrlName = "Bænk-Egetræ-Naturolie-115cm"
+                            ProductSourceUrlName = "Bænk-Massivt-Egetræ-Naturolie-115cm"
                         },
                         new
                         {
@@ -708,7 +708,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/kortbaenk_hvid_2.png",
                             ProductId = 20,
                             ProductSourceId = 19,
-                            ProductSourceUrlName = "Bænk-Egetræ-Hvidolie-115cm"
+                            ProductSourceUrlName = "Bænk-Massivt-Egetræ-Hvidolie-115cm"
                         },
                         new
                         {
@@ -717,7 +717,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_kortbaenk_sortolie_02.png",
                             ProductId = 20,
                             ProductSourceId = 20,
-                            ProductSourceUrlName = "Bænk-Egetræ-Sortolie-115cm"
+                            ProductSourceUrlName = "Bænk-Massivt-Egetræ-Sortolie-115cm"
                         },
                         new
                         {
@@ -726,7 +726,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_langbaenk_naturolie_02.png",
                             ProductId = 21,
                             ProductSourceId = 21,
-                            ProductSourceUrlName = "Bænk-Egetræ-Naturolie-170cm"
+                            ProductSourceUrlName = "Bænk-Massivt-Egetræ-Naturolie-170cm"
                         },
                         new
                         {
@@ -735,7 +735,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_langbaenk_hvidolie_02.png",
                             ProductId = 21,
                             ProductSourceId = 22,
-                            ProductSourceUrlName = "Bænk-Egetræ-Hvidolie-170cm"
+                            ProductSourceUrlName = "Bænk-Massivt-Egetræ-Hvidolie-170cm"
                         },
                         new
                         {
@@ -744,7 +744,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_langbaenk_sortolie_02.png",
                             ProductId = 21,
                             ProductSourceId = 23,
-                            ProductSourceUrlName = "Bænk-Egetræ-Sortolie-170cm"
+                            ProductSourceUrlName = "Bænk-Massivt-Egetræ-Sortolie-170cm"
                         },
                         new
                         {
@@ -753,7 +753,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_langbaenk_naturolie_02.png",
                             ProductId = 22,
                             ProductSourceId = 21,
-                            ProductSourceUrlName = "Bænk-Egetræ-Naturolie-170cm"
+                            ProductSourceUrlName = "Bænk-Massivt-Egetræ-Naturolie-170cm"
                         },
                         new
                         {
@@ -762,7 +762,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_langbaenk_hvidolie_02.png",
                             ProductId = 22,
                             ProductSourceId = 22,
-                            ProductSourceUrlName = "Bænk-Egetræ-Hvidolie-170cm"
+                            ProductSourceUrlName = "Bænk-Massivt-Egetræ-Hvidolie-170cm"
                         },
                         new
                         {
@@ -771,7 +771,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_langbaenk_sortolie_02.png",
                             ProductId = 22,
                             ProductSourceId = 23,
-                            ProductSourceUrlName = "Bænk-Egetræ-Sortolie-170cm"
+                            ProductSourceUrlName = "Bænk-Massivt-Egetræ-Sortolie-170cm"
                         },
                         new
                         {
@@ -780,7 +780,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_langbaenk_naturolie_02.png",
                             ProductId = 23,
                             ProductSourceId = 21,
-                            ProductSourceUrlName = "Bænk-Egetræ-Naturolie-170cm"
+                            ProductSourceUrlName = "Bænk-Massivt-Egetræ-Naturolie-170cm"
                         },
                         new
                         {
@@ -789,7 +789,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_langbaenk_hvidolie_02.png",
                             ProductId = 23,
                             ProductSourceId = 22,
-                            ProductSourceUrlName = "Bænk-Egetræ-Hvidolie-170cm"
+                            ProductSourceUrlName = "Bænk-Massivt-Egetræ-Hvidolie-170cm"
                         },
                         new
                         {
@@ -798,7 +798,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_langbaenk_sortolie_02.png",
                             ProductId = 23,
                             ProductSourceId = 23,
-                            ProductSourceUrlName = "Bænk-Egetræ-Sortolie-170cm"
+                            ProductSourceUrlName = "Bænk-Massivt-Egetræ-Sortolie-170cm"
                         },
                         new
                         {
@@ -807,7 +807,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_opbevaringsbaenk_naturolie_01.png",
                             ProductId = 24,
                             ProductSourceId = 24,
-                            ProductSourceUrlName = "Opbevaringsbænk-Egetræ-Naturolie"
+                            ProductSourceUrlName = "Opbevaringsbænk-Massivt-Egetræ-Naturolie"
                         },
                         new
                         {
@@ -816,7 +816,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_opbevaringsbaenk_hvidolie_01.png",
                             ProductId = 24,
                             ProductSourceId = 25,
-                            ProductSourceUrlName = "Opbevaringsbænk-Egetræ-Hvidolie"
+                            ProductSourceUrlName = "Opbevaringsbænk-Massivt-Egetræ-Hvidolie"
                         },
                         new
                         {
@@ -825,7 +825,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_opbevaringsbaenk_sort_01.png",
                             ProductId = 24,
                             ProductSourceId = 26,
-                            ProductSourceUrlName = "Opbevaringsbænk-Egetræ-Sortolie"
+                            ProductSourceUrlName = "Opbevaringsbænk-Massivt-Egetræ-Sortolie"
                         },
                         new
                         {
@@ -834,7 +834,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_opbevaringsbaenk_naturolie_01.png",
                             ProductId = 25,
                             ProductSourceId = 24,
-                            ProductSourceUrlName = "Opbevaringsbænk-Egetræ-Naturolie"
+                            ProductSourceUrlName = "Opbevaringsbænk-Massivt-Egetræ-Naturolie"
                         },
                         new
                         {
@@ -843,7 +843,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_opbevaringsbaenk_hvidolie_01.png",
                             ProductId = 25,
                             ProductSourceId = 25,
-                            ProductSourceUrlName = "Opbevaringsbænk-Egetræ-Hvidolie"
+                            ProductSourceUrlName = "Opbevaringsbænk-Massivt-Egetræ-Hvidolie"
                         },
                         new
                         {
@@ -852,7 +852,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_opbevaringsbaenk_sort_01.png",
                             ProductId = 25,
                             ProductSourceId = 26,
-                            ProductSourceUrlName = "Opbevaringsbænk-Egetræ-Sortolie"
+                            ProductSourceUrlName = "Opbevaringsbænk-Massivt-Egetræ-Sortolie"
                         },
                         new
                         {
@@ -861,7 +861,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_opbevaringsbaenk_naturolie_01.png",
                             ProductId = 26,
                             ProductSourceId = 24,
-                            ProductSourceUrlName = "Opbevaringsbænk-Egetræ-Naturolie"
+                            ProductSourceUrlName = "Opbevaringsbænk-Massivt-Egetræ-Naturolie"
                         },
                         new
                         {
@@ -870,7 +870,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_opbevaringsbaenk_hvidolie_01.png",
                             ProductId = 26,
                             ProductSourceId = 25,
-                            ProductSourceUrlName = "Opbevaringsbænk-Egetræ-Hvidolie"
+                            ProductSourceUrlName = "Opbevaringsbænk-Massivt-Egetræ-Hvidolie"
                         },
                         new
                         {
@@ -879,7 +879,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_opbevaringsbaenk_sort_01.png",
                             ProductId = 26,
                             ProductSourceId = 26,
-                            ProductSourceUrlName = "Opbevaringsbænk-Egetræ-Sortolie"
+                            ProductSourceUrlName = "Opbevaringsbænk-Massivt-Egetræ-Sortolie"
                         },
                         new
                         {
@@ -888,7 +888,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_rack_naturolie_02.png",
                             ProductId = 27,
                             ProductSourceId = 27,
-                            ProductSourceUrlName = "Tøjstativ-Egetræ-Naturolie"
+                            ProductSourceUrlName = "Tøjstativ-Massivt-Egetræ-Naturolie"
                         },
                         new
                         {
@@ -897,7 +897,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_rack_hvidolie_02.png",
                             ProductId = 27,
                             ProductSourceId = 28,
-                            ProductSourceUrlName = "Tøjstativ-Egetræ-Hvidolie"
+                            ProductSourceUrlName = "Tøjstativ-Massivt-Egetræ-Hvidolie"
                         },
                         new
                         {
@@ -906,7 +906,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_rack_sortolie_02.png",
                             ProductId = 27,
                             ProductSourceId = 29,
-                            ProductSourceUrlName = "Tøjstativ-Egetræ-Sortolie"
+                            ProductSourceUrlName = "Tøjstativ-Massivt-Egetræ-Sortolie"
                         },
                         new
                         {
@@ -915,7 +915,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_rack_naturolie_02.png",
                             ProductId = 28,
                             ProductSourceId = 27,
-                            ProductSourceUrlName = "Tøjstativ-Egetræ-Naturolie"
+                            ProductSourceUrlName = "Tøjstativ-Massivt-Egetræ-Naturolie"
                         },
                         new
                         {
@@ -924,7 +924,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_rack_hvidolie_02.png",
                             ProductId = 28,
                             ProductSourceId = 28,
-                            ProductSourceUrlName = "Tøjstativ-Egetræ-Hvidolie"
+                            ProductSourceUrlName = "Tøjstativ-Massivt-Egetræ-Hvidolie"
                         },
                         new
                         {
@@ -933,7 +933,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_rack_sortolie_02.png",
                             ProductId = 28,
                             ProductSourceId = 29,
-                            ProductSourceUrlName = "Tøjstativ-Egetræ-Sortolie"
+                            ProductSourceUrlName = "Tøjstativ-Massivt-Egetræ-Sortolie"
                         },
                         new
                         {
@@ -942,7 +942,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_rack_naturolie_02.png",
                             ProductId = 29,
                             ProductSourceId = 27,
-                            ProductSourceUrlName = "Tøjstativ-Egetræ-Naturolie"
+                            ProductSourceUrlName = "Tøjstativ-Massivt-Egetræ-Naturolie"
                         },
                         new
                         {
@@ -951,7 +951,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_rack_hvidolie_02.png",
                             ProductId = 29,
                             ProductSourceId = 28,
-                            ProductSourceUrlName = "Tøjstativ-Egetræ-Hvidolie"
+                            ProductSourceUrlName = "Tøjstativ-Massivt-Egetræ-Hvidolie"
                         },
                         new
                         {
@@ -960,7 +960,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/NYKANT_rack_sortolie_02.png",
                             ProductId = 29,
                             ProductSourceId = 29,
-                            ProductSourceUrlName = "Tøjstativ-Egetræ-Sortolie"
+                            ProductSourceUrlName = "Tøjstativ-Massivt-Egetræ-Sortolie"
                         },
                         new
                         {
@@ -969,7 +969,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/Ingrid_natur_2.png",
                             ProductId = 30,
                             ProductSourceId = 30,
-                            ProductSourceUrlName = "Ophængt-Tøjstativ-Egetræ-Naturolie"
+                            ProductSourceUrlName = "Væghængt-Tøjstativ-Massivt-Egetræ-Naturolie"
                         },
                         new
                         {
@@ -978,7 +978,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/Ingrid_hvid_2.png",
                             ProductId = 30,
                             ProductSourceId = 31,
-                            ProductSourceUrlName = "Ophængt-Tøjstativ-Egetræ-Hvidolie"
+                            ProductSourceUrlName = "Væghængt-Tøjstativ-Massivt-Egetræ-Hvidolie"
                         },
                         new
                         {
@@ -987,7 +987,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/Ingrid_sort_2.png",
                             ProductId = 30,
                             ProductSourceId = 32,
-                            ProductSourceUrlName = "Ophængt-Tøjstativ-Egetræ-Sortolie"
+                            ProductSourceUrlName = "Væghængt-Tøjstativ-Massivt-Egetræ-Sortolie"
                         },
                         new
                         {
@@ -996,7 +996,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/Ingrid_natur_2.png",
                             ProductId = 31,
                             ProductSourceId = 30,
-                            ProductSourceUrlName = "Ophængt-Tøjstativ-Egetræ-Naturolie"
+                            ProductSourceUrlName = "Væghængt-Tøjstativ-Massivt-Egetræ-Naturolie"
                         },
                         new
                         {
@@ -1005,7 +1005,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/Ingrid_hvid_2.png",
                             ProductId = 31,
                             ProductSourceId = 31,
-                            ProductSourceUrlName = "Ophængt-Tøjstativ-Egetræ-Hvidolie"
+                            ProductSourceUrlName = "Væghængt-Tøjstativ-Massivt-Egetræ-Hvidolie"
                         },
                         new
                         {
@@ -1014,7 +1014,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/Ingrid_sort_2.png",
                             ProductId = 31,
                             ProductSourceId = 32,
-                            ProductSourceUrlName = "Ophængt-Tøjstativ-Egetræ-Sortolie"
+                            ProductSourceUrlName = "Væghængt-Tøjstativ-Massivt-Egetræ-Sortolie"
                         },
                         new
                         {
@@ -1023,7 +1023,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/Ingrid_natur_2.png",
                             ProductId = 32,
                             ProductSourceId = 30,
-                            ProductSourceUrlName = "Ophængt-Tøjstativ-Egetræ-Naturolie"
+                            ProductSourceUrlName = "Væghængt-Tøjstativ-Massivt-Egetræ-Naturolie"
                         },
                         new
                         {
@@ -1032,7 +1032,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/Ingrid_hvid_2.png",
                             ProductId = 32,
                             ProductSourceId = 31,
-                            ProductSourceUrlName = "Ophængt-Tøjstativ-Egetræ-Hvidolie"
+                            ProductSourceUrlName = "Væghængt-Tøjstativ-Massivt-Egetræ-Hvidolie"
                         },
                         new
                         {
@@ -1041,7 +1041,7 @@ namespace MySqlMigrations.Migrations
                             ImgSrc = "../images/Products/Color/Desktop/Ingrid_sort_2.png",
                             ProductId = 32,
                             ProductSourceId = 32,
-                            ProductSourceUrlName = "Ophængt-Tøjstativ-Egetræ-Sortolie"
+                            ProductSourceUrlName = "Væghængt-Tøjstativ-Massivt-Egetræ-Sortolie"
                         });
                 });
 
@@ -3393,6 +3393,12 @@ namespace MySqlMigrations.Migrations
                     b.Property<string>("Materials")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<string>("MetaDescription")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("MetaTitle")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
@@ -3416,6 +3422,9 @@ namespace MySqlMigrations.Migrations
 
                     b.Property<long>("Price")
                         .HasColumnType("bigint");
+
+                    b.Property<string>("RestId")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Size")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -3449,6 +3458,8 @@ namespace MySqlMigrations.Migrations
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_boejle_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_boejle_naturolie_02.png",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Sort bøjlekrog</p></td></tr>",
+                            MetaDescription = "Nykants Tøjbøjle i massivt egetræ behandlet med naturolie, er lavet med kvalitet og funktionalitet i fokus, kan købes i 3 forskellige farver. købes i pakke af 3. Gratis og hurtig levering. Se mere her...",
+                            MetaTitle = "Tøjbøjle | Kvalitets Tøjbøjle I Massivt Egetræ | Naturolie | Køb Her",
                             Name = "Bøjlen Gertrud / 3 stk.",
                             Number = "15001",
                             Oil = "Naturolie",
@@ -3456,9 +3467,10 @@ namespace MySqlMigrations.Migrations
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_boejle_naturolie_01.png",
                             Pieces = 3,
                             Price = 420L,
+                            RestId = "online:da:DK:15001",
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 45 cm.</p></td></tr>",
-                            Title = "Bøjle i massivt egetræ - Behandlet med naturolie",
-                            UrlName = "Bøjle-Egetræ-Naturolie",
+                            Title = "Tøjbøjle I Massivt Egetræ",
+                            UrlName = "Tøjbøjle-Massivt-Egetræ-Naturolie",
                             WeightInKg = "0.6"
                         },
                         new
@@ -3474,6 +3486,8 @@ namespace MySqlMigrations.Migrations
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_boejle_sortolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_boejle_sortolie_02.png",
                             Materials = "<tr><td class='width-30'<strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Sort bøjlekrog</p></td></tr>",
+                            MetaDescription = "Nykants Tøjbøjle i massivt egetræ behandlet med sortolie, er lavet med kvalitet, funktionalitet og kærlighed i fokus, kan købes i 3 forskellige farver. købes i pakke af 3. Gratis og hurtig levering. Se mere her...",
+                            MetaTitle = "Tøjbøjle | Kvalitets Tøjbøjle I Massivt Egetræ | Sortolie | Køb Her",
                             Name = "Bøjlen Gertrud / 3 stk.",
                             Number = "15003",
                             Oil = "Sortolie",
@@ -3481,9 +3495,10 @@ namespace MySqlMigrations.Migrations
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_boejle_sortolie_01.png",
                             Pieces = 3,
                             Price = 420L,
+                            RestId = "online:da:DK:15003",
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 45 cm.</p></td></tr>",
-                            Title = "Bøjle i massivt egetræ - Behandlet med sortolie",
-                            UrlName = "Bøjle-Egetræ-Sortolie",
+                            Title = "Tøjbøjle I Massivt Egetræ",
+                            UrlName = "Tøjbøjle-Massivt-Egetræ-Sortolie",
                             WeightInKg = "0.6"
                         },
                         new
@@ -3499,6 +3514,8 @@ namespace MySqlMigrations.Migrations
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_boejle_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_boejle_hvidolie_02.png",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Sort bøjlekrog</p></td></tr>",
+                            MetaDescription = "Nykants Tøjbøjle i massivt egetræ behandlet med hvidolie, er lavet med kvalitet, funktionalitet og kærlighed i fokus, kan købes i 3 forskellige farver. købes i pakke af 3. Gratis og hurtig levering. Se mere her...",
+                            MetaTitle = "Tøjbøjle | Kvalitets Tøjbøjle I Massivt Egetræ | Hvidolie | Køb Her",
                             Name = "Bøjlen Gertrud / 3 stk.",
                             Number = "15002",
                             Oil = "Hvidolie",
@@ -3506,9 +3523,10 @@ namespace MySqlMigrations.Migrations
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_boejle_hvidolie_01.png",
                             Pieces = 3,
                             Price = 420L,
+                            RestId = "online:da:DK:15002",
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 45 cm.</p></td></tr>",
-                            Title = "Bøjle i massivt egetræ - Behandlet med hvidolie",
-                            UrlName = "Bøjle-Egetræ-Hvidolie",
+                            Title = "Tøjbøjle i massivt egetræ",
+                            UrlName = "Tøjbøjle-Massivt-Egetræ-Hvidolie",
                             WeightInKg = "0.6"
                         },
                         new
@@ -3525,6 +3543,8 @@ namespace MySqlMigrations.Migrations
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_02.png",
                             Length = "40 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
+                            MetaDescription = "Nykants Hylde i massivt egetræ som monteres på væggen, er lavet med kvalitet, funktionalitet og minimalisme i fokus. 40cm lang. kan købes i 3 forskellige farver og 4 forskellige længder. Gratis og hurtig levering. Se mere her...",
+                            MetaTitle = "Træhylde | Kvalitets VægHylde I Massivt Egetræ | Hvidolie | Køb Her",
                             Name = "Ingeborg Hylden",
                             Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17032",
@@ -3533,9 +3553,10 @@ namespace MySqlMigrations.Migrations
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_hvidolie_01.png",
                             Pieces = 1,
                             Price = 685L,
+                            RestId = "online:da:DK:17032",
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 40 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
-                            Title = "Hylde i massivt egetræ - Behandlet med hvidolie",
-                            UrlName = "Hylde-Egetræ-Hvidolie-40cm",
+                            Title = "Væghylde I Massivt Egetræ",
+                            UrlName = "Væghylde-Massivt-Egetræ-Hvidolie-40cm",
                             WeightInKg = "1.4"
                         },
                         new
@@ -3552,6 +3573,8 @@ namespace MySqlMigrations.Migrations
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_02.png",
                             Length = "40 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
+                            MetaDescription = "Nykants Hylde i massivt egetræ som monteres på væggen, er lavet med kvalitet, funktionalitet og minimalisme i fokus. 40cm lang kan købes i 3 forskellige farver og 4 forskellige længder. Gratis og hurtig levering. Se mere her...",
+                            MetaTitle = "Træhylde | Kvalitets VægHylde I Massivt Egetræ | Sortolie | Køb Her",
                             Name = "Ingeborg Hylden",
                             Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17033",
@@ -3560,9 +3583,10 @@ namespace MySqlMigrations.Migrations
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_sortolie_01.png",
                             Pieces = 1,
                             Price = 685L,
+                            RestId = "online:da:DK:17033",
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 40 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
-                            Title = "Hylde i massivt egetræ - Behandlet med sortolie",
-                            UrlName = "Hylde-Egetræ-Sortolie-40cm",
+                            Title = "Væghylde I Massivt Egetræ",
+                            UrlName = "Væghylde-Massivt-Egetræ-Sortolie-40cm",
                             WeightInKg = "1.4"
                         },
                         new
@@ -3579,6 +3603,8 @@ namespace MySqlMigrations.Migrations
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_02.png",
                             Length = "40 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
+                            MetaDescription = "Nykants Hylde i massivt egetræ som monteres på væggen, er lavet med kvalitet, funktionalitet og minimalisme i fokus. 40cm lang kan købes i 3 forskellige farver og 4 forskellige længder. Gratis og hurtig levering. Se mere her...",
+                            MetaTitle = "Træhylde | Kvalitets VægHylde I Massivt Egetræ | Naturolie | Køb Her",
                             Name = "Ingeborg Hylden",
                             Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17031",
@@ -3587,9 +3613,10 @@ namespace MySqlMigrations.Migrations
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_naturolie_01.png",
                             Pieces = 1,
                             Price = 685L,
+                            RestId = "online:da:DK:17031",
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 40 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
-                            Title = "Hylde i massivt egetræ - Behandlet med naturolie",
-                            UrlName = "Hylde-Egetræ-Naturolie-40cm",
+                            Title = "Væghylde I Massivt Egetræ",
+                            UrlName = "Væghylde-Massivt-Egetræ-Naturolie-40cm",
                             WeightInKg = "1.4"
                         },
                         new
@@ -3606,6 +3633,8 @@ namespace MySqlMigrations.Migrations
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_02.png",
                             Length = "60 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
+                            MetaDescription = "Nykants Hylde i massivt egetræ som monteres på væggen, er lavet med kvalitet, funktionalitet og minimalisme i fokus. 60cm lang kan købes i 3 forskellige farver og 4 forskellige længder. Gratis og hurtig levering. Se mere her...",
+                            MetaTitle = "Træhylde | Kvalitets VægHylde I Massivt Egetræ | Hvidolie | Køb Her",
                             Name = "Ingeborg Hylden",
                             Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17022",
@@ -3614,9 +3643,10 @@ namespace MySqlMigrations.Migrations
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_hvidolie_01.png",
                             Pieces = 1,
                             Price = 785L,
+                            RestId = "online:da:DK:17022",
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 60 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
-                            Title = "Hylde i massivt egetræ - Behandlet med hvidolie",
-                            UrlName = "Hylde-Egetræ-Hvidolie-60cm",
+                            Title = "Væghylde I Massivt Egetræ",
+                            UrlName = "Væghylde-Massivt-Egetræ-Hvidolie-60cm",
                             WeightInKg = "2"
                         },
                         new
@@ -3633,6 +3663,8 @@ namespace MySqlMigrations.Migrations
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_02.png",
                             Length = "60 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
+                            MetaDescription = "Nykants Hylde i massivt egetræ som monteres på væggen, er lavet med kvalitet, funktionalitet og minimalisme i fokus. 60cm lang kan købes i 3 forskellige farver og 4 forskellige længder. Gratis og hurtig levering. Se mere her...",
+                            MetaTitle = "Træhylde | Kvalitets VægHylde I Massivt Egetræ | Sortolie | Køb Her",
                             Name = "Ingeborg Hylden",
                             Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17023",
@@ -3641,9 +3673,10 @@ namespace MySqlMigrations.Migrations
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_sortolie_01.png",
                             Pieces = 1,
                             Price = 785L,
+                            RestId = "online:da:DK:17023",
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 60 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
-                            Title = "Hylde i massivt egetræ - Behandlet med sortolie",
-                            UrlName = "Hylde-Egetræ-Sortolie-60cm",
+                            Title = "Væghylde I Massivt Egetræ",
+                            UrlName = "Væghylde-Massivt-Egetræ-Sortolie-60cm",
                             WeightInKg = "2"
                         },
                         new
@@ -3660,6 +3693,8 @@ namespace MySqlMigrations.Migrations
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_02.png",
                             Length = "60 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
+                            MetaDescription = "Nykants Hylde i massivt egetræ som monteres på væggen, er lavet med kvalitet, funktionalitet og minimalisme i fokus. 60cm lang kan købes i 3 forskellige farver og 4 forskellige længder. Gratis og hurtig levering. Se mere her...",
+                            MetaTitle = "Træhylde | Kvalitets VægHylde I Massivt Egetræ | Naturolie | Køb Her",
                             Name = "Ingeborg Hylden",
                             Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17021",
@@ -3668,9 +3703,10 @@ namespace MySqlMigrations.Migrations
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_naturolie_01.png",
                             Pieces = 1,
                             Price = 785L,
+                            RestId = "online:da:DK:17021",
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 60 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
-                            Title = "Hylde i massivt egetræ - Behandlet med naturolie",
-                            UrlName = "Hylde-Egetræ-Naturolie-60cm",
+                            Title = "Væghylde I Massivt Egetræ",
+                            UrlName = "Væghylde-Massivt-Egetræ-Naturolie-60cm",
                             WeightInKg = "2"
                         },
                         new
@@ -3687,6 +3723,8 @@ namespace MySqlMigrations.Migrations
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_02.png",
                             Length = "80 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
+                            MetaDescription = "Nykants Hylde i massivt egetræ som monteres på væggen, er lavet med kvalitet, funktionalitet og minimalisme i fokus. 80cm lang kan købes i 3 forskellige farver og 4 forskellige længder. Gratis og hurtig levering. Se mere her...",
+                            MetaTitle = "Træhylde | Kvalitets VægHylde I Massivt Egetræ | Hvidolie | Køb Her",
                             Name = "Ingeborg Hylden",
                             Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17012",
@@ -3695,9 +3733,10 @@ namespace MySqlMigrations.Migrations
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_hvidolie_01.png",
                             Pieces = 1,
                             Price = 885L,
+                            RestId = "online:da:DK:17012",
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 80 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
-                            Title = "Hylde i massivt egetræ - Behandlet med hvidolie",
-                            UrlName = "Hylde-Egetræ-Hvidolie-80cm",
+                            Title = "Væghylde I Massivt Egetræ",
+                            UrlName = "Væghylde-Massivt-Egetræ-Hvidolie-80cm",
                             WeightInKg = "2.6"
                         },
                         new
@@ -3714,6 +3753,8 @@ namespace MySqlMigrations.Migrations
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_02.png",
                             Length = "80 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
+                            MetaDescription = "Nykants Hylde i massivt egetræ som monteres på væggen, er lavet med kvalitet, funktionalitet og minimalisme i fokus. 80cm lang kan købes i 3 forskellige farver og 4 forskellige længder. Gratis og hurtig levering. Se mere her...",
+                            MetaTitle = "Træhylde | Kvalitets VægHylde I Massivt Egetræ | Sortolie | Køb Her",
                             Name = "Ingeborg Hylden",
                             Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17013",
@@ -3722,9 +3763,10 @@ namespace MySqlMigrations.Migrations
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_sortolie_01.png",
                             Pieces = 1,
                             Price = 885L,
+                            RestId = "online:da:DK:17013",
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 80 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
-                            Title = "Hylde i massivt egetræ - Behandlet med sortolie",
-                            UrlName = "Hylde-Egetræ-Sortolie-80cm",
+                            Title = "Væghylde I Massivt Egetræ",
+                            UrlName = "Væghylde-Massivt-Egetræ-Sortolie-80cm",
                             WeightInKg = "2.6"
                         },
                         new
@@ -3741,6 +3783,8 @@ namespace MySqlMigrations.Migrations
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_02.png",
                             Length = "80 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
+                            MetaDescription = "Nykants Hylde i massivt egetræ som monteres på væggen, er lavet med kvalitet, funktionalitet og minimalisme i fokus. 80cm lang kan købes i 3 forskellige farver og 4 forskellige længder. Gratis og hurtig levering. Se mere her...",
+                            MetaTitle = "Træhylde | Kvalitets VægHylde I Massivt Egetræ | Naturolie | Køb Her",
                             Name = "Ingeborg Hylden",
                             Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17011",
@@ -3749,9 +3793,10 @@ namespace MySqlMigrations.Migrations
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_naturolie_01.png",
                             Pieces = 1,
                             Price = 885L,
+                            RestId = "online:da:DK:17011",
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 80 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
-                            Title = "Hylde i massivt egetræ - Behandlet med naturolie",
-                            UrlName = "Hylde-Egetræ-Naturolie-80cm",
+                            Title = "Væghylde I Massivt Egetræ",
+                            UrlName = "Væghylde-Massivt-Egetræ-Naturolie-80cm",
                             WeightInKg = "2.6"
                         },
                         new
@@ -3768,6 +3813,8 @@ namespace MySqlMigrations.Migrations
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_hvidolie_02.png",
                             Length = "100 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
+                            MetaDescription = "Nykants Hylde i massivt egetræ som monteres på væggen, er lavet med kvalitet, funktionalitet og minimalisme i fokus. 100cm lang kan købes i 3 forskellige farver og 4 forskellige længder. Gratis og hurtig levering. Se mere her...",
+                            MetaTitle = "Træhylde | Kvalitets VægHylde I Massivt Egetræ | Hvidolie | Køb Her",
                             Name = "Ingeborg Hylden",
                             Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17002",
@@ -3776,9 +3823,10 @@ namespace MySqlMigrations.Migrations
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_hvidolie_01.png",
                             Pieces = 1,
                             Price = 985L,
+                            RestId = "online:da:DK:17002",
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 100 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
-                            Title = "Hylde i massivt egetræ - Behandlet med hvidolie",
-                            UrlName = "Hylde-Egetræ-Hvidolie-100cm",
+                            Title = "Væghylde I Massivt Egetræ",
+                            UrlName = "Væghylde-Massivt-Egetræ-Hvidolie-100cm",
                             WeightInKg = "3.2"
                         },
                         new
@@ -3795,6 +3843,8 @@ namespace MySqlMigrations.Migrations
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_sortolie_02.png",
                             Length = "100 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
+                            MetaDescription = "Nykants Hylde i massivt egetræ som monteres på væggen, er lavet med kvalitet, funktionalitet og minimalisme i fokus. 100cm lang kan købes i 3 forskellige farver og 4 forskellige længder. Gratis og hurtig levering. Se mere her...",
+                            MetaTitle = "Træhylde | Kvalitets VægHylde I Massivt Egetræ | Sortolie | Køb Her",
                             Name = "Ingeborg Hylden",
                             Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17003",
@@ -3803,9 +3853,10 @@ namespace MySqlMigrations.Migrations
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_sortolie_01.png",
                             Pieces = 1,
                             Price = 985L,
+                            RestId = "online:da:DK:17003",
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 100 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
-                            Title = "Hylde i massivt egetræ - Behandlet med sortolie",
-                            UrlName = "Hylde-Egetræ-Sortolie-100cm",
+                            Title = "Væghylde I Massivt Egetræ",
+                            UrlName = "Væghylde-Massivt-Egetræ-Sortolie-100cm",
                             WeightInKg = "3.2"
                         },
                         new
@@ -3822,6 +3873,8 @@ namespace MySqlMigrations.Migrations
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_hylde_naturolie_02.png",
                             Length = "100 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Skruer</p><p>Beslag</p></td></tr>",
+                            MetaDescription = "Nykants Hylde i massivt egetræ som monteres på væggen, er lavet med kvalitet, funktionalitet og minimalisme i fokus. 100cm lang kan købes i 3 forskellige farver og 4 forskellige længder. Gratis og hurtig levering. Se mere her...",
+                            MetaTitle = "Træhylde | Kvalitets VægHylde I Massivt Egetræ | Naturolie | Køb Her",
                             Name = "Ingeborg Hylden",
                             Note = "<tr class='no-border'><td class='width-30'><strong>Note</strong></td><td><p>Tjek om plugs passer præcist til jeres væg</p></td></tr>",
                             Number = "17001",
@@ -3830,9 +3883,10 @@ namespace MySqlMigrations.Migrations
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_hylde_naturolie_01.png",
                             Pieces = 1,
                             Price = 985L,
+                            RestId = "online:da:DK:17001",
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Tykkelse: 2 cm.</p><p>Længde: 100 cm.</p><p>Bredde/dybde: 20 cm.</p></td></tr>",
-                            Title = "Hylde i massivt egetræ - Behandlet med naturolie",
-                            UrlName = "Hylde-Egetræ-Naturolie-100cm",
+                            Title = "Væghylde I Massivt Egetræ",
+                            UrlName = "Væghylde-Massivt-Egetræ-Naturolie-100cm",
                             WeightInKg = "3.2"
                         },
                         new
@@ -3848,6 +3902,8 @@ namespace MySqlMigrations.Migrations
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_bord_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_bord_naturolie_02.png",
                             Materials = "<tr><td class='width-30'><strong>Materialer:</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Metal fittings</p></td></tr>",
+                            MetaDescription = "Nykants Bord i massivt egetræ, er i dansk design med minimalisme og høj kvalitet. Med 110cm langt og 70cm bredt passer det perfekt til et lille kontor. kan købes i 2 forskellige farver Gratis og hurtig levering. Se mere her...",
+                            MetaTitle = "Egetræsbord | Massivt Egetræsbord I Dansk Design | Naturolie | Køb Her",
                             Name = "Dagmar Bordet",
                             Number = "16001",
                             Oil = "Naturolie",
@@ -3855,9 +3911,10 @@ namespace MySqlMigrations.Migrations
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_bord_naturolie_01.png",
                             Pieces = 1,
                             Price = 3585L,
+                            RestId = "online:da:DK:16001",
                             Size = "<tr><td class='width-30'><strong>Størrelse:</strong></td><td><p>Bordplade tykkelse: 2.5 cm.</p><p>Højde: 74 cm.</p><p>Længde: 110 cm.</p><p>Bredde: 70 cm.</p></td></tr>",
-                            Title = "Bord i massivt egetræ - Behandlet med naturolie",
-                            UrlName = "Bord-Egetræ-Naturolie",
+                            Title = "Egetræsbord I Massivt Egetræ",
+                            UrlName = "Bord-Massivt-Egetræ-Naturolie",
                             WeightInKg = "22"
                         },
                         new
@@ -3873,6 +3930,8 @@ namespace MySqlMigrations.Migrations
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_bord_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_bord_hvidolie_02.png",
                             Materials = "<tr><td class='width-30'><strong>Materialer:</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Metal fittings</p></td></tr>",
+                            MetaDescription = "Nykants Bord i massivt egetræ, er i dansk design med minimalisme og høj kvalitet. Med 110cm langt og 70cm bredt passer det perfekt til et lille kontor. kan købes i 2 forskellige farver Gratis og hurtig levering. Se mere her...",
+                            MetaTitle = "Egetræsbord | Massivt Egetræsbord I Dansk Design | Hvidolie | Køb Her",
                             Name = "Dagmar Bordet",
                             Number = "16002",
                             Oil = "Hvidolie",
@@ -3880,9 +3939,10 @@ namespace MySqlMigrations.Migrations
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_bord_hvidolie_01.png",
                             Pieces = 1,
                             Price = 3585L,
+                            RestId = "online:da:DK:16002",
                             Size = "<tr><td class='width-30'><strong>Størrelse:</strong></td><td><p>Bordplade tykkelse: 2.5 cm.</p><p>Højde: 74 cm.</p><p>Længde: 110 cm.</p><p>Bredde: 70 cm.</p></td></tr>",
-                            Title = "Bord i massivt egetræ - Behandlet med hvidolie",
-                            UrlName = "Bord-Egetræ-Hvidolie",
+                            Title = "Egetræsbord I Massivt Egetræ",
+                            UrlName = "Bord-Massivt-Egetræ-Hvidolie",
                             WeightInKg = "22"
                         },
                         new
@@ -3899,6 +3959,8 @@ namespace MySqlMigrations.Migrations
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_kortbaenk_naturolie_02.png",
                             Length = "115 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Skruer</p></td></tr>",
+                            MetaDescription = "Nykants Bænk i massivt egetræ er lavet med høj kvalitet og minimalisme i fokus. Denne smukke egetræsbænk er 115 cm lang. kan købes i 3 forskellige farver og 2 forskellige længder. Gratis og hurtig levering. Se mere her...",
+                            MetaTitle = "Egetræsbænk | Minimalistisk Bænk I Massivt Egetræ | Naturolie | Køb Her",
                             Name = "Kort Thyra Bænk",
                             Number = "12001",
                             Oil = "Naturolie",
@@ -3906,9 +3968,10 @@ namespace MySqlMigrations.Migrations
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_kortbaenk_naturolie_01.png",
                             Pieces = 1,
                             Price = 3665L,
+                            RestId = "online:da:DK:12001",
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Højde: 47 cm.</p><p>Længde: 115 cm.</p><p>Bredde: 40 cm.</p></td></tr>",
-                            Title = "Bænk i massivt egetræ - Behandlet med naturolie",
-                            UrlName = "Bænk-Egetræ-Naturolie-115cm",
+                            Title = "Egetræsbænk I Massivt Egetræ",
+                            UrlName = "Bænk-Massivt-Egetræ-Naturolie-115cm",
                             WeightInKg = "14"
                         },
                         new
@@ -3925,6 +3988,8 @@ namespace MySqlMigrations.Migrations
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_kortbaenk_hvidolie_02.png",
                             Length = "115 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Skruer</p></td></tr>",
+                            MetaDescription = "Nykants Bænk i massivt egetræ er lavet med høj kvalitet og minimalisme i fokus. Denne smukke egetræsbænk er 115 cm lang. kan købes i 3 forskellige farver og 2 forskellige længder. Gratis og hurtig levering. Se mere her...",
+                            MetaTitle = "Egetræsbænk | Minimalistisk Bænk I Massivt Egetræ | Hvidolie | Køb Her",
                             Name = "Kort Thyra Bænk",
                             Number = "12002",
                             Oil = "Hvidolie",
@@ -3932,9 +3997,10 @@ namespace MySqlMigrations.Migrations
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_kortbaenk_naturolie_01.png",
                             Pieces = 1,
                             Price = 3665L,
+                            RestId = "online:da:DK:12002",
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Højde: 47 cm.</p><p>Længde: 115 cm.</p><p>Bredde: 40 cm.</p></td></tr>",
-                            Title = "Bænk i massivt egetræ - Behandlet med hvidolie",
-                            UrlName = "Bænk-Egetræ-Hvidolie-115cm",
+                            Title = "Egetræsbænk I Massivt Egetræ",
+                            UrlName = "Bænk-Massivt-Egetræ-Hvidolie-115cm",
                             WeightInKg = "14"
                         },
                         new
@@ -3951,6 +4017,8 @@ namespace MySqlMigrations.Migrations
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_kortbaenk_sortolie_02.png",
                             Length = "115 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Skruer</p></td></tr>",
+                            MetaDescription = "Nykants Bænk i massivt egetræ er lavet med høj kvalitet og minimalisme i fokus. Denne smukke egetræsbænk er 115 cm lang. kan købes i 3 forskellige farver og 2 forskellige længder. Gratis og hurtig levering. Se mere her...",
+                            MetaTitle = "Egetræsbænk | Minimalistisk Bænk I Massivt Egetræ | Sortolie | Køb Her",
                             Name = "Kort Thyra Bænk",
                             Number = "12003",
                             Oil = "Sortolie",
@@ -3958,9 +4026,10 @@ namespace MySqlMigrations.Migrations
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_kortbaenk_naturolie_01.png",
                             Pieces = 1,
                             Price = 3665L,
+                            RestId = "online:da:DK:12003",
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Højde: 47 cm.</p><p>Længde: 115 cm.</p><p>Bredde: 40 cm.</p></td></tr>",
-                            Title = "Bænk i massivt egetræ - Behandlet med sortolie",
-                            UrlName = "Bænk-Egetræ-Sortolie-115cm",
+                            Title = "Egetræsbænk I Massivt Egetræ",
+                            UrlName = "Bænk-Massivt-Egetræ-Sortolie-115cm",
                             WeightInKg = "14"
                         },
                         new
@@ -3977,6 +4046,8 @@ namespace MySqlMigrations.Migrations
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_langbaenk_naturolie_02.png",
                             Length = "170 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Skruer</p></td></tr>",
+                            MetaDescription = "Nykants Bænk i massivt egetræ er lavet med høj kvalitet og minimalisme i fokus. Denne smukke egetræsbænk er 170 cm lang. kan købes i 3 forskellige farver og 2 forskellige længder. Gratis og hurtig levering. Se mere her...",
+                            MetaTitle = "Egetræsbænk | Minimalistisk Bænk I Massivt Egetræ | Naturolie | Køb Her",
                             Name = "Lang Thyra Bænk",
                             Number = "11001",
                             Oil = "Naturolie",
@@ -3984,9 +4055,10 @@ namespace MySqlMigrations.Migrations
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_langbaenk_naturolie_01.png",
                             Pieces = 1,
                             Price = 4395L,
+                            RestId = "online:da:DK:11001",
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Højde: 47 cm.</p><p>Længde: 170 cm.</p><p>Bredde: 40 cm.</p></td></tr>",
-                            Title = "Bænk i massivt egetræ - Behandlet med naturolie",
-                            UrlName = "Bænk-Egetræ-Naturolie-170cm",
+                            Title = "Egetræsbænk I Massivt Egetræ",
+                            UrlName = "Bænk-Massivt-Egetræ-Naturolie-170cm",
                             WeightInKg = "20"
                         },
                         new
@@ -4003,6 +4075,8 @@ namespace MySqlMigrations.Migrations
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_langbaenk_hvidolie_02.png",
                             Length = "170 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Skruer</p></td></tr>",
+                            MetaDescription = "Nykants Bænk i massivt egetræ er lavet med høj kvalitet og minimalisme i fokus. Denne smukke egetræsbænk er 170 cm lang. kan købes i 3 forskellige farver og 2 forskellige længder. Gratis og hurtig levering. Se mere her...",
+                            MetaTitle = "Egetræsbænk | Minimalistisk Bænk I Massivt Egetræ | Hvidolie | Køb Her",
                             Name = "Lang Thyra Bænk",
                             Number = "11002",
                             Oil = "Hvidolie",
@@ -4010,9 +4084,10 @@ namespace MySqlMigrations.Migrations
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_langbaenk_naturolie_01.png",
                             Pieces = 1,
                             Price = 4395L,
+                            RestId = "online:da:DK:11002",
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Højde: 47 cm.</p><p>Længde: 170 cm.</p><p>Bredde: 40 cm.</p></td></tr>",
-                            Title = "Bænk i massivt egetræ - Behandlet med hvidolie",
-                            UrlName = "Bænk-Egetræ-Hvidolie-170cm",
+                            Title = "Egetræsbænk I Massivt Egetræ",
+                            UrlName = "Bænk-Massivt-Egetræ-Hvidolie-170cm",
                             WeightInKg = "20"
                         },
                         new
@@ -4029,6 +4104,8 @@ namespace MySqlMigrations.Migrations
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_langbaenk_sortolie_02.png",
                             Length = "170 cm.",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Skruer</p></td></tr>",
+                            MetaDescription = "Nykants Bænk i massivt egetræ er lavet med høj kvalitet og minimalisme i fokus. Denne smukke egetræsbænk er 170 cm lang. kan købes i 3 forskellige farver og 2 forskellige længder. Gratis og hurtig levering. Se mere her...",
+                            MetaTitle = "Egetræsbænk | Minimalistisk Bænk I Massivt Egetræ | Sortolie | Køb Her",
                             Name = "Lang Thyra Bænk",
                             Number = "11003",
                             Oil = "Sortolie",
@@ -4036,9 +4113,10 @@ namespace MySqlMigrations.Migrations
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_langbaenk_naturolie_01.png",
                             Pieces = 1,
                             Price = 4395L,
+                            RestId = "online:da:DK:11003",
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Højde: 47 cm.</p><p>Længde: 170 cm.</p><p>Bredde: 40 cm.</p></td></tr>",
-                            Title = "Bænk i massivt egetræ - Behandlet med sortolie",
-                            UrlName = "Bænk-Egetræ-Sortolie-170cm",
+                            Title = "Egetræsbænk I Massivt Egetræ",
+                            UrlName = "Bænk-Massivt-Egetræ-Sortolie-170cm",
                             WeightInKg = "20"
                         },
                         new
@@ -4054,6 +4132,8 @@ namespace MySqlMigrations.Migrations
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_opbevaringsbaenk_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_opbevaringsbaenk_naturolie_02.png",
                             Materials = "<tr><td class='width-30'><strong>Materialer:</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Læderstrop</p><p>Beslag </p></td></tr>",
+                            MetaDescription = "Nykants Opbevaringsbænk i massivt egetræ, er lavet med dansk design og kvalitet i fokus. Opbevaringsbænken har masser af plads til tæpper eller tøj. Kan købes i 3 forskellige farver. Gratis og hurtig levering. Se mere her...",
+                            MetaTitle = "Opbevaringsbænk | Kvalitets Opbevaringsbænk I Massivt Egetræ | Naturolie | Køb Her",
                             Name = "Filippa Bænk",
                             Note = "<tr class='no-border'><td class='width-30'><strong>Note:</strong></td><td><p>Indvendige mål for opbevaring: 30 x 30 x 85 cm</p></td></tr>",
                             Number = "10001",
@@ -4062,9 +4142,10 @@ namespace MySqlMigrations.Migrations
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_opbevaringsbaenk_naturolie_01.png",
                             Pieces = 1,
                             Price = 4985L,
+                            RestId = "online:da:DK:10001",
                             Size = "<tr><td class='width-30'><strong>Størrelse:</strong></td><td><p>Højde: 45 cm.</p><p>Længde: 110 cm.</p><p>Dybde: 35 cm. </p></td></tr>",
-                            Title = "Opbevaringsbænk i massivt egetræ - Behandlet med naturolie",
-                            UrlName = "Opbevaringsbænk-Egetræ-Naturolie",
+                            Title = "Opbevaringsbænk I Massivt Egetræ",
+                            UrlName = "Opbevaringsbænk-Massivt-Egetræ-Naturolie",
                             WeightInKg = "24"
                         },
                         new
@@ -4080,6 +4161,8 @@ namespace MySqlMigrations.Migrations
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_opbevaringsbaenk_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_opbevaringsbaenk_hvidolie_02.png",
                             Materials = "<tr><td class='width-30'><strong>Materialer:</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Læderstrop</p><p>Beslag </p></td></tr>",
+                            MetaDescription = "Nykants Opbevaringsbænk i massivt egetræ, er lavet med dansk design og kvalitet i fokus. Opbevaringsbænken har masser af plads til tæpper eller tøj. Kan købes i 3 forskellige farver. Gratis og hurtig levering. Se mere her...",
+                            MetaTitle = "Opbevaringsbænk | Kvalitets Opbevaringsbænk I Massivt Egetræ | Hvidolie | Køb Her",
                             Name = "Filippa Bænk",
                             Note = "<tr class='no-border'><td class='width-30'><strong>Note:</strong></td><td><p>Indvendige mål for opbevaring: 30 x 30 x 85 cm</p></td></tr>",
                             Number = "10002",
@@ -4088,9 +4171,10 @@ namespace MySqlMigrations.Migrations
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_opbevaringsbaenk_naturolie_01.png",
                             Pieces = 1,
                             Price = 4985L,
+                            RestId = "online:da:DK:10002",
                             Size = "<tr><td class='width-30'><strong>Størrelse:</strong></td><td><p>Højde: 45 cm.</p><p>Længde: 110 cm.</p><p>Dybde: 35 cm. </p></td></tr>",
-                            Title = "Opbevaringsbænk i massivt egetræ - Behandlet med hvidolie",
-                            UrlName = "Opbevaringsbænk-Egetræ-Hvidolie",
+                            Title = "Opbevaringsbænk I Massivt Egetræ",
+                            UrlName = "Opbevaringsbænk-Massivt-Egetræ-Hvidolie",
                             WeightInKg = "24"
                         },
                         new
@@ -4106,6 +4190,8 @@ namespace MySqlMigrations.Migrations
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_opbevaringsbaenk_sort_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_opbevaringsbaenk_sort_02.png",
                             Materials = "<tr><td class='width-30'><strong>Materialer:</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Læderstrop</p><p>Beslag </p></td></tr>",
+                            MetaDescription = "Nykants Opbevaringsbænk i massivt egetræ, er lavet med dansk design og kvalitet i fokus. Opbevaringsbænken har masser af plads til tæpper eller tøj. Kan købes i 3 forskellige farver. Gratis og hurtig levering. Se mere her...",
+                            MetaTitle = "Opbevaringsbænk | Kvalitets Opbevaringsbænk I Massivt Egetræ | Sortolie | Køb Her",
                             Name = "Filippa Bænk",
                             Note = "<tr class='no-border'><td class='width-30'><strong>Note:</strong></td><td><p>Indvendige mål for opbevaring: 30 x 30 x 85 cm</p></td></tr>",
                             Number = "10003",
@@ -4114,9 +4200,10 @@ namespace MySqlMigrations.Migrations
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_opbevaringsbaenk_naturolie_01.png",
                             Pieces = 1,
                             Price = 4985L,
+                            RestId = "online:da:DK:10003",
                             Size = "<tr><td class='width-30'><strong>Størrelse:</strong></td><td><p>Højde: 45 cm.</p><p>Længde: 110 cm.</p><p>Dybde: 35 cm. </p></td></tr>",
-                            Title = "Opbevaringsbænk i massivt egetræ - Behandlet med sortolie",
-                            UrlName = "Opbevaringsbænk-Egetræ-Sortolie",
+                            Title = "Opbevaringsbænk I Massivt Egetræ",
+                            UrlName = "Opbevaringsbænk-Massivt-Egetræ-Sortolie",
                             WeightInKg = "24"
                         },
                         new
@@ -4132,6 +4219,8 @@ namespace MySqlMigrations.Migrations
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_rack_naturolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_rack_naturolie_02.png",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Kiler</p></td></tr>",
+                            MetaDescription = "Nykants Tøjstativ i massivt egetræ består kun af træ og samles udelukkende med trækiler. Det er et kvalitet i minimalistisk dansk design. Kan købes i 3 forskellige farver. Gratis og hurtig levering. Se mere her...",
+                            MetaTitle = "Tøjstativ | Kvalitets Tøjstativ I Massivt Egetræ | Naturolie | Køb Her",
                             Name = "Nora Tøjstativ",
                             Number = "13001 + 13001A",
                             Oil = "Naturolie",
@@ -4139,9 +4228,10 @@ namespace MySqlMigrations.Migrations
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_rack_naturolie_01.png",
                             Pieces = 1,
                             Price = 2595L,
+                            RestId = "online:da:DK:13001",
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Højde: 180 cm.</p><p>Længde: 100 cm.</p><p>Bredde: 55 cm.</p></td></tr>",
-                            Title = "Tøjstativ i massivt egetræ - Behandlet med naturolie",
-                            UrlName = "Tøjstativ-Egetræ-Naturolie",
+                            Title = "Tøjstativ I Massivt Egetræ",
+                            UrlName = "Tøjstativ-Massivt-Egetræ-Naturolie",
                             WeightInKg = "8"
                         },
                         new
@@ -4157,6 +4247,8 @@ namespace MySqlMigrations.Migrations
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_rack_hvidolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_rack_hvidolie_02.png",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Kiler</p></td></tr>",
+                            MetaDescription = "Nykants Tøjstativ i massivt egetræ består kun af træ og samles udelukkende med trækiler. Det er et kvalitet i minimalistisk dansk design. Kan købes i 3 forskellige farver. Gratis og hurtig levering. Se mere her...",
+                            MetaTitle = "Tøjstativ | Kvalitets Tøjstativ I Massivt Egetræ | Hvidolie | Køb Her",
                             Name = "Nora Tøjstativ",
                             Number = "13002 + 13002A",
                             Oil = "Hvidolie",
@@ -4164,9 +4256,10 @@ namespace MySqlMigrations.Migrations
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_rack_naturolie_01.png",
                             Pieces = 1,
                             Price = 2595L,
+                            RestId = "online:da:DK:13002",
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Højde: 180 cm.</p><p>Længde: 100 cm.</p><p>Bredde: 55 cm.</p></td></tr>",
-                            Title = "Tøjstativ i massivt egetræ - Behandlet med hvidolie",
-                            UrlName = "Tøjstativ-Egetræ-Hvidolie",
+                            Title = "Tøjstativ I Massivt Egetræ",
+                            UrlName = "Tøjstativ-Massivt-Egetræ-Hvidolie",
                             WeightInKg = "8"
                         },
                         new
@@ -4182,6 +4275,8 @@ namespace MySqlMigrations.Migrations
                             GalleryImage1 = "../images/Products/Gallery/Desktop/NYKANT_rack_sortolie_01.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/NYKANT_rack_sortolie_02.png",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Kiler</p></td></tr>",
+                            MetaDescription = "Nykants Tøjstativ i massivt egetræ består kun af træ og samles udelukkende med trækiler. Det er et kvalitet i minimalistisk dansk design. Kan købes i 3 forskellige farver. Gratis og hurtig levering. Se mere her...",
+                            MetaTitle = "Tøjstativ | Kvalitets Tøjstativ I Massivt Egetræ | Sortolie | Køb Her",
                             Name = "Nora Tøjstativ",
                             Number = "13003 + 13003A",
                             Oil = "Sortolie",
@@ -4189,9 +4284,10 @@ namespace MySqlMigrations.Migrations
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_rack_naturolie_01.png",
                             Pieces = 1,
                             Price = 2595L,
+                            RestId = "online:da:DK:13003",
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Højde: 180 cm.</p><p>Længde: 100 cm.</p><p>Bredde: 55 cm.</p></td></tr>",
-                            Title = "Tøjstativ i massivt egetræ - Behandlet med sortolie",
-                            UrlName = "Tøjstativ-Egetræ-Sortolie",
+                            Title = "Tøjstativ I Massivt Egetræ",
+                            UrlName = "Tøjstativ-Massivt-Egetræ-Sortolie",
                             WeightInKg = "8"
                         },
                         new
@@ -4207,6 +4303,8 @@ namespace MySqlMigrations.Migrations
                             GalleryImage1 = "../images/Products/Gallery/Desktop/Ingrid_Naturolie_1.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/Ingrid_Naturolie_2.png",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Lædderstrop</p><p>Beslag</p><p>Skruer</p></td></tr>",
+                            MetaDescription = "Nykants Væghængte Tøjstativ i massivt egetræ er designet kvalitet og minimalisme i fokus. Kan købes i 3 forskellige farver. Gratis og hurtig levering. Se mere her...",
+                            MetaTitle = "Væghængt Tøjstativ | Minimalistisk Væghængt Tøjstativ I Massivt Egetræ | Naturolie | Køb Her",
                             Name = "Ingrid Tøjstativ",
                             Number = "14001",
                             Oil = "Naturolie",
@@ -4214,9 +4312,10 @@ namespace MySqlMigrations.Migrations
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_rack_naturolie_01.png",
                             Pieces = 1,
                             Price = 1995L,
+                            RestId = "online:da:DK:14001",
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Højde: 90 cm.</p><p>Fra væg/dybde: 40 cm.</p><p>Bredde: 105 cm.</p></td></tr>",
-                            Title = "Hængende tøjstativ i massivt egetræ - Behandlet med naturolie",
-                            UrlName = "Ophængt-Tøjstativ-Egetræ-Naturolie",
+                            Title = "Væghængt Tøjstativ I Massivt Egetræ",
+                            UrlName = "Væghængt-Tøjstativ-Massivt-Egetræ-Naturolie",
                             WeightInKg = "2"
                         },
                         new
@@ -4232,6 +4331,8 @@ namespace MySqlMigrations.Migrations
                             GalleryImage1 = "../images/Products/Gallery/Desktop/Ingrid_Hvidolie_1.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/Ingrid_Hvidolie_2.png",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Lædderstrop</p><p>Beslag</p><p>Skruer</p></td></tr>",
+                            MetaDescription = "Nykants Væghængte Tøjstativ i massivt egetræ er designet kvalitet og minimalisme i fokus. Kan købes i 3 forskellige farver. Gratis og hurtig levering. Se mere her...",
+                            MetaTitle = "Væghængt Tøjstativ | Minimalistisk Væghængt Tøjstativ I Massivt Egetræ | Hvidolie | Køb Her",
                             Name = "Ingrid Tøjstativ",
                             Number = "14002",
                             Oil = "Hvidolie",
@@ -4239,9 +4340,10 @@ namespace MySqlMigrations.Migrations
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_rack_naturolie_01.png",
                             Pieces = 1,
                             Price = 1995L,
+                            RestId = "online:da:DK:14002",
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Højde: 90 cm.</p><p>Fra væg/dybde: 40 cm.</p><p>Bredde: 105 cm.</p></td></tr>",
-                            Title = "Hængende tøjstativ i massivt egetræ - Behandlet med hvidolie",
-                            UrlName = "Ophængt-Tøjstativ-Egetræ-Hvidolie",
+                            Title = "Væghængt Tøjstativ I Massivt Egetræ",
+                            UrlName = "Væghængt-Tøjstativ-Massivt-Egetræ-Hvidolie",
                             WeightInKg = "2"
                         },
                         new
@@ -4257,6 +4359,8 @@ namespace MySqlMigrations.Migrations
                             GalleryImage1 = "../images/Products/Gallery/Desktop/Ingrid_Sortolie_1.png",
                             GalleryImage2 = "../images/Products/Gallery/Desktop/Ingrid_Sortolie_2.png",
                             Materials = "<tr><td class='width-30'><strong>Materialer</strong></td><td><p>Massivt Egetræ</p><p>Olie</p><p>Lædderstrop</p><p>Beslag</p><p>Skruer</p></td></tr>",
+                            MetaDescription = "Nykants Væghængte Tøjstativ i massivt egetræ er designet kvalitet og minimalisme i fokus. Kan købes i 3 forskellige farver. Gratis og hurtig levering. Se mere her...",
+                            MetaTitle = "Væghængt Tøjstativ | Minimalistisk Væghængt Tøjstativ I Massivt Egetræ | Sortolie | Køb Her",
                             Name = "Ingrid Tøjstativ",
                             Number = "14003",
                             Oil = "Sortolie",
@@ -4264,9 +4368,10 @@ namespace MySqlMigrations.Migrations
                             Path = "C:/Users/Christian/Documents/GitHub/Nykant/NykantMVC/wwwroot/images/Products/NYKANT_rack_naturolie_01.png",
                             Pieces = 1,
                             Price = 1995L,
+                            RestId = "online:da:DK:14003",
                             Size = "<tr><td class='width-30'><strong>Størrelse</strong></td><td><p>Højde: 90 cm.</p><p>Fra væg/dybde: 40 cm.</p><p>Bredde: 105 cm.</p></td></tr>",
-                            Title = "Hængende tøjstativ i massivt egetræ - Behandlet med sortolie",
-                            UrlName = "Ophængt-Tøjstativ-Egetræ-Sortolie",
+                            Title = "Væghængt Tøjstativ I Massivt Egetræ",
+                            UrlName = "Væghængt-Tøjstativ-Massivt-Egetræ-Sortolie",
                             WeightInKg = "2"
                         });
                 });
@@ -4302,7 +4407,7 @@ namespace MySqlMigrations.Migrations
                             Length = "115 cm.",
                             ProductId = 18,
                             ProductReferenceId = 18,
-                            ProductReferenceUrlName = "Bænk-Egetræ-Naturolie-115cm"
+                            ProductReferenceUrlName = "Bænk-Massivt-Egetræ-Naturolie-115cm"
                         },
                         new
                         {
@@ -4310,7 +4415,7 @@ namespace MySqlMigrations.Migrations
                             Length = "170 cm.",
                             ProductId = 18,
                             ProductReferenceId = 21,
-                            ProductReferenceUrlName = "Bænk-Egetræ-Naturolie-170cm"
+                            ProductReferenceUrlName = "Bænk-Massivt-Egetræ-Naturolie-170cm"
                         },
                         new
                         {
@@ -4318,7 +4423,7 @@ namespace MySqlMigrations.Migrations
                             Length = "115 cm.",
                             ProductId = 19,
                             ProductReferenceId = 19,
-                            ProductReferenceUrlName = "Bænk-Egetræ-Hvidolie-115cm"
+                            ProductReferenceUrlName = "Bænk-Massivt-Egetræ-Hvidolie-115cm"
                         },
                         new
                         {
@@ -4326,7 +4431,7 @@ namespace MySqlMigrations.Migrations
                             Length = "170 cm.",
                             ProductId = 19,
                             ProductReferenceId = 22,
-                            ProductReferenceUrlName = "Bænk-Egetræ-Hvidolie-170cm"
+                            ProductReferenceUrlName = "Bænk-Massivt-Egetræ-Hvidolie-170cm"
                         },
                         new
                         {
@@ -4334,7 +4439,7 @@ namespace MySqlMigrations.Migrations
                             Length = "115 cm.",
                             ProductId = 20,
                             ProductReferenceId = 20,
-                            ProductReferenceUrlName = "Bænk-Egetræ-Sortolie-115cm"
+                            ProductReferenceUrlName = "Bænk-Massivt-Egetræ-Hvidolie-170cm"
                         },
                         new
                         {
@@ -4342,7 +4447,7 @@ namespace MySqlMigrations.Migrations
                             Length = "170 cm.",
                             ProductId = 20,
                             ProductReferenceId = 23,
-                            ProductReferenceUrlName = "Bænk-Egetræ-Sortolie-170cm"
+                            ProductReferenceUrlName = "Bænk-Massivt-Egetræ-Sortolie-170cm"
                         },
                         new
                         {
@@ -4350,7 +4455,7 @@ namespace MySqlMigrations.Migrations
                             Length = "115 cm.",
                             ProductId = 21,
                             ProductReferenceId = 18,
-                            ProductReferenceUrlName = "Bænk-Egetræ-Naturolie-115cm"
+                            ProductReferenceUrlName = "Bænk-Massivt-Egetræ-Naturolie-115cm"
                         },
                         new
                         {
@@ -4358,7 +4463,7 @@ namespace MySqlMigrations.Migrations
                             Length = "170 cm.",
                             ProductId = 21,
                             ProductReferenceId = 21,
-                            ProductReferenceUrlName = "Bænk-Egetræ-Naturolie-170cm"
+                            ProductReferenceUrlName = "Bænk-Massivt-Egetræ-Naturolie-170cm"
                         },
                         new
                         {
@@ -4366,7 +4471,7 @@ namespace MySqlMigrations.Migrations
                             Length = "115 cm.",
                             ProductId = 22,
                             ProductReferenceId = 19,
-                            ProductReferenceUrlName = "Bænk-Egetræ-Hvidolie-115cm"
+                            ProductReferenceUrlName = "Bænk-Massivt-Egetræ-Hvidolie-115cm"
                         },
                         new
                         {
@@ -4374,7 +4479,7 @@ namespace MySqlMigrations.Migrations
                             Length = "170 cm.",
                             ProductId = 22,
                             ProductReferenceId = 22,
-                            ProductReferenceUrlName = "Bænk-Egetræ-Hvidolie-170cm"
+                            ProductReferenceUrlName = "Bænk-Massivt-Egetræ-Hvidolie-170cm"
                         },
                         new
                         {
@@ -4382,7 +4487,7 @@ namespace MySqlMigrations.Migrations
                             Length = "115 cm.",
                             ProductId = 23,
                             ProductReferenceId = 20,
-                            ProductReferenceUrlName = "Bænk-Egetræ-Sortolie-115cm"
+                            ProductReferenceUrlName = "Bænk-Massivt-Egetræ-Sortolie-115cm"
                         },
                         new
                         {
@@ -4390,7 +4495,7 @@ namespace MySqlMigrations.Migrations
                             Length = "170 cm.",
                             ProductId = 23,
                             ProductReferenceId = 23,
-                            ProductReferenceUrlName = "Bænk-Egetræ-Sortolie-170cm"
+                            ProductReferenceUrlName = "Bænk-Massivt-Egetræ-Sortolie-170cm"
                         },
                         new
                         {
@@ -4398,7 +4503,7 @@ namespace MySqlMigrations.Migrations
                             Length = "40 cm.",
                             ProductId = 4,
                             ProductReferenceId = 4,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-40cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Hvidolie-40cm"
                         },
                         new
                         {
@@ -4406,7 +4511,7 @@ namespace MySqlMigrations.Migrations
                             Length = "60 cm.",
                             ProductId = 4,
                             ProductReferenceId = 7,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-60cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Hvidolie-60cm"
                         },
                         new
                         {
@@ -4414,7 +4519,7 @@ namespace MySqlMigrations.Migrations
                             Length = "80 cm.",
                             ProductId = 4,
                             ProductReferenceId = 10,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-80cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Hvidolie-80cm"
                         },
                         new
                         {
@@ -4422,7 +4527,7 @@ namespace MySqlMigrations.Migrations
                             Length = "100 cm.",
                             ProductId = 4,
                             ProductReferenceId = 13,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-100cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Hvidolie-100cm"
                         },
                         new
                         {
@@ -4430,7 +4535,7 @@ namespace MySqlMigrations.Migrations
                             Length = "40 cm.",
                             ProductId = 5,
                             ProductReferenceId = 5,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-40cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Sortolie-40cm"
                         },
                         new
                         {
@@ -4438,7 +4543,7 @@ namespace MySqlMigrations.Migrations
                             Length = "60 cm.",
                             ProductId = 5,
                             ProductReferenceId = 8,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-60cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Sortolie-60cm"
                         },
                         new
                         {
@@ -4446,7 +4551,7 @@ namespace MySqlMigrations.Migrations
                             Length = "80 cm.",
                             ProductId = 5,
                             ProductReferenceId = 11,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-80cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Sortolie-80cm"
                         },
                         new
                         {
@@ -4454,7 +4559,7 @@ namespace MySqlMigrations.Migrations
                             Length = "100 cm.",
                             ProductId = 5,
                             ProductReferenceId = 15,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-100cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Sortolie-100cm"
                         },
                         new
                         {
@@ -4462,7 +4567,7 @@ namespace MySqlMigrations.Migrations
                             Length = "40 cm.",
                             ProductId = 6,
                             ProductReferenceId = 6,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-40cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Naturolie-40cm"
                         },
                         new
                         {
@@ -4470,7 +4575,7 @@ namespace MySqlMigrations.Migrations
                             Length = "60 cm.",
                             ProductId = 6,
                             ProductReferenceId = 9,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-60cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Naturolie-60cm"
                         },
                         new
                         {
@@ -4478,7 +4583,7 @@ namespace MySqlMigrations.Migrations
                             Length = "80 cm.",
                             ProductId = 6,
                             ProductReferenceId = 12,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-80cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Naturolie-80cm"
                         },
                         new
                         {
@@ -4486,7 +4591,7 @@ namespace MySqlMigrations.Migrations
                             Length = "100 cm.",
                             ProductId = 6,
                             ProductReferenceId = 15,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-100cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Naturolie-100cm"
                         },
                         new
                         {
@@ -4494,7 +4599,7 @@ namespace MySqlMigrations.Migrations
                             Length = "40 cm.",
                             ProductId = 7,
                             ProductReferenceId = 4,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-40cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Hvidolie-40cm"
                         },
                         new
                         {
@@ -4502,7 +4607,7 @@ namespace MySqlMigrations.Migrations
                             Length = "60 cm.",
                             ProductId = 7,
                             ProductReferenceId = 7,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-60cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Hvidolie-60cm"
                         },
                         new
                         {
@@ -4510,7 +4615,7 @@ namespace MySqlMigrations.Migrations
                             Length = "80 cm.",
                             ProductId = 7,
                             ProductReferenceId = 10,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-80cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Hvidolie-80cm"
                         },
                         new
                         {
@@ -4518,7 +4623,7 @@ namespace MySqlMigrations.Migrations
                             Length = "100 cm.",
                             ProductId = 7,
                             ProductReferenceId = 13,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-100cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Hvidolie-100cm"
                         },
                         new
                         {
@@ -4526,7 +4631,7 @@ namespace MySqlMigrations.Migrations
                             Length = "40 cm.",
                             ProductId = 8,
                             ProductReferenceId = 5,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-40cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Sortolie-40cm"
                         },
                         new
                         {
@@ -4534,7 +4639,7 @@ namespace MySqlMigrations.Migrations
                             Length = "60 cm.",
                             ProductId = 8,
                             ProductReferenceId = 8,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-60cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Sortolie-60cm"
                         },
                         new
                         {
@@ -4542,7 +4647,7 @@ namespace MySqlMigrations.Migrations
                             Length = "80 cm.",
                             ProductId = 8,
                             ProductReferenceId = 11,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-80cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Sortolie-80cm"
                         },
                         new
                         {
@@ -4550,7 +4655,7 @@ namespace MySqlMigrations.Migrations
                             Length = "100 cm.",
                             ProductId = 8,
                             ProductReferenceId = 14,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-100cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Sortolie-100cm"
                         },
                         new
                         {
@@ -4558,7 +4663,7 @@ namespace MySqlMigrations.Migrations
                             Length = "40 cm.",
                             ProductId = 9,
                             ProductReferenceId = 6,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-40cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Naturolie-40cm"
                         },
                         new
                         {
@@ -4566,7 +4671,7 @@ namespace MySqlMigrations.Migrations
                             Length = "60 cm.",
                             ProductId = 9,
                             ProductReferenceId = 9,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-60cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Naturolie-60cm"
                         },
                         new
                         {
@@ -4574,7 +4679,7 @@ namespace MySqlMigrations.Migrations
                             Length = "80 cm.",
                             ProductId = 9,
                             ProductReferenceId = 12,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-80cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Naturolie-80cm"
                         },
                         new
                         {
@@ -4582,7 +4687,7 @@ namespace MySqlMigrations.Migrations
                             Length = "100 cm.",
                             ProductId = 9,
                             ProductReferenceId = 16,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-100cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Naturolie-100cm"
                         },
                         new
                         {
@@ -4590,7 +4695,7 @@ namespace MySqlMigrations.Migrations
                             Length = "40 cm.",
                             ProductId = 10,
                             ProductReferenceId = 4,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-40cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Hvidolie-40cm"
                         },
                         new
                         {
@@ -4598,7 +4703,7 @@ namespace MySqlMigrations.Migrations
                             Length = "60 cm.",
                             ProductId = 10,
                             ProductReferenceId = 7,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-60cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Hvidolie-60cm"
                         },
                         new
                         {
@@ -4606,7 +4711,7 @@ namespace MySqlMigrations.Migrations
                             Length = "80 cm.",
                             ProductId = 10,
                             ProductReferenceId = 10,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-80cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Hvidolie-80cm"
                         },
                         new
                         {
@@ -4614,7 +4719,7 @@ namespace MySqlMigrations.Migrations
                             Length = "100 cm.",
                             ProductId = 10,
                             ProductReferenceId = 13,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-100cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Hvidolie-100cm"
                         },
                         new
                         {
@@ -4622,7 +4727,7 @@ namespace MySqlMigrations.Migrations
                             Length = "40 cm.",
                             ProductId = 11,
                             ProductReferenceId = 5,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-40cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Sortolie-40cm"
                         },
                         new
                         {
@@ -4630,7 +4735,7 @@ namespace MySqlMigrations.Migrations
                             Length = "60 cm.",
                             ProductId = 11,
                             ProductReferenceId = 8,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-60cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Sortolie-60cm"
                         },
                         new
                         {
@@ -4638,7 +4743,7 @@ namespace MySqlMigrations.Migrations
                             Length = "80 cm.",
                             ProductId = 11,
                             ProductReferenceId = 11,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-80cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Sortolie-80cm"
                         },
                         new
                         {
@@ -4646,7 +4751,7 @@ namespace MySqlMigrations.Migrations
                             Length = "100 cm.",
                             ProductId = 11,
                             ProductReferenceId = 14,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-100cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Sortolie-100cm"
                         },
                         new
                         {
@@ -4654,7 +4759,7 @@ namespace MySqlMigrations.Migrations
                             Length = "40 cm.",
                             ProductId = 12,
                             ProductReferenceId = 6,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-40cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Naturolie-40cm"
                         },
                         new
                         {
@@ -4662,7 +4767,7 @@ namespace MySqlMigrations.Migrations
                             Length = "60 cm.",
                             ProductId = 12,
                             ProductReferenceId = 9,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-60cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Naturolie-60cm"
                         },
                         new
                         {
@@ -4670,7 +4775,7 @@ namespace MySqlMigrations.Migrations
                             Length = "80 cm.",
                             ProductId = 12,
                             ProductReferenceId = 12,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-80cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Naturolie-80cm"
                         },
                         new
                         {
@@ -4678,7 +4783,7 @@ namespace MySqlMigrations.Migrations
                             Length = "100 cm.",
                             ProductId = 12,
                             ProductReferenceId = 15,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-100cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Naturolie-100cm"
                         },
                         new
                         {
@@ -4686,7 +4791,7 @@ namespace MySqlMigrations.Migrations
                             Length = "40 cm.",
                             ProductId = 13,
                             ProductReferenceId = 4,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-40cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Hvidolie-40cm"
                         },
                         new
                         {
@@ -4694,7 +4799,7 @@ namespace MySqlMigrations.Migrations
                             Length = "60 cm.",
                             ProductId = 13,
                             ProductReferenceId = 7,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-60cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Hvidolie-60cm"
                         },
                         new
                         {
@@ -4702,7 +4807,7 @@ namespace MySqlMigrations.Migrations
                             Length = "80 cm.",
                             ProductId = 13,
                             ProductReferenceId = 10,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-80cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Hvidolie-80cm"
                         },
                         new
                         {
@@ -4710,7 +4815,7 @@ namespace MySqlMigrations.Migrations
                             Length = "100 cm.",
                             ProductId = 13,
                             ProductReferenceId = 13,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Hvidolie-100cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Hvidolie-100cm"
                         },
                         new
                         {
@@ -4718,7 +4823,7 @@ namespace MySqlMigrations.Migrations
                             Length = "40 cm.",
                             ProductId = 14,
                             ProductReferenceId = 5,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-40cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Sortolie-40cm"
                         },
                         new
                         {
@@ -4726,7 +4831,7 @@ namespace MySqlMigrations.Migrations
                             Length = "60 cm.",
                             ProductId = 14,
                             ProductReferenceId = 8,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-60cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Sortolie-60cm"
                         },
                         new
                         {
@@ -4734,7 +4839,7 @@ namespace MySqlMigrations.Migrations
                             Length = "80 cm.",
                             ProductId = 14,
                             ProductReferenceId = 11,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-80cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Sortolie-80cm"
                         },
                         new
                         {
@@ -4742,7 +4847,7 @@ namespace MySqlMigrations.Migrations
                             Length = "100 cm.",
                             ProductId = 14,
                             ProductReferenceId = 14,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Sortolie-100cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Sortolie-100cm"
                         },
                         new
                         {
@@ -4750,7 +4855,7 @@ namespace MySqlMigrations.Migrations
                             Length = "40 cm.",
                             ProductId = 15,
                             ProductReferenceId = 6,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-40cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Naturolie-40cm"
                         },
                         new
                         {
@@ -4758,7 +4863,7 @@ namespace MySqlMigrations.Migrations
                             Length = "60 cm.",
                             ProductId = 15,
                             ProductReferenceId = 9,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-60cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Naturolie-60cm"
                         },
                         new
                         {
@@ -4766,7 +4871,7 @@ namespace MySqlMigrations.Migrations
                             Length = "80 cm.",
                             ProductId = 15,
                             ProductReferenceId = 12,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-80cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Naturolie-80cm"
                         },
                         new
                         {
@@ -4774,7 +4879,7 @@ namespace MySqlMigrations.Migrations
                             Length = "100 cm.",
                             ProductId = 15,
                             ProductReferenceId = 15,
-                            ProductReferenceUrlName = "Hylde-Egetræ-Naturolie-100cm"
+                            ProductReferenceUrlName = "Væghylde-Massivt-Egetræ-Naturolie-100cm"
                         });
                 });
 

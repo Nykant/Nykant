@@ -107,6 +107,7 @@ namespace NykantMVC.Controllers
             return View();
         }
 
+
         //[HttpPost]
         //public async Task<IActionResult> SendEmail(SimpleMail simpleMail)
         //{
@@ -183,7 +184,7 @@ namespace NykantMVC.Controllers
         //        consent.OnlyEssential = true;
         //    }
         //    consent.ShowBanner = false;
-            
+
         //    HttpContext.Session.Set<CookieConsent>(ConsentCookieKey, consent);
 
         //    ViewBag.Functional = consent.Functional;

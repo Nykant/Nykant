@@ -11,6 +11,8 @@ namespace NykantMVC.Models
         public string UrlName { get; set; }
         public string Number { get; set; }
         public string Description { get; set; }
+        public string MetaTitle { get; set; }
+        public string MetaDescription { get; set; }
         public long Price { get; set; }
         public string GalleryImage1 { get; set; }
         public string GalleryImage2 { get; set; }
@@ -29,6 +31,7 @@ namespace NykantMVC.Models
         public string Materials { get; set; }
         public string Package { get; set; }
         public string Note { get; set; }
+        public string RestId { get; set; }
         public IEnumerable<Image> Images { get; set; }
         public IEnumerable<Color> Colors { get; set; }
         public IEnumerable<ProductLength> ProductLengths { get; set; }

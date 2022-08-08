@@ -14,6 +14,8 @@ namespace NykantAPI.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Title { get; set; }
+        public string MetaTitle { get; set; }
+        public string MetaDescription { get; set; }
         public string UrlName { get; set; }
         public string Number { get; set; }
         public string Description { get; set; }
@@ -37,6 +39,7 @@ namespace NykantAPI.Models
         public string Materials { get; set; }
         public string Package { get; set; }
         public string Note { get; set; }
+        public string RestId { get; set; }
         public IEnumerable<Image> Images { get; set; }
         public IEnumerable<Color> Colors { get; set; }
         public IEnumerable<ProductLength> ProductLengths { get; set; }

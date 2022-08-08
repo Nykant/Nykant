@@ -10,9 +10,10 @@
 <div class="my-row top-padding bottom-padding">
     <div class="col-8 center">
         <h1 class="list-h1">All Products</h1>
-        <table class="my-list my-list-6-cells">
+        <table class="my-list my-list-7-cells">
             <tr class="no-hover">
                 <th>Name</th>
+                <th>RestId</th>
                 <th>Oil</th>
                 <th>Price</th>
                 <th>Discount</th>
@@ -23,6 +24,7 @@
             {
                 <tr>
                     <td>@product.Name</td>
+                    <td>@product.RestId</td>
                     <td>@product.Oil</td>
                     <td>@product.Price</td>
                     <td>@product.Discount</td>
@@ -32,5 +34,10 @@
             }
         </table>
     </div>
+    <div class="col-8 center">
+        <a asp-controller="product" asp-action="updatemerchantcenter">update merchant center</a>
+    </div>
 </div>
+
+
 
