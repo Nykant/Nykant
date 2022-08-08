@@ -54,7 +54,7 @@ namespace NykantMVC.Controllers
                 //var client = new HttpClient();
                 //var response = await client.GetStringAsync("https://accounts.google.com/o/oauth2/v2/auth?client_id=343993388893-k059du29n273jacmdp5qno97es2k8jpl.apps.googleusercontent.com&redirect_uri=https://localhost:5002&response_type=code&scope=openid profile https://www.googleapis.com/auth/content");
                 //ViewBag.Html = response;
-                return Redirect("https://accounts.google.com/o/oauth2/v2/auth?client_id=343993388893-k059du29n273jacmdp5qno97es2k8jpl.apps.googleusercontent.com&redirect_uri=https://nykant.dk/account/googlegetaccesstoken&response_type=code&scope=openid profile https://www.googleapis.com/auth/content");
+                return Redirect("https://accounts.google.com/o/oauth2/v2/auth?client_id=343993388893-k059du29n273jacmdp5qno97es2k8jpl.apps.googleusercontent.com&redirect_uri=https://localhost:5002/account/googlegetaccesstoken&response_type=code&scope=openid profile https://www.googleapis.com/auth/content");
             }
             catch (Exception e)
             {
@@ -72,7 +72,7 @@ namespace NykantMVC.Controllers
             {
 
                 var flow = new Google.Apis.Auth.OAuth2.Flows.GoogleAuthorizationCodeFlow(new Google.Apis.Auth.OAuth2.Flows.GoogleAuthorizationCodeFlow.Initializer { ClientSecrets = new Google.Apis.Auth.OAuth2.ClientSecrets { ClientId = "343993388893-k059du29n273jacmdp5qno97es2k8jpl.apps.googleusercontent.com", ClientSecret = "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" }, IncludeGrantedScopes = true, Scopes = new List<string> { "https://www.googleapis.com/auth/content" } });
-                var res = await flow.ExchangeCodeForTokenAsync("nykant-358409", code, "https://nykant.dk/account/googlegetaccesstoken", new System.Threading.CancellationToken());
+                var res = await flow.ExchangeCodeForTokenAsync("nykant-358409", code, "https://localhost:5002/account/googlegetaccesstoken", new System.Threading.CancellationToken());
 
                 googleApiService.SetTokens(res.AccessToken);
                 return Redirect("/");
