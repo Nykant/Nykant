@@ -5,7 +5,7 @@ chatbox.setAttribute("attribution", "biz_inbox");
 
 window.fbAsyncInit = function () {
     FB.init({
-        appId: '391655249463703',
+        appId: '2771171759857618',
         autoLogAppEvents: true,
         xfbml: true,
         version: 'v13.0'

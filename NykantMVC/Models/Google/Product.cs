@@ -36,6 +36,12 @@ namespace NykantMVC.Models.Google
         public string Color { get; set; }
         [JsonProperty("googleProductCategory")]
         public string GoogleProductCategory { get; set; }
+        [JsonProperty("multipack")]
+        public string Multipack { get; set; }
+        [JsonProperty("condition")]
+        public string Condition { get; set; }
+        [JsonProperty("source")]
+        public string Source { get; set; }
         [JsonProperty("gtin")]
         public string Gtin { get; set; }
         [JsonProperty("itemGroupId")]

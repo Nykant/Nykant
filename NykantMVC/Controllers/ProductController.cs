@@ -283,9 +283,87 @@ namespace NykantMVC.Controllers
             //var response = await client.GetStringAsync($"https://shoppingcontent.googleapis.com/content/v2.1/549068494/products?access_token={accesstoken}");
             //var products = JsonConvert.SerializeObject(response);
 
-            foreach(var product in products)
+            var mvc = $"{_urls.Mvc}";
+
+            var tableCat = "4191";
+            var bøjleCat = "631";
+            var bænke = "6851";
+            var hylder = "6372";
+            var stativ = "5714";
+
+            foreach (var product in products)
             {
-                var updateProduct = new Models.Google.Product { Title = product.MetaTitle, Description = product.MetaDescription, Price = new Models.Google.Price { Currency = "dkk", Value = product.Price.ToString() }, SalePrice = new Models.Google.Price { Currency = "dkk", Value = ProductHelper.GetPrice(product).ToString() } };
+                var s = product.Number.Split('+', ' ');
+                product.Number = s[0];
+
+                var t = product.Number.ToCharArray();
+                var itemGroupId = t[0] + t[1] + "000";
+
+                var updateProduct = new Models.Google.Product
+                {
+                    Title = product.MetaTitle,
+                    Description = product.MetaDescription,
+                    Price = new Models.Google.Price { Currency = "dkk", Value = product.Price.ToString() },
+                    Link = $"{_urls.Mvc}/produkt/{product.UrlName}",
+                    Brand = "Nykant",
+                    Mpn = product.Number,
+                    IdentifierExists = true,
+                    Id = product.Number,
+                    Channel = "online",
+                    Kind = "content#product",
+                    Color = product.Oil,
+                    ItemGroupId = itemGroupId,
+                    Material = "Træ, Egetræ",
+                    Source = "api",
+                    Condition = "new"
+                };
+
+                switch (product.CategoryId)
+                {
+                    case 1:
+                        updateProduct.GoogleProductCategory = stativ;
+                        
+                        break;
+                    case 2:
+                        updateProduct.GoogleProductCategory = tableCat;
+                        break;
+                    case 3:
+                        updateProduct.GoogleProductCategory = hylder;
+                        break;
+                    case 4:
+                        updateProduct.GoogleProductCategory = bænke;
+                        break;
+                    case 5:
+                        updateProduct.GoogleProductCategory = bøjleCat;
+                        updateProduct.Multipack = "3";
+                        break;
+                    default:
+                        break;
+                }
+
+                if(product.Discount > 0)
+                {
+                    updateProduct.SalePrice = new Models.Google.Price { Currency = "dkk", Value = ProductHelper.GetPrice(product).ToString() };
+                }
+                else
+                {
+                    updateProduct.SalePrice = new Models.Google.Price { Currency = "dkk", Value = null };
+                }
+                var imgs = product.Images.ToList();
+
+                updateProduct.ImageLink = $"{mvc}/{imgs[0].Source2}";
+
+                var sourceList = new List<string>();
+                for (int i = 1; i < imgs.Count; i++)
+                {
+                    if (imgs[i].ImageType == ImageType.DetailsSlide)
+                    {
+                        sourceList.Add($"{mvc}/{imgs[i].Source2}");
+                    }
+                }
+
+                updateProduct.AdditionalImageLinks = sourceList.ToArray();
+
                 var content = new StringContent(JsonConvert.SerializeObject(updateProduct), Encoding.UTF8, "application/json-patch+json");
                 var httpResponse = await client.PatchAsync($"https://shoppingcontent.googleapis.com/content/v2.1/549068494/products/{product.RestId}?access_token={accesstoken}", content);
                 if (!httpResponse.IsSuccessStatusCode)
@@ -295,7 +373,7 @@ namespace NykantMVC.Controllers
                 }
             }
 
-            return RedirectToAction("List");
+            return Redirect($"{mvc}/Product/List");
         }
 
         [HttpGet("Produkt/{urlname}")]

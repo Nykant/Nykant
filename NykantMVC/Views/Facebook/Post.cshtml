@@ -7,18 +7,18 @@
 <link rel="stylesheet" href="~/css/my-list.css?101" />
 
 
-@if (Model.Winner.Name != "")
+@if (Model.Winner.Id != "")
 {
 <div id="winner-container" class="centered">
     <button class="close" onclick="pick_random_close()">
         <i class="fas fa-times"></i>
     </button>
-    <p>Winner name: @Model.Winner.Name</p>
+    @*<p>Winner name: @Model.Winner.Name</p>*@
     <p>Winner Id: @Model.Winner.Id</p>
 </div>
 }
 
-<div class="json-get-info margin-top-10">
+@*<div class="json-get-info margin-top-10">
     @if (Model != null)
     {
         <h1 class="bottom-side-padding center">http get request for post + comments: </h1>
@@ -46,7 +46,7 @@
         <h1 class="bottom-side-padding center">http get request for likes:</h1>
         <h1 class="bottom-side-padding center">json response for likes:</h1>
     }
-</div>
+</div>*@
 
 <div class="padding-50 center">
     <form method="post" asp-controller="Facebook" asp-action="PickRandom" asp-route-postId="@Model.Id">
@@ -65,7 +65,7 @@
             <table class="my-list">
                 <tr class="no-hover">
                     <th>Id</th>
-                    <th>Name</th>
+                    @*<th>Name</th>*@
                     <th>Message</th>
                     <th>Created Time</th>
                 </tr>
@@ -75,7 +75,7 @@
                     {
             <tr>
                 <td>@comment.Id</td>
-                <td>@comment.From.Name</td>
+                @*<td>@comment.From.Name</td>*@
                 <td>@comment.Message</td>
                 <td>@comment.CreatedTime</td>
 
@@ -89,7 +89,7 @@
             <table class="my-list">
                 <tr class="no-hover">
                     <th>Id</th>
-                    <th>Name</th>
+                    @*<th>Name</th>*@
                 </tr>
                 @if (Model.Likes != null)
                 {
@@ -97,7 +97,7 @@
                     {
                         <tr>
                             <td>@le.Id</td>
-                            <td>@le.Name</td>
+                            @*<td>@le.Name</td>*@
                         </tr>
                     }
                 }

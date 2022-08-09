@@ -29,7 +29,7 @@ namespace NykantMVC.Controllers
         public const string FacebookSessionKey = "verSecretSpecialFacebookSessionKeyThatNo#1Sh0ldKn02W#5123";
         public const string CouponCodeKey = "versercioisdfgsgCoaufposgnka123ASDf1239ASD#¤";
         public readonly ILogger<BaseController> _logger;
-        private readonly Urls _urls;
+        public readonly Urls _urls;
         private readonly HtmlEncoder htmlEncoder;
         public readonly IConfiguration conf;
         private readonly ITokenService tokenService;
@@ -181,6 +181,24 @@ namespace NykantMVC.Controllers
                 var item = JsonConvert.DeserializeObject<Likes>(json);
                 item.Request = "https://graph.facebook.com/v13.0/" + $"{postId}/likes?&access_token={accessToken}";
                 item.Json = json;
+                return item;
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}, {e.InnerException}, {e.StackTrace}, {e.TargetSite}");
+            }
+            return null;
+        }
+
+        public async Task<Comments> FacebookGetPostComments(string accessToken, string postId)
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+
+                string uri = "https://graph.facebook.com/v13.0/" + $"{postId}/Comments?&access_token={accessToken}";
+                var json = await client.GetStringAsync(uri);
+                var item = JsonConvert.DeserializeObject<Comments>(json);
                 return item;
             }
             catch (Exception e)

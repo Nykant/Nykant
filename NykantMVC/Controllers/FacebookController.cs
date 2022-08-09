@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace NykantMVC.Controllers
 {
-    [AutoValidateAntiforgeryToken]
+    //[AutoValidateAntiforgeryToken]
     public class FacebookController : BaseController
     {
         public FacebookController(ILogger<FacebookController> logger, IOptions<Urls> urls, HtmlEncoder htmlEncoder, IConfiguration conf, ITokenService _tokenService) : base(logger, urls, htmlEncoder, conf, _tokenService)
@@ -52,6 +52,8 @@ namespace NykantMVC.Controllers
                             };
                             Likes likes = await FacebookGetPostLikes(facebookSession.AccessToken, postId);
                             facebookSession.Feed.Posts[i].Likes = likes;
+                            Comments comments = await FacebookGetPostComments(facebookSession.AccessToken, postId);
+                            facebookSession.Feed.Posts[i].Comments = comments;
                             HttpContext.Session.Set<FacebookSession>(FacebookSessionKey, facebookSession);
                             return View(facebookSession.Feed.Posts[i]);
                         }
@@ -68,13 +70,15 @@ namespace NykantMVC.Controllers
         }
 
         [Authorize(Roles = "Admin,Raffler")]
+        [Route("/Facebook/PostFeed")]
         [HttpPost]
         public async Task<IActionResult> PostFeed(string jsonFeed, string accessToken)
         {
             try
             {
+                _logger.LogInformation("PostFeed Hit");
                 var feed = JsonConvert.DeserializeObject<Feed>(jsonFeed);
-                feed.Request = "https://graph.facebook.com/v13.0/109096938387808/feed?fields=from,id,created_time,comments&access_token=" + accessToken;
+                feed.Request = "https://graph.facebook.com/v13.0/104882272120980/feed?fields=from,id,created_time,comments&access_token=" + accessToken;
                 feed.Json = jsonFeed;
                 FacebookSession facebookSession = new FacebookSession
                 {

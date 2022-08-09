@@ -21,8 +21,8 @@
     <tr class="no-hover">
         <th>Id</th>
         <th>Created Time</th>
-        <th>From Name</th>
-        <th>From Id</th>
+        @*<th>From Name</th>*@
+        @*<th>From Id</th>*@
         <th></th>
     </tr>
     @if (Model != null)
@@ -32,8 +32,8 @@
             <tr>
                 <td>@post.Id</td>
                 <td>@post.CreatedTime</td>
-                <td>@post.From.Name</td>
-                <td>@post.From.Id</td>
+                @*<td>@post.From.Name</td>*@
+                @*<td>@post.From.Id</td>*@
                 <td>
                     <form method="get" asp-controller="Facebook" asp-action="Post" asp-route-postId="@post.Id">
                         <button type="submit">Get</button>

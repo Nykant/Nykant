@@ -1,10 +1,9 @@
 ﻿@model ProductVM
-@inject IViewLocalizer localizer
 @inject IConfiguration conf
 
 @{
     ViewData["Title"] = Model.Product.MetaTitle;
-    ViewData["Description"] = localizer[Model.Product.MetaDescription];
+    ViewData["Description"] = Model.Product.MetaDescription;
 
     string url = @conf.GetSection("Urls")["Mvc"];
 
@@ -205,7 +204,7 @@
                                 <div class="loading-check-sign" id="addToBag-check-sign">
                                     <i class="fa fa-check" aria-hidden="true"></i>
                                 </div>
-                                <div id="addToBag-text">@localizer["Tilføj Til Kurv"]</div>
+                                <div id="addToBag-text">Tilføj Til Kurv</div>
                             </button> @*style=border-radius="0"????*@
                         </div>
                     }
@@ -222,7 +221,7 @@
                                 <div class="loading-check-sign" id="addToBag-check-sign">
                                     <i class="fa fa-check" aria-hidden="true"></i>
                                 </div>
-                                <div id="addToBag-text">@localizer["Tilføj Til Kurv"]</div>
+                                <div id="addToBag-text">Tilføj Til Kurv</div>
                             </button> @*style=border-radius="0"????*@
                         </div>
                     }
@@ -233,8 +232,8 @@
 
         <div class="sidestepper col-8 left">
             <div class="sidestep-headers" id="sidestep-headers">
-                <div class="active" data-number="1">@localizer["Beskrivelse"]</div>
-                <div data-number="2">@localizer["Specifikationer"]</div>
+                <div class="active" data-number="1">Beskrivelse</div>
+                <div data-number="2">Specifikationer</div>
                 @if (Model.Product.AssemblyPath != "none")
                 {
                     <div data-number="3">Samlevejledning</div>

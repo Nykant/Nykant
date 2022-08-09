@@ -59,15 +59,20 @@ function facebookRequest() {
                         var pageAccessToken = response.access_token;
                         request = '/109096938387808/feed?fields=from,id,created_time,comments&access_token=' + pageAccessToken;
                         FB.api(request, function (response) {
+                            Log("Fb call worked");
                             $.ajax({
-                                url: '/facebook/postfeed',
+                                url: '/Facebook/PostFeed',
                                 type: 'POST',
                                 data: AddAntiforgeryToken({
                                     jsonFeed: JSON.stringify(response),
                                     accessToken: pageAccessToken
                                 }),
                                 success: function (data) {
+                                    Log("/Facebook/PostFeed call success");
                                     $("#posts_list").html(data);
+                                },
+                                error: function () {
+                                    Log("/Facebook/PostFeed call error");
                                 }
                             });
                         });
