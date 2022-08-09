@@ -42,6 +42,8 @@ namespace NykantMVC.Models.Google
         public string Condition { get; set; }
         [JsonProperty("source")]
         public string Source { get; set; }
+        [JsonProperty("availability")]
+        public string Availability { get; set; }
         [JsonProperty("gtin")]
         public string Gtin { get; set; }
         [JsonProperty("itemGroupId")]

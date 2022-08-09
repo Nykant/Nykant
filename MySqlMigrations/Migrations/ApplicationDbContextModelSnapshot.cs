@@ -117,7 +117,7 @@ namespace MySqlMigrations.Migrations
                             Name = "Tøjstativer",
                             Text1 = "Vores moderne og praktiske tøjstativer er i massivt træ, tydeligt inspireret af minimalistisk dansk design, og som både er nemme at samle og sætte op. De er perfekte til indretning af et smukt, naturligt og flot hjem, hvor der er tænkt på hver detalje, i ophæng, såvel som udseende.",
                             Text2 = "Vores tøjstativer kan nemt sættes op, hvad enten det er i entréen, på kontoret eller soveværelset. Ophæng og tøjstativer, giver plads til opbevaring og er noget af det første man ser i et hjem. De giver et rigtig godt førstehåndsindtryk og skaber orden, samtidig med at se godt ud og give kant i hjemmet.",
-                            Title = "Tøjstativ træ | Elegante tøjstativer i massivt egetræ | Køb online"
+                            Title = "Tøjstativer Træ | Elegante tøjstativer i massivt egetræ | Køb online"
                         },
                         new
                         {
@@ -129,7 +129,7 @@ namespace MySqlMigrations.Migrations
                             Name = "Borde",
                             Text1 = "Vores Dagmar bord er et enkelt og stilrent møbel i høj kvalitet, og tager udgangspunkt i sit smukke udseende, såvel som funktionalitet. Det er nemt at flytte og praktisk, hvad end det er til det lille tekøkken, hjørnekontoret, studieboligen, eller andre steder, hvor der ikke kræves meget plads.",
                             Text2 = "Vores borde kan nemt danne rammerne for en hyggelig krog eller samlingssted for små og store samtaleemner, samt giver det med sit udseende, et minimalistisk look til hjemmet. Match det med en af vores bænke for et fuldendt look eller sammensæt det på din egen måde.",
-                            Title = "Egetræsbord | Køb massivt egetræsbord her | Bæredygtigt valg"
+                            Title = "Egetræsborde | Køb massivt egetræsbord her | Bæredygtigt valg"
                         },
                         new
                         {
@@ -153,7 +153,7 @@ namespace MySqlMigrations.Migrations
                             Name = "Bænke",
                             Text1 = "Leder du efter solide, smukke og praktisk bænke, hvor der er tænkt i funktion, såvel som æstetik, så har vi det rette. Her gås der ikke ned på detaljerne, og det ses blandt andet på vores bløde hjørner og rundinger af ben og planke. De går sig godt til ethvert hjem, og hvad enten du er til helt lys eller mørk overflade, eller midt imellem, så har vi noget til enhver smag.",
                             Text2 = "Bænke er det perfekte sted at have noget ekstra opbevaring, så mangler du noget ekstra plads til sko, handsker, m.m, så kan de nemt opbevares i vores opbevaringsbænk. Bænkene er med til at have en “holdeplads” i hjemmet, og kan sammensættes på mange måder. Det er kun fantasien, der sætter grænserne, og om det er ved spisebordet, entréen, soveværelset eller ude på en overdækket terrasse, så er vi sikre på at vores bænke kan give den kant du søger.",
-                            Title = "Træbænk | Stilrene egetræsbænke i dansk design | Køb online"
+                            Title = "Træbænke | Stilrene egetræsbænke i dansk design | Køb online"
                         },
                         new
                         {
@@ -165,7 +165,7 @@ namespace MySqlMigrations.Migrations
                             Name = "Bøjler",
                             Text1 = "Et tøjstativ, knagerække eller stumtjener er altid godt komplimenteret med et par bøjler. De er med til at holde vores tøj pænt, nemt tilgængeligt og fremhæver ens yndlingstasker, tøj, m.m.",
                             Text2 = "Vores bøjler er ligeledes også i massivt træ, med henblik på holdbarhed og langvarig brug, så du ikke går ned på ophæng af dine yndlingsting. De fås i tre farver, så de nemt kan sammensættes efter dine behov og i et tidløst design.",
-                            Title = "Træbøjler | Køb massive egetræsbøjler i elegant dansk design"
+                            Title = "Tøjbøjler Træ | Køb massive egetræsbøjler i elegant dansk design"
                         });
                 });
 

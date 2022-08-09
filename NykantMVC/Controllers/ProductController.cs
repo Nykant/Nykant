@@ -297,32 +297,40 @@ namespace NykantMVC.Controllers
                 product.Number = s[0];
 
                 var t = product.Number.ToCharArray();
-                var itemGroupId = t[0] + t[1] + "000";
+                var itemGroupId = t[0].ToString() + t[1].ToString() + "000";
+                var udløb = new DateTime(2024, 12, 30);
 
                 var updateProduct = new Models.Google.Product
                 {
                     Title = product.MetaTitle,
                     Description = product.MetaDescription,
                     Price = new Models.Google.Price { Currency = "dkk", Value = product.Price.ToString() },
-                    Link = $"{_urls.Mvc}/produkt/{product.UrlName}",
+                    Link = $"https://nykant.dk/produkt/" + product.UrlName,
                     Brand = "Nykant",
                     Mpn = product.Number,
                     IdentifierExists = true,
-                    Id = product.Number,
+                    OfferId = product.Number,
                     Channel = "online",
-                    Kind = "content#product",
+                    //Kind = "content#product",
                     Color = product.Oil,
                     ItemGroupId = itemGroupId,
                     Material = "Træ, Egetræ",
-                    Source = "api",
-                    Condition = "new"
+                    //Source = "api",
+                    Condition = "new",
+                    ContentLanguage = "da",
+                    TargetCountry = "DK",
+                    Availability = "in stock",
+                    ExpirationDate = $"{udløb.Year}-{udløb.Month}-{udløb.Day}"
+
                 };
+
+                updateProduct.Id = $"{updateProduct.Channel}:{updateProduct.ContentLanguage}:{updateProduct.TargetCountry}:{updateProduct.OfferId}";
 
                 switch (product.CategoryId)
                 {
                     case 1:
                         updateProduct.GoogleProductCategory = stativ;
-                        
+
                         break;
                     case 2:
                         updateProduct.GoogleProductCategory = tableCat;
@@ -341,31 +349,32 @@ namespace NykantMVC.Controllers
                         break;
                 }
 
-                if(product.Discount > 0)
+                if (product.Discount > 0)
                 {
                     updateProduct.SalePrice = new Models.Google.Price { Currency = "dkk", Value = ProductHelper.GetPrice(product).ToString() };
                 }
                 else
                 {
-                    updateProduct.SalePrice = new Models.Google.Price { Currency = "dkk", Value = null };
+                    updateProduct.SalePrice = new Models.Google.Price { Currency = "dkk", Value = "" };
                 }
+
                 var imgs = product.Images.ToList();
 
-                updateProduct.ImageLink = $"{mvc}/{imgs[0].Source2}";
+                updateProduct.ImageLink = $"https://nykant.dk/" + $"{imgs[0].Source2}";
 
                 var sourceList = new List<string>();
                 for (int i = 1; i < imgs.Count; i++)
                 {
                     if (imgs[i].ImageType == ImageType.DetailsSlide)
                     {
-                        sourceList.Add($"{mvc}/{imgs[i].Source2}");
+                        sourceList.Add($"https://nykant.dk/" + $"{imgs[i].Source2}");
                     }
                 }
 
                 updateProduct.AdditionalImageLinks = sourceList.ToArray();
 
                 var content = new StringContent(JsonConvert.SerializeObject(updateProduct), Encoding.UTF8, "application/json-patch+json");
-                var httpResponse = await client.PatchAsync($"https://shoppingcontent.googleapis.com/content/v2.1/549068494/products/{product.RestId}?access_token={accesstoken}", content);
+                var httpResponse = await client.PostAsync($"https://shoppingcontent.googleapis.com" + $"/content/v2.1/549068494/products?access_token={accesstoken}", content);
                 if (!httpResponse.IsSuccessStatusCode)
                 {
                     _logger.LogError($"time: {DateTime.Now} - update merchant product error - {httpResponse.ReasonPhrase}");
