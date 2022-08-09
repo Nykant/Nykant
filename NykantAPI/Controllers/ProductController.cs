@@ -30,7 +30,7 @@ namespace NykantAPI.Controllers
         {
             try
             {
-                var products = _context.Products.Include(x => x.Category).Include(x => x.Colors).Include(x => x.ProductLengths);
+                var products = _context.Products.Include(x => x.Category).Include(x => x.Colors).Include(x => x.ProductLengths).Include(x => x.Images);
                 var json = JsonConvert.SerializeObject(products, Extensions.JsonOptions.jsonSettings);
                 return Ok(json);
             }
