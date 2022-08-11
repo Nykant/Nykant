@@ -11,6 +11,7 @@ namespace NykantMVC.Models
         public int ProductId { get; set; }
         public Product Product { get; set; }
         public string ImgSrc { get; set; }
+        public string Alt { get; set; }
         public int ProductSourceId { get; set; }
         public string ProductSourceUrlName { get; set; }
         public EColor EColor { get; set; }

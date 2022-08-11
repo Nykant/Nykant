@@ -14,6 +14,7 @@ namespace NykantMVC.Models
         public string Text1 { get; set; }
         public string Text2 { get; set; }
         public string ImgSource { get; set; }
+        public string Alt { get; set; }
         public List<Product> Products { get; set; }
     }
 }

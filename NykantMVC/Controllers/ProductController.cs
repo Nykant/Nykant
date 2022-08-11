@@ -45,7 +45,7 @@ namespace NykantMVC.Controllers
             }
         }
 
-        [HttpGet("Produkter")]
+        [HttpGet("Møbler")]
         public async Task<IActionResult> Gallery()
         {
             try
@@ -92,7 +92,7 @@ namespace NykantMVC.Controllers
             }
         }
 
-        [HttpGet("Produkter/{category}")]
+        [HttpGet("Møbler/{category}")]
         public async Task<IActionResult> CategoryView(string category)
         {
             try
@@ -137,7 +137,7 @@ namespace NykantMVC.Controllers
             }
         }
 
-        [HttpPost("Produkter")]
+        [HttpPost("Møbler")]
         public async Task<IActionResult> Search(string searchString)
         {
             try
@@ -320,9 +320,38 @@ namespace NykantMVC.Controllers
                     ContentLanguage = "da",
                     TargetCountry = "DK",
                     Availability = "in stock",
-                    ExpirationDate = $"{udløb.Year}-{udløb.Month}-{udløb.Day}"
-
+                    ExpirationDate = /*$"{udløb.Year}-{udløb.Month}-{udløb.Day}T00:00:00+0100",*/ null
                 };
+
+                switch (product.Oil)
+                {
+                    case "Naturolie":
+                        updateProduct.ProductHighlights = new string[]
+                        {
+                            "Gratis Og Hurtig Levering",
+                            "Massivt Egetræsmøbel I Høj Kvalitet",
+                            $"Overfladebehandlet Med {product.Oil}"
+                        };
+                        break;
+                    case "Sortolie":
+                        updateProduct.ProductHighlights = new string[]
+{
+                            "Gratis Og Hurtig Levering",
+                            "Massivt Egetræsmøbel I Høj Kvalitet",
+                            $"Overfladebehandlet Med {product.Oil}"
+};
+                        break;
+                    case "Hvidolie":
+                        updateProduct.ProductHighlights = new string[]
+{
+                            "Gratis Og Hurtig Levering",
+                            "Massivt Egetræsmøbel I Høj Kvalitet",
+                            $"Overfladebehandlet Med {product.Oil}"
+};
+                        break;
+                    default:
+                        break;
+                }
 
                 updateProduct.Id = $"{updateProduct.Channel}:{updateProduct.ContentLanguage}:{updateProduct.TargetCountry}:{updateProduct.OfferId}";
 
@@ -330,19 +359,55 @@ namespace NykantMVC.Controllers
                 {
                     case 1:
                         updateProduct.GoogleProductCategory = stativ;
-
+                        updateProduct.ProductTypes = new string[]
+                        {
+                             "Hjem > Produkter > Egetræsmøbler > Organisering Og Opbevaring > Tøjstativer I Træ",
+                             "Hjem > Produkter > Møbler > Organisering Og Opbevaring > Tøjstativ"
+                        };
                         break;
                     case 2:
                         updateProduct.GoogleProductCategory = tableCat;
+                        updateProduct.ProductTypes = new string[]
+                        {
+                             "Hjem > Produkter > Møbler > Kontormøbler > Borde > Skriveborde",
+                             "Hjem > Produkter > Egetræsmøbler > Kontormøbler > Egetræsborde > Skriveborde"
+                        };
                         break;
                     case 3:
                         updateProduct.GoogleProductCategory = hylder;
+                        updateProduct.ProductTypes = new string[]
+                        {
+                             "Hjem > Produkter > Møbler > Hylder > Væghylder",
+                             "Hjem > Produkter > Egetræsmøbler > Egetræshylder > Væghylder I Træ"
+                        };
                         break;
                     case 4:
                         updateProduct.GoogleProductCategory = bænke;
+                        if (product.Name.Contains("Filippa"))
+                        {
+                            updateProduct.ProductTypes = new string[]
+                            {
+                                "Hjem > Produkter > Møbler > Organisering Og Opbevaring > Opbevaringsbænke",
+                                "Hjem > Produkter > Egetræsmøbler > Entremøbler > Opbevaringsbænke I Egetræ"
+                            };
+                        }
+                        else
+                        {
+                            updateProduct.ProductTypes = new string[]
+                            {
+                                "Hjem > Produkter > Møbler > Entremøbler > Bænke I Træ",
+                                "Hjem > Produkter > Egetræsmøbler > Møbler Til Entreen > Egetræsbænke"
+                             };
+                        }
+                        
                         break;
                     case 5:
                         updateProduct.GoogleProductCategory = bøjleCat;
+                        updateProduct.ProductTypes = new string[]
+                            {
+                                "Hjem > Produkter > Møbler > Organisering Og Opbevaring > Tøjbøjler I Træ",
+                                "Hjem > Produkter > Egetræsmøbler > Organisering Og Opbevaring > Egetræsbøjler"
+                             };
                         updateProduct.Multipack = "3";
                         break;
                     default:
@@ -355,7 +420,7 @@ namespace NykantMVC.Controllers
                 }
                 else
                 {
-                    updateProduct.SalePrice = new Models.Google.Price { Currency = "dkk", Value = "" };
+                    updateProduct.SalePrice = null;
                 }
 
                 var imgs = product.Images.ToList();
@@ -385,8 +450,8 @@ namespace NykantMVC.Controllers
             return Redirect($"{mvc}/Product/List");
         }
 
-        [HttpGet("Produkt/{urlname}")]
-        public async Task<IActionResult> Details(string urlname)
+        [HttpGet("Møbler/{category}/{urlname}")]
+        public async Task<IActionResult> Details(string category, string urlname)
         {
             try
             {
@@ -412,9 +477,9 @@ namespace NykantMVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostLength(string urlname)
+        public async Task<IActionResult> PostLength(string category, string urlname)
         {
-            return RedirectToAction("Details", new { urlname = urlname });
+            return RedirectToAction("Details", new { category = category, urlname = urlname });
         }
 
         [HttpPost]

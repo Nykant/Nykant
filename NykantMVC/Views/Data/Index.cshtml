@@ -1,0 +1,31 @@
+﻿@model DataVM
+
+    <a asp-controller="Data" asp-action="UploadData">UploadData</a>
+
+<p class="titlesize">Images:</p>
+@if (Model.Images != null)
+{
+    @foreach (var img in Model.Images)
+    {
+        <p>ID: @img.Id -- SOURCE: @img.Source -- PRODUCT NAME: @img.Product.Name</p>
+    }
+
+}
+<p class="titlesize">Colors:</p>
+@if (Model.Colors != null)
+{
+    @foreach (var color in Model.Colors)
+    {
+        <p>ID: @color.Id -- SOURCE: @color.ImgSrc -- PRODUCT NAME: @color.Product.Name</p>
+    }
+
+}
+<p class="titlesize">Lengths:</p>
+@if (Model.Lengths != null)
+{
+    @foreach (var length in Model.Lengths)
+    {
+        <p>ID: @length.Id -- ProductId: @length.ProductId -- PRODUCT NAME: @length.Product.Name</p>
+    }
+
+}

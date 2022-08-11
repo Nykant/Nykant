@@ -15,6 +15,7 @@ namespace NykantAPI.Models
         public string Description { get; set; }
         public string H1 { get; set; }
         public string H2 { get; set; }
+        public string Alt { get; set; }
         public string Text1 { get; set; }
         public string Text2 { get; set; }
         public string ImgSource { get; set; }

@@ -29,6 +29,8 @@ namespace NykantMVC.Models.Sitemap
         /// The priority of this URL relative to other URLs on your site. Valid values range from 0.0 to 1.0.
         /// </summary>
         double? Priority { get; }
+
+        List<string> Images { get; }
     }
 
     /// <summary>

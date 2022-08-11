@@ -49,8 +49,8 @@
                         {
                             if (color.EColor != EColor.Nature)
                             {
-                                <a class="product-item-color" asp-controller="product" asp-action="details" asp-route-urlname="@color.ProductSourceUrlName">
-                                    <img src="@color.ImgSrc" />
+                                <a class="product-item-color" asp-controller="product" asp-action="details" asp-route-urlname="@color.ProductSourceUrlName" asp-route-category="@item.Category.Name">
+                                    <img src="~/@color.ImgSrc" alt="@color.Alt" />
                                 </a>
                             }
                         }
@@ -58,7 +58,7 @@
                 }
 
                 <div class="product-item">
-                    <a asp-controller="product" asp-action="details" asp-route-urlname="@item.UrlName">
+                    <a asp-controller="product" asp-action="details" asp-route-urlname="@item.UrlName" asp-route-category="@item.Category.Name">
 
                         <div class="product-images">
                             @if (item.Discount != 0)
@@ -70,20 +70,20 @@
                             @if (count > 5)
                             {
                                 <div class="primary-img">
-                                    <img loading="lazy" src="@item.GalleryImage1" alt="@item.Title" />
+                                    <img loading="lazy" src="~/@item.GalleryImage1" alt="@item.Alt" />
                                 </div>
                                 count++;
                             }
                             else
                             {
                                 <div class="primary-img">
-                                    <img src="@item.GalleryImage1" />
+                                    <img src="~/@item.GalleryImage1" alt="@item.Alt" />
                                 </div>
                                 count++;
                             }
 
                             <div class="secondary-img">
-                                <img loading="lazy" src="@item.GalleryImage2" alt="@item.Title" />
+                                <img loading="lazy" src="~/@item.GalleryImage2" alt="@item.Alt" />
                             </div>
                         </div>
                         <div class="product-item-inside">
@@ -114,8 +114,8 @@
                         {
                             if (color.EColor != EColor.Nature)
                             {
-                                <a class="product-item-color" asp-controller="product" asp-action="details" asp-route-urlname="@color.ProductSourceUrlName">
-                                    <img src="@color.ImgSrc" />
+                                <a class="product-item-color" asp-controller="product" asp-action="details" asp-route-urlname="@color.ProductSourceUrlName"asp-route-category="@item.Category.Name">
+                                    <img src="~/@color.ImgSrc" alt="@color.Alt" />
                                 </a>
                             }
                         }
@@ -123,7 +123,7 @@
                 }
 
                 <div class="product-item">
-                    <a asp-controller="product" asp-action="details" asp-route-urlname="@item.UrlName">
+                    <a asp-controller="product" asp-action="details" asp-route-urlname="@item.UrlName" asp-route-category="@item.Category.Name">
 
                         <div class="product-images">
                             @if (item.Discount != 0)
@@ -135,20 +135,20 @@
                             @if (count > 5)
                             {
                                 <div class="primary-img">
-                                    <img loading="lazy" src="@item.GalleryImage1" alt="@item.Title" />
+                                    <img loading="lazy" src="~/@item.GalleryImage1" alt="@item.Alt" />
                                 </div>
                                 count++;
                             }
                             else
                             {
                                 <div class="primary-img">
-                                    <img src="@item.GalleryImage1" />
+                                    <img src="~/@item.GalleryImage1" alt="@item.Alt" />
                                 </div>
                                 count++;
                             }
 
                             <div class="secondary-img">
-                                <img loading="lazy" src="@item.GalleryImage2" alt="@item.Title" />
+                                <img loading="lazy" src="~/@item.GalleryImage2" alt="@item.Alt" />
                             </div>
                         </div>
                         <div class="product-item-inside">

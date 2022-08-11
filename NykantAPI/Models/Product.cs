@@ -10,7 +10,6 @@ namespace NykantAPI.Models
     public class Product
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Name { get; set; }
         public string Title { get; set; }

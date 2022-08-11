@@ -11,6 +11,10 @@
     var filippa = products.Find(x => x.Id == 24);
     var thyra = products.Find(x => x.Id == 18);
     var dagmar = products.Find(x => x.Id == 16);
+    var noraImg = nora.Images.FirstOrDefault(x => x.ImageType == ImageType.DetailsSlide && x.Source.Contains('2'));
+    var filippaImg = filippa.Images.FirstOrDefault(x => x.ImageType == ImageType.DetailsSlide && x.Source.Contains('2'));
+    var thyraImg = thyra.Images.FirstOrDefault(x => x.ImageType == ImageType.DetailsSlide && x.Source.Contains('2'));
+    var dagmarImg = dagmar.Images.FirstOrDefault(x => x.ImageType == ImageType.DetailsSlide && x.Source.Contains('2'));
 }
 
 <link rel="stylesheet" href="~/css/front-page.css?6" />
@@ -33,30 +37,30 @@
         <div class="slide-container" id="slide-container">
             <div class="slide">
                 <picture>
-                    <source srcset="../images/Products/Miljø/Desktop/Miljoe_2.png" media="(min-width: 600px)">
-                    <source srcset="../images/Products/Miljø/Desktop/Miljoe_2.png" media="(min-width: 1000px)">
-                    <img src="../images/Products/Miljø/Phone/Miljoe_2.png" alt="Egetræsmøbler i miljø">
+                    <source srcset="~/Egetræsmøbler\Miljø\Egetræsmøbler-Skrivebord-Tøjstativ-Opbevaringsbænk-dt.png" media="(min-width: 600px)">
+                    <source srcset="~/Egetræsmøbler\Miljø\Egetræsmøbler-Skrivebord-Tøjstativ-Opbevaringsbænk-dt.png" media="(min-width: 1000px)">
+                    <img src="~/Egetræsmøbler\Miljø\Egetræsmøbler-Skrivebord-1mb.png" alt="Egetræsmøbler I Miljø">
                 </picture>
             </div>
             <div class="slide">
                 <picture>
-                    <source srcset="../images/Products/Miljø/Desktop/NYKANT_miljoe_1_varient.png" media="(min-width: 1000px)">
-                    <source loading="lazy" srcset="../images/Products/Miljø/Desktop/NYKANT_miljoe_1_varient.png" media="(min-width: 600px)">
-                    <img loading="lazy" src="../images/Products/Miljø/Phone/NYKANT_miljoe_1_varient.png" alt="Egetræsmøbler i miljø">
+                    <source srcset="~/Egetræsmøbler\Miljø\Egetræsmøbler-Skrivebord-Tøjstativ-dt.png" media="(min-width: 1000px)">
+                    <source loading="lazy" srcset="~/Egetræsmøbler\Miljø\Egetræsmøbler-Skrivebord-Tøjstativ-dt.png" media="(min-width: 600px)">
+                    <img loading="lazy" src="~/Egetræsmøbler\Miljø\Egetræsmøbler-Skrivebord-2mb.png" alt="Egetræsmøbler I Miljø">
                 </picture>
             </div>
             <div class="slide">
                 <picture>
-                    <source srcset="../images/Products/Miljø/Desktop/Miljoe_3.png" media="(min-width: 1000px)">
-                    <source loading="lazy" srcset="../images/Products/Miljø/Desktop/Miljoe_3.png" media="(min-width: 600px)">
-                    <img loading="lazy" src="../images/Products/Miljø/Phone/Miljoe_3.png" alt="Egetræsmøbler i miljø">
+                    <source srcset="~/Egetræsmøbler\Miljø\Egetræsmøbler-Opbevaringsbænk-Tøjstativ-dt.png" media="(min-width: 1000px)">
+                    <source loading="lazy" srcset="~/Egetræsmøbler\Miljø\Egetræsmøbler-Opbevaringsbænk-Tøjstativ-dt.png" media="(min-width: 600px)">
+                    <img loading="lazy" src="~/Egetræsmøbler\Miljø\Egetræsmøbler-Skrivebord-Væghylder-mb.png" alt="Egetræsmøbler I Miljø">
                 </picture>
             </div>
             <div class="slide">
                 <picture>
-                    <source srcset="../images/Products/Miljø/Desktop/NYKANT_miljoe_4.png" media="(min-width: 1000px)">
-                    <source loading="lazy" srcset="../images/Products/Miljø/Desktop/NYKANT_miljoe_4.png" media="(min-width: 600px)">
-                    <img loading="lazy" src="../images/Products/Miljø/Phone/NYKANT_miljoe_5.png" alt="Egetræsmøbler i miljø">
+                    <source srcset="~/Egetræsmøbler\Miljø\Egetræsmøbler-Skrivebord-Entrebænk-Opbevaringsbænk-Ophængt-Tøjstativ-dt.png" media="(min-width: 1000px)">
+                    <source loading="lazy" srcset="~/Egetræsmøbler\Miljø\Egetræsmøbler-Skrivebord-Entrebænk-Opbevaringsbænk-Ophængt-Tøjstativ-dt.png" media="(min-width: 600px)">
+                    <img loading="lazy" src="~/Egetræsmøbler\Miljø\Egetræsmøbler-Opbevaringsbænk-Ophængt-Tøjstativ-Entrebænk-mb.png" alt="Egetræsmøbler I Miljø">
                 </picture>
             </div>
         </div>
@@ -140,9 +144,9 @@
                 </video>
             </div>
             <div class="half">
-                <img class="vertical-center video-img" src="~/images/Products/Details_Fullscreen/Desktop/NYKANT_rack_naturolie_02.png" />
+                <img class="vertical-center video-img" src="@noraImg.Source" alt="@noraImg.Alt" />
             </div>
-            <a onclick="VideoClick()" id="follow-link" asp-controller="Product" asp-action="Details" asp-route-urlname="@nora.UrlName">
+            <a onclick="VideoClick()" id="follow-link" asp-controller="Product" asp-action="Details" asp-route-category="@nora.Category.Name" asp-route-urlname="@nora.UrlName">
                 <div class="follow-container" id="follow-container">
                     <div class="follow-box" id="follow-box">
                         <p id="follow-name">@nora.Name</p>
@@ -183,8 +187,8 @@
                             <div class="karusel-price">
                                 <p>kr. @ProductHelper.GetPrice(product) <span class="line-through red-text">@product.Price</span></p>
                             </div>
-                            <a onclick="DiscountClick()" asp-controller="product" asp-action="details" asp-route-urlname="@product.UrlName">
-                                <img class="absolute-center" src="@product.GalleryImage1" />
+                            <a onclick="DiscountClick()" asp-controller="product" asp-action="details" asp-route-urlname="@product.UrlName" asp-route-category="@product.Category.Name">
+                                <img class="absolute-center" src="@product.GalleryImage1" alt="@product.Alt" />
                             </a>
                         </div>
                         skip:;
@@ -231,8 +235,8 @@
                 <p class="titlesize">FAVORITTER</p>
                 </div>
                 <div class="col-6 left favorite-item">
-                    <a onclick="FavoriteClick()" asp-controller="product" asp-action="details" asp-route-urlname="@dagmar.UrlName">
-                        <img class="absolute-center favorite-img" src="@dagmar.GalleryImage2" />
+                <a onclick="FavoriteClick()" asp-controller="product" asp-action="details" asp-route-urlname="@dagmar.UrlName" asp-route-category="@dagmar.Category.Name">
+                    <img class="absolute-center favorite-img" src="@dagmarImg.Source" alt="@dagmarImg.Alt" />
                         <div id="follow-container">
                             <div class="follow-container" id="follow-container-table">
                                 <div class="follow-box" id="follow-box-table">
@@ -248,8 +252,8 @@
                     </a>
                 </div>
                 <div class="col-6 left favorite-item">
-                    <a onclick="FavoriteClick()" asp-controller="product" asp-action="details" asp-route-urlname="@filippa.UrlName">
-                        <img class="absolute-center favorite-img" src="@filippa.GalleryImage2" />
+                <a onclick="FavoriteClick()" asp-controller="product" asp-action="details" asp-route-urlname="@filippa.UrlName" asp-route-category="@filippa.Category.Name">
+                    <img class="absolute-center favorite-img" src="@filippaImg.Source" alt="@filippaImg.Alt" />
                         <div id="follow-container">
                             <div class="follow-container" id="follow-container-baenk">
                                 <div class="follow-box" id="follow-box-baenk">
@@ -265,8 +269,8 @@
                     </a>
                 </div>
                 <div class="col-6 left favorite-item">
-                    <a onclick="FavoriteClick()" asp-controller="product" asp-action="details" asp-route-urlname="@nora.UrlName">
-                        <img class="absolute-center favorite-img" src="@nora.GalleryImage2" />
+                <a onclick="FavoriteClick()" asp-controller="product" asp-action="details" asp-route-urlname="@nora.UrlName" asp-route-category="@nora.Category.Name">
+                    <img class="absolute-center favorite-img" src="@noraImg.Source" alt="@noraImg.Alt" />
                         <div class="follow-container" id="follow-container-rack">
                             <div class="follow-box" id="follow-box-rack">
                                 <p id="follow-name-rack">@nora.Name</p>
@@ -281,8 +285,8 @@
                 </div>
 
                 <div class="col-6 left favorite-item">
-                    <a onclick="FavoriteClick()" asp-controller="product" asp-action="details" asp-route-urlname="@thyra.UrlName">
-                        <img class="absolute-center favorite-img" src="@thyra.GalleryImage2" />
+                <a onclick="FavoriteClick()" asp-controller="product" asp-action="details" asp-route-urlname="@thyra.UrlName" asp-route-category="@thyra.Category.Name">
+                    <img class="absolute-center favorite-img" src="@thyraImg.Source" alt="@thyraImg.Alt" />
                         <div id="follow-container">
                             <div class="follow-container" id="follow-container-kortbaenk">
                                 <div class="follow-box" id="follow-box-kortbaenk">
@@ -312,7 +316,7 @@
             @foreach (var category in Model.Categories)
             {
                 <a onclick="CategoryClick()" class="category" method="get" asp-controller="product" asp-action="CategoryView" asp-route-category="@category.Name">
-                    <img class="absolute-center" src="@category.ImgSource" />
+                    <img class="absolute-center" src="@category.ImgSource" alt="@category.Alt" />
                     <p class="centered">@category.Name</p>
                 </a>
             }

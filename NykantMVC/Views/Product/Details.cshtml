@@ -7,13 +7,13 @@
 
     string url = @conf.GetSection("Urls")["Mvc"];
 
-    var buttonImages = Model.Product.Images.Where(x => x.ImageType == ImageType.DetailsButton);
-    var slideImages = Model.Product.Images.Where(x => x.ImageType == ImageType.DetailsSlide);
+    //var buttonImages = Model.Product.Images.Where(x => x.ImageType == ImageType.DetailsButton);
+    var slideImages = Model.Product.Images.Where(x => x.ImageType == ImageType.DetailsSlide).Reverse();
 
     var count = 1;
 
     var randomRelated = Model.RelatedProducts;
-    //var randomRelated = ProductHelper.RandomizeList(Model.RelatedProducts);
+    randomRelated = ProductHelper.RandomizeList(randomRelated);
 }
 
 <link rel="stylesheet" href="~/css/product-details.css?2" />
@@ -22,7 +22,7 @@
 
 <div class="pop" id="pop">
     <i id="close-pop" class="far fa-times-circle right"></i>
-    <img align="middle" loading="lazy" class="bigImg" id="bigImg" />
+    <img align="middle" loading="lazy" class="bigImg" id="bigImg" alt="@Model.Product.Title" />
 </div> 
 
 <div class="modal" id="item-added-modal">
@@ -39,13 +39,13 @@
                         if (count > 1)
                         {
                             <div class="product-slide">
-                                <img loading="lazy" align="middle" data-fullscreenSrc="../@image.Source2" src="../@image.Source" />
+                                <img loading="lazy" align="middle" data-fullscreenSrc="~/@image.Source2" src="~/@image.Source" alt="@image.Alt" />
                             </div>
                         }
                         else
                         {
                             <div class="product-slide">
-                                <img align="middle" data-fullscreenSrc="../@image.Source2" src="../@image.Source" />
+                                <img align="middle" data-fullscreenSrc="~/@image.Source2" src="~/@image.Source" alt="@image.Alt" />
                             </div>
                         }
                         count++;
@@ -55,10 +55,10 @@
 
             <div class="my-row top-side-padding">
                 <div class="product-slide-buttons" id="product-slide-buttons">
-                    @foreach (var image in buttonImages)
+                    @foreach (var image in slideImages)
                     {
                         <div class="product-slide-button">
-                            <img src="../@image.Source" />
+                            <img src="~/@image.Source" alt="@image.Alt" />
                         </div>
                     }
                 </div>
@@ -86,7 +86,7 @@
 
                 @if (Model.Product.ProductLengths.Count() > 0)
                 {
-                    <form id="length-form" method="post" asp-controller="Product" asp-action="PostLength">
+                    <form id="length-form" method="post" asp-controller="Product" asp-action="PostLength" asp-route-category="@Model.Product.Category.Name">
                         @Html.AntiForgeryToken()
                         <select id="length-select">
                             <option>Længder</option>
@@ -168,7 +168,7 @@
                         {
                             <div class="color current-color">
                                 <a asp-controller="Product" asp-action="details" asp-route-urlname="@color.ProductSourceUrlName">
-                                    <img src="../@color.ImgSrc" />
+                                    <img src="~/@color.ImgSrc" alt="@color.Alt" />
                                 </a>
                             </div>
                         }
@@ -176,7 +176,7 @@
                         {
                             <div class="color">
                                 <a asp-controller="Product" asp-action="details" asp-route-urlname="@color.ProductSourceUrlName">
-                                    <img src="../@color.ImgSrc" />
+                                    <img src="~/@color.ImgSrc" alt="@color.Alt" />
                                 </a>
                             </div>
                         }
@@ -312,7 +312,7 @@
                                 </div>
                             }
                             <a asp-controller="product" asp-action="details" asp-route-urlname="@product.UrlName">
-                                <img class="absolute-center" src="@product.GalleryImage1" />
+                                <img class="absolute-center" src="~/@product.GalleryImage1" alt="@product.Alt" />
                             </a>
                         </div>
                     }

@@ -30,6 +30,10 @@ namespace NykantMVC.Models.Google
         public bool Adult { get; set; }
         [JsonProperty("kind")]
         public string Kind { get; set; }
+        [JsonProperty("productTypes")]
+        public string[] ProductTypes { get; set; }
+        [JsonProperty("productHighlights")]
+        public string[] ProductHighlights { get; set; }
         [JsonProperty("brand")]
         public string Brand { get; set; }
         [JsonProperty("color")]

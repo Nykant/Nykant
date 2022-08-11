@@ -5,6 +5,8 @@
         public int Id { get; set; }
         public string Source { get; set; }
         public string Source2 { get; set; }
+        public string Path { get; set; }
+        public string Alt { get; set; }
         public ImageType ImageType { get; set; }
         public Size Size { get; set; }
         public int ProductId { get; set; }
@@ -15,7 +17,10 @@
     {
         DetailsSlide,
         DetailsButton,
-        DetailsFullscreen
+        DetailsFullscreen,
+        Color,
+        Gallery,
+        Category
     }
 
     public enum Size

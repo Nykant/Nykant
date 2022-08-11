@@ -11,12 +11,12 @@
 {
 <div class="bag-item">
     <div id="bag-item-image">
-        <a asp-action="Details" asp-controller="Product" asp-route-urlname="@bagItem.Product.UrlName">
+            <a asp-action="Details" asp-controller="Product" asp-route-urlname="@bagItem.Product.UrlName" asp-route-category="@bagItem.Product.Category.Name">
             <img src="@bagItem.Product.GalleryImage1" />
         </a>
     </div>
     <div id="bag-item-name">
-        <a asp-action="Details" asp-controller="Product" asp-route-urlname="@bagItem.Product.UrlName">
+            <a asp-action="Details" asp-controller="Product" asp-route-urlname="@bagItem.Product.UrlName" asp-route-category="@bagItem.Product.Category.Name">
             @if (bagItem.Product.Length != null)
             {
                 <p>@bagItem.Product.Name <br /> @bagItem.Product.Length <br /> @bagItem.Product.Oil</p>

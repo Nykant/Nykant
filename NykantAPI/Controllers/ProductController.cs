@@ -44,6 +44,24 @@ namespace NykantAPI.Controllers
         }
 
         [HttpGet]
+        public async Task<ActionResult> GetProductsWithNothing()
+        {
+            try
+            {
+                var products = _context.Products.ToList();
+                var json = JsonConvert.SerializeObject(products);
+                return Ok(json);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}, {e.InnerException}, {e.StackTrace}, {e.TargetSite}");
+                return BadRequest();
+            }
+
+
+        }
+
+        [HttpGet]
         public async Task<ActionResult> GetBagItemProducts(List<BagItem> bagItems)
         {
             try
@@ -74,6 +92,7 @@ namespace NykantAPI.Controllers
                     .Include(x => x.Images)
                     .Include(x => x.Colors)
                     .Include(x => x.ProductLengths)
+                    .Include(x => x.Category)
                     .FirstOrDefaultAsync(x => x.Id == id);
 
                 var json = JsonConvert.SerializeObject(product, Extensions.JsonOptions.jsonSettings);
@@ -98,6 +117,7 @@ namespace NykantAPI.Controllers
                     .Include(x => x.Images)
                     .Include(x => x.Colors)
                     .Include(x => x.ProductLengths)
+                    .Include(x => x.Category)
                     .FirstOrDefaultAsync(x => x.UrlName == urlname);
 
                 var json = JsonConvert.SerializeObject(product, Extensions.JsonOptions.jsonSettings);
@@ -165,6 +185,31 @@ namespace NykantAPI.Controllers
                 if (ModelState.IsValid)
                 {
                     _context.Products.Update(product);
+                    await _context.SaveChangesAsync();
+                    return Ok();
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}, {e.InnerException}, {e.StackTrace}, {e.TargetSite}");
+                return BadRequest();
+            }
+
+
+        }
+
+        [HttpPatch]
+        public async Task<ActionResult<List<Product>>> UpdateProducts(List<Product> products)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _context.Products.UpdateRange(products);
                     await _context.SaveChangesAsync();
                     return Ok();
                 }
