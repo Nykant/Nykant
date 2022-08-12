@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -20,8 +21,10 @@ namespace NykantMVC.Controllers
     [AutoValidateAntiforgeryToken]
     public class DataController : BaseController
     {
-        public DataController(ILogger<DataController> logger, IOptions<Urls> urls, HtmlEncoder htmlEncoder, IConfiguration conf, ITokenService _tokenService) : base(logger, urls, htmlEncoder, conf, _tokenService)
+        private readonly IHostingEnvironment env;
+        public DataController(IHostingEnvironment env, ILogger<DataController> logger, IOptions<Urls> urls, HtmlEncoder htmlEncoder, IConfiguration conf, ITokenService _tokenService) : base(logger, urls, htmlEncoder, conf, _tokenService)
         {
+            this.env = env;
         }
 
         [HttpGet]
@@ -58,11 +61,24 @@ namespace NykantMVC.Controllers
                 var json = await GetRequest("/Product/GetProductsWithNothing");
                 var products = JsonConvert.DeserializeObject<List<Product>>(json);
 
-                var images = ImageHelper.GetImages();
+                _logger.LogInformation($"Path = {env.WebRootPath}");
+
+                var images = ImageHelper.GetImages(env.WebRootPath);
+
+                _logger.LogInformation($"Example = {images[0]}");
                 var imageList = new List<ImageFile>();
+                var h = "";
+                if (env.IsDevelopment())
+                {
+                    h = @"\";
+                }
+                else
+                {
+                    h = "/";
+                }
                 for (int i = 0; i < images.Length; i++)
                 {
-                    var s = images[i].Split(@"\");
+                    var s = images[i].Split(h);
                     var name = s[s.Length - 1];
                     s = name.Split('.');
                     name = s[0];
@@ -78,6 +94,16 @@ namespace NykantMVC.Controllers
                 //New Images
                 foreach (var img in imageList)
                 {
+                    var sour = "";
+                    if (env.IsDevelopment())
+                    {
+                        sour = img.Path.Substring(10);
+                    }
+                    else
+                    {
+                        sour = img.Path.Substring(12);
+                    }
+
                     var split = img.Name.Split('-');
 
                     var itemName = split[0];
@@ -187,7 +213,7 @@ namespace NykantMVC.Controllers
 
                     newImg.Path = img.Path;
 
-                    newImg.Source = img.Path.Substring(10);
+                    newImg.Source = sour;
 
                     if (newImg.ImageType == ImageType.DetailsSlide)
                     {
@@ -223,6 +249,15 @@ namespace NykantMVC.Controllers
                 //New Colors
                 foreach (var img in imageList)
                 {
+                    var sour = "";
+                    if (env.IsDevelopment())
+                    {
+                        sour = img.Path.Substring(10);
+                    }
+                    else
+                    {
+                        sour = img.Path.Substring(12);
+                    }
                     var split = img.Name.Split('-');
 
                     var itemName = split[0];
@@ -315,7 +350,7 @@ namespace NykantMVC.Controllers
                                             var sourceProduct = products.FirstOrDefault(x => x.Oil == oilList[i] && x.Title.Contains(itemName) && x.Length.Contains(cm));
                                             newColor.ProductId = sourceProduct.Id;
                                             newColor.ProductSourceId = product.Id;
-                                            newColor.ImgSrc = img.Path.Substring(10);
+                                            newColor.ImgSrc = sour;
                                             newColor.ProductSourceUrlName = product.UrlName;
                                             newColor.Alt = product.Title;
                                             switch (product.Oil)
@@ -354,7 +389,7 @@ namespace NykantMVC.Controllers
                                 var sourceProduct = products.FirstOrDefault(x => x.Oil == oilList[i] && x.Title.Contains(itemName));
                                 newColor.ProductId = sourceProduct.Id;
                                 newColor.ProductSourceId = product.Id;
-                                newColor.ImgSrc = img.Path.Substring(10);
+                                newColor.ImgSrc = sour;
                                 newColor.ProductSourceUrlName = product.UrlName;
                                 newColor.Alt = product.Title;
                                 switch (product.Oil)
@@ -442,7 +477,15 @@ namespace NykantMVC.Controllers
 
                 foreach (var img in imageList)
                 {
-                    var source = img.Path.Substring(10);
+                    var sour = "";
+                    if (env.IsDevelopment())
+                    {
+                        sour = img.Path.Substring(10);
+                    }
+                    else
+                    {
+                        sour = img.Path.Substring(12);
+                    }
                     var split = img.Name.Split('-');
 
                     var itemName = split[0];
@@ -529,11 +572,11 @@ namespace NykantMVC.Controllers
                                             found = true;
                                             if (img.Type.Contains('2'))
                                             {
-                                                newProductList[i].GalleryImage1 = source;
+                                                newProductList[i].GalleryImage1 = sour;
                                             }
                                             else if (img.Type.Contains('1'))
                                             {
-                                                newProductList[i].GalleryImage2 = source;
+                                                newProductList[i].GalleryImage2 = sour;
                                             }
 
                                             break;
@@ -547,12 +590,12 @@ namespace NykantMVC.Controllers
                                 found = true;
                                 if (img.Type.Contains('2'))
                                 {
-                                    newProductList[i].GalleryImage1 = source;
+                                    newProductList[i].GalleryImage1 = sour;
 
                                 }
                                 else if (img.Type.Contains('1'))
                                 {
-                                    newProductList[i].GalleryImage2 = source;
+                                    newProductList[i].GalleryImage2 = sour;
 
                                 }
                                 break;
@@ -580,12 +623,12 @@ namespace NykantMVC.Controllers
                                             newProduct.Alt = product.Title;
                                             if (img.Type.Contains('2'))
                                             {
-                                                newProduct.GalleryImage1 = source;
+                                                newProduct.GalleryImage1 = sour;
                                                 newProductList.Add(newProduct);
                                             }
                                             else if (img.Type.Contains('1'))
                                             {
-                                                newProduct.GalleryImage2 = source;
+                                                newProduct.GalleryImage2 = sour;
                                                 newProductList.Add(newProduct);
                                             }
 
@@ -601,12 +644,12 @@ namespace NykantMVC.Controllers
                                 newProduct.Alt = product.Title;
                                 if (img.Type.Contains('2'))
                                 {
-                                    newProduct.GalleryImage1 = source;
+                                    newProduct.GalleryImage1 = sour;
                                     newProductList.Add(newProduct);
                                 }
                                 else if (img.Type.Contains('1'))
                                 {
-                                    newProduct.GalleryImage2 = source;
+                                    newProduct.GalleryImage2 = sour;
                                     newProductList.Add(newProduct);
                                 }
 

@@ -1,16 +1,18 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Reflection;
 
 namespace NykantMVC.Friends
 {
     public static class ImageHelper
     {
-        public static string[] GetImages()
+        public static string[] GetImages(string path)
         {
             //string[] files = Directory.GetFiles(@".\Archive", "*.zip");
-            //string currentDirectory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
-            //string imageFolder= Path.Combine(currentDirectory, "Egetræsmøbler");
-            var images = Directory.GetFiles(@".\wwwroot\Egetræsmøbler", "*.png", SearchOption.AllDirectories);
+            
+            string p = Path.Combine(path, "Egetræsmøbler");
+
+            var images = Directory.GetFiles(p, "*.png", SearchOption.AllDirectories);
 
             return images;
         }

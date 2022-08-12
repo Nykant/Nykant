@@ -39,13 +39,13 @@
                         if (count > 1)
                         {
                             <div class="product-slide">
-                                <img loading="lazy" align="middle" data-fullscreenSrc="~/@image.Source2" src="~/@image.Source" alt="@image.Alt" />
+                                <img loading="lazy" align="middle" data-fullscreenSrc="@image.Source2" src="@image.Source" alt="@image.Alt" />
                             </div>
                         }
                         else
                         {
                             <div class="product-slide">
-                                <img align="middle" data-fullscreenSrc="~/@image.Source2" src="~/@image.Source" alt="@image.Alt" />
+                                <img align="middle" data-fullscreenSrc="@image.Source2" src="@image.Source" alt="@image.Alt" />
                             </div>
                         }
                         count++;
@@ -58,7 +58,7 @@
                     @foreach (var image in slideImages)
                     {
                         <div class="product-slide-button">
-                            <img src="~/@image.Source" alt="@image.Alt" />
+                            <img src="@image.Source" alt="@image.Alt" />
                         </div>
                     }
                 </div>
@@ -168,7 +168,7 @@
                         {
                             <div class="color current-color">
                                 <a asp-controller="Product" asp-action="details" asp-route-urlname="@color.ProductSourceUrlName">
-                                    <img src="~/@color.ImgSrc" alt="@color.Alt" />
+                                    <img src="@color.ImgSrc" alt="@color.Alt" />
                                 </a>
                             </div>
                         }
@@ -176,7 +176,7 @@
                         {
                             <div class="color">
                                 <a asp-controller="Product" asp-action="details" asp-route-urlname="@color.ProductSourceUrlName">
-                                    <img src="~/@color.ImgSrc" alt="@color.Alt" />
+                                    <img src="@color.ImgSrc" alt="@color.Alt" />
                                 </a>
                             </div>
                         }
@@ -312,7 +312,7 @@
                                 </div>
                             }
                             <a asp-controller="product" asp-action="details" asp-route-urlname="@product.UrlName">
-                                <img class="absolute-center" src="~/@product.GalleryImage1" alt="@product.Alt" />
+                                <img class="absolute-center" src="@product.GalleryImage1" alt="@product.Alt" />
                             </a>
                         </div>
                     }
