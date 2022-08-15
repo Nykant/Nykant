@@ -6,6 +6,12 @@
     box-sizing: border-box;
 }
 
+*, ::after, ::before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
 :root {
     --white: #F7F5F2;
     --black: #141414;
@@ -60,6 +66,7 @@ time, mark, audio, video {
     vertical-align: baseline;
     font-family: 'Spectral', serif;
     line-height:normal;
+    font-weight:400;
 }
 
 a, button {
@@ -74,7 +81,8 @@ input, textarea {
 html {
     overflow-y: scroll;
     font-family: 'Spectral', serif;
-    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -83,7 +91,6 @@ body {
     line-height: 33px;
     color: #777069;
     background-color: #F7F5F2;
-    overflow-x: hidden;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -94,7 +101,7 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+input[type='number'] {
     -moz-appearance: textfield;
 }
 
@@ -102,7 +109,7 @@ input[type='radio'] {
     line-height: 22px;
 }
 
-input[type="radio" i] {
+input[type="radio"] i {
     visibility:hidden;
 }
 
@@ -477,6 +484,7 @@ ol, ul {
 }
 
 [class*="col-"] {
+    position: relative;
     height: auto;
     width: 100%;
     -ms-flex: initial;
@@ -553,21 +561,24 @@ ol, ul {
         text-align: center;
     }
 
-    .top-info-bar {
-        height:30px;
-        background:var(--dark);
-        color:white;
-        max-width:100%;
-        line-height:30px;
-        overflow:hidden;
-    }
+.top-info-bar-container {
+    width: 100%;
+    height: 30px;
+    overflow-x: hidden;
+    background: var(--dark);
+}
+
+.top-info-bar {
+    animation-name: info-bar-slide;
+    animation-duration: 15s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    position: relative;
+    color: white;
+    line-height: 30px;
+}
 
     .top-info-bar p {
-        position:absolute;
-        animation-name:info-bar-slide;
-        animation-duration:15s;
-        animation-iteration-count:infinite;
-        animation-timing-function:linear;
         white-space:nowrap;
     }
 

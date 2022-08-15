@@ -56,7 +56,7 @@ namespace NykantMVC.Models.Sitemap
                 {
                     foreach(var img in item.Images)
                     {
-                        var t = new XElement(image.GetName("image"), new XElement (image.GetName("loc"), img));
+                        var t = new XElement(image.GetName("image"), new XElement (image.GetName("loc"), img.Url), new XElement(image.GetName("title"), img.Title), new XElement(image.GetName("caption"), img.Caption));
                         itemElement.Add(t);
                     }
                 }

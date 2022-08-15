@@ -1,3 +1,4 @@
+using Google.Apis.ShoppingContent.v2_1.Data;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.DataProtection;
@@ -8,6 +9,7 @@ using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Razor.TagHelpers;
+using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,11 +19,15 @@ using Microsoft.IdentityModel.Logging;
 using NykantMVC.Data;
 using NykantMVC.Models;
 using NykantMVC.Services;
+using Stripe;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IdentityModel.Tokens.Jwt;
 using System.IO;
+using System.IO.Compression;
+using System.Linq;
+using System.Reflection.Metadata;
 using System.Security.Cryptography.X509Certificates;
 
 namespace NykantMVC
@@ -131,7 +137,7 @@ namespace NykantMVC
             services.AddScoped<IProtectionService, ProtectionService>();
             services.AddSingleton<IGoogleApiService, GoogleApiService>();
 
-            services.AddSingleton<ITokenService, TokenService>();
+            services.AddSingleton<ITokenService, Services.TokenService>();
 
             services.AddLocalization(options => {
                 options.ResourcesPath = "Resources";
@@ -160,11 +166,42 @@ namespace NykantMVC
                 });
             }
 
+
+            services.Configure<BrotliCompressionProviderOptions>(options =>
+            {
+                options.Level = CompressionLevel.Fastest;
+            });
+
+            services.Configure<GzipCompressionProviderOptions>(options =>
+            {
+                options.Level = CompressionLevel.Fastest;
+            });
+
             services.AddControllersWithViews()
                                     .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
                                     .AddDataAnnotationsLocalization()
                                     .AddXmlSerializerFormatters();
 
+            services.AddResponseCompression(options =>
+            {
+                options.EnableForHttps = true;
+                options.Providers.Add<BrotliCompressionProvider>();
+                options.Providers.Add<GzipCompressionProvider>();
+                options.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
+                    new[] { "text/javascript" }
+                );
+            });
+
+            services.AddWebOptimizer(options =>
+            {
+                var provider = new Microsoft.Extensions.FileProviders.PhysicalFileProvider(@"C:\Users\Christian\Source\Repos\Salgaar\Nykant\NykantMVC\wwwroot");
+                //options.MinifyCssFiles("css/**/*.css").Ad;
+                //options.MinifyJsFiles("JS/**/*.js");
+                options.AddCssBundle("/css/layout-bundle.css", "/wwwroot/css/**/*.css", "/css/**/*.css", "css/**/*.css").MinifyCss().UseContentRoot();
+                //options.AddJavaScriptBundle("/JS/layout-head-bundle.js", "css/AjaxAntiCSRF.js", "css/logger.js", "lib/jquery/dist/jquery.min.js", "lib/ajax/jquery.unobtrusive-ajax.min.js", "lib/jquery-validation/dist/jquery.validate.js", "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js").MinifyJavaScript();
+                //options.AddJavaScriptBundle("/JS/layout-bottom-bundle.js", "JS/noop.js", "JS/mobileNav.js", "JS/search-button.js").MinifyJavaScript();
+
+            });
             services.AddHttpContextAccessor();
 
             services.Configure<ForwardedHeadersOptions>(options =>
@@ -234,7 +271,12 @@ namespace NykantMVC
 
             app.UseHttpsRedirection();
 
+            app.UseResponseCompression();
+
+            app.UseWebOptimizer();
+
             app.UseDefaultFiles();
+
             app.UseStaticFiles();
 
             app.UseRouting();

@@ -18,7 +18,7 @@ namespace NykantMVC.Models.Sitemap
         /// <param name="changeFrequency">How frequently the page is likely to change. Optional.</param>
         /// <param name="priority">The priority of this URL relative to other URLs on your site. Valid values range from 0.0 to 1.0. Optional.</param>
         /// <exception cref="System.ArgumentNullException">If the <paramref name="url"/> is null or empty.</exception>
-        public SitemapItem(string url, DateTime? lastModified = null, SitemapChangeFrequency? changeFrequency = null, double? priority = null, List<string> image = null)
+        public SitemapItem(string url, DateTime? lastModified = null, SitemapChangeFrequency? changeFrequency = null, double? priority = null, List<SitemapImage> image = null)
         {
             // Ensure.Argument.NotNullOrEmpty(url, "url");
 
@@ -49,6 +49,6 @@ namespace NykantMVC.Models.Sitemap
         /// </summary>
         public double? Priority { get; protected set; }
 
-        public List<string> Images { get; protected set; } = null;
+        public List<SitemapImage> Images { get; protected set; } = null;
     }
 }

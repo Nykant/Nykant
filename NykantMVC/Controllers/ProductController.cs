@@ -320,7 +320,12 @@ namespace NykantMVC.Controllers
                     ContentLanguage = "da",
                     TargetCountry = "DK",
                     Availability = "in stock",
-                    ExpirationDate = /*$"{udløb.Year}-{udløb.Month}-{udløb.Day}T00:00:00+0100",*/ null
+                    ExpirationDate = /*$"{udløb.Year}-{udløb.Month}-{udløb.Day}T00:00:00+0100",*/ null,
+                    IncludedDestinations = new string[]
+                    {
+                        "Shopping_ads",
+                        "Free_listings"
+                    }
                 };
 
                 switch (product.Oil)

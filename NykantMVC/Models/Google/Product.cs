@@ -34,6 +34,10 @@ namespace NykantMVC.Models.Google
         public string[] ProductTypes { get; set; }
         [JsonProperty("productHighlights")]
         public string[] ProductHighlights { get; set; }
+        [JsonProperty("includedDestinations")]
+        public string[] IncludedDestinations { get; set; }
+        [JsonProperty("excludedDestinations")]
+        public string[] ExcludedDestinations { get; set; }
         [JsonProperty("brand")]
         public string Brand { get; set; }
         [JsonProperty("color")]

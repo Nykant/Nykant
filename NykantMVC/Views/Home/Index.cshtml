@@ -17,10 +17,6 @@
     var dagmarImg = dagmar.Images.FirstOrDefault(x => x.ImageType == ImageType.DetailsSlide && x.Source.Contains('2'));
 }
 
-<link rel="stylesheet" href="~/css/front-page.css?6" />
-<link rel="stylesheet" href="~/css/karusel.css?1" />
-<script src="~/JS/swiped-events.min.js"></script>
-
 <div id="lb-back">
     <div id="lb-img"></div>
 </div>
@@ -341,8 +337,8 @@
     @*<div class="my-row">
 
         </div>*@
-
-    <script src="~/JS/slideshow.js?2"></script>
+<script src="/JS/swiped-events.min.js"></script>
+    <script src="/JS/slideshow.js?2"></script>
     @*<script src="~/JS/moving-box.js"></script>
         <script src="~/JS/follow-box-1.js"></script>
         <script src="~/JS/follow-box-2.js"></script>
@@ -350,5 +346,9 @@
         <script src="~/JS/follow-box-4.js"></script>
         <script src="~/JS/follow-box-5.js"></script>*@
     @*<script async src="~/JS/checkout-sandbox.js"></script>*@
-    <script src="~/JS/frontpage-karusel.js"></script>
 
+    @if (randomDiscountProducts.Count > 0)
+{
+    <script src="/JS/frontpage-karusel.js"></script>
+
+}

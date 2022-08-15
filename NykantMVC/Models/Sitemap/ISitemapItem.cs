@@ -30,7 +30,7 @@ namespace NykantMVC.Models.Sitemap
         /// </summary>
         double? Priority { get; }
 
-        List<string> Images { get; }
+        List<SitemapImage> Images { get; }
     }
 
     /// <summary>
@@ -49,5 +49,12 @@ namespace NykantMVC.Models.Sitemap
         Monthly,
         Yearly,
         Never
+    }
+
+    public class SitemapImage
+    {
+        public string Url { get; set; }
+        public string Title { get; set; }
+        public string Caption { get; set; }
     }
 }

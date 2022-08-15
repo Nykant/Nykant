@@ -32,36 +32,36 @@ namespace NykantMVC.Controllers
             json = await GetRequest("/Category/GetCategories");
             var categories = JsonConvert.DeserializeObject<List<Category>>(json);
 
-            var date = new DateTime(2022, 08, 11);
+            var date = new DateTime(2022, 08, 14);
 
             var sitemapItems = new List<SitemapItem> {
             // Home
-            new SitemapItem(PathUtils.CombinePaths(_urls.Mvc, Url.Action("index", "home")), changeFrequency: SitemapChangeFrequency.Weekly, priority: 1.0, lastModified: date),
+            new SitemapItem(PathUtils.CombinePaths(_urls.Mvc, Url.Action("index", "home")), changeFrequency: SitemapChangeFrequency.Daily, priority: 1.0, lastModified: date),
             new SitemapItem(PathUtils.CombinePaths(_urls.Mvc, Url.Action("about", "home")), changeFrequency: SitemapChangeFrequency.Monthly, priority: 0.7, lastModified: date),
-            new SitemapItem(PathUtils.CombinePaths(_urls.Mvc, Url.Action("contact", "home")), changeFrequency: SitemapChangeFrequency.Yearly, priority: 0.4, lastModified: date),
-            new SitemapItem(PathUtils.CombinePaths(_urls.Mvc, Url.Action("howtoorder", "home")), changeFrequency: SitemapChangeFrequency.Yearly, priority: 0.4, lastModified: date),
-            new SitemapItem(PathUtils.CombinePaths(_urls.Mvc, "/Møbler"), changeFrequency: SitemapChangeFrequency.Weekly, priority: 1.0, lastModified: date)
+            new SitemapItem(PathUtils.CombinePaths(_urls.Mvc, Url.Action("contact", "home")), changeFrequency: SitemapChangeFrequency.Monthly, priority: 0.4, lastModified: date),
+            new SitemapItem(PathUtils.CombinePaths(_urls.Mvc, Url.Action("howtoorder", "home")), changeFrequency: SitemapChangeFrequency.Monthly, priority: 0.4, lastModified: date),
+            new SitemapItem(PathUtils.CombinePaths(_urls.Mvc, "/Møbler"), changeFrequency: SitemapChangeFrequency.Daily, priority: 0.9, lastModified: date)
 
             };
 
             //categories
             foreach (var cat in categories)
             {
-                sitemapItems.Add(new SitemapItem(PathUtils.CombinePaths(_urls.Mvc, $"/Møbler/{cat.Name}"), changeFrequency: SitemapChangeFrequency.Weekly, priority: 1.0, lastModified: date));
+                sitemapItems.Add(new SitemapItem(PathUtils.CombinePaths(_urls.Mvc, $"/Møbler/{cat.Name}"), changeFrequency: SitemapChangeFrequency.Daily, priority: 1.0, lastModified: date));
             }
 
             //produkter
             foreach (var prod in products)
             {
-                var images = new List<string>();
+                var images = new List<SitemapImage>();
                 foreach(var img in prod.Images)
                 {
                     if(img.ImageType == ImageType.DetailsFullscreen)
                     {
-                        images.Add($"{_urls.Mvc}/{img.Source}");
+                        images.Add(new SitemapImage { Url = $"{_urls.Mvc}/{img.Source}", Title = prod.MetaTitle, Caption = prod.MetaDescription});
                     }
                 }
-                sitemapItems.Add(new SitemapItem(PathUtils.CombinePaths(_urls.Mvc, $"/Møbler/{prod.Category.Name}/{prod.UrlName}"), changeFrequency: SitemapChangeFrequency.Weekly, priority: 1.0, lastModified: date, image: images));
+                sitemapItems.Add(new SitemapItem(PathUtils.CombinePaths(_urls.Mvc, $"/Møbler/{prod.Category.Name}/{prod.UrlName}"), changeFrequency: SitemapChangeFrequency.Daily, priority: 1.0, lastModified: date, image: images));
             }
 
             return new SitemapResult(sitemapItems);
