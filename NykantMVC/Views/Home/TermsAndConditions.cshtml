@@ -1,4 +1,4 @@
-﻿@inject IViewLocalizer localizer
+﻿
 @inject IConfiguration conf
 @model Regret
 @{
@@ -8,7 +8,7 @@
     string url = @conf.GetSection("Urls")["Mvc"];
 }
 
-<link rel="stylesheet" href="~/css/privacy.css?1" />
+<link rel="stylesheet" href="~/css/privacy.css" />
 <link rel="stylesheet" href="~/css/regretstyle.css" />
 
 <div class="my-row background-color2">

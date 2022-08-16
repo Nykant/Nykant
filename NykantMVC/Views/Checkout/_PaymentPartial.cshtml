@@ -1,4 +1,4 @@
-﻿@inject IViewLocalizer localizer
+﻿
 @model CheckoutVM
 
 
@@ -6,7 +6,7 @@
 @*<div class="my-row bottom-side-padding">*@
     <div class="hide-overflow col-8 left">
         <div class="checkout-header" id="payment-header">
-            <h1>@localizer["Betalingsmetode"]</h1>
+            <h1>"Betalingsmetode</h1>
         </div>
 
 
@@ -18,7 +18,7 @@
                 <div class="payment-options" id="payment-options">
                     <ul id="payment-options-list">
                         <li data-paymentoption="card">
-                            <p>@localizer["Kort"]</p>  
+                            <p>Kort</p>  
                             <div class="credit-card-logos vertical-center">
                                 <img class="center" alt="Credit Card Logos" title="Credit Card Logos" src="https://www.credit-card-logos.com/images/visa_credit-card-logos/visa_logo_6.gif" width="67" height="42" border="0" />
                                 <img class="center" alt="Credit Card Logos" title="Credit Card Logos" src="http://www.credit-card-logos.com/images/american_express_credit-card-logos/american_express_logo_9.gif" width="67" height="42" border="0" />
@@ -77,7 +77,7 @@
                         <div id="paymentspinner" class="hidden">
                             <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
                         </div>
-                        <span id="button-text">@localizer["Betal"]</span>
+                        <span id="button-text">Betal</span>
                     </button>
                 </div>
 

@@ -370,10 +370,18 @@
 }
 
 
+#facebook-logo {
+    background: url('/images/testsprite.png') -162px 0;
+}
+
+#instagram-logo {
+    background: url('/images/testsprite.png') -190px 0;
+}
+
 
 .small-svg {
-    height: 25px;
-    width: 25px;
+    height: 35px;
+    width: 28px;
     transition: all 0.3s;
 }
 
@@ -706,10 +714,11 @@ a.icon {
 
 #logo {
     position: relative;
-    width: 180px;
+    width: 160px;
     height: 110px;
     float: left;
     transition: all 0.2s;
+    background: url('/images/testsprite.png') 0 0;
 }
 
     #logo img {

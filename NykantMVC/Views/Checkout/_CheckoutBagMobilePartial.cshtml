@@ -1,4 +1,4 @@
-﻿@inject IViewLocalizer localizer
+﻿
 @model CheckoutVM
 
 <div class="col-4 right sidebar-container-mobile">
@@ -23,16 +23,16 @@
                             <p class="width-50"> @item.Product.Name <br /> @item.Product.Oil</p>
                         }
 
-                        <p class="width-20">@item.Quantity @localizer["stk."] <br /> kr. @item.TotalPrice</p>
+                        <p class="width-20">@item.Quantity stk. <br /> kr. @item.TotalPrice</p>
                     </div>
                 </a>
             }
         <div class="checkout-price">
             <p>Fragt:</p><span>Gratis</span>
-            <p>@localizer["Rabat"]:</p><span>kr. @Model.Checkout.Discount</span>
-            <p>@localizer["Momsgrundlag"]:</p><span>kr. @Model.Checkout.TaxlessPrice</span>
-            <p>@localizer["Momsbeløb(25%)"]:</p><span>kr. @Model.Checkout.Taxes</span>
-            <p>@localizer["Totalbeløb"]:</p><span>kr. @Model.Checkout.TotalPrice</span>
+            <p>Rabat:</p><span>kr. @Model.Checkout.Discount</span>
+            <p>Momsgrundlag:</p><span>kr. @Model.Checkout.TaxlessPrice</span>
+            <p>Momsbeløb(25%):</p><span>kr. @Model.Checkout.Taxes</span>
+            <p>Totalbeløb:</p><span>kr. @Model.Checkout.TotalPrice</span>
         </div>
             <div class="checkout-delivery">
                 <p>Leveringsmetode:</p><p>@ViewBag.DeliveryType</p>

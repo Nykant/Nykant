@@ -140,7 +140,7 @@
                 </video>
             </div>
             <div class="half">
-                <img class="vertical-center video-img" src="@noraImg.Source" alt="@noraImg.Alt" />
+                <img loading="lazy" class="vertical-center video-img" src="@noraImg.Source" alt="@noraImg.Alt" />
             </div>
             <a onclick="VideoClick()" id="follow-link" asp-controller="Product" asp-action="Details" asp-route-category="@nora.Category.Name" asp-route-urlname="@nora.UrlName">
                 <div class="follow-container" id="follow-container">
@@ -184,7 +184,7 @@
                                 <p>kr. @ProductHelper.GetPrice(product) <span class="line-through red-text">@product.Price</span></p>
                             </div>
                             <a onclick="DiscountClick()" asp-controller="product" asp-action="details" asp-route-urlname="@product.UrlName" asp-route-category="@product.Category.Name">
-                                <img class="absolute-center" src="@product.GalleryImage1" alt="@product.Alt" />
+                                <img loading="lazy" class="absolute-center" src="@product.GalleryImage1" alt="@product.Alt" />
                             </a>
                         </div>
                         skip:;
@@ -232,7 +232,7 @@
                 </div>
                 <div class="col-6 left favorite-item">
                 <a onclick="FavoriteClick()" asp-controller="product" asp-action="details" asp-route-urlname="@dagmar.UrlName" asp-route-category="@dagmar.Category.Name">
-                    <img class="absolute-center favorite-img" src="@dagmarImg.Source" alt="@dagmarImg.Alt" />
+                    <img loading="lazy" class="absolute-center favorite-img" src="@dagmarImg.Source" alt="@dagmarImg.Alt" />
                         <div id="follow-container">
                             <div class="follow-container" id="follow-container-table">
                                 <div class="follow-box" id="follow-box-table">
@@ -249,7 +249,7 @@
                 </div>
                 <div class="col-6 left favorite-item">
                 <a onclick="FavoriteClick()" asp-controller="product" asp-action="details" asp-route-urlname="@filippa.UrlName" asp-route-category="@filippa.Category.Name">
-                    <img class="absolute-center favorite-img" src="@filippaImg.Source" alt="@filippaImg.Alt" />
+                    <img loading="lazy" class="absolute-center favorite-img" src="@filippaImg.Source" alt="@filippaImg.Alt" />
                         <div id="follow-container">
                             <div class="follow-container" id="follow-container-baenk">
                                 <div class="follow-box" id="follow-box-baenk">
@@ -266,7 +266,7 @@
                 </div>
                 <div class="col-6 left favorite-item">
                 <a onclick="FavoriteClick()" asp-controller="product" asp-action="details" asp-route-urlname="@nora.UrlName" asp-route-category="@nora.Category.Name">
-                    <img class="absolute-center favorite-img" src="@noraImg.Source" alt="@noraImg.Alt" />
+                    <img loading="lazy" class="absolute-center favorite-img" src="@noraImg.Source" alt="@noraImg.Alt" />
                         <div class="follow-container" id="follow-container-rack">
                             <div class="follow-box" id="follow-box-rack">
                                 <p id="follow-name-rack">@nora.Name</p>
@@ -282,7 +282,7 @@
 
                 <div class="col-6 left favorite-item">
                 <a onclick="FavoriteClick()" asp-controller="product" asp-action="details" asp-route-urlname="@thyra.UrlName" asp-route-category="@thyra.Category.Name">
-                    <img class="absolute-center favorite-img" src="@thyraImg.Source" alt="@thyraImg.Alt" />
+                    <img loading="lazy" class="absolute-center favorite-img" src="@thyraImg.Source" alt="@thyraImg.Alt" />
                         <div id="follow-container">
                             <div class="follow-container" id="follow-container-kortbaenk">
                                 <div class="follow-box" id="follow-box-kortbaenk">
@@ -304,15 +304,15 @@
 
 
     <div class="my-row top-padding bottom-padding">
-        <div class="col-12 center z200 category-header">
+    <div class="col-12 center z200 category-fp-header">
         <p class="text-center titlesize">KATEGORIER</p>
         </div>
 
         <div class="col-12">
             @foreach (var category in Model.Categories)
             {
-                <a onclick="CategoryClick()" class="category" method="get" asp-controller="product" asp-action="CategoryView" asp-route-category="@category.Name">
-                    <img class="absolute-center" src="@category.ImgSource" alt="@category.Alt" />
+            <a onclick="CategoryClick()" class="category-fp" method="get" asp-controller="product" asp-action="CategoryView" asp-route-category="@category.Name">
+                <img loading="lazy" class="absolute-center" src="@category.ImgSource" alt="@category.Alt" />
                     <p class="centered">@category.Name</p>
                 </a>
             }
@@ -338,7 +338,7 @@
 
         </div>*@
 <script src="/JS/swiped-events.min.js"></script>
-    <script src="/JS/slideshow.js?2"></script>
+    <script src="/JS/slideshow.js"></script>
     @*<script src="~/JS/moving-box.js"></script>
         <script src="~/JS/follow-box-1.js"></script>
         <script src="~/JS/follow-box-2.js"></script>

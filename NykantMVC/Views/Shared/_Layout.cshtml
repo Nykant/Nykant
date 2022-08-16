@@ -31,10 +31,8 @@
 
     @*<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">*@
 @*    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">*@
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral&display=swap" />
-    <link rel="stylesheet" href="/css/layout-bundle.css" />
-
-
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Spectral&display=swap" />
+    <link rel="stylesheet" type="text/css" href="/css/layout-bundle.css" inline />
 
     <link rel="shortcut icon" href="~/favicon.ico">
 
@@ -42,7 +40,7 @@
     <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="490e7f44-ffeb-46ab-b54c-dc5700002e92" data-blockingmode="auto" type="text/javascript"></script>
     <script type="text/javascript" src="https://js.stripe.com/v3/"></script>
 
-@*    <script src="/JS/layout-head-bundle.js"></script>*@
+    <script src="/JS/layout-head-bundle.js" inline></script>
 
     @*<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>*@
     @*<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js" integrity="sha512-DkPsH9LzNzZaZjCszwKrooKwgjArJDiEjA5tTgr3YX4E6TYv93ICS8T41yFHJnnSmGpnf0Mvb5NhScYbwvhn2w==" crossorigin="anonymous"></script>
@@ -99,8 +97,8 @@
             @*<partial name="_NewsletterPartial" />*@
 
             <div class="socialmedia">
-                <a href="https://www.facebook.com/nykant.dk"><img class="small-svg" src="~/lib/svg/facebook.svg" /></a>
-                <a href="https://www.instagram.com/nykant.dk"><img class="small-svg" src="~/lib/svg/instagram.svg" /></a>
+                <a href="https://www.facebook.com/nykant.dk"><div id="facebook-logo" class="small-svg"></div></a>
+                <a href="https://www.instagram.com/nykant.dk"><div id="instagram-logo" class="small-svg"></div></a>
             </div>
 
             @*<partial name="_UtilityPartial" />*@
@@ -123,7 +121,7 @@
     @* ----------------------------------GLOBAL SCRIPTS-------------------------------------- *@
     @*<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>*@
     <script type="text/javascript" src="https://widget.emaerket.dk/js/c49f6b82c5f1b83153cb102aa0b9daa3" async></script>
-    @*<script src="/JS/layout-bottom-bundle.js"></script>*@
-    @RenderSection("Scripts", required: false)
+    <script src="/JS/layout-bottom-bundle.js"></script>
+    @*@RenderSection("Scripts", required: false)*@
 </body>
 </html>

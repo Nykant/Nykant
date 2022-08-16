@@ -1,14 +1,14 @@
-﻿@inject IViewLocalizer localizer
+﻿
 
 <div class="order-info" id="order-info">
 
-    <p id="price-info" class="width-20">@localizer["Rabat"]</p>
+    <p id="price-info" class="width-20">Rabat</p>
     <p class="width-70 align-right">kr. @ViewBag.Discount </p>
-    <p id="price-info" class="width-20">@localizer["Momsgrundlag"]</p>
+    <p id="price-info" class="width-20">Momsgrundlag</p>
     <p class="width-70 align-right">kr. @ViewBag.TaxlessPrice</p>
-    <p id="price-info" class="width-20">@localizer["Momsbeløb(25%)"]</p>
+    <p id="price-info" class="width-20">Momsbeløb(25%)</p>
     <p class="width-70 align-right">kr. @ViewBag.Taxes</p>
-    <p id="price-info" class="width-20">@localizer["I Alt"]</p>
+    <p id="price-info" class="width-20">I Alt</p>
     <p class="width-70 align-right">kr. @ViewBag.PriceSum</p>
 </div>
 <form class="coupon-form" method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#bag-wrapper" data-ajax-complete="noop" data-ajax-begin="noop" data-ajax-failure="noop" data-ajax-success="noop" asp-controller="Bag" asp-action="ActivateCoupon">
@@ -23,6 +23,6 @@
 
     <a asp-controller="Checkout" asp-action="Checkout">
         <div class="button">
-            @localizer["Gå Til Kassen"]
+            Gå Til Kassen
         </div>
     </a>

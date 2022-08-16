@@ -438,7 +438,7 @@ width:50px;
             padding: 10px;
         }
 
-.category {
+.category-fp {
     width: 20%;
     min-height:100px;
     float: left;
@@ -451,29 +451,29 @@ width:50px;
     transition:all .3s;
 }
 
-.category-header {
-/*    background: white;*/
-/*    border: 1px solid var(--black-fade);*/
+.category-fp-header {
+    /*    background: white;*/
+    /*    border: 1px solid var(--black-fade);*/
     font-size: 35px;
-    width:100%;
-    display:block;
+    width: 100%;
+    display: block;
 }
 
-    .category-header h1 {
-        padding:10px;
-        display:inline-block;
-/*        animation-name: zikzak;
+    .category-fp-header h1 {
+        padding: 10px;
+        display: inline-block;
+        /*        animation-name: zikzak;
         animation-duration: 10s;
         animation-iteration-count: infinite;
         animation-timing-function: ease-in-out;*/
     }
 
-.category:hover {
-/*    opacity:0.4;*/
-    font-weight:normal;
+.category-fp:hover {
+    /*    opacity:0.4;*/
+    font-weight: normal;
 }
 
-.category img {
+.category-fp img {
     margin: auto;
     max-width: 100%;
     height: auto;
@@ -484,18 +484,18 @@ width:50px;
     user-select: none;
 }
 
-    .category p {
-        position: absolute;
-        background: white;
-        padding: 20px;
-        font-size: 20px;
-        bottom: 10px;
-        border-radius: 20px;
-        border: 1px solid var(--black-fade);
-        transition: all .3s;
-        z-index:200;
-        color:var(--font1);
-    }
+.category-fp p {
+    position: absolute;
+    background: white;
+    padding: 20px;
+    font-size: 20px;
+    bottom: 10px;
+    border-radius: 20px;
+    border: 1px solid var(--black-fade);
+    transition: all .3s;
+    z-index: 200;
+    color: var(--font1);
+}
 
 @media only screen and (max-width: 600px) {
     .mobile-sidepadding {
@@ -540,14 +540,14 @@ width:50px;
             width: 25px;
         }
 
-        .category {
-            width:100%;
-            height:200px;
-        }
+    .category-fp {
+        width: 100%;
+        height: 200px;
+    }
 
-        .category p {
-            font-size:15px;
-            padding:10px;
+        .category-fp p {
+            font-size: 15px;
+            padding: 10px;
         }
 
         .about-wood {
@@ -582,12 +582,12 @@ width:50px;
         padding-right: 30px;
     }
 
-    .category {
+    .category-fp {
         width: 50%;
         height: 300px;
     }
 
-        .category p {
+        .category-fp p {
             font-size: 15px;
             padding: 10px;
         }
@@ -624,15 +624,15 @@ width:50px;
 }
 
 @media only screen and (min-width: 992px) {
-    .category {
+    .category-fp {
         width: 20%;
         height: 300px;
     }
 
-        .category p {
+        .category-fp p {
             font-size: 15px;
             padding: 10px;
-            bottom:40px;
+            bottom: 40px;
         }
 
     .about-wood {
@@ -641,12 +641,12 @@ width:50px;
 }
 
 @media only screen and (min-width: 1200px) {
-    .category {
+    .category-fp {
         width: 20%;
         height: 300px;
     }
 
-        .category p {
+        .category-fp p {
             font-size: 17px;
             padding: 15px;
             bottom: 40px;
@@ -658,12 +658,12 @@ width:50px;
 }
 
 @media only screen and (min-width: 1500px) {
-    .category {
+    .category-fp {
         width: 20%;
         height: 400px;
     }
 
-        .category p {
+        .category-fp p {
             font-size: 20px;
             padding: 15px;
             bottom: 20px;

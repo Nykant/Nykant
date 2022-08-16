@@ -3,6 +3,7 @@ var slidebuttons = document.getElementById('slide-buttons').children;
 var slidecontainer = document.getElementById('slide-container');
 var aboutus = document.getElementById('about-us');
 var slideshow = document.getElementById('slideshow');
+var slidenumber = 1;
 var slidenumber = 0;
 slidecontainer.style.left = '-0%';
 

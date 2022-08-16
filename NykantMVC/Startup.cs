@@ -139,9 +139,9 @@ namespace NykantMVC
 
             services.AddSingleton<ITokenService, Services.TokenService>();
 
-            services.AddLocalization(options => {
-                options.ResourcesPath = "Resources";
-            });
+            //services.AddLocalization(options => {
+            //    options.ResourcesPath = "Resources";
+            //});
 
             if (Environment.IsDevelopment())
             {
@@ -166,41 +166,61 @@ namespace NykantMVC
                 });
             }
 
-
-            services.Configure<BrotliCompressionProviderOptions>(options =>
-            {
-                options.Level = CompressionLevel.Fastest;
-            });
-
-            services.Configure<GzipCompressionProviderOptions>(options =>
-            {
-                options.Level = CompressionLevel.Fastest;
-            });
-
             services.AddControllersWithViews()
-                                    .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
-                                    .AddDataAnnotationsLocalization()
+                                    //.AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+                                    //.AddDataAnnotationsLocalization()
                                     .AddXmlSerializerFormatters();
 
             services.AddResponseCompression(options =>
             {
                 options.EnableForHttps = true;
-                options.Providers.Add<BrotliCompressionProvider>();
                 options.Providers.Add<GzipCompressionProvider>();
+                options.Providers.Add<BrotliCompressionProvider>();
                 options.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
                     new[] { "text/javascript" }
                 );
             });
 
+            services.Configure<BrotliCompressionProviderOptions>(options =>
+            {
+                options.Level = CompressionLevel.Optimal;
+            });
+
+            services.Configure<GzipCompressionProviderOptions>(options =>
+            {
+                options.Level = CompressionLevel.Optimal;
+            });
+
             services.AddWebOptimizer(options =>
             {
-                var provider = new Microsoft.Extensions.FileProviders.PhysicalFileProvider(@"C:\Users\Christian\Source\Repos\Salgaar\Nykant\NykantMVC\wwwroot");
-                //options.MinifyCssFiles("css/**/*.css").Ad;
-                //options.MinifyJsFiles("JS/**/*.js");
-                options.AddCssBundle("/css/layout-bundle.css", "/wwwroot/css/**/*.css", "/css/**/*.css", "css/**/*.css").MinifyCss().UseContentRoot();
-                //options.AddJavaScriptBundle("/JS/layout-head-bundle.js", "css/AjaxAntiCSRF.js", "css/logger.js", "lib/jquery/dist/jquery.min.js", "lib/ajax/jquery.unobtrusive-ajax.min.js", "lib/jquery-validation/dist/jquery.validate.js", "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js").MinifyJavaScript();
-                //options.AddJavaScriptBundle("/JS/layout-bottom-bundle.js", "JS/noop.js", "JS/mobileNav.js", "JS/search-button.js").MinifyJavaScript();
+                options.AddCssBundle("/css/layout-bundle.css"
+                    , "/wwwroot/css/mvcstyle.css"
+                    , "/wwwroot/css/navbar.css"
+                    , "/wwwroot/css/search.css"
+                    , "/wwwroot/css/e-mark.css"
+                    , "/wwwroot/css/cookiebot.css"
+                    , "/wwwroot/css/front-page.css"
+                    , "/wwwroot/css/product-gallery.css"
+                    , "/wwwroot/css/product-details.css"
+                    , "/wwwroot/css/karusel.css"
+                    ).MinifyCss().UseContentRoot();
 
+                options.AddJavaScriptBundle("/JS/layout-head-bundle.js"
+                    , "/wwwroot/JS/AjaxAntiCSRF.js"
+                    , "/wwwroot/JS/logger.js"
+                    , "/wwwroot/lib/jquery/dist/jquery.min.js"
+                    , "/wwwroot/lib/ajax/jquery.unobtrusive-ajax.min.js"
+                    , "/wwwroot/lib/jquery-validation/dist/jquery.validate.js"
+                    , "/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"
+                    ).MinifyJavaScript().UseContentRoot();
+
+                options.AddJavaScriptBundle("/JS/layout-bottom-bundle.js"
+                    , "/wwwroot/JS/noop.js"
+                    , "/wwwroot/JS/mobileNav.js"
+                    , "/wwwroot/JS/search-button.js"
+                    ).MinifyJavaScript().UseContentRoot();
+
+                options.MinifyJsFiles();
             });
             services.AddHttpContextAccessor();
 
@@ -224,19 +244,19 @@ namespace NykantMVC
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
 
-            var DK = new CultureInfo("da-DK");
-            var EN = new CultureInfo("en-GB");
-            var cultureList = new List<CultureInfo>
-            {
-                DK,
-                EN
-            };
-            app.UseRequestLocalization(new RequestLocalizationOptions
-            {
-                DefaultRequestCulture = new RequestCulture(DK, DK),
-                SupportedCultures = cultureList,
-                SupportedUICultures = cultureList
-            });
+            //var DK = new CultureInfo("da-DK");
+            //var EN = new CultureInfo("en-GB");
+            //var cultureList = new List<CultureInfo>
+            //{
+            //    DK,
+            //    EN
+            //};
+            //app.UseRequestLocalization(new RequestLocalizationOptions
+            //{
+            //    DefaultRequestCulture = new RequestCulture(DK, DK),
+            //    SupportedCultures = cultureList,
+            //    SupportedUICultures = cultureList
+            //});
 
             app.UseForwardedHeaders();
 
@@ -267,7 +287,7 @@ namespace NykantMVC
 
             app.UseCertificateForwarding();
 
-            IdentityModelEventSource.ShowPII = true;
+            IdentityModelEventSource.ShowPII = false;
 
             app.UseHttpsRedirection();
 
