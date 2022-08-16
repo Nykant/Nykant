@@ -152,10 +152,10 @@
     margin:auto;
 }
 
-.categoryView-text h1, h2 {
-    font-size:28px;
-    padding:10px;
-}
+    .categoryView-text h1, .categoryView-text h2 {
+        font-size: 28px;
+        padding: 10px;
+    }
 
 .categoryView-text p {
     font-size:20px;

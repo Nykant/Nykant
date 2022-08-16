@@ -16,6 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Localization;
 using Microsoft.IdentityModel.Logging;
+using Microsoft.Net.Http.Headers;
 using NykantMVC.Data;
 using NykantMVC.Models;
 using NykantMVC.Services;
@@ -29,6 +30,7 @@ using System.IO.Compression;
 using System.Linq;
 using System.Reflection.Metadata;
 using System.Security.Cryptography.X509Certificates;
+using Microsoft.AspNetCore.StaticFiles;
 
 namespace NykantMVC
 {
@@ -126,7 +128,7 @@ namespace NykantMVC
                 options.Cookie.HttpOnly = true;
                 options.Cookie.Name = "Session";
                 options.Cookie.IsEssential = true;
-                options.Cookie.SameSite = SameSiteMode.Lax;
+                options.Cookie.SameSite = Microsoft.AspNetCore.Http.SameSiteMode.Lax;
             });
 
             services.Configure<EmailSettings>(Configuration.GetSection("MailSettings"));
@@ -176,20 +178,28 @@ namespace NykantMVC
                 options.EnableForHttps = true;
                 options.Providers.Add<GzipCompressionProvider>();
                 options.Providers.Add<BrotliCompressionProvider>();
-                options.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
-                    new[] { "text/javascript" }
-                );
+                options.MimeTypes = new[] {
+                    "text/plain",
+                    "text/css",
+                    "application/javascript",
+                    "text/javascript",
+                    "text/html",
+                    "application/xml",
+                    "text/xml",
+                    "application/json",
+                    "text/json",
+                };
             });
-
+            services.Configure<GzipCompressionProviderOptions>(options =>
+            {
+                options.Level = CompressionLevel.Optimal;
+            });
             services.Configure<BrotliCompressionProviderOptions>(options =>
             {
                 options.Level = CompressionLevel.Optimal;
             });
 
-            services.Configure<GzipCompressionProviderOptions>(options =>
-            {
-                options.Level = CompressionLevel.Optimal;
-            });
+
 
             services.AddWebOptimizer(options =>
             {
@@ -243,6 +253,7 @@ namespace NykantMVC
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseResponseCompression();
 
             //var DK = new CultureInfo("da-DK");
             //var EN = new CultureInfo("en-GB");
@@ -291,13 +302,23 @@ namespace NykantMVC
 
             app.UseHttpsRedirection();
 
-            app.UseResponseCompression();
-
             app.UseWebOptimizer();
 
             app.UseDefaultFiles();
 
-            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                OnPrepareResponse =
+                r =>
+                {
+                    string name = r.File.Name;
+                    if (name.EndsWith(".css") || name.EndsWith(".js") || name.EndsWith(".gif") || name.EndsWith(".jpg") || name.EndsWith(".png") || name.EndsWith(".svg") || name.EndsWith(".mp4"))
+                    {
+                        TimeSpan maxAge = new TimeSpan(7, 0, 0, 0);
+                        r.Context.Response.Headers.Append("Cache-Control", "max-age=" + maxAge.TotalSeconds.ToString("0"));
+                    }
+                }
+            });
 
             app.UseRouting();
 
