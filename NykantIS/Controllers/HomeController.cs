@@ -41,6 +41,12 @@ namespace NykantIS.Controllers
             return NotFound();
         }
 
+        [HttpGet("Health")]
+        public IActionResult Health()
+        {
+            return Ok();
+        }
+
         /// <summary>
         /// Shows the error page
         /// </summary>

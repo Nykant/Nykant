@@ -78,6 +78,12 @@ namespace NykantMVC.Controllers
         {
             return View();
         }
+
+        [HttpGet("Health")]
+        public IActionResult Health()
+        {
+            return Ok();
+        }
         [HttpGet("Om-Os")]
         //[Route("Om-Os")]
         public IActionResult About()

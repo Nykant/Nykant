@@ -31,6 +31,9 @@ using System.Linq;
 using System.Reflection.Metadata;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.AspNetCore.StaticFiles;
+using Microsoft.AspNetCore.Rewrite;
+using NykantMVC.Extensions;
+using System.Net;
 
 namespace NykantMVC
 {
@@ -65,15 +68,13 @@ namespace NykantMVC
             {
                 services.AddDbContext<MyKeysContext>(options =>
                     options.UseMySql(
-                        mykeyConnection));
+                        mykeyConnection, ServerVersion.AutoDetect(mykeyConnection)));
 
                 services.AddDataProtection()
                     .PersistKeysToDbContext<MyKeysContext>()
                     //.ProtectKeysWithCertificate("3fe5fcaf686e7ffbeaf80d760944e0f752f2112b")
                     .SetApplicationName("Nykant");
             }
-
-
 
             JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
 
@@ -119,6 +120,27 @@ namespace NykantMVC
             //    options.AddPolicy("Admin Permission", policy => policy.RequireClaim("Permission", "admin"));
             //    options.AddPolicy("Raffle Permission", policy => policy.RequireClaim("Permission", "raffle"));
             //});
+
+
+
+            if (!Environment.IsDevelopment())
+            {
+                services.AddHsts(options =>
+                {
+                    options.Preload = true;
+                    options.IncludeSubDomains = true;
+                    options.MaxAge = TimeSpan.FromDays(60);
+                    options.ExcludedHosts.Add("nykant.dk");
+                    options.ExcludedHosts.Add("www.nykant.dk");
+                    options.ExcludedHosts.Add("Nykant-LB-2146644203.eu-north-1.elb.amazonaws.com");
+                });
+
+                services.AddHttpsRedirection(options =>
+                {
+                    options.RedirectStatusCode = (int)HttpStatusCode.PermanentRedirect;
+                    options.HttpsPort = 443;
+                });
+            }
 
             services.AddDistributedMemoryCache();
 
@@ -188,6 +210,10 @@ namespace NykantMVC
                     "text/xml",
                     "application/json",
                     "text/json",
+                    "image/x-icon",
+                    "image/svg+xml",
+                    "video/mp4",
+                    "image/png"
                 };
             });
             services.Configure<GzipCompressionProviderOptions>(options =>
@@ -199,7 +225,7 @@ namespace NykantMVC
                 options.Level = CompressionLevel.Optimal;
             });
 
-
+            services.AddResponseCaching();
 
             services.AddWebOptimizer(options =>
             {
@@ -253,7 +279,7 @@ namespace NykantMVC
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseResponseCompression();
+            
 
             //var DK = new CultureInfo("da-DK");
             //var EN = new CultureInfo("en-GB");
@@ -271,10 +297,17 @@ namespace NykantMVC
 
             app.UseForwardedHeaders();
 
+            var options = new RewriteOptions()
+                .AddRedirectToProxiedHttps()
+                .AddRedirect("(.*)/$", "$1");  // remove trailing slash
+            app.UseRewriter(options);
+            //app.UseHttpsRedirection();
+
+            app.UseCertificateForwarding();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
             }
             else
             {
@@ -296,29 +329,30 @@ namespace NykantMVC
                 await next();
             });
 
-            app.UseCertificateForwarding();
-
             IdentityModelEventSource.ShowPII = false;
 
-            app.UseHttpsRedirection();
+            app.UseResponseCompression();
+
+            app.UseResponseCaching();
 
             app.UseWebOptimizer();
 
             app.UseDefaultFiles();
 
-            app.UseStaticFiles(new StaticFileOptions
-            {
-                OnPrepareResponse =
-                r =>
-                {
-                    string name = r.File.Name;
-                    if (name.EndsWith(".css") || name.EndsWith(".js") || name.EndsWith(".gif") || name.EndsWith(".jpg") || name.EndsWith(".png") || name.EndsWith(".svg") || name.EndsWith(".mp4"))
-                    {
-                        TimeSpan maxAge = new TimeSpan(7, 0, 0, 0);
-                        r.Context.Response.Headers.Append("Cache-Control", "max-age=" + maxAge.TotalSeconds.ToString("0"));
-                    }
-                }
-            });
+            app.UseStaticFiles();
+            //new StaticFileOptions
+            //{
+            //    OnPrepareResponse =
+            //    r =>
+            //    {
+            //        string name = r.File.Name;
+            //        if (name.EndsWith(".css") || name.EndsWith(".js") || name.EndsWith(".gif") || name.EndsWith(".jpg") || name.EndsWith(".png") || name.EndsWith(".svg") || name.EndsWith(".mp4"))
+            //        {
+            //            TimeSpan maxAge = new TimeSpan(7, 0, 0, 0);
+            //            r.Context.Response.Headers.Append("Cache-Control", "max-age=" + maxAge.TotalSeconds.ToString("0"));
+            //        }
+            //    }
+            //}
 
             app.UseRouting();
 

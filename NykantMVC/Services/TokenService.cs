@@ -21,7 +21,7 @@ namespace NykantMVC.Services
         private TokenResponse Token { get; set; }
         private DateTime ExpiryTime { get; set; }
         private readonly object key = new object();
-        
+
         public TokenService(IOptions<Urls> urls, ILogger<TokenService> logger, IConfiguration conf)
         {
             this.conf = conf;
@@ -31,34 +31,50 @@ namespace NykantMVC.Services
 
         public TokenResponse GetToken()
         {
-            //use token if it exists and is still fresh
-            if (Token != null && ExpiryTime > DateTime.UtcNow)
-            {
-                return Token;
-            }
 
-            lock (key)
-            {
                 //use token if it exists and is still fresh
                 if (Token != null && ExpiryTime > DateTime.UtcNow)
                 {
                     return Token;
                 }
 
+
+
+            lock (key)
+            {
+
+                    //use token if it exists and is still fresh
+                    if (Token != null && ExpiryTime > DateTime.UtcNow)
+                    {
+                        return Token;
+                    }
+
+
+
                 tryAgain:;
 
-                try
-                {
-                    var client = new HttpClient();
-                    var disco = client.GetDiscoveryDocumentAsync(_urls.Is).Result;
+                //try
+                //{
+                var client = new HttpClient();
+                DiscoveryResponse disco = null;
+
+                    disco = client.GetDiscoveryDocumentAsync(new DiscoveryDocumentRequest
+                    {
+                        Address = _urls.Is,
+                        Policy = new DiscoveryPolicy
+                        {
+                            RequireHttps = true
+                        }
+                    }).Result;
                     if (disco.IsError)
                     {
-                        _logger.LogInformation($"time: {DateTime.Now} - {disco.Error}, {disco.Exception.Message}, {disco.Exception.StackTrace}, {disco.Exception.InnerException}, {disco.Exception.Data.Values}, {disco.Exception.TargetSite}, ---- Trying again...");
+                        _logger.LogInformation($"GetDiscoveryDocumentAsync Disco Error --> time: {DateTime.Now} - type: {disco.ErrorType} :: error: {disco.Error} :: , ---- Trying again...");
                         Thread.Sleep(1000);
                         goto tryAgain;
                     }
 
-                    // request token
+
+
                     var tokenResponse = client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
                     {
                         Address = disco.TokenEndpoint,
@@ -70,7 +86,7 @@ namespace NykantMVC.Services
 
                     if (tokenResponse.IsError)
                     {
-                        _logger.LogInformation($"time: {DateTime.Now} - {disco.Error}, {disco.Exception.Message}, {disco.Exception.StackTrace}, {disco.Exception.InnerException}, {disco.Exception.Data.Values}, {disco.Exception.TargetSite}, ---- Trying again...");
+                        _logger.LogInformation($"RequestClientCredentialsTokenAsync Error --> time: {DateTime.Now} - {tokenResponse.Error}, {disco.Exception.Message}, ---- Trying again...");
                         Thread.Sleep(1000);
                         goto tryAgain;
                     }
@@ -78,13 +94,17 @@ namespace NykantMVC.Services
                     //set Token to the new token and set the expiry time to the new expiry time
                     Token = tokenResponse;
                     ExpiryTime = DateTime.UtcNow.AddSeconds(Token.ExpiresIn);
-                }
-                catch (Exception e)
-                {
-                    _logger.LogInformation($"time: {DateTime.Now} - {e.Message}, {e.StackTrace}, {e.InnerException}, {e.Data.Values}, {e.TargetSite}, ---- Trying again...");
-                    Thread.Sleep(1000);
-                    goto tryAgain;
-                }
+
+                // request token
+
+
+                //}
+                //catch (Exception e)
+                //{
+                //    _logger.LogInformation($"Not sure where Error --> time: {DateTime.Now} - {e.Message}, {e.StackTrace}, {e.InnerException}, {e.Data.Values}, {e.TargetSite}, ---- Trying again...");
+                //    Thread.Sleep(1000);
+                //    goto tryAgain;
+                //}
 
 
                 //return fresh token

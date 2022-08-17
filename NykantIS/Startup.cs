@@ -34,6 +34,8 @@ using System.Globalization;
 using System.Collections.Generic;
 using Microsoft.Extensions.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
+using Microsoft.AspNetCore.Rewrite;
+using NykantIS.Extensions;
 
 namespace NykantIS
 {
@@ -116,6 +118,7 @@ namespace NykantIS
 
             var builder = services.AddIdentityServer(options =>
             {
+                
                 options.IssuerUri = Configuration.GetValue<string>("IssuerUri");
 
                 options.Events.RaiseErrorEvents = true;
@@ -263,6 +266,15 @@ namespace NykantIS
 
             app.UseForwardedHeaders();
 
+
+
+            var options = new RewriteOptions()
+                .AddRedirectToProxiedHttps()
+                .AddRedirect("(.*)/$", "$1");  // remove trailing slash
+            app.UseRewriter(options);
+
+            app.UseCertificateForwarding();
+
             InitializeDatabase(app);
 
             if (Environment.IsDevelopment())
@@ -272,11 +284,11 @@ namespace NykantIS
             }
             else
             {
-                app.UseHsts();
+                //app.UseHsts();
             }
-            app.UseCertificateForwarding();
 
-            app.UseHttpsRedirection();
+
+            //app.UseHttpsRedirection();
 
             IdentityModelEventSource.ShowPII = false;
 

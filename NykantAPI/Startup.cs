@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Rewrite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using NykantAPI.Data;
+using NykantAPI.Extensions;
 using NykantAPI.Models;
 using NykantAPI.Services;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
@@ -96,6 +98,7 @@ namespace NykantAPI
                     options.Authority = Configuration.GetValue<string>("Is");
                     options.MetadataAddress = Configuration.GetValue<string>("MetadataAddress");
 
+
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateAudience = false
@@ -104,13 +107,13 @@ namespace NykantAPI
                     //options.Audience = "NykantAPI";
                 });
 
-            services.AddAuthorization(options =>
-            {
-                options.AddPolicy("ApiScope", policy =>
-                {
-                    policy.RequireClaim("scope", "NykantAPI");
-                });
-            });
+            //services.AddAuthorization(options =>
+            //{
+            //    options.AddPolicy("ApiScope", policy =>
+            //    {
+            //        policy.RequireClaim("scope", "NykantAPI");
+            //    });
+            //});
 
             services.Configure<Urls>(Configuration.GetSection("Urls"));
             services.AddScoped<IProtectionService, ProtectionService>();
@@ -132,6 +135,13 @@ namespace NykantAPI
             app.UsePathBase(Configuration.GetValue<string>("PathBase"));
             app.UseForwardedHeaders();
 
+            app.UseCertificateForwarding();
+
+            var options = new RewriteOptions()
+                .AddRedirectToProxiedHttps()
+                .AddRedirect("(.*)/$", "$1");  // remove trailing slash
+            app.UseRewriter(options);
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -141,9 +151,9 @@ namespace NykantAPI
                 app.UseHsts();
             }
 
-            app.UseCertificateForwarding();
+            //app.UseCertificateForwarding();
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 
@@ -152,8 +162,7 @@ namespace NykantAPI
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers()
-                    .RequireAuthorization("ApiScope");
+                endpoints.MapControllers();
             });
         }
     }

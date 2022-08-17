@@ -19,5 +19,6 @@ WORKDIR /app
 COPY --from=build /app/out ./
 
 ENV ASPNETCORE_URLS http://*:5001
+ENV ASPNETCORE_HTTPS_PORT 443
 
 ENTRYPOINT ["dotnet", "NykantIS.dll"]
