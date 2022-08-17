@@ -135,12 +135,12 @@ namespace NykantAPI
             app.UsePathBase(Configuration.GetValue<string>("PathBase"));
             app.UseForwardedHeaders();
 
-            app.UseCertificateForwarding();
-
             var options = new RewriteOptions()
                 .AddRedirectToProxiedHttps()
                 .AddRedirect("(.*)/$", "$1");  // remove trailing slash
             app.UseRewriter(options);
+
+            app.UseCertificateForwarding();
 
             if (env.IsDevelopment())
             {
