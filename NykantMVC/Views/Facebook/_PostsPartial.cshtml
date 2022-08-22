@@ -44,7 +44,10 @@
     }
 </table>
 
-@if (Model == null)
+@section scripts {
+    @if (Model == null)
 {
-    <script src="~/JS/facebookRequest.js?102"></script>
+    <script src="https://static.nykant.dk/JS/facebookRequest.min.js"></script>
 }
+}
+

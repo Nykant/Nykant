@@ -4,7 +4,7 @@
     ViewData["Description"] = "";
 }
 
-<link rel="stylesheet" href="~/css/my-list.css?101" />
+<link rel="stylesheet" href="https://static.nykant.dk/css/my-list.min.css" />
 
 
 @if (Model.Winner.Id != "")
@@ -106,4 +106,6 @@
     </div>
 </div>
 
-<script src="~/JS/facebook.js"></script>
+@section scripts {
+    <script src="https://static.nykant.dk/JS/facebook.min.js"></script>
+}

@@ -36,6 +36,8 @@ using Microsoft.Extensions.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Rewrite;
 using NykantIS.Extensions;
+using IdentityServer4.Extensions;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 
 namespace NykantIS
 {
@@ -62,7 +64,13 @@ namespace NykantIS
             identityserverConnection = Configuration.GetConnectionString("IdentityServer");
             identityConnection = Configuration.GetConnectionString("Identity");
 
-
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
+            });
 
             //services.AddDbContext<MyKeysContext>(options =>
             //    options.UseMySql(mykeyConnection));
@@ -116,28 +124,64 @@ namespace NykantIS
                     .AddClaimsPrincipalFactory<ClaimsFactory<ApplicationUser>>();
             }
 
+
+
             var builder = services.AddIdentityServer(options =>
             {
-                
                 options.IssuerUri = Configuration.GetValue<string>("IssuerUri");
-
+                options.Cors = new CorsOptions
+                {
+                    CorsPaths = new PathString[]
+                     {
+                         "/account/login",
+                         "/is/account/login",
+                         "/is/is/account/manage/loginwith2fa"
+                     },
+                    CorsPolicyName = "CorsPolicy"
+                };
                 options.Events.RaiseErrorEvents = true;
                 options.Events.RaiseInformationEvents = true;
                 options.Events.RaiseFailureEvents = true;
                 options.Events.RaiseSuccessEvents = true;
                 options.EmitStaticAudienceClaim = true;
+                options.Discovery = new DiscoveryOptions
+                {
+                     ShowEndpoints = true,
+                      ShowTokenEndpointAuthenticationMethods = true
+                };
+                //options.MutualTls = new MutualTlsOptions
+                //{
+                //    Enabled = true,
+                //    DomainName = "nykant.dk"
+                //};
 
                 options.UserInteraction.LoginUrl = "/Account/Login";
                 options.UserInteraction.LogoutUrl = "/Account/Logout";
-
-                options.Authentication = new AuthenticationOptions()
+                options.Endpoints = new EndpointsOptions
                 {
-                    CookieLifetime = TimeSpan.FromHours(10), // ID server cookie timeout set to 10 hours
-                    CookieSlidingExpiration = true
-                };
+                    EnableTokenEndpoint = true,
+                     EnableAuthorizeEndpoint = true,
+                      EnableDiscoveryEndpoint = true,
+                       EnableJwtRequestUri = true,
+                        EnableUserInfoEndpoint = true,
+                         EnableTokenRevocationEndpoint = true,
+                          EnableCheckSessionEndpoint = true,
+                           EnableDeviceAuthorizationEndpoint = true,
+                            EnableEndSessionEndpoint = true,
+                             EnableIntrospectionEndpoint = true
 
+                };
+                //options.Authentication = new AuthenticationOptions()
+                //{
+                //    CookieLifetime = TimeSpan.FromHours(10), // ID server cookie timeout set to 10 hours
+                //    CookieSlidingExpiration = true,
+                //     CookieSameSiteMode = SameSiteMode.None
+                //};
                 
             });
+
+
+
 
 
             //builder.AddConfigurationStore(options =>
@@ -197,6 +241,7 @@ namespace NykantIS
                         {
                             mySql.MigrationsAssembly(migrationsAssembly);
                         });
+
                 });
             }
 
@@ -204,6 +249,24 @@ namespace NykantIS
 
             // not recommended for production - you need to store your key material somewhere secure
             builder.AddDeveloperSigningCredential();
+
+            //if (!Environment.IsDevelopment())
+            //{
+            //    builder.AddRedisCaching(options =>
+            //    {
+            //        options.RedisConnectionString = "nykant-memcached.tylulq.cfg.eun1.cache.amazonaws.com:11211";
+            //    });
+            //}
+
+            //if (!Environment.IsDevelopment())
+            //{
+            //    services.AddStackExchangeRedisCache(options =>
+            //    {
+            //        options.Configuration = "nykant-memcached.tylulq.cfg.eun1.cache.amazonaws.com:11211";
+            //        options.InstanceName = "nykant-memcached";
+            //    });
+            //}
+
 
             services.AddAuthentication();
                 //.AddGoogle("Google", options =>
@@ -234,20 +297,15 @@ namespace NykantIS
                                     .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
                                     .AddDataAnnotationsLocalization();
 
-            services.Configure<ForwardedHeadersOptions>(options =>
-            {
-                options.ForwardedHeaders =
-                    ForwardedHeaders.All;
 
-                options.KnownNetworks.Clear();
-                options.KnownProxies.Clear();
-            });
 
 
         }
 
         public void Configure(IApplicationBuilder app)
         {
+
+
             app.UsePathBase(Configuration.GetValue<string>("PathBase"));
 
             var DK = new CultureInfo("da-DK");
@@ -264,13 +322,21 @@ namespace NykantIS
                 SupportedUICultures = cultureList
             });
 
-            app.UseForwardedHeaders();
+            var forwardOptions = new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto,
+                RequireHeaderSymmetry = false
+            };
 
+            forwardOptions.KnownNetworks.Clear();
+            forwardOptions.KnownProxies.Clear();
 
+            app.UseForwardedHeaders(forwardOptions);
 
             var options = new RewriteOptions()
                 .AddRedirectToProxiedHttps()
-                .AddRedirect("(.*)/$", "$1");  // remove trailing slash
+                .AddRedirect("(.*)/$", "$1")
+                .AddRedirectToWwwPermanent();  // remove trailing slash
             app.UseRewriter(options);
 
             app.UseCertificateForwarding();
@@ -284,18 +350,26 @@ namespace NykantIS
             }
             else
             {
-                //app.UseHsts();
+                app.UseHsts();
             }
 
+            //app.Use(async (ctx, next) =>
+            //{
+            //    ctx.SetIdentityServerOrigin("https://nykant.dk/is");
+            //    await next();
+            //});
 
             //app.UseHttpsRedirection();
 
-            IdentityModelEventSource.ShowPII = false;
+            IdentityModelEventSource.ShowPII = true;
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
             app.UseRouting();
+
+
+            //app.UseCors("CorsPolicy");
 
             app.UseIdentityServer();
             app.UseAuthentication();

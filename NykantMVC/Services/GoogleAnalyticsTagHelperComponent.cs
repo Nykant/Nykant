@@ -29,7 +29,7 @@ namespace NykantMVC.Services
             try
             {
                 // Inject the code only in the head element
-                if (string.Equals(output.TagName, "head", StringComparison.OrdinalIgnoreCase))
+                if (string.Equals(output.TagName, "body", StringComparison.OrdinalIgnoreCase))
                 {
                     // Get the tracking code from the configuration
                     var trackingCode = _googleAnalyticsOptions.TrackingCode;

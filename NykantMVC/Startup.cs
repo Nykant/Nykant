@@ -34,7 +34,10 @@ using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.AspNetCore.Rewrite;
 using NykantMVC.Extensions;
 using System.Net;
-
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 namespace NykantMVC
 {
     public class Startup
@@ -76,6 +79,14 @@ namespace NykantMVC
                     .SetApplicationName("Nykant");
             }
 
+            //services.AddCors(options =>
+            //{
+            //    options.AddPolicy("CorsPolicy",
+            //        builder => builder.AllowAnyOrigin()
+            //        .AllowAnyMethod()
+            //        .AllowAnyHeader());
+            //});
+
             JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
 
             services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
@@ -85,23 +96,24 @@ namespace NykantMVC
                 options.DefaultScheme = "Cookies";
                 options.DefaultChallengeScheme = "oidc";
             })
-                .AddCookie("Cookies", options =>
+                 .AddCookie("Cookies", options =>
                 {
-
+                    options.Cookie.HttpOnly = true;
+                    options.Cookie.SameSite = Microsoft.AspNetCore.Http.SameSiteMode.None;
+                    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+                    options.Cookie.Domain = "www.nykant.dk";
+                    options.Cookie.IsEssential = true;
                 })
                 .AddOpenIdConnect("oidc", options =>
                 {
-                    var accessDenied = Configuration.GetValue<string>("Is");
-                    options.Authority = Configuration.GetValue<string>("Is");
+                    options.Authority = Configuration.GetValue<string>("Authority");
                     options.MetadataAddress = Configuration.GetValue<string>("MetadataAddress");
                     options.CallbackPath = "/signin-oidc";
                     options.SignedOutCallbackPath = "/signout-callback-oidc";
-                    options.AccessDeniedPath = accessDenied;
 
                     options.ClientId = "mvc";
                     options.ClientSecret = Configuration["MVCClientSecret"];
                     options.ResponseType = "code";
-
                     options.SaveTokens = true;
                     options.GetClaimsFromUserInfoEndpoint = true;
 
@@ -113,6 +125,37 @@ namespace NykantMVC
                     options.TokenValidationParameters.RoleClaimType = "role";
                     options.Scope.Add("profile");
                     options.Scope.Add("openid");
+
+                    options.CorrelationCookie = new CookieBuilder
+                    {
+                        HttpOnly = true,
+                        SameSite = Microsoft.AspNetCore.Http.SameSiteMode.None,
+                        SecurePolicy = CookieSecurePolicy.Always,
+                        IsEssential = true,
+                        Domain = "www.nykant.dk"
+                    };
+
+                    options.NonceCookie = new CookieBuilder
+                    {
+                        HttpOnly = true,
+                        SameSite = Microsoft.AspNetCore.Http.SameSiteMode.None,
+                        SecurePolicy = CookieSecurePolicy.Always,
+                        IsEssential = true,
+                        Domain = "www.nykant.dk"
+                    };
+
+                    options.ProtocolValidator = new OpenIdConnectProtocolValidator
+                    {
+                        RequireNonce = false,
+                        RequireState = false,
+                        RequireAuthTime = false,
+                         RequireAmr = false,
+                          RequireAcr = false,
+                           RequireAzp = false,
+                            RequireStateValidation = false,
+                             RequireSub = false,
+                               RequireTimeStampInNonce = false
+                    };
                 });
 
             //services.AddAuthorization(options =>
@@ -120,7 +163,6 @@ namespace NykantMVC
             //    options.AddPolicy("Admin Permission", policy => policy.RequireClaim("Permission", "admin"));
             //    options.AddPolicy("Raffle Permission", policy => policy.RequireClaim("Permission", "raffle"));
             //});
-
 
 
             if (!Environment.IsDevelopment())
@@ -131,27 +173,47 @@ namespace NykantMVC
                     options.IncludeSubDomains = true;
                     options.MaxAge = TimeSpan.FromDays(60);
                     options.ExcludedHosts.Add("nykant.dk");
+                    options.ExcludedHosts.Add("static.nykant.dk");
                     options.ExcludedHosts.Add("www.nykant.dk");
                     options.ExcludedHosts.Add("Nykant-LB-2146644203.eu-north-1.elb.amazonaws.com");
                 });
 
-                services.AddHttpsRedirection(options =>
+                //services.AddHttpsRedirection(options =>
+                //{
+                //    options.RedirectStatusCode = (int)HttpStatusCode.PermanentRedirect;
+                //    options.HttpsPort = 443;
+                //});
+            }
+
+
+            if (!Environment.IsDevelopment())
+            {
+                services.AddSession(options =>
                 {
-                    options.RedirectStatusCode = (int)HttpStatusCode.PermanentRedirect;
-                    options.HttpsPort = 443;
+                    options.IdleTimeout = TimeSpan.FromDays(30);
+                    options.Cookie.HttpOnly = true;
+                    options.Cookie.Name = "Session";
+                    options.Cookie.IsEssential = true;
+                    options.Cookie.SameSite = Microsoft.AspNetCore.Http.SameSiteMode.Lax;
+                });
+                //    .AddStackExchangeRedisCache(options =>
+                //{
+                //    options.Configuration = "nykant-memcached.tylulq.cfg.eun1.cache.amazonaws.com:11211";
+                //    options.InstanceName = "nykant-memcached";
+                //});
+            }
+            else
+            {
+                services.AddSession(options =>
+                {
+                    options.IdleTimeout = TimeSpan.FromDays(30);
+                    options.Cookie.HttpOnly = true;
+                    options.Cookie.Name = "Session";
+                    options.Cookie.IsEssential = true;
+                    options.Cookie.SameSite = Microsoft.AspNetCore.Http.SameSiteMode.Lax;
                 });
             }
 
-            services.AddDistributedMemoryCache();
-
-            services.AddSession(options =>
-            {
-                options.IdleTimeout = TimeSpan.FromDays(30);
-                options.Cookie.HttpOnly = true;
-                options.Cookie.Name = "Session";
-                options.Cookie.IsEssential = true;
-                options.Cookie.SameSite = Microsoft.AspNetCore.Http.SameSiteMode.Lax;
-            });
 
             services.Configure<EmailSettings>(Configuration.GetSection("MailSettings"));
             services.Configure<Urls>(Configuration.GetSection("Urls"));
@@ -184,102 +246,80 @@ namespace NykantMVC
                     options.Cookie.Name = "AntiforgeryToken";
                     options.HeaderName = "AntiforgeryToken";
                     options.FormFieldName = "AntiforgeryToken";
-                    options.Cookie.Domain = ".nykant.dk";
+                    options.Cookie.Domain = "www.nykant.dk";
                     options.Cookie.IsEssential = true;
                     options.Cookie.HttpOnly = true;
                 });
             }
 
-            services.AddControllersWithViews()
-                                    //.AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
-                                    //.AddDataAnnotationsLocalization()
-                                    .AddXmlSerializerFormatters();
+            //services.Configure<GzipCompressionProviderOptions>(options =>
+            //{
+            //    options.Level = CompressionLevel.Optimal;
+            //});
+            //services.Configure<BrotliCompressionProviderOptions>(options =>
+            //{
+            //    options.Level = CompressionLevel.Optimal;
+            //});
 
-            services.AddResponseCompression(options =>
-            {
-                options.EnableForHttps = true;
-                options.Providers.Add<GzipCompressionProvider>();
-                options.Providers.Add<BrotliCompressionProvider>();
-                options.MimeTypes = new[] {
-                    "text/plain",
-                    "text/css",
-                    "application/javascript",
-                    "text/javascript",
-                    "text/html",
-                    "application/xml",
-                    "text/xml",
-                    "application/json",
-                    "text/json",
-                    "image/x-icon",
-                    "image/svg+xml",
-                    "video/mp4",
-                    "image/png"
-                };
-            });
-            services.Configure<GzipCompressionProviderOptions>(options =>
-            {
-                options.Level = CompressionLevel.Optimal;
-            });
-            services.Configure<BrotliCompressionProviderOptions>(options =>
-            {
-                options.Level = CompressionLevel.Optimal;
-            });
+            //services.AddResponseCompression(options =>
+            //{
+            //    options.EnableForHttps = true;
+
+            //});
+
 
             services.AddResponseCaching();
 
-            services.AddWebOptimizer(options =>
-            {
-                options.AddCssBundle("/css/layout-bundle.css"
-                    , "/wwwroot/css/mvcstyle.css"
-                    , "/wwwroot/css/navbar.css"
-                    , "/wwwroot/css/search.css"
-                    , "/wwwroot/css/e-mark.css"
-                    , "/wwwroot/css/cookiebot.css"
-                    , "/wwwroot/css/front-page.css"
-                    , "/wwwroot/css/product-gallery.css"
-                    , "/wwwroot/css/product-details.css"
-                    , "/wwwroot/css/karusel.css"
-                    ).MinifyCss().UseContentRoot();
+            //services.AddWebOptimizer(options =>
+            //{
+            //    //options.AddCssBundle("/css/layout-bundle.css"
+            //    //    , "/wwwroot/css/mvcstyle.css"
+            //    //    , "/wwwroot/css/navbar.css"
+            //    //    , "/wwwroot/css/search.css"
+            //    //    , "/wwwroot/css/e-mark.css"
+            //    //    , "/wwwroot/css/cookiebot.css"
+            //    //    , "/wwwroot/css/front-page.css"
+            //    //    , "/wwwroot/css/product-gallery.css"
+            //    //    , "/wwwroot/css/product-details.css"
+            //    //    , "/wwwroot/css/karusel.css"
+            //    //    ).MinifyCss().UseContentRoot();
 
-                options.AddJavaScriptBundle("/JS/layout-head-bundle.js"
-                    , "/wwwroot/JS/AjaxAntiCSRF.js"
-                    , "/wwwroot/JS/logger.js"
-                    , "/wwwroot/lib/jquery/dist/jquery.min.js"
-                    , "/wwwroot/lib/ajax/jquery.unobtrusive-ajax.min.js"
-                    , "/wwwroot/lib/jquery-validation/dist/jquery.validate.js"
-                    , "/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"
-                    ).MinifyJavaScript().UseContentRoot();
+            //    //options.AddJavaScriptBundle("/JS/layout-head-bundle.js"
+            //    //    , "/wwwroot/JS/AjaxAntiCSRF.js"
+            //    //    , "/wwwroot/JS/logger.js"
+            //    //    , "/wwwroot/lib/jquery/dist/jquery.min.js"
+            //    //    , "/wwwroot/lib/ajax/jquery.unobtrusive-ajax.min.js"
+            //    //    , "/wwwroot/lib/jquery-validation/dist/jquery.validate.js"
+            //    //    , "/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"
+            //    //    ).MinifyJavaScript().UseContentRoot();
 
-                options.AddJavaScriptBundle("/JS/layout-bottom-bundle.js"
-                    , "/wwwroot/JS/noop.js"
-                    , "/wwwroot/JS/mobileNav.js"
-                    , "/wwwroot/JS/search-button.js"
-                    ).MinifyJavaScript().UseContentRoot();
+            //    //options.AddJavaScriptBundle("/JS/layout-bottom-bundle.js"
+            //    //    , "/wwwroot/JS/noop.js"
+            //    //    , "/wwwroot/JS/mobileNav.js"
+            //    //    , "/wwwroot/JS/search-button.js"
+            //    //    ).MinifyJavaScript().UseContentRoot();
 
-                options.MinifyJsFiles();
-            });
+            //    //options.MinifyJsFiles();
+            //});
+
+            services.AddControllersWithViews()
+                        //.AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+                        //.AddDataAnnotationsLocalization()
+                        .AddXmlSerializerFormatters();
+
             services.AddHttpContextAccessor();
 
-            services.Configure<ForwardedHeadersOptions>(options =>
-            {
-                options.ForwardedHeaders =
-                    ForwardedHeaders.All;
-
-                options.KnownNetworks.Clear();
-                options.KnownProxies.Clear();
-            });
-
             // Register the Google Analytics configuration
-            services.Configure<GoogleAnalyticsOptions>(options => Configuration.GetSection("GoogleAnalytics").Bind(options));
+            //services.Configure<GoogleAnalyticsOptions>(options => Configuration.GetSection("GoogleAnalytics").Bind(options));
 
-            // Register the TagHelperComponent
-            services.AddTransient<ITagHelperComponent, GoogleAnalyticsTagHelperComponent>();
+            //// Register the TagHelperComponent
+            //services.AddTransient<ITagHelperComponent, GoogleAnalyticsTagHelperComponent>();
 
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            
+
 
             //var DK = new CultureInfo("da-DK");
             //var EN = new CultureInfo("en-GB");
@@ -295,13 +335,22 @@ namespace NykantMVC
             //    SupportedUICultures = cultureList
             //});
 
-            app.UseForwardedHeaders();
+            var forwardOptions = new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto,
+                RequireHeaderSymmetry = false
+            };
+
+            forwardOptions.KnownNetworks.Clear();
+            forwardOptions.KnownProxies.Clear();
+
+            app.UseForwardedHeaders(forwardOptions);
 
             var options = new RewriteOptions()
                 .AddRedirectToProxiedHttps()
-                .AddRedirect("(.*)/$", "$1");  // remove trailing slash
+                .AddRedirect("(.*)/$", "$1")
+                .AddRedirectToWwwPermanent();// remove trailing slash
             app.UseRewriter(options);
-            //app.UseHttpsRedirection();
 
             app.UseCertificateForwarding();
 
@@ -331,30 +380,30 @@ namespace NykantMVC
 
             IdentityModelEventSource.ShowPII = false;
 
-            app.UseResponseCompression();
 
+            //app.UseResponseCompression();
             app.UseResponseCaching();
+            //app.UseDefaultFiles();
 
-            app.UseWebOptimizer();
-
-            app.UseDefaultFiles();
-
-            app.UseStaticFiles();
-            //new StaticFileOptions
-            //{
-            //    OnPrepareResponse =
-            //    r =>
-            //    {
-            //        string name = r.File.Name;
-            //        if (name.EndsWith(".css") || name.EndsWith(".js") || name.EndsWith(".gif") || name.EndsWith(".jpg") || name.EndsWith(".png") || name.EndsWith(".svg") || name.EndsWith(".mp4"))
-            //        {
-            //            TimeSpan maxAge = new TimeSpan(7, 0, 0, 0);
-            //            r.Context.Response.Headers.Append("Cache-Control", "max-age=" + maxAge.TotalSeconds.ToString("0"));
-            //        }
-            //    }
-            //}
+            //app.UseStaticFiles(
+            //    //new StaticFileOptions
+            //    //{
+            //    //    OnPrepareResponse =
+            //    //r =>
+            //    //{
+            //    //    string name = r.File.Name;
+            //    //    if (name.EndsWith(".png") || name.EndsWith(".svg") || name.EndsWith(".mp4") || name.EndsWith(".css") || name.EndsWith(".js") || name.EndsWith(".ico"))
+            //    //    {
+            //    //        TimeSpan maxAge = new TimeSpan(7, 0, 0, 0);
+            //    //        r.Context.Response.Headers.Append("Cache-Control", "max-age=" + maxAge.TotalSeconds.ToString("0"));
+            //    //    }
+            //    //}
+            //    //}
+            //    );
 
             app.UseRouting();
+
+            //app.UseCors("CorsPolicy");
 
             app.UseAuthentication();
             app.UseAuthorization();
@@ -363,10 +412,6 @@ namespace NykantMVC
 
             app.UseEndpoints(endpoints =>
             {
-                //endpoints.MapControllerRoute(
-                //    name: "products",
-                //    pattern: "Produkter/{*searchString}",
-                //    defaults: new { controller = "Product", action = "Gallery" });
 
                 endpoints.MapControllerRoute(
                     name: "default",

@@ -40,7 +40,7 @@
             <div class="logo-link">
                 <a asp-controller="Home" asp-action="Index">
                     <div id="logo">
-                        <img src="~/images/Nykant-Logo.svg" />
+                        <img src="https://static.nykant.dk/images/Nykant-Logo.svg" />
                     </div>
                 </a>
             </div>
@@ -56,10 +56,10 @@
             </div>
 
             <a href="javascript:void(0);" id="nav-burger">
-                <img class="nav-svg" src="~/lib/svg/bars.svg" />
+                <img class="nav-svg" src="https://static.nykant.dk/lib/svg/bars.svg" />
             </a>
 
-            <a id="shopping-bag" asp-controller="Bag" asp-action="Details"><span>@ViewBag.BagItemAmount</span> <img class="nav-svg" src="~/lib/svg/shopping-bag.svg" /></a>
+            <a id="shopping-bag" asp-controller="Bag" asp-action="Details"><span>@ViewBag.BagItemAmount</span> <img class="nav-svg" src="https://static.nykant.dk/lib/svg/shopping-bag.svg" /></a>
 
 
             @if (User.Identity.IsAuthenticated)
@@ -69,7 +69,7 @@
 
                 <div class="dropdown">
                     <button href="javascript:void(0);" class="dropbtn" id="userLogo">
-                        <img class="nav-svg" src="~/lib/svg/user.svg" />
+                        <img class="nav-svg" src="https://static.nykant.dk/lib/svg/user.svg" />
                     </button>
                     <div class="dropdown-content">
                         <a href="@baseUrl/identity/account/manage/twofactorauthentication">
@@ -120,7 +120,7 @@
         </div>
 
         <div id="desktop-row" class="my-row">
-            <a id="product-link" asp-controller="Product" asp-action="Gallery">PRODUKTER <img src="~/lib/svg/angle-down-solid.svg" /></a>
+            <a id="product-link" asp-controller="Product" asp-action="Gallery">PRODUKTER <img src="https://static.nykant.dk/lib/svg/angle-down-solid.svg" /></a>
             <a asp-controller="Home" asp-action="About">OM OS</a>
             @*<a asp-controller="Home" asp-action="Contact">KONTAKT</a>*@
 

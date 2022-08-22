@@ -49,6 +49,7 @@ namespace NykantAPI
                 services.AddDbContext<LocalMyKeysContext>(options =>
                     options.UseSqlServer(
                         mykeyConnection));
+                    
 
                 services.AddDataProtection()
                     .PersistKeysToDbContext<LocalMyKeysContext>()
@@ -88,9 +89,22 @@ namespace NykantAPI
                     x => x.MigrationsAssembly("MySqlMigrations")),
 
                 _ => throw new Exception($"Unsupported provider: {provider}")
+            }).AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = "nykant-memcached.tylulq.cfg.eun1.cache.amazonaws.com:11211";
+                options.InstanceName = "nykant-memcached";
             });
 
+            if (!Environment.IsDevelopment())
+            {
+                services.AddStackExchangeRedisCache(options =>
+                {
+                    options.Configuration = "nykant-memcached.tylulq.cfg.eun1.cache.amazonaws.com:11211";
+                    options.InstanceName = "nykant-memcached";
+                });
+            }
 
+            services.AddResponseCaching();
 
             services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>
@@ -107,23 +121,16 @@ namespace NykantAPI
                     //options.Audience = "NykantAPI";
                 });
 
-            //services.AddAuthorization(options =>
-            //{
-            //    options.AddPolicy("ApiScope", policy =>
-            //    {
-            //        policy.RequireClaim("scope", "NykantAPI");
-            //    });
-            //});
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("ApiScope", policy =>
+                {
+                    policy.RequireClaim("scope", "NykantAPI");
+                });
+            });
 
             services.Configure<Urls>(Configuration.GetSection("Urls"));
             services.AddScoped<IProtectionService, ProtectionService>();
-            services.Configure<ForwardedHeadersOptions>(options =>
-            {
-                options.ForwardedHeaders =
-                    ForwardedHeaders.All;
-                options.KnownNetworks.Clear();
-                options.KnownProxies.Clear();
-            });
 
             services.AddControllers();
 
@@ -133,11 +140,21 @@ namespace NykantAPI
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UsePathBase(Configuration.GetValue<string>("PathBase"));
-            app.UseForwardedHeaders();
+            var forwardOptions = new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto,
+                RequireHeaderSymmetry = false
+            };
+
+            forwardOptions.KnownNetworks.Clear();
+            forwardOptions.KnownProxies.Clear();
+
+            app.UseForwardedHeaders(forwardOptions);
 
             var options = new RewriteOptions()
                 .AddRedirectToProxiedHttps()
-                .AddRedirect("(.*)/$", "$1");  // remove trailing slash
+                .AddRedirect("(.*)/$", "$1")
+                .AddRedirectToWwwPermanent();  // remove trailing slash
             app.UseRewriter(options);
 
             app.UseCertificateForwarding();
@@ -151,6 +168,8 @@ namespace NykantAPI
                 app.UseHsts();
             }
 
+            app.UseResponseCaching();
+
             //app.UseCertificateForwarding();
 
             //app.UseHttpsRedirection();
@@ -162,7 +181,8 @@ namespace NykantAPI
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllers()
+                    .RequireAuthorization("ApiScope");
             });
         }
     }

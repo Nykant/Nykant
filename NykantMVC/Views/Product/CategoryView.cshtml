@@ -4,6 +4,8 @@
     ViewData["Description"] = Model.Category.Description;
 }
 
+<link rel="stylesheet" type="text/css" href="https://static.nykant.dk/css/product-gallery.min.css" />
+
 <div class="my-row">
     <div class="col-6 center col-wrapper">
         <div class="filter">
@@ -31,8 +33,14 @@
     </div>
 </div>
 
+@section scripts {
+    <script src="https://static.nykant.dk/JS/products.min.js"></script>
+
+}
+
+
 @*<script src="~/JS/image-changer.js"></script>*@
-<script src="~/JS/products.js"></script>
+
 
 
 

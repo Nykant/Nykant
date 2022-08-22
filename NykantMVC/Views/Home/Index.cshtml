@@ -3,19 +3,10 @@
 @{
     ViewData["Title"] = "Egetræsmøbler | Køb moderne egetræsmøbler i dansk design";
     ViewData["Description"] = "Hos Nykant designer vi moderne egetræsmøbler i høj kvalitet. Kombinationen af dansk design, minimalistiske detaljer og bæredygtigt egetræ er helt unik. Se mere her.";
-
-    List<Product> products = Model.Products;
-    var discountProducts = products.Where(x => x.Discount > 0);
-    var randomDiscountProducts = ProductHelper.RandomizeList(discountProducts.ToList());
-    var nora = products.Find(x => x.Id == 27);
-    var filippa = products.Find(x => x.Id == 24);
-    var thyra = products.Find(x => x.Id == 18);
-    var dagmar = products.Find(x => x.Id == 16);
-    var noraImg = nora.Images.FirstOrDefault(x => x.ImageType == ImageType.DetailsSlide && x.Source.Contains('2'));
-    var filippaImg = filippa.Images.FirstOrDefault(x => x.ImageType == ImageType.DetailsSlide && x.Source.Contains('2'));
-    var thyraImg = thyra.Images.FirstOrDefault(x => x.ImageType == ImageType.DetailsSlide && x.Source.Contains('2'));
-    var dagmarImg = dagmar.Images.FirstOrDefault(x => x.ImageType == ImageType.DetailsSlide && x.Source.Contains('2'));
 }
+
+<link rel="stylesheet" type="text/css" href="https://static.nykant.dk/css/front-page.min.css" />
+<link rel="stylesheet" type="text/css" href="https://static.nykant.dk/css/karusel.min.css" />
 
 <div id="lb-back">
     <div id="lb-img"></div>
@@ -25,38 +16,38 @@
     <div class="slideshow" id="slideshow">
 
         <div id="slideshow-prev" class="slideshow-button">
-            <img class="absolute-center" src="~/lib/svg/arrow-left.svg" />
+            <img class="absolute-center" src="https://static.nykant.dk/lib/svg/arrow-left.svg" />
         </div>
         <div id="slideshow-next" class="slideshow-button">
-            <img class="absolute-center" src="~/lib/svg/arrow-right.svg" />
+            <img class="absolute-center" src="https://static.nykant.dk/lib/svg/arrow-right.svg" />
         </div>
         <div class="slide-container" id="slide-container">
             <div class="slide">
                 <picture>
-                    <source srcset="~/Egetræsmøbler\Miljø\Egetræsmøbler-Skrivebord-Tøjstativ-Opbevaringsbænk-dt.png" media="(min-width: 600px)">
-                    <source srcset="~/Egetræsmøbler\Miljø\Egetræsmøbler-Skrivebord-Tøjstativ-Opbevaringsbænk-dt.png" media="(min-width: 1000px)">
-                    <img src="~/Egetræsmøbler\Miljø\Egetræsmøbler-Skrivebord-1mb.png" alt="Egetræsmøbler I Miljø">
+                    <source srcset="https://static.nykant.dk/Egetræsmøbler\Miljø\Egetræsmøbler-Skrivebord-Tøjstativ-Opbevaringsbænk-dt.png" media="(min-width: 600px)">
+                    <source srcset="https://static.nykant.dk/Egetræsmøbler\Miljø\Egetræsmøbler-Skrivebord-Tøjstativ-Opbevaringsbænk-dt.png" media="(min-width: 1000px)">
+                    <img src="https://static.nykant.dk/Egetræsmøbler\Miljø\Egetræsmøbler-Skrivebord-1mb.png" alt="Egetræsmøbler I Miljø">
                 </picture>
             </div>
             <div class="slide">
                 <picture>
-                    <source srcset="~/Egetræsmøbler\Miljø\Egetræsmøbler-Skrivebord-Tøjstativ-dt.png" media="(min-width: 1000px)">
-                    <source srcset="~/Egetræsmøbler\Miljø\Egetræsmøbler-Skrivebord-Tøjstativ-dt.png" media="(min-width: 600px)">
-                    <img loading="lazy" src="~/Egetræsmøbler\Miljø\Egetræsmøbler-Skrivebord-2mb.png" alt="Egetræsmøbler I Miljø">
+                    <source srcset="https://static.nykant.dk/Egetræsmøbler\Miljø\Egetræsmøbler-Skrivebord-Tøjstativ-dt.png" media="(min-width: 1000px)">
+                    <source srcset="https://static.nykant.dk/Egetræsmøbler\Miljø\Egetræsmøbler-Skrivebord-Tøjstativ-dt.png" media="(min-width: 600px)">
+                    <img loading="lazy" src="https://static.nykant.dk/Egetræsmøbler\Miljø\Egetræsmøbler-Skrivebord-2mb.png" alt="Egetræsmøbler I Miljø">
                 </picture>
             </div>
             <div class="slide">
                 <picture>
-                    <source srcset="~/Egetræsmøbler\Miljø\Egetræsmøbler-Opbevaringsbænk-Tøjstativ-dt.png" media="(min-width: 1000px)">
-                    <source srcset="~/Egetræsmøbler\Miljø\Egetræsmøbler-Opbevaringsbænk-Tøjstativ-dt.png" media="(min-width: 600px)">
-                    <img loading="lazy" src="~/Egetræsmøbler\Miljø\Egetræsmøbler-Skrivebord-Væghylder-mb.png" alt="Egetræsmøbler I Miljø">
+                    <source srcset="https://static.nykant.dk/Egetræsmøbler\Miljø\Egetræsmøbler-Opbevaringsbænk-Tøjstativ-dt.png" media="(min-width: 1000px)">
+                    <source srcset="https://static.nykant.dk/Egetræsmøbler\Miljø\Egetræsmøbler-Opbevaringsbænk-Tøjstativ-dt.png" media="(min-width: 600px)">
+                    <img loading="lazy" src="https://static.nykant.dk/Egetræsmøbler\Miljø\Egetræsmøbler-Skrivebord-Væghylder-mb.png" alt="Egetræsmøbler I Miljø">
                 </picture>
             </div>
             <div class="slide">
                 <picture>
-                    <source srcset="~/Egetræsmøbler\Miljø\Egetræsmøbler-Skrivebord-Entrebænk-Opbevaringsbænk-Ophængt-Tøjstativ-dt.png" media="(min-width: 1000px)">
-                    <source srcset="~/Egetræsmøbler\Miljø\Egetræsmøbler-Skrivebord-Entrebænk-Opbevaringsbænk-Ophængt-Tøjstativ-dt.png" media="(min-width: 600px)">
-                    <img loading="lazy" src="~/Egetræsmøbler\Miljø\Egetræsmøbler-Opbevaringsbænk-Ophængt-Tøjstativ-Entrebænk-mb.png" alt="Egetræsmøbler I Miljø">
+                    <source srcset="https://static.nykant.dk/Egetræsmøbler\Miljø\Egetræsmøbler-Skrivebord-Entrebænk-Opbevaringsbænk-Ophængt-Tøjstativ-dt.png" media="(min-width: 1000px)">
+                    <source srcset="https://static.nykant.dk/Egetræsmøbler\Miljø\Egetræsmøbler-Skrivebord-Entrebænk-Opbevaringsbænk-Ophængt-Tøjstativ-dt.png" media="(min-width: 600px)">
+                    <img loading="lazy" src="https://static.nykant.dk/Egetræsmøbler\Miljø\Egetræsmøbler-Opbevaringsbænk-Ophængt-Tøjstativ-Entrebænk-mb.png" alt="Egetræsmøbler I Miljø">
                 </picture>
             </div>
         </div>
@@ -120,7 +111,7 @@
         </div>
         <div class="info-item">
             <div class="center">
-                <img src="~/lib/svg/e-maerket-06.svg" />
+                <img src="https://static.nykant.dk/lib/svg/e-maerket-06.svg" />
                 <p>Vi er e-mærket!</p>
 
             </div>
@@ -136,20 +127,22 @@
         <div id="video-slide" class="col-8 left video-slide">
             <div class="half">
                 <video class="vertical-center video" autoplay loop muted playsinline>
-                    <source src="../videos/Tøjstativ.mp4" type="video/mp4" />
+                    <source src="https://static.nykant.dk/videos/Tøjstativ.mp4" type="video/mp4" />
                 </video>
             </div>
             <div class="half">
-                <img loading="lazy" class="vertical-center video-img" src="@noraImg.Source" alt="@noraImg.Alt" />
+                <img loading="lazy" class="vertical-center video-img" src="@Model.NoraImg.Source" alt="@Model.NoraImg.Alt" />
             </div>
-            <a onclick="VideoClick()" id="follow-link" asp-controller="Product" asp-action="Details" asp-route-category="@nora.Category.Name" asp-route-urlname="@nora.UrlName">
+            <a onclick="VideoClick()" id="follow-link" asp-controller="Product" asp-action="Details" asp-route-category="@Model.Nora.Category.Name" asp-route-urlname="@Model.Nora.UrlName">
                 <div class="follow-container" id="follow-container">
                     <div class="follow-box" id="follow-box">
-                        <p id="follow-name">@nora.Name</p>
-                        <p id="follow-oil">@nora.Oil</p>
+                        <p id="follow-name">@Model.Nora.Name</p>
+                        <p id="follow-oil">@Model.Nora.Oil</p>
                         <p id="follow-price">
-                            kr. @ProductHelper.GetPrice(nora) @if (nora.Discount > 0)
-                            {<span class="line-through red-text">@nora.Price</span>}
+                            kr. @ProductHelper.GetPrice(Model.Nora) @if (Model.Nora.Discount > 0)
+                            {
+                                <span class="line-through red-text">@Model.Nora.Price</span>
+                            }
                         </p>
                     </div>
                 </div>
@@ -158,7 +151,7 @@
     </div>
 </div>
 
-@if (randomDiscountProducts.Count > 0)
+@if (Model.RandomDiscountProducts.Count > 0)
 {
     <div class="my-row">
         <div class="col-12 left top-padding bottom-padding">
@@ -166,7 +159,7 @@
             <div class="karusel" id="frontpage-karusel">
                 <div class="karusel-box" id="frontpage-karusel-box">
 
-                    @foreach (var product in randomDiscountProducts)
+                    @foreach (var product in Model.RandomDiscountProducts)
                     {
                         if (product.Category.Name == "Hylder")
                         {
@@ -192,8 +185,8 @@
                     
 
                 </div>
-                <button class="karusel-back" onclick="frontpage_backevent()"><img src="~/lib/svg/arrow-left.svg" /></button>
-                <button class="karusel-forward" onclick="frontpage_forwardevent()"><img src="~/lib/svg/arrow-right.svg" /></button>
+                <button class="karusel-back" onclick="frontpage_backevent()"><img src="https://static.nykant.dk/lib/svg/arrow-left.svg" /></button>
+                <button class="karusel-forward" onclick="frontpage_forwardevent()"><img src="https://static.nykant.dk/lib/svg/arrow-right.svg" /></button>
             </div>
         </div>
     </div>
@@ -231,16 +224,16 @@
                 <p class="titlesize">FAVORITTER</p>
                 </div>
                 <div class="col-6 left favorite-item">
-                <a onclick="FavoriteClick()" asp-controller="product" asp-action="details" asp-route-urlname="@dagmar.UrlName" asp-route-category="@dagmar.Category.Name">
-                    <img loading="lazy" class="absolute-center favorite-img" src="@dagmarImg.Source" alt="@dagmarImg.Alt" />
+                <a onclick="FavoriteClick()" asp-controller="product" asp-action="details" asp-route-urlname="@Model.Dagmar.UrlName" asp-route-category="@Model.Dagmar.Category.Name">
+                    <img loading="lazy" class="absolute-center favorite-img" src="@Model.DagmarImg.Source" alt="@Model.DagmarImg.Alt" />
                         <div id="follow-container">
                             <div class="follow-container" id="follow-container-table">
                                 <div class="follow-box" id="follow-box-table">
-                                    <p id="follow-name-baenk">@dagmar.Name</p>
-                                    <p id="follow-oil">@dagmar.Oil</p>
+                                    <p id="follow-name-baenk">@Model.Dagmar.Name</p>
+                                    <p id="follow-oil">@Model.Dagmar.Oil</p>
                                     <p id="follow-price">
-                                        kr. @ProductHelper.GetPrice(dagmar) @if (dagmar.Discount > 0)
-                                        {<span class="line-through red-text">@dagmar.Price</span>}
+                                        kr. @ProductHelper.GetPrice(Model.Dagmar) @if (Model.Dagmar.Discount > 0)
+                                        {<span class="line-through red-text">@Model.Dagmar.Price</span>}
                                     </p>
                                 </div>
                             </div>
@@ -248,16 +241,16 @@
                     </a>
                 </div>
                 <div class="col-6 left favorite-item">
-                <a onclick="FavoriteClick()" asp-controller="product" asp-action="details" asp-route-urlname="@filippa.UrlName" asp-route-category="@filippa.Category.Name">
-                    <img loading="lazy" class="absolute-center favorite-img" src="@filippaImg.Source" alt="@filippaImg.Alt" />
+                <a onclick="FavoriteClick()" asp-controller="product" asp-action="details" asp-route-urlname="@Model.Filippa.UrlName" asp-route-category="@Model.Filippa.Category.Name">
+                    <img loading="lazy" class="absolute-center favorite-img" src="@Model.FilippaImg.Source" alt="@Model.FilippaImg.Alt" />
                         <div id="follow-container">
                             <div class="follow-container" id="follow-container-baenk">
                                 <div class="follow-box" id="follow-box-baenk">
-                                    <p id="follow-name-baenk">@filippa.Name</p>
-                                    <p id="follow-oil">@filippa.Oil</p>
+                                    <p id="follow-name-baenk">@Model.Filippa.Name</p>
+                                    <p id="follow-oil">@Model.Filippa.Oil</p>
                                     <p id="follow-price">
-                                        kr. @ProductHelper.GetPrice(filippa) @if (filippa.Discount > 0)
-                                        {<span class="line-through red-text">@filippa.Price</span>}
+                                    kr. @ProductHelper.GetPrice(Model.Filippa) @if (Model.Filippa.Discount > 0)
+                                        {<span class="line-through red-text">@Model.Filippa.Price</span>}
                                     </p>
                                 </div>
                             </div>
@@ -265,15 +258,15 @@
                     </a>
                 </div>
                 <div class="col-6 left favorite-item">
-                <a onclick="FavoriteClick()" asp-controller="product" asp-action="details" asp-route-urlname="@nora.UrlName" asp-route-category="@nora.Category.Name">
-                    <img loading="lazy" class="absolute-center favorite-img" src="@noraImg.Source" alt="@noraImg.Alt" />
+                <a onclick="FavoriteClick()" asp-controller="product" asp-action="details" asp-route-urlname="@Model.Nora.UrlName" asp-route-category="@Model.Nora.Category.Name">
+                    <img loading="lazy" class="absolute-center favorite-img" src="@Model.NoraImg.Source" alt="@Model.NoraImg.Alt" />
                         <div class="follow-container" id="follow-container-rack">
                             <div class="follow-box" id="follow-box-rack">
-                                <p id="follow-name-rack">@nora.Name</p>
-                                <p id="follow-oil-rack">@nora.Oil</p>
+                                <p id="follow-name-rack">@Model.Nora.Name</p>
+                                <p id="follow-oil-rack">@Model.Nora.Oil</p>
                                 <p id="follow-price-rack">
-                                    kr. @ProductHelper.GetPrice(nora) @if (nora.Discount > 0)
-                                    {<span class="line-through red-text">@nora.Price</span>}
+                                    kr. @ProductHelper.GetPrice(Model.Nora) @if (Model.Nora.Discount > 0)
+                                    {<span class="line-through red-text">@Model.Nora.Price</span>}
                                 </p>
                             </div>
                         </div>
@@ -281,16 +274,16 @@
                 </div>
 
                 <div class="col-6 left favorite-item">
-                <a onclick="FavoriteClick()" asp-controller="product" asp-action="details" asp-route-urlname="@thyra.UrlName" asp-route-category="@thyra.Category.Name">
-                    <img loading="lazy" class="absolute-center favorite-img" src="@thyraImg.Source" alt="@thyraImg.Alt" />
+                <a onclick="FavoriteClick()" asp-controller="product" asp-action="details" asp-route-urlname="@Model.Thyra.UrlName" asp-route-category="@Model.Thyra.Category.Name">
+                    <img loading="lazy" class="absolute-center favorite-img" src="@Model.ThyraImg.Source" alt="@Model.ThyraImg.Alt" />
                         <div id="follow-container">
                             <div class="follow-container" id="follow-container-kortbaenk">
                                 <div class="follow-box" id="follow-box-kortbaenk">
-                                    <p id="follow-name-baenk">@thyra.Name</p>
-                                    <p id="follow-oil">@thyra.Oil</p>
+                                    <p id="follow-name-baenk">@Model.Thyra.Name</p>
+                                    <p id="follow-oil">@Model.Thyra.Oil</p>
                                     <p id="follow-price">
-                                        kr. @ProductHelper.GetPrice(thyra) @if (thyra.Discount > 0)
-                                        {<span class="line-through red-text">@thyra.Price</span>}
+                                        kr. @ProductHelper.GetPrice(Model.Thyra) @if (Model.Thyra.Discount > 0)
+                                        {<span class="line-through red-text">@Model.Thyra.Price</span>}
                                     </p>
                                 </div>
                             </div>
@@ -337,8 +330,11 @@
     @*<div class="my-row">
 
         </div>*@
-<script src="/JS/swiped-events.min.js"></script>
-    <script src="/JS/slideshow.js"></script>
+
+
+@section scripts {
+    <script src="https://static.nykant.dk/JS/swiped-events.min.js"></script>
+    <script src="https://static.nykant.dk/JS/slideshow.min.js"></script>
     @*<script src="~/JS/moving-box.js"></script>
         <script src="~/JS/follow-box-1.js"></script>
         <script src="~/JS/follow-box-2.js"></script>
@@ -347,8 +343,9 @@
         <script src="~/JS/follow-box-5.js"></script>*@
     @*<script async src="~/JS/checkout-sandbox.js"></script>*@
 
-    @if (randomDiscountProducts.Count > 0)
-{
-    <script src="/JS/frontpage-karusel.js"></script>
+    @if (Model.RandomDiscountProducts.Count > 0)
+    {
+        <script src="https://static.nykant.dk/JS/frontpage-karusel.min.js"></script>
 
+    }
 }

@@ -4,6 +4,8 @@
     ViewData["Description"] = "Møbler fra Nykant er udført i massivt egetræ og inspireret af dansk design. Du finder smukke bænke, borde, tøjstativer m.m. i bæredygtige materialer. Køb her!";
 }
 
+<link rel="stylesheet" type="text/css" href="https://static.nykant.dk/css/product-gallery.min.css" />
+
 <div class="my-row">
     <div class="col-6 center col-wrapper">
         <div class="filter">
@@ -30,8 +32,12 @@
     </div>
 </div>
 
+@section scripts {
+    <script src="https://static.nykant.dk/JS/products.min.js"></script>
+}
+
 @*<script src="~/JS/image-changer.js"></script>*@
-<script src="~/JS/products.js"></script>
+
 
 
 

@@ -16,6 +16,9 @@
     randomRelated = ProductHelper.RandomizeList(randomRelated);
 }
 
+<link rel="stylesheet" type="text/css" href="https://static.nykant.dk/css/product-details.min.css" />
+<link rel="stylesheet" type="text/css" href="https://static.nykant.dk/css/karusel.min.css" />
+
 <div class="pop" id="pop">
     <i id="close-pop" class="far fa-times-circle right"></i>
     <img align="middle" loading="lazy" class="bigImg" id="bigImg" alt="@Model.Product.Title" />
@@ -320,9 +323,13 @@
     </div>
 </div>
 
-<script src="/JS/swiped-events.min.js"></script>
-<script src="~/JS/product-slideshow.js"></script>
-<script src="~/JS/product-details.js"></script>
-<script src="~/JS/details-karusel.js"></script>
+@section scripts {
+    <script src="https://static.nykant.dk/JS/swiped-events.min.js"></script>
+    <script src="https://static.nykant.dk/JS/product-slideshow.min.js"></script>
+    <script src="https://static.nykant.dk/JS/product-details.min.js"></script>
+    <script src="https://static.nykant.dk/JS/details-karusel.min.js"></script>
+
+}
+
 
 

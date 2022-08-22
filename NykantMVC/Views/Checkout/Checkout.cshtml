@@ -21,10 +21,7 @@
 
 <input hidden id="stripe-key" data-stripePKKey="@ViewBag.StripePKKey" />
 
-<link rel="stylesheet" href="~/stripe/stripe.css" />
-<link rel="stylesheet" href="~/css/checkout.css" />
-<link rel="stylesheet" href="~/css/custom-input.css" />
-<link rel="stylesheet" href="~/css/custom-checkbox.css" />
+<link rel="stylesheet" href="https://static.nykant.dk/css/checkout-bundle.min.css" />
 
 <input type="hidden" data-url="@url" id="stage" data-stage="@stage" />
 
@@ -49,11 +46,14 @@
     </div>
 </div>
 
+@section scripts {
+    <script src="https://static.nykant.dk/JS/checkout.min.js"></script>
+    <script src="https://static.nykant.dk/JS/country-picker.min.js"></script>
+    <script src="https://static.nykant.dk/stripe/client.min.js"></script>
+}
 
 
 
-<script src="~/JS/checkout.js"></script>
-<script src="~/JS/country-picker.js"></script>
-<script src="~/stripe/client.js"></script>
+
 @*<script async src="~/JS/checkout-sandbox.js"></script>*@
 

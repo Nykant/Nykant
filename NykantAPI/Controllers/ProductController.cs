@@ -26,6 +26,26 @@ namespace NykantAPI.Controllers
         }
 
         [HttpGet]
+        public async Task<ActionResult> GetFrontPageData()
+        {
+            try
+            {
+                IEnumerable<Product> products = _context.Products.Include(x => x.Category).Include(x => x.Images);
+                IEnumerable<Category> categories = _context.Categories;
+                FrontpageDTO dto = new FrontpageDTO { Categories = categories, Products = products };
+                string json = JsonConvert.SerializeObject(dto, Extensions.JsonOptions.jsonSettings);
+                return Ok(json);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}, {e.InnerException}, {e.StackTrace}, {e.TargetSite}");
+                return BadRequest();
+            }
+
+        }
+
+
+        [HttpGet]
         public async Task<ActionResult> GetProducts()
         {
             try

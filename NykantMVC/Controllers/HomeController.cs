@@ -21,6 +21,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Hosting;
+using NykantMVC.Models.DTO;
+using System.Linq;
 
 namespace NykantMVC.Controllers
 {
@@ -48,16 +50,31 @@ namespace NykantMVC.Controllers
         {
             try
             {
-                var jsonResponse = await GetRequest("/Category/GetCategories");
-                var categories = JsonConvert.DeserializeObject<List<Category>>(jsonResponse);
-                jsonResponse = await GetRequest("/Product/GetProducts");
-                var products = JsonConvert.DeserializeObject<List<Product>>(jsonResponse);
-                var viewModel = new FrontPageVM()
+                string res = await GetRequest("/Product/GetFrontPageData");
+                FrontpageDTO dto = JsonConvert.DeserializeObject<FrontpageDTO>(res);
+                List<Product> products = dto.Products.ToList();
+                List<Product> discounts = dto.Products.Where(x => x.Discount > 0).ToList();
+                if (discounts.Count > 0)
                 {
-                    Categories = categories,
-                    Products = products
+                    discounts = ProductHelper.RandomizeList(discounts);
+                }
+
+                FrontPageVM vm = new FrontPageVM
+                {
+                    Categories = dto.Categories.ToList(),
+                    RandomDiscountProducts = discounts,
+                    Dagmar = products.Find(x => x.Id == 16),
+                    Filippa = products.Find(x => x.Id == 24),
+                    Nora = products.Find(x => x.Id == 27),
+                    Thyra = products.Find(x => x.Id == 18)
                 };
-                return View(viewModel);
+
+                vm.NoraImg = vm.Nora.Images.FirstOrDefault(x => x.ImageType == ImageType.DetailsSlide && x.Source.Contains('2'));
+                vm.DagmarImg = vm.Dagmar.Images.FirstOrDefault(x => x.ImageType == ImageType.DetailsSlide && x.Source.Contains('2'));
+                vm.FilippaImg = vm.Filippa.Images.FirstOrDefault(x => x.ImageType == ImageType.DetailsSlide && x.Source.Contains('2'));
+                vm.ThyraImg = vm.Thyra.Images.FirstOrDefault(x => x.ImageType == ImageType.DetailsSlide && x.Source.Contains('2'));
+
+                return View(vm);
             }
             catch (Exception e) {
                 _logger.LogError($"time: {DateTime.Now} - {e.Message}, {e.InnerException}, {e.StackTrace}, {e.TargetSite}");

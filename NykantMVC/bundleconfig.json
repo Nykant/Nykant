@@ -1,0 +1,891 @@
+[
+  {
+    "outputFileName": "wwwroot/css/layout-bundle.css",
+    "inputFiles": [
+      "wwwroot/css/mvcstyle.css",
+      "wwwroot/css/navbar.css",
+      "wwwroot/css/search.css",
+      "wwwroot/css/e-mark.css",
+      "wwwroot/css/cookiebot.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/layout-head-bundle.js",
+    "inputFiles": [
+      "wwwroot/JS/AjaxAntiCSRF.js",
+      "wwwroot/JS/logger.js",
+      "wwwroot/lib/jquery/dist/jquery.js",
+      "wwwroot/lib/ajax/jquery.unobtrusive-ajax.min.js",
+      "wwwroot/lib/jquery-validation/dist/jquery.validate.js",
+      "wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/layout-bottom-bundle.js",
+    "inputFiles": [
+      "wwwroot/JS/mobileNav.js",
+      "wwwroot/JS/noop.js",
+      "wwwroot/JS/search-button.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/bag.min.css",
+    "inputFiles": [
+      "wwwroot/css/bag.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/breadcrumbs.min.css",
+    "inputFiles": [
+      "wwwroot/css/breadcrumbs.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/carousel.min.css",
+    "inputFiles": [
+      "wwwroot/css/carousel.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/checkout.min.css",
+    "inputFiles": [
+      "wwwroot/css/checkout.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/contact.min.css",
+    "inputFiles": [
+      "wwwroot/css/contact.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/cookiebot-declaraction.min.css",
+    "inputFiles": [
+      "wwwroot/css/cookiebot-declaraction.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/culture.min.css",
+    "inputFiles": [
+      "wwwroot/css/culture.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/custom-checkbox.min.css",
+    "inputFiles": [
+      "wwwroot/css/custom-checkbox.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/custom-input.min.css",
+    "inputFiles": [
+      "wwwroot/css/custom-input.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/custom-input2.min.css",
+    "inputFiles": [
+      "wwwroot/css/custom-input2.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/custom-list.min.css",
+    "inputFiles": [
+      "wwwroot/css/custom-list.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/custom-select.min.css",
+    "inputFiles": [
+      "wwwroot/css/custom-select.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/custom-switch.min.css",
+    "inputFiles": [
+      "wwwroot/css/custom-switch.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/custom-table.min.css",
+    "inputFiles": [
+      "wwwroot/css/custom-table.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/down-arrow.min.css",
+    "inputFiles": [
+      "wwwroot/css/down-arrow.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/feedback.min.css",
+    "inputFiles": [
+      "wwwroot/css/feedback.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/filter.min.css",
+    "inputFiles": [
+      "wwwroot/css/filter.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/login.min.css",
+    "inputFiles": [
+      "wwwroot/css/login.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/my-form.min.css",
+    "inputFiles": [
+      "wwwroot/css/my-form.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/my-list.min.css",
+    "inputFiles": [
+      "wwwroot/css/my-list.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/orderConfirmation.min.css",
+    "inputFiles": [
+      "wwwroot/css/orderConfirmation.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/privacy.min.css",
+    "inputFiles": [
+      "wwwroot/css/privacy.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/refund.min.css",
+    "inputFiles": [
+      "wwwroot/css/refund.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/regretstyle.min.css",
+    "inputFiles": [
+      "wwwroot/css/regretstyle.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/simple-checkbox.min.css",
+    "inputFiles": [
+      "wwwroot/css/simple-checkbox.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/sprites.min.css",
+    "inputFiles": [
+      "wwwroot/css/sprites.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/bag.min.js",
+    "inputFiles": [
+      "wwwroot/JS/bag.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/bagItemAdded.min.js",
+    "inputFiles": [
+      "wwwroot/JS/bagItemAdded.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/carousel.min.js",
+    "inputFiles": [
+      "wwwroot/JS/carousel.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/checkout.min.js",
+    "inputFiles": [
+      "wwwroot/JS/checkout.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/checkout-sandbox.min.js",
+    "inputFiles": [
+      "wwwroot/JS/checkout-sandbox.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/collapsible.min.js",
+    "inputFiles": [
+      "wwwroot/JS/collapsible.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/consent.min.js",
+    "inputFiles": [
+      "wwwroot/JS/consent.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/consent-settings.min.js",
+    "inputFiles": [
+      "wwwroot/JS/consent-settings.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/cookie-policy-spinner.min.js",
+    "inputFiles": [
+      "wwwroot/JS/cookie-policy-spinner.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/counter.min.js",
+    "inputFiles": [
+      "wwwroot/JS/counter.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/country-picker.min.js",
+    "inputFiles": [
+      "wwwroot/JS/country-picker.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/coupon.min.js",
+    "inputFiles": [
+      "wwwroot/JS/coupon.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/custom-list.min.js",
+    "inputFiles": [
+      "wwwroot/JS/custom-list.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/custom-select.min.js",
+    "inputFiles": [
+      "wwwroot/JS/custom-select.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/details-karusel.min.js",
+    "inputFiles": [
+      "wwwroot/JS/details-karusel.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/downarrow-stop.min.js",
+    "inputFiles": [
+      "wwwroot/JS/downarrow-stop.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/edit.min.js",
+    "inputFiles": [
+      "wwwroot/JS/edit.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/facebook.min.js",
+    "inputFiles": [
+      "wwwroot/JS/facebook.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/facebook-init.min.js",
+    "inputFiles": [
+      "wwwroot/JS/facebook-init.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/facebook-init-auth.min.js",
+    "inputFiles": [
+      "wwwroot/JS/facebook-init-auth.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/facebookLogin.min.js",
+    "inputFiles": [
+      "wwwroot/JS/facebookLogin.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/facebookLogout.min.js",
+    "inputFiles": [
+      "wwwroot/JS/facebookLogout.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/facebookRequest.min.js",
+    "inputFiles": [
+      "wwwroot/JS/facebookRequest.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/follow-box-1.min.js",
+    "inputFiles": [
+      "wwwroot/JS/follow-box-1.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/follow-box-2.min.js",
+    "inputFiles": [
+      "wwwroot/JS/follow-box-2.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/follow-box-3.min.js",
+    "inputFiles": [
+      "wwwroot/JS/follow-box-3.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/follow-box-4.min.js",
+    "inputFiles": [
+      "wwwroot/JS/follow-box-4.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/follow-box-5.min.js",
+    "inputFiles": [
+      "wwwroot/JS/follow-box-5.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/frontpage-karusel.min.js",
+    "inputFiles": [
+      "wwwroot/JS/frontpage-karusel.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/jquery.mixitup.min.min.js",
+    "inputFiles": [
+      "wwwroot/JS/jquery.mixitup.min.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/image-changer.min.js",
+    "inputFiles": [
+      "wwwroot/JS/image-changer.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/logo-image-changer.min.js",
+    "inputFiles": [
+      "wwwroot/JS/logo-image-changer.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/magnifying.min.js",
+    "inputFiles": [
+      "wwwroot/JS/magnifying.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/main.min.js",
+    "inputFiles": [
+      "wwwroot/JS/main.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/modernizr.min.js",
+    "inputFiles": [
+      "wwwroot/JS/modernizr.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/moving-box.min.js",
+    "inputFiles": [
+      "wwwroot/JS/moving-box.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/popularInViewPort.min.js",
+    "inputFiles": [
+      "wwwroot/JS/popularInViewPort.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/privacy.min.js",
+    "inputFiles": [
+      "wwwroot/JS/privacy.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/products.min.js",
+    "inputFiles": [
+      "wwwroot/JS/products.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/product-details.min.js",
+    "inputFiles": [
+      "wwwroot/JS/product-details.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/product-slideshow.min.js",
+    "inputFiles": [
+      "wwwroot/JS/product-slideshow.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/refund.min.js",
+    "inputFiles": [
+      "wwwroot/JS/refund.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/regret.min.js",
+    "inputFiles": [
+      "wwwroot/JS/regret.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/search.min.js",
+    "inputFiles": [
+      "wwwroot/JS/search.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/sendemail.min.js",
+    "inputFiles": [
+      "wwwroot/JS/sendemail.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/slideshow.min.js",
+    "inputFiles": [
+      "wwwroot/JS/slideshow.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/tripple-slide.min.js",
+    "inputFiles": [
+      "wwwroot/JS/tripple-slide.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/viewport.min.js",
+    "inputFiles": [
+      "wwwroot/JS/viewport.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/checkout-bundle.css",
+    "inputFiles": [
+      "wwwroot/stripe/stripe.css",
+      "wwwroot/css/checkout.css",
+      "wwwroot/css/custom-input.css",
+      "wwwroot/css/custom-checkbox.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/stripe/client.min.js",
+    "inputFiles": [
+      "wwwroot/stripe/client.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/JS/GoogleAnalytics.min.js",
+    "inputFiles": [
+      "wwwroot/JS/GoogleAnalytics.js"
+    ]
+  }
+]

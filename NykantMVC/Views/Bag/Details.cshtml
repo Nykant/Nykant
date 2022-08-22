@@ -4,7 +4,7 @@
     ViewData["Description"] = "";
 }
 
-<link rel="stylesheet" href="~/css/bag.css" />
+<link rel="stylesheet" href="https://static.nykant.dk/css/bag.min.css" />
 
 <div class="my-row top-padding bottom-padding">
     <div class="col-10 center" id="bag-wrapper">
@@ -19,5 +19,8 @@
 
 </div>
 
-<script src="~/JS/bag.js"></script>
 
+
+@section scripts {
+    <script src="https://static.nykant.dk/JS/bag.min.js"></script>
+}

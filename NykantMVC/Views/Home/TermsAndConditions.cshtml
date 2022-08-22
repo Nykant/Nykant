@@ -8,8 +8,8 @@
     string url = @conf.GetSection("Urls")["Mvc"];
 }
 
-<link rel="stylesheet" href="~/css/privacy.css" />
-<link rel="stylesheet" href="~/css/regretstyle.css" />
+<link rel="stylesheet" href="https://static.nykant.dk/css/privacy.min.css" />
+<link rel="stylesheet" href="https://static.nykant.dk/css/regretstyle.min.css" />
 
 <div class="my-row background-color2">
     <div class="privacy-header center">
@@ -311,4 +311,8 @@
     </div>
 </div>
 
-<script src="~/JS/regret.js"></script>
+@section scripts {
+    <script src="https://static.nykant.dk/JS/regret.min.js"></script>
+
+}
+

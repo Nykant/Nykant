@@ -60,11 +60,16 @@ namespace NykantMVC.Services
 
                     disco = client.GetDiscoveryDocumentAsync(new DiscoveryDocumentRequest
                     {
-                        Address = _urls.Is,
-                        Policy = new DiscoveryPolicy
-                        {
-                            RequireHttps = true
-                        }
+                        Address = conf.GetValue<string>("Issuer")
+                        //Policy = new DiscoveryPolicy
+                        //{
+                        //    RequireHttps = false,
+                        //    Authority = conf.GetValue<string>("Authority"),
+                        //     AdditionalEndpointBaseAddresses = new string[] {
+                        //         "http://nykant.dk",
+                        //         "http://nykant.dk/is/connect/token"
+                        //    }
+                        //}
                     }).Result;
                     if (disco.IsError)
                     {
@@ -78,7 +83,6 @@ namespace NykantMVC.Services
                     var tokenResponse = client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
                     {
                         Address = disco.TokenEndpoint,
-
                         ClientId = "client",
                         ClientSecret = conf["ClientClientSecret"],
                         Scope = "NykantAPI"
@@ -86,7 +90,7 @@ namespace NykantMVC.Services
 
                     if (tokenResponse.IsError)
                     {
-                        _logger.LogInformation($"RequestClientCredentialsTokenAsync Error --> time: {DateTime.Now} - {tokenResponse.Error}, {disco.Exception.Message}, ---- Trying again...");
+                        _logger.LogInformation($"RequestClientCredentialsTokenAsync Error --> time: {DateTime.Now} - {tokenResponse.Error}, ---- Trying again...");
                         Thread.Sleep(1000);
                         goto tryAgain;
                     }

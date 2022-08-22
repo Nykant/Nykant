@@ -58,6 +58,8 @@ namespace NykantMVC.Controllers
         {
             try
             {
+                string cdn = "https://static.nykant.dk/";
+
                 var json = await GetRequest("/Product/GetProductsWithNothing");
                 var products = JsonConvert.DeserializeObject<List<Product>>(json);
 
@@ -79,6 +81,28 @@ namespace NykantMVC.Controllers
                 for (int i = 0; i < images.Length; i++)
                 {
                     var s = images[i].Split(h);
+                    int j = s.Length - 1;
+                    string path = "";
+                    while (true)
+                    {
+                        if (s[j] == "Egetræsmøbler")
+                        {
+                            break;
+                        }
+                        j--;
+                    }
+                    while(j < s.Length)
+                    {
+                        if(j == s.Length - 1)
+                        {
+                            path += s[j];
+                        }
+                        else
+                        {
+                            path += s[j] + "/";
+                        }
+                        j++;
+                    }
                     var name = s[s.Length - 1];
                     s = name.Split('.');
                     name = s[0];
@@ -86,7 +110,7 @@ namespace NykantMVC.Controllers
                     var endSub = chars.Length - 4;
                     var type = name.Substring(endSub);
                     name = name.Substring(0, endSub);
-                    imageList.Add(new ImageFile { Path = images[i], Name = name, Type = type });
+                    imageList.Add(new ImageFile { Path = path, Name = name, Type = type });
                 }
 
                 var newImageList = new List<Image>();
@@ -94,15 +118,15 @@ namespace NykantMVC.Controllers
                 //New Images
                 foreach (var img in imageList)
                 {
-                    var sour = "";
-                    if (env.IsDevelopment())
-                    {
-                        sour = img.Path.Substring(10);
-                    }
-                    else
-                    {
-                        sour = img.Path.Substring(12);
-                    }
+                    //var sour = "";
+                    //if (env.IsDevelopment())
+                    //{
+                    //    sour = img.Path.Substring(87);
+                    //}
+                    //else
+                    //{
+                    //    sour = img.Path.Substring(13);
+                    //}
 
                     var split = img.Name.Split('-');
 
@@ -213,11 +237,11 @@ namespace NykantMVC.Controllers
 
                     newImg.Path = img.Path;
 
-                    newImg.Source = sour;
+                    newImg.Source = cdn + img.Path;
 
                     if (newImg.ImageType == ImageType.DetailsSlide)
                     {
-                        newImg.Source2 = newImg.Source.Replace("ds", "df");
+                        newImg.Source2 = cdn + newImg.Source.Replace("ds", "df");
                     }
 
                     newImageList.Add(newImg);
@@ -249,15 +273,15 @@ namespace NykantMVC.Controllers
                 //New Colors
                 foreach (var img in imageList)
                 {
-                    var sour = "";
-                    if (env.IsDevelopment())
-                    {
-                        sour = img.Path.Substring(10);
-                    }
-                    else
-                    {
-                        sour = img.Path.Substring(12);
-                    }
+                    //var sour = "";
+                    //if (env.IsDevelopment())
+                    //{
+                    //    sour = img.Path.Substring(10);
+                    //}
+                    //else
+                    //{
+                    //    sour = img.Path.Substring(13);
+                    //}
                     var split = img.Name.Split('-');
 
                     var itemName = split[0];
@@ -350,7 +374,7 @@ namespace NykantMVC.Controllers
                                             var sourceProduct = products.FirstOrDefault(x => x.Oil == oilList[i] && x.Title.Contains(itemName) && x.Length.Contains(cm));
                                             newColor.ProductId = sourceProduct.Id;
                                             newColor.ProductSourceId = product.Id;
-                                            newColor.ImgSrc = sour;
+                                            newColor.ImgSrc = cdn + img.Path;
                                             newColor.ProductSourceUrlName = product.UrlName;
                                             newColor.Alt = product.Title;
                                             switch (product.Oil)
@@ -389,7 +413,7 @@ namespace NykantMVC.Controllers
                                 var sourceProduct = products.FirstOrDefault(x => x.Oil == oilList[i] && x.Title.Contains(itemName));
                                 newColor.ProductId = sourceProduct.Id;
                                 newColor.ProductSourceId = product.Id;
-                                newColor.ImgSrc = sour;
+                                newColor.ImgSrc = cdn + img.Path;
                                 newColor.ProductSourceUrlName = product.UrlName;
                                 newColor.Alt = product.Title;
                                 switch (product.Oil)
@@ -477,15 +501,15 @@ namespace NykantMVC.Controllers
 
                 foreach (var img in imageList)
                 {
-                    var sour = "";
-                    if (env.IsDevelopment())
-                    {
-                        sour = img.Path.Substring(10);
-                    }
-                    else
-                    {
-                        sour = img.Path.Substring(12);
-                    }
+                    //var sour = "";
+                    //if (env.IsDevelopment())
+                    //{
+                    //    sour = img.Path.Substring(10);
+                    //}
+                    //else
+                    //{
+                    //    sour = img.Path.Substring(13);
+                    //}
                     var split = img.Name.Split('-');
 
                     var itemName = split[0];
@@ -572,11 +596,11 @@ namespace NykantMVC.Controllers
                                             found = true;
                                             if (img.Type.Contains('2'))
                                             {
-                                                newProductList[i].GalleryImage1 = sour;
+                                                newProductList[i].GalleryImage1 = cdn + img.Path;
                                             }
                                             else if (img.Type.Contains('1'))
                                             {
-                                                newProductList[i].GalleryImage2 = sour;
+                                                newProductList[i].GalleryImage2 = cdn + img.Path;
                                             }
 
                                             break;
@@ -590,12 +614,12 @@ namespace NykantMVC.Controllers
                                 found = true;
                                 if (img.Type.Contains('2'))
                                 {
-                                    newProductList[i].GalleryImage1 = sour;
+                                    newProductList[i].GalleryImage1 = cdn + img.Path;
 
                                 }
                                 else if (img.Type.Contains('1'))
                                 {
-                                    newProductList[i].GalleryImage2 = sour;
+                                    newProductList[i].GalleryImage2 = cdn + img.Path;
 
                                 }
                                 break;
@@ -623,12 +647,12 @@ namespace NykantMVC.Controllers
                                             newProduct.Alt = product.Title;
                                             if (img.Type.Contains('2'))
                                             {
-                                                newProduct.GalleryImage1 = sour;
+                                                newProduct.GalleryImage1 = cdn + img.Path;
                                                 newProductList.Add(newProduct);
                                             }
                                             else if (img.Type.Contains('1'))
                                             {
-                                                newProduct.GalleryImage2 = sour;
+                                                newProduct.GalleryImage2 = cdn + img.Path;
                                                 newProductList.Add(newProduct);
                                             }
 
@@ -644,12 +668,12 @@ namespace NykantMVC.Controllers
                                 newProduct.Alt = product.Title;
                                 if (img.Type.Contains('2'))
                                 {
-                                    newProduct.GalleryImage1 = sour;
+                                    newProduct.GalleryImage1 = cdn + img.Path;
                                     newProductList.Add(newProduct);
                                 }
                                 else if (img.Type.Contains('1'))
                                 {
-                                    newProduct.GalleryImage2 = sour;
+                                    newProduct.GalleryImage2 = cdn + img.Path;
                                     newProductList.Add(newProduct);
                                 }
 

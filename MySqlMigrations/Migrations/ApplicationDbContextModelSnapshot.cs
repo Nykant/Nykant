@@ -117,7 +117,7 @@ namespace MySqlMigrations.Migrations
                             Description = "Hos Nykant får du æstetiske tøjstativer i massivt egetræ. Tøjstativerne er lette at samle, og du kan vælge blandt flere farver. Shop online med hurtig levering.",
                             H1 = "Tøjstativer I Træ",
                             H2 = "Moderne Tøjstativer I Massivt Egetræ",
-                            ImgSource = "\\Egetræsmøbler\\Tøjstativer\\Træ-Tøjstativer\\Hængende-Tøjstativer\\Væghængt-Tøjstativ-Naturolie-2ca.png",
+                            ImgSource = "https://static.nykant.dk/Egetræsmøbler/Tøjstativer/Træ-Tøjstativer/Hængende-Tøjstativer/Væghængt-Tøjstativ-Naturolie-2ca.png",
                             Name = "Tøjstativer",
                             Text1 = "Vores moderne og praktiske tøjstativer er i massivt træ, tydeligt inspireret af minimalistisk dansk design, og som både er nemme at samle og sætte op. De er perfekte til indretning af et smukt, naturligt og flot hjem, hvor der er tænkt på hver detalje, i ophæng, såvel som udseende.",
                             Text2 = "Vores tøjstativer kan nemt sættes op, hvad enten det er i entréen, på kontoret eller soveværelset. Ophæng og tøjstativer, giver plads til opbevaring og er noget af det første man ser i et hjem. De giver et rigtig godt førstehåndsindtryk og skaber orden, samtidig med at se godt ud og give kant i hjemmet.",
@@ -130,7 +130,7 @@ namespace MySqlMigrations.Migrations
                             Description = "Med et bord fra Nykant får du dansk design, overlegne detaljer og materialer i høj kvalitet. Bordene passer ind i moderne hjem. Køb online med hurtig levering.",
                             H1 = "Borde I Træ",
                             H2 = "Egetræsborde I Minimalistisk Dansk Design",
-                            ImgSource = "/Egetræsmøbler/Borde/Egetræsborde/Skrivebord-Naturolie-2ca.png",
+                            ImgSource = "https://static.nykant.dk/Egetræsmøbler/Borde/Egetræsborde/Skrivebord-Naturolie-2ca.png",
                             Name = "Borde",
                             Text1 = "Vores Dagmar bord er et enkelt og stilrent møbel i høj kvalitet, og tager udgangspunkt i sit smukke udseende, såvel som funktionalitet. Det er nemt at flytte og praktisk, hvad end det er til det lille tekøkken, hjørnekontoret, studieboligen, eller andre steder, hvor der ikke kræves meget plads.",
                             Text2 = "Vores borde kan nemt danne rammerne for en hyggelig krog eller samlingssted for små og store samtaleemner, samt giver det med sit udseende, et minimalistisk look til hjemmet. Match det med en af vores bænke for et fuldendt look eller sammensæt det på din egen måde.",
@@ -143,7 +143,7 @@ namespace MySqlMigrations.Migrations
                             Description = "Her hos Nykant finder du dansk designede hylder i massivt egetræ. Hylderne er lette at montere på væggen, og du kan vælge blandt flere farver. Hurtig levering.",
                             H1 = "Hylder I Træ",
                             H2 = "Simple Træhylder I Mange Størrelser Og Farver",
-                            ImgSource = "\\Egetræsmøbler\\Hylder\\Egetræshylder\\Væghylde-Naturolie-40cm-1ca.png",
+                            ImgSource = "https://static.nykant.dk/Egetræsmøbler/Hylder/Egetræshylder/Væghylde-Naturolie-40cm-1ca.png",
                             Name = "Hylder",
                             Text1 = "Hylden, Ingeborg er solid, enkel og fås i tre, flotte overfladebehandlinger. Det er hylden til små nips, billeder, bøger eller andre ting, som er med til at skabe et hjem med kant. Det er lavet i stil med vores andre møbler med massivt træ og mere funktion.",
                             Text2 = "Ingeborg, kan monteres helt ind til væggen, og opsættes med bunden, op eller ned, så du helt selv bestemmer, hvordan det skal se ud. I soveværelset, stuen, kontoret eller entréen, der er ikke det sted, hvor den ikke kan være og så fås den også i flere størrelser, så der gås ikke ned på plads og opbevaring.",
@@ -156,7 +156,7 @@ namespace MySqlMigrations.Migrations
                             Description = "Find din nye favorit træbænk her hos Nykant. Designet er elegant og dansk, og bænkene er lavet i massivt egetræ. Se udvalget og køb online. Hurtig levering.",
                             H1 = "Bænke I Træ",
                             H2 = "Solide Og Praktiske Bænke I Massivt Træ",
-                            ImgSource = "\\Egetræsmøbler\\Bænke\\Egetræsbænke\\Opbevaringsbænk-Naturolie-3ca.png",
+                            ImgSource = "https://static.nykant.dk/Egetræsmøbler/Bænke/Egetræsbænke/Opbevaringsbænk-Naturolie-3ca.png",
                             Name = "Bænke",
                             Text1 = "Leder du efter solide, smukke og praktisk bænke, hvor der er tænkt i funktion, såvel som æstetik, så har vi det rette. Her gås der ikke ned på detaljerne, og det ses blandt andet på vores bløde hjørner og rundinger af ben og planke. De går sig godt til ethvert hjem, og hvad enten du er til helt lys eller mørk overflade, eller midt imellem, så har vi noget til enhver smag.",
                             Text2 = "Bænke er det perfekte sted at have noget ekstra opbevaring, så mangler du noget ekstra plads til sko, handsker, m.m, så kan de nemt opbevares i vores opbevaringsbænk. Bænkene er med til at have en “holdeplads” i hjemmet, og kan sammensættes på mange måder. Det er kun fantasien, der sætter grænserne, og om det er ved spisebordet, entréen, soveværelset eller ude på en overdækket terrasse, så er vi sikre på at vores bænke kan give den kant du søger.",
@@ -169,7 +169,7 @@ namespace MySqlMigrations.Migrations
                             Description = "Se de lækre bøjler i massivt egetræ hos Nykant. Der er kræset for detaljerne, og intet er tilfældigt. Bøjlerne kommer i forskellige farver. Hurtig levering.",
                             H1 = "Bøjler I Træ",
                             H2 = "Kvalitetsbøjler I Massivt Træ I Flere Farver",
-                            ImgSource = "\\Egetræsmøbler\\Træbøjler\\Tøjbøjle-Naturolie-1ca.png",
+                            ImgSource = "https://static.nykant.dk/Egetræsmøbler/Træbøjler/Tøjbøjle-Naturolie-1ca.png",
                             Name = "Bøjler",
                             Text1 = "Et tøjstativ, knagerække eller stumtjener er altid godt komplimenteret med et par bøjler. De er med til at holde vores tøj pænt, nemt tilgængeligt og fremhæver ens yndlingstasker, tøj, m.m.",
                             Text2 = "Vores bøjler er ligeledes også i massivt træ, med henblik på holdbarhed og langvarig brug, så du ikke går ned på ophæng af dine yndlingsting. De fås i tre farver, så de nemt kan sammensættes efter dine behov og i et tidløst design.",
@@ -682,7 +682,7 @@ namespace MySqlMigrations.Migrations
                         {
                             Id = 4,
                             Amount = 4,
-                            AssemblyPath = "/word/Hylde.docx",
+                            AssemblyPath = "https://static.nykant.dk/word/Hylde.docx",
                             CategoryId = 3,
                             Description = "Denne væghylde er simpel, og kan finde sig til rette i hvilket som helst hjem. I hyldeknægtene er nøglehulsbeslagene allerede bygget ind, så hylden monteres helt fladt til væggen, uden synlig fastgørelse. Nøglehulsbeslagene sidder både i top og bunden af hyldeknægtene, således at man kan vende hylden både op eller ned alt efter smag, og nemt skifte frem og tilbage. Der er 4 forskellige længder og 3 forskellige overfladebehandlinger af hylden, så man kan vælge den som passer bedst til sit hjem.",
                             Discount = 0,
@@ -710,7 +710,7 @@ namespace MySqlMigrations.Migrations
                         {
                             Id = 5,
                             Amount = 0,
-                            AssemblyPath = "/word/Hylde.docx",
+                            AssemblyPath = "https://static.nykant.dk/word/Hylde.docx",
                             CategoryId = 3,
                             Description = "Denne væghylde er simpel, og kan finde sig til rette i hvilket som helst hjem. I hyldeknægtene er nøglehulsbeslagene allerede bygget ind, så hylden monteres helt fladt til væggen, uden synlig fastgørelse. Nøglehulsbeslagene sidder både i top og bunden af hyldeknægtene, således at man kan vende hylden både op eller ned alt efter smag, og nemt skifte frem og tilbage. Der er 4 forskellige længder og 3 forskellige overfladebehandlinger af hylden, så man kan vælge den som passer bedst til sit hjem.",
                             Discount = 0,
@@ -738,7 +738,7 @@ namespace MySqlMigrations.Migrations
                         {
                             Id = 6,
                             Amount = 14,
-                            AssemblyPath = "/word/Hylde.docx",
+                            AssemblyPath = "https://static.nykant.dk/word/Hylde.docx",
                             CategoryId = 3,
                             Description = "Denne væghylde er simpel, og kan finde sig til rette i hvilket som helst hjem. I hyldeknægtene er nøglehulsbeslagene allerede bygget ind, så hylden monteres helt fladt til væggen, uden synlig fastgørelse. Nøglehulsbeslagene sidder både i top og bunden af hyldeknægtene, således at man kan vende hylden både op eller ned alt efter smag, og nemt skifte frem og tilbage. Der er 4 forskellige længder og 3 forskellige overfladebehandlinger af hylden, så man kan vælge den som passer bedst til sit hjem.",
                             Discount = 0,
@@ -766,7 +766,7 @@ namespace MySqlMigrations.Migrations
                         {
                             Id = 7,
                             Amount = 10,
-                            AssemblyPath = "/word/Hylde.docx",
+                            AssemblyPath = "https://static.nykant.dk/word/Hylde.docx",
                             CategoryId = 3,
                             Description = "Denne væghylde er simpel, og kan finde sig til rette i hvilket som helst hjem. I hyldeknægtene er nøglehulsbeslagene allerede bygget ind, så hylden monteres helt fladt til væggen, uden synlig fastgørelse. Nøglehulsbeslagene sidder både i top og bunden af hyldeknægtene, således at man kan vende hylden både op eller ned alt efter smag, og nemt skifte frem og tilbage. Der er 4 forskellige længder og 3 forskellige overfladebehandlinger af hylden, så man kan vælge den som passer bedst til sit hjem.",
                             Discount = 0,
@@ -794,7 +794,7 @@ namespace MySqlMigrations.Migrations
                         {
                             Id = 8,
                             Amount = 11,
-                            AssemblyPath = "/word/Hylde.docx",
+                            AssemblyPath = "https://static.nykant.dk/word/Hylde.docx",
                             CategoryId = 3,
                             Description = "Denne væghylde er simpel, og kan finde sig til rette i hvilket som helst hjem. I hyldeknægtene er nøglehulsbeslagene allerede bygget ind, så hylden monteres helt fladt til væggen, uden synlig fastgørelse. Nøglehulsbeslagene sidder både i top og bunden af hyldeknægtene, således at man kan vende hylden både op eller ned alt efter smag, og nemt skifte frem og tilbage. Der er 4 forskellige længder og 3 forskellige overfladebehandlinger af hylden, så man kan vælge den som passer bedst til sit hjem.",
                             Discount = 0,
@@ -822,7 +822,7 @@ namespace MySqlMigrations.Migrations
                         {
                             Id = 9,
                             Amount = 30,
-                            AssemblyPath = "/word/Hylde.docx",
+                            AssemblyPath = "https://static.nykant.dk/word/Hylde.docx",
                             CategoryId = 3,
                             Description = "Denne væghylde er simpel, og kan finde sig til rette i hvilket som helst hjem. I hyldeknægtene er nøglehulsbeslagene allerede bygget ind, så hylden monteres helt fladt til væggen, uden synlig fastgørelse. Nøglehulsbeslagene sidder både i top og bunden af hyldeknægtene, således at man kan vende hylden både op eller ned alt efter smag, og nemt skifte frem og tilbage. Der er 4 forskellige længder og 3 forskellige overfladebehandlinger af hylden, så man kan vælge den som passer bedst til sit hjem.",
                             Discount = 0,
@@ -850,7 +850,7 @@ namespace MySqlMigrations.Migrations
                         {
                             Id = 10,
                             Amount = 4,
-                            AssemblyPath = "/word/Hylde.docx",
+                            AssemblyPath = "https://static.nykant.dk/word/Hylde.docx",
                             CategoryId = 3,
                             Description = "Denne væghylde er simpel, og kan finde sig til rette i hvilket som helst hjem. I hyldeknægtene er nøglehulsbeslagene allerede bygget ind, så hylden monteres helt fladt til væggen, uden synlig fastgørelse. Nøglehulsbeslagene sidder både i top og bunden af hyldeknægtene, således at man kan vende hylden både op eller ned alt efter smag, og nemt skifte frem og tilbage. Der er 4 forskellige længder og 3 forskellige overfladebehandlinger af hylden, så man kan vælge den som passer bedst til sit hjem.",
                             Discount = 0,
@@ -878,7 +878,7 @@ namespace MySqlMigrations.Migrations
                         {
                             Id = 11,
                             Amount = 2,
-                            AssemblyPath = "/word/Hylde.docx",
+                            AssemblyPath = "https://static.nykant.dk/word/Hylde.docx",
                             CategoryId = 3,
                             Description = "Denne væghylde er simpel, og kan finde sig til rette i hvilket som helst hjem. I hyldeknægtene er nøglehulsbeslagene allerede bygget ind, så hylden monteres helt fladt til væggen, uden synlig fastgørelse. Nøglehulsbeslagene sidder både i top og bunden af hyldeknægtene, således at man kan vende hylden både op eller ned alt efter smag, og nemt skifte frem og tilbage. Der er 4 forskellige længder og 3 forskellige overfladebehandlinger af hylden, så man kan vælge den som passer bedst til sit hjem.",
                             Discount = 0,
@@ -906,7 +906,7 @@ namespace MySqlMigrations.Migrations
                         {
                             Id = 12,
                             Amount = 11,
-                            AssemblyPath = "/word/Hylde.docx",
+                            AssemblyPath = "https://static.nykant.dk/word/Hylde.docx",
                             CategoryId = 3,
                             Description = "Denne væghylde er simpel, og kan finde sig til rette i hvilket som helst hjem. I hyldeknægtene er nøglehulsbeslagene allerede bygget ind, så hylden monteres helt fladt til væggen, uden synlig fastgørelse. Nøglehulsbeslagene sidder både i top og bunden af hyldeknægtene, således at man kan vende hylden både op eller ned alt efter smag, og nemt skifte frem og tilbage. Der er 4 forskellige længder og 3 forskellige overfladebehandlinger af hylden, så man kan vælge den som passer bedst til sit hjem.",
                             Discount = 0,
@@ -934,7 +934,7 @@ namespace MySqlMigrations.Migrations
                         {
                             Id = 13,
                             Amount = 3,
-                            AssemblyPath = "/word/Hylde.docx",
+                            AssemblyPath = "https://static.nykant.dk/word/Hylde.docx",
                             CategoryId = 3,
                             Description = "Denne væghylde er simpel, og kan finde sig til rette i hvilket som helst hjem. I hyldeknægtene er nøglehulsbeslagene allerede bygget ind, så hylden monteres helt fladt til væggen, uden synlig fastgørelse. Nøglehulsbeslagene sidder både i top og bunden af hyldeknægtene, således at man kan vende hylden både op eller ned alt efter smag, og nemt skifte frem og tilbage. Der er 4 forskellige længder og 3 forskellige overfladebehandlinger af hylden, så man kan vælge den som passer bedst til sit hjem.",
                             Discount = 0,
@@ -962,7 +962,7 @@ namespace MySqlMigrations.Migrations
                         {
                             Id = 14,
                             Amount = 2,
-                            AssemblyPath = "/word/Hylde.docx",
+                            AssemblyPath = "https://static.nykant.dk/word/Hylde.docx",
                             CategoryId = 3,
                             Description = "Denne væghylde er simpel, og kan finde sig til rette i hvilket som helst hjem. I hyldeknægtene er nøglehulsbeslagene allerede bygget ind, så hylden monteres helt fladt til væggen, uden synlig fastgørelse. Nøglehulsbeslagene sidder både i top og bunden af hyldeknægtene, således at man kan vende hylden både op eller ned alt efter smag, og nemt skifte frem og tilbage. Der er 4 forskellige længder og 3 forskellige overfladebehandlinger af hylden, så man kan vælge den som passer bedst til sit hjem.",
                             Discount = 0,
@@ -990,7 +990,7 @@ namespace MySqlMigrations.Migrations
                         {
                             Id = 15,
                             Amount = 7,
-                            AssemblyPath = "/word/Hylde.docx",
+                            AssemblyPath = "https://static.nykant.dk/word/Hylde.docx",
                             CategoryId = 3,
                             Description = "Denne væghylde er simpel, og kan finde sig til rette i hvilket som helst hjem. I hyldeknægtene er nøglehulsbeslagene allerede bygget ind, så hylden monteres helt fladt til væggen, uden synlig fastgørelse. Nøglehulsbeslagene sidder både i top og bunden af hyldeknægtene, således at man kan vende hylden både op eller ned alt efter smag, og nemt skifte frem og tilbage. Der er 4 forskellige længder og 3 forskellige overfladebehandlinger af hylden, så man kan vælge den som passer bedst til sit hjem.",
                             Discount = 0,
@@ -1018,7 +1018,7 @@ namespace MySqlMigrations.Migrations
                         {
                             Id = 16,
                             Amount = 72,
-                            AssemblyPath = "/word/Bord.docx",
+                            AssemblyPath = "https://static.nykant.dk/word/Bord.docx",
                             CategoryId = 2,
                             Description = "Affasede kanter, og drejede koniske ben som skråner ud mod hjørnerne, gør bordet unikt at se på. Det eneste man skal gøre er at skrue nogle ben på, og så har man samlet bordet. Både nemt at samle og pakke sammen igen hvis man vil flytte det. Bordet er ikke særligt langt, så passer rigtigt godt til et tebord eller et lille skrivebord, men det er selfølgelig dig som bestemmer det. Bordet fås i 2 overfladebehandlinger, og træet består selvfølgelig udelukkende af massivt egetræ.",
                             Discount = 0,
@@ -1044,7 +1044,7 @@ namespace MySqlMigrations.Migrations
                         {
                             Id = 17,
                             Amount = 30,
-                            AssemblyPath = "/word/Bord.docx",
+                            AssemblyPath = "https://static.nykant.dk/word/Bord.docx",
                             CategoryId = 2,
                             Description = "Affasede kanter, og drejede koniske ben som skråner ud mod hjørnerne, gør bordet unikt at se på. Det eneste man skal gøre er at skrue nogle ben på, og så har man samlet bordet. Både nemt at samle og pakke sammen igen hvis man vil flytte det. Bordet er ikke særligt langt, så passer rigtigt godt til et tebord eller et lille skrivebord, men det er selfølgelig dig som bestemmer det. Bordet fås i 2 overfladebehandlinger, og træet består selvfølgelig udelukkende af massivt egetræ.",
                             Discount = 0,
@@ -1070,7 +1070,7 @@ namespace MySqlMigrations.Migrations
                         {
                             Id = 18,
                             Amount = 42,
-                            AssemblyPath = "/word/bænk.docx",
+                            AssemblyPath = "https://static.nykant.dk/word/bænk.docx",
                             CategoryId = 4,
                             Description = "Thyra er en meget elegant og robust bænk at se på. De afrundede hjørner, og drejede ben, som går op igennem sædet og gør sig synlige, giver Thyra det unikke look som det fortjener. Bygget i den bedste kvalitet af massivt egetræ, fås det i 3 forskellige overfladebehandlinger og 2 størrrelse, så det kan passe ind i hvilket som helst hjem.",
                             Discount = 0,
@@ -1097,7 +1097,7 @@ namespace MySqlMigrations.Migrations
                         {
                             Id = 19,
                             Amount = 20,
-                            AssemblyPath = "/word/bænk.docx",
+                            AssemblyPath = "https://static.nykant.dk/word/bænk.docx",
                             CategoryId = 4,
                             Description = "Thyra er en meget elegant og robust bænk at se på. De afrundede hjørner, og drejede ben, som går op igennem sædet og gør sig synlige, giver Thyra det unikke look som det fortjener. Bygget i den bedste kvalitet af massivt egetræ, fås det i 3 forskellige overfladebehandlinger og 2 størrrelse, så det kan passe ind i hvilket som helst hjem.",
                             Discount = 0,
@@ -1124,7 +1124,7 @@ namespace MySqlMigrations.Migrations
                         {
                             Id = 20,
                             Amount = 10,
-                            AssemblyPath = "/word/bænk.docx",
+                            AssemblyPath = "https://static.nykant.dk/word/bænk.docx",
                             CategoryId = 4,
                             Description = "Thyra er en meget elegant og robust bænk at se på. De afrundede hjørner, og drejede ben, som går op igennem sædet og gør sig synlige, giver Thyra det unikke look som det fortjener. Bygget i den bedste kvalitet af massivt egetræ, fås det i 3 forskellige overfladebehandlinger og 2 størrrelse, så det kan passe ind i hvilket som helst hjem.",
                             Discount = 0,
@@ -1151,7 +1151,7 @@ namespace MySqlMigrations.Migrations
                         {
                             Id = 21,
                             Amount = 17,
-                            AssemblyPath = "/word/bænk.docx",
+                            AssemblyPath = "https://static.nykant.dk/word/bænk.docx",
                             CategoryId = 4,
                             Description = "Thyra er en meget elegant og robust bænk at se på. De afrundede hjørner, og drejede ben, som går op igennem sædet og gør sig synlige, giver Thyra det unikke look som det fortjener. Bygget i den bedste kvalitet af massivt egetræ, fås det i 3 forskellige overfladebehandlinger og 2 størrrelse, så det kan passe ind i hvilket som helst hjem.",
                             Discount = 0,
@@ -1178,7 +1178,7 @@ namespace MySqlMigrations.Migrations
                         {
                             Id = 22,
                             Amount = 10,
-                            AssemblyPath = "/word/bænk.docx",
+                            AssemblyPath = "https://static.nykant.dk/word/bænk.docx",
                             CategoryId = 4,
                             Description = "Thyra er en meget elegant og robust bænk at se på. De afrundede hjørner, og drejede ben, som går op igennem sædet og gør sig synlige, giver Thyra det unikke look som det fortjener. Bygget i den bedste kvalitet af massivt egetræ, fås det i 3 forskellige overfladebehandlinger og 2 størrrelse, så det kan passe ind i hvilket som helst hjem.",
                             Discount = 0,
@@ -1205,7 +1205,7 @@ namespace MySqlMigrations.Migrations
                         {
                             Id = 23,
                             Amount = 5,
-                            AssemblyPath = "/word/bænk.docx",
+                            AssemblyPath = "https://static.nykant.dk/word/bænk.docx",
                             CategoryId = 4,
                             Description = "Thyra er en meget elegant og robust bænk at se på. De afrundede hjørner, og drejede ben, som går op igennem sædet og gør sig synlige, giver Thyra det unikke look som det fortjener. Bygget i den bedste kvalitet af massivt egetræ, fås det i 3 forskellige overfladebehandlinger og 2 størrrelse, så det kan passe ind i hvilket som helst hjem.",
                             Discount = 0,
@@ -1313,7 +1313,7 @@ namespace MySqlMigrations.Migrations
                         {
                             Id = 27,
                             Amount = 26,
-                            AssemblyPath = "/word/Tøjstativ.docx",
+                            AssemblyPath = "https://static.nykant.dk/word/Tøjstativ.docx",
                             CategoryId = 1,
                             Description = "Nora er vores bedste svar på minimalisme. Ingen skruer, ingen beslag, ingen metal. Nora er så naturlig som muligt. Nora består udelukkende af massivt egetræ, som samles via trækiler man bare skubber i, og så står det robust og elegant. Bøjlestangen og underdelen, er fræset i enderne så kilerne passer igennem. Designet med trækiler giver Nora et unikt og naturligt look, som giver øjnene varme og sjælen ro.",
                             Discount = 0,
@@ -1339,7 +1339,7 @@ namespace MySqlMigrations.Migrations
                         {
                             Id = 28,
                             Amount = 16,
-                            AssemblyPath = "/word/Tøjstativ.docx",
+                            AssemblyPath = "https://static.nykant.dk/word/Tøjstativ.docx",
                             CategoryId = 1,
                             Description = "Nora er vores bedste svar på minimalisme. Ingen skruer, ingen beslag, ingen metal. Nora er så naturlig som muligt. Nora består udelukkende af massivt egetræ, som samles via trækiler man bare skubber i, og så står det robust og elegant. Bøjlestangen og underdelen, er fræset i enderne så kilerne passer igennem. Designet med trækiler giver Nora et unikt og naturligt look, som giver øjnene varme og sjælen ro.",
                             Discount = 0,
@@ -1365,7 +1365,7 @@ namespace MySqlMigrations.Migrations
                         {
                             Id = 29,
                             Amount = 10,
-                            AssemblyPath = "/word/Tøjstativ.docx",
+                            AssemblyPath = "https://static.nykant.dk/word/Tøjstativ.docx",
                             CategoryId = 1,
                             Description = "Nora er vores bedste svar på minimalisme. Ingen skruer, ingen beslag, ingen metal. Nora er så naturlig som muligt. Nora består udelukkende af massivt egetræ, som samles via trækiler man bare skubber i, og så står det robust og elegant. Bøjlestangen og underdelen, er fræset i enderne så kilerne passer igennem. Designet med trækiler giver Nora et unikt og naturligt look, som giver øjnene varme og sjælen ro.",
                             Discount = 0,
@@ -1391,7 +1391,7 @@ namespace MySqlMigrations.Migrations
                         {
                             Id = 30,
                             Amount = 25,
-                            AssemblyPath = "/word/hænge_tøjrack.docx",
+                            AssemblyPath = "https://static.nykant.dk/word/hænge_tøjrack.docx",
                             CategoryId = 1,
                             Description = "Da vi tegnede Ingrid tog vi udgangspunkt i vores andet andet tøjstativ Nora. Designet minder lidt om hinanden, med den drejede rundstok, og trækiler til at holde stativet sammen. Ingrid monteres hængende ud fra væggen med, 2 skrå læderstropper, for at skabe mere stabilitet, og plantet løst i 2 fødder som skrues ind i væggen. Det var et forsøg på at lave et tøjstativ som ikke fylder ret meget, men stadig har et æstetisk look. ",
                             Discount = 0,
@@ -1417,7 +1417,7 @@ namespace MySqlMigrations.Migrations
                         {
                             Id = 31,
                             Amount = 15,
-                            AssemblyPath = "/word/hænge_tøjrack.docx",
+                            AssemblyPath = "https://static.nykant.dk/word/hænge_tøjrack.docx",
                             CategoryId = 1,
                             Description = "Da vi tegnede Ingrid tog vi udgangspunkt i vores andet andet tøjstativ Nora. Designet minder lidt om hinanden, med den drejede rundstok, og trækiler til at holde stativet sammen. Ingrid monteres hængende ud fra væggen med, 2 skrå læderstropper, for at skabe mere stabilitet, og plantet løst i 2 fødder som skrues ind i væggen. Det var et forsøg på at lave et tøjstativ som ikke fylder ret meget, men stadig har et æstetisk look. ",
                             Discount = 0,
@@ -1443,7 +1443,7 @@ namespace MySqlMigrations.Migrations
                         {
                             Id = 32,
                             Amount = 10,
-                            AssemblyPath = "/word/hænge_tøjrack.docx",
+                            AssemblyPath = "https://static.nykant.dk/word/hænge_tøjrack.docx",
                             CategoryId = 1,
                             Description = "Da vi tegnede Ingrid tog vi udgangspunkt i vores andet andet tøjstativ Nora. Designet minder lidt om hinanden, med den drejede rundstok, og trækiler til at holde stativet sammen. Ingrid monteres hængende ud fra væggen med, 2 skrå læderstropper, for at skabe mere stabilitet, og plantet løst i 2 fødder som skrues ind i væggen. Det var et forsøg på at lave et tøjstativ som ikke fylder ret meget, men stadig har et æstetisk look. ",
                             Discount = 0,
