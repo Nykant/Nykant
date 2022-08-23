@@ -1,21 +1,34 @@
 ﻿
+
+<!-- Messenger Chat plugin Code -->
 <div id="fb-root"></div>
-<div id="fb-customer-chat" class="fb-customerchat"></div>
 
-@if (User.Identity.IsAuthenticated)
-{
-    <div class="status-bar">
-        <div id="status">
-        </div>
-    </div>
+<!-- Your Chat plugin code -->
+<div id="fb-customer-chat" class="fb-customerchat">
+</div>
 
-    <input hidden id="fb-user" />
+<script asp-add-nonce="true" defer>
+    var chatbox = document.getElementById('fb-customer-chat');
+    chatbox.setAttribute("page_id", "104882272120980");
+    chatbox.setAttribute("attribution", "biz_inbox");
+</script>
 
-    <script src="https://static.nykant.dk/JS/facebook-init-auth.min.js" defer></script>
+<!-- Your SDK code -->
+<script asp-add-nonce="true" defer>
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '2771171759857618',
+            autoLogAppEvents: true,
+            xfbml: true,
+            version: 'v14.0'
+        });
+    };
 
-    <script crossorigin="anonymous" src="https://connect.facebook.net/da_DK/sdk.js#xfbml=1&version=v13.0&appId=391655249463703&autoLogAppEvents=1" nonce="pJvbNYGk" defer></script>
-}
-else
-{
-    <script src="https://static.nykant.dk/JS/facebook-init.min.js" defer></script>
-}
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/da_DK/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>

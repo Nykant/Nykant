@@ -148,7 +148,6 @@ namespace NykantMVC.Services
                 _logger.LogError($"time: {DateTime.Now} - {e.Message}");
                 return "fail";
             }
-
         }
 
         public async Task<string> SendDKIEmailAsync(Order order)
@@ -193,7 +192,6 @@ namespace NykantMVC.Services
                 _logger.LogError($"time: {DateTime.Now} - {e.Message}");
                 return "fail";
             }
-            
         }
 
         public async Task<string> SendNykantEmailAsync(Order order)
@@ -231,7 +229,6 @@ namespace NykantMVC.Services
                 _logger.LogError($"time: {DateTime.Now} - {e.Message}");
                 return "fail";
             }
-            
         }
 
         public async Task<string> SendInvoiceEmailAsync(PaymentCapture paymentCapture)

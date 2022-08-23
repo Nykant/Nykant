@@ -99,12 +99,14 @@ namespace NykantMVC.Controllers
         public async Task<int> PostCustomer(Models.Customer customerProtected)
         {
             var customer = _protectionService.UnprotectCustomer(customerProtected);
-            var response = await PostRequest("/Customer/PostCustomer/", new Models.Customer { Email = customer.Email, Phone = customer.Phone });
+            var response = await PostRequest("/Customer/PostCustomer", new Models.Customer { Email = customer.Email, Phone = customer.Phone });
             if (!response.IsSuccessStatusCode)
             {
                 _logger.LogError($"time: {DateTime.Now} - error: could not post customer");
                 return 0;
             }
+            _logger.LogInformation($"path: {response.Headers.Location}");
+            _logger.LogInformation($"path: {response.Headers.Location.AbsolutePath}");
             var json = await GetRequest(response.Headers.Location.AbsolutePath);
             customer.Id = JsonConvert.DeserializeObject<Models.Customer>(json).Id;
 

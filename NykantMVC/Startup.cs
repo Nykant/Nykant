@@ -38,6 +38,9 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+using Joonasw.AspNetCore.SecurityHeaders;
+using Microsoft.AspNetCore.Cors.Infrastructure;
+
 namespace NykantMVC
 {
     public class Startup
@@ -79,14 +82,6 @@ namespace NykantMVC
                     .SetApplicationName("Nykant");
             }
 
-            //services.AddCors(options =>
-            //{
-            //    options.AddPolicy("CorsPolicy",
-            //        builder => builder.AllowAnyOrigin()
-            //        .AllowAnyMethod()
-            //        .AllowAnyHeader());
-            //});
-
             JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
 
             services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
@@ -98,10 +93,18 @@ namespace NykantMVC
             })
                  .AddCookie("Cookies", options =>
                 {
+                    if (Environment.IsDevelopment())
+                    {
+                        options.Cookie.Domain = "localhost";
+                    }
+                    else
+                    {
+                        options.Cookie.Domain = "www.nykant.dk";
+                    }
                     options.Cookie.HttpOnly = true;
                     options.Cookie.SameSite = Microsoft.AspNetCore.Http.SameSiteMode.None;
                     options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
-                    options.Cookie.Domain = "www.nykant.dk";
+
                     options.Cookie.IsEssential = true;
                 })
                 .AddOpenIdConnect("oidc", options =>
@@ -126,14 +129,22 @@ namespace NykantMVC
                     options.Scope.Add("profile");
                     options.Scope.Add("openid");
 
+
                     options.CorrelationCookie = new CookieBuilder
                     {
                         HttpOnly = true,
                         SameSite = Microsoft.AspNetCore.Http.SameSiteMode.None,
                         SecurePolicy = CookieSecurePolicy.Always,
-                        IsEssential = true,
-                        Domain = "www.nykant.dk"
+                        IsEssential = true
                     };
+                    if (Environment.IsDevelopment())
+                    {
+                        options.CorrelationCookie.Domain = "localhost";
+                    }
+                    else
+                    {
+                        options.CorrelationCookie.Domain = "www.nykant.dk";
+                    }
 
                     options.NonceCookie = new CookieBuilder
                     {
@@ -143,6 +154,14 @@ namespace NykantMVC
                         IsEssential = true,
                         Domain = "www.nykant.dk"
                     };
+                    if (Environment.IsDevelopment())
+                    {
+                        options.NonceCookie.Domain = "localhost";
+                    }
+                    else
+                    {
+                        options.NonceCookie.Domain = "www.nykant.dk";
+                    }
 
                     options.ProtocolValidator = new OpenIdConnectProtocolValidator
                     {
@@ -315,11 +334,80 @@ namespace NykantMVC
             //// Register the TagHelperComponent
             //services.AddTransient<ITagHelperComponent, GoogleAnalyticsTagHelperComponent>();
 
+            services.AddCsp(nonceByteAmount: 32);
+
+            services.AddCors(o =>
+            {
+                o.AddPolicy("CorsPolicy", p =>
+                {
+                    p.WithOrigins("https://r.stripe.com", "https://r.stripe.network", "https://www.nykant.dk/is", "https://localhost:5001", "https://localhost:5003", "https://www.nykant.dk/api").AllowAnyHeader().AllowAnyMethod();
+                });
+            });
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-
+            app.UseCsp(csp =>
+            {
+                csp.ByDefaultAllow
+                    .FromSelf()
+                    .From("https://static.nykant.dk");
+                csp.AllowScripts
+                    //.WithStrictDynamic()
+                    .AddNonce()
+                    .FromSelf()
+                    .AllowUnsafeEval()
+                    .From("https://static.nykant.dk")
+                    .From("https://www.google-analytics.com")
+                    .From("https://assets.emaerket.dk")
+                    .From("https://kit.fontawesome.com")
+                    .From("https://consentcdn.cookiebot.com")
+                    .From("https://consent.cookiebot.com")
+                    .From("https://widget.emaerket.dk")
+                    .From("https://connect.facebook.net")
+                    .From("https://www.facebook.com")
+                    .From("https://www.googletagmanager.com")
+                    .From("https://js.stripe.com");
+                csp.AllowStyles
+                    .FromSelf()
+                    .AllowUnsafeInline()
+                    .From("https://static.nykant.dk")
+                    .From("https://use.fontawesome.com")
+                    .From("https://fonts.googleapis.com");
+                csp.AllowImages
+                    .FromSelf()
+                    .From("https://www.google-analytics.com")
+                    .From("https://www.google.com")
+                    .From("https://www.facebook.com")
+                    .From("https://hooks.stripe.com")
+                    .From("https://www.credit-card-logos.com")
+                    .From("https://www.googletagmanager.com")
+                    .From("https://www.google.dk")
+                    .From("https://static.nykant.dk")
+                    .From("data:")
+                    .From("http://www.w3.org/2000/svg");
+                csp.AllowFonts
+                    .FromSelf()
+                    .From("https://static.nykant.dk")
+                    .From("https://ka-f.fontawesome.com")
+                    .From("https://use.fontawesome.com")
+                    .From("https://fonts.gstatic.com");
+                csp.AllowFrames
+                    .FromSelf()
+                    .From("https://static.nykant.dk")
+                    .From("https://web.facebook.com")
+                    .From("https://www.facebook.com ")
+                    .From("https://js.stripe.com")
+                    .From("https://consentcdn.cookiebot.com")
+                    .From("https://hooks.stripe.com");
+                csp.AllowFraming
+                    .FromSelf()
+                    .From("https://static.nykant.dk")
+                    .From("https://www.facebook.com");
+                csp.AllowConnections
+                    .OnlyOverHttps();
+            });
 
             //var DK = new CultureInfo("da-DK");
             //var EN = new CultureInfo("en-GB");
@@ -378,7 +466,7 @@ namespace NykantMVC
                 await next();
             });
 
-            IdentityModelEventSource.ShowPII = false;
+            IdentityModelEventSource.ShowPII = true;
 
 
             //app.UseResponseCompression();
@@ -403,7 +491,7 @@ namespace NykantMVC
 
             app.UseRouting();
 
-            //app.UseCors("CorsPolicy");
+            app.UseCors("CorsPolicy");
 
             app.UseAuthentication();
             app.UseAuthorization();

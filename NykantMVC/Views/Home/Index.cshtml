@@ -127,7 +127,7 @@
         <div id="video-slide" class="col-8 left video-slide">
             <div class="half">
                 <video class="vertical-center video" autoplay loop muted playsinline>
-                    <source src="https://static.nykant.dk/videos/Tøjstativ.mp4" type="video/mp4" />
+                    <source src="https://static.nykant.dk/videos/Tøjstativ.mp4" type="video/mp4"/>
                 </video>
             </div>
             <div class="half">
@@ -333,8 +333,8 @@
 
 
 @section scripts {
-    <script src="https://static.nykant.dk/JS/swiped-events.min.js"></script>
-    <script src="https://static.nykant.dk/JS/slideshow.min.js"></script>
+    <script asp-add-nonce="true" src="https://static.nykant.dk/JS/swiped-events.min.js"></script>
+    <script asp-add-nonce="true" src="https://static.nykant.dk/JS/slideshow.min.js"></script>
     @*<script src="~/JS/moving-box.js"></script>
         <script src="~/JS/follow-box-1.js"></script>
         <script src="~/JS/follow-box-2.js"></script>
@@ -345,7 +345,7 @@
 
     @if (Model.RandomDiscountProducts.Count > 0)
     {
-        <script src="https://static.nykant.dk/JS/frontpage-karusel.min.js"></script>
+        <script asp-add-nonce="true" src="https://static.nykant.dk/JS/frontpage-karusel.min.js"></script>
 
     }
 }

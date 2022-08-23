@@ -77,23 +77,46 @@ namespace NykantAPI
             //            x => x.MigrationsAssembly("MySqlMigrations"));
             //    });
 
-            services.AddDbContext<ApplicationDbContext>(
-            options => _ = provider switch
+            if (Environment.IsDevelopment())
             {
-                "SqlServer" => options.UseSqlServer(
-                    nykantConnectionLocal,
-                    x => x.MigrationsAssembly("SqlServerMigrations")),
+                services.AddDbContext<ApplicationDbContext>(
+                    options => _ = provider switch
+                    {
+                        "SqlServer" => options.UseSqlServer(
+                            nykantConnectionLocal,
+                            x => x.MigrationsAssembly("SqlServerMigrations")),
 
-                "MySql" => options.UseMySql(
-                    nykantConnection,
-                    x => x.MigrationsAssembly("MySqlMigrations")),
+                        "MySql" => options.UseMySql(
+                            nykantConnection,
+                            x => x.MigrationsAssembly("MySqlMigrations")),
 
-                _ => throw new Exception($"Unsupported provider: {provider}")
-            }).AddStackExchangeRedisCache(options =>
+                        _ => throw new Exception($"Unsupported provider: {provider}")
+                    });
+            }
+            else
             {
-                options.Configuration = "nykant-memcached.tylulq.cfg.eun1.cache.amazonaws.com:11211";
-                options.InstanceName = "nykant-memcached";
-            });
+                services.AddDbContext<ApplicationDbContext>(
+                    options => _ = provider switch
+                    {
+                        "SqlServer" => options.UseSqlServer(
+                            nykantConnectionLocal,
+                            x => x.MigrationsAssembly("SqlServerMigrations")),
+
+                        "MySql" => options.UseMySql(
+                            nykantConnection,
+                            x => x.MigrationsAssembly("MySqlMigrations")),
+
+                        _ => throw new Exception($"Unsupported provider: {provider}")
+                    }).AddStackExchangeRedisCache(options =>
+                    {
+                        options.Configuration = "nykant-memcached.tylulq.cfg.eun1.cache.amazonaws.com:11211";
+                        options.InstanceName = "nykant-memcached";
+                    });
+
+            }
+
+
+
 
             if (!Environment.IsDevelopment())
             {
@@ -139,6 +162,8 @@ namespace NykantAPI
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            //app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+
             app.UsePathBase(Configuration.GetValue<string>("PathBase"));
             var forwardOptions = new ForwardedHeadersOptions
             {
@@ -153,8 +178,9 @@ namespace NykantAPI
 
             var options = new RewriteOptions()
                 .AddRedirectToProxiedHttps()
-                .AddRedirect("(.*)/$", "$1")
-                .AddRedirectToWwwPermanent();  // remove trailing slash
+                .AddRedirectToWwwPermanent()  // remove trailing slash
+                .AddRedirect("(.*)/$", "$1");
+
             app.UseRewriter(options);
 
             app.UseCertificateForwarding();

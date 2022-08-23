@@ -228,7 +228,7 @@ namespace NykantMVC.Controllers
                 string uri = null;
                 if (url.StartsWith("/api"))
                 {
-                    uri = "https://nykant.dk" + url;
+                    uri = "https://www.nykant.dk" + url;
                 }
                 else
                 {

@@ -305,7 +305,7 @@ namespace NykantMVC.Controllers
                     Title = product.MetaTitle,
                     Description = product.MetaDescription,
                     Price = new Models.Google.Price { Currency = "dkk", Value = product.Price.ToString() },
-                    Link = $"https://nykant.dk/møbler/{product.Category.Name}/" + product.UrlName,
+                    Link = $"https://www.nykant.dk/møbler/{product.Category.Name}/" + product.UrlName,
                     Brand = "Nykant",
                     Mpn = product.Number,
                     IdentifierExists = true,
@@ -436,7 +436,7 @@ namespace NykantMVC.Controllers
                     {
                         if (imgs[i].Source.Contains("1"))
                         {
-                            updateProduct.ImageLink = $"https://nykant.dk/" + $"{imgs[i].Source}";
+                            updateProduct.ImageLink = imgs[i].Source;
                         }
                     }
                 }
@@ -448,7 +448,7 @@ namespace NykantMVC.Controllers
                     {
                         if (!imgs[i].Source.Contains("1"))
                         {
-                            sourceList.Add($"https://nykant.dk/" + $"{imgs[i].Source}");
+                            sourceList.Add(imgs[i].Source);
                         }
                     }
                 }

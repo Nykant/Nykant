@@ -31,8 +31,8 @@ namespace NykantMVC.Controllers
             var products = JsonConvert.DeserializeObject<List<Product>>(json);
             json = await GetRequest("/Category/GetCategories");
             var categories = JsonConvert.DeserializeObject<List<Category>>(json);
-
-            var date = new DateTime(2022, 08, 14);
+            var cdn = "https://static.nykant.dk";
+            var date = new DateTime(2022, 08, 22);
 
             var sitemapItems = new List<SitemapItem> {
             // Home
@@ -58,7 +58,7 @@ namespace NykantMVC.Controllers
                 {
                     if(img.ImageType == ImageType.DetailsFullscreen)
                     {
-                        images.Add(new SitemapImage { Url = $"{_urls.Mvc}/{img.Source}", Title = prod.MetaTitle, Caption = prod.MetaDescription});
+                        images.Add(new SitemapImage { Url = $"{img.Source}", Title = prod.MetaTitle, Caption = prod.MetaDescription});
                     }
                 }
                 sitemapItems.Add(new SitemapItem(PathUtils.CombinePaths(_urls.Mvc, $"/Møbler/{prod.Category.Name}/{prod.UrlName}"), changeFrequency: SitemapChangeFrequency.Daily, priority: 1.0, lastModified: date, image: images));

@@ -4,87 +4,6 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
-    <meta http-equiv="content-security-policy" content="
-        default-src 
-            'self' 
-            https://Nykant-LB-2146644203.eu-north-1.elb.amazonaws.com 
-            https://nykant.dk 
-            https://static.nykant.dk; 
-        img-src 
-            'self' 
-            https://www.google-analytics.com 
-            https://googleads.g.doubleclick.net.blockthis 
-            https://www.google.com 
-            https://www.facebook.com 
-            https://hooks.stripe.com 
-            https://www.credit-card-logos.com 
-            https://www.googletagmanager.com 
-            https://www.google.dk 
-            https://static.nykant.dk 
-            data: 
-            http://www.w3.org/2000/svg; 
-        script-src 
-            'self' 
-            https://static.nykant.dk 
-            https://www.google-analytics.com 
-            https://assets.emaerket.dk 
-            https://kit.fontawesome.com 
-            https://consentcdn.cookiebot.com 
-            https://googleads.g.doubleclick.net.blockthis 
-            https://consent.cookiebot.com 
-            https://widget.emaerket.dk 
-            https://pagead2.googlesyndication.com.blockthis 
-            https://www.googleadservices.com.blockthis 
-            https://connect.facebook.net 
-            https://www.facebook.com 
-            https://cdn.jsdelivr.net.blockthis 
-            https://www.googletagmanager.com 
-            https://js.stripe.com; 
-        style-src 
-            'self' 
-            https://static.nykant.dk 
-            https://stackpath.bootstrapcdn.com.blockthis 
-            https://cdn.jsdelivr.net.blockthis 
-            https://use.fontawesome.com 
-            https://fonts.googleapis.com; 
-        font-src 
-            'self' 
-            https://static.nykant.dk 
-            https://ka-f.fontawesome.com 
-            https://use.fontawesome.com 
-            https://fonts.gstatic.com; 
-        frame-src 
-            'self' 
-            https://static.nykant.dk
-            https://web.facebook.com 
-            https://consentcdn.cookiebot.com.blockthis 
-            https://www.facebook.com 
-            https://js.stripe.com 
-            https://hooks.stripe.com; 
-        frame-ancestors 
-            'self' 
-            https://static.nykant.dk 
-            https://www.facebook.com/; 
-        connect-src 
-            'self' 
-            https://static.nykant.dk
-            https://region1.analytics.google.com 
-            https://ka-f.fontawesome.com 
-            https://web.facebook.com 
-            https://googleads.g.doubleclick.net.blockthis 
-            https://consentcdn.cookiebot.com.blockthis 
-            https://www.google.com 
-            https://pagead2.googlesyndication.com.blockthis.blockthis 
-            https://graph.facebook.com 
-            https://www.facebook.com 
-            https://www.google-analytics.com 
-            https://stats.g.doubleclick.net.blockthis 
-            https://www.google.dk 
-            https://nykant.dk 
-            https://analytics.google.com 
-            https://api.stripe.com;
-        " always;" 
-    />
 
     <title>@ViewData["Title"]</title>
     <meta name="description" content="@ViewData["Description"]" />
@@ -192,14 +111,15 @@
 
 
     @* ----------------------------------GLOBAL SCRIPTS-------------------------------------- *@
-    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="490e7f44-ffeb-46ab-b54c-dc5700002e92" data-blockingmode="auto" type="text/javascript"></script>
-    <script src="https://static.nykant.dk/JS/layout-head-bundle.min.js"></script>
+    <script asp-add-nonce="true" id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="490e7f44-ffeb-46ab-b54c-dc5700002e92" data-blockingmode="auto" type="text/javascript"></script>
+    <script asp-add-nonce="true" src="https://static.nykant.dk/JS/layout-head-bundle.min.js"></script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+    <script type="text/javascript" src="https://js.stripe.com/v3/"></script>
     @await RenderSectionAsync("Scripts", required: false)
-    <script type="text/javascript" src="https://js.stripe.com/v3/" async></script>
     <script type="text/javascript" src="https://widget.emaerket.dk/js/c49f6b82c5f1b83153cb102aa0b9daa3" async></script>
     <script src="https://static.nykant.dk/JS/layout-bottom-bundle.min.js" async></script>
-    <script src="https://kit.fontawesome.com/dfade6c231.js" crossorigin="anonymous" async></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-220279124-1"></script>
+    <script asp-add-nonce="true" src="https://kit.fontawesome.com/dfade6c231.js" crossorigin="anonymous" async></script>
+    <script asp-add-nonce="true" async src="https://www.googletagmanager.com/gtag/js?id=UA-220279124-1"></script>
     <script src="https://static.nykant.dk/JS/GoogleAnalytics.min.js"></script>
 </body>
 </html>

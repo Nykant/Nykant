@@ -64,13 +64,13 @@ namespace NykantIS
             identityserverConnection = Configuration.GetConnectionString("IdentityServer");
             identityConnection = Configuration.GetConnectionString("Identity");
 
-            services.AddCors(options =>
-            {
-                options.AddPolicy("CorsPolicy",
-                    builder => builder.AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader());
-            });
+            //services.AddCors(options =>
+            //{
+            //    options.AddPolicy("CorsPolicy",
+            //        builder => builder.AllowAnyOrigin()
+            //        .AllowAnyMethod()
+            //        .AllowAnyHeader());
+            //});
 
             //services.AddDbContext<MyKeysContext>(options =>
             //    options.UseMySql(mykeyConnection));
@@ -129,16 +129,6 @@ namespace NykantIS
             var builder = services.AddIdentityServer(options =>
             {
                 options.IssuerUri = Configuration.GetValue<string>("IssuerUri");
-                options.Cors = new CorsOptions
-                {
-                    CorsPaths = new PathString[]
-                     {
-                         "/account/login",
-                         "/is/account/login",
-                         "/is/is/account/manage/loginwith2fa"
-                     },
-                    CorsPolicyName = "CorsPolicy"
-                };
                 options.Events.RaiseErrorEvents = true;
                 options.Events.RaiseInformationEvents = true;
                 options.Events.RaiseFailureEvents = true;
