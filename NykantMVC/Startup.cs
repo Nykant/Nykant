@@ -368,7 +368,8 @@ namespace NykantMVC
                     .From("https://connect.facebook.net")
                     .From("https://www.facebook.com")
                     .From("https://www.googletagmanager.com")
-                    .From("https://js.stripe.com");
+                    .From("https://js.stripe.com")
+                    .From("https://invitejs.trustpilot.com");
                 csp.AllowStyles
                     .FromSelf()
                     .AllowUnsafeInline()
@@ -471,23 +472,9 @@ namespace NykantMVC
 
             //app.UseResponseCompression();
             app.UseResponseCaching();
-            //app.UseDefaultFiles();
+            app.UseDefaultFiles();
 
-            //app.UseStaticFiles(
-            //    //new StaticFileOptions
-            //    //{
-            //    //    OnPrepareResponse =
-            //    //r =>
-            //    //{
-            //    //    string name = r.File.Name;
-            //    //    if (name.EndsWith(".png") || name.EndsWith(".svg") || name.EndsWith(".mp4") || name.EndsWith(".css") || name.EndsWith(".js") || name.EndsWith(".ico"))
-            //    //    {
-            //    //        TimeSpan maxAge = new TimeSpan(7, 0, 0, 0);
-            //    //        r.Context.Response.Headers.Append("Cache-Control", "max-age=" + maxAge.TotalSeconds.ToString("0"));
-            //    //    }
-            //    //}
-            //    //}
-            //    );
+            app.UseStaticFiles();
 
             app.UseRouting();
 

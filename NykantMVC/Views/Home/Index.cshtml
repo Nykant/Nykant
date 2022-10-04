@@ -119,6 +119,7 @@
     </div>
 </div>
 
+@if(Model.NoraImg != null){
 <div class="my-row top-padding bottom-padding">
     <div class="responsive-container">
         <div class="col-4 left text-center height-600">
@@ -127,7 +128,7 @@
         <div id="video-slide" class="col-8 left video-slide">
             <div class="half">
                 <video class="vertical-center video" autoplay loop muted playsinline>
-                    <source src="https://static.nykant.dk/videos/Tøjstativ.mp4" type="video/mp4"/>
+                    <source src="https://static.nykant.dk/videos/Tøjstativ.mp4" type="video/mp4" />
                 </video>
             </div>
             <div class="half">
@@ -150,6 +151,8 @@
         </div>
     </div>
 </div>
+
+}
 
 @if (Model.RandomDiscountProducts.Count > 0)
 {
@@ -217,6 +220,7 @@
 
 
 
+@if(Model.DagmarImg != null){
     <div class="my-row top-padding bottom-padding">
         <div class="col-12">
             <div class="favorites">
@@ -294,7 +298,7 @@
             </div>
         </div>
     </div>
-
+    }
 
     <div class="my-row top-padding bottom-padding">
     <div class="col-12 center z200 category-fp-header">
@@ -302,13 +306,16 @@
         </div>
 
         <div class="col-12">
-            @foreach (var category in Model.Categories)
+            @if(Model.Categories != null){
+                            @foreach (var category in Model.Categories)
             {
             <a onclick="CategoryClick()" class="category-fp" method="get" asp-controller="product" asp-action="CategoryView" asp-route-category="@category.Name">
                 <img loading="lazy" class="absolute-center" src="@category.ImgSource" alt="@category.Alt" />
                     <p class="centered">@category.Name</p>
                 </a>
             }
+            }
+
         </div>
 
     </div>

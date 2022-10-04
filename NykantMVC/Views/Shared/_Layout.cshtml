@@ -38,6 +38,15 @@
     @*<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>*@
     @*<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js" integrity="sha512-DkPsH9LzNzZaZjCszwKrooKwgjArJDiEjA5tTgr3YX4E6TYv93ICS8T41yFHJnnSmGpnf0Mvb5NhScYbwvhn2w==" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js" integrity="sha512-0xrMWUXzEAc+VY7k48pWd5YT6ig03p4KARKxs4Bqxb9atrcn2fV41fWs+YXTKb8lD2sbPAmZMjKENiyzM/Gagw==" crossorigin="anonymous"></script>*@
+
+    <script asp-add-nonce="true">
+        (function (w, d, s, r, n) {
+            w.TrustpilotObject = n; w[n] = w[n] || function () { (w[n].q = w[n].q || []).push(arguments) };
+            a = d.createElement(s); a.async = 1; a.src = r; a.type = 'text/java' + s; f = d.getElementsByTagName(s)[0];
+            f.parentNode.insertBefore(a, f)
+        })(window, document, 'script', 'https://invitejs.trustpilot.com/tp.min.js', 'tp');
+        tp('register', 'nnfhOrvskhnktLev');
+    </script>
 </head>
 <body>
 
@@ -112,6 +121,7 @@
 
     @* ----------------------------------GLOBAL SCRIPTS-------------------------------------- *@
     <script asp-add-nonce="true" id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="490e7f44-ffeb-46ab-b54c-dc5700002e92" data-blockingmode="auto" type="text/javascript"></script>
+@*    <script src="https://static.nykant.dk/JS/trustpilot.min.js"></script>*@
     <script asp-add-nonce="true" src="https://static.nykant.dk/JS/layout-head-bundle.min.js"></script>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
     <script type="text/javascript" src="https://js.stripe.com/v3/"></script>

@@ -55,6 +55,17 @@
     }
   },
   {
+    "outputFileName": "wwwroot/JS/trustpilot.min.js",
+    "inputFiles": [
+      "wwwroot/JS/trustpilot.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "gzip": true,
+      "commentMode": "all"
+    }
+  },
+  {
     "outputFileName": "wwwroot/css/breadcrumbs.min.css",
     "inputFiles": [
       "wwwroot/css/breadcrumbs.css"

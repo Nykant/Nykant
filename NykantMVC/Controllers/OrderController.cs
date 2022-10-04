@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Authorization;
 using NykantMVC.Friends;
 using Stripe;
 using Microsoft.Extensions.Configuration;
+using NykantMVC.Models.Helpers;
 
 namespace NykantMVC.Controllers
 {
@@ -265,12 +266,30 @@ namespace NykantMVC.Controllers
                     checkout.OrderId = order.Id;
                     HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
 
-                    return Json(new { ok = true });
+                    List<string> productIds = new List<string>();
+                    foreach(var orderItem in order.OrderItems)
+                    {
+                        productIds.Add(orderItem.Product.Number);
+                    }
+
+                    List<trustpilot_product> productList = new List<trustpilot_product>();
+                    foreach(var orderItem in order.OrderItems)
+                    {
+                        productList.Add(new trustpilot_product
+                        {
+                            SKU = orderItem.Product.Number,
+                            ProductUrl = $"https://www.nykant.dk/møbler/{orderItem.Product.Category.Name}/{orderItem.Product.UrlName}",
+                            ImageUrl = orderItem.Product.GalleryImage1,
+                            Name = orderItem.Product.Name
+                        });
+                    }
+
+                    return Json(new { ok = true, order = order, productIds = productIds.ToArray(), productList = productList.ToArray() });
                 }
                 else
                 {
                     _logger.LogError("time: {DateTime.Now} - error: wrong stage");
-                    return Json(new { ok = false, error = "wrong stage" });
+                    return Json(new { ok = false, error = "wrong stage",  });
                 }
             }
             catch (Exception e)
