@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using NykantMVC.Extensions;
 using NykantMVC.Friends;
 using NykantMVC.Models;
+using NykantMVC.Models.Helpers;
 using NykantMVC.Models.ViewModels;
 using NykantMVC.Models.XmlModels;
 using NykantMVC.Services;
@@ -39,7 +40,7 @@ namespace NykantMVC.Controllers
             {
                 Coupon coupon = null;
                 var couponCode = HttpContext.Session.Get<string>(CouponCodeKey);
-                if(couponCode != null)
+                if (couponCode != null)
                 {
                     var json = await GetRequest($"/Coupon/Get/{couponCode}");
                     if (json != "null")
@@ -62,7 +63,7 @@ namespace NykantMVC.Controllers
                     bagItems = HttpContext.Session.Get<List<BagItem>>(BagSessionKey);
                 }
 
-                if(bagItems == null || bagItems.Count() == 0)
+                if (bagItems == null || bagItems.Count() == 0)
                 {
                     return RedirectToAction("Details", "Bag");
                 }
@@ -212,7 +213,7 @@ namespace NykantMVC.Controllers
 
                 if (checkout.Stage == Stage.customerInf || editCustomer)
                 {
-                   
+
                     checkout.Customer = _protectionService.ProtectCustomer(customer);
 
                     if (!editCustomer)
@@ -297,6 +298,33 @@ namespace NykantMVC.Controllers
                 _logger.LogError($"time: {DateTime.Now} - {e.Message}, {e.InnerException}, {e.StackTrace}, {e.TargetSite}");
             }
             return NoContent();
+        }
+
+        [HttpGet("/checkout/trustpilot/{id}")]
+        public async Task<JsonResult> Trustpilot(int id)
+        {
+            var json = await GetRequest($"/Order/GetOrder/{id}");
+            var order = JsonConvert.DeserializeObject<Models.Order>(json);
+
+            List<string> productIds = new List<string>();
+            foreach (var orderItem in order.OrderItems)
+            {
+                productIds.Add(orderItem.Product.Number);
+            }
+
+            List<trustpilot_product> productList = new List<trustpilot_product>();
+            foreach (var orderItem in order.OrderItems)
+            {
+                productList.Add(new trustpilot_product
+                {
+                    SKU = orderItem.Product.Number,
+                    ProductUrl = $"https://www.nykant.dk/møbler/{orderItem.Product.Category.Name}/{orderItem.Product.UrlName}",
+                    ImageUrl = orderItem.Product.GalleryImage1,
+                    Name = orderItem.Product.Name
+                });
+            }
+
+            return Json(new { email = order.PaymentCapture.Customer.Email, name = order.PaymentCapture.Customer.ShippingAddress.Name, referenceId = order.Id.ToString(), productSkus = productIds.ToArray(), products = productList.ToArray() });
         }
 
         //[HttpGet]

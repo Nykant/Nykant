@@ -1,6 +1,19 @@
-﻿(function (w, d, s, r, n) {
-    w.TrustpilotObject = n; w[n] = w[n] || function () { (w[n].q = w[n].q || []).push(arguments) };
-    a = d.createElement(s); a.async = 1; a.src = r; a.type = 'text/java' + s; f = d.getElementsByTagName(s)[0];
-    f.parentNode.insertBefore(a, f)
-})(window, document, 'script', 'https://invitejs.trustpilot.com/tp.min.js', 'tp');
-tp('register', 'nnfhOrvskhnktLev');
+﻿var url = "/checkout/trustpilot/" + document.getElementById('order-id').dataset.value;
+fetch(url, {
+    method: "GET",
+    headers: {
+        "Content-Type": "application/json"
+    }
+}).then(response => response.json())
+    .then(function (data) {
+        const trustpilot_invitation = {
+            recipientEmail: data.email,
+            recipientName: data.name,
+            referenceId: data.referenceId,
+            source: 'InvitationScript',
+            productSkus: data.productSkus,
+            products: data.products
+        };
+        Log("trustpilot invitation");
+        tp('createInvitation', trustpilot_invitation);
+    });

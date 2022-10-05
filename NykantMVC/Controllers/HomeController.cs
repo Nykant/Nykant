@@ -262,7 +262,7 @@ namespace NykantMVC.Controllers
         [HttpPost]
         public void Log(string message)
         {
-            _logger.LogError(message);
+            _logger.LogInformation(message);
         }
 
         //[HttpPost]

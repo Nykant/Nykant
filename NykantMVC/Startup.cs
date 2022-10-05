@@ -396,6 +396,7 @@ namespace NykantMVC
                     .From("https://fonts.gstatic.com");
                 csp.AllowFrames
                     .FromSelf()
+                    .From("https://simplicity.trustpilot.com")
                     .From("https://static.nykant.dk")
                     .From("https://web.facebook.com")
                     .From("https://www.facebook.com ")

@@ -241,7 +241,7 @@ namespace NykantMVC.Controllers
 
                     if (newImg.ImageType == ImageType.DetailsSlide)
                     {
-                        newImg.Source2 = cdn + newImg.Source.Replace("ds", "df");
+                        newImg.Source2 = newImg.Source.Replace("ds", "df");
                     }
 
                     newImageList.Add(newImg);

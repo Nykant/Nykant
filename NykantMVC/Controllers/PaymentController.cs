@@ -58,7 +58,7 @@ namespace NykantMVC.Controllers
         }
 
         [HttpPost]
-        public IActionResult Payment(string paymentMethodId)
+        public async Task<IActionResult> PaymentAsync(string paymentMethodId)
         {
             try
             {
@@ -107,7 +107,7 @@ namespace NykantMVC.Controllers
                                 Currency = "dkk",
                                 ConfirmationMethod = "manual",
                                 Confirm = true,
-                                CaptureMethod = "manual",
+                                CaptureMethod = "automatic"
                             };
 
                             paymentIntent = paymentIntentService.Create(PIoptions);
@@ -120,7 +120,7 @@ namespace NykantMVC.Controllers
                     }
 
 
-                    return generatePaymentResponse(paymentIntent);
+                    return await generatePaymentResponseAsync(paymentIntent);
                 }
                 else
                 {
@@ -148,14 +148,14 @@ namespace NykantMVC.Controllers
 
                 if (paymentIntentId != null)
                 {
-                    var confirmOptions = new PaymentIntentConfirmOptions { };
+                    var confirmOptions = new PaymentIntentConfirmOptions();
                     paymentIntent = paymentIntentService.Confirm(
                         paymentIntentId,
                         confirmOptions
                     );
                 }
 
-                return generatePaymentResponse(paymentIntent);
+                return await generatePaymentResponseAsync(paymentIntent);
             }
             catch (Exception e)
             {
@@ -164,7 +164,7 @@ namespace NykantMVC.Controllers
             return Json(new { error = "ConfirmPayment Error" });
         }
 
-        private IActionResult generatePaymentResponse(PaymentIntent intent)
+        private async Task<IActionResult> generatePaymentResponseAsync(PaymentIntent intent)
         {
 
             // Note that if your API version is before 2019-02-11, 'requires_action'
@@ -179,8 +179,10 @@ namespace NykantMVC.Controllers
                     payment_intent_client_secret = intent.ClientSecret
                 });
             }
-            else if (intent.Status == "requires_capture")
+            else if (intent.Status == "succeeded")
             {
+                
+
                 // The payment didn’t need any additional actions and completed!
                 // Handle post-payment fulfillment
                 return Json(new { success = true, intentId = intent.Id });
@@ -192,6 +194,57 @@ namespace NykantMVC.Controllers
             }
         }
 
-        
+        public async Task CapturePaymentIntent(int paymentCaptureId)
+        {
+            try
+            {
+                var json = await GetRequest($"/PaymentCapture/GetPaymentCapture/{paymentCaptureId}");
+                var paymentCapture = JsonConvert.DeserializeObject<PaymentCapture>(json); // check customer data we need
+
+                StripeConfiguration.ApiKey = conf["StripeSKKey"];
+                var service = new PaymentIntentService();
+                var paymentIntent = await service.CaptureAsync(paymentCapture.PaymentIntent_Id);
+                if (paymentIntent.StripeResponse.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    paymentCapture.Captured = true;
+
+                    Models.Invoice invoice = new Models.Invoice
+                    {
+                        CreatedAt = DateTime.Now,
+                        PaymentCaptureId = paymentCapture.Id,
+                        TotalPrice = paymentCapture.Order.TotalPrice,
+                        TaxLessPrice = paymentCapture.Order.TaxLessPrice,
+                        Taxes = paymentCapture.Order.Taxes
+                    };
+
+                    var response = await PostRequest("/Invoice/PostInvoice/", invoice);
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        _logger.LogError($"time: {DateTime.Now} - error: {response.StatusCode + response.ReasonPhrase}");
+                    }
+                    var invoiceJson = await GetRequest(response.Headers.Location.AbsolutePath);
+                    invoice = JsonConvert.DeserializeObject<Models.Invoice>(invoiceJson);
+                    paymentCapture.Invoice = invoice;
+
+                    await mailService.SendInvoiceEmailAsync(paymentCapture);
+
+                    response = await PatchRequest("/PaymentCapture/UpdatePaymentCapture", paymentCapture);
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        _logger.LogError($"time: {DateTime.Now} - error: {response.StatusCode + response.ReasonPhrase}");
+                    }
+                }
+                else
+                {
+                    _logger.LogError($"time: {DateTime.Now} - error: {paymentIntent.StripeResponse.StatusCode}");
+                }
+
+                end:;
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}, {e.InnerException}, {e.StackTrace}, {e.TargetSite}");
+            }
+        }
     }
 }

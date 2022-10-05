@@ -51,3 +51,9 @@
         </div>
     </div>
 </div>
+
+<input id="order-id" hidden data-value="@Model.Id" />
+
+@section scripts {
+        <script asp-add-nonce="true" src="~/JS/trustpilot.js" defer></script>
+}

@@ -212,7 +212,7 @@ namespace NykantMVC.Controllers
 
                     // ------------------------Post Payment Capture-------------------------
 
-                    var paymentCapture = new PaymentCapture { Captured = false, PaymentIntent_Id = paymentIntentId, CustomerId = customerResult };
+                    var paymentCapture = new PaymentCapture { Captured = true, PaymentIntent_Id = paymentIntentId, CustomerId = customerResult };
                     var response = await PostRequest("/PaymentCapture/PostPaymentCapture", paymentCapture);
                     if (!response.IsSuccessStatusCode)
                     {
@@ -221,6 +221,7 @@ namespace NykantMVC.Controllers
                     }
                     var json = await GetRequest(response.Headers.Location.AbsolutePath);
                     paymentCapture.Id = JsonConvert.DeserializeObject<PaymentCapture>(json).Id;
+
 
                     // ------------------------Post Order-------------------------
 
@@ -234,6 +235,25 @@ namespace NykantMVC.Controllers
                     }
 
                     order = orderResult;
+
+                    paymentCapture.Order = order;
+                    // Post Invoice
+
+                    Models.Invoice invoice = new Models.Invoice
+                    {
+                        CreatedAt = DateTime.Now,
+                        PaymentCaptureId = paymentCapture.Id,
+                        TotalPrice = paymentCapture.Order.TotalPrice,
+                        TaxLessPrice = paymentCapture.Order.TaxLessPrice,
+                        Taxes = paymentCapture.Order.Taxes
+                    };
+
+                    response = await PostRequest("/Invoice/PostInvoice", invoice);
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        _logger.LogError($"time: {DateTime.Now} - error: {response.StatusCode + response.ReasonPhrase}");
+                        return Json(new { ok = false, error = "could not post invoice" });
+                    }
 
                     // ------------------------Send Emails-------------------------
 
@@ -266,25 +286,9 @@ namespace NykantMVC.Controllers
                     checkout.OrderId = order.Id;
                     HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
 
-                    List<string> productIds = new List<string>();
-                    foreach(var orderItem in order.OrderItems)
-                    {
-                        productIds.Add(orderItem.Product.Number);
-                    }
 
-                    List<trustpilot_product> productList = new List<trustpilot_product>();
-                    foreach(var orderItem in order.OrderItems)
-                    {
-                        productList.Add(new trustpilot_product
-                        {
-                            SKU = orderItem.Product.Number,
-                            ProductUrl = $"https://www.nykant.dk/møbler/{orderItem.Product.Category.Name}/{orderItem.Product.UrlName}",
-                            ImageUrl = orderItem.Product.GalleryImage1,
-                            Name = orderItem.Product.Name
-                        });
-                    }
 
-                    return Json(new { ok = true, order = order, productIds = productIds.ToArray(), productList = productList.ToArray() });
+                    return Json(new { ok = true, order = order });
                 }
                 else
                 {
@@ -358,8 +362,6 @@ namespace NykantMVC.Controllers
                     _logger.LogError($"time: {DateTime.Now} - error: {response.StatusCode}");
                     return Json(new { ok = false, error = "error updating order" });
                 }
-
-                await CapturePaymentIntent(order.PaymentCaptureId);
 
                 var json2 = await GetRequest("/Order/GetOrders");
                 var orders = JsonConvert.DeserializeObject<List<Models.Order>>(json2);

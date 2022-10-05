@@ -180,16 +180,25 @@ var orderComplete = function (paymentIntentId) {
             })
         }).then(function (result) {
             if (result.ok) {
-                
-                const trustpilot_invitation = {
-                    recipientEmail: result.order.paymentCapture.customer.email,
-                    recipientName: result.order.paymentCapture.customer.shippingAddress.name,
-                    referenceId: result.order.id,
-                    source: 'InvitationScript',
-                    productSkus: result.productIds,
-                    products: result.productList,
-                };
-                tp('createInvitation', trustpilot_invitation);
+                //var url = "/checkout/trustpilot/" + document.getElementById('order-id').dataset.value;
+                //fetch(url, {
+                //    method: "GET",
+                //    headers: {
+                //        "Content-Type": "application/json"
+                //    }
+                //}).then(response => response.json())
+                //    .then(function (data) {
+                //        const trustpilot_invitation = {
+                //            recipientEmail: data.email,
+                //            recipientName: data.name,
+                //            referenceId: data.referenceId,
+                //            source: 'InvitationScript',
+                //            productSkus: data.productSkus,
+                //            products: data.products
+                //        };
+                //        Log("trustpilot invitation");
+                //        tp('createInvitation', trustpilot_invitation);
+                //    });
 
                 var urlstring = url + "/Bestilling-Gennemført";
                 location.replace(urlstring);

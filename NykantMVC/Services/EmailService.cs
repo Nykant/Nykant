@@ -43,7 +43,7 @@ namespace NykantMVC.Services
                 email.From.Add(MailboxAddress.Parse(_mailSettings.Mail));
                 email.Sender = MailboxAddress.Parse(_mailSettings.Mail);
                 email.To.Add(MailboxAddress.Parse(order.PaymentCapture.Customer.Email));
-                email.Bcc.Add(MailboxAddress.Parse("nykant.dk+fa118ed145@invite.trustpilot.com"));
+                //email.Bcc.Add(MailboxAddress.Parse("nykant.dk+fa118ed145@invite.trustpilot.com"));
                 email.Subject = "Ordrebekræftelse";
 
                 var bodyBuilder = new BodyBuilder();
