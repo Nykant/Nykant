@@ -35,11 +35,13 @@
 
   <ItemGroup>
     <PackageReference Include="AWSSDK.CertificateManager" Version="3.7.1.151" />
-    <PackageReference Include="AWSSDK.Core" Version="3.7.12.22" />
+    <PackageReference Include="AWSSDK.Core" Version="3.7.13.17" />
+    <PackageReference Include="AWSSDK.S3" Version="3.7.9.66" />
     <PackageReference Include="AWSSDK.SimpleEmail" Version="3.7.0.124" />
     <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
     <PackageReference Include="EFCache.RedisCache" Version="0.0.2" />
     <PackageReference Include="Google.Apis.ShoppingContent.v2_1" Version="1.57.0.2765" />
+    <PackageReference Include="HtmlRenderer.PdfSharp" Version="1.5.0.6" />
     <PackageReference Include="IdentityModel" Version="3.10.10" />
     <PackageReference Include="Joonasw.AspNetCore.SecurityHeaders" Version="4.0.1" />
     <PackageReference Include="LigerShark.WebOptimizer.Core" Version="3.0.368" />
@@ -66,6 +68,7 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.0" />
     <PackageReference Include="MimeKit" Version="3.1.1" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="6.0.0" />
+    <PackageReference Include="Rotativa.AspNetCore" Version="1.2.0" />
     <PackageReference Include="Stripe.net" Version="39.91.0" />
   </ItemGroup>
 
@@ -82,12 +85,18 @@
     <None Include="wwwroot\lib\jquery\dist\jquery.js" />
     <None Include="wwwroot\lib\jquery\dist\jquery.min.js" />
     <None Include="wwwroot\lib\jquery\dist\jquery.min.map" />
+    <None Include="wwwroot\Rotativa\wkhtmltoimage.exe" />
+    <None Include="wwwroot\Rotativa\wkhtmltopdf.exe" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Update="Resources\Views\Home\PrivacyPolicy.da.resx">
       <Generator></Generator>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Invoices\" />
   </ItemGroup>
 
 </Project>

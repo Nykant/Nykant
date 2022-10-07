@@ -3,7 +3,7 @@
 @inject IProtectionService protectionService
 @{
     Layout = "_OrderEmailLayout";
-    ViewData["EmailTitle"] = "Ordre Bekræftelse";
+    ViewData["EmailTitle"] = "Faktura";
 }
 
 <div class="es-wrapper-color" style="background-color:#EEEEEE">
@@ -87,9 +87,6 @@
                                                             <td align="center" style="padding:0;Margin:0;padding-bottom:10px"><h2 style="Margin:0;line-height:36px;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;font-size:30px;font-style:normal;font-weight:bold;color:#333333">Faktura</h2></td>
                                                         </tr>
                                                         <tr style="border-collapse:collapse">
-                                                            <td align="left" style="padding:0;Margin:0;padding-top:15px;padding-bottom:20px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#777777;font-size:16px">Dette er din faktura. hvilket betyder at din ordre er blevet sendt, og at betalingen gennemføres.</p></td>
-                                                        </tr>
-                                                        <tr style="border-collapse:collapse">
                                                             <td align="left" style="padding:0;Margin:0;padding-top:15px;padding-bottom:20px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#777777;font-size:16px">Fakturaen gælder som købsbevis.</p></td>
                                                         </tr>
                                                     </table>
@@ -114,16 +111,17 @@
                                                                 <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:500px" class="cke_show_border" cellspacing="1" cellpadding="1" border="0" align="left" role="presentation">
 
                                                                     <tr style="border-collapse:collapse">
-                                                                        <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Ordrenumre:</strong></td>
+                                                                        <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Ordrenummer:</strong></td>
                                                                         <td width="50%" style="padding:0;Margin:0">
                                                                             <span style="font-size: 14px; line-height: 21px; color: #000000;">
                                                                                 # @Model.Order.Id
                                                                             </span>
                                                                         </td>
+
                                                                     </tr>
                                                                     <tr style="border-collapse:collapse">
-                                                                        <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Fakturanummer:</strong></td>
-                                                                        <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;"># @Model.Invoice.Id</span></td>
+                                                                        <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Ordrens vægt:</strong></td>
+                                                                        <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">@Model.Order.WeightInKg kg.</span></td>
                                                                     </tr>
                                                                 </table>
                                                             </td>
@@ -153,7 +151,7 @@
                                                             <td bgcolor="#eeeeee" align="left" style="Margin:0;padding-top:10px;padding-bottom:10px;padding-left:10px;padding-right:10px">
                                                                 <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:500px" class="cke_show_border" cellspacing="1" cellpadding="1" border="0" align="left" role="presentation">
                                                                     <tr style="border-collapse:collapse">
-                                                                        <td width="80%" style="padding:0;Margin:0"><h4 style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif">Faktura</h4></td>
+                                                                        <td width="80%" style="padding:0;Margin:0"><h4 style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif">Fakturanummer</h4></td>
                                                                         <td width="20%" style="padding:0;Margin:0"><h4 style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif"># @Model.Invoice.Id</h4></td>
                                                                     </tr>
                                                                 </table>
@@ -322,27 +320,27 @@
                                         </td>
                                     </tr>
                                 }*@
-                                @*<tr style="border-collapse:collapse">
+                                <tr style="border-collapse:collapse">
                                     <td align="left" style="padding:0;Margin:0;padding-top:10px;padding-left:35px;padding-right:35px">
                                         <table width="100%" cellspacing="0" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                                             <tr style="border-collapse:collapse">
                                                 <td valign="top" align="center" style="padding:0;Margin:0;width:530px">
                                                     <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;" width="100%" cellspacing="0" cellpadding="0" role="presentation">
                                                         <tr style="border-collapse:collapse">
-                                                            <td align="left" style="Margin:0;padding-bottom:10px;padding-top:20px;padding-right:20px"><h4 style="Margin: 0; line-height: 120%; mso-line-height-rule: exactly; font-family: arial, 'helvetica neue', helvetica, sans-serif; color: #000000; ">@localizer["Leveringsoplysninger"]</h4></td>
+                                                            <td align="left" style="Margin:0;padding-bottom:10px;padding-top:20px;padding-right:20px"><h4 style="Margin: 0; line-height: 120%; mso-line-height-rule: exactly; font-family: arial, 'helvetica neue', helvetica, sans-serif; color: #000000; ">Leveringsoplysninger</h4></td>
                                                         </tr>
                                                         <tr style="border-collapse:collapse">
 
                                                             <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:15px;padding-bottom:15px">
                                                                 <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:500px" class="cke_show_border" cellspacing="1" cellpadding="1" border="0" align="left" role="presentation">
-                                                                    @if (Model.ShippingDelivery.Type == ShippingType.Home)
+                                                                    @if (Model.Order.ShippingDelivery.Type == ShippingType.Home)
                                                                     {
                                                                         <tr style="border-collapse:collapse">
                                                                             <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Leveres til:</strong></td>
                                                                             <td width="50%" style="padding:0;Margin:0"><span style="font-size: 14px; line-height: 21px; color: #000000;">Leveringsaddressen med GLS</span></td>
                                                                         </tr>
                                                                     }
-                                                                    else if (Model.ShippingDelivery.Type == ShippingType.HomePallegods)
+                                                                    else if (Model.Order.ShippingDelivery.Type == ShippingType.HomePallegods)
                                                                     {
                                                                         <tr style="border-collapse:collapse">
                                                                             <td width="50%" style="padding: 0; Margin: 0; font-size: 14px; line-height: 21px; color: #000000;"><strong>Leveres til:</strong></td>
@@ -378,8 +376,55 @@
                                             </tr>
                                         </table>
                                     </td>
-                                </tr>*@
-
+                                </tr>
+                                <tr style="border-collapse:collapse">
+                                    <td align="left" style="padding:0;Margin:0;padding-top:10px;padding-left:35px;padding-right:35px">
+                                        <table width="100%" cellspacing="0" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                                            <tr style="border-collapse:collapse">
+                                                <td valign="top" align="center" style="padding:0;Margin:0;width:530px">
+                                                    <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;" width="100%" cellspacing="0" cellpadding="0" role="presentation">
+                                                        <tr style="border-collapse:collapse">
+                                                            <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:15px;padding-bottom:15px">
+                                                                <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                                                                    <tr style="border-collapse:collapse">
+                                                                        <td align="left" style="padding:0;Margin:0;padding-bottom:15px"><h4 style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif">Estimeret Leveringstid<br></h4></td>
+                                                                    </tr>
+                                                                    <tr style="border-collapse:collapse">
+                                                                        <td align="left" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#333333;font-size:16px">3-5 arbejdsdage</p></td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr style="border-collapse:collapse">
+                                    <td align="left" style="padding:0;Margin:0;padding-top:10px;padding-left:35px;padding-right:35px">
+                                        <table width="100%" cellspacing="0" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                                            <tr style="border-collapse:collapse">
+                                                <td valign="top" align="center" style="padding:0;Margin:0;width:530px">
+                                                    <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;" width="100%" cellspacing="0" cellpadding="0" role="presentation">
+                                                        <tr style="border-collapse:collapse">
+                                                            <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:15px;padding-bottom:15px">
+                                                                <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                                                                    <tr style="border-collapse:collapse">
+                                                                        <td align="left" style="padding:0;Margin:0;padding-bottom:15px"><h4 style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif">Udstedelse og Forfaldsdato<br></h4></td>
+                                                                    </tr>
+                                                                    <tr style="border-collapse:collapse">
+                                                                        <td align="left" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'open sans', 'helvetica neue', helvetica, arial, sans-serif;line-height:24px;color:#333333;font-size:16px">@Model.Order.CreatedAt.Day / @Model.Order.CreatedAt.Month / @Model.Order.CreatedAt.Year</p></td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
                                 @*<tr style="border-collapse:collapse">
                                     <td align="left" style="padding:0;Margin:0;padding-top:10px;padding-left:35px;padding-right:35px">
                                         <table width="100%" cellspacing="0" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">

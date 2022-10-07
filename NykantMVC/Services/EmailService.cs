@@ -3,12 +3,14 @@ using Amazon.SimpleEmail;
 using Amazon.SimpleEmail.Model;
 using MailKit.Net.Smtp;
 using MailKit.Security;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using MimeKit;
 using MimeKit.Utils;
+using NykantMVC.Friends;
 using NykantMVC.Models;
 using System;
 using System.Collections.Generic;
@@ -35,7 +37,7 @@ namespace NykantMVC.Services
             this._logger = _logger;
         }
 
-        public async Task<string> SendOrderEmailAsync(Order order)
+        public async Task<string> SendOrderEmailAsync(Order order, byte[] invoice)
         {
             try
             {
@@ -47,17 +49,18 @@ namespace NykantMVC.Services
                 email.Subject = "Ordrebekræftelse";
 
                 var bodyBuilder = new BodyBuilder();
+                string body = await _razorViewToStringRenderer.RenderViewToStringAsync("/Views/Shared/EmailViews/OrderEmail.cshtml", order);
                 byte[] agreementBytes = System.IO.File.ReadAllBytes("wwwroot/pdf/Handelsbetingelser.pdf");
                 byte[] regretBytes = System.IO.File.ReadAllBytes("wwwroot/pdf/standardfortrydelsesformular.pdf");
                 bodyBuilder.Attachments.Add("Handelsbetingelser.pdf", agreementBytes, new MimeKit.ContentType("application", "pdf"));
                 bodyBuilder.Attachments.Add("Standardfortrydelsesformular.pdf", regretBytes, new MimeKit.ContentType("application", "pdf"));
+                bodyBuilder.Attachments.Add("Faktura.pdf", invoice, new MimeKit.ContentType("application", "pdf"));
                 //for (int i = 0; i < order.OrderItems.Count(); i++)
                 //{
                 //    var image = bodyBuilder.LinkedResources.Add(order.OrderItems[i].Product.Path);
                 //    image.ContentId = MimeUtils.GenerateMessageId();
                 //    order.OrderItems[i].ContentId = image.ContentId;
                 //}
-                string body = await _razorViewToStringRenderer.RenderViewToStringAsync("/Views/Shared/EmailViews/OrderEmail.cshtml", order);
 
                 bodyBuilder.HtmlBody = body;
                 email.Body = bodyBuilder.ToMessageBody();
@@ -76,6 +79,8 @@ namespace NykantMVC.Services
                 return "fail";
             }
         }
+
+        
 
         public async Task<string> SendRegretEmailAsync(Regret regret)
         {
@@ -316,7 +321,7 @@ namespace NykantMVC.Services
     {
         Task<string> SendOrderSentEmailAsync(Order order);
         Task<string> SendNykantEmailAsync(Order order);
-        Task<string> SendOrderEmailAsync(Order order);
+        Task<string> SendOrderEmailAsync(Order order, byte[] invoice);
         Task<string> SendDKIEmailAsync(Order order);
         Task<string> SendInvoiceEmailAsync(PaymentCapture paymentCapture);
         Task<string> SendRegretEmailAsync(Regret regret);

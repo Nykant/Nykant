@@ -7,10 +7,19 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewEngines;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Routing;
+using PdfSharp.Pdf;
+using PdfSharp;
 using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using TheArtOfDev.HtmlRenderer.PdfSharp;
+using Rotativa.AspNetCore;
+using Amazon;
+using Amazon.S3;
+using Amazon.S3.Transfer;
+using StackExchange.Redis;
+using System.Net;
 
 namespace NykantMVC.Services
 {
@@ -30,6 +39,57 @@ namespace NykantMVC.Services
             _viewEngine = viewEngine;
             _tempDataProvider = tempDataProvider;
             _serviceProvider = serviceProvider;
+        }
+
+
+
+        public async Task<byte[]> PdfSharpConvert<TModel>(string viewName, TModel model, string fileName, ControllerContext context)
+        {
+            var pdf = await new ViewAsPdf(viewName, model).BuildFile(context);
+            var path = Path.Combine("Invoices", $"{fileName}.pdf");
+            File.WriteAllBytes(path, pdf);
+            await UploadFileAsync(path, fileName, "nykant-invoices");
+            return pdf;
+        }
+        public static async Task UploadFileAsync(string filePath, string keyName, string bucketName)
+        {
+
+
+
+            // input explained :
+            // localFilePath = the full local file path e.g. "c:\mydir\mysubdir\myfilename.zip"
+            // bucketName : the name of the bucket in S3 ,the bucket should be alreadt created
+            // subDirectoryInBucket : if this string is not empty the file will be uploaded to
+            // a subdirectory with this name
+            // fileNameInS3 = the file name in the S3
+
+            // create an instance of IAmazonS3 class ,in my case i choose RegionEndpoint.EUWest1
+            // you can change that to APNortheast1 , APSoutheast1 , APSoutheast2 , CNNorth1
+            // SAEast1 , USEast1 , USGovCloudWest1 , USWest1 , USWest2 . this choice will not
+            // store your file in a different cloud storage but (i think) it differ in performance
+            // depending on your location
+            RegionEndpoint bucketRegion = RegionEndpoint.EUNorth1;
+            IAmazonS3 s3Client = new AmazonS3Client(bucketRegion);
+
+            try
+            {
+                var fileTransferUtility =
+                    new TransferUtility(s3Client);
+
+                // Option 2. Specify object key name explicitly.
+                await fileTransferUtility.UploadAsync(filePath, bucketName, keyName);
+                Console.WriteLine("Upload completed");
+
+                File.Delete(filePath);
+            }
+            catch (AmazonS3Exception e)
+            {
+                Console.WriteLine("Error encountered on server. Message:'{0}' when writing an object", e.Message);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Unknown encountered on server. Message:'{0}' when writing an object", e.Message);
+            }
         }
 
         public async Task<string> RenderViewToStringAsync<TModel>(string viewName, TModel model)
@@ -93,5 +153,6 @@ namespace NykantMVC.Services
     public interface IRazorViewToStringRenderer
     {
         Task<string> RenderViewToStringAsync<TModel>(string viewName, TModel model);
+        Task<byte[]> PdfSharpConvert<TModel>(string viewName, TModel model, string fileName, ControllerContext context);
     }
 }

@@ -40,6 +40,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Joonasw.AspNetCore.SecurityHeaders;
 using Microsoft.AspNetCore.Cors.Infrastructure;
+using Rotativa.AspNetCore;
 
 namespace NykantMVC
 {
@@ -55,6 +56,7 @@ namespace NykantMVC
             Configuration = configuration;
         }
 
+        [Obsolete]
         public void ConfigureServices(IServiceCollection services)
         {
             string mykeyConnection = Configuration.GetConnectionString("MyKeysConnection");
@@ -81,6 +83,8 @@ namespace NykantMVC
                     //.ProtectKeysWithCertificate("3fe5fcaf686e7ffbeaf80d760944e0f752f2112b")
                     .SetApplicationName("Nykant");
             }
+
+            RotativaConfiguration.Setup((Microsoft.AspNetCore.Hosting.IHostingEnvironment)Environment);
 
             JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
 

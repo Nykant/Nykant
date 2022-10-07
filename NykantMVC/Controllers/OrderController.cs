@@ -23,10 +23,12 @@ namespace NykantMVC.Controllers
     {
         private readonly IMailService mailService;
         private readonly IProtectionService _protectionService;
-        public OrderController(IMailService mailService, ILogger<OrderController> logger, IProtectionService protectionService, IOptions<Urls> urls, HtmlEncoder htmlEncoder, IConfiguration conf, ITokenService _tokenService) : base(logger, urls, htmlEncoder, conf, _tokenService)
+        private readonly IRazorViewToStringRenderer razorViewToStringRenderer;
+        public OrderController(IMailService mailService, ILogger<OrderController> logger, IProtectionService protectionService, IOptions<Urls> urls, HtmlEncoder htmlEncoder, IRazorViewToStringRenderer razorViewToStringRenderer, IConfiguration conf, ITokenService _tokenService) : base(logger, urls, htmlEncoder, conf, _tokenService)
         {
             this.mailService = mailService;
             _protectionService = protectionService;
+            this.razorViewToStringRenderer = razorViewToStringRenderer;
         }
 
         [Authorize(Roles = "Admin")]
@@ -221,7 +223,7 @@ namespace NykantMVC.Controllers
                     }
                     var json = await GetRequest(response.Headers.Location.AbsolutePath);
                     paymentCapture.Id = JsonConvert.DeserializeObject<PaymentCapture>(json).Id;
-
+                    paymentCapture.Customer = checkout.Customer;
 
                     // ------------------------Post Order-------------------------
 
@@ -254,6 +256,12 @@ namespace NykantMVC.Controllers
                         _logger.LogError($"time: {DateTime.Now} - error: {response.StatusCode + response.ReasonPhrase}");
                         return Json(new { ok = false, error = "could not post invoice" });
                     }
+                    json = await GetRequest(response.Headers.Location.AbsolutePath);
+                    invoice = JsonConvert.DeserializeObject<Models.Invoice>(json);
+                    paymentCapture.Invoice = invoice;
+
+                    var fileName = "Faktura-" + invoice.Id;
+                    var invoicePdf = await razorViewToStringRenderer.PdfSharpConvert("/Views/Shared/EmailViews/InvoiceEmail.cshtml", paymentCapture, fileName, ControllerContext);
 
                     // ------------------------Send Emails-------------------------
 
@@ -264,7 +272,7 @@ namespace NykantMVC.Controllers
                         await OrderError(order);
                         return Json(new { ok = false, error = "email error" });
                     }
-                    emailResponse = await mailService.SendOrderEmailAsync(order);
+                    emailResponse = await mailService.SendOrderEmailAsync(order, invoicePdf);
                     if(emailResponse == "fail")
                     {
                         _logger.LogError($"time: {DateTime.Now} - error: could not send order email");
@@ -285,8 +293,6 @@ namespace NykantMVC.Controllers
                     checkout.Stage = Stage.completed;
                     checkout.OrderId = order.Id;
                     HttpContext.Session.Set<Checkout>(CheckoutSessionKey, checkout);
-
-
 
                     return Json(new { ok = true, order = order });
                 }

@@ -46,7 +46,7 @@ namespace NykantAPI.Controllers
         {
             try
             {
-                var capture = await _context.PaymentCaptures.Include(x => x.Order).ThenInclude(x => x.OrderItems).ThenInclude(x => x.Product).Include(x => x.Customer).ThenInclude(x => x.BillingAddress).Include(x => x.Invoice).Include(x => x.Refund).FirstOrDefaultAsync(x => x.Id == id);
+                var capture = await _context.PaymentCaptures.Include(x => x.Order).ThenInclude(x => x.OrderItems).ThenInclude(x => x.Product).ThenInclude(x => x.Category).Include(x => x.Customer).ThenInclude(x => x.BillingAddress).Include(x => x.Customer).ThenInclude(x => x.ShippingAddress).Include(x => x.Order).ThenInclude(x => x.ShippingDelivery).Include(x => x.Invoice).Include(x => x.Refund).FirstOrDefaultAsync(x => x.Id == id);
                 return Ok(JsonConvert.SerializeObject(capture, Extensions.JsonOptions.jsonSettings));
             }
             catch (Exception e)
