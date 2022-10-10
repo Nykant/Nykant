@@ -441,9 +441,9 @@ namespace NykantMVC
             app.UseForwardedHeaders(forwardOptions);
 
             var options = new RewriteOptions()
+                .AddRedirectToWwwCustom()
                 .AddRedirectToProxiedHttps()
-                .AddRedirect("(.*)/$", "$1")
-                .AddRedirectToWwwPermanent();// remove trailing slash
+                .AddRedirect("(.*)/$", "$1");
             app.UseRewriter(options);
 
             app.UseCertificateForwarding();
