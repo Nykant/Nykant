@@ -85,6 +85,8 @@
     <None Include="wwwroot\lib\jquery\dist\jquery.js" />
     <None Include="wwwroot\lib\jquery\dist\jquery.min.js" />
     <None Include="wwwroot\lib\jquery\dist\jquery.min.map" />
+    <None Include="wwwroot\Rotativa\help-wkhtmltoimage.txt" />
+    <None Include="wwwroot\Rotativa\help-wkhtmltopdf.txt" />
     <None Include="wwwroot\Rotativa\wkhtmltoimage.exe" />
     <None Include="wwwroot\Rotativa\wkhtmltopdf.exe" />
   </ItemGroup>
