@@ -32,7 +32,8 @@ namespace NykantMVC.Controllers
         [HttpGet]
         public async Task SendPdfToS3()
         {
-            await razorViewToStringRenderer.PdfSharpConvert("/Views/Shared/EmailViews/TestOrderEmail.cshtml", new { }, "TestFaktura", ControllerContext);
+            var viewString = await razorViewToStringRenderer.RenderViewToStringAsync("/Views/Shared/EmailViews/TestOrderEmail.cshtml", new { });
+            await razorViewToStringRenderer.PdfSharpConvert(viewString, "TestFaktura");
         }
 
         [HttpPost]
@@ -60,7 +61,8 @@ namespace NykantMVC.Controllers
             paymentCapture.Invoice = invoice;
 
             var fileName = "Faktura-" + invoice.Id;
-            await razorViewToStringRenderer.PdfSharpConvert("/Views/Shared/EmailViews/InvoiceEmail.cshtml", paymentCapture, fileName, ControllerContext);
+            var viewString = await razorViewToStringRenderer.RenderViewToStringAsync("/Views/Shared/EmailViews/InvoiceEmail.cshtml", paymentCapture);
+            await razorViewToStringRenderer.PdfSharpConvert(viewString, fileName);
         }
 
     }

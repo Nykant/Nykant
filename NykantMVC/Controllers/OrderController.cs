@@ -261,7 +261,8 @@ namespace NykantMVC.Controllers
                     paymentCapture.Invoice = invoice;
 
                     var fileName = "Faktura-" + invoice.Id;
-                    var invoicePdf = await razorViewToStringRenderer.PdfSharpConvert("/Views/Shared/EmailViews/InvoiceEmail.cshtml", paymentCapture, fileName, ControllerContext);
+                    var viewString = await razorViewToStringRenderer.RenderViewToStringAsync("/Views/Shared/EmailViews/InvoiceEmail.cshtml", paymentCapture);
+                    var invoicePdf = await razorViewToStringRenderer.PdfSharpConvert(viewString, fileName);
 
                     // ------------------------Send Emails-------------------------
 

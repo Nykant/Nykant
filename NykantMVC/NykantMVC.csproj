@@ -31,6 +31,16 @@
 
   <ItemGroup>
     <Content Remove="bundleconfig.json" />
+    <Content Remove="wwwroot\wkhtmltopdf\Docker\wkhtmltopdf" />
+    <Content Remove="wwwroot\wkhtmltopdf\Docker\wkhtmltopdf.exe" />
+    <Content Remove="wwwroot\wkhtmltopdf\Linux\wkhtmltopdf" />
+    <Content Remove="wwwroot\wkhtmltopdf\Linux\wkhtmltopdf.exe" />
+    <Content Remove="wwwroot\wkhtmltopdf\Ubuntu\wkhtmltopdf" />
+    <Content Remove="wwwroot\wkhtmltopdf\Ubuntu\wkhtmltopdf.exe" />
+    <Content Remove="wwwroot\wkhtmltopdf\Windows\wkhtmltopdf" />
+    <Content Remove="wwwroot\wkhtmltopdf\Windows\wkhtmltopdf.exe" />
+    <Content Remove="wwwroot\wkhtmltopdf\wkhtmltopdf" />
+    <Content Remove="wwwroot\wkhtmltopdf\wkhtmltopdf.exe" />
   </ItemGroup> 
 
   <ItemGroup>
@@ -39,8 +49,10 @@
     <PackageReference Include="AWSSDK.S3" Version="3.7.9.66" />
     <PackageReference Include="AWSSDK.SimpleEmail" Version="3.7.0.124" />
     <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
+    <PackageReference Include="ceTe.DynamicPDF.HtmlConverter.NET" Version="1.8.0" />
     <PackageReference Include="EFCache.RedisCache" Version="0.0.2" />
     <PackageReference Include="Google.Apis.ShoppingContent.v2_1" Version="1.57.0.2765" />
+    <PackageReference Include="HtmlRenderer.Core" Version="1.5.0.6" />
     <PackageReference Include="HtmlRenderer.PdfSharp" Version="1.5.0.6" />
     <PackageReference Include="IdentityModel" Version="3.10.10" />
     <PackageReference Include="Joonasw.AspNetCore.SecurityHeaders" Version="4.0.1" />
@@ -67,9 +79,12 @@
     <PackageReference Include="Microsoft.jQuery.Unobtrusive.Validation" Version="3.2.12" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.0" />
     <PackageReference Include="MimeKit" Version="3.1.1" />
+    <PackageReference Include="PdfSharp" Version="1.32.3057" />
+    <PackageReference Include="PdfSharpCore" Version="1.3.40" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="6.0.0" />
     <PackageReference Include="Rotativa.AspNetCore" Version="1.2.0" />
     <PackageReference Include="Stripe.net" Version="39.91.0" />
+    <PackageReference Include="Wkhtmltopdf.NetCore" Version="3.0.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -85,10 +100,16 @@
     <None Include="wwwroot\lib\jquery\dist\jquery.js" />
     <None Include="wwwroot\lib\jquery\dist\jquery.min.js" />
     <None Include="wwwroot\lib\jquery\dist\jquery.min.map" />
-    <None Include="wwwroot\Rotativa\help-wkhtmltoimage.txt" />
-    <None Include="wwwroot\Rotativa\help-wkhtmltopdf.txt" />
-    <None Include="wwwroot\Rotativa\wkhtmltoimage.exe" />
-    <None Include="wwwroot\Rotativa\wkhtmltopdf.exe" />
+    <None Include="wwwroot\wkhtmltopdf\Docker\wkhtmltopdf" />
+    <None Include="wwwroot\wkhtmltopdf\Docker\wkhtmltopdf.exe" />
+    <None Include="wwwroot\wkhtmltopdf\Linux\wkhtmltopdf" />
+    <None Include="wwwroot\wkhtmltopdf\Linux\wkhtmltopdf.exe" />
+    <None Include="wwwroot\wkhtmltopdf\Ubuntu\wkhtmltopdf" />
+    <None Include="wwwroot\wkhtmltopdf\Ubuntu\wkhtmltopdf.exe" />
+    <None Include="wwwroot\wkhtmltopdf\Windows\wkhtmltopdf" />
+    <None Include="wwwroot\wkhtmltopdf\Windows\wkhtmltopdf.exe" />
+    <None Include="wwwroot\wkhtmltopdf\wkhtmltopdf" />
+    <None Include="wwwroot\wkhtmltopdf\wkhtmltopdf.exe" />
   </ItemGroup>
 
   <ItemGroup>

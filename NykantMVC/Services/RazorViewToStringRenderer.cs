@@ -13,13 +13,17 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using TheArtOfDev.HtmlRenderer.PdfSharp;
+using TheArtOfDev.HtmlRenderer.Core;
 using Rotativa.AspNetCore;
 using Amazon;
 using Amazon.S3;
 using Amazon.S3.Transfer;
 using StackExchange.Redis;
 using System.Net;
+using System.Collections.Generic;
+using PdfSharpCore.Pdf;
+using TheArtOfDev.HtmlRenderer.PdfSharp;
+using Wkhtmltopdf.NetCore;
 
 namespace NykantMVC.Services
 {
@@ -30,27 +34,30 @@ namespace NykantMVC.Services
         private IRazorViewEngine _viewEngine;
         private ITempDataProvider _tempDataProvider;
         private IServiceProvider _serviceProvider;
+        readonly IGeneratePdf generatePdf;
 
         public RazorViewToStringRenderer(
             IRazorViewEngine viewEngine,
             ITempDataProvider tempDataProvider,
-            IServiceProvider serviceProvider)
+            IServiceProvider serviceProvider,
+            IGeneratePdf generatePdf)
         {
             _viewEngine = viewEngine;
             _tempDataProvider = tempDataProvider;
             _serviceProvider = serviceProvider;
+            this.generatePdf = generatePdf;
         }
 
-
-
-        public async Task<byte[]> PdfSharpConvert<TModel>(string viewName, TModel model, string fileName, ControllerContext context)
+        public async Task<Byte[]> PdfSharpConvert(String html, string fileName)
         {
-            var pdf = await new ViewAsPdf(viewName, model).BuildFile(context);
+            var pdf = generatePdf.GetPDF(html);
             var path = Path.Combine("Invoices", $"{fileName}.pdf");
             File.WriteAllBytes(path, pdf);
             await UploadFileAsync(path, fileName, "nykant-invoices");
             return pdf;
+
         }
+
         public static async Task UploadFileAsync(string filePath, string keyName, string bucketName)
         {
 
@@ -153,6 +160,6 @@ namespace NykantMVC.Services
     public interface IRazorViewToStringRenderer
     {
         Task<string> RenderViewToStringAsync<TModel>(string viewName, TModel model);
-        Task<byte[]> PdfSharpConvert<TModel>(string viewName, TModel model, string fileName, ControllerContext context);
+        Task<Byte[]> PdfSharpConvert(String html, string fileName);
     }
 }

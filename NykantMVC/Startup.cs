@@ -40,7 +40,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Joonasw.AspNetCore.SecurityHeaders;
 using Microsoft.AspNetCore.Cors.Infrastructure;
-using Rotativa.AspNetCore;
+using Wkhtmltopdf.NetCore;
 
 namespace NykantMVC
 {
@@ -84,7 +84,8 @@ namespace NykantMVC
                     .SetApplicationName("Nykant");
             }
 
-            RotativaConfiguration.Setup((Microsoft.AspNetCore.Hosting.IHostingEnvironment)Environment);
+            services.AddWkhtmltopdf("wkhtmltopdf");
+            //services.AddWkhtmltopdf(Path.GetFullPath("wkhtmltopdf"));
 
             JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
 
@@ -242,7 +243,7 @@ namespace NykantMVC
             services.Configure<Urls>(Configuration.GetSection("Urls"));
             services.AddTransient<IMailService, EmailService>();
 
-            services.AddScoped<IRazorViewToStringRenderer, RazorViewToStringRenderer>();
+            services.AddScoped<Services.IRazorViewToStringRenderer, Services.RazorViewToStringRenderer>();
             services.AddScoped<IProtectionService, ProtectionService>();
             services.AddSingleton<IGoogleApiService, GoogleApiService>();
 
