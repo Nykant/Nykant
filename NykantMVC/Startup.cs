@@ -84,8 +84,8 @@ namespace NykantMVC
                     .SetApplicationName("Nykant");
             }
 
-            services.AddWkhtmltopdf("wkhtmltopdf");
-            //services.AddWkhtmltopdf(Path.GetFullPath("wkhtmltopdf"));
+            //services.AddWkhtmltopdf("wwwroot/wkhtmltopdf");
+            services.AddWkhtmltopdf(Path.GetFullPath("wkhtmltopdf"));
 
             JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
 
