@@ -24,6 +24,8 @@ using System.Collections.Generic;
 using PdfSharpCore.Pdf;
 using TheArtOfDev.HtmlRenderer.PdfSharp;
 using Wkhtmltopdf.NetCore;
+using Amazon.Runtime.Internal.Util;
+using Microsoft.Extensions.Logging;
 
 namespace NykantMVC.Services
 {
@@ -35,26 +37,38 @@ namespace NykantMVC.Services
         private ITempDataProvider _tempDataProvider;
         private IServiceProvider _serviceProvider;
         readonly IGeneratePdf generatePdf;
+        private readonly Microsoft.Extensions.Logging.ILogger<RazorViewToStringRenderer> logger;
 
         public RazorViewToStringRenderer(
             IRazorViewEngine viewEngine,
             ITempDataProvider tempDataProvider,
             IServiceProvider serviceProvider,
-            IGeneratePdf generatePdf)
+            IGeneratePdf generatePdf,
+            Microsoft.Extensions.Logging.ILogger<RazorViewToStringRenderer> logger)
         {
             _viewEngine = viewEngine;
             _tempDataProvider = tempDataProvider;
             _serviceProvider = serviceProvider;
             this.generatePdf = generatePdf;
+            this.logger = logger;
         }
 
         public async Task<Byte[]> PdfSharpConvert(String html, string fileName)
         {
-            var pdf = generatePdf.GetPDF(html);
-            var path = Path.Combine("wwwroot", "pdf", $"{fileName}.pdf");
-            File.WriteAllBytes(path, pdf);
-            await UploadFileAsync(path, fileName, "nykant-invoices");
-            return pdf;
+            try
+            {
+                var pdf = generatePdf.GetPDF(html);
+                var path = Path.Combine("wwwroot", "pdf", $"{fileName}.pdf");
+                File.WriteAllBytes(path, pdf);
+                await UploadFileAsync(path, fileName, "nykant-invoices");
+                return pdf;
+            }
+            catch (Exception e)
+            {
+                logger.LogError(e.Message);
+                return null;
+            }
+
 
         }
 

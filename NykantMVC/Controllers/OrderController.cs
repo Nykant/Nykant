@@ -263,6 +263,10 @@ namespace NykantMVC.Controllers
                     var fileName = "Faktura-" + invoice.Id;
                     var viewString = await razorViewToStringRenderer.RenderViewToStringAsync("/Views/Shared/EmailViews/InvoiceEmail.cshtml", paymentCapture);
                     var invoicePdf = await razorViewToStringRenderer.PdfSharpConvert(viewString, fileName);
+                    if(invoicePdf == null)
+                    {
+                        return Json(new { ok = false, error = "could not create invoice" });
+                    }
 
                     // ------------------------Send Emails-------------------------
 
