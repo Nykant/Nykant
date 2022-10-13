@@ -1,24 +1,5 @@
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:6.0-jammy-amd64 AS build
 WORKDIR /app
-
-#RUN apt-get update
-#RUN apt-get -y install rpm
-#ADD wkhtmltox-0.12.6-1.centos7.x86_64.rpm ./wwwroot/wkhtmltopdf/wkhtmltox-0.12.6-1.centos7.x86_64.rpm
-
-#RUN rpm -i ./wwwroot/wkhtmltopdf/wkhtmltox-0.12.6-1.centos7.x86_64.rpm
-
-RUN apt update
-RUN apt install -y libgdiplus
-RUN ln -s /usr/lib/libgdiplus.so /lib/x86_64-linux-gnu/libgdiplus.so
-RUN apt-get install -y --no-install-recommends zlib1g fontconfig libfreetype6 libx11-6 libxext6 libxrender1 wget gdebi
-RUN wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.bullseye_amd64.deb
-
-RUN gdebi --n wkhtmltox_0.12.6.1-2.bullseye_amd64.deb
-RUN apt install libssl1.1
-RUN ln -s /usr/local/lib/libwkhtmltox.so /usr/lib/libwkhtmltox.so
-
-
-ADD wkhtmltopdf ./wwwroot/wkhtmltopdf
 
 # copy csproj and restore as distinct layers
 COPY *.sln .
@@ -30,8 +11,36 @@ COPY . ./
 WORKDIR /app
 RUN dotnet publish -c Release -o out
 
-FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS runtime
+FROM mcr.microsoft.com/dotnet/aspnet:6.0-jammy-amd64 AS runtime
 WORKDIR /app
+
+## START - INSTALL WKHTMLTOPDF
+#
+#ADD wkhtmltopdf ./wwwroot/wkhtmltopdf
+
+ENV WKHTMLTOX wkhtmltox_0.12.6.1-2.jammy_amd64.deb
+ENV BUILD_PACKAGES build-essential
+ENV MAIN_PACKAGES fontconfig libfreetype6 libjpeg-turbo8 libxext6 libpng16-16 libx11-6 libxcb1  libxrender1 xfonts-75dpi xfonts-base 
+
+COPY deps/$WKHTMLTOX ./
+
+RUN set -xe \
+    && apt-get update -qq \
+    && apt-get install --no-install-recommends -yq $BUILD_PACKAGES $MAIN_PACKAGES \
+    && dpkg -i ${WKHTMLTOX} \
+    && apt-get remove -y $BUILD_PACKAGES \
+    && apt-get autoremove -y \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+    && rm -rf ${WKHTMLTOX} \
+    && truncate -s 0 /var/log/*log
+## END - INSTALL WKHTMLTPDF
+
+WORKDIR /usr/local/bin
+RUN mkdir Linux \
+    && mv wkhtmltopdf Linux
+WORKDIR /app
+
 COPY --from=build /app/out ./
 
 ENV ASPNETCORE_URLS http://*:5002

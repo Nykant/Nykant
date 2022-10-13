@@ -51,7 +51,7 @@ namespace NykantMVC.Services
         public async Task<Byte[]> PdfSharpConvert(String html, string fileName)
         {
             var pdf = generatePdf.GetPDF(html);
-            var path = Path.Combine("Invoices", $"{fileName}.pdf");
+            var path = Path.Combine("wwwroot", "pdf", $"{fileName}.pdf");
             File.WriteAllBytes(path, pdf);
             await UploadFileAsync(path, fileName, "nykant-invoices");
             return pdf;

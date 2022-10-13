@@ -71,6 +71,8 @@ namespace NykantMVC
                     .PersistKeysToDbContext<LocalMyKeysContext>()
                     //.ProtectKeysWithCertificate("3fe5fcaf686e7ffbeaf80d760944e0f752f2112b")
                     .SetApplicationName("Nykant");
+
+                services.AddWkhtmltopdf(Path.GetFullPath("wkhtmltopdf"));
             }
             else
             {
@@ -82,10 +84,12 @@ namespace NykantMVC
                     .PersistKeysToDbContext<MyKeysContext>()
                     //.ProtectKeysWithCertificate("3fe5fcaf686e7ffbeaf80d760944e0f752f2112b")
                     .SetApplicationName("Nykant");
+
+                services.AddWkhtmltopdf("/usr/local/bin");
             }
 
-            //services.AddWkhtmltopdf("wwwroot/wkhtmltopdf");
-            services.AddWkhtmltopdf(Path.GetFullPath("wkhtmltopdf"));
+
+
 
             JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
 
