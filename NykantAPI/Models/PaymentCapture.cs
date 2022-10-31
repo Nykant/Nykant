@@ -14,6 +14,7 @@ namespace NykantAPI.Models
         public string PaymentIntent_Id { get; set; }
         public bool Captured { get; set; }
         public bool Refunded { get; set; }
+        public bool MobilePay { get; set; }
         public Refund Refund { get; set; }
         public Invoice Invoice { get; set; }
         public int CustomerId { get; set; }

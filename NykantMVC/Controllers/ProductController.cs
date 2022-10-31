@@ -16,6 +16,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using NykantMVC.Friends;
+using Microsoft.AspNetCore.Http.Extensions;
 
 namespace NykantMVC.Controllers
 {
@@ -488,7 +489,7 @@ namespace NykantMVC.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError($"time: {DateTime.Now} - {e.Message}, {e.InnerException}, {e.StackTrace}, {e.TargetSite}, produkt: {urlname}");
+                _logger.LogError($"time: {DateTime.Now} - {e.Message}, {e.InnerException}, {e.StackTrace}, {e.TargetSite}, produkt: {urlname}, category: {category}, request-path: {HttpContext.Request.Path}, request-query: {HttpContext.Request.QueryString}, request-display-url: {HttpContext.Request.GetDisplayUrl()}");
                 return BadRequest($"time: {DateTime.Now} - {e.Message}");
             }
         }

@@ -31,6 +31,7 @@ namespace NykantMVC.Models
         public string Materials { get; set; }
         public string Package { get; set; }
         public string Note { get; set; }
+        public long SalePrice { get; set; }
         public string RestId { get; set; }
         public IEnumerable<Image> Images { get; set; }
         public IEnumerable<Color> Colors { get; set; }

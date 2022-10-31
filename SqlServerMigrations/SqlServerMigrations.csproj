@@ -9,6 +9,8 @@
     <Compile Remove="Migrations\20220609094024_OrderError.Designer.cs" />
     <Compile Remove="Migrations\20220621195245_Discount.cs" />
     <Compile Remove="Migrations\20220621195245_Discount.Designer.cs" />
+    <Compile Remove="Migrations\20221028094819_createInvoice.cs" />
+    <Compile Remove="Migrations\20221028094819_createInvoice.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

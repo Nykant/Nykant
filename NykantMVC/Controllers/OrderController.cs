@@ -214,7 +214,7 @@ namespace NykantMVC.Controllers
 
                     // ------------------------Post Payment Capture-------------------------
 
-                    var paymentCapture = new PaymentCapture { Captured = true, PaymentIntent_Id = paymentIntentId, CustomerId = customerResult };
+                    var paymentCapture = new PaymentCapture { Captured = true, MobilePay = false, PaymentIntent_Id = paymentIntentId, CustomerId = customerResult };
                     var response = await PostRequest("/PaymentCapture/PostPaymentCapture", paymentCapture);
                     if (!response.IsSuccessStatusCode)
                     {
@@ -260,7 +260,7 @@ namespace NykantMVC.Controllers
                     invoice = JsonConvert.DeserializeObject<Models.Invoice>(json);
                     paymentCapture.Invoice = invoice;
 
-                    var fileName = "Faktura-" + invoice.Id;
+                    var fileName = "Faktura-" + paymentCapture.Customer.BillingAddress.Name;
                     var viewString = await razorViewToStringRenderer.RenderViewToStringAsync("/Views/Shared/EmailViews/InvoiceEmail.cshtml", paymentCapture);
                     var invoicePdf = await razorViewToStringRenderer.PdfSharpConvert(viewString, fileName);
                     if(invoicePdf == null)

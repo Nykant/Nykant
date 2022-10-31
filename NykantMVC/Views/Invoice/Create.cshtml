@@ -1,0 +1,201 @@
+﻿@model PaymentCapture
+
+@{
+    List<Product> products = new List<Product>();
+    if(ViewBag.Products != null)
+    {
+        products = ViewBag.Products;
+    }
+
+}
+
+<form class="my-form" method="post" asp-controller="Invoice" asp-action="Create">
+    <div class="col-10 center">
+        <div class="col-6 left">
+            <div class="col-10 center my-form-split">
+                <div>
+                    <label asp-for="@Model.Customer.Email"></label>
+                    <input autocomplete="email" asp-for="@Model.Customer.Email" />
+                </div>
+
+                <div>
+                    <label asp-for="@Model.Customer.Phone"></label>
+                    <input autocomplete="tel" asp-for="@Model.Customer.Phone" />
+                </div>
+
+                <div>
+                    <label asp-for="@Model.Customer.ShippingAddress.Name"></label>
+                    <input autocomplete="billing name" asp-for="@Model.Customer.ShippingAddress.Name" />
+                </div>
+
+                <div>
+                    <label asp-for="@Model.Customer.ShippingAddress.Address"></label>
+                    <input autocomplete="billing street-address" asp-for="@Model.Customer.ShippingAddress.Address" />
+                </div>
+
+                <div>
+                    <label asp-for="@Model.Customer.ShippingAddress.City"></label>
+                    <input autocomplete="billing address-level2" asp-for="@Model.Customer.ShippingAddress.City" />
+                </div>
+
+                <div>
+                    <label asp-for="@Model.Customer.ShippingAddress.Country"></label>
+                    <input autocomplete="billing country" asp-for="@Model.Customer.ShippingAddress.Country" />
+                </div>
+
+                <div>
+                    <label asp-for="@Model.Customer.ShippingAddress.Postal"></label>
+                    <input autocomplete="billing postal-code" asp-for="@Model.Customer.ShippingAddress.Postal" />
+                </div>
+
+                
+                <div>
+                    <label>test</label>
+                    <input asp-for="@Model.Test" />
+                </div>
+            </div>
+        </div>
+        <div class="col-6 left">
+            <div class="col-10 center my-form-split">
+                @if (products != default)
+                {
+                    <div>
+                        <label>Produkt 1</label>
+                        <select asp-for="@Model.Order.CustomProducts.Product1.UrlName">
+                            <option value="@null">null</option>
+                            @foreach (var product in products)
+                            {
+                                <option value="@product.UrlName">@product.UrlName</option>
+                            }
+                        </select>
+                        <input value="0" placeholder="discount" asp-for="@Model.Order.CustomProducts.Product1.Discount" />
+                        <input value="0" placeholder="Sale Price" asp-for="@Model.Order.CustomProducts.Product1.SalePrice" />
+                    </div>
+
+                    <div>
+                        <label>Produkt 2</label>
+                        <select asp-for="@Model.Order.CustomProducts.Product2.UrlName">
+                            <option value="@null">null</option>
+                            @foreach (var product in products)
+                            {
+                                <option value="@product.UrlName">@product.UrlName</option>
+                            }
+                        </select>
+                        <input value="0" asp-for="@Model.Order.CustomProducts.Product2.Discount" />
+                        <input value="0" placeholder="Sale Price" asp-for="@Model.Order.CustomProducts.Product2.SalePrice" />
+                    </div>
+
+                    <div>
+                        <label>Produkt 3</label>
+                        <select asp-for="@Model.Order.CustomProducts.Product3.UrlName">
+                            <option value="@null">null</option>
+                            @foreach (var product in products)
+                            {
+                                <option value="@product.UrlName">@product.UrlName</option>
+                            }
+                        </select>
+                        <input value="0" asp-for="@Model.Order.CustomProducts.Product3.Discount" />
+                            <input value="0" placeholder="Sale Price" asp-for="@Model.Order.CustomProducts.Product3.SalePrice" />
+                    </div>
+
+                    <div>
+                        <label>Produkt 4</label>
+                        <select asp-for="@Model.Order.CustomProducts.Product4.UrlName">
+                            <option value="@null">null</option>
+                            @foreach (var product in products)
+                            {
+                                <option value="@product.UrlName">@product.UrlName</option>
+                            }
+                        </select>
+                        <input value="0" asp-for="@Model.Order.CustomProducts.Product4.Discount" />
+                            <input value="0" placeholder="Sale Price" asp-for="@Model.Order.CustomProducts.Product4.SalePrice" />
+                    </div>
+
+                    <div>
+                        <label>Produkt 5</label>
+                        <select asp-for="@Model.Order.CustomProducts.Product5.UrlName">
+                            <option value="@null">null</option>
+                            @foreach (var product in products)
+                            {
+                                <option value="@product.UrlName">@product.UrlName</option>
+                            }
+                        </select>
+                        <input value="0" asp-for="@Model.Order.CustomProducts.Product5.Discount" />
+                            <input value="0" placeholder="Sale Price" asp-for="@Model.Order.CustomProducts.Product5.SalePrice" />
+                    </div>
+
+                    <div>
+                        <label>Produkt 6</label>
+                        <select asp-for="@Model.Order.CustomProducts.Product6.UrlName">
+                            <option value="@null">null</option>
+                            @foreach (var product in products)
+                            {
+                                <option value="@product.UrlName">@product.UrlName</option>
+                            }
+                        </select>
+                        <input value="0" asp-for="@Model.Order.CustomProducts.Product6.Discount" />
+                            <input value="0" placeholder="Sale Price" asp-for="@Model.Order.CustomProducts.Product6.SalePrice" />
+                    </div>
+
+                    <div>
+                        <label>Produkt 7</label>
+                        <select asp-for="@Model.Order.CustomProducts.Product7.UrlName">
+                            <option value="@null">null</option>
+                            @foreach (var product in products)
+                            {
+                                <option value="@product.UrlName">@product.UrlName</option>
+                            }
+                        </select>
+                        <input value="0" asp-for="@Model.Order.CustomProducts.Product7.Discount" />
+                            <input value="0" placeholder="Sale Price" asp-for="@Model.Order.CustomProducts.Product7.SalePrice" />
+                    </div>
+
+                    <div>
+                        <label>Produkt 8</label>
+                        <select asp-for="@Model.Order.CustomProducts.Product8.UrlName">
+                            <option value="@null">null</option>
+                            @foreach (var product in products)
+                            {
+                                <option value="@product.UrlName">@product.UrlName</option>
+                            }
+                        </select>
+                                                    <input value="0" asp-for="@Model.Order.CustomProducts.Product8.Discount"/>
+                        <input value="0" placeholder="Sale Price" asp-for="@Model.Order.CustomProducts.Product8.SalePrice" />
+                    </div>
+
+                    <div>
+                        <label>Produkt 9</label>
+                        <select asp-for="@Model.Order.CustomProducts.Product9.UrlName">
+                            <option value="@null">null</option>
+                            @foreach (var product in products)
+                            {
+                                <option value="@product.UrlName">@product.UrlName</option>
+                            }
+                        </select>
+                        <input value="0" asp-for="@Model.Order.CustomProducts.Product9.Discount" />
+                        <input value="0" placeholder="Sale Price" asp-for="@Model.Order.CustomProducts.Product9.SalePrice" />
+                    </div>
+
+                    <div>
+                        <label>Produkt 10</label>
+                        <select asp-for="@Model.Order.CustomProducts.Product10.UrlName">
+                            <option value="@null">null</option>
+                            @foreach (var product in products)
+                            {
+                                <option value="@product.UrlName">@product.UrlName</option>
+                            }
+                        </select>
+                        <input value="0" asp-for="@Model.Order.CustomProducts.Product10.Discount" />
+                        <input value="0" placeholder="Sale Price" asp-for="@Model.Order.CustomProducts.Product10.SalePrice" />
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+
+    <div class="center">
+        <button class="button" type="submit">Send</button> @*style=border-radius="0"????*@
+    </div>
+
+</form>

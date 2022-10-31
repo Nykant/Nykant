@@ -23,6 +23,7 @@ namespace NykantMVC.Models
         public Status Status { get; set; }
         public string Discount { get; set; }
         public string CouponCode { get; set; }
+        public CustomProducts CustomProducts { get; set; }
         public double WeightInKg { get; set; }
         public DateTime EstimatedDelivery { get; set; }
         //public bool IsBackOrder { get; set; } = false;
@@ -32,6 +33,7 @@ namespace NykantMVC.Models
         public ShippingDelivery ShippingDelivery { get; set; }
         public List<OrderItem> OrderItems { get; set; }
         public List<BagItem> BagItems { get; set; }
+        public List<Product> InvoiceProducts { get; set; }
     }
 
     public enum Status
