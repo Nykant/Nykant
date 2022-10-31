@@ -39,6 +39,14 @@ namespace NykantMVC.Controllers
             return View();
         }
 
+        [HttpGet("{orderId}")]
+        public async Task<IActionResult> Success(int orderId)
+        {
+            var json = await GetRequest($"/Order/GetOrder/{orderId}");
+            var order = JsonConvert.DeserializeObject<Models.Order>(json);
+            return View(order);
+        }
+
         private async Task<int> PostCustomer(Models.Customer customer)
         {
             var response = await PostRequest("/Customer/PostCustomer", new Models.Customer { Email = customer.Email, Phone = customer.Phone });
@@ -339,7 +347,7 @@ namespace NykantMVC.Controllers
 
                 ViewBag.Products = products;
 
-                return View();
+                return RedirectToAction("Success", new { orderId = order.Id });
             }
 
             catch (Exception e)
