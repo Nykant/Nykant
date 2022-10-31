@@ -189,7 +189,7 @@ namespace NykantMVC.Services
                 smtp.Connect(_mailSettings.Host, _mailSettings.Port, SecureSocketOptions.StartTls);
                 smtp.Authenticate(_mailSettings.Username, _mailSettings.Password);
                 await smtp.SendAsync(email);
-                _logger.LogError($"DKI EMAIL: sent");
+                _logger.LogInformation($"DKI EMAIL: sent");
                 smtp.Disconnect(true);
                 return "success";
             }
