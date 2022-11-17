@@ -284,13 +284,6 @@ namespace NykantMVC.Controllers
                         await OrderError(order);
                         return Json(new { ok = false, error = "email error" });
                     }
-                    emailResponse = await mailService .SendDKIEmailAsync(order);
-                    if (emailResponse == "fail")
-                    {
-                        _logger.LogError($"time: {DateTime.Now} - error: could not send DKi email");
-                        await OrderError(order);
-                        return Json(new { ok = false, error = "email error" });
-                    }
 
                     HttpContext.Session.Set<List<BagItem>>(BagSessionKey, null);
                     HttpContext.Session.Set<int>(BagItemAmountKey, 0);

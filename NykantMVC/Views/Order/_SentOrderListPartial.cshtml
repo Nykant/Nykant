@@ -29,7 +29,7 @@
                 <td> @paymentCapture.Order.Status </td>
                 <td>@paymentCapture.Refunded</td>
                 <td>
-                    <button onclick="refund(this)" data-paymentCaptureId="@paymentCapture.Id">Refund</button>
+                    <button id="refund-button" data-paymentCaptureId="@paymentCapture.Id">Refund</button>
                 </td>
             </tr>
         }
@@ -71,8 +71,6 @@
     </form>
 </div>
 
-@section scripts {
-    <script src="https://static.nykant.dk/JS/refund.min.js"></script>
-}
+
 
     

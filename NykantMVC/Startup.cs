@@ -349,7 +349,7 @@ namespace NykantMVC
             {
                 o.AddPolicy("CorsPolicy", p =>
                 {
-                    p.WithOrigins("https://r.stripe.com", "https://r.stripe.network", "https://www.nykant.dk/is", "https://localhost:5001", "https://localhost:5003", "https://www.nykant.dk/api").AllowAnyHeader().AllowAnyMethod();
+                    p.WithOrigins("https://r.stripe.com", "https://js.stripe.com", "https://r.stripe.network", "https://www.nykant.dk/is", "https://localhost:5001", "https://localhost:5003", "https://www.nykant.dk/api").AllowAnyHeader().AllowAnyMethod();
                 });
             });
 
