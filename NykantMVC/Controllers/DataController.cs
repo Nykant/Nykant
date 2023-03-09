@@ -17,7 +17,6 @@ using System.Threading.Tasks;
 
 namespace NykantMVC.Controllers
 {
-    [Authorize(Roles = "Admin")]
     [AutoValidateAntiforgeryToken]
     public class DataController : BaseController
     {
@@ -27,6 +26,7 @@ namespace NykantMVC.Controllers
             this.env = env;
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> Index()
         {
@@ -53,6 +53,7 @@ namespace NykantMVC.Controllers
             return View(vm);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> UploadData()
         {

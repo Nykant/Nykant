@@ -452,6 +452,7 @@ namespace NykantMVC
             app.UseRewriter(options);
 
             app.UseCertificateForwarding();
+            //app.UseHttpsRedirection();
 
             if (env.IsDevelopment())
             {

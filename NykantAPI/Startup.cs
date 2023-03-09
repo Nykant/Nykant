@@ -107,10 +107,6 @@ namespace NykantAPI
                             x => x.MigrationsAssembly("MySqlMigrations")),
 
                         _ => throw new Exception($"Unsupported provider: {provider}")
-                    }).AddStackExchangeRedisCache(options =>
-                    {
-                        options.Configuration = "nykant-memcached.tylulq.cfg.eun1.cache.amazonaws.com:11211";
-                        options.InstanceName = "nykant-memcached";
                     });
 
             }
@@ -118,14 +114,14 @@ namespace NykantAPI
 
 
 
-            if (!Environment.IsDevelopment())
-            {
-                services.AddStackExchangeRedisCache(options =>
-                {
-                    options.Configuration = "nykant-memcached.tylulq.cfg.eun1.cache.amazonaws.com:11211";
-                    options.InstanceName = "nykant-memcached";
-                });
-            }
+            //if (!Environment.IsDevelopment())
+            //{
+            //    services.AddStackExchangeRedisCache(options =>
+            //    {
+            //        options.Configuration = "nykant-memcached.tylulq.cfg.eun1.cache.amazonaws.com:11211";
+            //        options.InstanceName = "nykant-memcached";
+            //    });
+            //}
 
             services.AddResponseCaching();
 
@@ -184,6 +180,7 @@ namespace NykantAPI
             app.UseRewriter(options);
 
             app.UseCertificateForwarding();
+            //app.UseHttpsRedirection();
 
             if (env.IsDevelopment())
             {

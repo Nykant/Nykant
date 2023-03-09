@@ -330,6 +330,7 @@ namespace NykantIS
             app.UseRewriter(options);
 
             app.UseCertificateForwarding();
+            //app.UseHttpsRedirection();
 
             InitializeDatabase(app);
 
