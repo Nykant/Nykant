@@ -473,6 +473,12 @@ namespace NykantMVC.Controllers
         {
             try
             {
+                if (urlname == "none" || urlname == null || urlname == "")
+                {
+                    _logger.LogInformation("Der er ikke noget urlname til stede");
+                    return Redirect($"Møbler/{category}");
+                }
+
                 var json = await GetRequest($"/Product/GetProductWithUrlName/{urlname}");
                 Product product = JsonConvert.DeserializeObject<Product>(json);
 
@@ -484,11 +490,6 @@ namespace NykantMVC.Controllers
                     Product = product,
                     RelatedProducts = relatedProducts
                 };
-
-                if(urlname == "none" || urlname == null)
-                {
-                    return Redirect($"Møbler/{category}");
-                }
 
                 return View(productVM);
             }
