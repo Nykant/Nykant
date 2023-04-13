@@ -475,18 +475,27 @@ namespace NykantMVC.Controllers
             {
 
                 var json = await GetRequest($"/Product/GetProductWithUrlName/{urlname}");
-                Product product = JsonConvert.DeserializeObject<Product>(json);
-
-                var relatedProductsJson = await GetRequest($"/Product/GetRelatedProducts/{product.CategoryId}");
-                var relatedProducts = JsonConvert.DeserializeObject<List<Product>>(relatedProductsJson);
-
-                var productVM = new ProductVM
+                if(json != null)
                 {
-                    Product = product,
-                    RelatedProducts = relatedProducts
-                };
+                    Product product = JsonConvert.DeserializeObject<Product>(json);
 
-                return View(productVM);
+                    var relatedProductsJson = await GetRequest($"/Product/GetRelatedProducts/{product.CategoryId}");
+                    var relatedProducts = JsonConvert.DeserializeObject<List<Product>>(relatedProductsJson);
+
+                    var productVM = new ProductVM
+                    {
+                        Product = product,
+                        RelatedProducts = relatedProducts
+                    };
+
+                    return View(productVM);
+                }
+                if (category != null)
+                {
+                    _logger.LogInformation("Der er ikke noget urlname til stede");
+                    return Redirect($"Møbler/{category}");
+                }
+                return Redirect("Ukendt");
             }
             catch (Exception e)
             {
