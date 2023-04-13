@@ -41,6 +41,7 @@ using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Joonasw.AspNetCore.SecurityHeaders;
 using Microsoft.AspNetCore.Cors.Infrastructure;
 using Wkhtmltopdf.NetCore;
+using Microsoft.Extensions.Logging;
 
 namespace NykantMVC
 {
@@ -445,11 +446,20 @@ namespace NykantMVC
 
             app.UseForwardedHeaders(forwardOptions);
 
-            var options = new RewriteOptions()
-                .AddRedirectToWwwCustom()
-                .AddRedirectToProxiedHttps()
-                .AddRedirect("(.*)/$", "$1");
-            app.UseRewriter(options);
+            try
+            {
+                var options = new RewriteOptions()
+                    .AddRedirectToWwwCustom()
+                    .AddRedirectToProxiedHttps()
+                    .AddRedirect("(.*)/$", "$1");
+                app.UseRewriter(options);
+            }
+            catch(Exception ex)
+            {
+                var logger = app.ApplicationServices.GetRequiredService<ILogger<Startup>>();
+                logger.LogError($"rewrite error: {ex.Message}");
+            }
+
 
             app.UseCertificateForwarding();
             //app.UseHttpsRedirection();

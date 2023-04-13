@@ -24,9 +24,9 @@
     <img align="middle" loading="lazy" class="bigImg" id="bigImg" alt="@Model.Product.Title" />
 </div> 
 
-<div class="modal" id="item-added-modal">
+@*<div class="modal" id="item-added-modal">
     <partial name="_ItemAddedPartial">
-</div>
+</div>*@
 
 <div class="my-row top-padding bottom-padding">
     <div class="col-10 center" id="details-wrapper">
@@ -183,7 +183,7 @@
                     }
                 </div>
 
-                <form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#item-added-modal" data-ajax-success="item_added" data-ajax-complete="noop" data-ajax-begin="addToBag_begin" data-ajax-failure="addToBag_failure" asp-controller="BagItem" asp-action="PostBagItem" asp-route-id="@Model.Product.Id">
+                @*<form method="post" data-ajax="true" data-ajax-method="post" data-ajax-update="#item-added-modal" data-ajax-success="item_added" data-ajax-complete="noop" data-ajax-begin="addToBag_begin" data-ajax-failure="addToBag_failure" asp-controller="BagItem" asp-action="PostBagItem" asp-route-id="@Model.Product.Id">
                     @Html.AntiForgeryToken()
                     <div class="product-counter">
                         <button id="product-counter-down" type="button"><i class="fas fa-minus"></i></button>
@@ -225,7 +225,7 @@
                         </div>
                     }
 
-                </form>
+                </form>*@
             </div>
         </div>
 

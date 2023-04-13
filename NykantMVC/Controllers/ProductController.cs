@@ -485,12 +485,17 @@ namespace NykantMVC.Controllers
                     RelatedProducts = relatedProducts
                 };
 
+                if(urlname == "none" || urlname == null)
+                {
+                    return Redirect($"Møbler/{category}");
+                }
+
                 return View(productVM);
             }
             catch (Exception e)
             {
                 _logger.LogError($"time: {DateTime.Now} - {e.Message}, {e.InnerException}, {e.StackTrace}, {e.TargetSite}, produkt: {urlname}, category: {category}, request-path: {HttpContext.Request.Path}, request-query: {HttpContext.Request.QueryString}, request-display-url: {HttpContext.Request.GetDisplayUrl()}");
-                return BadRequest($"time: {DateTime.Now} - {e.Message}");
+                return Redirect("/Fejl");
             }
         }
 

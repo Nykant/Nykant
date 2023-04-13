@@ -45,6 +45,18 @@ namespace NykantMVC.Controllers
             return View();
         }
 
+        [HttpGet("Ukendt")]
+        public IActionResult Unknown()
+        {
+            return View();
+        }
+
+        [HttpGet("Fejl")]
+        public IActionResult Error()
+        {
+            return View();
+        }
+
         //[Route("Hjem")]
         public async Task<IActionResult> Index()
         {
