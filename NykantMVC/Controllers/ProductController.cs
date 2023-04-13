@@ -495,7 +495,7 @@ namespace NykantMVC.Controllers
                     _logger.LogInformation("Der er ikke noget urlname til stede");
                     return Redirect($"Møbler/{category}");
                 }
-                return Redirect("Ukendt");
+                return Redirect("/Ukendt");
             }
             catch (Exception e)
             {
