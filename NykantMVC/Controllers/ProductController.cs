@@ -493,7 +493,7 @@ namespace NykantMVC.Controllers
                 if (category != null)
                 {
                     _logger.LogInformation("Der er ikke noget urlname til stede");
-                    return Redirect($"Møbler/{category}");
+                    return RedirectToAction("CategoryView", category);
                 }
                 return Redirect("/Ukendt");
             }
@@ -502,7 +502,7 @@ namespace NykantMVC.Controllers
                 if (category != null)
                 {
                     _logger.LogInformation("Der er ikke noget urlname til stede");
-                    return Redirect($"Møbler/{category}");
+                    return RedirectToAction("CategoryView", category);
                 }
                 _logger.LogError($"time: {DateTime.Now} - {e.Message}, {e.InnerException}, {e.StackTrace}, {e.TargetSite}, produkt: {urlname}, category: {category}, request-path: {HttpContext.Request.Path}, request-query: {HttpContext.Request.QueryString}, request-display-url: {HttpContext.Request.GetDisplayUrl()}");
                 return Redirect("/Fejl");
