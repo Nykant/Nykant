@@ -39,14 +39,6 @@
     @*<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js" integrity="sha512-DkPsH9LzNzZaZjCszwKrooKwgjArJDiEjA5tTgr3YX4E6TYv93ICS8T41yFHJnnSmGpnf0Mvb5NhScYbwvhn2w==" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js" integrity="sha512-0xrMWUXzEAc+VY7k48pWd5YT6ig03p4KARKxs4Bqxb9atrcn2fV41fWs+YXTKb8lD2sbPAmZMjKENiyzM/Gagw==" crossorigin="anonymous"></script>*@
 
-    <script asp-add-nonce="true">
-        (function (w, d, s, r, n) {
-            w.TrustpilotObject = n; w[n] = w[n] || function () { (w[n].q = w[n].q || []).push(arguments) };
-            a = d.createElement(s); a.async = 1; a.src = r; a.type = 'text/java' + s; f = d.getElementsByTagName(s)[0];
-            f.parentNode.insertBefore(a, f)
-        })(window, document, 'script', 'https://invitejs.trustpilot.com/tp.min.js', 'tp');
-        tp('register', 'nnfhOrvskhnktLev');
-    </script>
 </head>
 <body>
 
@@ -89,25 +81,15 @@
                 <a asp-controller="Home" asp-action="HowToOrder">Handlevejledning</a>
             </div>
 
-            <div class="nykant-info">
-                <p class="bold-text">Anmeldelser</p>
-                <a href="https://dk.trustpilot.com/review/nykant.dk">Trustpilot</a>
-                <a href="https://www.facebook.com/nykant.dk/reviews">Facebook</a>
-            </div>
 
             @*<partial name="_NewsletterPartial" />*@
-
-            <div class="socialmedia">
-                <a href="https://www.facebook.com/nykant.dk"><img class="small-svg" src="https://static.nykant.dk/lib/svg/facebook.svg"></a>
-                <a href="https://www.instagram.com/nykant.dk"><img class="small-svg" src="https://static.nykant.dk/lib/svg/instagram.svg" /></a>
-            </div>
 
             @*<partial name="_UtilityPartial" />*@
         </div>
         <div class="my-row">
             <div class="col-12">
                 <div class="copyright left">
-                    <p>&copy; Nykant Aps 2023</p>
+                    <p>&copy; Nykant Aps 2024</p>
                 </div>
                 <div class="policy-links right">
                     <a asp-controller="Home" asp-action="PrivacyPolicy">Persondatapolitik</a>
@@ -123,13 +105,8 @@
     <script asp-add-nonce="true" id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="490e7f44-ffeb-46ab-b54c-dc5700002e92" data-blockingmode="auto" type="text/javascript"></script>
 @*    <script src="https://static.nykant.dk/JS/trustpilot.min.js"></script>*@
     <script asp-add-nonce="true" src="https://static.nykant.dk/JS/layout-head-bundle.min.js"></script>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
-    <script type="text/javascript" src="https://js.stripe.com/v3/"></script>
     @await RenderSectionAsync("Scripts", required: false)
-    <script type="text/javascript" src="https://widget.emaerket.dk/js/c49f6b82c5f1b83153cb102aa0b9daa3" async></script>
     <script src="https://static.nykant.dk/JS/layout-bottom-bundle.min.js" async></script>
     <script asp-add-nonce="true" src="https://kit.fontawesome.com/dfade6c231.js" crossorigin="anonymous" async></script>
-    <script asp-add-nonce="true" async src="https://www.googletagmanager.com/gtag/js?id=UA-220279124-1"></script>
-    <script src="https://static.nykant.dk/JS/GoogleAnalytics.min.js"></script>
 </body>
 </html>
